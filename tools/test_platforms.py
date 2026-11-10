@@ -1,15 +1,15 @@
 #!/usr/bin/env python3
-"""平台适配层验证脚本。
+"""Platform adapter layer verification script.
 
-用法: python tools/test_platforms.py
-返回码 0 = 全部通过，非 0 = 有失败（CI 用）。
+Usage: python tools/test_platforms.py
+Exit code 0 = all passed; non-zero = failures (used by CI).
 
-覆盖：
-- 单元：platforms 模块（配置/检测/引用改写/yaml 预检）
-- 单元：check-python.py 版本门槛（安装阶段 fail-fast）
-- E2E：init.py 各平台布局 + 引用改写 + reasonix 11 个 skill + codex TOML agent（含 tomllib 解析）
-- E2E：sync-project.py 各平台同步 + --check
-- E2E：install.sh 全新 HOME 首次安装（F1 回归）+ 版本门槛 fail-fast（P-ver 回归）+ pyyaml 安装门槛 fail-fast（Y-ver 回归）+ 缺 pyyaml 负向场景（F5 回归）
+Coverage:
+- Unit: the platforms module (config / detection / reference rewriting / yaml pre-check)
+- Unit: check-python.py version threshold (fail-fast at install time)
+- E2E: init.py layouts on all platforms + reference rewriting + reasonix 11 skills + codex TOML agents (including tomllib parsing)
+- E2E: sync-project.py sync on all platforms + --check
+- E2E: install.sh first install into a fresh HOME (F1 regression) + version-threshold fail-fast (P-ver regression) + pyyaml install-threshold fail-fast (Y-ver regression) + missing-pyyaml negative case (F5 regression)
 """
 
 import os
@@ -21,7 +21,7 @@ from pathlib import Path
 
 import yaml
 
-# 强制 UTF-8 输出，避免 Windows GBK 控制台报错（AGENTS.md:79）
+# Force UTF-8 output to avoid errors on the Windows GBK console (AGENTS.md:79)
 for _s in (sys.stdout, sys.stderr):
     try:
         _s.reconfigure(encoding="utf-8")
@@ -53,7 +53,7 @@ def init_short_project(tmp: Path, platform_key: str = "claude", genre: str = "1"
                 "--length", "short", "--genre", genre, "--platform", platform_key])
 
 
-# ---------------- 单元 ----------------
+# ---------------- Unit ----------------
 
 def test_detect():
     print("[unit] detect_platform")
@@ -81,137 +81,137 @@ def test_detect():
 def test_rewrite():
     print("[unit] rewrite_refs")
     import platforms as p
-    text = "先 Read `.claude/knowledge/anti-ai.md` 和 `.claude/memory/volume-memory.md`"
+    text = "First read `.claude/knowledge/anti-ai.md` and `.claude/memory/volume-memory.md`"
     out = p.rewrite_refs(text, p.PLATFORMS["reasonix"])
-    check("reasonix 改写两处",
-          out == "先 Read `.reasonix/knowledge/anti-ai.md` 和 `.reasonix/memory/volume-memory.md`",
+    check("reasonix rewrites two places",
+          out == "First read `.reasonix/knowledge/anti-ai.md` and `.reasonix/memory/volume-memory.md`",
           out)
-    check("claude 原样", p.rewrite_refs(text, p.PLATFORMS["claude"]) == text)
+    check("claude unchanged", p.rewrite_refs(text, p.PLATFORMS["claude"]) == text)
     out = p.rewrite_refs(text, p.PLATFORMS["codex"])
-    check("codex 改写两处",
-          out == "先 Read `.codex/knowledge/anti-ai.md` 和 `.codex/memory/volume-memory.md`",
+    check("codex rewrites two places",
+          out == "First read `.codex/knowledge/anti-ai.md` and `.codex/memory/volume-memory.md`",
           out)
     out = p.rewrite_refs(text, p.PLATFORMS["zcode"])
-    check("zcode 改写两处",
-          out == "先 Read `.zcode/knowledge/anti-ai.md` 和 `.zcode/memory/volume-memory.md`",
+    check("zcode rewrites two places",
+          out == "First read `.zcode/knowledge/anti-ai.md` and `.zcode/memory/volume-memory.md`",
           out)
     out = p.rewrite_refs(text, p.PLATFORMS["dsh"])
-    check("dsh 改写两处",
-          out == "先 Read `.dsh/knowledge/anti-ai.md` 和 `.dsh/memory/volume-memory.md`",
+    check("dsh rewrites two places",
+          out == "First read `.dsh/knowledge/anti-ai.md` and `.dsh/memory/volume-memory.md`",
           out)
     out = p.rewrite_refs(text, p.PLATFORMS["grok"])
-    check("grok 改写两处",
-          out == "先 Read `.grok/knowledge/anti-ai.md` 和 `.grok/memory/volume-memory.md`",
+    check("grok rewrites two places",
+          out == "First read `.grok/knowledge/anti-ai.md` and `.grok/memory/volume-memory.md`",
           out)
 
 
 def test_config():
-    print("[unit] 平台配置")
+    print("[unit] platform config")
     import platforms as p
-    check("claude agents 路径",
+    check("claude agents path",
           p.PLATFORMS["claude"].agents_dir(Path("P")) == Path("P") / ".claude" / "agents")
     check("reasonix agents=None", p.PLATFORMS["reasonix"].agents_dir(Path("P")) is None)
-    check("reasonix skills 路径",
+    check("reasonix skills path",
           p.PLATFORMS["reasonix"].skills_dir(Path("P")) == Path("P") / ".reasonix" / "skills")
-    check("codex agents 路径",
+    check("codex agents path",
           p.PLATFORMS["codex"].agents_dir(Path("P")) == Path("P") / ".codex" / "agents")
-    check("codex skills 路径",
+    check("codex skills path",
           p.PLATFORMS["codex"].skills_dir(Path("P")) == Path("P") / ".codex" / "skills")
     check("zcode agents=None", p.PLATFORMS["zcode"].agents_dir(Path("P")) is None)
-    check("zcode skills 路径",
+    check("zcode skills path",
           p.PLATFORMS["zcode"].skills_dir(Path("P")) == Path("P") / ".zcode" / "skills")
     check("dsh agents=None", p.PLATFORMS["dsh"].agents_dir(Path("P")) is None)
-    check("dsh skills 路径",
+    check("dsh skills path",
           p.PLATFORMS["dsh"].skills_dir(Path("P")) == Path("P") / ".dsh" / "skills")
-    check("grok agents 路径",
+    check("grok agents path",
           p.PLATFORMS["grok"].agents_dir(Path("P")) == Path("P") / ".grok" / "agents")
-    check("grok skills 路径",
+    check("grok skills path",
           p.PLATFORMS["grok"].skills_dir(Path("P")) == Path("P") / ".grok" / "skills")
-    check("unknown key 抛错", _raises(p.platform_from_key, "bad-key"))
-    check("检测优先显式覆盖", p.detect_platform(Path("d:/x/.reasonix/skills"), "claude").key == "claude")
-    check("检测 codex 路径",
+    check("unknown key raises", _raises(p.platform_from_key, "bad-key"))
+    check("detection prefers the explicit override", p.detect_platform(Path("d:/x/.reasonix/skills"), "claude").key == "claude")
+    check("detect codex path",
           p.detect_platform(Path("d:/x/.codex/skills/awesome-novel")).key == "codex")
-    check("检测 zcode 路径",
+    check("detect zcode path",
           p.detect_platform(Path("d:/x/.zcode/skills/awesome-novel")).key == "zcode")
-    check("检测 dsh 路径",
+    check("detect dsh path",
           p.detect_platform(Path("d:/x/.dsh/skills/awesome-novel")).key == "dsh")
-    check("检测 grok 路径",
+    check("detect grok path",
           p.detect_platform(Path("d:/x/.grok/skills/awesome-novel")).key == "grok")
-    check("检测 claude 路径含 codex 子串回落 claude",
+    check("a claude path containing the codex substring falls back to claude",
           p.detect_platform(Path("/Users/codex-dev/.claude/skills/awesome-novel")).key == "claude")
-    check("检测 claude 路径含 grok 子串回落 claude",
+    check("a claude path containing the grok substring falls back to claude",
           p.detect_platform(Path("/Users/grok-dev/.claude/skills/awesome-novel")).key == "claude")
 
 
 def test_yaml_precheck():
     print("[unit] ensure_yaml")
     import platforms as p
-    p.ensure_yaml(p.PLATFORMS["claude"])  # claude 纯复制，不依赖 pyyaml
+    p.ensure_yaml(p.PLATFORMS["claude"])  # claude copies without converting and does not need pyyaml
     import builtins
     real_import = builtins.__import__
 
     def fake_import(name, *args, **kwargs):
         if name == "yaml":
-            raise ImportError("模拟缺 pyyaml")
+            raise ImportError("simulate missing pyyaml")
         return real_import(name, *args, **kwargs)
 
     builtins.__import__ = fake_import
     try:
-        check("缺 yaml 时 codex 报错", _raises_system_exit(p.ensure_yaml, p.PLATFORMS["codex"]))
-        check("缺 yaml 时 opencode 报错",
+        check("codex errors without yaml", _raises_system_exit(p.ensure_yaml, p.PLATFORMS["codex"]))
+        check("opencode errors without yaml",
               _raises_system_exit(p.ensure_yaml, p.PLATFORMS["opencode"]))
-        check("缺 yaml 时 reasonix 报错",
+        check("reasonix errors without yaml",
               _raises_system_exit(p.ensure_yaml, p.PLATFORMS["reasonix"]))
-        check("缺 yaml 时 zcode 报错",
+        check("zcode errors without yaml",
               _raises_system_exit(p.ensure_yaml, p.PLATFORMS["zcode"]))
-        check("缺 yaml 时 grok 报错",
+        check("grok errors without yaml",
               _raises_system_exit(p.ensure_yaml, p.PLATFORMS["grok"]))
     finally:
         builtins.__import__ = real_import
 
 
 def test_check_python():
-    """P-ver 回归：check-python.py 在安装阶段暴露版本问题，而不是执行时才报 SyntaxError。"""
-    print("[unit] check-python.py 版本门槛")
+    """P-ver regression: check-python.py surfaces version problems at install time instead of only reporting a SyntaxError at run time."""
+    print("[unit] check-python.py version threshold")
     r = run([sys.executable, str(TOOLS / "check-python.py")])
-    check("当前解释器通过", r.returncode == 0, (r.stdout + r.stderr)[-200:])
+    check("the current interpreter passes", r.returncode == 0, (r.stdout + r.stderr)[-200:])
     r = run([sys.executable, str(TOOLS / "check-python.py"), "--min", "99.0"])
-    check("超高门槛拒绝", r.returncode == 1, str(r.returncode))
-    check("拒绝信息含版本号与升级提示",
-          "Python 99.0" in (r.stdout + r.stderr) and "升级" in (r.stdout + r.stderr),
+    check("an impossibly high threshold refuses", r.returncode == 1, str(r.returncode))
+    check("the refusal message contains the version number and an upgrade hint",
+          "Python 99.0" in (r.stdout + r.stderr) and "upgrade" in (r.stdout + r.stderr),
           (r.stdout + r.stderr)[-300:])
 
 
 def test_check_yaml():
-    """Y-ver 回归：check-yaml.py 在安装阶段暴露缺 pyyaml，而不是 init 时才报错。"""
-    print("[unit] check-yaml.py pyyaml 门槛")
+    """Y-ver regression: check-yaml.py surfaces missing pyyaml at install time instead of only erroring at init."""
+    print("[unit] check-yaml.py pyyaml threshold")
     with tempfile.TemporaryDirectory() as td:
         (Path(td) / "yaml.py").write_text('raise ImportError("blocked")\n', encoding="utf-8")
         env = dict(os.environ)
         env["PYTHONPATH"] = str(td) + os.pathsep + env.get("PYTHONPATH", "")
         r = run([sys.executable, str(TOOLS / "check-yaml.py"), "codex"], env=env)
-        check("缺 yaml exit 1", r.returncode == 1, str(r.returncode))
-        check("缺 yaml 报错含 pyyaml 与 pip 提示",
-              "需要 pyyaml" in (r.stdout + r.stderr)
+        check("missing yaml exit 1", r.returncode == 1, str(r.returncode))
+        check("the missing-yaml error mentions pyyaml and pip",
+              "needs pyyaml" in (r.stdout + r.stderr)
               and "pip install pyyaml" in (r.stdout + r.stderr),
               (r.stdout + r.stderr)[-300:])
-        check("缺 yaml 报错含解释器路径", sys.executable in (r.stdout + r.stderr),
+        check("the missing-yaml error contains the interpreter path", sys.executable in (r.stdout + r.stderr),
               (r.stdout + r.stderr)[-300:])
     with tempfile.TemporaryDirectory() as td:
         (Path(td) / "yaml.py").write_text("# stub\n", encoding="utf-8")
         env = dict(os.environ)
         env["PYTHONPATH"] = str(td) + os.pathsep + env.get("PYTHONPATH", "")
         r = run([sys.executable, str(TOOLS / "check-yaml.py"), "opencode"], env=env)
-        check("有 yaml exit 0", r.returncode == 0, (r.stdout + r.stderr)[-200:])
+        check("yaml present exit 0", r.returncode == 0, (r.stdout + r.stderr)[-200:])
 
 
 def _fake_version_repo(tmp: Path, version: str, drift: dict) -> None:
-    """迷你仓库：VERSION 权威 + 四处副本（check-version.py 测试注入 NOVEL_REPO_ROOT 用）。
+    """Mini repo: VERSION is authoritative + four copies (check-version.py tests inject NOVEL_REPO_ROOT).
 
-    drift: {相对路径: 漂移版本号}，构造单处不一致场景。
+    drift: {relative path: drifted version number}, building a single-inconsistency scenario.
     """
     (tmp / "VERSION").write_text(f"v{version}\n", encoding="utf-8")
-    (tmp / "ARCHITECTURE.md").write_text(f"# x\n\n> 当前版本：v{version}\n", encoding="utf-8")
+    (tmp / "ARCHITECTURE.md").write_text(f"# x\n\n> Current version: v{version}\n", encoding="utf-8")
     (tmp / "skill.json").write_text(f'{{"version": "{version}"}}\n', encoding="utf-8")
     tpl = tmp / "templates" / ".agent"
     tpl.mkdir(parents=True)
@@ -222,7 +222,7 @@ def _fake_version_repo(tmp: Path, version: str, drift: dict) -> None:
                                    encoding="utf-8")
     for name, ver in drift.items():
         if name == "ARCHITECTURE.md":
-            (tmp / name).write_text(f"# x\n\n> 当前版本：v{ver}\n", encoding="utf-8")
+            (tmp / name).write_text(f"# x\n\n> Current version: v{ver}\n", encoding="utf-8")
         elif name == "skill.json":
             (tmp / name).write_text(f'{{"version": "{ver}"}}\n', encoding="utf-8")
         elif name == "templates/.agent/status.md":
@@ -233,14 +233,14 @@ def _fake_version_repo(tmp: Path, version: str, drift: dict) -> None:
 
 
 def test_check_version():
-    """版本一致性守卫自身测试（arch-review 工程债：check 脚本缺测试覆盖）。"""
-    print("[unit] check-version.py 一致性")
+    """Self-test for the version-consistency guard (arch-review tech debt: the check scripts lack test coverage)."""
+    print("[unit] check-version.py consistency")
     with tempfile.TemporaryDirectory() as td:
         _fake_version_repo(Path(td), "4.16.0", {})
         env = dict(os.environ, NOVEL_REPO_ROOT=td)
         r = run([sys.executable, str(TOOLS / "check-version.py")], env=env)
-        check("五处一致 exit 0", r.returncode == 0, (r.stdout + r.stderr)[-200:])
-        check("输出含通过文案", "版本号一致" in r.stdout, r.stdout[-200:])
+        check("all five consistent exit 0", r.returncode == 0, (r.stdout + r.stderr)[-200:])
+        check("the output contains the pass message", "Version numbers match" in r.stdout, r.stdout[-200:])
     for name, ver, expect in [
         ("ARCHITECTURE.md", "4.13.0", "ARCHITECTURE.md"),
         ("skill.json", "1.0.0", "skill.json"),
@@ -251,14 +251,14 @@ def test_check_version():
             _fake_version_repo(Path(td), "4.16.0", {name: ver})
             env = dict(os.environ, NOVEL_REPO_ROOT=td)
             r = run([sys.executable, str(TOOLS / "check-version.py")], env=env)
-            check(f"漂移 {name} exit 1", r.returncode == 1, str(r.returncode))
-            check(f"漂移 {name} 报错含标签", expect in (r.stdout + r.stderr),
+            check(f"drift {name} exit 1", r.returncode == 1, str(r.returncode))
+            check(f"drift {name} error contains the label", expect in (r.stdout + r.stderr),
                   (r.stdout + r.stderr)[-200:])
     with tempfile.TemporaryDirectory() as td:
         (Path(td) / "VERSION").write_text("abc\n", encoding="utf-8")
         env = dict(os.environ, NOVEL_REPO_ROOT=td)
         r = run([sys.executable, str(TOOLS / "check-version.py")], env=env)
-        check("VERSION 格式非法 exit 1", r.returncode == 1, str(r.returncode))
+        check("invalid VERSION format exit 1", r.returncode == 1, str(r.returncode))
 
 
 def _raises(fn, *a) -> bool:
@@ -280,7 +280,7 @@ def _raises_system_exit(fn, *a) -> bool:
 # ---------------- E2E init ----------------
 
 def test_init_layout():
-    print("[e2e] init.py 各平台布局")
+    print("[e2e] init.py layouts on all platforms")
     expect_map = {
         "claude":   (["agents", "knowledge", "memory"], [".reasonix"]),
         "opencode": (["agents", "knowledge", "memory"], [".claude", ".reasonix"]),
@@ -295,147 +295,147 @@ def test_init_layout():
             r = init_project(tmp, key)
             check(f"{key} init exit 0", r.returncode == 0, (r.stdout + r.stderr)[-400:])
             for sub in subs:
-                check(f"{key} 存在 .{key}/{sub}", (tmp / f".{key}" / sub).exists())
-            check(f"{key} 存在 novel-samples/（蒸馏样本目录）", (tmp / "novel-samples").exists())
+                check(f"{key} has .{key}/{sub}", (tmp / f".{key}" / sub).exists())
+            check(f"{key} has novel-samples/ (distillation sample directory)", (tmp / "novel-samples").exists())
             t = tmp / f".{key}" / "tools" / "check-prose.py"
-            check(f"{key} 部署 tools/check-prose.py", t.exists())
+            check(f"{key} deploys tools/check-prose.py", t.exists())
             if t.exists():
-                check(f"{key} check-prose.py 内容与源一致",
+                check(f"{key} check-prose.py content matches the source",
                       t.read_text(encoding="utf-8") ==
                       (TOOLS / "check-prose.py").read_text(encoding="utf-8"))
             t2 = tmp / f".{key}" / "tools" / "check-chapter.py"
-            check(f"{key} 部署 tools/check-chapter.py", t2.exists())
+            check(f"{key} deploys tools/check-chapter.py", t2.exists())
             if t2.exists():
-                check(f"{key} check-chapter.py 内容与源一致",
+                check(f"{key} check-chapter.py content matches the source",
                       t2.read_text(encoding="utf-8") ==
                       (TOOLS / "check-chapter.py").read_text(encoding="utf-8"))
             aa = tmp / f".{key}" / "knowledge" / "anti-ai.md"
-            check(f"{key} anti-ai.md 合并结构热源定律",
-                  aa.exists() and "结构热源定律" in aa.read_text(encoding="utf-8"))
+            check(f"{key} anti-ai.md merges the structural-heat law",
+                  aa.exists() and "Structural Heat: Avoiding AI Detection at the Source" in aa.read_text(encoding="utf-8"))
             for sb in ("detect-battles.md", "prose-regressions.txt", "locked-lines.txt"):
-                check(f"{key} 生成 sandbox/{sb}", (tmp / "sandbox" / sb).exists())
+                check(f"{key} generates sandbox/{sb}", (tmp / "sandbox" / sb).exists())
             for a in absents:
-                check(f"{key} 无 {a}", not (tmp / a).exists())
+                check(f"{key} has no {a}", not (tmp / a).exists())
 
-    # reasonix 11 个 skill
+    # reasonix 11 skills
     with tempfile.TemporaryDirectory() as td:
         tmp = Path(td)
         init_project(tmp, "reasonix")
         names = ["novel-agent", "writer", "volume-planner", "chapter-planner",
                  "prompt-crafter", "anti-ai", "reader", "updater", "style-distiller",
-                 "memory-recording", "roleplay-sandbox"]  # 与 deploy_reasonix_skills 的 11 个 skill 名对应（spec 契约）
+                 "memory-recording", "roleplay-sandbox"]  # matches the 11 skill names of deploy_reasonix_skills (spec contract)
         for n in names:
             check(f"reasonix skill {n}", (tmp / ".reasonix/skills" / n / "SKILL.md").exists())
         w = (tmp / ".reasonix/skills/writer/SKILL.md").read_text(encoding="utf-8")
-        check("reasonix writer 引用改写",
+        check("reasonix writer reference rewriting",
               ".reasonix/knowledge/" in w and ".claude/knowledge/" not in w)
         nv = (tmp / ".reasonix/skills/novel-agent/SKILL.md").read_text(encoding="utf-8")
-        check("reasonix novel-agent 无 .claude 残留", ".claude" not in nv)
+        check("reasonix novel-agent has no .claude residue", ".claude" not in nv)
 
-    # reasonix AGENTS.md 模板改写
+    # reasonix AGENTS.md template rewriting
     with tempfile.TemporaryDirectory() as td:
         tmp = Path(td)
         init_project(tmp, "reasonix")
         ag = (tmp / "AGENTS.md").read_text(encoding="utf-8")
-        check("reasonix AGENTS.md 无 .opencode/agents",
+        check("reasonix AGENTS.md has no .opencode/agents",
               ".opencode/" not in ag and ".reasonix/skills/" in ag, ag[:200])
         cl = (tmp / "CLAUDE.md").read_text(encoding="utf-8")
-        check("reasonix CLAUDE.md 无 .claude/agents",
+        check("reasonix CLAUDE.md has no .claude/agents",
               ".claude/agents" not in cl and ".reasonix/skills/" in cl, cl[:200])
 
-    # zcode 11 个 skill（与 reasonix 同构：agents 即 skills）
+    # zcode 11 skills (isomorphic to reasonix: agents are skills)
     with tempfile.TemporaryDirectory() as td:
         tmp = Path(td)
         init_project(tmp, "zcode")
         names = ["novel-agent", "writer", "volume-planner", "chapter-planner",
                  "prompt-crafter", "anti-ai", "reader", "updater", "style-distiller",
-                 "memory-recording", "roleplay-sandbox"]  # 与 deploy_zcode_skills 的 11 个 skill 名对应（spec 契约）
+                 "memory-recording", "roleplay-sandbox"]  # matches the 11 skill names of deploy_zcode_skills (spec contract)
         for n in names:
             check(f"zcode skill {n}", (tmp / ".zcode/skills" / n / "SKILL.md").exists())
         w = (tmp / ".zcode/skills/writer/SKILL.md").read_text(encoding="utf-8")
         check("zcode writer frontmatter",
               "name: writer" in w and "allowed-tools: Read, Write" in w
               and "Agent" not in w.split("---", 2)[1], w.split("---", 2)[1][:200])
-        check("zcode writer 引用改写",
+        check("zcode writer reference rewriting",
               ".zcode/knowledge/" in w and ".claude/knowledge/" not in w)
         nv = (tmp / ".zcode/skills/novel-agent/SKILL.md").read_text(encoding="utf-8")
-        check("zcode novel-agent 调度适配",
-              "Agent" in nv and ".zcode/skills/" in nv and "ZCode 调度适配" in nv)
-        check("zcode novel-agent 无 .claude 残留", ".claude" not in nv)
+        check("zcode novel-agent dispatch adapter",
+              "Agent" in nv and ".zcode/skills/" in nv and "ZCode dispatch adapter" in nv)
+        check("zcode novel-agent has no .claude residue", ".claude" not in nv)
         all_skills = "".join(
             f.read_text(encoding="utf-8") for f in sorted(
                 (tmp / ".zcode/skills").rglob("SKILL.md"))
         )
-        check("zcode 全部 skill 无 .claude 残留", ".claude" not in all_skills)
+        check("no .claude residue in all zcode skills", ".claude" not in all_skills)
 
-    # zcode AGENTS.md / CLAUDE.md 模板改写
+    # zcode AGENTS.md / CLAUDE.md template rewriting
     with tempfile.TemporaryDirectory() as td:
         tmp = Path(td)
         init_project(tmp, "zcode")
         ag = (tmp / "AGENTS.md").read_text(encoding="utf-8")
-        check("zcode AGENTS.md 指向 .zcode/skills",
+        check("zcode AGENTS.md points to .zcode/skills",
               ".opencode/agents" not in ag and ".zcode/skills/" in ag, ag[:200])
         cl = (tmp / "CLAUDE.md").read_text(encoding="utf-8")
-        check("zcode CLAUDE.md 无 .claude/agents",
+        check("zcode CLAUDE.md has no .claude/agents",
               ".claude/agents" not in cl and ".zcode/skills/" in cl, cl[:200])
 
-    # claude agents 数量
+    # claude agent count
     with tempfile.TemporaryDirectory() as td:
         tmp = Path(td)
         init_project(tmp, "claude")
         n = len(list((tmp / ".claude/agents").glob("*.md")))
-        check(f"claude agents 数量=9", n == 9, f"实际 {n}")  # agents/ 源有 9 个 .md（spec 契约）
+        check("claude agent count=9", n == 9, f"actual {n}")  # agents/ has 9 source .md files (spec contract)
 
-    # opencode agent 引用改写
+    # opencode agent reference rewriting
     with tempfile.TemporaryDirectory() as td:
         tmp = Path(td)
         init_project(tmp, "opencode")
         w = (tmp / ".opencode/agents/writer.md").read_text(encoding="utf-8")
-        check("opencode writer 引用改写",
+        check("opencode writer reference rewriting",
               ".opencode/knowledge/" in w and ".claude/knowledge/" not in w)
 
-    # codex TOML agent + skill + 模板
+    # codex TOML agent + skill + templates
     with tempfile.TemporaryDirectory() as td:
         tmp = Path(td)
         init_project(tmp, "codex")
         n = len(list((tmp / ".codex/agents").glob("*.toml")))
-        check("codex agents 数量=9", n == 9, f"实际 {n}")
+        check("codex agent count=9", n == 9, f"actual {n}")
         w = (tmp / ".codex/agents/writer.toml").read_text(encoding="utf-8")
-        check("codex writer TOML 字段",
+        check("codex writer TOML fields",
               'name = "writer"' in w and "description" in w
               and "developer_instructions" in w, w[:200])
-        check("codex writer 引用改写",
+        check("codex writer reference rewriting",
               ".codex/knowledge/" in w and ".claude/knowledge/" not in w)
         all_toml = "".join(
             f.read_text(encoding="utf-8") for f in sorted((tmp / ".codex/agents").glob("*.toml"))
         )
-        check("codex 全部 TOML 无 .claude 残留", ".claude" not in all_toml)
+        check("no .claude residue in all codex TOML", ".claude" not in all_toml)
         nv = (tmp / ".codex/agents/novel-agent.toml").read_text(encoding="utf-8")
-        check("codex novel-agent 调度适配",
+        check("codex novel-agent dispatch adapter",
               "spawn_agent" in nv and ".codex/agents/" in nv)
         sub_toml = "".join(
             f.read_text(encoding="utf-8")
             for f in sorted((tmp / ".codex/agents").glob("*.toml"))
             if f.name != "novel-agent.toml"
         )
-        check("codex 子 agent 注入调度硬约束",
-              "调度权限硬约束" in sub_toml and "spawn_agent" in sub_toml
-              and "禁止使用" in sub_toml,
-              "子 agent TOML 缺少禁止派生指令")
-        check("codex novel-agent 不注入禁调",
-              "调度权限硬约束" not in nv, "novel-agent 是唯一调度者，不应注入禁调")
+        check("codex subagent gets the dispatch hard constraint injected",
+              "Dispatch-permission hard constraint" in sub_toml and "spawn_agent" in sub_toml
+              and "Never use" in sub_toml,
+              "the subagent TOML is missing the no-spawning instruction")
+        check("codex novel-agent gets no ban injected",
+              "Dispatch-permission hard constraint" not in nv, "novel-agent is the only dispatcher; the ban must not be injected")
         vp = (tmp / ".codex/agents/volume-planner.toml").read_text(encoding="utf-8")
-        check("codex volume-planner 源 OOS 含不调度",
-              "不调度其他 agent" in vp, "volume-planner 源文件缺少不调度声明")
+        check("codex volume-planner source OOS contains a no-dispatch statement",
+              "Do not dispatch other agents" in vp, "the volume-planner source file is missing its no-dispatch statement")
         check("codex skill roleplay-sandbox",
               (tmp / ".codex/skills/roleplay-sandbox/SKILL.md").exists())
         check("codex skill memory-recording",
               (tmp / ".codex/skills/memory-recording/SKILL.md").exists())
         ag = (tmp / "AGENTS.md").read_text(encoding="utf-8")
-        check("codex AGENTS.md 指向 .codex/agents", ".codex/agents/" in ag, ag[:200])
-        check("codex AGENTS.md 唯一调度者规则", "唯一调度者" in ag, ag[:400])
-        check("codex 无 CLAUDE.md", not (tmp / "CLAUDE.md").exists())
-        check("codex 无 AGENTS.codex.md 模板副本",
+        check("codex AGENTS.md points to .codex/agents", ".codex/agents/" in ag, ag[:200])
+        check("codex AGENTS.md only-dispatcher rule", "Single dispatcher" in ag, ag[:400])
+        check("codex has no CLAUDE.md", not (tmp / "CLAUDE.md").exists())
+        check("codex has no AGENTS.codex.md template copy",
               not (tmp / "AGENTS.codex.md").exists())
         if tomllib is not None:
             parse_ok = True
@@ -446,117 +446,117 @@ def test_init_layout():
                     parse_ok = False
                     detail = f"{f.name}: {e}"
                     break
-            check("codex TOML tomllib 可解析", parse_ok, detail if not parse_ok else "")
+            check("codex TOML parses with tomllib", parse_ok, detail if not parse_ok else "")
 
-    # dsh skill 部署（11 个 SKILL.md，frontmatter 只 name/description）
+    # dsh skill deployment (11 SKILL.md files; frontmatter has only name/description)
     with tempfile.TemporaryDirectory() as td:
         tmp = Path(td)
         init_project(tmp, "dsh")
         names = ["novel-agent", "writer", "volume-planner", "chapter-planner",
                  "prompt-crafter", "anti-ai", "reader", "updater", "style-distiller",
-                 "memory-recording", "roleplay-sandbox"]  # 与 deploy_dsh_skills 的 11 个 skill 名对应（spec 契约）
+                 "memory-recording", "roleplay-sandbox"]  # matches the 11 skill names of deploy_dsh_skills (spec contract)
         for n in names:
             check(f"dsh skill {n}", (tmp / ".dsh/skills" / n / "SKILL.md").exists())
-        check("dsh 部署 tools/check-prose.py",
+        check("dsh deploys tools/check-prose.py",
               (tmp / ".dsh/tools/check-prose.py").exists())
         w = (tmp / ".dsh/skills/writer/SKILL.md").read_text(encoding="utf-8")
         fm = w.split("---", 2)[1]
-        check("dsh writer frontmatter 只 name/description",
+        check("dsh writer frontmatter has only name/description",
               "name: writer" in fm and "description:" in fm
               and "allowed-tools" not in fm and "tools:" not in fm
               and "runAs" not in fm, fm[:200])
-        check("dsh writer 引用改写",
+        check("dsh writer reference rewriting",
               ".dsh/knowledge/" in w and ".claude/knowledge/" not in w)
         nv = (tmp / ".dsh/skills/novel-agent/SKILL.md").read_text(encoding="utf-8")
-        check("dsh novel-agent 调度适配",
-              "subagent" in nv and ".dsh/skills/" in nv and "DeepSeek Harness 调度适配" in nv)
-        check("dsh novel-agent 无 .claude 残留", ".claude" not in nv)
+        check("dsh novel-agent dispatch adapter",
+              "subagent" in nv and ".dsh/skills/" in nv and "DeepSeek Harness dispatch adapter" in nv)
+        check("dsh novel-agent has no .claude residue", ".claude" not in nv)
         all_skills = "".join(
             f.read_text(encoding="utf-8") for f in sorted(
                 (tmp / ".dsh/skills").rglob("SKILL.md"))
         )
-        check("dsh 全部 skill 无 .claude 残留", ".claude" not in all_skills)
+        check("no .claude residue in all dsh skills", ".claude" not in all_skills)
 
-    # dsh AGENTS.md / CLAUDE.md 模板改写
+    # dsh AGENTS.md / CLAUDE.md template rewriting
     with tempfile.TemporaryDirectory() as td:
         tmp = Path(td)
         init_project(tmp, "dsh")
         ag = (tmp / "AGENTS.md").read_text(encoding="utf-8")
-        check("dsh AGENTS.md 指向 .dsh/skills",
+        check("dsh AGENTS.md points to .dsh/skills",
               ".opencode/agents" not in ag and ".dsh/skills/" in ag, ag[:200])
         cl = (tmp / "CLAUDE.md").read_text(encoding="utf-8")
-        check("dsh CLAUDE.md 无 .claude/agents",
+        check("dsh CLAUDE.md has no .claude/agents",
               ".claude/agents" not in cl and ".dsh/skills/" in cl, cl[:200])
 
-    # grok agent Markdown + skill + 模板
+    # grok agent Markdown + skill + templates
     with tempfile.TemporaryDirectory() as td:
         tmp = Path(td)
         init_project(tmp, "grok")
         n = len(list((tmp / ".grok/agents").glob("*.md")))
-        check("grok agents 数量=9", n == 9, f"实际 {n}")
+        check("grok agent count=9", n == 9, f"actual {n}")
         w = (tmp / ".grok/agents/writer.md").read_text(encoding="utf-8")
         fm = w.split("---", 2)[1]
         fm_data = yaml.safe_load(fm)
         check("grok writer frontmatter",
               "name: writer" in fm and "description:" in fm
               and "read_file" in fm and "write" in fm, fm[:400])
-        check("grok 子 agent 禁止且未授权 Agent",
+        check("grok subagent is banned and not authorized for Agent",
               "Agent" not in fm_data.get("tools", [])
               and fm_data.get("disallowedTools") == ["Agent"], fm[:400])
-        check("grok 子 agent frontmatter 不使用模型调用名",
+        check("grok subagent frontmatter does not use the model call name",
               "spawn_subagent" not in fm_data.get("tools", [])
               and "spawn_subagent" not in fm_data.get("disallowedTools", []), fm[:400])
-        check("grok writer 引用改写",
+        check("grok writer reference rewriting",
               ".grok/knowledge/" in w and ".claude/knowledge/" not in w)
-        check("grok writer SOP 内联", "执行 SOP：writing-execution.md" in w)
-        check("grok 子 agent 注入调度硬约束",
-              "调度权限硬约束" in w and "spawn_subagent" in w)
+        check("grok writer SOP inlined", "Execution SOP: writing-execution.md" in w)
+        check("grok subagent gets the dispatch hard constraint injected",
+              "Dispatch-permission hard constraint" in w and "spawn_subagent" in w)
         nv = (tmp / ".grok/agents/novel-agent.md").read_text(encoding="utf-8")
         nfm = nv.split("---", 2)[1]
         nfm_data = yaml.safe_load(nfm)
-        check("grok novel-agent 调度适配",
+        check("grok novel-agent dispatch adapter",
               "spawn_subagent" in nv and ".grok/agents/" in nv
-              and "Grok Build 调度适配" in nv)
-        check("grok novel-agent frontmatter 启用 Agent 指令",
+              and "Grok Build dispatch adapter" in nv)
+        check("grok novel-agent frontmatter enables the Agent instruction",
               "Agent" in nfm_data.get("tools", [])
               and "spawn_subagent" not in nfm_data.get("tools", [])
               and "disallowedTools" not in nfm_data, nfm[:300])
-        check("grok novel-agent 不注入禁调",
-              "调度权限硬约束" not in nv, "novel-agent 是唯一调度者，不应注入禁调")
+        check("grok novel-agent gets no ban injected",
+              "Dispatch-permission hard constraint" not in nv, "novel-agent is the only dispatcher; the ban must not be injected")
         all_md = "".join(
             f.read_text(encoding="utf-8") for f in sorted((tmp / ".grok/agents").glob("*.md"))
         )
-        check("grok 全部 agent 无 .claude 残留", ".claude" not in all_md)
+        check("no .claude residue in all grok agents", ".claude" not in all_md)
         aa = (tmp / ".grok/agents/anti-ai.md").read_text(encoding="utf-8")
         aafm = aa.split("---", 2)[1]
-        check("grok anti-ai 保留 shell",
+        check("grok anti-ai keeps the shell",
               "run_terminal_command" in aafm, aafm[:300])
         check("grok skill roleplay-sandbox",
               (tmp / ".grok/skills/roleplay-sandbox/SKILL.md").exists())
         check("grok skill memory-recording",
               (tmp / ".grok/skills/memory-recording/SKILL.md").exists())
         ag = (tmp / "AGENTS.md").read_text(encoding="utf-8")
-        check("grok AGENTS.md 指向 .grok/agents", ".grok/agents/" in ag, ag[:200])
+        check("grok AGENTS.md points to .grok/agents", ".grok/agents/" in ag, ag[:200])
         cl = (tmp / "CLAUDE.md").read_text(encoding="utf-8")
-        check("grok CLAUDE.md 无 .claude/agents",
+        check("grok CLAUDE.md has no .claude/agents",
               ".claude/agents" not in cl and ".grok/agents/" in cl, cl[:200])
-        check("grok 部署 tools/check-prose.py",
+        check("grok deploys tools/check-prose.py",
               (tmp / ".grok/tools/check-prose.py").exists())
 
 
 # ---------------- E2E sync ----------------
 
 def test_short_init_layout():
-    """短篇 E2E：--length short 在全部 7 平台的产物形态与长短互斥。
+    """Short-form E2E: the product shapes of --length short on all 7 platforms, and long/short mutual exclusion.
 
-    产物形态按平台三类：
-    - agents 目录型（claude/opencode/grok）：.平台/agents/*.md，6 个（5 短篇 + reader）；
-      另有平台 skills 目录部署 2 个独立工具（short-scan / short-analyze）
-    - codex TOML：.codex/agents/*.toml，6 个
-    - inline skill（reasonix/zcode/dsh）：.平台/skills/<name>/SKILL.md，6 个（无独立工具）
-    知识产物（short-anti-ai.md + short-craft/ + short-genres/）各平台同构。
+    Product shapes in three platform classes:
+    - agents-directory type (claude/opencode/grok): .platform/agents/*.md, 6 files (5 short-form + reader);
+      the platform skills directory also deploys 2 standalone tools (short-scan / short-analyze)
+    - codex TOML: .codex/agents/*.toml, 6 files
+    - inline skill (reasonix/zcode/dsh): .platform/skills/<name>/SKILL.md, 6 files (no standalone tools)
+    Knowledge products (short-anti-ai.md + short-craft/ + short-genres/) are isomorphic across platforms.
     """
-    print("[e2e] init.py --length short 布局（全平台）")
+    print("[e2e] init.py --length short layouts (all platforms)")
     short_names = {"short-agent", "short-planner", "short-writer", "short-editor",
                    "short-verifier", "reader"}
     long_only = {"novel-agent", "volume-planner", "chapter-planner", "prompt-crafter",
@@ -566,158 +566,158 @@ def test_short_init_layout():
             tmp = Path(td)
             r = init_short_project(tmp, key)
             check(f"short {key} init exit 0", r.returncode == 0, (r.stdout + r.stderr)[-400:])
-            # 骨架：短篇专属目录与标记（全平台同构）
-            check(f"short {key} 存在 stories/", (tmp / "stories").exists())
-            check(f"short {key} story.md 含 length 标记",
+            # Skeleton: short-form-only directories and markers (isomorphic across platforms)
+            check(f"short {key} has stories/", (tmp / "stories").exists())
+            check(f"short {key} story.md contains the length marker",
                   "**length:** short" in (tmp / "story.md").read_text(encoding="utf-8"))
-            check(f"short {key} 状态机含 phase=setup",
+            check(f"short {key} state machine contains phase=setup",
                   "**phase:** setup" in (tmp / ".agent/status.md").read_text(encoding="utf-8"))
             for d in ("volumes", "chapters", "prompts", "archives", "novel-samples"):
-                check(f"short {key} 不产 {d}/", not (tmp / d).exists())
-            # agent 组产物（按平台三类形态）
+                check(f"short {key} produces no {d}/", not (tmp / d).exists())
+            # Agent-set products (in the three platform shapes)
             root = tmp / f".{key}"
             if key in ("claude", "opencode", "grok"):
                 names = {p.stem for p in (root / "agents").glob("*.md")}
             elif key == "codex":
                 names = {p.stem for p in (root / "agents").glob("*.toml")}
-            else:  # reasonix / zcode / dsh：inline skill 目录
+            else:  # reasonix / zcode / dsh: inline skill directory
                 skills = root / "skills"
                 names = {p.name for p in skills.iterdir() if (p / "SKILL.md").exists()} \
                     if skills.exists() else set()
-                check(f"short {key} 内联 skill 数量=8（6 agent + 2 独立工具）",
-                      len(names) == 8, f"实际 {sorted(names)}")
+                check(f"short {key} inline skill count=8 (6 agents + 2 standalone tools)",
+                      len(names) == 8, f"actual {sorted(names)}")
             for a in short_names:
-                check(f"short {key} 部署 {a}", a in names)
+                check(f"short {key} deploys {a}", a in names)
             for a in long_only:
-                check(f"short {key} 不部署 {a}", a not in names)
-            # 知识产物（全平台同构）
+                check(f"short {key} does not deploy {a}", a not in names)
+            # Knowledge products (isomorphic across platforms)
             know = root / "knowledge"
-            check(f"short {key} 部署 short-anti-ai.md", (know / "short-anti-ai.md").exists())
-            check(f"short {key} 不合并长篇 anti-ai.md", not (know / "anti-ai.md").exists())
-            check(f"short {key} 部署 short-genres/zhuiqi.md",
+            check(f"short {key} deploys short-anti-ai.md", (know / "short-anti-ai.md").exists())
+            check(f"short {key} does not merge the long-form anti-ai.md", not (know / "anti-ai.md").exists())
+            check(f"short {key} deploys short-genres/zhuiqi.md",
                   (know / "short-genres" / "zhuiqi.md").exists())
             sdir = root / "skills"
-            check(f"short {key} 部署独立工具 short-scan",
+            check(f"short {key} deploys standalone tool short-scan",
                   (sdir / "short-scan" / "SKILL.md").exists())
-            check(f"short {key} 部署独立工具 short-analyze",
+            check(f"short {key} deploys standalone tool short-analyze",
                   (sdir / "short-analyze" / "SKILL.md").exists())
-            check(f"short {key} 部署 short-craft 参考齐备（13 个）",
+            check(f"short {key} short-craft references fully deployed (13)",
                   len(list((know / "short-craft").glob("*.md"))) == 13)
-            check(f"short {key} 部署 10 个题材风格包",
+            check(f"short {key} deploys 10 genre style packs",
                   len(list((know / "short-genres").glob("*.md"))) == 11)  # index + 10
-            check(f"short {key} 种子跨篇偏好记忆",
+            check(f"short {key} seeds cross-story preference memory",
                   (root / "memory" / "author-feedback.md").exists())
 
-    # 调度适配段抽查：inline 平台 short-agent 含短篇子 agent 名单与调度者本名
+    # Dispatch-adapter spot check: the inline-platform short-agent contains the short-form subagent list and the dispatcher's own name
     with tempfile.TemporaryDirectory() as td:
         tmp = Path(td)
         init_short_project(tmp, "zcode")
         skill = tmp / ".zcode" / "skills" / "short-agent" / "SKILL.md"
         text = skill.read_text(encoding="utf-8")
-        check("short zcode 调度段含 short-planner", "short-planner" in text)
-        check("short zcode 调度段以 short-agent 本名约束", "禁止把 short-agent 本身作为子 agent 调度" in text)
-        check("short zcode SOP 内联 short-dispatch", "执行 SOP：short-dispatch.md" in text)
+        check("short zcode dispatch section contains short-planner", "short-planner" in text)
+        check("short zcode dispatch section constrains with short-agent's own name", "never dispatch short-agent itself as a subagent" in text)
+        check("short zcode SOP inlines short-dispatch", "Execution SOP: short-dispatch.md" in text)
 
-    # codex TOML 抽查：short-agent 调度段 + TOML 可解析
+    # codex TOML spot check: short-agent dispatch section + TOML parses
     with tempfile.TemporaryDirectory() as td:
         tmp = Path(td)
         init_short_project(tmp, "codex")
         toml_text = (tmp / ".codex" / "agents" / "short-agent.toml").read_text(encoding="utf-8")
-        check("short codex 调度段含 short 子 agent 名单", "short-planner" in toml_text)
-        check("short codex AGENTS.md 为短篇版",
-              "短篇" in (tmp / "AGENTS.md").read_text(encoding="utf-8")
+        check("short codex dispatch section contains the short subagent list", "short-planner" in toml_text)
+        check("short codex AGENTS.md is the short-form version",
+              "Short Story Project" in (tmp / "AGENTS.md").read_text(encoding="utf-8")
               and "@short-agent" in (tmp / "AGENTS.md").read_text(encoding="utf-8"))
 
-    # 编号越界：短篇注册表合法范围 1-10
+    # Number out of range: the short-form registry valid range is 1-10
     with tempfile.TemporaryDirectory() as td:
         r = run([sys.executable, str(TOOLS / "init.py"), str(Path(td)),
                  "--length", "short", "--genre", "25", "--platform", "claude"])
-        check("short 编号越界 exit 1", r.returncode == 1, (r.stdout + r.stderr)[-200:])
+        check("short number out of range exit 1", r.returncode == 1, (r.stdout + r.stderr)[-200:])
 
-    # 题材池：注册表 1-10 全部可初始化（genre 2 曾是待补题材）
+    # Genre pool: registry 1-10 all initializable (genre 2 used to be a to-be-added genre)
     with tempfile.TemporaryDirectory() as td:
         r = run([sys.executable, str(TOOLS / "init.py"), str(Path(td)),
                  "--length", "short", "--genre", "2", "--platform", "claude"])
-        check("short genre 2（世情打脸）exit 0", r.returncode == 0, (r.stdout + r.stderr)[-200:])
-        check("short genre 2 部署 shiqing 风格包",
+        check("short genre 2 (shiqing) exit 0", r.returncode == 0, (r.stdout + r.stderr)[-200:])
+        check("short genre 2 deploys the shiqing style pack",
               (Path(td) / ".claude/knowledge/short-genres/shiqing.md").exists())
 
-    # 非法长度值
+    # Invalid length value
     with tempfile.TemporaryDirectory() as td:
         r = run([sys.executable, str(TOOLS / "init.py"), str(Path(td)),
                  "--length", "medium", "--platform", "claude"])
-        check("非法 --length exit 1", r.returncode == 1, (r.stdout + r.stderr)[-200:])
-        check("非法 --length 不建目录", not (Path(td) / "proj").exists() and list(Path(td).iterdir()) == [])
+        check("invalid --length exit 1", r.returncode == 1, (r.stdout + r.stderr)[-200:])
+        check("invalid --length creates no directory", not (Path(td) / "proj").exists() and list(Path(td).iterdir()) == [])
 
-    # 短篇 sync：独立工具幂等再部署 + 被删恢复 + 长篇项目不含短篇独立工具
+    # Short-form sync: standalone tools redeploy idempotently + deleted ones are restored + long-form projects have no short-form standalone tools
     with tempfile.TemporaryDirectory() as td:
         tmp = Path(td)
         init_short_project(tmp, "claude")
         r1 = run([sys.executable, str(TOOLS / "sync-project.py"), str(tmp),
                   "--platform", "claude"], cwd=str(tmp))
-        check("short claude sync exit 0（含独立工具再部署）", r1.returncode == 0,
+        check("short claude sync exit 0 (with standalone-tool redeploy)", r1.returncode == 0,
               (r1.stdout + r1.stderr)[-400:])
         scan = tmp / ".claude" / "skills" / "short-scan" / "SKILL.md"
-        check("short sync 后独立工具存在", scan.exists())
+        check("standalone tools exist after short sync", scan.exists())
         scan.unlink()
         r2 = run([sys.executable, str(TOOLS / "sync-project.py"), str(tmp),
                   "--platform", "claude"], cwd=str(tmp))
-        check("short sync 恢复被删的独立工具", r2.returncode == 0 and scan.exists(),
+        check("short sync restores a deleted standalone tool", r2.returncode == 0 and scan.exists(),
               (r2.stdout + r2.stderr)[-400:])
         r3 = run([sys.executable, str(TOOLS / "sync-project.py"), str(tmp),
                   "--platform", "claude", "--check"], cwd=str(tmp))
-        check("short sync 后 --check exit 0", r3.returncode == 0, (r3.stdout + r3.stderr)[-400:])
+        check("--check exit 0 after short sync", r3.returncode == 0, (r3.stdout + r3.stderr)[-400:])
 
     with tempfile.TemporaryDirectory() as td:
         tmp = Path(td)
         init_project(tmp, "zcode")
         names = {p.name for p in (tmp / ".zcode" / "skills").iterdir()
                  if (p / "SKILL.md").exists()}
-        check("long zcode 11 个 skill（不含短篇独立工具）",
+        check("long zcode 11 skills (no short-form standalone tools)",
               len(names) == 11 and "short-scan" not in names and "short-analyze" not in names,
-              f"实际 {sorted(names)}")
+              f"actual {sorted(names)}")
 
-    # 长短混用守卫：长篇项目拒绝 short 重复初始化
+    # Long/short mixing guard: a long-form project refuses repeated short initialization
     with tempfile.TemporaryDirectory() as td:
         tmp = Path(td)
         init_project(tmp, "claude")
         r = run([sys.executable, str(TOOLS / "init.py"), str(tmp),
                  "--length", "short", "--platform", "claude"])
-        check("长短混用守卫 exit 1", r.returncode == 1, (r.stdout + r.stderr)[-200:])
+        check("long/short mixing guard exit 1", r.returncode == 1, (r.stdout + r.stderr)[-200:])
 
-    # 长篇回归：不传 --length 时无短篇产物
+    # Long-form regression: no short-form products when --length is not passed
     with tempfile.TemporaryDirectory() as td:
         tmp = Path(td)
         r = init_project(tmp, "claude")
         check("long init exit 0", r.returncode == 0, (r.stdout + r.stderr)[-400:])
-        check("long story.md 无 short 标记",
+        check("long story.md has no short marker",
               "**length:**" not in (tmp / "story.md").read_text(encoding="utf-8"))
-        check("long 不产 stories/", not (tmp / "stories").exists())
+        check("long produces no stories/", not (tmp / "stories").exists())
         agents_dir = tmp / ".claude" / "agents"
         names = {p.stem for p in agents_dir.glob("*.md")}
-        check("long 部署 novel-agent", "novel-agent" in names)
-        check("long 不部署 short-agent", "short-agent" not in names)
-        check("long 不产 short-anti-ai.md",
+        check("long deploys novel-agent", "novel-agent" in names)
+        check("long does not deploy short-agent", "short-agent" not in names)
+        check("long produces no short-anti-ai.md",
               not ((tmp / ".claude" / "knowledge" / "short-anti-ai.md")).exists())
 
 
 def test_sync():
-    print("[e2e] sync-project.py 各平台同步")
-    # P1 回归：长篇项目 sync 后 --check 必须 exit 0（指纹匹配 + 项目侧无漂移）
+    print("[e2e] sync-project.py syncs on all platforms")
+    # P1 regression: after syncing a long-form project, --check must exit 0 (fingerprint match + no project-side drift)
     with tempfile.TemporaryDirectory() as td:
         tmp = Path(td)
         init_project(tmp, "claude")
         r1 = run([sys.executable, str(TOOLS / "sync-project.py"), str(tmp),
                   "--platform", "claude"], cwd=str(tmp))
         check("claude sync exit 0", r1.returncode == 0, (r1.stdout + r1.stderr)[-400:])
-        check("claude sync 生成 .claude/skills", (tmp / ".claude/skills").exists())
+        check("claude sync generates .claude/skills", (tmp / ".claude/skills").exists())
         r2 = run([sys.executable, str(TOOLS / "sync-project.py"), str(tmp),
                   "--platform", "claude", "--check"], cwd=str(tmp))
-        check("claude sync 后 --check exit 0（无项目侧漂移误报）", r2.returncode == 0,
+        check("--check exit 0 after claude sync (no false project-side drift report)", r2.returncode == 0,
               (r2.stdout + r2.stderr)[-400:])
-        # 升级守卫：长篇项目不得被 sync 引入 short/ 篇目目录或短篇知识
-        check("claude sync 不产 short/ 篇目目录", not (tmp / "short").exists())
-        check("claude sync 不产 short-anti-ai.md",
+        # Upgrade guard: sync must not introduce short/ story directories or short-form knowledge into a long-form project
+        check("claude sync produces no short/ story directory", not (tmp / "short").exists())
+        check("claude sync produces no short-anti-ai.md",
               not (tmp / ".claude/knowledge/short-anti-ai.md").exists())
 
     with tempfile.TemporaryDirectory() as td:
@@ -727,7 +727,7 @@ def test_sync():
                  "--platform", "opencode"], cwd=str(tmp))
         check("opencode sync exit 0", r.returncode == 0, (r.stdout + r.stderr)[-400:])
         w = (tmp / ".opencode/agents/writer.md").read_text(encoding="utf-8")
-        check("opencode sync 保持 permission 格式",
+        check("opencode sync keeps the permission format",
               "permission:" in w and "tools:" not in w and ".opencode/knowledge/" in w)
 
     with tempfile.TemporaryDirectory() as td:
@@ -736,8 +736,8 @@ def test_sync():
         r = run([sys.executable, str(TOOLS / "sync-project.py"), str(tmp),
                  "--platform", "reasonix"], cwd=str(tmp))
         check("reasonix sync exit 0", r.returncode == 0, (r.stdout + r.stderr)[-400:])
-        check("reasonix sync 保持 skill", (tmp / ".reasonix/skills/writer/SKILL.md").exists())
-        check("reasonix sync 无 .claude", not (tmp / ".claude").exists())
+        check("reasonix sync keeps the skill", (tmp / ".reasonix/skills/writer/SKILL.md").exists())
+        check("reasonix sync has no .claude", not (tmp / ".claude").exists())
 
     with tempfile.TemporaryDirectory() as td:
         tmp = Path(td)
@@ -746,10 +746,10 @@ def test_sync():
                  "--platform", "codex"], cwd=str(tmp))
         check("codex sync exit 0", r.returncode == 0, (r.stdout + r.stderr)[-400:])
         w = (tmp / ".codex/agents/writer.toml").read_text(encoding="utf-8")
-        check("codex sync 保持 TOML 格式",
+        check("codex sync keeps the TOML format",
               'name = "writer"' in w and "developer_instructions" in w
               and ".codex/knowledge/" in w and ".claude/" not in w)
-        check("codex sync 无 .claude", not (tmp / ".claude").exists())
+        check("codex sync has no .claude", not (tmp / ".claude").exists())
 
     with tempfile.TemporaryDirectory() as td:
         tmp = Path(td)
@@ -757,12 +757,12 @@ def test_sync():
         r = run([sys.executable, str(TOOLS / "sync-project.py"), str(tmp),
                  "--platform", "zcode"], cwd=str(tmp))
         check("zcode sync exit 0", r.returncode == 0, (r.stdout + r.stderr)[-400:])
-        check("zcode sync 保持 skill", (tmp / ".zcode/skills/writer/SKILL.md").exists())
+        check("zcode sync keeps the skill", (tmp / ".zcode/skills/writer/SKILL.md").exists())
         w = (tmp / ".zcode/skills/writer/SKILL.md").read_text(encoding="utf-8")
-        check("zcode sync 保持 frontmatter 格式",
+        check("zcode sync keeps the frontmatter format",
               "allowed-tools:" in w and "\ntools:" not in w.split("---", 2)[1]
               and ".zcode/knowledge/" in w and ".claude/" not in w)
-        check("zcode sync 无 .claude", not (tmp / ".claude").exists())
+        check("zcode sync has no .claude", not (tmp / ".claude").exists())
 
     with tempfile.TemporaryDirectory() as td:
         tmp = Path(td)
@@ -770,12 +770,12 @@ def test_sync():
         r = run([sys.executable, str(TOOLS / "sync-project.py"), str(tmp),
                  "--platform", "dsh"], cwd=str(tmp))
         check("dsh sync exit 0", r.returncode == 0, (r.stdout + r.stderr)[-400:])
-        check("dsh sync 保持 skill", (tmp / ".dsh/skills/writer/SKILL.md").exists())
+        check("dsh sync keeps the skill", (tmp / ".dsh/skills/writer/SKILL.md").exists())
         w = (tmp / ".dsh/skills/writer/SKILL.md").read_text(encoding="utf-8")
-        check("dsh sync 保持 frontmatter 格式",
+        check("dsh sync keeps the frontmatter format",
               "allowed-tools:" not in w.split("---", 2)[1]
               and ".dsh/knowledge/" in w and ".claude/" not in w)
-        check("dsh sync 无 .claude", not (tmp / ".claude").exists())
+        check("dsh sync has no .claude", not (tmp / ".claude").exists())
 
     with tempfile.TemporaryDirectory() as td:
         tmp = Path(td)
@@ -785,133 +785,133 @@ def test_sync():
         check("grok sync exit 0", r.returncode == 0, (r.stdout + r.stderr)[-400:])
         w = (tmp / ".grok/agents/writer.md").read_text(encoding="utf-8")
         fm_data = yaml.safe_load(w.split("---", 2)[1])
-        check("grok sync 保持 agent Markdown",
+        check("grok sync keeps the agent Markdown",
               fm_data.get("name") == "writer"
               and ".grok/knowledge/" in w and ".claude/" not in w)
-        check("grok sync 子 agent 禁止且未授权 Agent",
+        check("grok sync subagent is banned and not authorized for Agent",
               "Agent" not in fm_data.get("tools", [])
               and fm_data.get("disallowedTools") == ["Agent"], str(fm_data))
-        check("grok sync 保持 skill",
+        check("grok sync keeps the skill",
               (tmp / ".grok/skills/roleplay-sandbox/SKILL.md").exists())
-        check("grok sync 无 .claude", not (tmp / ".claude").exists())
+        check("grok sync has no .claude", not (tmp / ".claude").exists())
 
-    # tools/check-prose.py 同步恢复（模拟升级：脚本被删/改旧，sync 重新部署）
+    # tools/check-prose.py sync restore (simulated upgrade: script deleted/aged, sync redeploys)
     with tempfile.TemporaryDirectory() as td:
         tmp = Path(td)
         init_project(tmp, "zcode")
         f = tmp / ".zcode" / "tools" / "check-prose.py"
         f.parent.mkdir(parents=True, exist_ok=True)
-        f.write_text("# 旧版占位\n", encoding="utf-8")
+        f.write_text("# old-version placeholder\n", encoding="utf-8")
         fc = tmp / ".zcode" / "tools" / "check-chapter.py"
-        fc.write_text("# 旧版占位\n", encoding="utf-8")
+        fc.write_text("# old-version placeholder\n", encoding="utf-8")
         r = run([sys.executable, str(TOOLS / "sync-project.py"), str(tmp),
                  "--platform", "zcode"], cwd=str(tmp))
-        check("zcode sync exit 0（脚本恢复）", r.returncode == 0, (r.stdout + r.stderr)[-400:])
-        check("zcode sync 恢复 check-prose.py",
+        check("zcode sync exit 0 (script restored)", r.returncode == 0, (r.stdout + r.stderr)[-400:])
+        check("zcode sync restores check-prose.py",
               f.exists() and f.read_text(encoding="utf-8") ==
               (TOOLS / "check-prose.py").read_text(encoding="utf-8"))
-        check("zcode sync 恢复 check-chapter.py",
+        check("zcode sync restores check-chapter.py",
               fc.exists() and fc.read_text(encoding="utf-8") ==
               (TOOLS / "check-chapter.py").read_text(encoding="utf-8"))
 
-    # 指纹覆盖 tools/check-prose.py：脚本源变更后 --check 应报有更新
+    # The fingerprint covers tools/check-prose.py: after the script source changes, --check should report updates available
     with tempfile.TemporaryDirectory() as td:
         tmp = Path(td)
         init_project(tmp, "claude")
         r = run([sys.executable, str(TOOLS / "sync-project.py"), str(tmp),
                  "--platform", "claude"], cwd=str(tmp))
-        check("指纹基线 sync exit 0", r.returncode == 0, (r.stdout + r.stderr)[-400:])
+        check("fingerprint baseline sync exit 0", r.returncode == 0, (r.stdout + r.stderr)[-400:])
         src = TOOLS / "check-prose.py"
         bak = src.read_text(encoding="utf-8")
         src.write_text(bak + "\n# fingerprint probe\n", encoding="utf-8")
         try:
             r2 = run([sys.executable, str(TOOLS / "sync-project.py"), str(tmp),
                       "--platform", "claude", "--check"], cwd=str(tmp))
-            check("check-prose.py 变更后 --check exit 1", r2.returncode == 1,
+            check("--check exit 1 after check-prose.py changes", r2.returncode == 1,
                   (r2.stdout + r2.stderr)[-200:])
         finally:
             src.write_text(bak, encoding="utf-8")
 
-    # --check：无指纹首次 → exit 1
+    # --check: first run with no fingerprint exits 1
     with tempfile.TemporaryDirectory() as td:
         tmp = Path(td)
         init_project(tmp, "reasonix")
         r = run([sys.executable, str(TOOLS / "sync-project.py"), str(tmp),
                  "--platform", "reasonix", "--check"], cwd=str(tmp))
-        check("reasonix --check 无指纹 exit 1", r.returncode == 1, str(r.returncode))
+        check("reasonix --check with no fingerprint exit 1", r.returncode == 1, str(r.returncode))
 
 
-# ---------------- E2E style seed 守卫 / 脚手架同步（review #13-17 回归） ----------------
+# ---------------- E2E style seed guard / scaffold sync (review #13-17 regressions) ----------------
 
 def test_style_seed_guard():
-    """#13/#14 回归：init 后无占位符出货；重跑 init 不覆盖作者编辑、就地补齐占位符。"""
-    print("[e2e] style seed 守卫")
+    """#13/#14 regressions: no placeholders ship after init; re-running init does not overwrite author edits and fills leftover placeholders in place."""
+    print("[e2e] style seed guard")
     with tempfile.TemporaryDirectory() as td:
         tmp = Path(td)
         init_project(tmp, "claude")
         sc = tmp / "settings" / "writing-style.md"
         text = sc.read_text(encoding="utf-8")
-        check("init 后无 {role} 占位符", "{role}" not in text, text[:200])
-        check("init 后无其他样式占位符",
+        check("no {role} placeholder after init", "{role}" not in text, text[:200])
+        check("no other style placeholders after init",
               all(t not in text for t in ("{principle_1}", "{mistake_1}", "{depiction_techniques}")),
               text[:200])
 
-    # 重跑 init：作者编辑保留 + 残留占位符就地补齐（不整卡覆盖）
+    # Re-run init: author edits kept + leftover placeholders filled in place (no whole-card overwrite)
     with tempfile.TemporaryDirectory() as td:
         tmp = Path(td)
         init_project(tmp, "claude")
         sc = tmp / "settings" / "writing-style.md"
         text = sc.read_text(encoding="utf-8")
         text = text.replace("## 叙事身份（原 role）\n\n",
-                            "## 叙事身份（原 role）\n\n作者自己写的角色设定\n\n", 1)
-        text += "\n- {mistake_1}\n"          # 模拟旧 init 残留占位符
+                            "## 叙事身份（原 role）\n\nthe role setting written by the author\n\n", 1)
+        text += "\n- {mistake_1}\n"          # simulate a leftover placeholder from an old init
         sc.write_text(text, encoding="utf-8")
         init_project(tmp, "claude")
         t2 = sc.read_text(encoding="utf-8")
-        check("重跑 init 保留作者编辑", "作者自己写的角色设定" in t2, t2[:300])
-        check("重跑 init 就地补齐占位符", "{mistake_1}" not in t2 and "{role}" not in t2, t2[:300])
+        check("re-running init keeps author edits", "the role setting written by the author" in t2, t2[:300])
+        check("re-running init fills placeholders in place", "{mistake_1}" not in t2 and "{role}" not in t2, t2[:300])
 
 
 def test_sync_style_missing_and_scaffold():
-    """#15/#17 回归：sync 缺卡主卡写（待设定）不写占位符；脚手架 CLAUDE.md/skill_version 刷新。"""
-    print("[e2e] sync 缺卡主卡 + 脚手架刷新")
+    """#15/#17 regressions: when syncing a missing main card, write （待设定） instead of placeholders; scaffold CLAUDE.md/skill_version refresh."""
+    print("[e2e] sync with a missing main card + scaffold refresh")
     with tempfile.TemporaryDirectory() as td:
         tmp = Path(td)
         init_project(tmp, "claude")
         sc = tmp / "settings" / "writing-style.md"
-        sc.unlink()                          # 模拟缺卡项目
+        sc.unlink()                          # simulate a project with a missing card
         r = run([sys.executable, str(TOOLS / "sync-project.py"), str(tmp),
                  "--platform", "claude"], cwd=str(tmp))
-        check("sync 缺卡 exit 0", r.returncode == 0, (r.stdout + r.stderr)[-400:])
-        check("sync 补主卡", sc.exists())
+        check("sync with a missing card exit 0", r.returncode == 0, (r.stdout + r.stderr)[-400:])
+        check("sync fills in the main card", sc.exists())
         t = sc.read_text(encoding="utf-8")
-        check("补的主卡无 {role} 占位符", "{role}" not in t, t[:200])
-        check("补的主卡含（待设定）", "（待设定）" in t, t[:200])
+        check("the filled-in main card has no {role} placeholder", "{role}" not in t, t[:200])
+        check("the filled-in main card contains （待设定）", "（待设定）" in t, t[:200])
 
-    # 脚手架刷新：CLAUDE.md 恢复 9 个 agent、status.md skill_version 更新
+    # Scaffold refresh: CLAUDE.md restores 9 agents, status.md skill_version updates
     with tempfile.TemporaryDirectory() as td:
         tmp = Path(td)
         init_project(tmp, "claude")
         cl = tmp / "CLAUDE.md"
-        cl.write_text(cl.read_text(encoding="utf-8").replace("9 个 agent", "8 个 agent"),
+        cl.write_text(cl.read_text(encoding="utf-8").replace("9 collaborating agents", "8 collaborating agents"),
                       encoding="utf-8")
         st = tmp / ".agent" / "status.md"
         st.write_text(st.read_text(encoding="utf-8")
                       .replace("skill_version:** ", "skill_version:** v0.0.0"), encoding="utf-8")
         r = run([sys.executable, str(TOOLS / "sync-project.py"), str(tmp),
                  "--platform", "claude"], cwd=str(tmp))
-        check("脚手架同步 exit 0", r.returncode == 0, (r.stdout + r.stderr)[-400:])
-        check("CLAUDE.md 恢复 9 个 agent", "9 个 agent" in cl.read_text(encoding="utf-8"),
+        check("scaffold sync exit 0", r.returncode == 0, (r.stdout + r.stderr)[-400:])
+        check("CLAUDE.md restores 9 agents", "9 collaborating agents" in cl.read_text(encoding="utf-8"),
               cl.read_text(encoding="utf-8")[:200])
         st2 = st.read_text(encoding="utf-8")
-        check("status.md skill_version 更新（非 v0.0.0）",
+        check("status.md skill_version updates (not v0.0.0)",
               "- **skill_version:** v0.0.0" not in st2, st2[:200])
 
 
 
 def test_install_fresh_home():
-    """F1 回归：全新 HOME（skills 目录尚不存在）首次安装不被安全校验误拒。"""
-    print("[e2e] install.sh codex 全新 HOME 首次安装")
+    """F1 regression: a first install into a fresh HOME (skills directory does not exist yet) is not wrongly rejected by the safety check."""
+    print("[e2e] install.sh codex first install into a fresh HOME")
     with tempfile.TemporaryDirectory() as td:
         home = Path(td) / "home"
         home.mkdir()
@@ -925,43 +925,43 @@ def test_install_fresh_home():
                 cwd=str(TOOLS.parent), env=env)
         check("fresh home install exit 0", r.returncode == 0, (r.stdout + r.stderr)[-400:])
         dest = home / ".codex" / "skills" / "awesome-novel"
-        check("fresh home SKILL.md 存在", (dest / "SKILL.md").exists())
-        check("fresh home agents 存在", (dest / "agents").is_dir())
+        check("fresh home SKILL.md exists", (dest / "SKILL.md").exists())
+        check("fresh home agents exist", (dest / "agents").is_dir())
 
 
 def test_install_ps1_fresh_home():
-    """E2E：install.ps1 全新 HOME 首次安装（Linux pwsh 冒烟，语义等价 Windows）。
+    """E2E: install.ps1 first install into a fresh HOME (Linux pwsh smoke test, semantically equivalent to Windows).
 
-    pwsh 缺失（本地开发机）时跳过；CI ubuntu runner 自带 pwsh 会真实执行，
-    覆盖 install.ps1 的路径/拷贝/门槛流程（arch-review 工程债：ps1 无测试）。
+    Skipped when pwsh is missing (local dev machine); the CI ubuntu runner ships pwsh and runs it for real,
+    covering install.ps1's path/copy/threshold flow (arch-review tech debt: ps1 has no tests).
     """
     pwsh = shutil.which("pwsh")
     if not pwsh:
-        print("[e2e] install.ps1 冒烟（跳过：无 pwsh，CI ubuntu 会执行）")
+        print("[e2e] install.ps1 smoke test (skipped: no pwsh; CI ubuntu will run it)")
         return
-    print("[e2e] install.ps1 全新 HOME 首次安装（pwsh）")
+    print("[e2e] install.ps1 first install into a fresh HOME (pwsh)")
     with tempfile.TemporaryDirectory() as td:
         fake_home = Path(td) / "home"
         fake_bin = Path(td) / "bin"
         fake_bin.mkdir()
-        os.symlink(sys.executable, fake_bin / "python")   # ps1 用 Get-Command python
+        os.symlink(sys.executable, fake_bin / "python")   # ps1 uses Get-Command python
         env = dict(os.environ)
-        env["USERPROFILE"] = str(fake_home)               # ps1 用 $env:USERPROFILE
+        env["USERPROFILE"] = str(fake_home)               # ps1 uses $env:USERPROFILE
         env["PATH"] = str(fake_bin) + os.pathsep + env.get("PATH", "")
         r = run([pwsh, "-NoProfile", "-File", str(TOOLS.parent / "install.ps1"), "claude-code"],
                 cwd=str(TOOLS.parent), env=env)
         check("ps1 fresh home install exit 0", r.returncode == 0, (r.stdout + r.stderr)[-400:])
-        check("ps1 输出含安装完成", "安装完成" in r.stdout, r.stdout[-300:])
-        # install.ps1 用 Join-Path 拼接：Windows 落 $HOME\.claude\skills\awesome-novel，
-        # Linux pwsh 落 $USERPROFILE/.claude/skills/awesome-novel（真实嵌套目录）
+        check("ps1 output contains installation complete", "Installation complete" in r.stdout, r.stdout[-300:])
+        # install.ps1 joins paths with Join-Path: on Windows it lands in $HOME\.claude\skills\awesome-novel,
+        # on Linux pwsh it lands in $USERPROFILE/.claude/skills/awesome-novel (a real nested directory)
         dest = fake_home / ".claude" / "skills" / "awesome-novel"
-        check("ps1 fresh home SKILL.md 存在", (dest / "SKILL.md").exists())
-        check("ps1 fresh home agents 存在", (dest / "agents").is_dir())
+        check("ps1 fresh home SKILL.md exists", (dest / "SKILL.md").exists())
+        check("ps1 fresh home agents exist", (dest / "agents").is_dir())
 
 
 def test_install_no_home():
-    """P2 回归：HOME 未设置时安装脚本在创建任何目录前即拒绝（报路径异常）。"""
-    print("[e2e] install.sh 无 HOME 拒绝安装")
+    """P2 regression: when HOME is unset, the install script refuses before creating any directory (reports a path error)."""
+    print("[e2e] install.sh refuses install with no HOME")
     with tempfile.TemporaryDirectory() as td:
         stub = Path(td) / "stub"
         stub.mkdir()
@@ -972,12 +972,12 @@ def test_install_no_home():
         r = run(["bash", str(TOOLS.parent / "install.sh"), "codex"],
                 cwd=str(TOOLS.parent), env=env)
         check("no HOME exit 1", r.returncode == 1, str(r.returncode))
-        check("no HOME 报路径异常", "安装目标路径异常" in (r.stdout + r.stderr))
+        check("no HOME reports a path error", "abnormal install target path" in (r.stdout + r.stderr))
 
 
 def test_install_python_gate():
-    """P-ver 回归：版本检查失败时 install.sh 在创建/删除任何目录前即中止。"""
-    print("[e2e] install.sh Python 版本门槛 fail-fast")
+    """P-ver regression: when the version check fails, install.sh aborts before creating or deleting any directory."""
+    print("[e2e] install.sh Python version threshold fail-fast")
     with tempfile.TemporaryDirectory() as td:
         home = Path(td) / "home"
         home.mkdir()
@@ -986,16 +986,16 @@ def test_install_python_gate():
         env["NOVEL_PYTHON"] = "/bin/false"
         r = run(["bash", str(TOOLS.parent / "install.sh"), "codex"],
                 cwd=str(TOOLS.parent), env=env)
-        check("版本门槛拒绝 exit 1", r.returncode == 1, str(r.returncode))
-        check("拒绝信息含安装中止", "安装中止" in (r.stdout + r.stderr),
+        check("version threshold refuses, exit 1", r.returncode == 1, str(r.returncode))
+        check("refusal message contains install aborted", "Installation aborted" in (r.stdout + r.stderr),
               (r.stdout + r.stderr)[-300:])
         dest = home / ".codex" / "skills" / "awesome-novel"
-        check("拒绝时未创建目标目录", not dest.exists())
+        check("no target directory is created on refusal", not dest.exists())
 
 
 def test_install_yaml_gate():
-    """Y-ver E2E 回归：缺 pyyaml 时 install.sh codex 在创建目标目录前中止。"""
-    print("[e2e] install.sh pyyaml 门槛 fail-fast")
+    """Y-ver E2E regression: without pyyaml, install.sh codex aborts before creating the target directory."""
+    print("[e2e] install.sh pyyaml threshold fail-fast")
     with tempfile.TemporaryDirectory() as td:
         home = Path(td) / "home"
         home.mkdir()
@@ -1007,16 +1007,16 @@ def test_install_yaml_gate():
         env["PYTHONPATH"] = str(block) + os.pathsep + env.get("PYTHONPATH", "")
         r = run(["bash", str(TOOLS.parent / "install.sh"), "codex"],
                 cwd=str(TOOLS.parent), env=env)
-        check("缺 pyyaml 拒绝 exit 1", r.returncode == 1, str(r.returncode))
-        check("缺 pyyaml 报安装中止", "安装中止" in (r.stdout + r.stderr)
+        check("missing pyyaml refuses, exit 1", r.returncode == 1, str(r.returncode))
+        check("missing pyyaml reports install aborted", "Installation aborted" in (r.stdout + r.stderr)
               and "pyyaml" in (r.stdout + r.stderr), (r.stdout + r.stderr)[-300:])
         dest = home / ".codex" / "skills" / "awesome-novel"
-        check("拒绝时未创建目标目录", not dest.exists())
+        check("no target directory is created on refusal", not dest.exists())
 
 
 def test_noyaml_e2e():
-    """F5 回归：缺 pyyaml 时 init --platform codex 明确报错退出，不产出损坏 TOML。"""
-    print("[e2e] 缺 pyyaml 时 init --platform codex 明确报错")
+    """F5 regression: without pyyaml, init --platform codex exits with a clear error and produces no damaged TOML."""
+    print("[e2e] init --platform codex errors clearly without pyyaml")
     with tempfile.TemporaryDirectory() as td:
         tmp = Path(td)
         (tmp / "yaml.py").write_text('raise ImportError("blocked")\n', encoding="utf-8")
@@ -1024,9 +1024,9 @@ def test_noyaml_e2e():
         env["PYTHONPATH"] = str(tmp) + os.pathsep + env.get("PYTHONPATH", "")
         r = run([sys.executable, str(TOOLS / "init.py"), str(tmp / "proj"),
                  "--genre", "1", "--platform", "codex"], cwd=str(tmp), env=env)
-        check("缺 yaml exit 1", r.returncode == 1, str(r.returncode))
-        check("缺 yaml 报错信息", "需要 pyyaml" in (r.stdout + r.stderr))
-        check("缺 yaml 无损坏 TOML 产物",
+        check("missing yaml exit 1", r.returncode == 1, str(r.returncode))
+        check("missing yaml error message", "needs pyyaml" in (r.stdout + r.stderr))
+        check("missing yaml produces no damaged TOML",
               not (tmp / "proj" / ".codex" / "agents" / "writer.toml").exists())
 
 
@@ -1054,8 +1054,8 @@ def main():
         try:
             fn()
         except Exception as e:
-            check(f"{name} 异常", False, repr(e))
-    print(f"\n结果: {_tu.PASS} 通过, {_tu.FAIL} 失败")
+            check(f"{name} raised", False, repr(e))
+    print(f"\nResult: {_tu.PASS} passed, {_tu.FAIL} failed")
     sys.exit(0 if _tu.FAIL == 0 else 1)
 
 

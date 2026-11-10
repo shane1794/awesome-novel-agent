@@ -1,26 +1,26 @@
 #!/usr/bin/env python3
 """
-同步项目空间的 agent/skill/知识库到最新版本。
+Sync a project workspace's agent/skill/knowledge base to the latest version.
 
-用法:
-  python tools/sync-project.py <project-path>            # 同步（自动更新指纹）
-  python tools/sync-project.py <project-path> --check    # 只检查新鲜度
-  python tools/sync-project.py <project-path> --sync     # 强制同步（同默认）
+Usage:
+  python tools/sync-project.py <project-path>            # sync (fingerprint auto-updates)
+  python tools/sync-project.py <project-path> --check    # freshness check only
+  python tools/sync-project.py <project-path> --sync     # force sync (same as default)
 
-检查模式 (--check) 用 exit code 表示结果：
-  0 = 已是最新
-  1 = 有更新可用（或项目缺少指纹）
-  2 = 项目无效
+Check mode (--check) reports the result with its exit code:
+  0 = up to date
+  1 = updates available (or the project has no fingerprint)
+  2 = invalid project
 
-不触碰 settings/ volumes/ chapters/ archives/ prompts/ story.md。
+Does not touch settings/ volumes/ chapters/ archives/ prompts/ story.md.
 
-Windows 中文路径乱码：
-  如果 `python tools/sync-project.py .` 报路径乱码，改用显式路径从 skill 目录运行：
+Garbled Windows Chinese paths:
+  If `python tools/sync-project.py .` reports a garbled path, run from the skill directory with an explicit path instead:
   cd C:\\Users\\modoo\\.claude\\skills\\awesome-novel
-  python tools\\sync-project.py "d:\\novels\\daily\\小说项目"
+  python tools\\sync-project.py "d:\\novels\\daily\\novel-project"
 """
 
-from __future__ import annotations  # str | None 等注解在 Python 3.9 下延迟求值，避免 import 即 TypeError
+from __future__ import annotations  # str | None and other annotations are lazily evaluated under Python 3.9, avoiding a TypeError on import
 
 import hashlib
 import subprocess
@@ -66,14 +66,14 @@ def main():
 
     check_only = "--check" in sys.argv
 
-    # 平台：--platform > NOVEL_PLATFORM > SKILL_HOME 路径识别 > claude
+    # Platform: --platform > NOVEL_PLATFORM > SKILL_HOME path recognition > claude
     platform_override = None
     if "--platform" in sys.argv:
         idx = sys.argv.index("--platform")
         if idx + 1 < len(sys.argv) and not sys.argv[idx + 1].startswith("--"):
             platform_override = sys.argv[idx + 1]
         else:
-            print("错误: --platform 需要一个平台名（claude|opencode|reasonix|codex|zcode|dsh|grok）")
+            print("Error: --platform needs a platform name (claude|opencode|reasonix|codex|zcode|dsh|grok)")
             sys.exit(1)
     platform_override = platform_override or os.environ.get("NOVEL_PLATFORM")
     try:
@@ -83,7 +83,7 @@ def main():
         sys.exit(1)
     ensure_yaml(platform)
 
-    # 处理 Windows 中文路径乱码：从 os.environ 重新取当前目录
+    # Handle garbled Windows Chinese paths: re-read the current directory from os.environ
     raw_arg = sys.argv[1]
     if raw_arg == "." and os.environ.get("PWD"):
         pwd = os.environ["PWD"]
@@ -91,15 +91,15 @@ def main():
             raw_arg = pwd
     project_path = Path(raw_arg).resolve()
     if not project_path.exists():
-        print(f"错误: 路径不存在: {project_path}")
+        print(f"Error: path does not exist: {project_path}")
         sys.exit(2)
 
     status_file = project_path / ".agent" / "status.md"
     if not status_file.exists():
-        print(f"错误: {project_path} 不是有效的小说项目（缺少 .agent/status.md）")
+        print(f"Error: {project_path} is not a valid novel project (missing .agent/status.md)")
         sys.exit(2)
 
-    # 项目长度标记（story.md 含 length: short 为短篇项目）——决定同步与校验的对象集
+    # Project length marker (a story.md containing length: short means a short-form project); decides the sync and check object sets
     story_file = project_path / "story.md"
     is_short = story_file.exists() and "**length:** short" in story_file.read_text(encoding="utf-8")
 
@@ -111,11 +111,11 @@ def main():
 
 
 # ============================================================
-# 指纹机制
+# Fingerprint mechanism
 # ============================================================
 
 def get_latest_version() -> str | None:
-    """从 git tag 获取 skill 最新版本号"""
+    """Get the skill's latest version number from git tags"""
     try:
         result = subprocess.run(
             ["git", "-C", str(SKILL_HOME), "describe", "--tags", "--abbrev=0"],
@@ -129,7 +129,7 @@ def get_latest_version() -> str | None:
 
 
 def get_version_info() -> tuple[str | None, str | None]:
-    """返回 (latest_tag, version_summary)，version_summary 用于显示"""
+    """Return (latest_tag, version_summary); version_summary is for display"""
     tag = get_latest_version()
     if tag:
         return tag, tag
@@ -137,15 +137,15 @@ def get_version_info() -> tuple[str | None, str | None]:
 
 
 def compute_fingerprint() -> str:
-    """对 skill 源目录的所有 agent/skill/knowledge/templates/settings 文件算一个 hash"""
+    """Hash all agent/skill/knowledge/templates/settings files in the skill source directories"""
     files = []
     for base in [AGENT_DIR, SKILL_DIR, KNOWLEDGE_DIR]:
         if base.exists():
             for f in sorted(base.rglob("*")):
                 if f.is_file() and f.name != ".gitkeep":
                     files.append(f)
-    # 风格资产（与 sync_style_assets 部署范围一致：主卡 + style-profiles/**），
-    # 非风格 settings 模板（world-setting 等）不部署也不纳入指纹，避免永久 "有更新可用"。
+    # Style assets (same deployment scope as sync_style_assets: main card + style-profiles/**);
+    # non-style settings templates (world-setting and friends) are neither deployed nor fingerprinted, to avoid a permanent "updates available".
     main_tpl = TEMPLATE_SETTINGS_DIR / "writing-style.md"
     if main_tpl.is_file():
         files.append(main_tpl)
@@ -153,14 +153,14 @@ def compute_fingerprint() -> str:
     if profiles.exists():
         for f in sorted(profiles.rglob("*.md")):
             files.append(f)
-    # 脚手架模板（templates/ 根 + .agent/，migration/ 与 settings/ 除外）——sync_scaffold 同步范围
-    # （review #17：不进指纹则存量项目 CLAUDE.md 永远「8 个 agent」、skill_version 不更新）
+    # Scaffold templates (templates/ root + .agent/, excluding migration/ and settings/): the sync_scaffold sync scope
+    # (review #17: without fingerprinting, existing projects' CLAUDE.md would forever say "8 agents" and skill_version would never update)
     tpl = SKILL_HOME / "templates"
     if tpl.exists():
         for f in sorted(tpl.rglob("*")):
             if f.is_file() and f.name != ".gitkeep" and "migration" not in f.parts and "settings" not in f.parts:
                 files.append(f)
-    # 正文检查脚本（sync_tools 部署范围；不进指纹则升级后存量项目拿不到脚本）
+    # Body-text check scripts (the sync_tools deployment scope; without fingerprinting, existing projects would not get the scripts after an upgrade)
     for name in ("check-prose.py", "check-chapter.py"):
         tool = SKILL_HOME / "tools" / name
         if tool.is_file():
@@ -175,7 +175,7 @@ def compute_fingerprint() -> str:
 
 
 def read_project_fingerprint(project: Path) -> tuple[str | None, str | None]:
-    """返回 (fingerprint, version)"""
+    """Return (fingerprint, version)"""
     fp = project / FINGERPRINT_FILE
     vp = project / VERSION_FILE
     finger = None
@@ -201,7 +201,7 @@ def write_project_fingerprint(project: Path, fingerprint: str, version: str | No
 
 
 # ============================================================
-# 检查
+# Checks
 # ============================================================
 
 def check_freshness(project: Path, platform: Platform, is_short=False):
@@ -210,46 +210,46 @@ def check_freshness(project: Path, platform: Platform, is_short=False):
     latest_ver, _ = get_version_info()
 
     if stored is None:
-        print("项目缺少同步指纹，无法判断新鲜度。运行 sync-project.py 同步后生成。")
+        print("The project has no sync fingerprint, so freshness cannot be judged. Run sync-project.py to sync and generate one.")
         sys.exit(1)
 
     version_diff = latest_ver and stored_ver and stored_ver != latest_ver
     version_info = ""
     if version_diff:
-        version_info = f"  [版本] 项目记录: {stored_ver}  →  最新: {latest_ver}"
+        version_info = f"  [version] project records: {stored_ver}  ->  latest: {latest_ver}"
     elif latest_ver and not stored_ver:
-        version_info = f"  [版本] 最新: {latest_ver}（项目未记录版本）"
+        version_info = f"  [version] latest: {latest_ver} (project records no version)"
 
     if current == stored:
         if version_diff:
-            print(f"文件已是最新。{version_info}")
+            print(f"Files are up to date. {version_info}")
             sys.exit(1)
-        # 指纹只覆盖仓库源；项目侧文件被改动（如作者误编辑部署产物）需 diff 兜底。
-        # 短篇项目的 sync 不覆盖已有知识产物，侧改无法靠指纹发现 → 显式 diff。
+        # The fingerprint only covers repo sources; project-side file edits (e.g. the author accidentally editing a deployed product) need a diff fallback.
+        # Short-form sync does not overwrite existing knowledge products, so side edits cannot be found via fingerprint; diff explicitly.
         changes = find_changes(project, platform, is_short)
         if changes:
-            lines = [f"检测到项目侧文件与源不一致 ({len(changes)} 个):"]
+            lines = [f"Detected project-side files differing from the source ({len(changes)}):"]
             for f in changes:
                 lines.append(f"  - {f}")
             print("\n".join(lines))
-            print("提示: 运行 sync-project.py（不带 --check）以源覆盖恢复。")
+            print("Tip: run sync-project.py (without --check) to restore from the source.")
             sys.exit(1)
-        print("已是最新。")
+        print("Up to date.")
         sys.exit(0)
     else:
         changes = find_changes(project, platform, is_short)
         if not changes and platform.key in ("reasonix", "codex", "zcode", "dsh", "grok"):
-            print("有更新可用（源文件变化，平台派生产物由同步时重新生成）。")
+            print("Updates available (source files changed; platform-derived products regenerate at sync time).")
         elif not changes:
-            # 指纹含风格资产（writing-style.md + style-profiles/**，line 143-149）而 find_changes 只扫
-            # agents/skills/knowledge → 剩余变化只能是风格资产。
-            # 同步为「不覆盖已有卡」策略（review #16）：缺文件 → 可同步；已有卡不覆盖 → 仅提示源演进。
+            # The fingerprint includes style assets (writing-style.md + style-profiles/**, lines 143-149) while find_changes only scans
+            # agents/skills/knowledge, so any remaining change can only be a style asset.
+            # Sync uses the "never overwrite an existing card" policy (review #16): a missing file can sync; an existing card is not overwritten, only a note about source evolution is shown.
             if _missing_style_assets(project):
-                print("有更新可用（风格资产新增文件，将同步到 settings/）。")
+                print("Updates available (new style-asset files will sync to settings/).")
             else:
-                print("风格资产源有更新，但同步为不覆盖策略（已有卡不更新）。如需刷新写作风格卡，请手动处理。")
+                print("The style-asset source has updates, but sync uses the no-overwrite policy (existing cards are not updated). To refresh a writing-style card, handle it manually.")
         else:
-            lines = [f"有更新可用 ({len(changes)} 个文件发生变化):"]
+            lines = [f"Updates available ({len(changes)} files changed):"]
             for f in changes:
                 lines.append(f"  - {f}")
             if version_info:
@@ -259,10 +259,10 @@ def check_freshness(project: Path, platform: Platform, is_short=False):
 
 
 def find_changes(project: Path, platform: Platform, is_short=False) -> list[str]:
-    """返回与源不同的文件列表（相对路径）。reasonix/zcode/dsh 的 skills 是派生产物，不枚举。"""
+    """Return the list of files differing from the source (relative paths). reasonix/zcode/dsh skills are derived products and are not listed."""
     changed = []
     if is_short:
-        # 短篇项目：agents（短篇组+reader）+ short 知识产物
+        # Short-form projects: agents (short-form set + reader) + short knowledge products
         agent_names = {p.stem for p in AGENT_DIR.glob("*.md")
                        if p.stem.startswith(SHORT_AGENT_PREFIX) or p.stem in SHORT_SHARED_AGENTS}
         for src in sorted(AGENT_DIR.glob("*.md")):
@@ -277,7 +277,7 @@ def find_changes(project: Path, platform: Platform, is_short=False) -> list[str]
                 if not target.exists() or target.read_bytes() != src.read_bytes():
                     changed.append(f"agents/{rel}")
             else:
-                # 转换产物只查存在性（内容比对见 sync_agents 转换逻辑）
+                # Converted products are checked for existence only (content comparison is in the sync_agents conversion logic)
                 if not target.exists():
                     changed.append(f"agents/{rel}")
         src_root = SKILL_HOME / "knowledge" / "short"
@@ -297,7 +297,7 @@ def find_changes(project: Path, platform: Platform, is_short=False) -> list[str]
                         t = d / rel
                         if not t.exists() or t.read_bytes() != f.read_bytes():
                             changed.append(f"knowledge/{dst_name}/{rel}")
-        # 独立工具（扫榜/拆文）：按部署转换算期望内容逐字比对（与 sync 同一转换）
+        # Standalone tools (ranking-scan / text-teardown): compare verbatim against the expected content computed by the deploy conversion (the same conversion as sync)
         sdir = platform.skills_dir(project)
         if sdir is not None:
             for name in SHORT_STANDALONE_SKILLS:
@@ -327,18 +327,18 @@ def find_changes(project: Path, platform: Platform, is_short=False) -> list[str]
         if dst_base is None or not src_dir.exists():
             continue
         if platform.key in ("reasonix", "zcode", "dsh") and name == "skills":
-            continue  # 派生产物靠源指纹检测，同步时重新生成
+            continue  # derived products are detected via the source fingerprint and regenerated at sync time
         if platform.key in ("codex", "grok") and name in ("agents", "skills"):
-            continue  # TOML/SKILL.md 是派生产物，靠源指纹检测，同步时重新生成
+            continue  # TOML/SKILL.md are derived products, detected via the source fingerprint and regenerated at sync time
         for item in sorted(src_dir.rglob("*.md")):
             if item.name == ".gitkeep":
                 continue
             rel = item.relative_to(src_dir)
             if name == "agents" and rel.parts[0].startswith("short-"):
-                continue  # 短篇 agent 不进长篇比对（与 sync_agents 长篇分支互斥过滤一致）
+                continue  # short-form agents are excluded from long-form comparison (consistent with the mutually exclusive filter in the sync_agents long-form branch)
             if name == "knowledge" and rel.parts[0] == "short":
-                continue  # knowledge/short/ 是短篇源，长篇项目不部署不比对
-            # format-specs 在项目侧是拍平部署（FLAT_SUBDIRS 约定），比对目标去掉子目录层
+                continue  # knowledge/short/ is short-form source; long-form projects neither deploy nor compare it
+            # format-specs deploys flattened on the project side (the FLAT_SUBDIRS convention), so the comparison target drops the subdirectory level
             if name == "knowledge" and rel.parts[0] == "format-specs":
                 rel = Path(rel.name)
             target = dst_base / rel
@@ -354,17 +354,17 @@ def find_changes(project: Path, platform: Platform, is_short=False) -> list[str]
 
 
 # ============================================================
-# 同步
+# Sync
 # ============================================================
 
 def do_sync(project: Path, platform: Platform, is_short=False):
-    print(f"项目: {project}")
-    print(f"类型: {'短篇' if is_short else '长篇'}")
-    print(f"来源: {SKILL_HOME}")
+    print(f"Project: {project}")
+    print(f"Type: {'short-form' if is_short else 'long-form'}")
+    print(f"Source: {SKILL_HOME}")
 
     latest_ver, _ = get_version_info()
     if latest_ver:
-        print(f"版本: {latest_ver}")
+        print(f"Version: {latest_ver}")
     print()
 
     current_fp = compute_fingerprint()
@@ -374,10 +374,10 @@ def do_sync(project: Path, platform: Platform, is_short=False):
 
     if stored_fp == current_fp and not version_changed:
         if is_short:
-            # 短篇独立工具是运行产物：指纹未变也可能被项目侧误删/误改，幂等再部署一次
+            # Short-form standalone tools are runtime products: even with an unchanged fingerprint they may have been deleted or edited project-side, so redeploy them idempotently
             deploy_standalone_skills(project, SKILL_HOME, platform,
                                      SHORT_STANDALONE_SKILLS)
-        print("[i] 已是最新，无需同步。")
+        print("[i] Already up to date; no sync needed.")
         return
 
     changes = []
@@ -385,7 +385,7 @@ def do_sync(project: Path, platform: Platform, is_short=False):
     changes.append(sync_skills(project, platform, is_short))
     changes.append(sync_knowledge(project, platform, is_short))
     if not is_short:
-        # 短篇项目无长篇脚手架与蒸馏资产（settings/ 卷章体系不存在）
+        # Short-form projects have no long-form scaffolding or distillation assets (the settings/ volume/chapter system does not exist)
         changes.append(sync_scaffold(project, platform))
         changes.append(sync_style_assets(project))
     changes.append(sync_tools(project, platform))
@@ -395,9 +395,9 @@ def do_sync(project: Path, platform: Platform, is_short=False):
     if total > 0 or stored_fp != current_fp or version_changed:
         write_project_fingerprint(project, current_fp, latest_ver)
 
-    print(f"\n完成。共同步 {total} 个文件。版本: {latest_ver or 'unknown'}")
+    print(f"\nDone. Synced {total} files in total. Version: {latest_ver or 'unknown'}")
     if total > 0:
-        print("提示: 下次写作时生效。")
+        print("Tip: takes effect at the next writing session.")
 
 
 SHORT_AGENT_PREFIX = "short-"
@@ -405,24 +405,24 @@ SHORT_SHARED_AGENTS = {"reader"}
 
 
 def sync_agents(project_path: Path, platform: Platform, is_short=False) -> int:
-    """同步 agent 定义到当前平台对应的目录（短篇项目只同步短篇组 + reader）"""
+    """Sync agent definitions to the directory for the current platform (short-form projects sync only the short-form set + reader)"""
     if not AGENT_DIR.exists():
-        print("  [!] agents 源目录不存在，跳过")
+        print("  [!] agents source directory does not exist, skipping")
         return 0
     target = platform.agents_dir(project_path)
     if target is None:
-        print(f"  [i] {platform.label} 平台无 agents 目录（agents 即 skills）")
+        print(f"  [i] The {platform.label} platform has no agents directory (agents are skills)")
         return 0
     target.mkdir(parents=True, exist_ok=True)
     if platform.key in ("opencode", "codex", "grok"):
-        # 转换产物（opencode: permission 格式 + 引用改写；codex: TOML；grok: agent Markdown），
-        # 转换逻辑单源见 platforms.convert_agent_to_platform（与 init.deploy_agents 一致）
+        # Converted products (opencode: permission format + reference rewriting; codex: TOML; grok: agent Markdown);
+        # the conversion logic is single-sourced in platforms.convert_agent_to_platform (same as init.deploy_agents)
         count = 0
         for item in sorted(AGENT_DIR.rglob("*.md")):
             if item.name == ".gitkeep":
                 continue
             if is_short != (item.stem.startswith(SHORT_AGENT_PREFIX) or item.stem in SHORT_SHARED_AGENTS):
-                continue    # 长短篇 agent 组互斥：短篇项目只同步短篇组+reader，长篇项目只同步长篇组
+                continue    # long/short agent sets are mutually exclusive: short-form projects sync only the short-form set + reader, long-form projects only the long-form set
             rel = item.relative_to(AGENT_DIR)
             dest = target / (item.stem + ".toml") if platform.key == "codex" else target / rel
             content = convert_agent_to_platform(item.read_text(encoding="utf-8"),
@@ -437,9 +437,9 @@ def sync_agents(project_path: Path, platform: Platform, is_short=False) -> int:
             AGENT_DIR, target, "*.md",
             skip=lambda p: is_short != (p.stem.startswith(SHORT_AGENT_PREFIX) or p.stem in SHORT_SHARED_AGENTS))
     if count > 0:
-        print(f"  [OK] agent 定义: {count} 个文件已更新（{platform.root}/agents）")
+        print(f"  [OK] agent definitions: {count} files updated ({platform.root}/agents)")
     else:
-        print("  [i] agent 定义: 已是最新")
+        print("  [i] agent definitions: already up to date")
     return count
 
 
@@ -447,44 +447,44 @@ def sync_skills(project_path: Path, platform: Platform, is_short=False) -> int:
     if is_short:
         n = 0
         if platform.key in ("reasonix", "zcode", "dsh"):
-            # 短篇内联 skill 是派生产物：重新生成（6 agent + 2 独立工具）
+            # Short-form inline skills are derived products: regenerate (6 agents + 2 standalone tools)
             deploy_inline_skills(project_path, SKILL_HOME, platform, "short")
             n = len(list(platform.skills_dir(project_path).rglob("SKILL.md")))
-            print(f"  [OK] {platform.key} skills: {n} 个 SKILL.md 已重新生成（短篇组）")
+            print(f"  [OK] {platform.key} skills: {n} SKILL.md files regenerated (short-form set)")
         else:
-            # 独立工具（扫榜/拆文）幂等再部署；其余短篇 SOP 内联于 agent 无需同步
+            # Standalone tools (ranking-scan / text-teardown) redeploy idempotently; other short-form SOPs are inlined in agents and need no sync
             n = deploy_standalone_skills(project_path, SKILL_HOME, platform,
                                          SHORT_STANDALONE_SKILLS)
-            print(f"  [OK] 独立工具: {n} 个已更新" if n else "  [i] 独立工具: 已是最新")
+            print(f"  [OK] standalone tools: {n} updated" if n else "  [i] standalone tools: already up to date")
         return n
     if platform.key in ("reasonix", "zcode", "dsh"):
         deploy_inline_skills(project_path, SKILL_HOME, platform)
         n = len(list(platform.skills_dir(project_path).rglob("SKILL.md")))
-        print(f"  [OK] {platform.key} skills: {n} 个 SKILL.md 已重新生成")
+        print(f"  [OK] {platform.key} skills: {n} SKILL.md files regenerated")
         return n
     if platform.key in ("codex", "grok"):
         deploy_codex_skills(project_path, SKILL_HOME, platform)
         n = len(list(platform.skills_dir(project_path).rglob("SKILL.md")))
-        print(f"  [OK] {platform.key} skills: {n} 个 SKILL.md 已重新生成")
+        print(f"  [OK] {platform.key} skills: {n} SKILL.md files regenerated")
         return n
     target = platform.skills_dir(project_path)
     target.mkdir(parents=True, exist_ok=True)
     if not SKILL_DIR.exists():
-        print("  [!] skills 源目录不存在，跳过")
+        print("  [!] skills source directory does not exist, skipping")
         return 0
     count = _sync_dir(SKILL_DIR, target, "*.md")
     if count > 0:
-        print(f"  [OK] skill 文件: {count} 个文件已更新")
+        print(f"  [OK] skill files: {count} files updated")
     else:
-        print("  [i] skill 文件: 已是最新")
+        print("  [i] skill files: already up to date")
     return count
 
 
 def _sync_short_knowledge(project_path: Path, platform: Platform, target) -> int:
-    """短篇知识同步：与 init.deploy_knowledge(short) 同一布局。"""
+    """Short-form knowledge sync: same layout as init.deploy_knowledge(short)."""
     src_root = SKILL_HOME / "knowledge" / "short"
     if not src_root.exists():
-        print("  [!] knowledge/short 源目录不存在，跳过")
+        print("  [!] knowledge/short source directory does not exist, skipping")
         return 0
     count = 0
     anti_ai_src = src_root / "anti-ai" / "short-deslop.md"
@@ -511,14 +511,14 @@ def sync_knowledge(project_path: Path, platform: Platform, is_short=False) -> in
     target = platform.knowledge_dir(project_path)
     target.mkdir(parents=True, exist_ok=True)
     if is_short:
-        # 短篇项目：short/ 源 → short-anti-ai.md + short-craft/ + short-genres/（与 init.deploy_knowledge 一致）
+        # Short-form projects: short/ sources to short-anti-ai.md + short-craft/ + short-genres/ (same as init.deploy_knowledge)
         return _sync_short_knowledge(project_path, platform, target)
     if not KNOWLEDGE_DIR.exists():
-        print("  [!] knowledge 源目录不存在，跳过")
+        print("  [!] knowledge source directory does not exist, skipping")
         return 0
     count = 0
 
-    # 平铺到平台 knowledge 根的目录（部署约定与 init.py 的 deploy_knowledge 一致）。
+    # Directories flattened to the platform knowledge root (the deployment convention matches init.py's deploy_knowledge).
     FLAT_SUBDIRS = {"format-specs"}
 
     for f in KNOWLEDGE_DIR.glob("*.md"):
@@ -527,7 +527,7 @@ def sync_knowledge(project_path: Path, platform: Platform, is_short=False) -> in
     for subdir in KNOWLEDGE_DIR.iterdir():
         if subdir.is_dir() and not subdir.name.startswith("."):
             if subdir.name == "short":
-                continue  # knowledge/short/ 是短篇源，长篇项目不部署（与 init.deploy_knowledge 一致）
+                continue  # knowledge/short/ is short-form source; long-form projects do not deploy it (same as init.deploy_knowledge)
             if subdir.name in FLAT_SUBDIRS:
                 for f in sorted(subdir.glob("*.md")):
                     if _sync_file(f, target / f.name):
@@ -537,14 +537,14 @@ def sync_knowledge(project_path: Path, platform: Platform, is_short=False) -> in
                 sub_target.mkdir(parents=True, exist_ok=True)
                 count += _sync_dir(subdir, sub_target, "*.md")
     if count > 0:
-        print(f"  [OK] 知识库: {count} 个文件已更新")
+        print(f"  [OK] knowledge base: {count} files updated")
     else:
-        print("  [i] 知识库: 已是最新")
+        print("  [i] knowledge base: already up to date")
     return count
 
 
 def sync_tools(project_path: Path, platform: Platform) -> int:
-    """同步正文检查脚本到 <平台>/tools/（源缺失则跳过，anti-ai 降级为模型肉眼）"""
+    """Sync the body-text check scripts to <platform>/tools/ (skip when the source is missing; anti-ai falls back to the model's own eyes)"""
     count = 0
     for name in ("check-prose.py", "check-chapter.py"):
         src = SKILL_HOME / "tools" / name
@@ -555,13 +555,13 @@ def sync_tools(project_path: Path, platform: Platform) -> int:
             continue
         dst.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy2(src, dst)
-        print(f"  [OK] 正文检查脚本: 已更新（{platform.root}/tools/{name}）")
+        print(f"  [OK] body-text check script: updated ({platform.root}/tools/{name})")
         count += 1
     return count
 
 
 def _missing_style_assets(project: Path) -> list[Path]:
-    """项目 settings/ 缺失的风格资产（与 sync_style_assets 的部署范围一致）。"""
+    """Style assets missing from the project's settings/ (same deployment scope as sync_style_assets)."""
     missing = []
     src_settings = TEMPLATE_SETTINGS_DIR
     if not src_settings.exists():
@@ -579,13 +579,13 @@ def _missing_style_assets(project: Path) -> list[Path]:
 
 
 def sync_scaffold(project: Path, platform: Platform) -> int:
-    """同步 templates/ 根脚手架（CLAUDE.md/AGENTS.md/.agent/status.md 等）到项目根。
+    """Sync the templates/ root scaffolding (CLAUDE.md/AGENTS.md/.agent/status.md and friends) to the project root.
 
-    与 init.py create_skeleton 同规则：仅 CLAUDE.md/AGENTS.md/AGENTS.codex.md 随模板刷新（覆盖），
-    其余文件（.agent/status.md、.agent/task/* 等）不覆盖——status.md 只在存在时更新 skill_version 行
-    （review #17：脚手架不进指纹/不同步 → 存量项目 CLAUDE.md 永远「8 个 agent」、skill_version 不更新）。
-    跳过 migration/ 与 settings/（settings 由 sync_style_assets 处理）；平台特判（codex 无 CLAUDE.md、
-    AGENTS.md 用 AGENTS.codex.md 模板）。
+    Same rules as init.py create_skeleton: only CLAUDE.md/AGENTS.md/AGENTS.codex.md refresh with the templates (overwritten);
+    other files (.agent/status.md, .agent/task/* and the rest) are not overwritten. status.md only has its skill_version line
+    updated when it exists (review #17: without fingerprinting/syncing scaffolding, existing projects' CLAUDE.md would forever
+    say "8 agents" and skill_version would never update). Skip migration/ and settings/ (settings is handled by sync_style_assets);
+    platform special cases (codex has no CLAUDE.md; AGENTS.md uses the AGENTS.codex.md template).
     """
     import re as _re
     src = SKILL_HOME / "templates"
@@ -610,9 +610,9 @@ def sync_scaffold(project: Path, platform: Platform) -> int:
             continue
         rel = item.relative_to(src)
         if rel.parts[0] in ("migration", "settings", "short"):
-            continue  # short 子树是短篇独立模板树，长篇项目脚手架不拷贝（与 init.create_skeleton 一致）
+            continue  # the short subtree is the standalone short-form template tree; long-form project scaffolding does not copy it (same as init.create_skeleton)
         target = project / rel
-        # .agent/status.md：项目状态不覆盖，仅更新 skill_version 行
+        # .agent/status.md: project status is not overwritten, only its skill_version line is updated
         if item.name == "status.md" and target.exists() and status_ver:
             cur = target.read_text(encoding="utf-8")
             new = _re.sub(r"- \*\*skill_version:\*\*.*", f"- **skill_version:** {status_ver}", cur, count=1)
@@ -621,11 +621,11 @@ def sync_scaffold(project: Path, platform: Platform) -> int:
                 count += 1
             continue
         if target.exists() and item.name not in generated:
-            continue          # 非脚手架生成文件不覆盖（项目状态/任务模板等）
+            continue          # non-scaffold-generated files are not overwritten (project status / task templates and the rest)
         if platform.key == "codex" and item.name == "CLAUDE.md":
             continue
         if item.name == "AGENTS.codex.md":
-            continue          # 模板源，不直接复制进项目
+            continue          # template source, not copied directly into the project
         if platform.key == "codex" and item.name == "AGENTS.md":
             codex_tpl = src / "AGENTS.codex.md"
             if not codex_tpl.exists():
@@ -642,24 +642,24 @@ def sync_scaffold(project: Path, platform: Platform) -> int:
         target.write_text(content, encoding="utf-8")
         count += 1
     if count > 0:
-        print(f"  [OK] 项目脚手架: {count} 个文件已更新（CLAUDE.md/AGENTS.md/skill_version 等）")
+        print(f"  [OK] project scaffolding: {count} files updated (CLAUDE.md/AGENTS.md/skill_version and friends)")
     return count
 
 
 def sync_style_assets(project: Path) -> int:
-    """同步 style-distiller 资产：主卡 + 场景卡 + genre-baselines（纯参照，无运行时引用）+ 旧卡迁移钩子。
+    """Sync style-distiller assets: main card + scene cards + genre-baselines (pure reference, no runtime references) + the old-card migration hook.
 
-    只补缺失文件（不覆盖已有），与 init.py 的 seed 守卫同语义——
-    升级/迁移不破坏用户已编辑的写作风格卡。
+    Only fill in missing files (never overwrite existing ones), with the same semantics as init.py's seed guard:
+    upgrades/migrations must not break a writing-style card the user has edited.
 
-    范围严格限定为风格资产（templates/settings/writing-style.md + style-profiles/**），
-    不部署 world-setting/genre-setting/timeline/foreshadowing 等非风格模板（那些随 init 骨架走，
-    且含未 seed 的 {..} 占位符，不应由本函数注入）。
+    Scope is strictly limited to style assets (templates/settings/writing-style.md + style-profiles/**);
+    non-style templates such as world-setting/genre-setting/timeline/foreshadowing are not deployed (those travel with the init
+    skeleton and contain unseeded {..} placeholders, which this function must not inject).
     """
     count = 0
     src_settings = TEMPLATE_SETTINGS_DIR
     if src_settings.exists():
-        # 主卡 + style-profiles 树（场景卡 + genre-baselines，纯参照，无运行时引用）
+        # Main card + style-profiles tree (scene cards + genre-baselines, pure reference, no runtime references)
         candidates = [src_settings / "writing-style.md"]
         profiles = src_settings / "style-profiles"
         if profiles.exists():
@@ -673,19 +673,19 @@ def sync_style_assets(project: Path) -> int:
                 dst.parent.mkdir(parents=True, exist_ok=True)
                 content = f.read_text(encoding="utf-8")
                 if rel == Path("writing-style.md"):
-                    # 主卡缺卡：不写裸 {role} 占位符模板（review #15）——占位符会随提示词注入，
-                    # 改为「（待设定）」占位值，由设定阶段填写
+                    # Main card missing: do not write a bare {role} placeholder template (review #15); placeholders would be injected with prompts,
+                    # use the "（待设定）" placeholder value instead, to be filled in during setup
                     for tok in ("{role}", "{principle_1}", "{mistake_1}", "{depiction_techniques}"):
                         content = content.replace(tok, "（待设定）")
                 dst.write_text(content, encoding="utf-8")
                 count += 1
     try:
-        from init import migrate_writing_style   # init.py main 有 __main__ 守卫，导入安全
+        from init import migrate_writing_style   # init.py main has a __main__ guard, so importing is safe
         migrate_writing_style(project)
     except ImportError as e:
-        print(f"  [SKIP] 风格卡迁移跳过（init 导入失败）: {e}")
+        print(f"  [SKIP] style-card migration skipped (init import failed): {e}")
     if count:
-        print(f"  [OK] 风格资产同步: {count} 个新文件")
+        print(f"  [OK] style assets synced: {count} new files")
     return count
 
 
