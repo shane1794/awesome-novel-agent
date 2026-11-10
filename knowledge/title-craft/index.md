@@ -1,81 +1,92 @@
-# 取书名方法论
+# Methodology for choosing book titles
 
-> 读者给一本新书的注意力只有一两秒。在这一秒里他看不见你的文笔，只看得到你的书名。
-> 以下三招来自网文爆款书名经验总结。
-
----
-
-## 一、制造极致反差——引发猎奇心理
-
-**核心：** 制造认知冲突。读者看完脑子里冒出一个"？"，第一步就成功了。
-
-### 反差公式
-
-```
-身份（底层/平凡） + 行为（惊世骇俗/高不可攀）
-```
-
-```
-❌ 平铺直叙：最强兵王在都市
-
-✅ 极致反差：退伍兵王开局被美女总裁退婚，转头娶了他亲妈
-   → 强弱对比 + 身份错位 + 伦理冲突
-
-✅ 高反差：系统送编，从外卖员成007探员
-   → 外卖员与007的巨大鸿沟，读者点进去的动力
-```
-
-**要点：** 书名不是为了概括全文，而是为了制造悬念。
+> A reader's attention span is only a second or two for a new book. In this second, he
+> can't see your writing, only the title of your book. The following three tips come
+> from the experience summary of popular online book titles.
 
 ---
 
-## 二、高密度标签堆砌——降低筛选成本
+## 1. Create the ultimate contrast - triggering curiosity
 
-**核心：** 现在的读者很懒，他们只想知道你写的是什么题材、主角有什么金手指、爽点在哪。把核心卖点直接拍在读者脸上。
+**Core:** Create cognitive conflict. After reading the book, a "?" pops up in the
+reader's mind, and the first step is successful.
 
-### 万能公式
-
-```
-题材背景 + 核心金手指 + 极致爽点目标
-```
+### Contrast formula
 
 ```
-❌ 末世生存录（太泛，没有信息量）
-
-✅ 全球冰封：我无限空间囤积百亿物资
-   → 全球冰封（背景）+ 无限空间（金手指）+ 囤积百亿物资（爽点）
-
-✅ 国运求生，我靠情报系统养活国家
-   → 国运求生（背景）+ 情报系统（金手指）+ 养活国家（爽点）
+Identity (lower level/ordinary) + behavior (astonishing/unattainable)
 ```
 
-**要点：** 名字长意味着标签多，标签多意味着受众多。在推荐流平台上，精准标签就是流量密码。
+```
+❌ Straight talk: The strongest soldier is in the city
+
+✅ The ultimate contrast: The retired soldier king was divorced by the beautiful CEO at the beginning, and then turned around and married his own mother
+   → Contrast between strong and weak + Identity dislocation + Ethical conflict
+
+✅ High contrast: The system sends editors, from a delivery boy to a 007 agent
+   → The huge gap between the deliveryman and 007, the motivation for readers to click in
+```
+
+**Points:** The title of the book is not to summarize the full text, but to create
+suspense.
 
 ---
 
-## 三、精准情绪拿捏——直戳读者心窝
+## 2. High-density label stacking-reduce screening costs
 
-**核心：** 一个好的书名还没开始讲故事，就已经把读者的情绪调动起来了。
+**Core:** Today's readers are very lazy. They just want to know what theme you are
+writing about, what golden finger the protagonist has, and where is the satisfying
+payoff. Put the core selling point directly in the reader’s face.
 
-### 两种情绪类型
+### Universal Formula
 
-| 类型 | 机制 | 示例 |
+```
+Theme background + core golden finger + ultimate satisfying payoff target
+```
+
+```
+❌ Post-apocalyptic survival record (too general, not informative)
+
+✅ The world is frozen: I have unlimited space to hoard tens of billions of supplies
+   → The world is frozen (background) + infinite space (golden finger) + hoarding tens of billions of supplies (satisfying payoff)
+
+✅ The national destiny is to survive, I rely on the intelligence system to feed the country
+   → National destiny survival (background) + intelligence system (golden finger) + feeding the country (satisfying payoff)
+```
+
+**Key Points:** Longer names mean more tags, and more tags mean more audiences. On the
+recommendation flow platform, the precise label is key to traffic.
+
+---
+
+## 3. Precisely capture emotions - poke directly into readers’ hearts
+
+**Core:** A good book title arouses the reader's emotions before it even begins to tell
+the story.
+
+### Two types of emotions
+
+| Type | Mechanism | Example |
 |------|------|------|
-| **憋屈后爆发** | 低谷设定 + 高潮结果，打脸快感 | "离婚后高冷女总裁跪求我复合"——离婚(憋屈)+跪求(爆发) |
-| **极致优越感** | 让读者代入主角的开挂人生 | 身份错位+碾压式打脸 |
+| **Explosion after being aggrieved** | Trough setting + climax result, face-slapping pleasure | "After divorce, the cold-hearted female CEO begged me to get back together" - divorce (suffering) + begging (explosion) |
+| **Ultimate sense of superiority** | Allow readers to take the role of the protagonist in his cheating life | Dislocation of identity + crushing face-slapping |
 
-### 自带情绪能量的动词
+### Verbs with emotional energy
 
 ```
-跪求、反手、震惊、全家后悔、哭着求、当场傻眼、瞬间爆炸
+Kneel down and beg, backhand, be shocked, the whole family regrets, cry and beg, be dumbfounded on the spot, explode in an instant
 ```
 
-**要点：** 这些词自带情绪能量，能让读者产生"不点进去看一眼今晚都睡不着"的冲动。
+**Points:** These words have their own emotional energy, which can make readers have the
+urge to "can't sleep tonight unless they click in and take a look."
 
 ---
 
-## 测试书名的小技巧
+## Tips for testing book titles
 
-准备三个名字，分别走反差路线、标签路线、情绪路线。去书友群或朋友圈问："如果是你，这三个名字最想点哪一个？"
+Prepare three names, taking the contrast route, the label route, and the emotional
+route. Go to a book club or circle of friends and ask: "If it were you, which of these
+three names would you most like to choose?"
 
-不要闭门造车，更不要自我感动。**书名是写给读者看的，不是写给自己看的。**
+Don't act behind closed doors, let alone be moved by yourself. **The title of the book
+is written for readers, not for yourself. **

@@ -1,173 +1,324 @@
-# 题材风格包：复仇打脸 / 爽文逆袭
+# Theme style package: revenge face-slapping / feel-good fiction counterattack
 
 
-> 本题材风格包改写自获赠短篇流程包（oh-story 系 + 实测调整），按本仓口径适配：引用为部署后基座路径、已剔除外部体系引用。公开或商用前需原作者确认。
+> This theme style package is adapted from the short story process package (oh-story
+> series + actual measurement adjustment) received as a gift, and is adapted according
+> to the caliber of the repo: the reference is the base path after deployment,
+> and external system references have been eliminated. Confirmation by the original
+> author is required before disclosure or commercial use.
 
 
-> 番茄 / 七猫 / 黑岩通俗短篇。先读 `.claude/knowledge/short-craft/short-craft.md` 通用底座，本包在其上覆盖该题材专属调性。
-> 一句话定位：**主角被至亲 / 枕边人极端作践（私密照群发、开盒社死、碾压断手、人体盛、判死刑），靠藏着的身份底牌或重生 / 死遁 / 判官设定翻盘，当众撕穿、回旋镖反杀、让对方亲口认栽。** 读者要的是「作践有多狠，碾压就有多爽」+「身份揭晓那一刻的颅内高潮」。
+> Fanqie / Qimao / Heiyan popular short stories. Read the
+> `.claude/knowledge/short-craft/short-craft.md` universal base first, on which this
+> package covers the exclusive tonality of this theme. One-sentence positioning: **The
+> protagonist is abused in extreme ways by his close relatives/people beside him
+> (group-posting of private photos, social death by opening a box, crushing and
+> severed hands, human body overload, and death penalty). He relies on his hidden
+> identity cards or rebirth/death escape/judge settings to make a comeback. ** What
+> readers want is "the more ruthless you are, the more pleasure you get when you
+> crush" + "the intracranial climax at the moment when the identity is revealed".
 
-与「追妻火葬场」的分工：追妻卖**被珍视感的剥夺 + 心死离场**，男人事后追悔；本包卖**主动复仇 + 当众打脸 + 身份碾压**，加害者当场社死、自食恶果。本包不重复追妻的慢慢折磨与等他回头，专攻**反杀执行面**。
+The division of labor with the "wife-chasing crematorium": deprivation of the sense of
+cherishment when chasing a wife and selling her to a woman + breaking away from the
+scene**, and the man regrets it afterwards; this package of selling a woman takes the
+initiative to take revenge + face-slapping in public + identity crushing**, and the
+perpetrator dies on the spot and suffers the consequences. This package does not repeat
+the slow torture of chasing your wife and waiting for him to look back, but specializes
+in the execution of counter-attacks.
 
 ---
 
-## 叙述腔调
+## Narrative Tone
 
-第一人称「我」全程主导，受害与执行双声线。前段受作践时直白宣泄（疼、恶心、心沉到谷底），撞破后立刻切冷。**核心区别于追妻：心死之后不是等离场，而是亮底牌、动手、看对方表情。** 大量「我就看着他们咎由自取」式的剧透勾追读，和「我真的很期待他们脸上的表情」式的快意预告。
+The first person "I" dominates the whole process, with dual voices of victimization and
+execution. When the front part is fucked, it is straightforward to vent (pain, nausea,
+heart sinking to the bottom), and it is immediately cold after the break. **The core
+difference from chasing a wife: after the heart is gone, you don’t wait to leave, but
+show your cards, take action, and look at the other party’s expression. ** Lots of "I'm
+just watching them bring themselves to blame" spoiler hooks and "I'm really looking
+forward to the expressions on their faces" teasers.
 
-男频自救文（舔狗 / 被女总裁害的副总 / 被竹马算计的男主）也吃这套，用男「我」，腔调更冷更狠。穿书 / 系统设定的篇目用**弹幕插入**当外部审判声。
+Male-oriented self-rescue stories (dog-licking/the vice president who is harmed by the
+female CEO/the male protagonist who is plotted by his lover) also follow this style,
+using the male "I" and the tone is colder and crueler. Chapters in the book/system
+settings use **Barrage Insert** as the external judgment sound.
 
 ---
 
-## 开篇范式
+## Opening Paradigm
 
-正文第 1 章前先放**结果倒序的黄金简介**（150-300 字）：把作践全貌 + 反杀手段 + 身份底牌 / 重生节点一次性剧透，专卖追读；正文第 1 章把作践事件慢放重写、补满对话体感和心死。
+Chapter 1 of the main text is preceded by a **golden introduction with results in
+reverse order** (150-300 words): a one-time spoiler of Zuojian's full picture +
+counter-killing methods + identity card / rebirth node, exclusive for follow-up reading;
+Chapter 1 of the main text slow-plays and rewrites Zuojian's incident, and fills in the
+dialogue experience and heartbreak.
 
-| 开篇式 | 真实范例 |
+| Opening | Real examples |
 |--------|----------|
-| 社死现场即炸弹 | 《为给白月光出气，男友群发我私密照》男友为了逗白月光开心，把我的私密照片上传到色情网站。当晚，我被人开盒，无数谩骂和骚扰电话接踵而至。 |
-| 身份底牌反差 | 《十年前他们要我顶替妹妹进青楼》他们不知道。我已经从一个烟花之地的玩物，熬成了西域诸国的摄政王。 |
-| 极刑设定自陈 | 《前夫废我右手，我送他归西》当右手的手套被取下时，漏出来的是一截木头做的假肢。 |
-| 重生 / 死遁回档 | 《妈妈热衷于让妹妹装病》她痛恨我，趁我不备把我推向车流，我被车撞死。再睁眼，我回到了妈妈给妹妹剃头发那天。 |
-| 判官 / 死人设定 | 《被夺命格后》被亲爹娘一碗补汤送走后，我在阴曹地府端上了铁饭碗，成了百年唯一的女判官。 |
-| 男频自救反差 | 《被女友戏弄99次后，我另娶她人》给苏梦婉当舔狗的三年里，她戏弄了我98次。 |
+| The scene of the death was a bomb | "To vent my anger on white moonlight, my boyfriend sent my private photos to a group of people." In order to make white moonlight happy, my boyfriend uploaded my private photos to a pornographic website. That night, I was unboxed, and countless abusive and harassing phone calls followed. |
+| Contrast of identity cards | "Ten years ago they asked me to take my sister's place in a brothel" They didn't know. I have gone from being a plaything in the land of fireworks to becoming the regent of the countries in the Western Regions. |
+| Statement on capital punishment settings | "My ex-husband crippled my right hand, and I sent him back to the West." When the glove on his right hand was taken off, what leaked out was a prosthetic leg made of wood. |
+| Rebirth / Death Escape | "My mother is keen on letting my sister pretend to be sick" She hated me and pushed me into traffic when I was not prepared. I was hit by a car and died. When I opened my eyes again, I went back to the day my mother shaved my sister’s hair. |
+| Judge/Dead person setting | "After being killed" After being sent away by my parents with a bowl of tonic soup, I served an iron rice bowl in the underworld and became the only female judge in a hundred years. |
+| male-oriented self-help contrast | "After being teased by my girlfriend 99 times, I married another woman" In the three years when I worked as a licker for Su Mengwan, she teased me 98 times. |
 
 ---
 
-## 钩子母题与密度
+## Hook Motif and Density
 
-密度极高：简介塞 3-5 个作践事件 + 反杀预告，正文每节一个新作践升级或一记反杀落点，黑岩密到每 3-5 句一拐。**阶梯式作践：道德羞辱 → 经济掠夺 → 极端虐心（碾压 / 断肢 / 判死刑）。**
+The density is extremely high: the introduction is packed with 3-5 cheating events +
+counter-kill previews, the main text contains a new cheating upgrade or a
+counter-killing point in each section, and Heiyan is so dense that it turns every
+3-5 sentences. **Step-by-step practices: moral humiliation → economic plunder → extreme
+cruelty (crush/cut off limbs/sentence to death). **
 
-- **门外偷听撞破真相**（头号导火索）：去找加害者时隔着门 / 隔着窗听见他和同伙的真心话，作践动机一次性砸下。《为给白月光出气，男友群发我私密照》却在他家别墅门外听见他和朋友们的谈笑声；《99次表白后》却隔着门，听到了他和兄弟们的对话；《被女友戏弄99次后》却意外听到她和好友的谈话。
-- **私密照 / 开盒 / 社死**：把人的隐私武器化当众处刑。《只是爱过》发布会上将偷拍我的百张私密照做成PPT底板展示；《白月光忌日》让我穿三点式比基尼躺在餐桌，身上摆满美食供人享用。
-- **次数累积**：把作践 / 投入做成可计数的进度条，临界一节清零或反弹。99次表白、戏弄98次、报复第47次将到第50次。
-- **身份底牌反差**：主角藏着碾压级身份（摄政王 / 市监局 / 律师 / 豪门千金 / 判官），最狼狈时亮出。《邻居把我房子改春节民宿》可我是市监局的啊。
-- **回旋镖反杀**：加害者的招式原样砸回他自己（私密照被反追责、行车记录仪 / 指纹反指认、假古董露馅、断手熬汤端上桌）。
-- **重生 / 死遁 / 假死前瞻**：先交代前世死法与凶手，再睁眼回到关键节点，做「前世绝不会做的事」。
-
----
-
-## 情绪烈度与模式（烈度 9-10）
-
-比追妻更生猛：作践有物理极刑档（碾压手 / 人彘 / 人体盛 / 判死刑），所以宣泄要够痛，反杀要够冷。**两段声线，靠亮底牌 / 重生那一拍翻转。**
-
-- 受作践段直接写情绪，后接一个具体动作：心沉到谷底、万念俱灰、几欲呕吐，叠身体反应。
-- 心死转冷的快意预告：把读者按在「我知道你不知道」的信息差上吊着。
-- 极刑反衬：写极痛时用一句冷到反常的句子收（「幸好我已经死了，感受不到痛了」），痛感与冷意对撞。
-
-真实范例：
-
-- 《为给白月光出气，男友群发我私密照》随着我一丝不挂的照片被他扔在茶几上，我的心也跟着沉到了谷底。
-- 《为给白月光出气，男友群发我私密照》我紧紧抿着嘴唇，直到尝到血腥味，才勉强找回一丝清明。
-- 《重活一世，我选择救未婚妻的男助理》我悲哀地笑出了声，笑着笑着，眼里流出了泪。
-- 《前夫废我右手》那一刻，我万念俱灰。
-- 《被夺命格后》幸好我已经死了，感受不到痛了。
-- 《十年前他们要我顶替妹妹进青楼》笑吧。多笑会儿。过了今天，你们就再也笑不出来了。
-
----
-
-## 对话风格与真实金句
-
-占比 45-60%，黑岩打脸篇可到 60%，口语、狠、独立成段。四类台词撑全篇：
-
-**① 施害者道德踩踏狠话（钩子本体，越理直气壮越好）**
-- 《为给白月光出气，男友群发我私密照》现在所有人都把她在床上的浪荡样看光了，除了我，谁还敢接盘她？
-- 《十年前他们要我顶替妹妹进青楼》你长相平平，入了青楼也没人看得上你，我们放心！
-- 《十年前他们要我顶替妹妹进青楼》你一个千人骑万人跨的货色，还敢大摇大摆走沈家的正门？
-- 《只是爱过，仅此而已》自古以来，戏子就是给权贵取乐的，欣茹你应该珍惜这个机会向上爬的机会啊。
-- 《重活一世》顾天，你别搞错了，要不是怕你死在这，耽误我和徐虎直播卖货，我才不来救你！
-
-**② 白月光 / 反派娇弱软刀（装委屈倒打一耙）**
-- 《十年前他们要我顶替妹妹进青楼》不过姐姐回家就好，以前的事，我从来都没怪过你。
-- 《重生手撕夺我身份的假千金》姐姐，我都把我的竹马让给你了，你怎么还是这么不争气？
-- 《改嫁镇北侯》阿雪姐姐，我知道你不喜欢我，你与书宴哥哥青梅竹马，又有婚约在身，我充其量就是个外人，我这就走，再也不会打扰你们。
-
-**③ 主角亮底牌 / 当众审判金句（截图传播的高光）**
-- 《被夺命格后》晏家，咱们的账慢慢算。
-- 《心死准备离场，冷战男友通知我领证》秦总误会了，我纯粹觉得你比较可笑。
-- 《前夫废我右手》很公平吧，画家瞎了一只眼而已，手不还好好的吗？
-- 《母亲被刺垂危，医生老公为避嫌先救凶手》陆铭，你那套以德报怨的戏码，留着去感动感动你自己吧。
-- 《无处可逃》这么可笑的问题，就留给你进去慢慢思考吧。
-- 《邻居把我房子改春节民宿》可我是市监局的啊。
-
-**④ 弹幕 / 外部审判声（穿书 / 系统篇）**
-- 《心死准备离场》给女主宝宝点赞，打的太爽了，这男主欠打，千万别原谅！
-- 《心死准备离场》这男主也太普信了吧，长嘴不如不长。
-
-冲突靠对话长度反转标记权力易主：加害方前期长篇 PUA / 颐指气使，主角后期一句话冷怼定生死。
+- **Eavesdropping outside the door to reveal the truth** (number one trigger): When
+  looking for the perpetrator, I heard the true words of him and his accomplices through
+  the door/window, and the motive for committing the crime was thrown away at once. In
+  "To vent my anger on White Moonlight, my boyfriend sent me private photos to a group",
+  I heard him talking and laughing with his friends outside his villa; in "After
+  Confessing My Love 99 Times", I heard his conversation with his brothers through the
+  door; in "After Being Teased by My Girlfriend 99 Times", I accidentally heard her
+  talking with her friends.
+- **Private Photos/Unboxing/Social Death**: Weaponize people’s privacy and execute them
+  in public. At the press conference of "Just Loved", a hundred private photos of me
+  secretly taken were displayed on a PPT board; in "White Moonlight Death Day", I was
+  asked to wear a three-point bikini and lie on the dining table, with food all over my
+  body for people to enjoy.
+- **Count accumulation**: Make the practice/investment into a countable progress bar,
+  and clear or rebound the critical section. 99 times of confession, 98 times of
+  teasing, and the 47th time of revenge is coming to the 50th time.
+- **Identity Card Contrast**: The protagonist hides a crushing identity (Prince
+  Regent/Municipal Supervision Bureau/Lawyer/Wealthy Daughter/Judge), and reveals it
+  when he is in the most embarrassing situation. "The neighbor turned my house into a
+  Spring Festival B&B" But I am from the Municipal Supervision Bureau.
+- **Boomerang Counterattack**: The perpetrator's tricks are thrown back at him (private
+  photos are held accountable, driving recorders/fingerprints are reversed, fake
+  antiques are exposed, and soup with severed hands is served).
+- **Rebirth/Death Escape/Suspended Death Preview**: First explain the method of death
+  and the murderer in the previous life, then open your eyes and return to the key node
+  to do "things you would never do in the previous life."
 
 ---
 
-## 情绪链库
+## Emotional Intensity and Mode (Intensity 9-10)
 
-- **EC-重活报复（重生线，默认）**：含恨而死 → 重生睁眼 → 逐个回礼 → 底牌尽出 → 恶有恶报。五阶段，适合重生设定。
-- **EC-蛰伏亮牌（隐藏身份线）**：装拙藏锋 → 被逼到墙角 → 局部亮牌 → 全面碾压 → 视若无物。五阶段，适合马甲/大佬设定。
-- **EC-请君入瓮（设局反杀线）**：知局入局 → 假意配合 → 收网锁死 → 公开处刑 → 求饶无门。五阶段，适合高智商复仇。
+More violent than chasing a wife: Zuojian has physical execution stages (crushing
+hand/human pig/human body/sentenced to death), so the catharsis must be painful enough,
+and the counterattack must be cold enough. **Two voices, flipped by the beat of showing
+trump card/rebirth. **
 
-## 招式库
+- The Shou Zuo Jian section directly describes the emotion, followed by a specific
+  action: the heart sinks to the bottom, all thoughts are lost, almost vomiting, and the
+  body reacts.
+- A preview of heart-wrenching pleasure: the reader is hung on the information gap of "I
+  know you don't know".
+- Capital Punishment Contrast: When writing about extreme pain, end it with an unusually
+  cold sentence ("Fortunately, I'm dead and can't feel the pain anymore"). The pain and
+  coldness collide.
 
-| 招式 | 怎么用 | 真实例 |
+Real example:
+
+- "To vent my anger on White Moonlight, my boyfriend sent me private photos to a group."
+  As he threw the naked photos of me on the coffee table, my heart sank to the bottom.
+- "To vent my anger on White Moonlight, my boyfriend sent me private photos to a group."
+  I pursed my lips tightly until I tasted the smell of blood, and then I barely regained
+  my clarity.
+- "Relive my life, I choose to save my fiancée's male assistant" I laughed sadly,
+  smiling with tears in my eyes.
+- At the moment when "My Ex-Husband Destroyed My Right Hand", I lost all hope.
+- "The Queen Who Was Killed" Fortunately, I'm dead and can't feel the pain anymore.
+- "Ten years ago they asked me to take my sister's place in a brothel" Just laugh. Laugh
+  more. After today, you will never laugh again.
+
+---
+
+## Conversational style and authentic quotes
+
+Accounting for 45-60%, Kuroiwa's face-slapping chapter can reach 60%, spoken, ruthless,
+and independent. Four types of lines support the entire article:
+
+**① The perpetrator’s moral trampling and harsh words (hook body, the more confident and
+confident the better)**
+- "To vent my anger on White Moonlight, my boyfriend sent me private photos to a group
+  of people" Now that everyone has seen how slutty she is in bed, who else but me would
+  dare to take over her?
+- "Ten years ago they asked me to take my sister's place in a brothel." You are
+  average-looking, and no one will take notice of you even if you enter the brothel. We
+  can rest assured!
+- "Ten years ago they asked me to take my sister's place in the brothel" How dare you
+  walk through the main entrance of the Shen family with such arrogance that you can
+  ride on thousands of people?
+- "Just loved, that's all" Since ancient times, actors have entertained the rich and
+  powerful. Xinru, you should cherish this opportunity to climb up.
+- "Relive a Life Again" Gu Tian, don't make a mistake, if I weren't afraid that you
+  would die here and delay Xu Hu and I from selling goods live, I wouldn't have come to
+  save you!
+
+**② white moonlight / villain’s delicate and soft knife (pretend to be aggrieved and
+beat him up)**
+- "Ten years ago they asked me to take my sister's place in a brothel." But it's fine if
+  my sister goes home. I've never blamed you for what happened in the past.
+- "The Rebirth of the Fake Daughter Who Teared My Identity" Sister, I gave you my
+  sweetheart, why are you still so unsatisfied?
+- "Remarrying the Marquis of Zhenbei" Sister Axue, I know you don't like me. You and
+  Brother Shuyan are childhood sweethearts and you are engaged. I am an outsider at
+  best. I will leave now and never disturb you again.
+
+**③ The protagonist shows his trump card/judges in public (highlights from the
+screenshots)**
+- "After Being Destroyed" The Yan family, our accounts will be settled slowly.
+- "Dead and ready to leave, my Cold War boyfriend informed me to get my certificate" Mr.
+  Qin misunderstood, I just think you are ridiculous.
+- "My Ex-Husband Abandoned My Right Hand" is fair, right? The painter only lost one eye,
+  but isn't his hand still fine?
+- "Mother is stabbed and dying, doctor husband saves the murderer first to avoid
+  suspicion" Lu Ming, please save your drama of repaying evil with kindness to move
+  yourself.
+- For such a ridiculous question as "Nowhere to Escape", I'll leave it to you to think
+  about it slowly.
+- "The neighbor turned my house into a Spring Festival B&B" But I am from the Municipal
+  Supervision Bureau.
+
+**④ Barrage/External Sound of Judgment (Book Translation/System Chapter)**
+- "Dead Heart and Ready to Leave" gives thumbs up to the heroine's baby, the spanking
+  was so enjoyable, the male protagonist deserves a spanking, please don't forgive him!
+- The male protagonist in "Dead Heart and Prepare to Leave" is too trustworthy. It's
+  better not to have a long mouth than to have a long mouth.
+
+Conflict relies on the reversal of dialogue length to mark the change of power: the
+offender has a long PUA / bossing in the early stage, and the protagonist's cold words
+in the later stage can determine life or death.
+
+---
+
+## Emotion chain library
+
+- **EC-Rebirth and Revenge (rebirth line, default)**: Die with hatred → Reborn with eyes
+  open → Return gifts one by one → All cards are revealed → Evil will be rewarded. Five
+  stages, suitable for rebirth setting.
+- **EC-Hibernating Showing Cards (Hidden Identity Line)**: Pretending to be clumsy and
+  hiding the edge → Being forced into a corner → Partially showing cards → Fully
+  crushing → Turning a blind eye. Five stages, suitable for vest/boss setting.
+- **EC-Please enter the urn (set up a counterattack line)**: knowing the situation and
+  entering the game → pretending to cooperate → closing the net and locking the person
+  to death → public execution → no way to beg for mercy. Five stages, suitable for high
+  IQ revenge.
+
+## Move library
+
+| Moves | How to use | Real examples |
 |------|--------|--------|
-| 门外偷听一次砸 | 去找加害者时隔门 / 隔窗听见真心话，动机全盘揭开 | 《为给白月光出气，男友群发我私密照》却在他家别墅门外听见他和朋友们的谈笑声 |
-| 私密照 / 开盒社死 | 把隐私武器化当众处刑，社死即开篇炸点 | 《只是爱过》发布会上将偷拍我的百张私密照做成PPT底板展示，拿下项目晋升经理 |
-| 身份底牌反差亮牌 | 最狼狈处突然亮出碾压级身份，全场表情逆转 | 《邻居把我房子改春节民宿》可我是市监局的啊；《黄毛转行当律师后》老周，来抓人，顺便给你发罪犯埋尸的证据 |
-| 回旋镖反杀 | 加害者的招式原样砸回他自己 | 《前夫废我右手》后来我亲手将我的断手熬了一锅汤，放在了他们的餐桌上；《识破千万彩礼骗局后》在博物馆工作的我，当场发现底部刻着madeinChina |
-| 次数累积清零 | 把投入 / 作践做成可计数进度条，临界一节归零或反弹 | 《99次表白后》我如他所愿对他表白了99次；《重活一世》第九十九次下降高度，我痛得脸上没有一丝血色，却露出一抹笑颜 |
-| 物证 / 系统抹除 | 一次性销毁全部隐私物证，再走法律 | 《为给白月光出气，男友群发我私密照》就在我登机那刻，所有相关视频和照片都被系统清除 |
-| 重生做绝不会做的事 | 回档后主动把丈夫 / 钱 / 机会推给反派，看其咎由自取 | 《妈妈热衷于让妹妹装病》这一世，我不会再劝阻他们，我就看着他们咎由自取 |
-| 判官 / 死人执法 | 借冥府 / 鬼影设定越级清算九族 | 《被夺命格后》我提起判官笔，沾满朱砂，在晏家九族的寿命簿上，重重划了一个叉 |
-| 假死 / 死遁诱疯 | 制造自己已死的假象，反手布局让加害者声名俱灭 | 《出狱假死后，前夫为我疯魔了》出狱后，我假死复仇了 |
-| 当众审判金句盖棺 | 不哭闹，一句居高临下的反问 / 陈述定性对方 | 《心死准备离场》秦总误会了，我纯粹觉得你比较可笑 |
-| 财产 / 中奖反向分配 | 把本属于自己的利益当众转给外人，打脸吸血亲属 | 《彩票风云》他们也在兑奖时被打脸，才知道真正中奖的其实是我 |
+| Eavesdropping outside the door and smashing it | When looking for the perpetrator, I heard the truth through the door / through the window, and the whole motive was revealed | "To vent my anger on White Moonlight, my boyfriend sent me private photos in a group" but I heard him talking and laughing with his friends outside the door of his villa |
+| Private photos / Unboxing of social death | Weaponizing privacy and executing people in public, social death is the explosive point at the beginning | At the press conference of "Just Loved", a hundred private photos of me were secretly taken and displayed on a PPT board, and I won the project promotion to manager |
+| Contrast of identity cards revealed | The most embarrassed person suddenly reveals his crushing identity, and the expressions of the whole audience are reversed | "The neighbor turned my house into a Spring Festival B&B" but I am from the Municipal Supervision Bureau; "After Huang Mao changed his profession to become a lawyer" Old Zhou, come to arrest people, and by the way, I will send you the evidence that the criminal buried the body |
+| Boomerang counterattack | The perpetrator's moves were thrown back at him | "My ex-husband destroyed my right hand" Later I made a pot of soup for my severed hand and put it on their dining table; "After discovering the multi-million-dollar gift scam" I worked in a museum and discovered on the spot that madeinChina was engraved on the bottom |
+| The accumulated number of times is cleared | Make the investment/practice into a countable progress bar, and reset to zero or rebound at the critical section | "After 99 Confessions" I confessed to him 99 times as he wished; "Relive a Life" the 99th time I descended the height, I was so painful that there was no trace of blood on my face, but a smile appeared |
+| Physical evidence / system erasure | Destroy all private evidence at once before going to the law | "To vent my anger on white moonlight, my boyfriend sent me private photos in a group" The moment I boarded the plane, all related videos and photos were cleared by the system |
+| Doing things you would never do after being reborn | After returning, you actively push your husband/money/opportunities to the villain, and you will get the blame for it | "Mom is keen on letting my sister pretend to be sick" In this life, I will not dissuade them anymore, I will just watch them get the blame for themselves |
+| Judge / Law Enforcement by the Dead | Using Hades / Ghost Settings to Clear Up the Nine Clan | "After Being Deprived of Life" I picked up the judge's pen, which was covered with cinnabar, and made a cross on the lifespan book of the nine tribes of the Yan family |
+| Faking death / Escape from death to induce madness | Create the illusion that you are dead, and backhand the plan to destroy the reputation of the perpetrator | "After I was released from prison and faked my death, my ex-husband went crazy for me" After I was released from prison, I faked my death for revenge |
+| The coffin of a public trial with golden words | Don’t cry, just ask a condescending question/state the character of the other party | "Death is ready to leave" Mr. Qin misunderstood, I just think you are ridiculous |
+| Property/Reverse distribution of winnings | Transferring your own interests to outsiders in public, face-slapping vampire relatives | "Lottery Storm" They were also face-slapping when redeeming the prize, and then they realized that it was me who actually won the prize |
 
 ---
 
-## 节奏骨架
+## Rhythm Skeleton
 
 ```
-黄金简介（结果倒序 + 反杀手段 / 身份底牌 / 重生节点预告）
-→ 第1章重写作践事件、补满对话体感与社死
-→ 门外偷听 / 撞破真相一次砸
-→ 心死定格 + 反杀决意（亮底牌前瞻预告）
-→ 逐章反击升级（回旋镖 / 次数清零 / 当众揭穿）
-→ 身份底牌揭晓，全场表情逆转
-→ 加害者社死 / 自食恶果 / 求饶被冷拒
+Introduction to gold (reverse order of results + counter-killing methods / identity card / preview of rebirth node)
+→ Chapter 1 rewrites practical events, fills in dialogue experience and social life
+→ Eavesdropping at the door/Discovering the truth in one go
+→ Heartbroken + Determination to fight back (preview of showing trump card)
+→ Chapter-by-chapter counterattack upgrade (Boomerang/Number of times cleared/Exposed in public)
+→ The identity card was revealed, and the expressions of the audience reversed
+→ The perpetrator will die / reap the consequences / begged for mercy but was rejected coldly
 ```
 
-每章一个新信息炸弹或一记反杀落点，章尾留钩不收束情绪。疏密：作践 / 亮牌 / 打脸处详写慢放，逐拍展开；过场一句带过。
+Each chapter has a new information bomb or a counter-kill landing point, leaving a hook
+at the end of the chapter to keep the mood at bay. Density: write down the details of
+practicing / showing cards / face-slapping in slow play, unfolding beat by beat; passing
+through cutscenes in one sentence.
 
 ---
 
-## 收尾范式
+## Closing Paradigm
 
-- 当众打脸定格：身份揭晓那一刻全场鸦雀无声 / 加害者酒杯落地，主角一句冷话收。
-- 自食恶果：加害者落得当初施加给主角的下场（入狱、社死、反被碾压），主角已无波澜。
-- 漠视离场：把对方留在悔恨里，自己头也不回，漠视比报复更狠。
-- 男视角反衬（追悔火葬场）：偶尔插一句加害者失去后的崩溃当余韵。
+- Face-slapping in public: the moment the identity was revealed, the audience fell
+  silent/the perpetrator’s wine glass fell to the ground, and the protagonist responded
+  with a sarcastic comment.
+- Reap the consequences: The perpetrator ended up with the fate that was originally
+  imposed on the protagonist (imprisonment, social death, being crushed), and the
+  protagonist is no longer in trouble.
+- Leave with indifference: Leave the other person in regret without looking back.
+  Indifference is more cruel than revenge.
+- Male perspective contrast (Repentance Crematorium): Occasionally insert a line about
+  the perpetrator's collapse after losing it as the aftertaste.
 
-真实范例：《无处可逃》我笑着拍拍他的脸：这么可笑的问题，就留给你进去慢慢思考吧。／《十年前他们要我顶替妹妹进青楼》过了今天，你们就再也笑不出来了。
-
----
-
-## 该题材专属调校（与通用去 AI 规则的偏差）
-
-这些在别的语境是 AI 味，在本题材是卖点，**别误删**：
-
-- **快意剧透 / 亮底牌前瞻预告**（「过了今天，你们就再也笑不出来了」「我真的很期待他们脸上的表情」）：保留，这是本题材的爽感引擎，只删「泄了悬念又不吊读」的随手上帝腔。
-- **直写情绪成语 + 体感叠加**（心沉到谷底 / 万念俱灰）：保留，配一个场景里特有的动作或物件即可，别替换成纯动作。
-- **次数 / 金额 / 年限的逐项枚举**（第七次、第三十七次、第九十九次下降）：保留，这是递进式累积爽点，不是凑字排比。
-- **弹幕 / 外部审判声**（穿书 / 系统篇）：保留，是该题材的外部爽感声轨，不是赘语。
-- **极刑 / 社死场面的直写**（碾压、断肢、人体盛）：服务情绪烈度，不做文学化淡化；这是该题材读者的核心期待。**注意：写极端虐心招式仅为剧情张力，不细化任何可被照做的伤害手法步骤。**
-- **当众审判金句 / 自食恶果章尾**：保留；只删空洞哲理升华。
-
-仍要避免的真·AI 味：映入眼帘、心中暗道、沉声道、嘴角微扬、目光如炬、论文体连词（不难看出 / 由此可见）、空泛无体感的情绪总结句（一丝悲伤涌上心头）。
-
-> 标点：本题材范例为示意保留了原貌（含个别 `……` / `...`）；落到正文按 `.claude/knowledge/short-craft/short-craft.md` 第 8 节执行，不出 `……` / `——`，停顿、哽咽、未尽、被打断一律用短句 / 句号 / 逗号 / 动作 beat / 换行实现。本包不教用 `……`。
+Real example: "Nowhere to Escape" I smiled and patted his face: Such a ridiculous
+question, I'll leave it to you to think about it slowly. / "Ten years ago they asked me
+to take my sister's place in a brothel" After today, you will never laugh again.
 
 ---
 
-## 配套结构公式（按篇幅 / 设定选）
+## Exclusive adjustment for this theme (deviation from general AI rules)
 
-- **现实社死复仇型（8-11 章，私密照 / 开盒 / 恶邻 / 白眼狼亲属）**：1-2 章社死作践（隐私武器化 + 门外偷听撞破动机）→ 3 章心死 + 亮底牌前瞻 → 4-6 章回旋镖反杀 / 物证翻盘 / 走法律 → 7-8 章身份揭晓当众打脸 → 加害者自食恶果。100% 第一人称；社死要具体到平台 / 物证，反杀走规则碾压而非对骂。
-- **重生 / 死遁 / 假死型**：先交代前世死法与凶手（碾压、判死刑、被害流产）→ 再睁眼回到关键节点 → 做「前世绝不会做的事」（主动把利益推给反派 / 决绝死遁布局）→ 临界点亮底牌反杀 → 加害者悔疯。
-- **身份底牌 / 古言女强型（摄政王 / 判官 / 律师）**：开篇即归来 + 受当众羞辱 → 隐忍蓄势、暗线铺底牌 → 反派步步加码作践 → 一招亮牌全场逆转 → 九族清算 / 加害者跪地。男频自救型（舔狗 / 副总 / 被竹马算计）同骨架，换男「我」，反杀更冷、靠继承家产 / 小青梅资源 / 商战清算收口。
+These are AI-flavored in other contexts, but they are selling points in this subject
+matter, **don’t delete them by mistake**:
+
+- **Ruyi spoilers/preview of revealing trump card** ("After today, you will never laugh
+  again" "I'm really looking forward to the expressions on their faces"): Keep it, this
+  is the refreshing engine of this theme, only delete the casual God-like accent that
+  "releasing the suspense without losing interest in reading".
+- **Directly written emotional idioms + somatosensory superposition** (heart sinks to
+  the bottom / all thoughts are lost): Keep it, just match it with an action or object
+  unique to the scene, don't replace it with pure action.
+- **Itemized enumeration of times/amounts/years** (seventh, 37th, 99th decrease):
+  Reserved, this is a progressive accumulation satisfying payoff, not a word ranking.
+- **Barrage/External Judgment Sound** (Through the Book/System Chapter): Reserved, it is
+  the external and refreshing sound track of this theme, not a redundant word.
+- **Direct writing of capital punishment/communal death scenes** (crushing, severed
+  limbs, human body): Serve the emotional intensity, without diluting it into
+  literature; this is the core expectation of readers of this subject. **Note: The
+  extremely heart-wrenching moves are written only for plot tension and do not detail
+  any steps of harmful methods that can be followed. **
+- **Quotes about being judged in public / End of chapter of reaping the consequences**:
+  Keep; only delete empty philosophical sublimation.
+
+The real AI tastes that should be avoided are: catching the eye, secret thoughts in the
+heart, deep voice, slightly raised corners of the mouth, piercing eyes, essay-style
+conjunctions (it is not difficult to see / it can be seen from this), and empty and
+intangible emotional summary sentences (a trace of sadness wells up in the heart).
+
+> Punctuation: This theme example retains its original appearance for illustration
+> (including individual `...` / `...`); when it comes to the main text, follow Section
+> 8 of `.claude/knowledge/short-craft/short-craft.md`, and do not leave `...` / `em
+> dash`. Pauses, chokes, unfinished words, and interruptions must be realized with
+> short sentences/periods/commas/action beats/line breaks. This package does not teach
+> the use of `...`.
+
+---
+
+## Supporting structure formula (select according to length/setting)
+
+- **Realistic social revenge type (Chapter 8-11, private photos/box opening/evil
+  neighbor/white-eyed wolf relatives)**: Chapter 1-2 Social suicide (weaponization of
+  privacy + eavesdropping at the door to uncover the motive) → Chapter 3 Desire +
+  Preview of showing trump card → Chapter 4-6 Boomerang counterattack / Turn over of
+  physical evidence / Walking the law → Chapter 7-8 Identity revealed and face-slapping
+  in public → The perpetrators will suffer the consequences. 100% first person; social
+  death must be specific to the platform/physical evidence, and the anti-killing rules
+  should be crushed rather than scolded.
+- **Rebirth/Death Escape/Suspended Death Type**: First explain the method of death and
+  the murderer in the previous life (crush, death penalty, miscarriage) → then open your
+  eyes and return to the key node → do "things you would never do in the previous life"
+  (actively push the benefits to the villain/defeat the death escape plan) → use your
+  trump card to fight back → the perpetrator regrets going crazy.
+- **Identity trump card/Ancient proverb female strong type (regent/judge/lawyer)**:
+  Return at the beginning + be humiliated in public → Tolerate and build up momentum,
+  lay secret cards → The villain increases his practice step by step → Reversal of the
+  game with one bright move → Nine tribes are liquidated / The perpetrators kneel down.
+  The male-oriented self-rescue type (dog licker/vice president/being plotted by a
+  bamboo horse) has the same skeleton, but replaced with the male "I", the counterattack
+  is colder, and he relies on inheriting the family property/little childhood
+  resources/liquidating the business war to settle down.

@@ -1,37 +1,38 @@
-# 类型档案：悬疑脑洞
+# Genre Archives: Suspensewild idea
 
-> 脑洞向的悬疑灵异、破案探险类，以及诡异复苏、惊悚游戏、规则怪谈等。
+> Wild Idea's suspense and supernatural genres, crime-solving adventure genres, as
+> well as spooky revivals, thriller games, rules and weird stories, etc.
 
 - **id:** `suspense-brained`
-- **label:** 悬疑脑洞
+- **label:** suspense wild idea
 
 ---
 
-## 题材配置
+## Theme configuration
 
-### 满足类型
-- 规则破解
-- 惊险逃生
-- 打脸系统
-- 副本通关
-- 真相揭露
-
-
-### 章节类型
-- 规则探索
-- 生存危机
-- 智斗博弈
-- 副本通关
-- 现实影响
+### Satisfy Type
+- Rule cracking
+- Thrilling escape
+- face-slapping system
+- Clear the copy
+- truth revealed
 
 
-### 节奏规则
+### Chapter type
+- Rule exploration
+- existential crisis
+- Game of wits
+- Clear the copy
+- Realistic impact
+
+
+### Rhythm Rules
 - max_consecutive_action_chapters: 3
 - max_consecutive_daily_chapters: 1
 - beat_density_min: 2
 
 ---
 
-## 卷级故事弧模板
+## Volume Story Arc Template
 
-默认：规则降临→探索→破解→闯关→新规则→更强挑战
+Default: Rules come → Explore → Crack → Breakthrough → New rules → Stronger challenge

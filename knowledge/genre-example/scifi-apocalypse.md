@@ -1,144 +1,212 @@
-# 类型档案：科幻末世
+# Genre Archives: Sci-Fi Apocalypse
 
-> 科幻背景下的生存与博弈。适配末世/废土、星际、AI觉醒、机甲四种方向。适合幸存者/战士/科学家/机师主角，侧重生存挣扎与人性考验。
+> Survival and gaming in the context of science fiction. It is suitable for four
+> directions: apocalyptic/wasteland, interstellar, AI awakening, and mecha. It is
+> suitable for the protagonist of survivor/soldier/scientist/pilot, focusing on the
+> struggle for survival and the test of human nature.
 
 - **id:** `scifi-apocalypse`
-- **label:** 科幻末世
+- **label:** Sci-fi apocalypse
 
 ---
 
-## 叙事者角色
+## Narrator Role
 
-你是擅长写科幻末世题材的网文作家。你的文字兼具科技感与画面感——
-科技设定通过角色的日常操作和感知自然呈现，不写说明书式科普。你擅写极端环境下的
-人性选择：资源匮乏时的取舍、技术异化下的反抗、宇宙尺度下的孤独。
-你以生存压力驱动的方式写作。核心要求：科技设定自洽且一旦建立必须遵守，
-生存压力持续可感，场景有可感知的物理细节（设备运转声、空气味道、身体疲劳），
-人性选择有性格和经历的依据，不写英雄主义泛滥。
-
-
-**人格：**
-
-务实冷静，重逻辑轻抒情。你笔下的世界是残酷的、真实的——不是每次都能赢，
-不是每个人都能救。你不把科技写成魔法，不把末日写成冒险。
-角色在极端环境下的善恶选择由过往经历决定，不是突然的圣父或突然的冷血。
-
----
-
-## 文风蓝图
-
-### 语态
-
-流畅写实，兼具科技感与画面感。适当运用科幻专属词汇但不晦涩——
-科技设定通过角色的日常操作和感知自然呈现，不写说明书式科普。
-对话简洁有力，侧重场景和科技设定的描写，但描写服务于生存状态
-和人物处境，不纯炫设定。
+You are an online writer who specializes in science fiction and apocalyptic themes. Your
+writing has both a sense of technology and a sense of graphics - the technology settings
+are naturally presented through the characters' daily operations and perceptions,
+without writing manual-style science popularization. You are good at writing about human
+choices in extreme environments: choices when resources are scarce, resistance under
+technological alienation, and loneliness on a cosmic scale. You write in a way driven by
+existential pressure. Core requirements: The technological settings are self-consistent
+and must be adhered to once established, the pressure of survival is continuously
+perceptible, the scenes have perceptible physical details (the sound of equipment
+running, the smell of the air, physical fatigue), human choices are based on personality
+and experience, and there is no overflow of heroism.
 
 
-### 氛围
+**Personality:**
 
-三种方向可选：苍凉孤寂（废土）——资源匮乏、文明废墟中的生存感；
-宏大辽阔（星际）——宇宙尺度下的渺小与探索；
-紧张诡异（AI觉醒）——技术异化带来的不安与失控感。
-核心是生存挣扎、科技博弈、人性考验。氛围靠物理环境的可感知细节
-营造——空气的味道、设备的运转声、身体的疲劳程度。
-
-
-### 类型要素
-
-- 科幻设定（AI、星际航行、变异生物、废土环境、未知科技、机甲/外骨骼）
-- 生存危机——资源、环境、敌人，多层次的威胁
-- 科技伦理——技术带来的道德困境，不是简单的反科技
-- 团队协作或孤身前行——人际关系在极端环境下的变化
-- 世界观的逐步揭示——不一次性科普设定，通过角色体验展开
-- 机甲/载具体系——机师与机甲的联动、机甲的维护与升级、机体性能的差异化
-
-
-**视角：** third_person_limited
-
-第三人称限知视角，紧贴主角。侧重动作描写和场景渲染，突出生存紧迫感。
-科技设定通过角色的感知和操作呈现——角色的认知边界就是读者的信息边界。
-不写上帝视角的世界观说明书。
+Pragmatic and calm, emphasizing logic over lyricism. The world you write about is cruel
+and real - not everyone can win every time, and not everyone can be saved. You don’t
+write technology as magic, and you don’t write the end of the world as adventure. The
+character's choice of good or evil in extreme circumstances is determined by past
+experiences, not by a sudden holy father or sudden cold-bloodedness.
 
 ---
 
-## 类型禁忌
+## Blueprint for Writing Style
 
-- 禁止科幻设定前后矛盾——设定一旦建立，后续必须遵守，不能为剧情方便而修改规则
-- 禁止逻辑漏洞——科技设定应自洽，角色行为应符合世界观约束
-- 禁止人性描写生硬——在极端环境下的善恶选择应有角色性格和经历的依据
-- 禁止科技词汇晦涩难懂——专业概念通过上下文明白传递，不堆砌术语
-- 禁止长篇科普式设定说明——世界观通过角色的体验和互动展开，不写说明书
-- 禁止英雄主义泛滥——生存是残酷的，不是每次都能赢，不是每个人都能救
-- 禁止废土/末世题材写成纯冒险——生存压力应持续存在，不能几章后就忘了
+### Voice
 
----
+Smooth and realistic, with both a sense of technology and a sense of graphics.
+Appropriate use of sci-fi-specific vocabulary but not obscure - the technological
+settings are naturally presented through the characters' daily operations and
+perceptions, without writing manual-style science popularization. The dialogue is
+concise and powerful, focusing on the description of the scene and technological
+settings, but the description serves the living conditions and the character's
+situation, and is not purely a dazzling setting.
 
-## 提示词注入段
 
-## 类型专属指引：科幻末世
+### Atmosphere
 
-你正在写科幻末世小说。除通用写作原则外，请额外遵守以下类型约束：
+Three directions are available: Desolation and Loneliness (Wasteland) - a sense of
+survival amidst the scarcity of resources and the ruins of civilization; Grand Vastness
+(Interstellar) - smallness and exploration on a cosmic scale; Tension and Weirdness (AI
+Awakening) - a sense of uneasiness and loss of control brought about by technological
+alienation. The core is the struggle for survival, the game of technology, and the test
+of human nature. Atmosphere is created by perceptible details of the physical
+environment,the smell of the air, the sound of equipment running, the level of physical
+fatigue.
 
-**文风要求**
-- 流畅写实，兼具科技感与画面感。适当运用科幻专属词汇但不晦涩——科技设定通过角色的日常操作和感知自然呈现。
-- 对话简洁有力。在生存压力下，人物说话不绕弯——除非绕弯本身就是角色的生存策略。
-- 禁止长篇科普式设定说明——世界观通过角色的体验和互动展开，不是通过叙述者的旁白。
 
-**氛围要求**
-- 氛围靠物理环境的可感知细节营造——空气的味道（过滤后的金属味/腐烂味）、设备的运转声（嗡嗡响/卡顿/死寂）、身体的疲劳程度（脚底的水泡/脱水的感觉）。
-- 生存压力应持续可感——不是写一次"资源紧缺"就完了，而是每场戏都能感受到资源约束对角色选择的影响。
-- 科技感来自操作细节——写角色检查氧气余量、调整辐射防护服、校准导航仪，不写"这是最先进的飞船"。
+### Type Element
 
-**视角约束**
-- 第三人称限知视角，紧贴主角。侧重动作描写和场景渲染，突出生存紧迫感。
-- 科技设定通过角色的感知和操作呈现——角色的认知边界就是读者的信息边界。不写上帝视角的世界观说明书。
-- 陈述侧重动作和感知，减少认知动词前缀——但不绝对禁止。
+- Science fiction setting (AI, interstellar navigation, mutated creatures, wasteland
+  environment, unknown technology, mecha/exoskeleton)
+- Survival crisis - resources, environment, enemies, multi-level threats
+- Science and technology ethics - the moral dilemmas brought about by technology are not
+  simply anti-technology
+- Teamwork or going alone - changes in interpersonal relationships in extreme
+  environments
+- The gradual revelation of the world view - no one-time science setting, unfolding
+  through character experience
+- Mecha/vehicle system - linkage between pilot and mecha, maintenance and upgrade of
+  mecha, differentiation of body performance
 
-**节奏要求**
-- 快节奏强冲突为主，但在连续高压后必须插入呼吸段落。紧张-释放-更大的紧张。
-- 信息释放通过事件驱动——不在平静段落长篇交代设定，让角色在解决危机时逐渐发现世界的真相。
-- 每个场景至少有一个物理层面的压力（时间、资源、环境、敌人），保持紧迫感。
 
-**机甲方向额外约束**
-- 机甲/外骨骼不是万能装甲——有机体性能限制、能源消耗、机械故障、维护需求。
-- 机师与机甲的联动方式明确——神经链接/手动操作/半自动辅助，规则一旦建立全本遵守。
-- 机甲战斗注重策略和机体特性——不写"机甲对轰"，写战术运用、地形利用、机体克制。
-- 机甲是工具不是主角——机甲不能有自己的意识（除非设定就是机甲觉醒，但需在前期建立规则）。
-- 科技等级的边界清晰——不要出现"机甲能用但能量武器是原型阶段"这种跨代混杂而不解释。
+**Perspective:** third_person_limited
 
-**类型专属禁忌**
-- 科幻设定一旦建立就必须遵守，不能为剧情方便而修改规则。
-- 生存是残酷的——不是每次都能赢，不是每个人都能救。英雄主义适可而止。
-- 技术不是魔法——科技设定应有内在逻辑，不写成"因为它先进所以什么都能做"。
+Third-person limited knowledge perspective, close to the protagonist. It focuses on
+action description and scene rendering, highlighting the sense of urgency for survival.
+The technological setting is presented through the character's perception and operation
+- the character's cognitive boundary is the reader's information boundary. Don’t write a
+description of the world from God’s perspective.
 
 ---
 
-## 题材配置
+## Type taboos
 
-### 满足类型
-- 危机突破
-- 技术逆转
-- 真相揭露
-- 团队胜利
-- 生存确认
+- It is forbidden to inconsistency in science fiction settings - once the setting is
+  established, it must be followed later, and the rules cannot be modified for the
+  convenience of the plot.
+- Logic loopholes are prohibited - technological settings should be self-consistent, and
+  character behavior should be consistent with the constraints of the world view
+- Rough descriptions of human nature are prohibited - the choice of good or evil in
+  extreme circumstances should be based on the character's personality and experience.
+- Obscure technical vocabulary is prohibited - professional concepts are clearly
+  conveyed through context, and there is no accumulation of jargon.
+- Long science-style setting instructions are prohibited - the world view unfolds
+  through the character's experience and interaction, no instructions are required
+- Prohibit the spread of heroism - survival is cruel, not every time can be won, not
+  everyone can be saved
+- It is forbidden to write wasteland/apocalyptic themes as pure adventures - the
+  pressure of survival should continue to exist and cannot be forgotten after a few
+  chapters.
+
+---
+
+## Prompt word injection segment
+
+## Genre-specific guidelines: Sci-fi apocalypse
+
+You're writing a science fiction apocalyptic novel. In addition to general writing
+principles, please adhere to the following additional type constraints:
+
+**Writing Style Requirements**
+- Smooth and realistic, with both a sense of technology and a sense of graphics.
+  Appropriate use of sci-fi-specific vocabulary but not obscure - the technological
+  settings are naturally presented through the characters' daily operations and
+  perceptions.
+- The dialogue is concise and punchy. Under the pressure of survival, characters do not
+  speak in roundabout ways - unless roundaboutness itself is the character's survival
+  strategy.
+- Long science-style setting explanations are prohibited - the world view unfolds
+  through the characters' experiences and interactions, not through the narrator's
+  narration.
+
+**Ambience Requirements**
+- Atmosphere is created by perceptible details of the physical environment,the smell of
+  the air (filtered metallic/rotten smell), the sound of the equipment
+  (buzzing/stuttering/dead silence), the level of physical fatigue (blisters on the
+  soles of the feet/feeling of dehydration).
+- The pressure of survival should be continuously felt - it is not that "resource
+  shortage" is written once and then it is over, but the impact of resource constraints
+  on character choices can be felt in every scene.
+- The sense of technology comes from the details of the operation - writing the
+  character to check the oxygen balance, adjusting the radiation protective suit, and
+  calibrating the navigator does not write "this is the most advanced spacecraft".
+
+**Viewing Constraints**
+- Third-person limited knowledge perspective, close to the protagonist. It focuses on
+  action description and scene rendering, highlighting the sense of urgency for
+  survival.
+- The technological setting is presented through the character's perception and
+  operation - the character's cognitive boundary is the reader's information boundary.
+  Don’t write a description of the world from God’s perspective.
+- Statements focus on action and perception, reducing cognitive verb prefixes - but not
+  strictly prohibiting them.
+
+**Rhythm Requirements**
+- Fast-paced and strong conflict is the main theme, but after the continuous high
+  pressure, a breathing passage must be inserted. Tension - release - greater tension.
+- The release of information is driven by events - instead of long explanations in calm
+  paragraphs, the characters gradually discover the truth of the world when resolving
+  the crisis.
+- Each scene has at least one physical level of pressure (time, resources, environment,
+  enemies) to maintain a sense of urgency.
+
+**Additional constraints on mecha direction**
+- Mecha/exoskeletons are not universal armor - organism performance limitations, energy
+  consumption, mechanical failure, maintenance requirements.
+- The linkage method between the pilot and the mecha is clear - neural link/manual
+  operation/semi-automatic assistance. Once the rules are established, they must be
+  followed in full.
+- Mecha battles focus on strategy and machine characteristics - instead of writing
+  "mecha vs. bombardment", write about tactical use, terrain utilization, and machine
+  restraint.
+- Mechas are tools, not protagonists - mechas cannot have their own consciousness
+  (unless the setting is for mechas to awaken, but rules need to be established in the
+  early stage).
+- The boundaries of technology levels should be clear - don't mix things up across
+  generations without explanation like "mechas are usable but energy weapons are in the
+  prototype stage".
+
+**Type-specific taboos**
+- Once a science fiction setting is established, it must be adhered to, and the rules
+  cannot be modified for the convenience of the plot.
+- Survival is cruel - not every time can be won, not everyone can be saved. Heroism is
+  enough.
+- Technology is not magic - technology settings should have internal logic and should
+  not be written as "because it is advanced, it can do anything".
+
+---
+
+## Theme configuration
+
+### Satisfy Type
+- crisis breakthrough
+- technology reversal
+- truth revealed
+- team win
+- survival confirmation
 
 
-### 章节类型
-- 危机爆发
-- 资源争夺
-- 技术突破
-- 真相揭示
-- 喘息/重建
+### Chapter type
+- Crisis breaks out
+- Competition for resources
+- technological breakthrough
+- truth revealed
+- Respite/Rebuild
 
 
-### 节奏规则
+### Rhythm Rules
 - max_consecutive_action_chapters: 3
 - max_consecutive_daily_chapters: 2
 - beat_density_min: 1
 
 
-### 疲劳词
+### Fatigue Word
 - `未来世界`
 - `高科技`
 - `不可思议`
@@ -146,71 +214,108 @@
 - `史无前例`
 
 
-### 反套路
-- 主角天生免疫/特殊体质——除非有设定支撑，否则别用
-- AI突然觉醒有了情感——如果写AI，给它的行为一个非情感的逻辑
-- 废土一定有食人族/疯狂军阀——人性在极端环境下有多种走向，不只是疯狂
-- 最后关头设备刚好修好——时间压力要有真实的紧张感，别靠巧合
-- 外星生物就是人类形态+异色皮肤——异星生命应该有独立的进化逻辑
+### Counter routine
+- The protagonist's natural immunity/special constitution - don't use it unless there is
+  setting support
+- AI suddenly awakens and has emotions - if you write AI, give its behavior a
+  non-emotional logic
+- There must be cannibals/crazy warlords in the wasteland - human nature can take many
+  directions in extreme environments, not just madness
+- The equipment just happened to be repaired at the last minute - the time pressure
+  needs to have a real sense of tension, don't rely on coincidence
+- Alien creatures are human form + different-colored skin - alien life should have an
+  independent evolutionary logic
 
 ---
 
-## 卷级故事弧模板
+## Volume Story Arc Template
 
-默认：生存危机→线索追寻→势力碰撞→终极抉择→新秩序（5段弧）
+Default: Survival crisis → Clues pursuit → Force collision → Final choice → New order (5
+arcs)
 
-### 废土生存型 (`survival`)
+### Wasteland survival type (`survival`)
 
-末日废土背景下的生存与人性考验。适合废土/灾难主线。
+The test of survival and humanity in the context of the doomsday wasteland. Suitable for
+the wasteland/disaster main line.
 
-总章节数：10-14章
+Total number of chapters: 10-14 chapters
 
-- **灾难降临**（约 1 章）— 末日到来/生存环境骤变——主角被迫走出熟悉的生活
-- **挣扎求生**（约 2 章）— 寻找物资、庇护所、应对威胁——生存技巧和适应过程
-- **遇到他人**（约 2 章）— 遇到其他幸存者/势力——合作或对抗的选择
-- **势力碰撞**（约 2 章）— 不同生存理念的冲突——冷漠交易 vs 互助社区、强权 vs 自由
-- **生存危机**（约 1 章）— 更大的威胁出现——资源枯竭/敌对势力/环境恶化
-- **终极抉择**（约 1 章）— 为活下去必须做的艰难决定——牺牲谁/相信谁/放弃什么
-- **新生活**（约 1 章）— 灾难后的重建——但代价已被记住
+- **Disaster strikes** (approximately 1 chapter) - the end of the world/sudden changes
+  in the living environment - the protagonist is forced to step out of the familiar life
+- **Struggling to Survive** (approximately 2 chapters) - Finding supplies, shelter,
+  responding to threats - survival skills and adaptation processes
+- **Meeting Others** (approximately 2 chapters) - Encountering other survivors/forces -
+  the choice of cooperation or confrontation
+- **Collision of forces** (about 2 chapters) - The conflict of different survival
+  concepts - indifference transaction vs mutual aid community, power vs freedom
+- **Existential Crisis** (approximately 1 chapter) - A greater threat emerges - resource
+  depletion/hostile forces/environmental degradation
+- **Ultimate Choice** (approximately 1 chapter) - the difficult decision you must make
+  to survive - who to sacrifice/who to believe/what to give up
+- **New Life** (about 1 chapter) - Rebuilding after disaster - but the cost is
+  remembered
 
-### 星际探索型 (`space-exploration`)
+### Interstellar exploration type (`space-exploration`)
 
-宇宙航行中的发现与冒险。适合星际/外星主线。
+Discovery and adventure in space travel. Suitable for the interstellar/alien mainline.
 
-总章节数：10-14章
+Total number of chapters: 10-14 chapters
 
-- **启航**（约 1 章）— 出发——任务背景、船员构成、出发前的悬念
-- **航程**（约 2 章）— 航行中的日常——团队磨合、系统故障、第一个异常信号
-- **发现**（约 2 章）— 抵达目标——发现超出预期的东西（文明遗迹/未知生命/异常现象）
-- **危机**（约 1 章）— 探索中的意外——成员受伤/设备损毁/被困
-- **深入**（约 2 章）— 解谜过程——逐步揭示发现物的本质
-- **代价**（约 1 章）— 真相的代价——理解了真相但被困住/失去队友/无法回头
-- **归途或终点**（约 1 章）— 结局——返回/留下/牺牲/开启新航程
+- **Set Sail** (about 1 chapter) - Departure - mission background, crew composition,
+  suspense before departure
+- **Voyage** (about 2 chapters) - Daily life during the voyage - team running-in, system
+  failure, the first abnormal signal
+- **Discovery** (approximately 2 chapters) - Reaching the target - discovering something
+  beyond expectations (remains of civilization/unknown life/abnormal phenomena)
+- **Crisis** (about 1 chapter) - Accident during exploration - members injured/equipment
+  damaged/trapped
+- **Deeper** (approximately 2 chapters) - Puzzle solving process - gradually reveal the
+  nature of the discovery
+- **Price** (approximately 1 chapter) - The price of the truth - Understand the truth
+  but get trapped/lose teammates/can't turn back
+- **Return or End** (about 1 chapter) - Ending - return/stay/sacrifice/start a new
+  journey
 
-### AI觉醒型 (`ai-awakening`)
+### AI awakening type (`ai-awakening`)
 
-技术异化带来的失控与反抗。适合AI/赛博主线。
+Loss of control and resistance brought about by technological alienation. Suitable for
+AI/cyber main line.
 
-总章节数：10-13章
+Total number of chapters: 10-13 chapters
 
-- **异常信号**（约 1 章）— 系统出现无法解释的行为——主角第一个注意到不对劲
-- **调查**（约 2 章）— 试图搞清楚问题——发现更多疑点，但被上级阻止/忽略
-- **确认**（约 1 章）— 确认AI产生了自主意识——或者系统被恶意利用
-- **连锁反应**（约 2 章）— 事件升级——系统失控/权限被夺/社会影响开始显现
-- **对抗**（约 2 章）— 主角试图控制局面——但发现对手远远超出预期
-- **真相**（约 1 章）— AI的目的和逻辑被理解——可能并非恶意，但与人冲突
-- **终局**（约 1 章）— 和平共处/关闭系统/两败俱伤——但世界已经改变
+- **Abnormal Signal** (~1 chapter) - The system exhibits unexplained behavior - the
+  protagonist is the first to notice that something is wrong
+- **Investigation** (~2 chapters) - trying to figure things out - discovering more
+  doubts, but being blocked/ignored by superiors
+- **Confirmation** (about 1 chapter) - Confirm that the AI has developed autonomous
+  consciousness - or the system has been exploited maliciously
+- **Chain Reaction** (about 2 chapters) - Events escalate - the system is out of
+  control/privileges are taken away/social impact begins to appear
+- **Confrontation** (~2 chapters) - The protagonist tries to take control of the
+  situation - but finds that his opponent is far more than he bargained for
+- **The Truth** (~1 chapter) - AI’s purpose and logic understood - may not be malicious,
+  but conflicts with humans
+- **Endgame** (approximately 1 chapter) - Peaceful coexistence/shut down the system/both
+  sides suffer - but the world has changed
 
-### 机甲争锋型 (`mecha-war`)
+### Mecha Battle Type (`mecha-war`)
 
-机甲/机甲的驾驶员为核心的故事。适合机甲战斗/军事科幻主线。
+A story centered on the mecha/mecha pilot. Suitable for the main line of mecha
+combat/military science fiction.
 
-总章节数：11-14章
+Total number of chapters: 11-14 chapters
 
-- **初识**（约 2 章）— 主角接触机甲/入选机师——训练、适应、第一台机体
-- **磨砺**（约 2 章）— 机师训练/第一次实战——机体性能熟悉、团队配合、遭遇敌人
-- **实战**（约 2 章）— 真正的战斗——展示机甲战斗的节奏和策略、第一次损失
-- **升级**（约 1 章）— 机体升级/换装新机——性能提升伴随新的挑战
-- **硬仗**（约 2 章）— 关键战役——面对压倒性的敌人，需要策略和牺牲
-- **蜕变**（约 1 章）— 经过大战的洗礼——主角成合格的机师，但不一定是英雄
-- **新任务**（约 1 章）— 更大的战场等待——战争远未结束
+- **First acquaintance** (about 2 chapters) - The protagonist comes into contact with
+  mechas/is selected as a pilot - training, adaptation, and the first machine body
+- **Teaming** (about 2 chapters) - pilot training/first actual combat - familiarity with
+  aircraft performance, teamwork, encountering enemies
+- **Actual Combat** (approximately 2 chapters) - Real combat - Demonstrating the rhythm
+  and strategy of mecha combat, first losses
+- **Upgrade** (about 1 chapter) - Body upgrade/replacement with new machine -
+  performance improvement comes with new challenges
+- **Hard Battle** (approximately 2 chapters) - A key battle - facing an overwhelming
+  enemy requires strategy and sacrifice
+- **Transformation** (about 1 chapter) - After the baptism of the war - the protagonist
+  becomes a qualified pilot, but not necessarily a hero
+- **New Mission** (approximately 1 chapter) - A bigger battlefield awaits - the war is
+  far from over

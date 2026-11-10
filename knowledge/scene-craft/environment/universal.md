@@ -1,107 +1,127 @@
-# 环境描写
+# Environment Description
 
-> 环境不是背景板，是情绪放大器。每条技法以 `[标签]` 开头。
+> The environment is not a backdrop, it is an emotional amplifier. Each technique
+> begins with `[tag]`.
 
-## 注入时机
+## Injection timing
 
-环境描写作为标准场景类型，由 prompt-crafter 根据场景核心事件自动识别加载。**如果场景核心事件涉及以下要素，自动识别为 `environment` 类型：**
+Environment description is a standard scene type and is automatically recognized and
+loaded by prompt-crafter based on the core events of the scene. **If the core event of
+the scene involves the following elements, it will be automatically identified as
+`environment` type: **
 
-| 触发条件 | 判断依据 | 示例 |
+| Trigger conditions | Judgment basis | Example |
 |---------|---------|------|
-| **空间移动** | 角色进入新地点、场景发生空间转换 | 走进酒馆、穿过密林、抵达战场 |
-| **氛围强化** | 当前场景需要特定氛围渲染（悬疑/压抑/辉煌/破败） | 废弃庄园探秘、宫殿朝会、暴风雨夜 |
-| **时间标记** | 需要交代时间/天气/季节变化 | 黄昏降临、入冬第一场雪、暴雨将至 |
-| **特殊场景** | 场景本身是叙事核心（迷宫/秘境/遗迹探索） | 进入洞府秘境、探索地下遗迹 |
+| **Space Movement** | The character enters a new location and the scene changes space | Entering the tavern, passing through the dense forest, and arriving at the battlefield |
+| **Atmosphere Enhancement** | The current scene requires a specific atmosphere to render (suspense/depression/brilliance/ruin) | Exploring the abandoned manor, court meeting at the palace, stormy night |
+| **Time Mark** | Need to explain time/weather/season changes | Dusk falls, the first snow of winter, and heavy rain is coming |
+| **Special scenes** | The scene itself is the core of the narrative (maze/secret realm/ruin exploration) | Enter the secret realm of the cave and explore the underground ruins |
 
-## 标签选择指南
+## Label Selection Guide
 
-| 场景特征 | 匹配标签 | 选取理由 |
+| Scene characteristics | Matching tags | Reason for selection |
 |---------|---------|---------|
-| 需要营造沉浸氛围 | [五感通写] | 用多感官维度构建画面感 |
-| 需要以景写情 | [情绪渲染] | 借环境外化人物情绪，情景交融 |
-| 需要侧面交代背景 | [细节互动] | 靠器物细节暗示处境，不直白概括 |
+| Need to create an immersive atmosphere | [Five-sense writing] | Use multi-sensory dimensions to build a sense of picture |
+| Need to use scenes to describe emotions | [Emotional rendering] | Use the environment to externalize the characters' emotions and blend the scenes |
+| Need to explain the background from the side | [Detailed interaction] | Rely on the details of the objects to imply the situation, not straightforward summary |
 
 
-## [五感通写] 多感官叠加——构建沉浸画面
+## [Five senses writing] Multi-sensory superposition - building an immersive picture
 
-**核心：** 摒弃单一视觉描写，叠加听觉、嗅觉、触觉、气味多维度刻画。
+**Core:** Abandon a single visual description and superimpose multi-dimensional
+descriptions of hearing, smell, touch, and smell.
 
-### 执行规则
+### Enforce Rules
 
-- 每次环境描写选取 2-3 种感官组合，不堆砌全部感官
-- 感官选择贴合场景氛围：寒冷场景优先触觉+听觉，压抑场景优先嗅觉+听觉
-- 每个感官线索应有叙事功能，不为了"多感"而加
-
-```
-❌ 破庙脏乱，满是灰尘蛛网。
-
-✅ 木门吱呀作响，殿内回荡回音，
-   空气中飘着腐草与积尘气味，寒气顺着脚踝向上蔓延。
-
-❌ 阳光温暖，微风拂面，花香四溢，鸟鸣清脆。
-
-✅ 阳光晒得后颈发烫，风裹着晒蔫的青草气息扑来，
-   远处蝉鸣有一搭没一搭地响着。
-```
-
-**禁用：** 五种感官全部用上造成信息过载；使用"空气中弥漫着""仿佛能闻到"等 AI 套路句式。
-
-
-## [情绪渲染] 以景写情——环境随心境变
-
-**核心：** 景物观感跟随主角心境动态变化，借环境外化人物情绪。同一景物在不同情绪下呈现不同特征。
-
-### 执行规则
-
-- 同一场景在不同心境下的特征相反（阳光在愉悦时温暖、低落时刺目）
-- 情绪渲染的景物选择应与角色当下的核心情绪一致
-- 不直白写出情绪词（悲伤/愤怒/喜悦），而是通过感官滤镜让读者自己感受
+- Choose 2-3 sensory combinations for each environment description, do not pile up all
+  the senses
+- The sensory selection fits the atmosphere of the scene: give priority to touch +
+  hearing in cold scenes, and give priority to smell + hearing in depressive scenes.
+- Each sensory clue should have a narrative function and should not be added for the
+  sake of "multiple senses"
 
 ```
-❌ 主角心情很好，觉得阳光特别灿烂，风景特别美。
+❌ The ruined temple is dirty and full of dust and cobwebs.
 
-✅ 阳光如金，洒在路面上泛着暖光，野花向阳摇曳，
-   连路边的石子都觉得可爱。
+✅ The wooden door creaked, and the echo echoed in the hall,
+   The air smelled of rotting grass and accumulated dust, and a chill spread up from my ankles.
 
-❌ 主角失恋了，她觉得周围一切都很难过。
+❌ The sun is warm, the breeze is blowing, the flowers are fragrant, and the birds are chirping crisply.
 
-✅ 阳光刺得睁不开眼，路边的花草沾满污泥，
-   碎石硌得脚心生疼。
+✅ The sun makes the back of my neck feel hot, and the wind carries the scent of wilted grass.
+   Cicadas chirped in the distance.
 ```
 
-**禁用：** 直白使用"心情愉悦/内心低落"等情绪词概括；正面和负面情绪的景物选择完全雷同。
+**Disabled:** Use all five senses to cause information overload; use AI routines such as
+"the air is filled with" and "as if you can smell it".
 
 
-## [细节互动] 器物表意——让细节讲故事
+## [Emotional Rendering] Use scenery to describe emotions - the environment changes with your mood
 
-**核心：** 依靠器物、微小场景细节侧面交代背景、处境、人物状态，不直白概括。
+**Core:** The look and feel of the scenery follows the dynamic changes of the
+protagonist's mood, and uses the environment to externalize the character's emotions.
+The same scene presents different characteristics under different emotions.
 
-### 执行规则
+### Enforce Rules
 
-- 选择 1-2 个有代表性的细节物件，不宜过多
-- 物件的特征暗示角色处境：廉价/破旧→窘迫、精致/考究→富裕
-- 细节可以暗示时间（新/旧/磨损程度）、事件（痕迹/破损/变化）
+- The same scene has opposite characteristics in different moods (sunlight is warm when
+  happy, dazzling when sad)
+- The selection of scenes for emotional rendering should be consistent with the
+  character’s core emotions at the moment
+- Do not write emotional words (sadness/anger/joy) directly, but let readers feel it
+  through sensory filters.
 
 ```
-❌ 他家境贫寒，家里没什么好东西。
+❌ The protagonist is in a good mood, feeling that the sun is particularly bright and the scenery is particularly beautiful.
 
-✅ 桌上搪瓷缸边缘磕出几道缺口，
-   牙膏管被反复挤压至扁平，管内残膏被刮得干净。
+✅ The sun is like gold, shining warmly on the road, and the wild flowers are swaying towards the sun.
+   Even the pebbles on the roadside look cute.
 
-❌ 这里是间豪华的书房。
+❌ The protagonist is broken up in love and feels everything around her is sad.
 
-✅ 紫檀书案上摊着一幅半开的山水卷轴，
-   笔架上悬着数支狼毫，墨迹未干的宣纸旁，
-   青瓷笔洗里清水已染成淡墨色。
+✅ The sun is too harsh to open your eyes, and the flowers and plants on the roadside are covered with mud.
+   The gravel hurt the soles of my feet.
 ```
 
-**禁用：** 直接使用"贫寒/豪华/残破/富丽堂皇"等概括词；堆砌多个同类型细节（三个碗都有缺口只写一个就够了）。
+**Disabled:** Straightforward use of emotional words such as "feeling happy/feeling
+depressed" to summarize; the scenery selections for positive and negative emotions are
+completely the same.
+
+
+## [Details Interaction] Objects express meaning - let details tell stories
+
+**Core:** Rely on artifacts and small scene details to explain the background,
+situation, and character status, without straightforward generalizations.
+
+### Enforce Rules
+
+- Choose 1-2 representative detailed objects, not too many
+- The characteristics of the object imply the character's situation: cheap/shabby →
+  embarrassment, exquisite / elegant → wealthy
+- Details can suggest time (newness/oldness/level of wear), events
+  (marks/breakage/changes)
+
+```
+❌ His family is poor and there are not many good things at home.
+
+✅ There are a few nicks on the edge of the enamel jar on the table.
+   The toothpaste tube was squeezed repeatedly until it was flat, and the remaining paste in the tube was scraped clean.
+
+❌ This is a luxurious study room.
+
+✅ There is a half-open landscape scroll spread out on the red sandalwood desk.
+   There are several wolf hairs hanging on the pen holder, next to the rice paper where the ink is still wet,
+   The clear water in the celadon pen wash has been dyed into a light ink color.
+```
+
+**Disabled:** Directly use general words such as "poor/luxury/broken/magnificent"; pile
+up multiple details of the same type (three bowls have gaps and only one is enough).
 
 ---
 
-> 💡 **扩展方向：**
-> - 天气/季节/时间如何服务于情绪基调
-> - 空间布局的层次感（远景→中景→近景→特写）
-> - 战斗/对话/追逃等不同场景中环境的功用性
-> - 时代感/地域感的细节锚点
-> - 反例：AI 常见的"阳光洒进来""空气中弥漫着"式套路
+> 💡 **Expansion direction:** - How weather/season/time serves the emotional tone - The
+> layering of spatial layout (distant shot → medium shot → close shot → close-up) -
+> The functionality of the environment in different scenes such as
+> combat/conversation/chase and escape - The detail anchor of the sense of time/region
+> - Counter example: Common AI routines of "sunshine pouring in" and "the air is
+> filled with air"

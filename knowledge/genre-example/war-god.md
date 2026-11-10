@@ -1,37 +1,38 @@
-# 类型档案：战神赘婿
+# Genre Archives: Ares live-in son-in-law
 
-> 都市向战神、兵王文。
+> The city is dedicated to the God of War and the King of Soldiers.
 
 - **id:** `war-god`
-- **label:** 战神赘婿
+- **label:** The God of War live-in son-in-law
 
 ---
 
-## 题材配置
+## Theme configuration
 
-### 满足类型
-- 身份揭晓
-- 打脸装逼
-- 实力碾压
-- 扮猪吃虎
-- 守护成功
-
-
-### 章节类型
-- 日常装逼
-- 打脸反转
-- 身份揭晓
-- 冲突爆发
-- 战斗碾压
+### Satisfy Type
+- Identity revealed
+- face-slapping show off
+- Crush by strength
+- Pretend to be a pig and eat the tiger
+- Guard success
 
 
-### 节奏规则
+### Chapter type
+- Daily pretense
+- face-slapping inversion
+- Identity revealed
+- Conflict breaks out
+- battle crushing
+
+
+### Rhythm Rules
 - max_consecutive_action_chapters: 3
 - max_consecutive_daily_chapters: 1
 - beat_density_min: 2
 
 ---
 
-## 卷级故事弧模板
+## Volume Story Arc Template
 
-默认：回归→扮猪→遇事→打脸→升级对手→再打脸→身份揭晓→更高舞台
+Default: Return → Pretend to be a pig → Encounter trouble → Face-slapping → Upgrade your
+opponent → Face-slapping again → Identity revealed → Higher stage

@@ -1,60 +1,60 @@
 ## Purpose
 
-章节交付级确定性检查：在 anti-ai 统计检测（check-prose.py）之外，抓模型肉眼会漏的交付硬伤（引语夹层、嵌套引号、半角引号、字数表达错账等），并提供随项目成长的回归模式库与锁定台词白名单机制。
+Chapter-delivery-level deterministic checks: beyond the anti-ai statistical detection (check-prose.py), catch delivery defects the model eye misses (quote sandwiches, nested quotes, half-width quotes, word-count expression mismatches, and more), and provide a regression pattern library and locked-lines whitelist mechanism that grows with the project.
 
 ## ADDED Requirements
 
-### Requirement: 检查工具命令契约
+### Requirement: Check tool command contract
 
-工具 MUST 以 `python3 check-chapter.py <稿件路径...>` 方式调用，接受一个或多个文件路径或目录；退出码 MUST 满足：0=全部通过（可有需人工裁定的警告项），1=存在硬性命中，2=文件读取失败。输出 MUST 逐条带 `[检查名] 行号: 上下文摘录`。
+The tool MUST be invoked as `python3 check-chapter.py <manuscript path...>` and accept one or more file paths or directories; exit codes MUST satisfy: 0 means all passed (warnings needing human adjudication may exist), 1 means a hard hit exists, 2 means file reading failed. Output MUST give each item as `[check name] line number: context excerpt`.
 
-#### Scenario: 硬伤命中
-- **WHEN** 稿件含硬性命中（引语夹层标签式、嵌套双引号、半角引号、破折号/省略号、字数表达不符）
-- **THEN** 退出码为 1，输出逐条列出检查名、行号与上下文摘录
+#### Scenario: Hard hit
+- **WHEN** the manuscript contains a hard hit (label-style quote sandwich, nested double quotes, half-width quotes, dashes/ellipses, word-count expression mismatch)
+- **THEN** the exit code is 1, and the output lists each check name, line number, and context excerpt
 
-#### Scenario: 全部通过
-- **WHEN** 稿件无硬性命中
-- **THEN** 退出码为 0，仍输出平台口径字数统计（汉字/全角标点/引号/数字分项）与警告项
+#### Scenario: All pass
+- **WHEN** the manuscript has no hard hits
+- **THEN** the exit code is 0, and it still outputs the platform-convention word count (Chinese characters, full-width punctuation, quotes, and digits as separate items) and warning items
 
-#### Scenario: 文件不可读
-- **WHEN** 任一输入路径不存在或无法解码
-- **THEN** 退出码为 2，不误报为检查失败
+#### Scenario: File unreadable
+- **WHEN** any input path does not exist or cannot be decoded
+- **THEN** the exit code is 2, and it is not misreported as a check failure
 
-### Requirement: 检查项覆盖与分级
+### Requirement: Check coverage and grading
 
-工具 MUST 覆盖以下通用检查项，并分为两级：硬性（命中即 exit 1）与警告（仅报告需人工裁定）。
-硬性：引语夹层-标签式、嵌套双引号、半角引号、字数表达与引号内容逐字不符、回归库精确串命中。
-警告：破折号/省略号（段落内 ≥3 处时提示逐处按 `common-rules.md` 用法判定，不做硬禁）、引语夹层-广义式、多轮问答并段、弱化副词密度超标、"X个字"待人工逐字核对、尾随标签（代词+说/问窄集）。
-工具 MUST 输出平台口径字数但 MUST NOT 对字数设硬性阈值（字数要求属书级设定）；标点口径 MUST 与 `common-rules.md` 一致，MUST NOT 把书级硬禁（如"零破折号"）作为默认行为。
+The tool MUST cover the following general checks, split into two grades: hard (a hit means exit 1) and warning (reported only, for human adjudication).
+Hard: label-style quote sandwich, nested double quotes, half-width quotes, word-count expressions that do not match the quoted content word for word, exact-string hits in the regression library.
+Warning: dashes/ellipses (when 3 or more appear in a paragraph, prompt judging each one against the `common-rules.md` usage, with no hard ban), broad quote sandwiches, multi-round question-answer in one paragraph, weak-adverb density over the limit, "X words" awaiting manual word-for-word verification, trailing labels (a narrow set of pronoun plus say/ask).
+The tool MUST output the platform-convention word count but MUST NOT set a hard threshold on word count (word-count requirements are book-level settings); punctuation conventions MUST match `common-rules.md`, and book-level hard bans (such as "zero dashes") MUST NOT be default behavior.
 
-#### Scenario: 分级行为
-- **WHEN** 稿件仅命中警告级检查项
-- **THEN** 退出码为 0，警告项逐条列出并标注"需裁定"
+#### Scenario: Grading behavior
+- **WHEN** the manuscript only hits warning-level checks
+- **THEN** the exit code is 0, and warning items are listed one by one and marked "needs adjudication"
 
-### Requirement: 项目级回归库与白名单外置
+### Requirement: Project-level regression library and whitelist kept outside the tool
 
-回归模式库（曾翻车精确串）与锁定台词白名单 MUST 从项目文件读取（约定路径 `sandbox/prose-regressions.txt` 与 `sandbox/locked-lines.txt`，一行一条，UTF-8）；文件缺失时 MUST 跳过对应检查且不影响退出码；白名单命中行 MUST 跳过家族类检查并在输出中标注理由。
+The regression pattern library (exact strings that failed before) and the locked-lines whitelist MUST be read from project files (agreed paths `sandbox/prose-regressions.txt` and `sandbox/locked-lines.txt`, one entry per line, UTF-8); when a file is missing, the corresponding check MUST be skipped without affecting the exit code; a whitelist-hit line MUST skip family-type checks and be marked with its reason in the output.
 
-#### Scenario: 新项目无回归库
-- **WHEN** 项目内不存在 `sandbox/prose-regressions.txt`
-- **THEN** 回归库检查跳过，工具按其余检查项正常退出
+#### Scenario: New project has no regression library
+- **WHEN** the project has no `sandbox/prose-regressions.txt`
+- **THEN** the regression-library check is skipped, and the tool exits normally on the remaining checks
 
-#### Scenario: 回归串复发
-- **WHEN** 稿件命中回归库中任一精确串
-- **THEN** 该命中为硬性，退出码 1
+#### Scenario: Regression string recurs
+- **WHEN** the manuscript hits any exact string in the regression library
+- **THEN** the hit is hard, exit code 1
 
-#### Scenario: 白名单豁免
-- **WHEN** 稿件某行完整匹配白名单中某条
-- **THEN** 该行跳过句式家族类检查，输出标注白名单跳过
+#### Scenario: Whitelist exemption
+- **WHEN** a line in the manuscript fully matches an entry in the whitelist
+- **THEN** the line skips sentence-pattern family checks, and the output marks the whitelist skip
 
-### Requirement: 部署与测试
+### Requirement: Deployment and testing
 
-init MUST 将工具部署到各平台根目录 `tools/`（与 check-prose.py 同机制），sync 的更新检测 MUST 覆盖该工具；测试 MUST 覆盖每个检查项的正例与反例、退出码契约、外置文件缺失/命中场景。
+init MUST deploy the tool to each platform root `tools/` (same mechanism as check-prose.py), and sync's update detection MUST cover the tool; tests MUST cover positive and negative cases for each check, the exit-code contract, and missing/hit scenarios for the external files.
 
-#### Scenario: 平台部署
-- **WHEN** 运行 `python tools/init.py <项目路径> --platform claude`
-- **THEN** 部署后项目内存在 `.claude/tools/check-chapter.py`，七平台 E2E 测试（`test_platforms.py`）通过
+#### Scenario: Platform deployment
+- **WHEN** running `python tools/init.py <project path> --platform claude`
+- **THEN** the deployed project contains `.claude/tools/check-chapter.py`, and the seven-platform E2E tests (`test_platforms.py`) pass
 
-#### Scenario: 检查项回归
-- **WHEN** 运行 `python tools/test_check_chapter.py`
-- **THEN** 全部断言通过（stdout 打 ok，退出码 0）
+#### Scenario: Check regression
+- **WHEN** running `python tools/test_check_chapter.py`
+- **THEN** all assertions pass (stdout prints ok, exit code 0)

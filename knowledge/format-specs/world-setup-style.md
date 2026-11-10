@@ -1,420 +1,484 @@
-# 世界观设定指南
+# World view setting guide
 
-> 聊三项（地理/政治/规则），聊完当场写进 `settings/world-setting.md`。
-> 不解释概念，直接聊。每聊完一项，过本节自检再进下一项。
-
----
-
-## 原则 1：彻底架空
-
-**规则：** 作者说一个真实地名/朝代/历史人物，立刻停下来换掉。
-
-✅ 正确：
-> 作者："背景类似唐朝"
-> → "唐朝不能直接用。你这个世界叫什么？朝代叫什么？"
-
-❌ 错误：
-> 作者："背景类似唐朝"
-> → "好的，我们按唐朝来设定"（直接用了真实设定）
-
-**判断标准：** 写完后全文搜"中国/北京/唐朝/明朝/巴黎/纽约"等真实词汇。有任何一条 → 退回重写，一条都不能有。
+> Chat about three items (geography/politics/rules) and write
+> `settings/world-setting.md` on the spot after the chat. Don’t explain the concepts,
+> just talk directly. After each item, pass this section of self-examination before
+> moving on to the next item.
 
 ---
 
-## 原则 2：从场景出发，不画地图
+## Principle 1: Completely empty
 
-**规则：** 不先讨论"世界有多大"，先问"主角第一章出现在哪"。从那里往外推。
+**Rules:** If the author mentions a real place name/dynasty/historical figure, stop
+immediately and replace it.
 
-✅ 正确：
-> 问："主角第一章出现在什么地方？"
-> 答："青州城" → "青州城是什么样的？三面环山还是一马平川？"
-> 城池聊完 → "城外有什么？最近的地方多远？怎么去？"
+✅ Correct:
+> Author: "The background is similar to the Tang Dynasty" → "The Tang Dynasty cannot
+> be used directly. What is your world called? What is the name of the dynasty?"
 
-❌ 错误：
-> "我们先画张世界地图——大陆多大、几个国家、边界在哪"
->（作者填了一堆地理名词，但不知道第一章用在哪）
+❌ Error:
+> Author: "The background is similar to the Tang Dynasty" → "Okay, let's set it
+> according to the Tang Dynasty" (real settings are used directly)
 
-**判断标准：** 地理部分的每个地点，在第一章里能找到对应场景或路线。有一个第一章用不上 → 先删掉，用到再补。
+**Judgment criteria:** After writing, search the whole text for real words such as
+"China/Beijing/Tang Dynasty/Ming Dynasty/Paris/New York". If there is any one → Return
+to rewrite, there can be no one.
 
 ---
 
-## 三项逐项聊
+## Principle 2: Start with the scene, don’t draw a map
 
-### 聊地理：主角在哪 → 怎么去 → 路上什么样
+**Rules:** Instead of discussing "how big the world is" first, ask "where does the
+protagonist appear in the first chapter". Push outward from there.
 
-地理聊清楚，agent 写场景才知道角色站在什么位置、周围有什么。按顺序问这三句就够了：
+✅ Correct:
+> Question: "Where does the protagonist appear in the first chapter?" Answer:
+> "Qingzhou City" → "What does Qingzhou City look like? Surrounded by mountains on
+> three sides or flat plains?" After chatting about the city → "What is outside the
+> city? How far is the nearest place? How to get there?"
 
-1. "主角主要在哪里活动？城/村/门派/星球？什么样的？"
-2. "他需要去哪些地方？多远？怎么去？走路/骑马/传送阵？"
-3. "路上有什么特别的？（山/河/关卡/妖兽/检查站）"
+❌ Error:
+> "Let's first draw a map of the world - how big is the continent, how many countries
+> are there, and where are the borders" (The author filled in a bunch of geographical
+> terms, but didn't know where to use them in the first chapter)
 
-聊完对照题材检查层级够不够：
+**Judgment Criteria:** For each location in the geography part, the corresponding scene
+or route can be found in the first chapter. There is a chapter that is not used in the
+first chapter → delete it first and then add it when it is used.
 
-| 题材 | 至少聊到 |
+---
+
+## Three item-by-item chat
+
+### Talking about geography: Where is the protagonist → How to get there → What is it like on the road?
+
+After knowing the geography clearly, the agent can only know where the character is
+standing and what is around him when he writes the scene. It is enough to ask these
+three sentences in order:
+
+1. "Where does the main character live? City/village/sect/planet? What kind of thing?"
+2. "Where does he need to go? How far? How to get there? Walking/horseback/teleportation
+   array?"
+3. "What's special on the road? (Mountain/River/Level/Monster/Checkpoint)"
+
+After the chat, check whether the level is sufficient according to the subject matter:
+
+| Subject matter | At least talk about |
 |------|---------|
-| 星际/科幻 | 星球 + 城市 + 星域背景 |
-| 仙侠/玄幻 | 城/坊市 + 宗门/洞府 |
-| 西方奇幻 | 城镇 + 村庄 + 野外 |
-| 古风权谋 | 城 + 府/郡 + 官道 |
-| 都市/年代 | 市/区 + 街道 + 小区 |
-| 末世/无限流 | 据点 + 探索区域 + 安全区边界 |
+| Interstellar/Science Fiction | Planet + City + Star Field Background |
+| xianxia (immortal cultivation)/xuanhuan (Eastern fantasy) | city/fangshi + sect/cave mansion |
+| Western Fantasy | Town + Village + Wilderness |
+| Ancient Style Strategy | City + Mansion/County + Official Way |
+| City/Era | City/District + Street + Community |
+| End of the world/infinite flow | stronghold + exploration area + safe zone boundary |
 
-✅ 正确 → 闭上眼睛能想象出空间：
-> 青州城坐落于苍梧山脉东麓，三面环山一面临水。城外东南十五里有青江渡口，是商旅往来的命脉。翻过苍梧山向西，是妖兽横行的荒原。
+✅ Correct → Close your eyes and imagine the space:
+> Qingzhou City is located at the eastern foot of the Cangwu Mountains, surrounded by
+> mountains on three sides and facing water on one side. Fifteen miles southeast of
+> the city is the Qingjiang Ferry, which is the lifeblood of business travel. Across
+> Cangwu Mountain to the west, there is a wasteland where monsters roam.
 
-❌ 错误 → 数据清单，没有画面感：
-> 青州城位于苍梧山脉东侧，面积约二百平方公里，人口约十万。是江南道重镇。
+❌ Error → Data list, no picture:
+> Qingzhou City is located on the east side of the Cangwu Mountains, covering an area
+> of about 200 square kilometers and a population of about 100,000. It is an important
+> town in Jiangnan Province.
 
-**判断标准：** 闭上眼睛能说出"从 A 到 B 经过什么、多远、什么感觉"。说不出来 → 不够具体。
+**Judgment Criteria:** Can you tell "what, how far, and what it feels like from A to B"
+with your eyes closed. Can't tell → Not specific enough.
 
-**写进文件的内容（参考清单）：**
-- 主要场景的名称、位置关系（城/村/秘境之间多远、怎么走）
-- 气候和季节特征（四季变化、极端天气）
-- 地理限制（山川/水域/边界——什么阻隔了不同区域）
-- 区域间的通行方式和难度
+**Contents written into the file (reference list):**
+- The name and location relationship of the main scenes (how far between
+  cities/villages/secret areas and how to get there)
+- Climate and seasonal characteristics (changes in seasons, extreme weather)
+- Geographic constraints (mountains/waters/borders - what separates different areas)
+- How and how difficult it is to travel between areas
 
-**本节自检（过完再进政治）：**
-- [ ] 每个地点都对应第一章的一个场景或路线？
-- [ ] 去掉地理段，画面还在吗？（在→写对了；不在→这是说明书）
-- [ ] 至少问了"在哪→怎么去→路上什么样"？
+**Self-examination in this section (pass it before entering politics):**
+- [ ] Does each location correspond to a scene or route from Chapter 1?
+- [ ] Remove the geographical segment, is the picture still there? (In → Write it
+      correctly; Not → This is the instruction manual)
+- [ ] At least I asked "where → how to get there → what is the road like"?
 
 ---
 
-### 聊政治：谁说了算 → 谁限制他 → 不服会怎样
+### Talking about politics: Who has the final say → Who limits him → What will happen if he refuses to obey?
 
-政治决定角色能自由到什么程度、惹了谁会倒霉。方向提案和章纲阶段要靠这个判断冲突和合作。按顺序问这三句：
+Politics determine how free a character can be and who will be unlucky if he messes with
+them. This is used to judge conflicts and cooperation in the direction proposal and
+chapter outline stages. Ask these three sentences in order:
 
-1. "你故事里谁说了算？皇帝/宗主/长老会/公司CEO？他权力是绝对的还是受限制的？"
-2. "什么力量能限制他？另一个势力/法律/民意/天道/钱？"
-3. "普通人不服从会怎样？被抓/被逐出/被打/其实不会怎样？"
+1. "Who has the final say in your story? The emperor/sect leader/council of
+   elders/company CEO? Is his power absolute or limited?"
+2. "What force can limit him? Another force/law/public opinion/the law of heaven/money?"
+3. "What will happen if ordinary people disobey? If they are
+   caught/expelled/beaten/actually nothing will happen?"
 
-如果作者不清楚从哪开始聊，给题材起点：
+If the author doesn't know where to start, give the subject Qidian:
 
-| 题材 | 从哪里开始聊 |
+| Topic | Where to start |
 |------|------------|
-| 仙侠宗门 | "宗门还是王朝？两套体系并行还是只有一套？" |
-| 古风权谋 | "朝廷内部有派系吗？谁和谁在争什么？" |
-| 都市帮派 | "地下势力还是官方机构？几股势力？" |
-| 星际/帝国 | "中央集权还是联邦制？地方和中央什么关系？" |
-| 后宫/宅斗 | "嫡庶分得多清楚？上升通道是什么？" |
+| xianxia sect | "Sect or dynasty? Two systems in parallel or only one?" |
+| Ancient Style Strategy | "Are there factions within the imperial court? Who is fighting with whom over what?" |
+| Urban gangs | "Underground forces or official institutions? How many forces?" |
+| Star/Empire | "Centralization or federalism? What is the relationship between local and central authorities?" |
+| Harem/inner-court intrigue | "How clearly can we distinguish between concubines and concubines? What is the ascending path?" |
 
-✅ 正确 → 有势力、有立场、有制衡：
-> 三股势力：官府维持秩序但力量有限；青帮控制码头与官府暗中角力；玄天宗外门超然物外。任何两方联合都会打破平衡。
+✅ Correct → Have power, position, and checks and balances:
+> Three forces: the government maintains order but has limited power; the Qing Gang
+> controls the docks and secretly competes with the government; and the outer sect of
+> the Xuantian Sect is aloof. Any combination of two parties will upset the balance.
 
-❌ 错误 → 只写了官方法定结构，没写实际谁说了算：
-> 朝廷设州府制，青州府归江南道管辖。知府陈伯远掌军政大权。
+❌ Error → Only the official legal structure is written, not who actually has the final
+say:
+> The imperial court established a state government system, and Qingzhou Prefecture
+> was under the jurisdiction of Jiangnan Dao. The prefect Chen Boyuan was in charge of
+> military and political power.
 
-**判断标准：** 能清晰回答三个"谁"——谁管主角、谁保护主角、主角惹了谁会倒霉。答不出来 → 势力没聊够。
+**Judgment criteria:** Be able to clearly answer the three "whos" - who cares about the
+protagonist, who protects the protagonist, and who will be unlucky if the protagonist
+offends. Can’t answer → The forces haven’t talked enough.
 
-**写进文件的内容（参考清单）：**
-- 统治形式（中央集权/分封/宗门/城邦？谁说了算？是否受限制？）
-- 主要势力名单（至少 2-3 个，每个一句话说清立场和诉求）
-- 势力之间的力量平衡（谁强谁弱？合作关系还是对抗？）
-- 社会分层（平民/贵族/修行者/奴隶？阶层间怎么流动？）
-- 不服从的代价（违反规则会怎样？谁执行惩罚？）
+**Contents written into the file (reference list):**
+- Form of governance (centralization/feudation/sect/city-state? Who has the final say?
+  Is it restricted?)
+- List of major forces (at least 2-3, each clearly stating their position and demands in
+  one sentence)
+- The balance of power between forces (who is stronger and who is weaker? Cooperation or
+  confrontation?)
+- Social stratification (commoners/nobles/practitioners/slaves? How to flow between
+  classes?)
+- The Price of Disobedience (What happens if you break the rules? Who carries out the
+  punishment?)
 
-**本节自检（过完再进规则）：**
-- [ ] 能说出至少 2 个势力，每个一句话说清"要什么"？
-- [ ] 普通人违反规则的后果有具体描述？
-- [ ] 统治者有什么限制或制衡力量？
+**Self-check in this section (rules after passing):**
+- [ ] Can you name at least 2 forces and explain "what they want" in one sentence?
+- [ ] Are there specific consequences for ordinary people who violate the rules?
+- [ ] What limits or checks do rulers have?
 
 ---
 
-### 聊规则：先问做不到什么，再问做得到什么
+### Chat rules: first ask what you can’t do, then ask what you can do
 
-规则限制角色，冲突才成立。方向提案靠规则判断角色能做什么不能做什么，章纲靠规则决定冲突的解决方式。**限制比能力重要**，先问"不能做什么"，再问"能做特别的事吗"。
+Conflict exists only when rules limit roles. Direction proposals rely on rules to
+determine what characters can and cannot do, while chapters rely on rules to determine
+how conflicts are resolved. **Limitations are more important than abilities**. First ask
+"What can't you do?" and then "Can you do anything special?"
 
-规则分三个层级，每层影响范围不同：
+The rules are divided into three levels, with each level having a different scope of
+influence:
 
-| 层级 | 范围 | 例子 | 例外 |
+| Level | Scope | Examples | Exceptions |
 |------|------|------|------|
-| **世界级** | 对所有人都生效 | 天道法则、物理规则、魔法本源 | 几乎没有，有就是世界观漏洞 |
-| **社会级** | 对特定群体生效 | 法律、宗门规矩、行规、禁忌 | 有——权力大的人可以绕过 |
-| **个人级** | 只对特定角色生效 | 血脉诅咒、功法限制、契约誓言 | 有——找到破解方法就是剧情 |
+| **World Class** | Valid for everyone | Laws of heaven, physical rules, and the origin of magic | Almost none, if there are, there are loopholes in the worldview |
+| **Social level** | Valid for specific groups | Laws, sect rules, practices, taboos | Yes - people with great power can bypass |
+| **Personal level** | Only effective for specific characters | Blood curse, skill restrictions, contract oaths | Yes - finding a way to crack it is the plot |
 
-按这个顺序问：
+Ask in this order:
 
-1. **世界级："这个世界有什么底层限制？所有人都不能做什么？"**（没有魔法/不能复活/天道有缺）
-2. **社会级："有哪些法律或规矩是角色必须遵守的？违反了会怎样？"**（从政治聊的结果来推）
-3. **个人级："主角有什么特殊限制——血脉诅咒/功法缺陷/契约誓言？"**
+1. **World-class: "What are the underlying restrictions in this world? What can't
+   everyone do?"** (No magic/cannot be resurrected/deficiency in the way of heaven)
+2. **Social Level: "What laws or rules must the characters abide by? What will happen if
+   they are violated?"** (Inferred from the results of political chat)
+3. **Personal level: "What special restrictions does the protagonist have - blood
+   curse/skill deficiencies/contract oaths?"**
 
-每条规则必须有三要素，缺一不可：
+Every rule must have three elements, one of which is indispensable:
 
-| 要素 | 问法 | 不写会怎样 |
+| Elements | How to ask | What will happen if you don’t write |
 |------|------|-----------|
-| 能做什么 | "这条规则给了他什么能力或权限？" | 读者不知道规则有什么用 |
-| 不能做什么 | "什么情况下不成立？限制条件是什么？" | 主角无所不能 |
-| 代价 | "用了之后会付出什么？" | 读者觉得"那就用啊，为什么不用？"——没有张力 |
+| What it can do | "What abilities or permissions does this rule give him?" | Readers don't know what the rule does |
+| What cannot be done | "Under what circumstances is this not true? What are the restrictions?" | The protagonist is omnipotent |
+| Price | "What will you pay after using it?" | Readers think "then use it, why not use it?" - no tension |
 
-✅ 正确 → 有限制、有代价：
-> 金丹以上受天道誓约约束，不得对凡人出手——违者天劫加身。每次大境界晋升消耗寿元——筑基减十年，元婴减五十年。
+✅ Correct → There are restrictions and costs:
+> Those above the golden core are bound by the oath of heaven and are not allowed to
+> take action against mortals - violation will result in disaster. Each major realm
+> advancement consumes lifespan - ten years for foundation building and fifty years
+> for Nascent Soul.
 
-❌ 错误 → 只有能力描述，没限制没代价：
-> 修炼体系：引气→筑基→金丹→元婴。每级晋升需天材地宝+功法+机缘。
+❌ Error → Only ability description, no limit and no price:
+> Cultivation system: Entraining Qi→Building Foundation→Golden Pill→Nascent Soul.
+> Promotion at each level requires heavenly materials and earthly treasures + skills +
+> opportunities.
 
-**判断标准：** 读规则时读者会想"那还是别轻易用"（有代价）或"好想知道他怎么突破"（有限制）。读完了觉得"那就用啊，为什么不用？" → 代价没写够。
+**Judgment Criteria:** When reading the rules, readers will think "then don't use it
+easily" (there is a price) or "I really want to know how he can break through" (there
+are restrictions). After reading it, I thought, "Then just use it, why not?" → The cost
+was not written enough.
 
-**写进文件的内容（参考清单）：**
-- 世界级规则——力量体系/天道/魔法/科技的核心描述
-- 社会级规则——法律/禁忌/行业规矩（至少 2 条具体规则）
-- 个人级规则——影响角色的特殊限制（如有）
-- 每条规则的三个要素：能做什么、不能做什么、代价
-- 规则的例外：有例外吗？谁可以例外？为什么？
+**Contents written into the file (reference list):**
+- World-class rules - core description of power system/way of heaven/magic/technology
+- Society Level Rules - Laws/Taboos/Industry Rules (at least 2 specific rules)
+- Personal-Level Rules,Special restrictions affecting the character (if any)
+- Three elements of every rule: what you can do, what you can’t do, and the cost
+- Exceptions to the rule: Are there any exceptions? Who can make exceptions? Why?
 
-**本节自检（过完进输出）：**
-- [ ] 世界级规则和社会级规则都有？（至少两级覆盖）
-- [ ] 每条规则有三要素：能做什么、不能做什么、代价？
-- [ ] 规则的例外情况交代了？（谁可以例外？为什么？）
+**Self-test in this section (input and output after completion):**
+- [ ] Are there both world-level rules and social-level rules? (at least two levels of
+      coverage)
+- [ ] Each rule has three elements: what can be done, what cannot be done, and the cost?
+- [ ] Exceptions to the rules accounted for? (Who can be exempted? Why?)
 
 ---
 
-## 常见错误
+## Common mistakes
 
-| 错误 | 表现 | 改法 |
+| Error | Performance | Correction |
 |------|------|------|
-| 说明书式罗列 | "人口十万，面积二百平方公里" | 删掉数据，改成场景描写 |
-| 只写能力不写代价 | "金丹期御剑飞行" → 那为啥不一直飞？ | 补上代价：消耗灵力/有坠落风险 |
-| 地图式堆地名 | 一口气写了十个地名，九个用不上 | 删到只剩第一章用得到的 |
-| 政治只有官方说法 | "知府掌军政大权" → 实际呢？ | 补真实权力关系（谁真正说了算） |
-| 规则没例外 | "谁都不能飞行" → 太绝对，后面没法写 | 加例外：除非有御风令/宗门许可 |
-| 架空夹带真实 | "类似明朝的锦衣卫" | 换名字：绣衣司/玄衣卫/监察司 |
+| Manual list | "Population 100,000, area 200 square kilometers" | Delete data and change to scene description |
+| Only write about the ability but not the price | "Flying with a sword in the golden elixir stage" → Then why don't you just keep flying? | To make up for the price: consumption of spiritual energy/risk of falling |
+| Stacking place names like a map | I wrote ten place names in one go, nine of them were unused | I deleted them until only the ones that were needed in the first chapter were left |
+| There is only an official version of politics | "The prefect holds military and political power" → What is the reality? | Complement the real power relationship (who really has the final say) |
+| There are no exceptions to the rules | "No one can fly" → It is too absolute and cannot be written later | Add exceptions: unless there is a wind-controlling order/sect permission |
+| Imagination mixed with reality | "Similar to the Jinyiwei of the Ming Dynasty" | Change the name: Xiuyi Division/Xuanyiwei/Inspection Division |
 
 ---
 
-## 各题材层级参考
+## References for each subject level
 
-以下供聊到对应题材时查阅，不需要一次性读完。
+The following is for reference when talking about corresponding topics. There is no need
+to read it all at once.
 
-### 地理层级（按题材选）
+### Geographic level (selected by subject)
 
 ```
-通用尺度（由大到小）：
-星域 → 星系 → 星球 → 大陆 → 王朝/联盟 → 州/郡/领地 → 城 → 街区/坊 → 据点/房间
+Common scale (from large to small):
+Star field → galaxy → planet → continent → dynasty/alliance → state/county/territory → city → block/fang → stronghold/room
 ```
 
-| 题材 | 顶层从哪开始 | 向下展开方向 | 典型层级链 |
+| Theme | Where to start at the top level | Downward expansion direction | Typical hierarchical chain |
 |------|------------|------------|-----------|
-| **星际/科幻** | 星域/星系 | → 星球/城市 | 星域 → 星系 → 行星 → 联盟 → 城市 → 区 |
-| **仙侠/玄幻** | 大陆/位面 | 两套体系：王朝管凡人、宗门管修行者 | 王朝 → 郡县 → 城 → 村 → 个人<br>宗门 → 峰 → 堂 → 个人 |
-| **西方奇幻** | 大陆/王国 | → 领地/城镇 | 大陆 → 王国 → 伯爵领 → 城镇 → 村庄 → 地牢 |
-| **古风权谋** | 天下/国家 | → 省/府/城 | 中原 → 国家 → 省 → 府/郡 → 县 → 城 |
-| **都市/年代** | 国家/省 | → 市/街道 | 国家 → 省 → 市 → 区 → 街道 → 小区 |
-| **末世/无限流** | 据点/区域 | → 楼层/地图 | 安全区 → 分区 → 据点 → 探索区域 → 副本 |
+| **Interstellar/Science Fiction** | Star Region/Galaxy | → Planet/City | Star Region → Galaxy → Planet → Alliance → City → District |
+| **xianxia/xuanhuan** | Continent/Plane | Two systems: Dynasty governs mortals, and sect governs practitioners | Dynasty → County → City → Village → Individual<br>Zong → Peak → Hall → Individual |
+| **Western Fantasy** | Continent/Kingdom | → Territory/Town | Continent → Kingdom → Counties → Towns → Villages → Dungeons |
+| **Ancient Style Strategy** | World/Country | → Province/Prefecture/City | Central Plains → Country → Province → Prefecture/County → County → City |
+| **City/Era** | Country/Province | → City/Street | Country → Province → City → District → Street → Community |
+| **End Times/Infinite Stream** | Stronghold/Area | → Floor/Map | Safe Zone → Partition → Stronghold → Exploration Area → Copy |
 
-确定顶层后，向下展开 **2-3 层**就够了。仙侠从"大陆"开始，展开到"城/坊市"就够；都市从"市"开始，展开到"街道"就够。
+After determining the top layer, it is enough to expand **2-3 layers** downwards. It is
+enough for xianxia to start from "mainland" and expand to "city/fangshi"; for city, it
+is enough to start from "city" and expand to "street".
 
-### 政治层级（按题材选）
+### Political level (select by subject)
 
-| 题材 | 顶层压力来源 | 向下延伸方向 | 典型层级链 |
+| Theme | Top-level pressure source | Downward extension direction | Typical hierarchical chain |
 |------|------------|------------|-------------|
-| **星际/帝国权谋** | 星际联盟/帝国议会 | → 行星/地方 | 星际议会 → 帝国皇室 → 行星总督 → 地方执政官 → 家族 |
-| **仙侠宗门** | 修行界格局/天庭 | → 宗门内部/散修 | 修行界盟约/天庭 → 宗门 → 峰/堂 → 长老 → 弟子 |
-| **古风权谋** | 朝廷/皇帝 | → 省府/家族 | 皇帝 → 内阁/三省 → 省府衙门 → 州/县 → 家族 → 个人 |
-| **都市帮派** | 地下势力格局 | → 堂口/小弟 | 黑道联盟 → 帮派 → 堂口/码头 → 头目 → 小弟 |
-| **后宫/宅斗** | 皇室/宗族 | → 嫡庶/下人 | 皇室 → 家族/宗族 → 嫡系/分支 → 主母/嫡子 → 庶出/下人 |
+| **Interstellar/Imperial Machiavellian** | Interstellar Alliance/Imperial Council | → Planet/Place | Interstellar Council → Imperial Household → Planetary Governor → District Governor → Family |
+| **xianxia Sect** | The layout of the practice world/Heaven | → Inside the sect/rogue cultivator | The covenant of the practice world/Heaven → Sect → Peak/Tang → Elder → Disciple |
+| **Ancient Style Machiavellian** | Imperial Court/Emperor | → Provincial Government/Family | Emperor → Cabinet/Three Provinces → Provincial Government Office → State/County → Family → Individual |
+| **Urban Gang** | Underground power structure | → Tangkou/Little Brother | Underworld Alliance → Gang → Tangkou/Dock → Leader → Little Brother |
+| **harem/inner-court intrigue** | royal family/clan | → concubine/servant | royal family → family/clan → direct line/branch → mistress/concubine → concubine/servant |
 
-确定层级后，向上延伸一层（更大的背景压力），向下延伸一层（具体影响角色的组织）。
-
----
-
-## 输出去哪
-
-`settings/world-setting.md`，Markdown 格式。用 `## 地理` / `## 政治` / `## 规则` 二级标题分节。
+Once the hierarchy is determined, extend it one level up (greater background pressure)
+and one level down (organization that specifically affects the role).
 
 ---
 
-## 案例
+## Where does the output go?
 
-以下三个案例覆盖不同题材，聊到对应题材时可以给作者参考。
+`settings/world-setting.md`, Markdown format. Use `## 地理` / `## 政治` / `## 规则` secondary
+headings to section.
 
-### 案例一：仙侠玄幻
+---
+
+## Case
+
+The following three cases cover different themes and can be used as a reference for the
+author when talking about corresponding themes.
+
+### Case 1: xianxiaxuanhuan
 
 ```markdown
-## 地理
+## Geography
 
-青州城坐落于苍梧山脉东麓，三面环山一面临水。城分内外：内城是官署和富户聚居区，城墙高三丈，设四门，夜闭晨开；外城是平民市井，无城墙，沿江而建，街巷纵横如蛛网。
+Qingzhou City is located at the eastern foot of the Cangwu Mountains, surrounded by mountains on three sides and facing water on one side. The city is divided into inner and outer parts: the inner city is where government offices and wealthy households live, with a wall three feet high and four gates, which are closed at night and open in the morning; the outer city is a civilian market without city walls, built along the river, with streets and lanes like spider webs.
 
-城外东南十五里有青江渡口，是商旅往来的命脉。沿江下行可至江南诸州，上行通往苍梧山深处。渡口每日卯时开渡，酉时收渡，夜不行船。
+Fifteen miles southeast of the city is the Qingjiang Ferry, which is the lifeblood of business travel. You can go down along the river to the states in the south of the Yangtze River, and go up to the depths of Cangwu Mountain. The ferry opens at Mao hour every day and closes at You hour. There are no boats running at night.
 
-苍梧山脉横贯南北，是青州与西境的天然屏障。山中有三条可通行的古道，但冬季大雪封山，只有猎户熟知的小路能走。翻过苍梧山向西，是妖兽横行的荒原——没有人活着穿越过。
+The Cangwu Mountains run across the north and south and are a natural barrier between Qingzhou and the western border. There are three passable ancient roads in the mountains, but in winter the mountains are blocked by heavy snow, so only the paths well known to hunters can be walked. Across Cangwu Mountain to the west, there is a wasteland where monsters roam - no one has ever crossed it alive.
 
-气候：冬季湿冷多雾，青江水面晨雾弥漫，至午方散。夏季闷热多雨，六月至八月是雨季，青江水位暴涨时渡口停运三至五日。
+Climate: Winter is wet, cold and foggy. The morning fog on the Qingjiang River is diffuse and disperses at noon. The summer is hot and rainy, with June to August being the rainy season. When the Qingjiang water level rises sharply, the ferry is suspended for three to five days.
 
-## 政治
+## Politics
 
-统治形式：朝廷设州府制，青州府归江南道管辖。知府陈伯远掌军政大权，受朝廷吏部考核。
+Form of governance: The imperial court established a state government system, and Qingzhou Prefecture was under the jurisdiction of Jiangnan Dao. The prefect Chen Boyuan was in charge of military and political power and was evaluated by the imperial officials.
 
-三股势力：
-- **官府**——维持秩序，但力量有限。府兵五百，装备精良但士气不高。知府受限于朝廷法度，不能随意调动资源
-- **青帮**——控制码头和市井生意，与官府表面合作暗中角力。帮主洪四海，手下三千帮众，渗透了府衙底层吏员。青帮不敢公然对抗官府，但能通过"信息差"左右局势
-- **玄天宗外门**——修行者势力，不干涉俗务但拥有超然地位。驻守长老一位，筑基弟子十人。朝廷对修行者无管辖权——玄天宗弟子犯法由宗门自行处置
+Three forces:
+- **Official Government** - Maintain order, but power is limited. There are five hundred soldiers in the government, well equipped but with low morale. The prefect is restricted by court laws and cannot mobilize resources at will
+- **Qinggang** - controls the dock and market business, and cooperates with the government in secret. Gang leader Hong Sihai, with three thousand gang members under his command, has infiltrated the lower-level officials of the government office. The Youth Gang does not dare to openly confront the government, but it can influence the situation through the "information gap"
+- **Xuantian Sect Outer Sect**, The power of practitioners, who does not interfere in secular affairs but has a transcendent status. There is one garrison elder and ten foundation-building disciples. The imperial court has no jurisdiction over practitioners - Xuantian Sect disciples who break the law will be dealt with by the sect themselves
 
-三足鼎立，任何两方联合都会打破平衡。官府和青帮互相制衡，玄天宗是两者都不敢招惹的变量。
+The three pillars stand against each other, and any combination of two parties will break the balance. The government and the Youth Gang check and balance each other, and Xuantian Sect is a variable that neither of them dares to provoke.
 
-社会分层：
-- 修行者（超然地位，不受世俗法律约束）
-- 官员/士绅（有特权，但受朝廷法度管）
-- 平民（纳税服役，无特权。得罪青帮可能被打，得罪官府可能坐牢）
-- 贱籍（倡优皂隶，后代不得科举，不得与平民通婚）
+Social Stratification:
+- Practitioner (transcendental status, not subject to secular laws)
+- Officials/gentry (with privileges, but subject to court laws)
+- Civilians (pay taxes and serve, no privileges. If you offend the Youth Gang, you may be beaten, if you offend the government, you may be imprisoned)
+- Low status (promoting excellence in civil servants, descendants are not allowed to take imperial examinations, and are not allowed to marry commoners)
 
-不服从的代价：平民抗税→打板子+坐牢。帮众背叛→三刀六洞。官员贪腐被查→抄家流放。对玄天宗不敬→没人能帮你，官府也管不了。
+The price of disobedience: civilians resisting taxes → being beaten + jailed. The gang betrayed → Three swords and six holes. Officials were found guilty of corruption and their homes confiscated and exiled. Disrespecting the Xuantian Sect → No one can help you, and the government can't control it.
 
-## 规则
+## Rules
 
-### 世界级：修炼体系
+### World Class: Cultivation System
 
-修炼路径：引气 → 筑基 → 金丹 → 元婴。每级晋升需天材地宝+功法+机缘，缺一不可。
+Cultivation path: Entraining Qi → Building Foundation → Golden Elixir → Nascent Soul. Promotion at each level requires heavenly materials and earthly treasures + skills + opportunities, all of which are indispensable.
 
-能做什么：引气期强身健体，百病不生。筑基期御物飞行，低阶法术。金丹期御剑飞行，神识探查百里。元婴期元神出窍，瞬息百里。
+What can be done: During the Qi-entraining period, you can strengthen your body and avoid all kinds of diseases. In the foundation building stage, flying objects are used, low-level spells. In the golden elixir stage, one can fly with a sword, and one's spiritual sense can probe hundreds of miles away. In the Nascent Soul stage, the soul leaves the body and can travel hundreds of miles in an instant.
 
-不能做什么：无功法无法自主修炼。强行突破→走火入魔，轻则修为全废重则暴毙。金丹以上受天道誓约约束，不得对凡人出手——违者天劫加身。
+What not to do: You cannot practice independently without gong method. Forcibly break through → go crazy and become obsessed, which can cause your cultivation level to be completely destroyed, or even death to a sudden death. Those above the golden core are bound by the oath of heaven and are not allowed to take action against mortals - violation will result in disaster.
 
-代价：每次大境界晋升消耗寿元——筑基减十年，金丹减三十年，元婴减五十年。寿元耗尽则神魂俱灭，不入轮回。
+Price: Every time a major realm is promoted, life span is consumed - ten years for foundation building, thirty years for golden elixir, and fifty years for Nascent Soul. When the life span is exhausted, the spirit and soul will be destroyed, and there will be no reincarnation.
 
-### 社会级：青州城潜规则
+### Social Level: Qingzhou City’s Hidden Rules
 
-- 凡人不得插手修行者争端。报官也没用——知府管不了
-- 青帮地盘外人不得做买卖。不交平安钱→店被砸、人被扔出城
-- 玄天宗弟子在城内不得施展法术。违反者由宗门自行召回处置
+- Mortals are not allowed to interfere in disputes between practitioners. There's no point in reporting it to the official - the prefect can't control it.
+- Outsiders from the Qinggang territory are not allowed to do business. If you don’t pay the security money → the shop will be smashed and people will be thrown out of the city
+- Xuantian Sect disciples are not allowed to cast spells in the city. Violators will be recalled and dealt with by the sect themselves
 
-### 个人级：主角沈牧的限制
+### Personal Level: Limitations of the Protagonist Shen Mu
 
-沈牧幼年被妖兽抓伤，体内残留妖气。筑基后期后妖气开始反噬——月圆之夜灵力失控，情绪激动时瞳孔变竖瞳。金丹劫时妖气与灵气冲突，必死无疑。
+Shen Mu was scratched by a monster when he was young, and the monster energy remained in his body. After the late stage of foundation building, the demonic energy began to backfire - the spiritual power was out of control on a full moon night, and the pupils became vertical when emotional. During the golden elixir tribulation, demonic energy and spiritual energy conflict, and death is inevitable.
 ```
 
-### 案例二：都市异能
+### Case 2: Urban superpowers
 
 ```markdown
-## 地理
+## Geography
 
-江城市，长江中游的工业老城，人口八百万。长江穿城而过，将城市分为江南江北——江北是老城区，工厂、棚户区、老居民楼密集；江南是新区，商业中心、高档住宅、大学城。
+Jiangcheng City, an old industrial city in the middle reaches of the Yangtze River, has a population of eight million. The Yangtze River passes through the city, dividing the city into Jiangnan and Jiangbei - Jiangbei is the old city area with dense factories, shantytowns, and old residential buildings; Jiangnan is the new area with business centers, high-end residences, and university towns.
 
-地铁四号线贯通南北，连接江城市与省会，车程四十分钟。城西有高铁站，城东是老火车站——绿皮车还在跑，连接周边几个县。
+Metro Line 4 runs from north to south, connecting Jiangcheng City and the provincial capital. The journey takes 40 minutes. There is a high-speed rail station in the west of the city, and an old train station in the east - green trains are still running, connecting several surrounding counties.
 
-三环以内是城市核心区，三环到绕城高速之间是城乡结合部，绕城高速以外是农田和乡镇。江城市区往西五十公里是大别山余脉，山里有个废弃的军工基地——现在是城里异能者的秘密聚集地。
+Within the third ring road is the core area of the city, between the third ring road and the ring expressway is the urban-rural fringe, and beyond the ring expressway are farmland and towns. Fifty kilometers west of downtown Jiangcheng is the remnant range of the Dabie Mountains. There is an abandoned military industrial base in the mountains - now a secret gathering place for superpowers in the city.
 
-气候：四季分明，夏季高温可达四十度，冬季湿冷偶尔下雪。六月梅雨季，连续半个月阴雨。
+Climate: Four distinct seasons, with high temperatures reaching 40 degrees in summer and wet and cold winters with occasional snow. June is the rainy season and it rains continuously for half a month.
 
-## 政治
+## Politics
 
-统治形式：江城市政府管日常，但异能者事务由"特别事务管理处"（特管处）暗中管理。特管处直属中央，不归地方政府管，处长和市委书记平级。
+Form of governance: The Jiangcheng City government manages day-to-day affairs, but the affairs of people with special abilities are secretly managed by the "Special Affairs Management Office" (Special Management Office). The Special Management Office is directly under the central government and not under the jurisdiction of local governments. The director of the department is at the same level as the secretary of the municipal party committee.
 
-三股势力：
-- **特管处**——官方异能管理机构，登记注册的异能者受其管辖和保护。处长赵远山，本人是A级异能者，手下有五个行动组。目标是维持稳定，不让异能者暴露在公众面前
-- **暗网**——未注册异能者的地下交易网络。提供黑市异能物品、情报和悬赏。首领身份不明，只知道代号"教授"。与特管处处于"你不碰我我不碰你"的微妙平衡
-- **归元会**——一个古老的修行门派转型的民间组织，认为异能是古武修炼的异变分支。成员不多但平均实力强，看不起特管处和暗网。总部在城西废弃军工基地
+Three forces:
+- **Special Management Office** - the official superpower management agency, and registered superpowers are under its jurisdiction and protection. Director Zhao Yuanshan is an A-level psychic and has five action teams under him. The goal is to maintain stability and prevent people with special abilities from being exposed to the public
+- **Dark Web** - an underground trading network for unregistered supernatural beings. Provides black market supernatural items, intelligence and bounties. The identity of the leader is unknown, only his code name is "Professor". There is a delicate balance between "you don't touch me and I won't touch you" with the special management.
+- **Guiyuanhui** - a non-governmental organization transformed from an ancient practice sect, believes that supernatural powers are a mutated branch of ancient martial arts practice. There are not many members but the average strength is strong, and they look down on the Special Administrative Office and the dark web. The headquarters is in an abandoned military industrial base in the west of the city.
 
-三股势力互不信任：特管处想收编归元会、打击暗网；暗网想渗透特管处；归元会觉得两边都是"不懂道法的小辈"。
+The three forces distrust each other: the Special Administrative Office wants to incorporate the Guiyuan Hui and crack down on the dark web; the Dark Network wants to infiltrate the Special Administrative Office; and the Guiyuan Hui feels that both sides are "juniors who don't know the law."
 
-不服从的代价：注册异能者违规→特管处封印异能+监控居住。暗网成员被抓→特管处秘密审判，关入地下监狱。归元会弟子擅自出手→废去修为，逐出师门。
+The price of disobedience: Violation of registration of superpowers → sealing of superpowers by the special management office + monitoring of residence. Darknet members were arrested → secretly tried by the Special Administration Bureau and imprisoned in underground prisons. The disciples of Guiyuanhui took action without authorization → abolished their cultivation and were expelled from the school.
 
-## 规则
+## Rules
 
-### 世界级：异能体系
+### World Class: Ability System
 
-异能分级：D → C → B → A → S。每级判定标准是异能输出功率和精准度，不是修炼来的——异能者觉醒后级别固定，只能通过训练提升控制力，不能提升上限。
+Power rating: D → C → B → A → S. The criterion for judging each level is the output power and accuracy of the superpower, which does not come from practice - the level of a superpower is fixed after awakening, and control can only be improved through training, but the upper limit cannot be increased.
 
-能做什么：D级影响小范围物理现象（点烟、推杯子）。C级影响单个人体（读表层思维、短距离念力）。B级影响一栋建筑内环境（控火、凝水成冰）。A级影响一个街区（短时操控天气、力场护盾）。S级影响城市级范围——全球已知仅七人。
+What it can do: Class D affects small-scale physical phenomena (lighting cigarettes, pushing cups). Level C affects a single human body (reading surface thoughts, short-range telekinesis). Level B affects the environment inside a building (controlling fire, condensing water into ice). Level A affects a city block (short-term weather control, force field shield). S-class affects city-level scope - only seven people are known in the world.
 
-不能做什么：异能无法遗传。异能者后代觉醒概率只比普通人高五个百分点。无法通过修炼/药物提升级别上限。禁术（抽取他人异能、强行融合异能核）会暴毙，成功率不到千分之一。
+What not to do: Powers cannot be inherited. The probability of awakening for descendants of superpowers is only five percentage points higher than that of ordinary people. The level limit cannot be increased through training/drugs. Forbidden spells (extracting other people's abilities and forcibly merging ability cores) will result in sudden death, with a success rate of less than one thousandth.
 
-代价：每次使用异能消耗精神力。过度使用→精神海枯竭，轻则偏头痛三天，重则永久降级。S级放一次大招可能需要静养半年。
+Cost: Every time you use a power, you consume mental energy. Excessive use → mental exhaustion, ranging from migraine headaches for three days to permanent degradation. S-level players may need to wait for half a year to use their ultimate move once.
 
-### 社会级：异能界铁律
+### Social Level: The Iron Law of the Supernatural World
 
-- 不得在普通人面前暴露异能。违反→特管处介入，视情节警告或封印
-- 注册异能者每季度向特管处报告状态。连续两次不报到→列为失踪危险人员
-- 黑市异能交易可抓可不抓——不出人命特管处睁一只眼闭一只眼
+- Do not reveal your superpowers in front of ordinary people. Violation→Special Management Office intervenes, warning or sealing depending on the circumstances
+- Those with registered abilities report their status to the Special Management Office every quarter. Failure to report for duty twice in a row → Listed as a missing person in danger
+- Black market supernatural power trading can be caught or not - the special management department will turn a blind eye if no human life is involved.
 
-### 个人级：主角陈默的限制
+### Personal Level: The protagonist Chen Mo’s limitations
 
-陈默，C级读心者。觉醒时受过刺激，导致能力不稳定——情绪波动时读心范围失控，周围十米内所有人的思维碎片涌入大脑，轻则鼻血流不停，重则昏厥。每次失控后需要三天恢复。
+Chen Mo, a C-level mind reader. Being stimulated during awakening causes unstable abilities - when emotions fluctuate, the mind-reading range is out of control, and the fragments of thoughts of everyone within ten meters around him flow into the brain, which can range from non-stop nosebleeds to fainting. It takes three days to recover after each loss of control.
 ```
 
-### 案例三：架空年代
+### Case Three: The Imaginary Era
 
 ```markdown
-## 地理
+## Geography
 
-临海市，东南沿海一座中型港口城市。老城区沿江而建，骑楼老街纵横交错，路面是青石板，两车道宽，两边的铺面一家挨一家——米行、布庄、药材铺、当铺。
+Linhai City is a medium-sized port city on the southeast coast. The old town is built along the river, with arcades and old streets crisscrossing each other. The road surface is bluestone and two lanes wide. Shops on both sides are one after another - Mihang, Buzhuang, medicinal materials shop, and pawn shop.
 
-城东是码头区，海船和内河船在此交汇。码头分三个泊区：军用的、商用的、渔用的。商用码头最大，每日吞吐货物上千吨。码头背后是仓库区和工人棚户区——板条搭的屋子，一家五六口挤一间。
+To the east of the city is the dock area, where sea-going ships and river ships meet. The wharf is divided into three berthing areas: military, commercial, and fishing. It is the largest commercial terminal and handles thousands of tons of cargo every day. Behind the pier are warehouse areas and workers' shantytowns - slatted houses where five or six families live in one room.
 
-城西是新区，洋楼、教堂、新式学堂、邮政局——民国风格的三四层小楼，临街种法国梧桐。再往西是郊区农田，种水稻和蔬菜供应全城。
+To the west of the city is the new district, with Western-style buildings, churches, new-style schools, and post offices,three- or four-story buildings in the Republican style, with French plane trees growing on the street. Further west are suburban farmlands, where rice and vegetables are grown to supply the entire city.
 
-贯穿全城的主干道叫中山路，从码头直通城西，路面最宽处能并排走两辆汽车——全城也就十来辆汽车，多数人靠腿和自行车。
+The main road that runs through the city is called Zhongshan Road, which leads directly from the pier to the west of the city. The widest part of the road can accommodate two cars side by side - there are only about a dozen cars in the city, and most people rely on their legs and bicycles.
 
-气候：亚热带季风气候，夏季高温多雨，常有台风过境。台风来时码头停摆，低洼处积水过膝。
+Climate: Subtropical monsoon climate, hot and rainy summers, with frequent typhoons passing through. When the typhoon came, the pier was shut down and the water in the low-lying areas was knee-high.
 
-## 政治
+## Politics
 
-统治形式：临海市归江南省管辖，市长由省府任命。但临海天高皇帝远，省里的命令传到临海往往打了折扣。真正说了算的是地方商会和码头工会。
+Form of governance: Linhai City is under the jurisdiction of Jiangnan Province, and the mayor is appointed by the provincial government. But the sky is high in Linhai and the emperor is far away, so orders from the province are often discounted when they reach Linhai. It is the local chambers of commerce and dock unions that really have the final say.
 
-三股势力：
-- **市政府**——维持基本运转，收税、维持治安、管教育卫生。警察局两百人，装备落后，管管小偷小摸还行，真出了大事压不住。市长周鸿声是个中间派，谁给钱多听谁的
-- **临海商会**——控制了码头、钱庄和最大的几家工厂。会长林仲甫，前清秀才，民国后经商，家财万贯。商会养着一支五十人的保安队，装备比警察好——从驻军手里买的淘汰步枪
-- **码头工会**——码头装卸工的组织，三千会员。主席赵大柱，码头工人出身，不识字但威信极高。工会能号召码头工人罢工——船不动，临海的经济就停
+Three forces:
+- **City Government** - maintains basic operations, collects taxes, maintains law and order, and manages education and health. The police station has 200 people and outdated equipment. It can handle petty thefts just fine, but it can't handle anything serious if something serious happens. Mayor Zhou Hongsheng is a centrist and will listen to whoever gives more money.
+- **Linhai Chamber of Commerce**,controlled the docks, banks, and the largest factories. The president, Lin Zhongfu, was a scholar in the former Qing Dynasty. He became a businessman after the Republic of China and made a fortune. The Chamber of Commerce maintains a security team of fifty people with better equipment than the police - obsolete rifles bought from the garrison.
+- **Dockyard Union**,an organization of longshoremen, 3,000 members. Chairman Zhao Dazhu, a dock worker, is illiterate but has a high prestige. The union can call on the dock workers to go on strike - if the ship doesn't move, the Linhai economy will stop.
 
-微妙平衡：商会需要码头出货，工会需要商会发工钱，市政府需要两者交税。任何两方联手都能逼第三方就范——所以谁也不敢真的联手。
+A delicate balance: the Chamber of Commerce needs the dock to ship goods, the union needs the Chamber of Commerce to pay wages, and the city government needs both to pay taxes. Any two parties joining forces can force a third party to submit - so no one dares to really join forces.
 
-不服从的代价：得罪商会→你家的铺子"意外"失火。得罪工会→你的货没人搬。得罪官府→抓去坐几天——但也仅此而已，市政府没能力长期关人。
+The price of disobedience: Offending the Chamber of Commerce → Your shop "accidentally" catches fire. Offend the union → No one will move your goods. If you offend the government, you will be arrested and imprisoned for a few days - but that's all. The city government cannot lock people up for a long time.
 
-## 规则
+## Rules
 
-### 世界级：时代规则
+### World Class: Rules of the Times
 
-这个世界的规则就是**民国的规则**——有法律但执行看人情，有钱能使鬼推磨，枪杆子里出政权。
+The rules of this world are the rules of the Republic of China - there are laws but execution depends on favors, money can make the world go round, and political power comes from the barrel of a gun.
 
-能做什么：有钱可以买到绝大多数东西——官位、女人、命。有关系可以绕过法律。有枪可以自己说了算。
+What you can do: Money can buy most things - official positions, women, lives. Having connections can get around the law. If you have a gun, you can make your own decisions.
 
-不能做什么：不能公然挑战洋人的利益——洋人背后有军舰。不能把事做绝——逼急了对方也会拼命。不能在明面上跟政府对着干——帽子扣下来是"乱党"。
+What not to do: Do not openly challenge the interests of foreigners - foreigners have warships behind them. You can't do things to perfection - the other party will do their best if you push them too hard. You can't openly confront the government - you'll be labeled a "chaotic party".
 
-代价：跟洋人作对→领事馆施压，市政府把你交出去。把事做绝→对方家族跟你打"官司"（其实是打打杀杀）。被扣"乱党"帽子→省里直接派兵。
+The price: Go against the foreigners → the consulate will put pressure on you, and the city government will hand you over. Make sure everything is done → The other party's family will file a "lawsuit" with you (actually, it means fighting and killing). Being labeled a "rebellious party" → the province directly dispatched troops.
 
-### 社会级：临海市规矩
+### Social level: Linhai City rules
 
-- 码头上的事工会说了算，商会的人不能上码头指手画脚
-- 商会的保安队不能进码头区——进了就是越界，工会兄弟不答应
-- 警察不碰有头有脸的人——抓了也关不住，还得罪人
-- 欠债还钱天经地义，但可以找中间人说情，分期还
+- The ministries on the pier have the final say, and people from the chamber of commerce cannot go up to the pier to dictate.
+- The security team of the Chamber of Commerce cannot enter the dock area - if they do, they will cross the line, and the union brothers will not allow it.
+- The police don’t touch reputable people - even if they catch them, they can’t lock them up and they’ll offend people.
+- It is natural to pay back debts, but you can find a middleman to intercede and pay back in installments.
 
-### 个人级：主角阿生的限制
+### Personal Level: Limitations of the Protagonist Ah Sheng
 
-阿生是码头工人，父母死于十年前一场"意外"——他怀疑是商会的人干的，但没有证据。他在码头干活，在商会的地盘上生活，天天见仇人但不能翻脸。他想报仇，但老婆孩子靠他的工钱吃饭——翻脸了全家饿死。
+Ah Sheng is a dock worker. His parents died in an "accident" ten years ago - he suspects that it was someone from the Chamber of Commerce who did it, but there is no evidence. He works at the dock and lives on the territory of the Chamber of Commerce. He sees enemies every day but cannot fall out. He wanted to take revenge, but his wife and children relied on his wages to survive - and the whole family starved to death.
 ```
 
 ---
 
-## 三步总检（三项聊完后走）
+## Three-step general inspection (leave after talking about the three items)
 
-全部聊完、写入文件后，走三步自检。不过不进入下个阶段。
+After you have finished chatting and writing the file, do a three-step self-check. But
+don’t go to the next stage.
 
-### 第一步：格式扫一遍
+### Step 1: Scan the format
 
-| 检查项 | 怎么查 | 不过怎么办 |
+| Check items | How to check | But what to do |
 |--------|--------|-----------|
-| 二级标题统一 | 确认是 `## 地理` / `## 政治` / `## 规则`？ | 统一为 `##` |
-| 缩进一致 | 三级用 `###`，列表用 `- ` 没混用？ | 统一格式 |
-| 没有正文混入 | 确认设定里没混入小说正文片段？ | 有→删掉 |
-| 字数 | 全文不超过 2000 字？ | 超过→精简要到 2000 以内 |
-| 文件在正确位置 | `settings/world-setting.md` 存在？ | 移动到正确路径 |
+| Unified secondary titles | Confirmed to be `## 地理` / `## 政治` / `## 规则`? | Unified to `##` |
+| Consistent indentation | Use `###` for the third level and `- ` for the list. Are they not mixed? | Unified format |
+| No text mixed in | Confirm that the novel text fragments are not mixed in the settings? | Yes → Delete |
+| Word count | The full text should not exceed 2,000 words? | More than → Streamlined to within 2000 |
+| File in correct location | `settings/world-setting.md` exists? | Move to the correct path |
 
-### 第二步：内容逐项过
+### Step 2: Go through the content item by item
 
-| 检查项 | 怎么查 | 不通过→下游影响 |
+| Check items | How to check | Failure → Downstream impact |
 |--------|--------|----------------|
-| 彻底架空 | 全文搜真实地名/朝代/历史人物，有→非架空 | 三条全中→退回重写 |
-| 地理够用 | 说了"在哪、怎么去、路上什么样"？ | 缺→正文写场景没依据 |
-| 政治够用 | 有统治形式+至少2个势力+力量对比+不服从代价？ | 缺→方向提案不知和谁冲突 |
-| 规则够用 | 世界级+社会级至少两级覆盖？每条有"能/不能/代价"三要素？ | 缺→角色行为无约束 |
-| 第一章可用 | 读完三节，能写一章不违反设定的正文？ | 不行→补到够用再进卷纲 |
+| Completely fictitious | Full text search for real place names/dynasties/historical figures, yes → not fictitious | All three are correct → return and rewrite |
+| Geography is enough | Did you say "where is it, how to get there, and what is it like on the road"? | Lack → There is no basis for writing the scene in the text |
+| Political enough | There is a form of rule + at least 2 forces + balance of power + price of disobedience? | Missing → direction proposal, I don’t know who it conflicts with |
+| Are the rules sufficient | At least two levels of world-class + social-level coverage? Each item has three elements: "can/can't/cost"? | Lack → Unconstrained role behavior |
+| The first chapter is available | After reading three sections, can you write a chapter that does not violate the setting? | No → Make up enough and then enter the outline |
 
-### 第三步：念一遍
+### Step 3: Read it again
 
-挑地理段和规则段各一段，在心里默读。
+Pick one paragraph each from the geography paragraph and the rules paragraph, and read
+it silently in your mind.
 
-- 读起来像设定集说明书的 → 改成场景描写
-- 读起来不知道"这规则到底有啥用"的 → 补上代价或限制
-- 读起来觉得"这个设定第一章用不上"的 → 删掉
+- It reads like a setup manual → changed to a scene description
+- When I read it, I don’t know “What is the purpose of this rule?” → Add the cost or
+  restriction
+- If you read it and feel that "this setting is not needed in the first chapter" →
+  delete it
 
-全部自检通过 → 进入下一环节。不过 → 改完再过。
+All self-tests passed → enter the next link. However → I will try again after correcting
+it.

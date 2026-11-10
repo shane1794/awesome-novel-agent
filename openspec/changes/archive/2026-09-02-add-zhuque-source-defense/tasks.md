@@ -1,23 +1,23 @@
-## 1. 结构热源知识文件
+## 1. Structural-heat knowledge file
 
-- [x] 1.1 写 `knowledge/anti-ai/structural-heat.md`：七条定律 + ≥13 种高风险结构，去书名化，逐条带实测分数，引用路径用部署后基座（验证：人工核对内容清单）
-- [x] 1.2 对比包内模块 4 与 `knowledge/anti-ai/common-rules.md`/`anti-ai-writing.md`，列增量条目清单并合并（只增不删）（验证：git diff 仅新增行，逐条可追溯来源）
-- [x] 1.3 跑 `python tools/check-agents.py` 与 `python tools/check-conflicts.py`（验证：双 0 退出）
+- [x] 1.1 Write `knowledge/anti-ai/structural-heat.md`: seven laws + at least 13 high-risk structures, book names removed, each item carrying measured scores, reference paths using the post-deployment base (verify: manually check the content list)
+- [x] 1.2 Compare the pack's module 4 against `knowledge/anti-ai/common-rules.md` / `anti-ai-writing.md`, list the incremental entries, and merge them (additions only) (verify: git diff shows only added lines, each traceable to its source)
+- [x] 1.3 Run `python tools/check-agents.py` and `python tools/check-conflicts.py` (verify: both exit 0)
 
-## 2. 章节检查工具（先红后绿）
+## 2. Chapter check tool (red first, then green)
 
-- [x] 2.1 写 `tools/test_check_chapter.py` 失败用例：各检查项正/反例、退出码 0/1/2、回归库与白名单缺失/命中、CRLF 输入（验证：当前实现不存在，测试红）
-- [x] 2.2 实现 `tools/check-chapter.py`：硬性项（夹层标签式/嵌套双引号/半角引号/破折省略/字数逐字对账/回归串）+ 警告项（广义夹层/问答并段/弱化副词/字数待人工/尾随标签窄集）+ 平台口径字数统计 + 外置文件读取（验证：2.1 全绿）
-- [x] 2.3 `python -m py_compile tools/*.py` 与 `python tools/test_check_chapter.py`（验证：编译零错、测试退出码 0）
+- [x] 2.1 Write the `tools/test_check_chapter.py` failing cases: positive/negative cases per check, exit codes 0/1/2, regression library and whitelist missing/hit, CRLF input (verify: no implementation exists yet, so the tests are red)
+- [x] 2.2 Implement `tools/check-chapter.py`: hard items (label-style sandwiches / nested double quotes / half-width quotes / dash-ellipsis / word-for-word word-count reconciliation / regression strings) + warning items (broad sandwiches / question-answer in one paragraph / weak adverbs / word counts awaiting manual check / narrow trailing-label set) + platform-convention word counting + external-file reading (verify: 2.1 all green)
+- [x] 2.3 `python -m py_compile tools/*.py` and `python tools/test_check_chapter.py` (verify: zero compile errors, test exit code 0)
 
-## 3. 部署接入
+## 3. Deployment wiring
 
-- [x] 3.1 `tools/init.py` 与 `tools/sync-project.py` 部署清单加入 `check-chapter.py`（部署到 `<平台根>/tools/`，与 check-prose.py 同机制）（验证：临时目录 init 后文件存在）
-- [x] 3.2 `tools/test_platforms.py` E2E 断言新工具在七平台输出中存在（验证：`python tools/test_platforms.py` 退出码 0）
+- [x] 3.1 Add `check-chapter.py` to the deployment manifests in `tools/init.py` and `tools/sync-project.py` (deployed to `<platform root>/tools/`, same mechanism as check-prose.py) (verify: the file exists after init in a temp directory)
+- [x] 3.2 `tools/test_platforms.py` E2E assertions that the new tool exists in seven-platform output (verify: `python tools/test_platforms.py` exit code 0)
 
-## 4. 收尾与发版
+## 4. Wrap-up and release
 
-- [x] 4.1 全量检查：`check-agents.py` + `check-conflicts.py` + `py_compile` + 两个测试脚本（验证：全绿）
-- [x] 4.2 在至少一个 AI 终端实测初始化项目并跑一次 check-chapter（验证：按仓库提交指南）
-  - 2026-08-31 claude 无头会话实测：init 临时项目→部署产物可运行；anti-ai 会话实际执行两个脚本，check-chapter exit 1 正确命中夹层硬伤、5 项警告逐条列出（详见 PR test/ai-terminal-verification）
-- [x] 4.3 发版 `chore: bump version to v4.22.0`，更新 `VERSION` 与 `docs/releasenotes/releasenote-4.22.0.md`（验证：`check-version.py` 通过）
+- [x] 4.1 Full checks: `check-agents.py` + `check-conflicts.py` + `py_compile` + both test scripts (verify: all green)
+- [x] 4.2 Run check-chapter once on an initialized project on at least one AI terminal (verify: per the repo contribution guide)
+  - Live test in a headless Claude session on 2026-08-31: init a temp project, and the deployed product runs; an anti-ai session actually ran both scripts, with check-chapter exiting 1 and correctly hitting a sandwich defect, and 5 warnings listed one by one (see PR test/ai-terminal-verification)
+- [x] 4.3 Release `chore: bump version to v4.22.0`, updating `VERSION` and `docs/releasenotes/releasenote-4.22.0.md` (verify: `check-version.py` passes)

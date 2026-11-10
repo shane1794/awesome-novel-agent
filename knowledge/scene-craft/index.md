@@ -1,68 +1,75 @@
-# 场景写作方法论
+# Scenario Writing Methodology
 
-> 按场景类型组织的小说写法指南。每场景一个目录，内含通用方法论 + 各题材特化覆盖。
+> A guide to writing novels organized by scene type. One directory for each scene,
+> containing general methodology + specialized coverage of each theme.
 
-## 目录结构
+## Directory structure
 
 ```
 scene-craft/
-├── index.md                      # 索引
-├── README.md                     # 使用说明
-├── prose/                        # 文笔技法（始终加载）
-├── dialogue/                     # 对话场景
-│   ├── universal.md              #   通用对话方法论
-│   ├── xianxia.md                #   仙侠题材特化
-│   └── suspense-crime.md         #   悬疑刑侦特化
-├── fight/                        # 战斗/对抗
-│   ├── universal.md              #   通用战斗方法论
-│   ├── xianxia.md                #   仙侠题材特化
-│   └── suspense-crime.md         #   悬疑刑侦特化
-├── environment/                  # 环境/氛围描写
-│   ├── universal.md              #   ✅ 五感通写/情绪渲染/细节互动
-│   ├── xianxia.md                #   仙侠题材特化
-│   └── suspense-crime.md         #   悬疑刑侦特化
-├── appearance/                   # 角色外貌描写
-│   └── universal.md              #   ✅ 锚点/动态/故事/侧面烘托
-├── inner-mono/                   # 心理活动/内心独白
-│   └── universal.md              #   ✅ 生理通感/思维碎片/递进崩塌
-├── group-scene/                  # 群像场景（待补充）
+├── index.md # Index
+├── README.md # Instructions for use
+├── prose/ # Writing techniques (always loaded)
+├── dialogue/ # dialogue scene
+│ ├── universal.md # Universal dialogue methodology
+│ ├── xianxia.md # xianxia theme specialization
+│ └── suspense-crime.md # Suspense criminal investigation specialization
+├── fight/ # fight/confrontation
+│ ├── universal.md # Universal combat methodology
+│ ├── xianxia.md # xianxia theme specialization
+│ └── suspense-crime.md # Suspense criminal investigation specialization
+├── environment/ # Environment/atmosphere description
+│ ├── universal.md # ✅ Five-sense writing/emotion rendering/detail interaction
+│ ├── xianxia.md # xianxia theme specialization
+│ └── suspense-crime.md # Suspense criminal investigation specialization
+├── appearance/ # Character appearance description
+│ └── universal.md # ✅ Anchor/dynamic/story/side foil
+├── inner-mono/ # psychological activity/inner monologue
+│ └── universal.md # ✅ Physiological synaesthesia/thought fragmentation/progressive collapse
+├── group-scene/ # Group portrait scene (to be added)
 │   └── universal.md
-└── transition/                   # 过渡场景
-    └── universal.md              #   ✅ 情绪顺延/危机钩子/五感反差/物件线索/动线镜头/空镜景物/对话承接
+└── transition/ # Transition scene
+    └── universal.md # ✅ Emotional delay/crisis hook/contrast of five senses/object clues/moving lens/empty scene/dialogue continuation
 ```
 
-## 标签系统
+## Labeling System
 
-每个场景类型文件中的技法条目以 `[标签]` 开头。标签是 prompt-crafter 选取时的筛选依据：
-
-```
-## [权力] 权力动态——谁主导谁防守
-## [潜台词] 错位——台词和动作不一致
-## [节奏] 节奏变化
-## [信息差] 信息差驱动对话
-```
-
-prompt-crafter 加载文件后，不全部注入 输出·写作规范——根据场景核心事件匹配标签，只选取相关的 2-4 条。
-
-### 标签匹配逻辑
+Technique entries in each scene type file begin with `[tag]`. The label is the filter
+basis for prompt-crafter selection:
 
 ```
-输入·场景原材料 场景核心事件："方岩在办公室回避陆征的追问"
-  → 触发标签：[隐瞒]、[权力]、[潜台词]
-  → 从 dialogue/universal.md 选取这三条 → 四步转化 → 输出·写作规范
-
-输入·场景原材料 场景核心事件："两个角色在街头闲聊"
-  → 触发标签：无直接冲突标签
-  → 从 dialogue/universal.md 选取[动作]、[区分] → 四步转化 → 输出·写作规范
+## [Power] Power dynamics - who dominates and who defends
+## [Subtext] Dislocation - lines and actions are inconsistent
+## [rhythm] Rhythm Changes
+## [Information gap] Information gap drives dialogue
 ```
 
-优先级：匹配标签的技法 > 无标签的通用技法。
+After prompt-crafter loads the file, it does not inject all output and writing specs -
+it matches tags based on the core events of the scene and only selects the relevant 2-4
+items.
 
-## 加载方式
+### Tag matching logic
 
-prompt-crafter 根据 输入·场景原材料 识别的场景类型，按以下路径读取：
+```
+Input / Scene raw materials Scene core event: "Fang Yan avoids Lu Zheng's questioning in the office"
+  → Trigger tags: [concealment], [power], [subtext]
+  → Select these three items from dialogue/universal.md → Four-step conversion → output and writing specs
 
-1. 通用方法论：`scene-craft/{类型}/universal.md`
-2. 题材特化：`scene-craft/{类型}/{当前题材}.md`（存在则读，否则跳过）
+Input / Scene raw materials Scene core event: "Two characters chatting on the street"
+  → Trigger tag: no direct conflict tag
+  → Select [Action], [Distinction] from dialogue/universal.md → Four-step conversion → output and writing specs
+```
 
-通用方法论 + 题材特化合并 → 按标签筛选 → 四步转化 → 注入 输出·写作规范。
+Priority: Techniques matching tags > Generic techniques without tags.
+
+## Loading method
+
+prompt-crafter reads according to the following path according to the scene type
+recognized by input / scene raw material:
+
+1. General methodology: `scene-craft/{type}/universal.md`
+2. Subject specialization: `scene-craft/{type}/{current-genre}.md` (read if it exists, otherwise
+   skip)
+
+General methodology + theme-specific merger → Filter by tag → Four-step transformation →
+Inject output and writing specs.

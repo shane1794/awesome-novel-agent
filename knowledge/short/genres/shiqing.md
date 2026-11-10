@@ -1,169 +1,336 @@
-# 题材风格包：世情打脸 / 家庭伦理因果报应
+# Theme style package: worldly affairs face-slapping / family ethics karma
 
 
-> 本题材风格包改写自获赠短篇流程包（oh-story 系 + 实测调整），按本仓口径适配：引用为部署后基座路径、已剔除外部体系引用。公开或商用前需原作者确认。
+> This theme style package is adapted from the short story process package (oh-story
+> series + actual measurement adjustment) received as a gift, and is adapted according
+> to the caliber of the repo: the reference is the base path after deployment,
+> and external system references have been eliminated. Confirmation by the original
+> author is required before disclosure or commercial use.
 
 
-> 番茄 / 七猫 / 黑岩通俗短篇。先读 `.claude/knowledge/short-craft/short-craft.md` 通用底座，本包在其上覆盖该题材专属调性。
-> 一句话定位：**现实生活里的恶人作恶与因果报应。婆媳、极品亲戚、吸血父母、白眼狼儿女、出轨枕边人、职场恶人欺压老实人，草根第一人称，恶是日常小事（一双鞋、一张车票、一句规矩），铺垫拉满后当众打脸、报应落地。** 读者要的是「我家那点糟心事被写出来了」的代入 +「恶人当众被戳穿、账一笔笔算清」的解气。
->
-> 与「复仇打脸」的分工：复仇打脸卖极端作践 + 身份底牌碾压 + 反杀执行（私密照、断肢、摄政王、判官）；本包卖**日常之恶的累积与当众清算**，恶小而密、靠细节不靠大事件，打脸靠证据、账本、法律、舆论落地，主角是老实人草根而非隐藏大佬。与「追妻火葬场」的分工：追妻恶人是爱人、卖被珍视感剥夺；本包恶人是亲人 / 姻亲 / 同事，卖付出被吸血、好心被践踏。
+> Fanqie / Qimao / Heiyan popular short stories. Read the
+> `.claude/knowledge/short-craft/short-craft.md` universal base first, on which this
+> package covers the exclusive tonality of this theme. One-sentence positioning:
+> **Evil people’s evil deeds and karma in real life. Mother-in-law and
+> daughter-in-law, best relatives, blood-sucking parents, white-eyed wolf children,
+> cheating bedfellows, villains bullying honest people in the workplace, grassroots
+> first-person narrative, evil is the daily trivial matter (a pair of shoes, a ticket,
+> a rule), after all the foreshadowing is done, face-slapping in public, and
+> retribution comes to fruition. ** What readers want is the substitution of "the bad
+> things that happened in my family have been written down" + the relief of "the
+> evildoers are exposed in public and the accounts are settled one by one". The
+> division of labor with "Revenge Face-Slapping": Revenge Face-Slapping sells extreme
+> practices + identity card crushing + counter-kill execution (private photos,
+> amputated limbs, regents, judges); this package sells **the accumulation of daily
+> evil and public liquidation**, evil is small and dense, relying on details rather
+> than big events. Face-Slapping relies on evidence, ledgers, laws, and public opinion
+> to implement, and the protagonist is an honest grassroots person rather than a
+> hidden boss. The division of labor with the "wife-chasing crematorium": the evil
+> person who chases the wife is a lover, and is deprived of the sense of cherishment;
+> the evil person in this package is a relative/in-law/colleague, who is sold to have
+> his blood sucked, and his good intentions are trampled on.
 
 ---
 
-## 叙述腔调
+## Narrative Tone
 
-第一人称「我」，身份即日常角色：儿媳、女儿、女婿、丈夫、嫂子、下属。**中老年「我」是本题材特有声部**（婆婆、丈母娘、奶奶、老母亲第一人称），其他题材几乎不用，本题材大量用，自带「一辈子付出被辜负」的重量。
+The first person refers to "I", and the identity is the daily role: daughter-in-law,
+daughter, son-in-law, husband, sister-in-law, subordinate. **The "I" of middle-aged and
+elderly people is the unique voice of this theme** (the first person of mother-in-law,
+mother-in-law, grandma, old mother). Other themes are rarely used. This theme uses a lot
+of them, and it has the weight of "being let down after a lifetime of hard work".
 
-过日子的口吻：记账式精确（金额、年限、物价、次数全给具体数字），冷幽默自嘲多于嚎啕（「我差点气笑了」「就是觉得你们不去说相声，真是屈才了」）。三段式声线：忍（陪笑、咽下去）、看清（荒唐感、心寒）、算账（平静、一笔一笔清）。
+The tone of life: accurate accounting (the amount, years, prices, and times are all
+given specific figures), more dry humor and self-deprecation than wails ("I almost
+laughed out of anger" "I just think you are really disrespecting your talents by not
+talking about cross talk"). Three-stage voice line: endure (laughing, swallowing), see
+clearly (absurd, chilling), settle accounts (calm, clear one by one).
 
-主角必须是先忍后爆的老实人：前期真心付出有实据（帮还赌债、带娃三年、月月转账），爆发才有分量。
+The protagonist must be an honest person who endures first and then explodes: only when
+there is evidence of sincere efforts in the early stage (helping to pay off gambling
+debts, raising a child for three years, and transferring money every month) can the
+explosion have weight.
 
 ---
 
-## 开篇范式
+## Opening Paradigm
 
-正文第 1 章前放**结果倒序的黄金简介**（150-300 字）：日常之恶现场 + 帮凶站队 + 主角的反常反应或决裂动作预告。恶要具体到物件和金额，不写抽象的「他们对我不好」。
+Play before chapter 1 of the main text **Golden introduction with results in reverse
+order** (150-300 words): scenes of daily evil + accomplices taking sides + preview of
+the protagonist's abnormal reactions or rupture actions. The evil should be specific to
+the object and amount, not the abstract "They treated me badly."
 
-| 开篇式 | 真实范例 |
+| Opening | Real examples |
 |--------|----------|
-| 日常小事即刀 | 《苹果皮断心亦死》我爸林建国住院这天，我特意推了千万的合同赶来陪床。他看着我手里断断续续的果皮，突然冷哼了一声：“其实你挺虚伪的。” |
-| 规矩习俗当众打劫 | 《婆婆用彩礼抵改口费》结婚那天，我跪在地上给婆婆敬茶。她手上的彩礼红包放在我手里一秒后又拿走了。 |
-| 荒诞要求清单化 | 《妻子极端节俭，只为给男朋友买房》为了削减水费，家里三口人的洗衣做饭上厕所，一天只能用一升，多了就要挨打。 |
-| 隔门 / 刷手机撞破真相 | 《儿子为博流量造谣我抛夫弃子》屏幕上一个叫“孝心小哥”的账号，头像是我儿子。（配文说我卷钱跟野男人跑了，而他三分钟前刚从我这拿走三万块） |
-| 恶人自虐表演 + 帮凶动手 | 《请绿茶婆婆吃巴掌》婆婆忽然“扑通”一声朝我跪下，紧紧抱住我的大腿，声泪俱下。说着“啪啪”扇起自己耳光。丈夫愤然甩了我一巴掌。 |
-| 决裂动作前置吊回看 | 《婆婆让十八个亲戚住我婚房》当晚，我把准备好的离婚协议大门把手上，拖着行李箱离开。次日清晨，我被丈夫的电话吵醒。 |
+| Everyday little things are like a knife | "If the apple peel breaks the heart, the heart will die" The day my father Lin Jianguo was hospitalized, I specially offered a contract worth tens of millions to come and stay with him. He looked at the broken peel in my hand and suddenly snorted: "Actually, you are quite hypocritical." |
+| Rules and customs: Robbery in public | "Mother-in-law uses bride price to pay for marriage correction" On the day of the wedding, I knelt on the ground and served tea to my mother-in-law. The red envelope as a gift in her hand was placed in my hand and then taken away a second later. |
+| A list of absurd demands | "The wife is extremely frugal, just to buy a house for her boyfriend" In order to reduce water bills, the three people in the family can only use one liter a day for washing, cooking and going to the toilet. If they use more, they will be beaten. |
+| Go through the door / Scan your phone to reveal the truth | "My son spread rumors about me abandoning my husband and son to gain traffic" There is an account on the screen called "Brother Filial Piety", and the avatar is my son. (The caption said that I took money and ran away with a wild man, and he just took 30,000 yuan from me three minutes ago) |
+| The villain's self-abuse performance + the accomplice's action | "Please slap the green tea mother-in-law" My mother-in-law suddenly knelt down towards me with a "plop", hugged my thigh tightly, and burst into tears. He said "Papa" and slapped himself in the face. My husband slapped me angrily. |
+| Watch the breakup action in advance | "My Mother-in-Law Let Eighteen Relatives Live in My Marriage Room" That night, I put the prepared divorce agreement on the door handle and dragged my suitcase away. The next morning, I was woken up by my husband's phone call. |
 
 ---
 
-## 钩子母题与密度
+## Hook Motif and Density
 
-每节一个新恶行或一记清算落点，恶行按「小事试探、得寸进尺、踩到底线」递进。**恶必须小而具体：钱数、物件、一句话，不用绑架灭门。**
+Each section has a new evil deed or a clearing point, and the evil deeds progress
+according to "testing small things, pushing the envelope, and stepping on the bottom
+line." The evil must be small and specific: an amount of money, an object, a sentence,
+no need to kidnap and exterminate the family. **
 
-- **规矩 / 习俗 / 孝道武器化**（头号母题）：改口费、见面礼、跪着吃饭、坐月子规矩、断亲费，把打劫包装成传统。《假借习俗名义骗我钱的男友》100万寓意着我妈可以长命百岁。这是村里的习俗，你不会看不起农村人吧。
-- **「一家人」道德绑架三件套**：孝道、面子、一家人。恶人话术永远理直气壮带糖衣，帮凶跟着和稀泥。《因为亲戚，头等舱变硬座》行了，先忍忍吧，他们就是嘴毒了点，人还是好的。
-- **偏心对照组**：同一件东西两种待遇，一格画面写尽不公。《妻子极端节俭》儿子穿姜敏小时候的旧布鞋，鞋底磨穿；情人的女儿在童装店「除了这几件，其他我都要」。
-- **生活账本堆叠**：手术费五万、菜钱三万二、尾款8999、车费两百，金额本身就是钩子，也是后面清算的弹药。
-- **日常渠道撞破真相**：门缝、朋友圈、抖音直播、监控、小号。《送女儿女婿入狱》第二天我刷抖音时听到了女儿连线律师：我要怎么做才能让我老公平安的全身而退。
-- **恶人先告状 + 网暴反转**：恶人先把主角挂上网卖惨，舆论一边倒骂主角，主角甩证据后全网倒戈。几乎每篇标配，天然两段反转。
-- **长辈血包觉醒**：中老年「我」被儿女吸血（拿走存款、造谣、算计遗产），觉醒后改遗嘱、报警、断亲。《孙子感冒后》我找了个大师，说是家里老人越健康长寿就越吸小辈的气运！
-
----
-
-## 情绪烈度与模式（烈度 7-8）
-
-比追妻 / 复仇低半档：不靠极刑靠憋屈，恶行单件都「不至于闹翻」，堆到临界一次爆。**主情绪是心寒和荒唐感，不是悲恸。**
-
-- 心寒时刻用「轻」写：疼是小的、钝的，杀伤力在于看清。《苹果皮断心亦死》苹果砸在胳膊上，不怎么疼，就是有点蒙。我看着那脏兮兮的苹果，又看看自己还在渗血的手指，忽然就觉得没什么意思。
-- 荒唐感代替嚎啕：被气笑、想笑、觉得陌生。《儿子为博流量》我看着眼前这个儿子，忽然觉得陌生。
-- 身份句定格：一句话给自己在这个家的位置盖章，独立成段。《苹果皮断心亦死》原来当姐姐是我的原罪。／《苹果皮断心亦死》你们爱的不是我，是哪个随叫随到的血包和不用密码的银行卡。
-- 直给情绪词仍可用（心彻底凉透、心沉到谷底），但频率低于追妻，且后面接的是冷静盘算而不是眼泪。
-- 憋屈的物理感：《妻子极端节俭》我端着手里仅剩的半碗水，怔愣在原地。
-
----
-
-## 对话风格与真实金句
-
-占比 45-60%。四类台词撑全篇：
-
-**① 恶人理直气壮的日常之恶（钩子本体，恶话必须裹着为你好 / 规矩 / 一家人的糖衣）**
-- 《婆婆让十八个亲戚住我婚房》你懂事点，今晚就在过道将就下。／听妈的，别那么矫情。
-- 《苹果皮断心亦死》你推了工作来守着，不就是想让我们觉得亏欠你，好分我那套老房子吗？
-- 《因为亲戚，头等舱变硬座》你爸妈坐五个小时的飞机肯定难熬，还不如五十小时的硬座打打牌就过去了。
-- 《儿子为博流量》妈，效果好就行。您看那条视频现在多少播放量了，一百多万了。
-- 《嫂子的表哥要A我的加班费》我等了你一晚上，也算陪你加班了，你不应该分我一半你的加班费吗？
-
-**② 帮凶和稀泥（本题材特有声部：家里人劝忍，比恶人本人更诛心）**
-- 《因为亲戚，头等舱变硬座》行了婷婷，咱们忍着点，怎么说也是你妈妈的亲人。
-- 《苹果皮断心亦死》小知啊，你爸就是刀子嘴豆腐心，他也是担心你。
-- 《送女儿女婿入狱》她也不为我想想，传出去我多没面子啊？（女儿护女婿）
-
-**③ 主角冷账句（打脸金句，报数字、指规则，不骂街）**
-- 《婆婆让十八个亲戚住我婚房》谁吃的谁结账，谁弄坏的谁赔偿。这钱，我不付。
-- 《给女上司叫了辆运猪车》这车落地价八百万，保养一次三万。你那两百块，连洗个轮毂都不够。
-- 《苹果皮断心亦死》刚才那五万手术费，就当是我还清你们的生养之恩。
-- 《儿子为博流量》那是你爸的救命钱，你没资格动。
-- 《因为亲戚，头等舱变硬座》外婆，他们是手断了还是腿瘸了，还要朝我们乞讨？
-
-**④ 恶人内讧互咬（清算后必有，比主角骂十句都解气）**
-- 《婆婆用彩礼抵改口费》都怪你！说那么多这些话干嘛？就差一点点就成功了！
-- 《苹果皮断心亦死》正因为你是我老子，我才得留着好身体给你送终啊！
-
-外人正义声可少量点缀（隔壁床大叔、律师、网友评论），替读者说出「这不对」。
+- **Rules/Customs/Weaponization of Filial Piety** (No. 1 Motif): Change of mouth fees,
+  meeting gifts, kneeling to eat, confinement rules, divorce fees, packaging robbery as
+  a tradition. "The boyfriend who cheated me out of money under the guise of customs" 1
+  million means that my mother can live a long life. This is a custom in the village.
+  You don’t look down on rural people.
+- **"Family" moral kidnapping three-piece set**: filial piety, face, and family. The
+  villain's words are always sugar-coated, and the accomplices follow suit. "Because of
+  relatives, first class seats become hard seats" Okay, just bear with it for now, they
+  are just a bit venomous, but they are still good people.
+- **Eccentric control group**: Two treatments for the same thing, one frame of picture
+  is full of injustice. "The Wife is Extremely Frugal" The son is wearing old cloth
+  shoes from Jiang Min's childhood, but the soles are worn out; the lover's daughter is
+  in a children's clothing store, "I want everything else except these."
+- **Living ledger stacking**: 50,000 yuan for surgery, 32,000 for food, 8,999 for final
+  payment, and 200 for bus fare. The amount itself is the hook and the ammunition for
+  later liquidation.
+- **Everyday channels reveal the truth**: door cracks, Moments, Douyin live broadcast,
+  surveillance, trumpet. "Send Daughter and Son-in-Law to Prison" The next day when I
+  was browsing Douyin, I heard my daughter connect with the lawyer: What should I do to
+  let my husband escape safely?
+- **The villain files a complaint first + Internet violence reverses**: The villain
+  first exposes the protagonist to the Internet and sells him miserably, public opinion
+  scolds the protagonist, and after the protagonist dumps the evidence, the whole
+  network turns against him. Almost every article comes standard, with a natural
+  two-stage reversal.
+- **Awakening of blood packets of elders**: The middle-aged and elderly "me" was sucked
+  by his children (taking savings, spreading rumors, calculating inheritance). After
+  awakening, he changed his will, called the police, and broke off the relationship.
+  "After My Grandson Caught a Cold" I found a master and he said that the healthier and
+  longer the elders in the family are, the more luck they will have with the younger
+  ones!
 
 ---
 
-## 情绪链库
+## Emotional Intensity and Mode (Intensity 7-8)
 
-- **EC-忍辱清算（默认）**：忍辱负重 → 蓄证布局 → 当众清算 → 舆论倒戈 → 平淡新生。五阶段，适合家长里短、职场排挤类，反击靠证据与法律文书。
-- **EC-众叛亲离（帮凶合围线）**：孤立无援 → 看清帮凶 → 逐个击破 → 内讧反噬 → 各归其位。五阶段，适合全家合谋、亲友站错队的局。
-- **EC-平淡反杀（低开高走线）**：习以为常 → 一根稻草 → 不吵不闹直转直下 → 措手不及 → 慢慢还。五阶段，适合冷静会计/律师型主角。
+It's half a level lower than chasing a wife/revenge: it doesn't rely on capital
+punishment, it relies on aggrievedness, and even a single evil act "will not lead to a
+falling out", and it can be exploded when it reaches the critical level. **The main
+emotion is chilling and absurd, not sadness. **
 
-## 招式库
+- Use "light" when feeling chilled: the pain is small and dull, but the lethality lies
+  in seeing clearly. "If the Apple Peel Cuts the Heart, the Heart Will Die" The apple
+  hit my arm. It didn't hurt much, but it was a bit blurry. I looked at the dirty apple
+  and my fingers that were still bleeding, and suddenly felt that it was not
+  interesting.
+- A sense of absurdity replaces howling: being laughed at, wanting to laugh, feeling
+  strange. "Son is for traffic" I looked at the son in front of me and suddenly felt
+  strange.
+- Identity sentence freezes: one sentence stamps one's position in this family, and
+  becomes an independent paragraph. "The Apple Peel Breaks the Heart and Dies" It turns
+  out that being a sister is my original sin. / "Death if the Apple Peel Breaks the
+  Heart" What you love is not me, but the blood bag that is always available and the
+  bank card that does not require a password.
+- Direct emotional words can still be used (heart is completely cold, heart sinks to the
+  bottom), but the frequency is lower than that of chasing a wife, and it is followed by
+  calm calculation instead of tears.
+- An aggrieved physical sense: "The Wife is Extremely Frugal" I was holding the
+  half-bowl of water left in my hand, stunned in place.
 
-| 招式 | 怎么用 | 真实例 |
+---
+
+## Conversational style and authentic quotes
+
+Accounting for 45-60%. Four types of lines support the entire article:
+
+**① Everyday evil that evil people do with confidence (the hook itself, evil words must
+be wrapped in sugar-coating for your own good/rules/family)**
+- "My mother-in-law let eighteen relatives live in my wedding room." Be sensible and
+  leave in the hallway tonight. / Listen to me, don’t be so pretentious.
+- "The Apple Peel Breaks the Heart and Dies" You gave up your job to guard it, didn't
+  you just want us to feel that we owe you so that we can share my old house?
+- "Because of relatives, first class seats become hard seats" It must be difficult for
+  your parents to take a five-hour flight. They might as well spend fifty hours playing
+  cards on a hard seat.
+- "Son to gain traffic" Mom, as long as the effect is good. Look at how many views that
+  video has now, over one million.
+- "Sister-in-law's Cousin Wants My Overtime Pay" I waited for you all night, which
+  counts as working overtime with you. Shouldn't you give me half of your overtime pay?
+
+**② Accomplices and mud (a unique part of this theme: the family members’ advice to
+endure is more heart-wrenching than the villain himself)**
+- "Because of relatives, first class seats become hard seats" Okay, Tingting, let's be
+  patient, after all, we are also your mother's relatives.
+- "If the Apple Peel Cuts the Heart, the Heart Will Die" Xiaozhi, your dad is a
+  sharp-tongued man with a soft heart, and he is also worried about you.
+- "Sending Daughter and Son-in-Law to Prison" She didn't even think about me. How
+  shameless would I be if word spread? (Daughter protects son-in-law)
+
+**③ The protagonist’s cold words (face-slapping golden sentences, reporting numbers,
+referring to rules, and not swearing)**
+- "My Mother-in-Law Let Eighteen Relatives Live in My Marriage Room" Whoever eats will
+  pay the bill, and whoever damages the food will pay for it. I won't pay this money.
+- "Call a pig truck for my female boss" The price of this car is 8 million, and
+  maintenance is 30,000. Your two hundred yuan is not even enough to wash the wheels.
+- "Death if the Apple Peel Cuts the Heart" The 50,000 yuan for the surgery just now
+  should be regarded as my repayment of your debt of childbirth.
+- "Son to gain traffic" That is your father's life-saving money, you have no right to
+  touch it.
+- "First Class Seats Become Hard Seats Because of Relatives" Grandma, do they have
+  broken hands or lame legs, and they still want to beg from us?
+
+**④ The villains fight among themselves (it will definitely happen after the reckoning,
+and it will relieve the anger even more than ten curse words from the protagonist)**
+- "The mother-in-law used the bride price to pay for the correction of her confession"
+  It's all your fault! Why are you talking so much? Just a little bit successful!
+- "The Apple Peel Cuts the Heart and Dies" It is precisely because you are my father
+  that I have to keep a good body to die for you!
+
+Outsiders’ voices of justice can be embellished in small amounts (comments from the man
+in the bed next door, lawyers, netizens) to say “this is wrong” for the readers.
+
+---
+
+## Emotion chain library
+
+- **EC-Liquidation with humiliation (default)**: endure humiliation and bear the burden
+  → accumulate evidence → liquidate in public → public opinion defection → ordinary
+  rebirth. The five stages are suitable for people with filthy parents and ostracized
+  people in the workplace. Counterattack relies on evidence and legal documents.
+- **EC-Rebellion and separation (encirclement line of accomplices)**: Isolated and
+  helpless → See the accomplices clearly → Defeat them one by one → Internal strife and
+  backlash → Everyone returns to their place. The five stages are suitable for the whole
+  family to conspire and relatives and friends to be on the wrong team.
+- **EC-Mediocre Counterattack (Open low and move high)**: Get used to it → a straw →
+  turn straight down without making any noise → be caught off guard → slowly pay back.
+  Five stages, suitable for calm accountant/lawyer type protagonists.
+
+## Move library
+
+| Moves | How to use | Real examples |
 |------|--------|--------|
-| 生活细节当刀 | 用一件小物写透恶意：一双鞋、一个护膝、半碗水 | 《婆婆用彩礼抵改口费》那护膝，只是他昨晚怕我一时生气不结婚的作秀体贴 |
-| 贯穿物件意义翻转 | 同一物件首尾三现，从被践踏到闭环 | 《苹果皮断心亦死》开篇削苹果被骂虚伪，他病床上想起那断掉的每一寸果皮，结尾我在骨灰盒前削完一个完整苹果 |
-| 规矩反打 | 恶人立的规矩原样还回去 | 《儿媳坐月子》儿媳逼婆婆吃一千份冰激凌，婆婆顺势不再做饭：你天天都可以吃自己想吃的 |
-| 记账式清算 | 当众逐笔报账：欠条、转账、误工费 | 《因为亲戚，头等舱变硬座》大舅，舅妈去年做手术，你说没钱管我妈借了五万，这是欠条，是不是该还了？ |
-| 录音监控先手 | 冲突前就开录，撕破脸时甩铁证 | 《婆婆用彩礼抵改口费》我冷笑一声，摘掉了自己胸口前的针孔摄像器；《因为亲戚》我将从火车开始就一直录音 |
-| 顺水推舟看自爆 | 不劝阻、递台阶，让恶人自选毁灭 | 《身为律师，奶奶要我判偷她鸡的邻居死刑》这一次，我将不会再劝阻奶奶，放手让她做她想做的事 |
-| 法律程序落地 | 报警、起诉、离婚协议、遗嘱、断亲、放弃继承，一步到位不吵架 | 《儿子为博流量》一个小时前，在医院，我就报警了；《苹果皮》一份《放弃遗产继承声明书》被我轻轻放在床头 |
-| 网暴双反转 | 恶人先挂网卖惨，主角甩监控 / 流水，全网倒戈 | 《请绿茶婆婆吃巴掌》我将念念被烫伤当天的监控，还有整个事情的经过、派出所的立案通知、调查结果和一些相关证据，整理发送到了婆婆之前支持率最高的网络平台。顷刻之间，原本纷纷声讨我的网友倒戈相向 |
-| 经济断供 | 掐断钱袋子：存定期、改遗嘱、停投资、转走主卡 | 《送女儿女婿入狱》我心下一酸，立马将现金存成定期。还立下遗嘱，死后财产全捐给公益事业 |
-| 恶人内讧狗咬狗 | 利益断了，恶人阵营当众互撕 | 《给女上司叫了辆运猪车》两人在众目睽睽之下，扭打在一起。互扇耳光，在猪粪味中翻滚 |
-| 荒诞对等回敬 | 用恶人的逻辑造一个对称的难堪 | 《给女上司叫了辆运猪车》既然喜欢免费的，那就让她一次坐个够（两百块车费叫来运猪车） |
-| 报应清单收尾 | 「听说体」逐个交代下场，具体到职业住处 | 《婆婆让十八个亲戚住我婚房》听说，他因为背上巨债，又丢了工作，整个人都废了，只能靠打零工度日；听说，王秀娟因为房子被法拍，无家可归，只能跟着儿子挤在狭小的出租屋里，整日以泪洗面 |
+| Use the details of life as a knife | Use a small object to express malice: a pair of shoes, a kneepad, half a bowl of water | "The mother-in-law used the bride price to pay for the marriage correction" The kneepad was just a show of consideration last night because he was afraid that I would not get married if I was angry |
+| The meaning of objects is reversed throughout | The same object appears three times, from being trampled to closed loop | In the beginning of "Apple Peel, Heart Will Die", he was scolded for being hypocritical when peeling an apple. He thought of every inch of the broken peel on his hospital bed. At the end, I peeled a complete apple in front of the urn |
+| Rules are fought back | Return the rules set by evil people as they are | "Daughter-in-law Confinement" The daughter-in-law forces her mother-in-law to eat a thousand servings of ice cream, and the mother-in-law takes advantage of the situation and stops cooking: you can eat what you want every day |
+| Bookkeeping-style settlement | Reporting accounts one by one in public: IOUs, transfers, lost wages | "First-class seats become hard seats because of relatives" Uncle, my aunt had an operation last year, and you said you didn't have the money to take care of the fact that my mother borrowed 50,000 yuan. This is an IOU. Shouldn't it be paid back? |
+| Be the first to record and monitor | Start recording before the conflict, throw away the irrefutable evidence when the relationship breaks out | "Mother-in-law uses bride price to pay for oral modification" I sneered and took off the pinhole camera on my chest; "Because of Relatives" I will keep recording from the beginning of the train |
+| Go with the flow and watch for self-destruction | Don’t dissuade me, give me steps, and let the evildoers choose their own destruction | "As a lawyer, my grandma wants me to sentence the neighbor who stole her chicken to death." This time, I will not dissuade grandma anymore and let her do what she wants to do |
+| The implementation of the legal process | Call the police, sue, divorce agreement, will, divorce, relinquish inheritance, all in one step without quarreling | "Son for Broadcast Traffic" I called the police an hour ago in the hospital; "Apple Peel" and a "Declaration of Relinquishment of Inheritance" were gently placed on the bedside by me |
+| Double reversal of Internet violence | The villain was the first to go online and suffer misfortune, the protagonist dumped the surveillance / leaked, and the entire network turned against him | "Please give Green Tea Grandma a slap" I compiled the surveillance of the day when Nian Nian was scalded, as well as the entire incident, the notice of filing the case from the police station, the investigation results and some relevant evidence, compiled and sent them to the Internet platform where the mother-in-law had the highest support rate. In an instant, netizens who had originally criticized me turned against me |
+| Cut off the financial supply | Cut off the money bag: deposit fixed term, change will, stop investing, transfer the main card | "Sending Daughter and Son-in-law to Prison" I felt sad and immediately deposited the cash into fixed term. He also made a will to donate all his property to charity after his death |
+| The villains are fighting among themselves, dog bites the dog | The interests are cut off, and the villain camps are tearing each other apart in public | "Call a pig truck for the female boss" The two of them struggled with each other in full view of the public. Slapping each other in the face, rolling in the smell of pig manure |
+| Absurd reciprocal retaliation | Use the logic of evil people to create a symmetrical embarrassment | "Call a pig truck for my female boss" Since she likes free rides, let her ride as long as she can (two hundred yuan for a pig truck) |
+| The list of retribution ends | "Hearing and Listening Body" explains the fate one by one, down to the specific place of employment | "My mother-in-law let eighteen relatives live in my wedding house" I heard that because he was in huge debt and lost his job, he was completely ruined and could only survive by doing odd jobs; I heard that Wang Xiujuan was homeless because her house was foreclosed, so she could only squeeze in a small rental house with her son, crying all day long |
 
 ---
 
-## 节奏骨架
+## Rhythm Skeleton
 
 ```
-黄金简介（日常之恶现场 + 帮凶站队 + 决裂预告）
-→ 第1章慢放恶行，补满对话与物件细节，帮凶合围
-→ 心寒定格（身份句 / 荒唐感），不吵，开始蓄证
-→ 恶行加码（要钱升级 / 挂网卖惨 / 道德绑架亲友团）
-→ 摊牌清算（账本 / 录音 / 法律文书当众落地）
-→ 舆论倒戈 + 恶人内讧
-→ 报应清单 + 主角平淡新生活
+Golden introduction (daily evil scenes + accomplices taking sides + breakup preview)
+→ Chapter 1 slows down the evil deeds, fills in the details of dialogue and objects, and surrounds the accomplices
+→ Feeling chilling (identity sentence/sense of absurdity), stop arguing, and start accumulating evidence
+→ Increase the number of evil deeds (ask for money to upgrade/hook online to sell misfortunes/morally kidnap relatives and friends)
+→ Showdown and liquidation (account books/recordings/legal documents are presented in public)
+→ Public opinion changes sides + evil people fight among themselves
+→ Retribution list + protagonist’s ordinary new life
 ```
 
-打脸不集中在一场：小打脸每节都有（怼一句、算一笔），大清算放在后三分之一。恶行现场和摊牌现场详写慢放，蓄证过程一笔带过。打脸密度以本包为准。
+Face-slapping is not concentrated in one scene: small face-slapping is included in every
+section (a sentence of criticism, a calculation), and the big reckoning is placed in the
+last third. The scene of the crime and the scene of the showdown are described in detail
+and played in slow motion, and the process of accumulating evidence is taken through in
+one stroke. The face-slapping density is subject to this package.
 
 ---
 
-## 收尾范式
+## Closing Paradigm
 
-- 报应清单：「听说体」逐个交代恶人下场，落到具体生计（送外卖、房被法拍、捡废品、进去了），不写主角施暴。
-- 阶层对照定格：一个画面写两种人生，不说教。《婆婆让十八个亲戚住我婚房》我只是平静地看着他，然后，端起面前的咖啡，朝他所在的方向，遥遥地、优雅地举了举杯。
-- 物件闭环：贯穿物件最后一次出现，完成告别。《苹果皮断心亦死》我把那个削好了的苹果，端正地放在骨灰盒前。这是我最后一次，为他削苹果。
-- 不恨式放下：《苹果皮断心亦死》我不爱你了，也不恨你了。
-- 平淡新生活：开小店、带爸妈定居、猫和阳光，日子本身就是打脸。《因为亲戚》没了吸血兄妹的打扰，妈妈肉眼可见的年轻。
-
----
-
-## 该题材专属调校（与通用去 AI 规则的偏差）
-
-这些在别的语境是 AI 味，在本题材是卖点，**别误删**：
-
-- **金额物价逐项精确**（两百块车费、8999 尾款、三十元一双袜子、五万手术费）：保留，这是真实感和清算爽感的底座，不是流水账。
-- **恶人台词的理直气壮加糖衣**（为你好 / 规矩 / 一家人）：保留，越顺理成章越诛心；别改写成脸谱化叫骂，恶人自认有理才像身边人。
-- **帮凶和稀泥声部**（「忍忍吧」「都是一家人」）：保留，憋屈感一半来自帮凶；别删成主角单挑恶人。
-- **中老年「我」的回忆插叙**（拉扯儿子长大、捡垃圾供学的往事）：保留，是付出与辜负的对照弹药；控制在每次三五句。
-- **「听说体」报应清单收尾**：保留，是本题材标配的因果闭环，不是烂尾。
-- **主角冷幽默自嘲**（「我差点气笑了」「真是屈才了」）：保留，是心寒的本题材表达式。
-
-仍要避免的真·AI 味：映入眼帘、心中暗道、沉声道、嘴角微扬、目光如炬、论文体连词（不难看出 / 由此可见）、空泛无体感的情绪总结句（一丝悲伤涌上心头）。另外两条本题材易犯：恶人恶得没有生活逻辑（上来就喊打喊杀，没有糖衣）；清算靠主角开骂而不是靠证据和规则落地。
-
-> 标点：本题材范例为示意保留了原貌（含个别 `……`）；落到正文按 `.claude/knowledge/short-craft/short-craft.md` 第 8 节执行，不出 `……` / `——`，停顿、哽咽、被打断一律用短句 / 句号 / 动作 beat / 换行实现。
+- Retribution list: "Hearings and Stories" tells the fate of the villains one by one,
+  including their specific livelihoods (delivering food, having their house foreclosed,
+  picking up junk, going out), and does not describe the violence committed by the
+  protagonist.
+- Class contrast is fixed: one picture depicts two lives without preaching. "My
+  Mother-in-Law Let Eighteen Relatives Live in My Marriage Room" I just looked at him
+  calmly, then, I picked up the coffee in front of me and raised my cup in his
+  direction, distantly and elegantly.
+- Object closed loop: through the last appearance of the object, complete the farewell.
+  "If the Apple Peel Cuts the Heart, the Heart Will Die" I placed the peeled apple
+  squarely in front of the urn. This is the last time I peel an apple for him.
+- Letting go without hatred: "If the apple peel breaks the heart, the heart will die" I
+  don't love you anymore, and I don't hate you anymore.
+- Ordinary new life: open a small shop, live with parents, cats and sunshine, the days
+  themselves are face-slapping. "Because of Relatives" Without the interruption of the
+  vampire brothers and sisters, the mother looks younger to the naked eye.
 
 ---
 
-## 配套结构公式（按篇幅选）
+## Exclusive adjustment for this theme (deviation from general AI rules)
 
-- **草根实证清算型（8-12 节，婆媳 / 亲戚 / 职场欺压）**：1-2 节日常之恶现场 + 帮凶合围 → 3 节心寒定格、开始蓄证（录音 / 记账 / 备份）→ 4-6 节恶行加码、恶人挂网卖惨 → 7-9 节摊牌：证据 + 法律文书当众落地、舆论倒戈 → 恶人内讧 → 报应清单 + 新生活。100% 第一人称；恶要小而密，清算走规则不走对骂。
-- **长辈觉醒断亲型（婆婆 / 丈母娘 / 老母亲「我」）**：儿女 / 儿媳的孝顺人设开场 → 日常渠道撞破真面目（短视频账号 / 直播连线 / 存折余额）→ 不动声色反制：存定期、改遗嘱、报警 → 儿女下跪打感情牌被拒 → 撕户口页 / 过户给真心人。回忆插叙撑付出与辜负的对照。
-- **顺水推舟自爆型（重生 / 先知变体）**：先交代上一世忍让的下场（被打死、被灭口）→ 回到恶行起点 → 这一次不劝阻不兜底，递台阶看恶人自选毁灭 → 恶人作到刑事级别，法律收网。主角全程干净，报应全是恶人自找。
-- **隐形底牌变体（首富老婆 / 千金体验生活）**：恶仍是日常之恶（蹭车、A 钱、职场 PUA），主角藏着碾压级身价 → 恶人踩到物件价格上翻车（八百万买菜车、二十八万手机）→ 数字揭晓即打脸。与复仇打脸的区别：底牌只用来定价，不用来杀伐。
+These are AI-flavored in other contexts, but they are selling points in this subject
+matter, **don’t delete them by mistake**:
+
+- **Amounts and prices are accurate item by item** (200 yuan fare, 8999 final payment,
+  30 yuan for a pair of socks, 50,000 yuan for surgery): Reserved, this is the basis for
+  a sense of reality and a sense of satisfaction, not a running account.
+- **The righteous and sugar-coating of the villain's lines** (for your own good / rules
+  / family): keep it, the more logical it is, the more heartbreaking it is; don't
+  rewrite it into a facial expression and scolding, villains think they are reasonable
+  only then they are like the people around them.
+- **Accomplices and slime voices** ("Bear it," "We're all one family"): Keep it in mind,
+  half of the frustration comes from the accomplices; don't turn it into the protagonist
+  to challenge the villain.
+- **Reminiscences of the middle-aged and elderly "me"** (the past events of pulling my
+  son to grow up and picking up trash for schooling): Retention is the ammunition to
+  compare giving and letting down; limit it to three or five sentences at a time.
+- **The end of the retribution list of "Hearing and Listening Body"**: Retention is the
+  standard causal closed loop of this theme, not a bad ending.
+- **The protagonist is self-deprecating with a cold sense of humor** ("I almost laughed
+  out loud" and "I'm so humbled"): Retention is a chilling expression of this theme.
+
+The real AI tastes that should be avoided are: catching the eye, secret thoughts in the
+heart, deep voice, slightly raised corners of the mouth, piercing eyes, essay-style
+conjunctions (it is not difficult to see / it can be seen from this), and empty and
+intangible emotional summary sentences (a trace of sadness wells up in the heart). There
+are two other themes that are easy to commit: the villain is so evil that there is no
+logic in life (just shout and kill, no sugar coating); the liquidation relies on the
+protagonist to curse instead of relying on evidence and rules to implement.
+
+> Punctuation: This theme example retains its original appearance (including
+> individual `...`) for illustration; when it comes to the main text, follow Section 8
+> of `.claude/knowledge/short-craft/short-craft.md`, and do not leave `...` / `em
+> dash`. Pauses, chokes, and interruptions must be realized with short
+> sentences/periods/action beats/line breaks.
+
+---
+
+## Supporting structural formula (selected according to length)
+
+- **Grassroots evidence-based liquidation type (sections 8-12, mother-in-law and
+  daughter-in-law/relatives/workplace bullying)**: Section 1-2: Daily evil scene +
+  accomplices surrounded → Section 3: chilling, start accumulating evidence
+  (recording/accounting/backup) → Section 4-6: evil deeds intensify, evildoers hang on
+  to the Internet to suffer misfortune → Section 7-9: Showdown: evidence + legal
+  documents are released in public, public opinion changes → Internal strife among
+  evildoers → List of retribution + new life. 100% first person; the evil should be
+  small and dense, and the liquidation should follow the rules but not the scolding.
+- **Elders wake up and break up the relationship type (mother-in-law/mother-in-law/old
+  mother "I")**: The opening of the filial personality of children/daughter-in-law →
+  Daily channels reveal the true identity (short video account / live broadcast
+  connection / bankbook balance) → Countermeasures quietly: deposit time, change will,
+  call the police → Children kneel down to play emotional cards but are rejected → Tear
+  up the household registration page / transfer the ownership to a sincere person.
+  Memories and narratives support the contrast between giving and letting down.
+- **Go with the flow and self-destruct type (rebirth/prophet variant)**: First explain
+  the consequences of tolerance in the previous life (beating to death, being silenced)
+  → Return to the evil Qidian → This time do not dissuade or tell the truth, go up the
+  steps and watch the evildoers choose their own destruction → The evildoers will commit
+  crimes to the criminal level, and the law will close the net. The protagonist is clean
+  throughout the whole process, and all retribution is brought by the villain.
+- **Invisible Trump Card Variation (The Richest Man’s Wife/The Daughter’s Life
+  Experience)**: Evils are still daily evils (car rental, A money, workplace PUA), the
+  protagonist hides a crushing net worth → The villain steps on the price of the object
+  and overturns (eight million grocery carts, 280,000 mobile phones) → The number is
+  revealed, that is, face-slapping. The difference from revenge face-slapping: the hole
+  cards are only used for pricing, not for killing.

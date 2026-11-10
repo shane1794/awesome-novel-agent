@@ -1,37 +1,38 @@
-# 类型档案：都市高武
+# Genre Archives: Urban Gaowu
 
-> 都市架空，全民拥有修炼体系、灵气复苏等。
+> The city is imaginary, and everyone has a cultivation system, spiritual energy
+> recovery, etc.
 
 - **id:** `urban-high-martial`
-- **label:** 都市高武
+- **label:** Urban Gaowu
 
 ---
 
-## 题材配置
+## Theme configuration
 
-### 满足类型
-- 境界突破
-- 越级反杀
-- 觉醒新能力
-- 秘境夺宝
-- 打脸装逼
-
-
-### 章节类型
-- 修炼突破
-- 战斗对决
-- 势力博弈
-- 日常校园/职场
-- 秘境探险
+### Satisfy Type
+- Realm breakthrough
+- Counterattack
+- Awakening new abilities
+- Treasure Hunt in Secret Realm
+- face-slapping show off
 
 
-### 节奏规则
+### Chapter type
+- Breakthrough in cultivation
+- battle showdown
+- Game of power
+- Daily campus/workplace
+- Secret adventure
+
+
+### Rhythm Rules
 - max_consecutive_action_chapters: 3
 - max_consecutive_daily_chapters: 2
 - beat_density_min: 1
 
 ---
 
-## 卷级故事弧模板
+## Volume Story Arc Template
 
-默认：觉醒→修炼→初战→成长→危机→强者之路
+Default: Awakening→Cultivation→First Battle→Growth→Crisis→Road to the Strong

@@ -1,9 +1,18 @@
-# 对话场景写法：东方仙侠
+# How to write dialogue scenes: Eastern xianxia (immortal cultivation)
 
-> 覆盖通用对话方法论（`dialogue/universal.md`）中与仙侠题材不适配的部分。
+> Covers the parts of the general dialogue methodology (`dialogue/universal.md`) that
+> are not suitable for xianxia themes.
 
-- 辈分和境界决定话语权。晚辈不能直视长辈、不能打断、用敬语；长辈对晚辈可以居高临下但也要有风骨
-- "角色不说真话"在仙侠中表现为"话里有玄机"——前辈指点不是直接给答案，是打机锋留悟性；反派说话张狂但藏底牌
-- 境界压制直接映射为对话压制——高境界者说话可以随意、不怕得罪；低境界者每句话都在斟酌
-- 仙侠对话的动作不是端咖啡，是拂袖、拱手、斟茶、掐诀、释放威压
-- **避坑**：不要写现代口语风格的仙侠对话（"你还好吗""我没事"），不要写角色长篇解释修炼体系
+- Seniority and realm determine the right to speak. Juniors cannot look directly at
+  their elders, cannot interrupt, or use honorifics; elders can be condescending to
+  younger generations, but they must also have character.
+- "Characters don't tell the truth" is manifested in Xianxia as "there is a mystery in
+  the words" - the seniors' advice is not to give direct answers, but to use their wits
+  to retain understanding; the villain talks arrogantly but hides his trump card
+- Realm suppression is directly mapped to dialogue suppression - high-level people can
+  speak freely without fear of offending; low-level people consider every word
+- xianxia's actions in conversation are not to serve coffee, but to brush her sleeves,
+  cup her hands, pour tea, make secrets, and release pressure.
+- **Avoid pitfalls**: Don’t write xianxia dialogues in a modern colloquial style ("Are
+  you okay?" "I'm okay"), and don't write long explanations of the character's training
+  system.

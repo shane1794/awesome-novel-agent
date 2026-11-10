@@ -1,177 +1,340 @@
-# 题材风格包：宅斗宫斗 / 古言重生
+# Theme style package: inner-court intriguepalace intrigue / rebirth of ancient sayings
 
 
-> 本题材风格包改写自获赠短篇流程包（oh-story 系 + 实测调整），按本仓口径适配：引用为部署后基座路径、已剔除外部体系引用。公开或商用前需原作者确认。
+> This theme style package is adapted from the short story process package (oh-story
+> series + actual measurement adjustment) received as a gift, and is adapted according
+> to the caliber of the repo: the reference is the base path after deployment,
+> and external system references have been eliminated. Confirmation by the original
+> author is required before disclosure or commercial use.
 
 
-> 番茄 / 七猫 / 黑岩通俗短篇。先读 `.claude/knowledge/short-craft/short-craft.md` 通用底座，本包在其上覆盖该题材专属调性。
-> 一句话定位：**主角（正妻 / 真千金 / 嫡女 / 糟糠妻）被夫君 + 婆家 / 父母合伙为白月光 / 假千金牺牲，撞破真相后和离休夫、净身出户或死遁重生；对方亮出底牌时为时已晚，追悔火葬场。** 读者要的是「被算计到底的窝囊」+「一纸休书 / 重生翻盘的扬眉吐气」。
-> 子型：宅斗宫斗 / 古言重生（和离休夫 · 假千金夺位 · 白月光夺爱 · 年代重生 · 沙雕脑洞）。
+> Fanqie / Qimao / Heiyan popular short stories. Read the
+> `.claude/knowledge/short-craft/short-craft.md` universal base first, on which this
+> package covers the exclusive tonality of this theme. Positioning in one sentence:
+> **The protagonist (the real wife/the real daughter/the legitimate daughter/the bad
+> wife) was sacrificed by her husband + in-laws/parents for the white moonlight/the
+> fake daughter. After discovering the truth, she and her divorced husband, cleansed
+> themselves out of the house or died and was reborn; when the other party showed his
+> trump card, it was too late, regretting the crematorium. ** What readers want is
+> "the coward who was calculated to the end" + "a divorce letter/the feeling of being
+> reborn and making a comeback". Subtype: inner-court intrigue palace intrigue /
+> ancient saying rebirth (with divorced husband / fake daughter to win the throne /
+> white moonlight to win love / rebirth of the era / shadiaowild idea).
 
 ---
 
-## 叙述腔调
+## Narrative Tone
 
-第一人称「我」受害者全程主导，贴体感和心跳走，毫不克制。双轨：撞破前隐忍委屈、为家族颜面把苦往肚里咽；撞破后切成冷静、居高临下、半文半白的审判腔，一句话定生死。**文白夹杂是本题材的招牌声线**：古言线用「嫁与」「六载」「明媒正娶」「割袍断义」「各自珍重」这类半文半白措辞托住宫闱质感；年代重生线换成「员工宿舍」「家属房」「万元户」「的确良衬衫」这类年代口语。两条线都口语化，照样成段宣泄独白 + 连环反问。**鼓励向前剧透「他后来悔疯了」的火葬场结局来吊人。**
+The first-person "I" victim dominates the whole process, with a sense of closeness and
+heartbeat, without any restraint. Double track: before breaking through, he endured his
+grievances and swallowed the pain for the family's face; after breaking through, he cut
+into a calm, condescending, half-written and half-white judgment tone, where one
+sentence can determine life or death. **A mixture of text and white is the signature
+voice of this theme**: The ancient proverb lines use semi-literary and semi-verbal
+phrases such as "marry", "six years", "clear matchmaker's marriage", "cut off the robe
+to break the relationship" and "treasure each" to support the texture of the palace; the
+era rebirth line is replaced by the colloquial language of the era such as "staff
+dormitory", "family room", "ten thousand yuan household" and "really good shirt". Both
+lines are colloquial, still composed of cathartic monologues + serial rhetorical
+questions. **Encourage forward spoilers of the crematorium ending where "he later
+regretted and went crazy" to tease people. **
 
-开口就用带占有 / 身份关系的称呼：「我夫君 / 我丈夫 / 我的太子殿下 / 我老公」，外加一个时间锚（成婚第七年 / 认回侯府第五年 / 守了六年活寡）。
+When opening your mouth, use a title with a possessive/status relationship: "My
+husband/my husband/my royal highness/my husband", plus a time anchor (seventh year of
+marriage/fifth year of returning to the Hou Mansion/six years of being a widow).
 
 ---
 
-## 开篇范式
+## Opening Paradigm
 
-正文第 1 章前先放一段**时间锚定 + 全弧剧透的黄金导语**（150-300 字）：用「第 N 年 / 第几载」开篇定锚，把背叛全貌 + 心死 + 「可他后来后悔了 / 重金悬赏寻我」一次性剧透，专卖追读；正文第 1 章把导语事件慢放重写、补满对话体感。重生线导语还要先交代前世死法 + 凶手，再「再睁眼」回到关键节点。
+Before Chapter 1 of the main text, put a golden introduction with time anchoring + full
+arc spoilers (150-300 words): use "Nth year / which chapter" to start the anchor, and
+give the whole story of betrayal + heartbreak + "but he later regretted / offered a huge
+reward to find me" as a one-time spoiler for exclusive follow-up reading; in Chapter 1
+of the main text, the events of the introduction are slow-played and rewritten to
+complete the dialogue experience. The introduction to the rebirth line must first
+explain the method of death and the murderer in the previous life, and then "open your
+eyes again" to return to the key node.
 
-| 开篇式 | 真实范例 |
+| Opening | Real examples |
 |--------|----------|
-| 时间锚定 + 背叛 | 《敦宜》和裴筠舟成亲的第七年，他带回了一个罪奴，是他的白月光。 |
-| 守活寡年限锚 | 《你若无心我便休，日后莫求我》嫁与肃王六载，成婚当日他便披甲出征，我生生守了六年活寡。 |
-| 认回 / 替嫁年限锚 | 《假千金害我失身，全家欺我瞒我后自食恶果》认回侯府的第五年，假千金姜云云为代替我嫁给太子秦溯，设计让我丢了清白。 |
-| 第一句即丑闻炸弹 | 《夫君一日娶双妻，我却主动求嫁》京城沈家出了桩丑闻，身为二公子的沈珏在长兄死后竟爱上了寡嫂。 |
-| 全弧剧透 + 火葬场预告 | 《和闺蜜死遁后，文武状元悔疯了》文武状元大婚当日，我和闺蜜心如死灰离开。他们却重金悬赏千万，举全城之力，近乎哀求般寻找我们的下落。 |
-| 重生反向送嫁开篇 | 《明月洒清辉》重生后，我亲手把钥匙塞进小青梅手里。「房子归你，我丈夫也归你。」 |
-| 文白宫斗倒叙 | 《错棠晚》我死后的第三年，萧驭得胜归朝。他曾对天起誓，要立下不世之功，求一道赐婚旨意，给心上人至高的体面。可惜他来得太迟了，我的尸骨都烂了。 |
-| 沙雕脑洞反钩 | 《养猪失败后，我和死对头被迫生娃》圣旨到——不是赐婚，是赐猪。 |
+| Time Anchoring + Betrayal | "Dun Yi" In the seventh year of his marriage to Pei Yunzhou, he brought back a sin slave, who was his white moonlight. |
+| The number of years to be a widow is anchor | "If you don't care, I will leave. Don't beg me in the future." I have been married to King Su for six years. On the day of our marriage, he put on his armor and went to war. I have been a widow for six years. |
+| Recognition / Replacement Marriage Years Anchor | "The fake daughter made me lose my virginity, and the whole family deceived me and hid it from me and suffered the consequences" In the fifth year after I recognized the marriage, Jiang Yunyun, the fake daughter, married the prince Qin Su on my behalf, and designed to make me lose my innocence. |
+| The first sentence is a scandal bomb | "My husband married two wives in one day, but I took the initiative to propose marriage" A scandal broke out in the Shen family in Beijing. As the second son, Shen Jue actually fell in love with the widowed sister-in-law after the death of her eldest brother. |
+| Full Arc Spoilers + Crematorium Preview | "After escaping with my best friend, the civil and military champion regretted going crazy" On the wedding day of the civil and military champion, my best friend and I left with despair. However, they offered a reward of tens of millions of dollars and mobilized the whole city to search for our whereabouts almost like pleading. |
+| Beginning of Rebirth and Reverse Wedding | "The Bright Moon Sprinkles the Bright Light" After rebirth, I personally put the key into Xiao Qingmei's hand. "The house is yours, and my husband is yours too." |
+| Wenbai palace intrigue flashback | "Cuotangwan" The third year after my death, Xiao Yu returned to the court victorious. He once swore to heaven that he would make an immortal contribution, ask for a marriage decree, and give his sweetheart the highest dignity. Unfortunately, he came too late and my bones were rotten. |
+| shadiaowild idea counter hook | "After the failure of raising pigs, my enemy and I were forced to have a baby" The imperial edict came - not a marriage, but a pig. |
 
 ---
 
-## 钩子母题与密度
+## Hook Motif and Density
 
-密度极高：导语塞 3-5 个背叛 / 算计事件，正文每节至少一个新升级或一句更狠的台词，章尾必留新炸点。**阶梯式背叛：道德 → 经济 / 身份 → 生命（孩子）。**
+The density is extremely high: the introduction is packed with 3-5 betrayal/calculation
+incidents, the main text contains at least one new upgrade or a more cruel line in each
+section, and there must be a new explosive point at the end of the chapter. **Ladder
+betrayal: Morality → Economics/Identity → Life (Children). **
 
-- **白月光 / 假千金触发链**（核心母题）：夫君有个白月光 / 小青梅 / 义妹，或家里塞进个假千金，关键时刻全家偏帮她、牺牲主角。她们多用「娇弱委屈」当软刀。
-- **偷听 / 撞破真相一次性砸**：密林、佛寺、茶馆里撞见夫君与白月光 / 假千金的真心话，连「当初的海誓山盟都是假的」全盘砸下，是心死导火索。
-- **婆家 / 父母合谋**：不只渣男一人，公婆 / 亲生父母也知情包庇，「父母之爱子，则为之计深远，只是这个孩子不是我」。
-- **信物当刀**：定情簪 / 玉佩 / 同心结 / 香囊被白月光抢走或被主角亲手撕毁砸碎，意义反转。
-- **数字 / 年限承重再清零**：成婚七年、守寡六年、认回第五年、征战十年——堆出投入再一句话清零。
-- **火葬场前瞻预告**：导语结尾插一句剧透 payoff（重金悬赏、悔疯、亮底牌时人已走 / 已死）。
-
----
-
-## 情绪烈度与模式（烈度 8）
-
-爽虐双轨：撞破前直白宣泄 + 撞破后冷静审判（钝刀转冷刀）。纯虐重生支线（手刃薄情郎 / 死遁）可到 9。
-
-- 直接命名情绪并加重：心如死灰、心如刀割、伤心欲绝、泪如雨下、心沉到谷底——通篇高频直给。
-- 直接写情绪，后面接一个场景里特有的动作或物件（不是二选一）。
-- 心死后转冷反衬：审判时无波澜，连最毒的话都激不起情绪。
-
-真实范例：
-
-- 《假千金害我失身》我心里瞬间升起一个令我心如刀割的想法。
-- 《假千金害我失身》巨大的悲伤将我淹没，如今将这些事情翻到明面，我的心也跟着鲜血直流。
-- 《和闺蜜死遁后，文武状元悔疯了》怒火和心痛在胸腔翻涌。我鼻头一酸，将玉佩摔得支离破碎。
-- 《满门忠烈，我胞妹竟然被恶霸欺辱》我和祖母在院子里，紧紧相拥，泪如雨下。断腿的疼痛远不及此刻锥心刺骨的悲伤。
-- 《断簪春不度》我心如死灰，当着萧淮的面纵身跳入湖中。
-- 《十年前他们要我顶替妹妹进青楼》在他们眼里，沈如意是锦绣前程。而我，则是锦绣上的破洞。
+- **white moonlight / fake daughter trigger chain** (core theme): The husband has a
+  white moonlight / little green plum / adopted sister, or a fake daughter is stuffed
+  into the family. At the critical moment, the whole family will help her and sacrifice
+  the protagonist. They often use "frailty and grievance" as a soft knife.
+- **Eavesdropping/Breaking out the truth at once**: I bumped into my husband and white
+  moonlight in a dense forest, a Buddhist temple, or a teahouse/The fake daughter’s true
+  words, even “the original oath of eachother was a fake” were completely thrown down,
+  which was the fuse of heart failure.
+- **In-laws/parents colluded**: Not only the scumbag, but the parents-in-law/biological
+  parents also knew and protected him. "Parents love their children, and they have
+  far-reaching plans, but this child is not me."
+- **Tokens used as knives**: The love hairpin/jade pendant/concentric knot/scent sachet
+  is snatched away by white moonlight or torn and smashed by the protagonist himself,
+  the meaning is reversed.
+- **Number/year load-bearing is cleared again**: seven years of marriage, six years of
+  widowhood, fifth year of recognition, ten years of war - pile up the investment and
+  then clear it in one sentence.
+- **Crematorium Preview**: A spoiler payoff is inserted at the end of the introduction
+  (heavy reward, regret and madness, the person is gone/dead when the trump card is
+  revealed).
 
 ---
 
-## 对话风格与真实金句
+## Emotional Intensity and Mode (Intensity 8)
 
-占比 45-60%，口语、狠、半文半白，独立成段。三类台词撑全篇：
+Dual tracks of pleasure and abuse: straightforward venting before the break-up + calm
+judgment after the break-up (a dull knife turns to a cold knife). The pure sadistic
+rebirth branch (hand-killing lover/death escape) can reach 9.
 
-**① 施害者 / 全家道德踩踏狠话（钩子本体，越理直气壮越好）**
-- 《十年前他们要我顶替妹妹进青楼》你一个千人骑万人跨的货色，还敢大摇大摆走沈家的正门？你不要脸我们还要脸呢！
-- 《从此萧郎是路人》一个捡破烂的乞丐，可别弄脏了柔儿的衣裙。
-- 《唯愿手刃薄情郎》你伤了身子不能生育，她这种下等人，能为你生下孩子已是荣幸。
-- 《从龙之功的我被父亲安排睡在下人房》你在外面十年，从没回家看过我们一次，既不曾尽孝，就不配住好屋子。
+- Emotions are directly named and aggravated: heart-broken, heart-broken, heartbroken,
+  tears pouring down, heart sinking to the bottom--high frequency and direct description
+  throughout the article.
+- Write the emotion directly, followed by actions or objects unique to the scene (not
+  choosing one or the other).
+- Contrast: There was no emotion during the trial, and even the most poisonous words
+  could not arouse emotions.
 
-**② 白月光 / 假千金娇弱软刀**
-- 《夫君一日娶双妻》姐姐，我知道同我一起嫁入王府委屈了你，你心中有气，妹妹明白。只是一杯热茶而已，若能让姐姐消气，便是十杯、二十杯，我也愿意受着。（注：原句含 `……`，落正文按 short-craft §8 改写）
-- 《改嫁镇北侯，主动退婚的竹马悔疯了》阿雪姐姐，我知道你不喜欢我，你与书宴哥哥青梅竹马，又有婚约在身，我充其量就是个外人，我这就走，再也不会打扰你们。
-- 《十年前他们要我顶替妹妹进青楼》不过姐姐回家就好，以前的事，我从来都没怪过你。
+Real example:
 
-**③ 主角心死后冷静审判金句（半文半白盖棺）**
-- 《夫君一日娶双妻》若想去找妙儿妹妹，便去找吧。
-- 《你若无心我便休，日后莫求我》此人不循尊卑，仗二十，以儆效尤。
-- 《假千金害我失身》我是父亲母亲的亲生女儿，她不是。我是太子殿下明媒正娶的妻子，她不是。
-- 《假千金害我失身》我累了，不想也不愿在与你们再有关系，自此，割袍断义，你们，各自珍重。
-- 《明月洒清辉》房子归你，我丈夫也归你。
-- 《十年前他们要我顶替妹妹进青楼》笑吧。多笑会儿。过了今天，你们就再也笑不出来了。
-
-冲突靠对话长度反转标记权力易主：渣男 / 全家前期长篇贬损，主角后期一句话冷怼。
+- "The fake daughter cost me my virginity" A thought that cut my heart instantly arose
+  in my mind.
+- "The Fake Daughter Caused Me to Lose My Virginity" The huge sadness overwhelmed me.
+  Now that these things are revealed, my heart is bleeding.
+- "After escaping with his best friend, the civil and military champion regretted going
+  crazy" Anger and heartache surged in his chest. My nose felt sour and I dropped the
+  jade pendant to pieces.
+- "The family is full of loyal people, but my sister was bullied by bullies" My
+  grandmother and I were in the yard, hugging each other tightly, with tears streaming
+  down our faces. The pain of a broken leg is far less than the heart-piercing sadness
+  at this moment.
+- "Broken Hairpin, Spring Never Ends" My heart was filled with despair, and I jumped
+  into the lake in front of Xiao Huai.
+- "Ten years ago they asked me to replace my sister in a brothel" In their eyes, Shen
+  Ruyi has a bright future. And I am a hole in the beauty.
 
 ---
 
-## 情绪链库
+## Conversational style and authentic quotes
 
-- **EC-前世债（重生宫斗线，默认）**：前世冤死 → 重生归来 → 步步拆招 → 债主现形 → 金句盖棺。五阶段。
-- **EC-绿茶粉碎（宅斗线）**：以茶制茶 → 捧杀借力 → 撕破面具 → 逐出家门 → 各安天命。五阶段。
-- **EC-步步为营（生存升级线）**：低位隐忍 → 结盟蓄力 → 中宫对弈 → 一局定胜负 → 太平有象。五阶段，适合无重生慢热局。
+Accounting for 45-60%, spoken, ruthless, half-literate and half-literate, independent
+paragraphs. Three types of lines support the entire article:
 
-## 招式库
+**① The perpetrator/the whole family’s moral trampling and harsh words (hook body, the
+more confident and confident the better)**
+- "Ten years ago they asked me to take my sister's place in the brothel" How dare you
+  walk through the main entrance of the Shen family with such arrogance that you can
+  ride on thousands of people? You are shameless and we still want to be shameless!
+- "Xiao Lang is a passerby from now on" A beggar picking up rags, please don't soil
+  Rou'er's dress.
+- "Only a Lover Can Be Killed by Hands" You are injured and cannot have children. It is
+  an honor for a low-class person like her to give birth to a child for you.
+- "I was arranged by my father to sleep in a servant's room as a disciple of the
+  Dragon." You have been away for ten years and have never come home to see us once.
+  Since you have not fulfilled your filial piety, you are not worthy of living in a good
+  house.
 
-| 招式 | 怎么用 | 真实例 |
+**② white moonlight / fake daughter, delicate and soft knife**
+- "A Husband Marries Two Wives in One Day" Sister, I know I have wronged you by marrying
+  into the royal palace with me. You are angry in your heart, and my sister understands.
+  It's just a cup of hot tea. If it can help my sister calm down, I'm willing to accept
+  ten or twenty cups. (Note: The original sentence contains `...`, the main text is
+  rewritten according to short-craft §8)
+- "Remarried to the Marquis of Zhenbei, and the sweetheart who took the initiative to
+  break off the engagement went crazy regretting it." Sister Axue, I know you don't like
+  me. You and Brother Shuyan are childhood sweethearts, and you are engaged. I am an
+  outsider at best. I will leave now and will never disturb you again.
+- "Ten years ago they asked me to take my sister's place in a brothel." But it's fine if
+  my sister goes home. I've never blamed you for what happened in the past.
+
+**③ The golden words of calm judgment after the death of the protagonist’s heart (half
+text and half white cover the coffin)**
+- "A Husband Marries Two Wives in One Day" If you want to find Sister Miaoer, then go
+  and find her.
+- "If you don't care, I will give up, and don't ask me for help in the future." This
+  person does not follow the rules of respect and inferiority, and fights twenty to
+  serve as a warning to others.
+- "The Fake Daughter Caused Me to Lose My Virginity" I am the biological daughter of my
+  father and mother, but she is not. I am the wife of His Highness the Crown Prince, she
+  is not.
+- "The fake daughter cost me my virginity" I'm tired, and I don't want to have anything
+  to do with you anymore. From now on, we will cut off our robes and cut off our
+  righteousness. You each should cherish it.
+- "The bright moon shines brightly" The house belongs to you, and so does my husband.
+- "Ten years ago they asked me to take my sister's place in a brothel" Just laugh. Laugh
+  more. After today, you will never laugh again.
+
+Conflict is marked by the reversal of dialogue length, which marks the change of power:
+the scumbag/family member makes a long derogatory speech in the early stage, and the
+protagonist gives a cold insult in one sentence in the later stage.
+
+---
+
+## Emotion chain library
+
+- **EC-Previous life debt (rebirth palace intrigue line, default)**: Unjust death in the
+  previous life → Rebirth and return → Step by step dismantling → The creditor appears →
+  The coffin is sealed with golden words. Five stages.
+- **EC-Green Tea Crush (inner-court intrigue line)**: Use tea to make tea → Leverage the
+  power → Tear down the mask → Drive out of the house → Everyone is at peace with their
+  destiny. Five stages.
+- **EC-Step by Step (Survival Upgrade Line)**: Forbearance in a low position → Forming
+  an alliance and accumulating energy → Playing chess in the middle of the palace → One
+  game will determine the outcome → There will be peace and prosperity. Five stages,
+  suitable for slow-heating games without rebirth.
+
+## Move library
+
+| Moves | How to use | Real examples |
 |------|--------|--------|
-| 时间锚定开篇 | 用「第 N 年 / 第几载 / 守活寡六年」定锚，再砸背叛 | 《你若无心我便休》嫁与肃王六载，成婚当日他便披甲出征，我生生守了六年活寡。 |
-| 全弧剧透 + 火葬场预告导语 | 导语一次剧透到底，结尾插对方追悔 payoff | 《和闺蜜死遁后，文武状元悔疯了》他们却重金悬赏千万，举全城之力，近乎哀求般寻找我们的下落。 |
-| 白月光 / 假千金软刀栽赃 | 娇弱委屈装受害，男人 / 全家无脑偏帮 | 《夫君一日娶双妻》苏妙儿故意打碎凉茶尖叫装烫伤，沈珏怒目质问正妻 |
-| 偷听撞破一次砸 | 密林 / 佛寺 / 茶馆听见真心话，真相全盘揭开 | 《假千金害我失身》佛寺撞见秦溯姜云云：「阿溯，你到底准备什么时候休了她啊？」 |
-| 婆家父母合谋 | 不止渣男，公婆 / 亲生父母也知情包庇 | 《假千金害我失身》父母之爱子，则为之计深远，只是这个孩子不是我，是姜云云罢了。 |
-| 信物撕毁物理爽点 | 定情簪 / 玉佩 / 同心结 / 香囊当面砸碎剪烂 | 《和闺蜜死遁后，文武状元悔疯了》拽住他腰间的香囊，拿起剪刀，精致的布匹瞬间成了垃圾。我亲手绣的，也该亲手了结。 |
-| 文白夹杂审判腔 | 心死后用半文半白一句定生死 | 《你若无心我便休》此人不循尊卑，仗二十，以儆效尤。 |
-| 数字年限承重再清零 | 具体年限 / 付出堆投入，再一句话清零 | 《从龙之功》我在边关啃了十年干粮，身上大小伤无数，拿命换了个将军。你在家里吃了十年饱饭。谁供谁？ |
-| 重生 / 死遁反向送嫁 | 重生后主动把丈夫 / 房子 / 名分送给白月光 | 《明月洒清辉》重生后，我亲手把钥匙塞进小青梅手里。「房子归你，我丈夫也归你。」 |
-| 身份反差底牌强势回归 | 受辱者其实早成摄政王 / 女王座上宾，亮牌碾压 | 《十年前他们要我顶替妹妹进青楼》我已经从一个烟花之地的玩物，熬成了西域诸国的摄政王。 |
-| 和离休夫净身出户 | 递休书 / 和离书、割袍断义、带孩子一去不归 | 《假千金害我失身》当朝太子却被太子妃休了，这是百年未之事。 |
-| 沙雕脑洞救场（子型限定） | 系统 / 转世 / 赐猪等离谱设定 + 俏皮腔反转 | 《我生下先帝的转世》孩子小手一挥：「罢了，看在你是我儿子的份上，皇位你先坐着，朕先吃口奶。」（原句含 `……`，落正文按 short-craft §8 改写） |
+| Time-anchored opening chapter | Use "Nth year / number of years / six years of widowhood" as the anchor, and then betrayal | "If you don't care, I'll break up" I was married to King Su for six years, and on the day of the wedding, he put on his armor and went to war. I have been a widow for six years. |
+| Full Arc Spoilers + Crematorium Preview Introduction | The introduction is spoiled to the end, and the other party regrets at the end. Payoff | "After escaping with his best friend, the civil and military champion regretted going crazy." However, they offered a reward of tens of millions, and mobilized the whole city to find our whereabouts almost like begging. |
+| white moonlight / framed by a fake daughter | A delicate and aggrieved man pretends to be victimized / the whole family is brainless and gangsters | "A Husband Marries Two Wives in One Day" Su Miaoer deliberately breaks the herbal tea and screams to pretend to be burned, Shen Jue angrily questions the real wife |
+| Eavesdropping and smashing it once | The truth is heard in the dense forest/Buddhist temple/teahouse, and the truth is revealed | "The fake daughter made me lose my virginity" Jiang Yunyun ran into Qin Su at the Buddhist temple: "Asu, when are you going to divorce her?" |
+| In-laws and parents conspired | Not only the scumbag, the parents-in-law/biological parents also knew and protected me | "The fake daughter cost me my virginity" The beloved son of his parents has far-reaching plans, but this child is not me, but Jiang Yunyun. |
+| Tokens torn apart, physical satisfying payoff | Love hairpin / jade pendant / concentric knot / sachet smashed and cut in front of his face | "After escaping with his best friend, the civil and military champion regretted going crazy" grabbed the sachet around his waist, picked up the scissors, and the delicate cloth instantly became garbage. What I embroidered with my own hands should also be finished with my own hands. |
+| Plain text mixed with a judgmental tone | After the death of the heart, life and death can be determined by half a sentence and half a sentence | "If you don't have a heart, I will give up" This person does not follow the rules of respect and inferiority, and fights twenty to serve as a warning to others. |
+| Numerical years of load-bearing and then clearing | Specific years / Pay a lot of investment, and then clear it with one sentence | "The Power of the Dragon" I spent ten years eating dry food at the border, with numerous injuries on my body, and I sacrificed my life to become a general. You have had enough food at home for ten years. Who provides whom? |
+| Rebirth/Death Escape Reverse Marriage | After rebirth, I took the initiative to give my husband / house / status to white moonlight | "The Bright Moon Spreads Clear Glory" After rebirth, I personally put the key into Xiao Qingmei's hand. "The house is yours, and my husband is yours too." |
+| The identity contrast trump card returns | The humiliated person has actually become the regent / the queen's guest, showing his cards to crush | "Ten years ago they asked me to take my sister's place in the brothel" I have gone from being a plaything in the land of fireworks to becoming the regent of the countries in the Western Regions. |
+| Leave the house with the divorced husband | Hand over divorce letter / divorce letter, cut off the robe, take the children and never come back | "The fake daughter made me lose my virginity" The prince of the current dynasty was divorced by the princess. This has not happened for a hundred years. |
+| shadiaowild idea to the rescue (subtype limited) | System / Reincarnation / Giving Pigs and other outrageous settings + playful reversal | "I gave birth to the reincarnation of the late emperor" The child waved his little hand: "That's all, for the sake of you being my son, you sit on the throne first, and I suck the milk first." (The original sentence contains `...`, the text is rewritten according to short-craft §8) |
 
 ---
 
-## 节奏骨架
+## Rhythm Skeleton
 
 ```
-时间锚定 + 全弧剧透导语（含火葬场预告 / 前世死法）
-→ 第1章重写导语事件、补满对话体感
-→ 逐章背叛升级（道德→经济身份→生命）+ 白月光软刀栽赃
-→ 偷听 / 撞破真相（连父母婆家也知情）
-→ 心死定格
-→ 信物撕毁 + 冷静审判 + 和离休夫 / 净身出户 / 死遁
-→ 亮底牌强势回归 / 重生翻盘
-→ 渣男追悔发疯 / 重金悬赏（火葬场）+ 金句盖棺
+Time anchor + full arc spoiler introduction (including crematorium preview / past life death method)
+→ Chapter 1 rewrites the introductory events and completes the dialogue experience
+→ Betrayal upgrades chapter by chapter (moral → economic identity → life) + white moonlight soft knife framed
+→ Eavesdropping/finding out the truth (even parents and in-laws know about it)
+→ Fixed in heart
+→ Tear down the keepsake + calm trial + divorce husband / leave home / escape to death
+→ Show your trump card and make a strong comeback/rebirth and comeback
+→ The scumbag regrets and goes crazy / Hefty reward (crematorium) + golden words to cover the coffin
 ```
 
-每章一个新信息炸弹，章尾留钩不收束情绪。疏密：撞破 / 打脸 / 撕信物 / 亮底牌处详写慢放，过场一句带过。古言线单节 2000-4000 字，年代 / 现代线 1000-2000 字。
+Each chapter contains a new information bomb, leaving a hook at the end of the chapter
+to keep the mood at bay. Density: break through / face-slapping / tear the token /
+reveal the trump card in detail and play slowly, and the cutscene will be passed by in
+one sentence. The length of a single section for the ancient line is 2,000-4,000 words,
+and the length of the period/modern line is 1,000-2,000 words.
 
 ---
 
-## 收尾范式
+## Closing Paradigm
 
-- 火葬场反转：主角走后渣男后悔莫及 / 发疯 / 重金悬赏，主角已无波澜或委屈倒打回去。
-- 亮底牌碾压：受辱者其实是摄政王 / 女王座上宾 / 万元户，强势回归把全家踩在脚下。
-- 重生反向送嫁 / 死遁：把前世拼命争的丈夫房子主动塞回去，转身开新人生。
-- 金句盖棺：一句反讽 / 审判定性收口，截图传播的高光。
+- Crematorium twist: After the protagonist leaves, the scumbag regrets/goes crazy/offers
+  a huge reward, but the protagonist fights back without any trouble or grievance.
+- Show your trump card and crush: The person who was humiliated is actually the
+  regent/guest of the queen/household of ten thousand yuan, who comes back strong and
+  tramples the whole family under his feet.
+- Rebirth and reverse marriage/death escape: Taking the initiative to take back the
+  husband's house that he fought so hard for in his previous life, and turn around and
+  start a new life.
+- A golden sentence that closes the coffin: a sentence of irony/judgment and a decisive
+  conclusion, the highlight of which is spread through screenshots.
 
-真实范例：
+Real example:
 
-- 《敦宜》重逢时，我已带着骆驼商队穿过大漠，带回了无数西域珍宝。裴筠舟一脸委屈和受伤：「敦宜，你不要我了吗？」
-- 《断簪春不度》可向来喜怒不形于色的小将军，却疯了般抱着我，求我再看他一眼。
-- 《桑榆已逝，与你长诀》同玉，你真的不要我和儿子了吗？（原句含 `......`，落正文按 short-craft §8 改写）
-- 《和闺蜜死遁后，文武状元悔疯了》迟来的深情比草还贱。
-- 《十年前他们要我顶替妹妹进青楼》在他们眼里，沈如意是锦绣前程。而我，则是锦绣上的破洞。
-
----
-
-## 该题材专属调校（与通用去 AI 规则的偏差）
-
-这些在别的语境是 AI 味，在本题材是卖点，**别误删**：
-
-- **文白夹杂措辞**（嫁与 / 六载 / 明媒正娶 / 割袍断义 / 各自珍重 / 不循尊卑 / 以儆效尤）：古言宫斗的招牌声线，保留。别因为「像文言」就改白话，也别因为「像翻译腔」就删；年代线对应保留年代口语（家属房 / 的确良 / 万元户）。
-- **直写情绪成语**（心如死灰 / 心如刀割 / 泪如雨下）：保留，配一个场景里特有的动作或物件即可，别替换成纯动作。
-- **时间锚定 + 全弧剧透导语 / 火葬场前瞻预告**：保留这类有意识的向前剧透；只删「泄了悬念又不吊读」的随手上帝腔。
-- **信物撕毁的物理动作 + 主观定性**（亲手绣的，也该亲手了结）：保留，撕毁 + 心理落点是本题材的爽点本体。
-- **审判金句 / 心死式章尾**：保留；只删空洞哲理升华。
-- **沙雕脑洞子型的轻喜剧 / 网络化俏皮腔**：仅在该子型内放宽，可用反差 / 吐槽腔；主流宫斗 / 重生线仍走朴素中文，不掺现代网络梗。
-
-仍要避免的真·AI 味：映入眼帘、心中暗道、沉声道、嘴角微扬、目光如炬、论文体连词（不难看出 / 由此可见）、空泛无体感的情绪总结句（一丝悲伤涌上心头）。文白夹杂不等于堆砌生僻文言，仍以朴素为底。
-
-> 标点：本题材范例为示意保留了原貌（含 `……` / `......`）；落到正文按 `.claude/knowledge/short-craft/short-craft.md` 第 8 节执行（不出 `……` / `——`，停顿用短句 / 动作 / 换行）。本包不教用 `……`。
+- When "Dun Yi" reunited, I had already led the camel caravan through the desert and
+  brought back countless treasures from the Western Regions. Pei Yunzhou looked
+  aggrieved and hurt: "Dunyi, don't you want me anymore?"
+- "Spring Will Not End After a Broken Hairpin" But the little general, who had always
+  been indifferent to emotions and anger, hugged me like crazy and begged me to look at
+  him again.
+- "Sangyu has passed away, and I will bid farewell to you" Tongyu, do you really not
+  want me and my son? (The original sentence contains `......`, the main text is
+  rewritten according to short-craft §8)
+- "After escaping with his best friend, the civil and military champion regretted going
+  crazy" The belated affection is cheaper than grass.
+- "Ten years ago they asked me to replace my sister in a brothel" In their eyes, Shen
+  Ruyi has a bright future. And I am a hole in the beauty.
 
 ---
 
-## 配套结构公式（按篇幅选）
+## Exclusive adjustment for this theme (deviation from general AI rules)
 
-- **宅斗宫斗 / 古言打脸型（8-12 节）**：导语剧透 → 1-2 节白月光 / 假千金软刀栽赃、全家偏帮 → 3-4 节撞破真相（父母婆家也知情）→ 心死定格 → 5-6 节撕信物 + 和离休夫 / 割袍断义 → 7-8 节亮底牌强势回归 / 渣男追悔被拒。审判台词半文半白、一句见血；觉醒是撞破那一瞬。
-- **古言 / 年代重生型**：导语先交代前世死法 + 凶手（白月光夺位 / 假千金害死孩子）→「再睁眼」回到关键节点 → 做前世绝不会做的事（反向把丈夫房子送给白月光、决绝死遁、拒绝肩挑两房）→ 渣男 / 全家在底牌揭开时追悔莫及。100% 第一人称；爽按序释放，重生后步步算计、不再隐忍。
-- **沙雕脑洞型**：离谱设定开局（系统绑定 / 先帝转世 / 圣旨赐猪 / 全员演戏）→ 主角顺水推舟把规则玩崩 → 在轻喜剧节奏里完成打脸 / 翻盘。情绪烈度可降，靠反差与节奏取胜，但仍守一节一炸点。
+These are AI-flavored in other contexts, but they are selling points in this subject
+matter, **don’t delete them by mistake**:
+
+- **White text mixed with wording** (Marrying / Six years / Marrying with a clear
+  matchmaker / Cutting off the robe to determine the righteousness / Cherishing each
+  other / Not following the superiority / Serving as a warning to others): The signature
+  voice of the ancient saying palace intrigue is retained. Don’t change it to the
+  vernacular because it “looks like classical Chinese”, and don’t delete it because it
+  “looks like a translator”; the era line corresponds to retaining the spoken language
+  of the era (family house / indeed good / ten thousand yuan household).
+- **Direct emotional idioms** (heart-broken/heart-broken/tears like rain): Keep it, just
+  match it with an action or object unique to the scene. Don’t replace it with pure
+  action.
+- **Time Anchoring + Full Arc Spoiler Introduction / Crematorium Preview**: Keep this
+  kind of conscious forward spoiler; only delete the casual God-like accent that
+  "reveals suspense without reading too much".
+- **Physical action of tearing up tokens + Subjective qualitative** (If something is
+  embroidered by hand, it should be finished by hand): retaining, tearing up +
+  psychological focus is the satisfying payoff essence of this theme.
+- **Judgement Sentences/Heart-Death Ending Chapter**: Keep; only delete empty
+  philosophical sublimation.
+- **Light comedy/internet witty accent of the shadiawild idea sub-type**: Only relaxed
+  within this sub-type, contrast/complaint accent can be used; the mainstream palace
+  intrigue/rebirth line is still in plain Chinese, without the use of modern Internet
+  memes.
+
+The real AI tastes that should be avoided are: catching the eye, secret thoughts in the
+heart, deep voice, slightly raised corners of the mouth, piercing eyes, essay-style
+conjunctions (it is not difficult to see / it can be seen from this), and empty and
+intangible emotional summary sentences (a trace of sadness wells up in the heart).
+Mixing white and white literature does not mean piling up rare classical Chinese, it is
+still based on simplicity.
+
+> Punctuation: This theme example retains its original appearance (including
+> `...`/`......`) for illustration; when it comes to the main text, follow Section 8
+> of `.claude/knowledge/short-craft/short-craft.md` (`...`/`em dash` is not included,
+> use short sentences/actions/line breaks for pauses). This package does not teach the
+> use of `...`.
+
+---
+
+## Supporting structural formula (selected according to length)
+
+- **inner-court intrigue palace intrigue / ancient saying face-slapping type (8-12
+  chapters) **: spoilers for the introduction → 1-2 chapters white moonlight / fake
+  daughter framed with a soft knife, the whole family is a gangster → 3-4 chapters
+  reveal the truth (parents and in-laws also know about it) → heart-breaking scene → 5-6
+  chapters tearing up tokens + marrying divorced husband / cutting off robes → 7-8
+  chapters reveal the trump card and make a strong return / The scumbag regrets being
+  rejected. The lines in the trial are half written and half white, and one sentence is
+  bloody; the awakening is the moment of breakthrough.
+- **Old saying/Rebirth of the times**: The introduction first explains the way of death
+  in the previous life + the murderer (white moonlight seizes the throne/the fake
+  daughter kills the child) → "open your eyes again" and return to the key node → do
+  things you would never do in the previous life (reversely give your husband's house to
+  white moonlight, make a decisive escape, refuse to take two houses) → scumbag / the
+  whole family regrets it when the trump card is revealed. 100% first person; cool and
+  released in sequence. After rebirth, you will calculate every step and no longer hold
+  back.
+- **shadiawild idea type**: Outrageous setting opening (system binding / reincarnation
+  of the late emperor / imperial edict to give pigs / all actors acting) → the
+  protagonist goes with the flow and breaks the rules → completes face-slapping /
+  comeback in the rhythm of light comedy. The emotional intensity can be reduced,
+  relying on contrast and rhythm to win, but still sticking to the point of each beat.

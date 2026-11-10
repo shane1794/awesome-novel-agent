@@ -1,102 +1,127 @@
-# 剧情设计方法论
+# Plot design methodology
 
-> 冲突升级 + 钩子悬念两大板块，覆盖卷纲阶段的冲突设计和章纲阶段的钩子设计。
-> 配合 `format-specs/story-arc-style.md` 主线拆纲使用。
+> Conflict escalation + hook and suspense are two major sections, covering conflict
+> design in the outline stage and hook design in the chapter outline stage. Used with
+> `format-specs/story-arc-style.md` main line disassembly.
 
-## 文件清单
+## Document list
 
-| 文件 | 适用场景 | 使用阶段 |
+| Documents | Applicable scenarios | Usage stages |
 |------|---------|---------|
-| [冲突升级](index.md)（当前文件） | 价值错位/环境压力/目标置换/连锁反应 | 卷纲定冲突、章纲设小阶梯 |
-| [钩子悬念](hook-techniques.md) | 认知错位/信息差/倒计时 | 章纲 Hooks 操作 |
-| [悲剧虐心](tragedy-techniques.md) | 先糖后刀/错位付出/向命运低头/惯性残留 | 卷纲情绪走向、章纲关键情节 |
-| [情绪拉扯](emotional-pull.md) | 期待落差/理智情感/信息差错位/灵魂共鸣/节奏控速 | 卷纲情绪走向、章纲拆场景卡 |
-| [开篇钩子](opening-hooks.md) | 悬念留白/极度反差/矛盾前置/颠覆设定/极致情绪 | 章纲首章设计 |
-| [剧情反转](plot-twists.md) | 逻辑误导/人设置换/多重套娃 | 卷纲冲突设计、章纲关键转折 |
+| [Conflict Escalation](index.md) (Current File) | Value Dislocation/Environmental Pressure/Goal Replacement/Chain Reaction | Conflicts are defined in volumes and small steps are set up in chapters |
+| [Hook suspense](hook-techniques.md) | Cognitive dislocation/information gap/countdown | Chapter outline Hooks operation |
+| [Tragic and sadistic](tragedy-techniques.md) | Sugar first, then knife/Misplaced giving/Bowing to fate/Remaining inertia | The emotional direction of the volume and key plots of the chapter |
+| [Emotional pull](emotional-pull.md) | Expectation gap/reason and emotion/misplaced information/soul resonance/tempo control | Emotional direction of volume outline, chapter outline and scene cards |
+| [Opening hook](opening-hooks.md) | Suspense blank space/extreme contrast/pre-contradiction/subversive setting/extreme emotion | Chapter outline first chapter design |
+| [Plot reversal](plot-twists.md) | Logic misdirection/personality changing/multiple matryoshka dolls | Volume outline conflict design, chapter outline key turning point |
 
 ---
 
 ---
 
-## 一、价值错位冲突——高阶内核冲突
+## 1. Value misalignment conflict - high-order core conflict
 
-**核心：** 跳出单纯敌我恩怨，塑造双方立场均自洽、底线无法退让的价值观对立。没有绝对的好人坏人。
+**Core:** Break away from the simple grudges between the enemy and ourselves, and create
+a value confrontation in which both sides are self-consistent and the bottom line cannot
+be compromised. There are no absolute good guys or bad guys.
 
-### 执行细则
+### Implementation details
 
-- 为主角、对手分别设立坚定且相悖的行事准则、信念与目标
-- 双方所作所为都源于自身立场，不为作恶而作恶
-- 冲突落点在"选择两难"，而非单纯分出胜负
+- Establish firm and contradictory codes of conduct, beliefs and goals for the
+  protagonist and opponent respectively.
+- Everything both parties do stems from their own positions, and they do not do evil for
+  the sake of doing evil.
+- The conflict lies in the "dilemma of choice" rather than simply determining the
+  winner.
 
 ```
-❌ 反派嫉妒主角，处处刁难、刻意加害。
+❌ The villain is jealous of the protagonist, making things difficult and deliberately causing harm.
 
-✅ 一方坚守人性与个体尊严，宁死不抛弃道德底线；
-   一方以族群存续为最高目标，愿意牺牲个体、舍弃情感与规则。
-   二者目标相悖，必须一战。
+✅ One party adheres to human nature and individual dignity and would rather die than abandon the moral bottom line;
+   One side takes the survival of the ethnic group as its highest goal and is willing to sacrifice individuals, emotions and rules.
+   The two have conflicting goals and must fight.
 ```
 
-**禁用：** 冲突仅停留在辱骂、打斗等表层物理对抗；塑造纯粹脸谱化恶人。
+**Disabled:** Conflicts only stop at superficial physical confrontations such as insults
+and fighting; creating purely facial-looking villains.
 
 ---
 
-## 二、环境压力极限递增——外部施压+倒计时
+## 2. Increasing environmental pressure limits - external pressure + countdown
 
-**核心：** 叠加封闭、危险、资源枯竭等恶劣外部环境，引入倒计时、灾害、能力衰减等硬性限制，不断压缩角色行动空间，倒逼冲突激化。
+**Core:** Overlay harsh external environments such as closure, danger, and resource
+depletion, and introduce hard restrictions such as countdowns, disasters, and ability
+attenuation, constantly compressing the character's action space, and forcing conflicts
+to intensify.
 
-### 执行细则
+### Implementation details
 
-- 给冲突场景附加致命外部危机：缺氧、火灾、洪水、险境围困
-- 加入明确倒计时，持续缩短截止时间，强化紧迫感
-- 外部压力随剧情推进逐步加剧，不维持一成不变的环境状态
+- Add fatal external crises to conflict scenes: lack of oxygen, fire, flood, dangerous
+  siege
+- Add a clear countdown to continuously shorten the deadline and enhance the sense of
+  urgency
+- External pressure gradually intensifies as the plot progresses, and the environment
+  does not remain static.
 
 ```
-❌ 主角慢慢搜集证据，自证清白。
+❌ The protagonist slowly collects evidence to prove his innocence.
 
-✅ 密室氧气仅够支撑半小时，同时距离亲人行刑只剩三小时，
-   主角必须在极限时间与恶劣环境里找出证据。
+✅ The oxygen in the secret room is only enough for half an hour, and there are only three hours left before the execution of the loved one.
+   The protagonist must find evidence under the limit of time and harsh environment.
 ```
 
-**禁用：** 环境宽松无限制，无时间、生存类约束；全程环境状态毫无变化。
+**Disabled:** The environment is relaxed and unrestricted, with no time or survival
+constraints; the environment status remains unchanged throughout the process.
 
 ---
 
-## 三、目标置换法——把"求收益"改为"防失去"
+## 3. Goal replacement method - change "seeking gains" to "preventing losses"
 
-**核心：** 将主角主动追逐利益的正向目标，替换为被动规避毁灭性损失的生存目标。用"失去的代价"放大行动驱动力与读者紧迫感。
+**Core:** Replace the protagonist's positive goal of actively pursuing profits with the
+passive goal of survival of avoiding devastating losses. Use "the price of loss" to
+amplify the drive for action and the reader's sense of urgency.
 
-### 执行细则
+### Implementation details
 
-- 弱化"拿到奖励、获得荣誉"这类正向诱惑
-- 绑定严重后果：失败即面临亲人遇险、家族覆灭、生命终结、执念彻底落空
-- 让角色被迫前行，而非自愿稳步追求
+- Weaken positive temptations such as "getting rewards and gaining honors"
+- Serious consequences of binding: If you fail, you will face the danger of your loved
+  ones, the destruction of your family, the end of your life, and the complete failure
+  of your obsessions.
+- Let the character be forced to move forward rather than voluntarily pursue steadily
 
 ```
-❌ 主角参加比武，只为争夺冠军、扬名立万。
+❌ The protagonist participates in the competition just to compete for the championship and become famous.
 
-✅ 比武落败就会中断亲人治疗、整个家族将被清算。
-   夺冠不再是追求，而是唯一活路。
+✅ Failure in the competition will interrupt the treatment of relatives and the entire family will be liquidated.
+   Winning the championship is no longer a pursuit, but the only way to survive.
 ```
 
-**禁用：** 冲突动力仅依靠名利、兴趣等浅层正向欲望；失败无实质严重后果。
+**Disabled:** Conflict motivation relies only on superficial positive desires such as
+fame, wealth, and interest; failure has no substantial and serious consequences.
 
 ---
 
-## 四、冲突连锁反应——多米诺骨牌式递进
+## 4. Conflict chain reaction,domino-like progression
 
-**核心：** 单个冲突不就地收尾，让一件小事触发连环事件，从私人矛盾逐步蔓延到群体、地域、势力乃至世界观级危机。
+**Core:** A single conflict does not end on the spot, but a small incident triggers a
+chain of events, gradually spreading from personal conflicts to group, region, power and
+even world-level crises.
 
-### 执行细则
+### Implementation details
 
-- 初始小冲突作为第一块"骨牌"，衍生新矛盾、新事件
-- 冲突范围逐级扩大：个人→家族→城池→势力→整个世界观
-- 角色被局势裹挟，无法中途抽身
+- The initial small conflict serves as the first "domino", giving rise to new conflicts
+  and new events.
+- The scope of conflict expands step by step: individual → family → city → power → the
+  entire world view
+- The character is trapped in the situation and unable to escape midway
 
 ```
-❌ 路人嘲讽主角，主角出手反击，事件就此结束。
+❌ The passers-by taunted the protagonist, the protagonist struck back, and the incident ended.
 
-✅ 一次寻常偷窃，接连引出家庭变故、地下集会、官方调查，
-   最终牵扯出邪神现世的巨大阴谋。
+✅ An ordinary theft led to family changes, underground gatherings, and official investigations.
+   In the end, a huge conspiracy involving the appearance of the evil god was involved.
 ```
 
-**禁用：** 一事一结，冲突单点爆发后立刻平息；事件影响范围始终局限在两人之间。
+**Disabled:** One incident is settled, and the conflict is settled immediately after it
+breaks out at a single point; the scope of impact of the incident is always limited to
+two people.

@@ -1,143 +1,166 @@
-# 文笔技法（通用）
+# Writing Techniques (General)
 
-> 网文文笔的核心不在于华丽，在于画面感和代入感。四条通用技法适用于所有场景类型，prompt-crafter 始终加载此文件。
-
-
-## 一、抽象具体化——把模糊变清晰
-
-**核心：** "很贵的乐器、名牌衣服、精致的菜"——这种描写在读者眼里是打马赛克的。把抽象词替换为具体细节，真实感就来了。
-
-```
-❌ 他拿出一件很贵的乐器。
-✅ 一把通体乌黑、泛着冷光的沉香木古琴。
-
-❌ 他穿了一身名牌衣服。
-✅ 裁剪合身的深蓝色阿玛尼西装，袖扣在灯下闪着微光。
-
-❌ 桌上摆着几道精致的菜。
-✅ 盘子里卧着一只被剃了骨、淋了金黄芡汁的帝皇蟹斗。
-```
-
-**要点：** 写前搜一下相关图片或专业名词填进去。不需要什么都懂，但写到的必须具体。
+> The core of online writing is not gorgeousness, but the sense of picture and sense
+> of substitution. Four general techniques apply to all scene types, prompt-crafter
+> always loads this file.
 
 
-## 二、镜头切换与节奏——像导演一样写作
+## 1. Abstraction and concreteness - turning blurry into clear
 
-### 远近镜头切换
-
-从视觉写作：先给远景（环境），再给中景（人物），最后给特写（细节/表情）。
+**Core:** "Expensive musical instruments, designer clothes, exquisite dishes" - this
+description is mosaic in the eyes of readers. Replace abstract words with concrete
+details and realism comes in.
 
 ```
-远景：金碧辉煌的大厅里灯火通明，乐声悠扬。
-中景：主座上的男人端着酒杯，正意气风发地和周围人谈笑。
-特写：他握着杯脚的手指，指节泛白，微微发抖。
+❌ He took out a very expensive musical instrument.
+✅ An agarwood guqin that is completely black and glowing with cold light.
+
+❌ He wore designer clothes.
+✅ A well-tailored dark blue Armani suit, the cufflinks shimmering under the light.
+
+❌ There are several exquisite dishes on the table.
+✅ On the plate lies a king crab bucket with shaved bones and golden gravy.
 ```
 
-### 长短句结合
-
-叙述背景、铺垫情绪用长句；高潮、反转、打斗动作切换为短句。
-
-```
-漫天剑气如大雨倾盆而下，遮蔽了整个视线——
-那是他苦练三十年的终极一招。长句铺垫
-剑落。人头落地。
-```
+**Points:** Search for relevant pictures or professional terms and fill them in before
+writing. You don’t need to know everything, but what you write must be specific.
 
 
-## 三、用动词干掉形容词
+## 2. Shot switching and rhythm - writing like a director
 
-**核心：** 形容词是死的，动词是活的。动词带来动作，动作带来画面。
+### Far and near lens switching
+
+Write visually: give long shot (environment) first, then medium shot (characters), and
+finally close-up (details/expressions).
 
 ```
-❌ 他非常生气，火冒三丈。
-
-✅ 他猛地拍案而起，由于用力过猛，指关节微微发青，
-   桌上的茶杯被震得跳了一下，茶水溅了一地。
-
-❌ 一个极其凶残、卑鄙无耻的反派。
-
-✅ 一刀落下，他是微笑着的。眼神平淡得像在处理一件日常琐事。
+Vision: The splendid hall is brightly lit and the music is playing.
+Medium shot: The man in the main seat is holding a wine glass and talking and laughing with the people around him in high spirits.
+Close-up: His fingers holding the base of the glass, the knuckles are white and trembling slightly.
 ```
 
-**不写结论**（他很伤心），写画面（他颤抖着手点烟、蹲在路边把头埋进膝盖）。
+### Combining long and short sentences
+
+Use long sentences to describe background and foreshadowing emotions; switch to short
+sentences for climax, reversal, and fighting actions.
+
+```
+Sword energy poured down from the sky like heavy rain, blocking the entire sight,
+That was the ultimate move that he had practiced hard for thirty years. Long sentence foreshadowing
+The sword falls. Heads fell to the ground.
+```
 
 
-## 四、感官叠加法——调动五感
+## 3. Use verbs to kill adjectives
 
-**核心：** 大多数新手只写视觉（看到了什么），但人的感知是全方位的。在关键场景多加一种感官，代入感翻倍。
+**Core:** Adjectives are dead, verbs are alive. Verbs bring action, actions bring
+pictures.
 
-| 感官 | 用法 | 效果 |
+```
+❌ He was very angry and furious.
+
+✅ He suddenly slapped the table and stood up. Due to the excessive force, his knuckles were slightly blue.
+   The tea cup on the table was shaken and the tea splashed on the floor.
+
+❌ An extremely cruel and despicable villain.
+
+✅ When the knife fell, he was smiling. His eyes were as calm as if he was dealing with a daily chore.
+```
+
+**Do not write a conclusion** (he is very sad), but write the scene (he lights a
+cigarette with trembling hands, squats on the roadside and buries his head in his
+knees).
+
+
+## 4. Sensory superposition method - mobilizing the five senses
+
+**Core:** Most novices only write about vision (what they see), but human perception is
+all-round. Adding an extra sense to key scenes doubles the sense of immersion.
+
+| Senses | Usage | Effects |
 |------|------|------|
-| 视觉 | 看到什么 | 基础，不可缺 |
-| 听觉 | 听到什么（水滴声/脚步声/呼吸声） | 营造空间感 |
-| 触觉 | 皮肤感受到什么（冷风/温度/质地） | 最强代入感 |
-| 嗅觉 | 闻到什么（铁锈味/焦糊味/香水味） | 最易被忽视但最有力 |
+| Vision | What to see | Basic, indispensable |
+| Hearing | What to hear (water drops/footsteps/breathing) | Create a sense of space |
+| Touch | What the skin feels (cold wind/temperature/texture) | The strongest sense of immersion |
+| Smell | What you smell (rust/burnt/perfume) | The most overlooked but most powerful |
 
 ```
-❌ 视觉单薄版：山洞里很黑，到处是石头，中间有一根石柱。
+❌ Visually thin version: The cave is very dark, full of stones, and there is a stone pillar in the middle.
 
-✅ 四感叠加版：
-   【视觉】手电筒的光柱划破黑暗，照出岩壁上潮湿的青苔。
-   【听觉】黑暗深处传来滴答滴答的水声，回声悠长，显得洞内格外死寂。
-   【触觉】一股冷风顺着脖领子钻了进来，激起了一层鸡皮疙瘩。
-   【嗅觉】空气中弥漫着一种陈旧的泥土腐烂的味道。
+✅ Four senses superimposed version:
+   [Visual] The flashlight beam cuts through the darkness, illuminating the wet moss on the rock wall.
+   [Hearing] The sound of dripping water came from the depths of the darkness, and the echo was long, making the cave feel particularly dead.
+   [Touch] A gust of cold wind penetrated along the neck collar, causing goose bumps.
+   [Smell] The air is filled with the smell of old rotten earth.
 ```
 
-**要点：** 不需要每一段都用五感。在关键转场、战斗场景或情感爆发点，哪怕多加一种感官，文字质感都会提升一档。
+**Key Points:** It is not necessary to use the five senses in every paragraph. In key
+transitions, battle scenes or emotional flashpoints, even adding one more sense will
+improve the text quality.
 
 
-## 五、三维编织法——发生·感知·反应织入同一段
+## 5. Three-dimensional weaving method - occurrence, perception and reaction are woven into the same paragraph
 
-**核心：** 每个叙事单元（一个动作/一个事件/一个镜头）同时包含三个维度——发生（事件推进）、感知（主角注意到什么）、反应（身体回应）——编织在同一个段落里。
+**Core:** Each narrative unit (an action/an event/a shot) simultaneously contains three
+dimensions - occurrence (event progression), perception (what the protagonist notices),
+and reaction (body's response) - woven into the same paragraph.
 
-AI 最明显的指纹之一是把这三个维度拆成三段写。三段式堆叠 = 一眼识别的 AI 味。
+One of the most obvious fingerprints of AI is to break these three dimensions into three
+paragraphs. Three-stage stacking = instantly recognizable AI flavor.
 
-### 反模式：三段式堆叠（严格禁止）
+### Anti-pattern: three-stage stacking (strictly prohibited)
 
 ```
-❌ 三段式堆叠（AI 味）：
-   林父低着头，左手把文书压住，右手拿笔，往纸上落。
-   手在抖。不是小抖，是从肘到腕的那种。
-   笔尖在纸上停了停，写了一横，又停。那个"林"字的撇写歪了。
+❌ Three-stage stacking (AI flavor):
+   Father Lin lowered his head, held down the document with his left hand, took a pen with his right hand, and put it on the paper.
+   Hands shaking. It's not a small tremor, it's the kind that goes from the elbow to the wrist.
+   The pen tip stopped on the paper, wrote a horizontal line, and stopped again. The word "林" is spelled crookedly.
 
-✅ 编织式：
-   林父左手压着文书，右手拿笔往纸上落，笔尖一触纸面就偏了，
-   从肘到腕止不住地抖，那一横斜着拖出去。
+✅ Braided:
+   Father Lin pressed the document with his left hand and put the pen on the paper with his right hand. The tip of the pen deflected as soon as it touched the paper.
+   It was shaking uncontrollably from elbow to wrist, and it was dragged out sideways.
 ```
 
-| 维度 | 内容 | 要点 |
+| Dimensions | Content | Key points |
 |------|------|------|
-| 发生 | 事件已经发生 | 1-2 句，含一个具体细节 |
-| 感知 | 主角注意到什么 | ≥1 感官细节（视觉 + 触觉/听觉/嗅觉），聚焦于一个物体或一个身体部位 |
-| 反应 | 身体如何回应 | 具体的身体动作（手/眼/呼吸/姿势），可含一句简短的心理定格 |
+| Happened | The event has happened | 1-2 sentences, including a specific detail |
+| Perception | What the protagonist notices | ≥1 sensory detail (vision + touch/hearing/smell), focus on one object or body part |
+| Reaction | How the body responds | Specific body movements (hands/eyes/breathing/postures), which can include a short mental sentence |
 
-### 断段规则
+### Segmentation Rules
 
-三维编织不意味着一个长段塞到底。**断段按镜头/信息变化，不按维度变化：**
+Three-dimensional braiding doesn't mean one long slug at the end. **The segments change
+according to shots/information, not dimensions:**
 
-| 触发条件 | 断段方式 |
+| Trigger conditions | Segmentation method |
 |---------|---------|
-| 新动作开始 | 新起一段 |
-| 新物体/线索出现 | 新起一段，单独承载该信息 |
-| 角色视线转移 | 新起一段，形成镜头切换 |
-| 直接引语出现 | 对话独立成段 |
-| 心理定格/判断落下 | 可以单句成段 |
+| Start a new action | Start a new paragraph |
+| New objects/clues appear | Start a new paragraph to carry the information alone |
+| The character's gaze shifts | Start a new paragraph to form a camera switch |
+| Direct quotations appear | Dialogue is separated into separate paragraphs |
+| Mental freeze/judgement | Can be divided into single sentences and paragraphs |
 
-**指引（非硬性）：**
-- 一段建议承载一个镜头拍点/一个动作单元，但允许合理的信息密度
-- 单段超过 80 字 → 考虑是否需按动作或信息变化拆分
-- 单句超过 50 字（除非刻意放慢节奏）→ 建议拆成两句
-- 独句段用于节奏强调，全文占比建议不超过 30%
-- **不得将编织段拆成"动作段/感知段/反应段"**
+**Guidelines (not hard):**
+- A paragraph is recommended to carry one shot/unit of action, but allows for reasonable
+  information density
+- A single paragraph exceeds 80 words → Consider whether it needs to be split according
+  to actions or information changes
+- A single sentence exceeds 50 words (unless the pace is deliberately slowed down) → It
+  is recommended to split it into two sentences
+- Single sentence paragraphs are used to emphasize rhythm. It is recommended that the
+  proportion of the full text should not exceed 30%.
+- **The knitting section must not be split into "action section/perception
+  section/reaction section"**
 
-### 自检：三指覆盖法
+### Self-check: three-finger covering method
 
-写完一段后，分别覆盖三个维度的信息：
+After writing a paragraph, cover the information in three dimensions:
 
-| 遮盖 | 检查 |
+| Cover | Check |
 |------|------|
-| 遮住"发生" | 这段能看出事件在推进吗？ |
-| 遮住"感知" | 这段有角色主观视角的感知细节吗？ |
-| 遮住"反应" | 这段有身体层面的回应吗？ |
+| Cover "happen" | Can we see that the event is progressing in this paragraph? |
+| Cover "Perception" | Does this paragraph contain details of the character's subjective perspective? |
+| Hide "reaction" | Is there a physical response to this paragraph? |
 
-缺哪维就把对应细节织回同一段——**不要另起一段补写**。
+If any dimension is missing, weave the corresponding details back into the same
+paragraph - **Don't start a new paragraph to make up for it**.

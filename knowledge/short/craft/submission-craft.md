@@ -1,39 +1,102 @@
-# 投稿范式：平台基调 · 导语 · 付费点
+# Submission paradigm: platform tone / introduction / payment point
 
 
-> 本文件改写自获赠短篇流程包（oh-story 系 + 实测调整），按本仓口径适配：引用为部署后基座路径、已剔除外部体系引用。公开或商用前需原作者确认。
+> This document is adapted from the short flow package (oh-story series + actual
+> measurement adjustment) received as a gift, and is adapted to the caliber of this repo: the reference is the post-deployment base path, and external system
+> references have been eliminated. Confirmation by the original author is required
+> before disclosure or commercial use.
 
 
-> 短篇是投出去过稿的，不是写完就算。这份文件管三件投稿层的事：按平台定基调、单独打磨导语、把付费点卡在断点上。题材招式仍按 `.claude/knowledge/short-genres/{题材}.md`，本文只叠加"投稿怎么写才收得掉"这一层。
+> Short stories are submitted for submission, not finished. This document takes care
+> of three things at the submission level: setting the tone according to the platform,
+> polishing the introduction separately, and sticking the payment point at the
+> breakpoint. The theme and moves are still according to
+> `.claude/knowledge/short-genres/{genre}.md`. This article only superimposes the layer
+> of "how to write a submission so that it can be accepted".
 
-## 一、先定平台基调
+## 1. Set the tone of the platform first
 
-动笔前先确认投稿平台，正文的视角、矛盾烈度、章末钩子、结局质感随之切换。三大主流基调：
+Before starting to write, confirm the submission platform. The perspective of the text,
+the intensity of contradictions, the hook at the end of the chapter, and the texture of
+the ending will change accordingly. Three mainstream tones:
 
-| 平台 | 视角 | 矛盾演进 | 章末钩子 | 结局质感 |
+| Platform | Perspective | Evolution of contradictions | Chapter-end hook | Ending texture |
 |---|---|---|---|---|
-| 知乎盐选 | 第一人称沉浸，生活化违和感切入（"老公副驾驶有根红头发"） | 心理战、信息差，靠细节拼图"细思极恐"，情绪层层剥洋葱 | 发现一个颠覆前文认知的炸裂细节，悬念内敛后劲大 | 极致反转 / 因果轮回 / 高智商收尾，留白多、重余韵 |
-| 小程序 | 上帝视角或强情绪第一人称，开局即地狱 | 冲突全外化到对白和动作，走"被羞辱→亮底牌→当众打脸→夺实利"快循环 | 卡脖子断点（巴掌将落、协议撕一半、话说一半） | 直白粗暴的爽，反派付实质代价（破产/入狱/众叛亲离），主角高位不留遗憾 |
-| 番茄短篇 | 流畅第一/第三人称，目标清晰、金手指直白 | 顺滑无毒点，反派挑衅一两节内转成主角升级/发财的垫脚石 | 开新地图 / 拿到新底牌 / 新人物带资源登场 | 圆满畅快，事业感情双收，坏人受罚 |
+| Zhihu Salt Selection | First-person immersion, a sense of contradiction in life ("My husband's co-pilot has red hair") | Psychological warfare, poor information, relying on details to puzzle out "It's scary to think about it", and peeling the onion layer by layer | Discovering an explosive detail that subverts the previous cognition, the suspense is restrained and powerful | Extreme reversal / reincarnation of cause and effect / high IQ ending, lots of blank space, heavy aftertaste |
+| Small program | God's perspective or first-person with strong emotions, the beginning is hell | Conflicts are all externalized to dialogue and action, and the fast cycle of "being humiliated → showing cards → face-slapping in public → seizing real benefits" | The breaking point of the neck (the slap is about to fall, the agreement is torn in half, and the words are half spoken) | It is straightforward and rough, the villain pays the real price (bankruptcy/imprisonment/renunciation), and the protagonist leaves no regrets in his high position |
+| Fanqie short story | Smooth first/third person, clear goals, straightforward golden finger | Smooth and non-toxic, the villain's provocation turns into a stepping stone for the protagonist to upgrade/get rich within one or two quarters | Open a new map / get a new trump card / new characters appear with resources | Perfect and smooth, gain both career and love, and the bad guys are punished |
 
-- 小程序收稿量最大，打脸爽文是主力盘；同一个脑洞可以分别按知乎/小程序/番茄各跑一版，挑最顺的投。
-- 基调只调"声音和落点"，不覆盖题材招式和本篇情绪目标。基调是投放渠道的声音，与 `short-format.md` 的排版模板是两个轴——小程序基调的稿，排版仍按 short-format 选一套 app 模板。
-- **调基调不松去 AI 底线**：强情绪靠具体动作和对白落地，别把话硬拆成三字碎句成片排列；前情背景靠场景带出，别整段插叙成"来龙去脉"说明书；对仗句式（"上辈子…这辈子…"）别高频复用。去 AI 味仍按本套件既有规则。
+- The mini program receives the largest number of manuscripts, and
+  face-slappingfeel-good fiction is the main focus; the same wild idea can be run
+  through Zhihu/mini program/Fanqie respectively, and the most favorable one can be
+  selected.
+- The keynote only adjusts the "sound and landing point", and does not cover the theme
+  moves and the emotional goals of this article. The keynote is the sound of the
+  delivery channel, and the layout template of `short-format.md` is two axes - the draft
+  of the mini program's keynote. The layout still uses short-format to select a set of
+  app templates.
+- **Adjust the tone without loosening the bottom line of the AI**: Strong emotions must
+  be realized through specific actions and dialogues. Don't break the words into
+  three-character sentences and arrange them into pieces; rely on scenes to bring out
+  the background of the previous situation, and don't insert the entire paragraph into a
+  "whole story" instruction manual; don't reuse confrontational sentence patterns ("In
+  the past life...this life...") frequently. To remove the AI flavor, still follow the
+  existing rules of this kit.
 
-## 二、导语（投稿门面，单独打磨）
+## 2. Introduction (submission facade, polished separately)
 
-导语是正文最前面的引子，也是编辑第一眼看的东西。编辑一天审几百篇，**导语不行，正文再好也被一眼刷掉**。所以导语要单独当一件作品来打磨，别指望编辑往下翻。
+The introduction is the introduction at the front of the text, and it is also the first
+thing the editor sees. Editors review hundreds of articles a day, but the introduction
+is not good enough and the main text will be brushed off at a glance, no matter how good
+it is. Therefore, the introduction should be polished as a piece of work alone, and
+don’t expect the editor to scroll down.
 
-- **长度与形态**：约 150-220 字（题材包如写 150-300，投稿时按此收紧），就是正文开头那几段。一句一段指完整句各自独立成段，不是把整句拆成三字碎句；这是黑岩/盐言导语的形态，番茄导语按 `short-format.md` 该平台的短段叙织即可。导语写完即接正文（内容本身就是第一章开头，不重写）。
-- **四维骨架**：起因（悲剧源头或荒诞开端）+ 核心冲突（被凝视、被剥削、被算计的绝境）+ 人设底色（清醒、有底牌，不是纯惨）+ 情绪反转（钩子卡在最后半句，戛然而止）。
-- **黄金三角**：一个有冲击力的具体物件（撕碎的 B 超单、代持协议、落灰的旧相机）+ 一个信息差（主角藏在暗处的底牌，读者知道、施害者不知道）+ 一个留白的致命钩子。
-- **反面**：别用导语平铺背景或抒情；别把底牌全亮完（留给正文兑现）；别只写惨不写"她有后手"。
+- **Length and form**: About 150-220 words (the theme package is 150-300, please tighten
+  it when submitting), which is the first few paragraphs of the text. One sentence and
+  one paragraph means that the complete sentence can be divided into independent
+  paragraphs, rather than splitting the whole sentence into three-character sentences;
+  this is the form of the introduction of Heiyan/Yanyan, and the Fanqie introduction can
+  be narrated according to the short paragraphs of the `short-format.md` platform. After
+  writing the introduction, continue with the main text (the content itself is the
+  beginning of the first chapter, no rewriting).
+- **Four-dimensional skeleton**: Cause (the source of tragedy or the beginning of
+  absurdity) + core conflict (the desperate situation of being stared at, exploited, and
+  calculated) + character background (sober, with trump cards, not pure misery) +
+  emotional reversal (the hook is stuck in the last half of the sentence, ending
+  abruptly).
+- **Golden Triangle**: A specific object with impact (torn B-ultrasound sheet, holding
+  agreement, dusty old camera) + an information gap (the protagonist’s trump card hidden
+  in the dark, the reader knows it, but the perpetrator does not) + a fatal hook that is
+  left blank.
+- **Converse**: Don’t use the introduction to lay out the background or lyricism; don’t
+  reveal all your cards (leave them to the main text to cash them in); don’t just write
+  about misery but not “she has a back-up plan.”
 
-## 三、付费点（投稿结构）
+## 3. Payment Point (Submission Structure)
 
-短篇按"免费试读 + 付费点 + 付费正文"投稿（投稿语境的"章"即本 skill 的"节"）。付费点是免费段和付费段的分界，卡不好读者不付费，卡对了转化高。
+Short stories can be submitted according to "free trial + payment points + paid text"
+(the "chapter" in the submission context is the "section" of this skill). The payment
+point is the boundary between the free segment and the paid segment. If the card is not
+good, readers will not pay, but if the card is right, the conversion will be high.
 
-- **断点位置**：付费点卡在一个章末的卡脖子断点上——一个即将揭晓、读者必须付费才能看到的反转或对决瞬间（亲子鉴定撕开一半、底牌刚要拍上桌、名字念到一半）。别把核心大爽点在免费段全放完。
-- **剧情点密度**：付费点前每章 2-3 个剧情点（快速立处境、埋钩、层层加压）；付费点后每章比之前多 1-2 个（集中兑现打脸/反转/爽点）。剧情点适度加，太多会乱。
-- **反推法排细纲**：先定付费点卡在第几节章末，先把那一节的剧情想透（如复仇虐爽：前几节情绪递进越来越虐，付费点节章末预示反击），再倒推安排前面各节"情绪冲突逐渐递进"，最后排付费点之后的兑现段。
-- **投稿成品形态**：标题 + 导语（不写"导语"二字，只留那几句）+ 数字分节的正文（含付费点断点）。投稿建议区间比 SKILL 框架（8000-20000）更收敛：整篇约 8000-12000 字，每章约 1000-1300 字，章数据此约 7-12 章。
+- **Breaking point location**: The payment point is stuck at a neck-breaking break point
+  at the end of a chapter - a reversal or confrontation moment that is about to be
+  revealed and readers must pay to see it (the paternity test is half-opened, the trump
+  card is about to be slapped on the table, and the name is halfway read). Don’t put all
+  the core big satisfying payoff in the free segment.
+- **Plot Point Density**: 2-3 plot points per chapter before payment (quick
+  establishment, hooking, and layer upon layer of pressure); 1-2 more plot points per
+  chapter after payment (concentrated face-slapping/reversal/satisfying payoff). Add
+  plot points in moderation, too many will make it confusing.
+- **Detailed Outline by Backward Processing**: First determine at which end of the
+  chapter the payment point is stuck, first think through the plot of that section (such
+  as revenge and abuse: the emotions in the first few chapters become more and more
+  sadistic, and the end of the payment point chapter indicates a counterattack), then
+  work backward to arrange the "gradual progression of emotional conflicts" in the
+  previous chapters, and finally arrange the cash-out section after the payment point.
+- **Finished submission form**: title + introduction (do not write the word
+  "introduction", just leave those few sentences) + text divided into digital sections
+  (including payment breakpoints). The recommended range for submission is more
+  convergent than the SKILL framework (8000-20000): the entire article is about
+  8000-12000 words, each chapter is about 1000-1300 words, and the chapter data is about
+  7-12 chapters.

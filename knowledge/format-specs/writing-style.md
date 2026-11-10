@@ -1,213 +1,237 @@
-# 写作风格设定指南
+# Writing style guide
 
-> 引导作者确定写作风格——四字段锚定系统。选定题材后从 `.claude/knowledge/genre-example.md` 匹配四字段默认值，作者可在此基础上自定义，覆盖默认。
+> Guide writers in determining their writing style,the four-field anchoring system.
+> After selecting the theme, match the default values of the four fields from
+> `.claude/knowledge/genre-example.md`. The author can customize on this basis to
+> override the default.
 
 ---
 
-## 最高原则：四字段互相锚定，缺一不可
+## The highest principle: the four fields are anchored to each other and each one is indispensable.
 
-四字段互相锚定，改任何一个必须检查其他三个是否还自洽。
+The four fields are anchored to each other. If you change any one, you must check
+whether the other three are still consistent.
 
 ```
-叙事身份──────硬约束
+Narrative identity─────Hard constraints
       │                       │
-      │      相互锚定          │
+      │ Mutual anchoring │
       │                       │
-AI 易犯错误──描写层次和手法
+AI is prone to making mistakes──Description levels and techniques
 ```
 
-**设计顺序不可逆：** 先定叙事身份 → 再定硬约束（这个叙事身份不能做什么）→ 再定描写层次和手法（这个叙事身份用什么手法最自然）→ 最后定 AI 易犯错误（回顾已知陷阱）。
+**The design sequence is irreversible:** First determine the narrative identity → then
+determine the hard constraints (what this narrative identity cannot do) → then determine
+the description level and technique (what technique is most natural for this narrative
+identity) → finally determine the AI’s tendency to make mistakes (review known
+pitfalls).
 
-**调整规则：** 默认值只是起点。至少一个字段必须经过讨论调整——全部和默认一样说明这个风格还没被选择过。
+**Adjustment Rules:** The default is just Qidian. At least one field must be discussed
+and adjusted - all are the same as default indicating that this style has not been
+selected.
 
 ---
 
-## 第一部分：设定——四字段逐一定义
+## Part 1: Settings - Define the four fields one by one
 
-### 一、叙事身份：定叙事身份
+### 1. Narrative Identity: Defining Narrative Identity
 
-一句话定性，含叙事距离（贴近角色还是俯瞰全局）和叙事态度（中立/讽刺/共情）。
+One sentence is qualitative, including narrative distance (close to the character or
+overlooking the overall situation) and narrative attitude (neutrality/sarcasm/empathy).
 
-聊这一句就够了：**"你希望读者读的时候感觉像什么？——像有人坐在旁边冷静地讲，还是像钻进主角脑子里感受一切，还是像看电影镜头？"**
+This sentence is enough: **"What do you want readers to feel like when reading? - Like
+someone sitting next to you and talking calmly, like getting into the protagonist's head
+and feeling everything, or like watching movie footage?"**
 
-作者的回答直接决定角色定位。
+The author's answer directly determines the role positioning.
 
 ```
-✅ 合格：
-叙事身份: 紧贴主角内心的有限视角叙事者——读者只知道主角知道的事，感受主角感受到的情绪。
-→ 一句话定死了叙事距离（贴近角色）和叙事态度（共情但有限）。
+✅ Qualified:
+Narrative Identity: A limited-perspective narrator who stays close to the protagonist's mind - the reader only knows what the protagonist knows and feels the emotions the protagonist feels.
+→ One sentence determines the narrative distance (close to the character) and narrative attitude (empathy but limited).
 
-❌ 不合格：
-叙事身份: 写一个好看的故事。
-→ 太笼统。任何叙事者都能这么说，区分不了风格。
+❌ Unsatisfactory:
+Narrative Identity: Write a good story.
+→ Too general. Any narrator can say this, there is no distinction between styles.
 ```
 
-**判断标准：** 叙事身份是否同时回答了"距离多远"和"什么态度"？缺一个 → 退回补。
+**Judgment criteria:** Does the narrative identity answer both "how far away" and "what
+attitude"? Missing one → return to make up.
 
 ---
 
-### 二、硬约束：可执行的硬规则
+### 2. Hard constraints: enforceable hard rules
 
-每条原则必须能说清"违反它是什么样"。3-5 条，每条是可检查的。
+Every principle must be able to describe "what it would be like to violate it." 3-5
+items, each of which is checkable.
 
-聊这一句：**"这个风格有什么绝对不能做的事？——想到了什么写什么，不用一次想全，后面可以改。"**
+Let’s talk about this sentence: **"What are the things that must not be done in this
+style? - Write whatever comes to mind. You don’t have to think about it all at once. You
+can change it later."**
 
-作者可能列出的条目需要加工：
+The author may list items that need processing:
 
-| 作者说了 | 写成什么 |
+| The author said | What was written |
 |---------|--------|
-| "不要太啰嗦" | 每段不超过 4 句话，连续描写不超过 3 段 |
-| "不要写太 AI" | 心理活动不用"他感到""他意识到"开头 |
-| "节奏快点" | 一问一答不超过三回合，不然换场景 |
+| "Don't be too wordy" | Each paragraph should not exceed 4 sentences, and the continuous description should not exceed 3 paragraphs |
+| "Don't write too AI" | Mental activities should not start with "he felt" or "he realized" |
+| "Pace it faster" | Each question and answer should not exceed three rounds, otherwise the scene will be changed |
 
 ```
-✅ 合格：
-"突然""猛然""瞬间"按 common-rules.md 阈值（4次/章，红线段落从宽）。
-→ 能检查——超了就违规。
+✅ Qualified:
+"Suddenly", "suddenly" and "instantaneously" are subject to the common-rules.md threshold (4 times/chapter, the red line paragraph is wider).
+→ It can be inspected - if it exceeds, it is a violation.
 
-❌ 不合格：
-不要写得太 AI 味。
-→ 不可执行——什么算"AI 味"？
+❌ Unsatisfactory:
+Don’t write too artificially.
+→ Unenforceable - What counts as "AI flavor"?
 ```
 
-**判断标准：** 每条原则能不能写进自动化检查？不能 → 改为可操作的描述。
+**Judgment Criteria:** Can each principle be included in automated inspections? Cannot →
+Change to actionable description.
 
 ---
 
-### 三、AI 易犯错误：具体反模式
+### 3. AI is prone to mistakes: specific anti-patterns
 
-每条对应一个具体写法（"心理活动不用 '他感到' 开头"），不是泛泛警告（"不要写太 AI"）。
+Each item corresponds to a specific writing method ("Mental activities do not start with
+'he feels'"), not a general warning ("Don't write too AI").
 
 ```
-✅ 合格：
-过度使用面部表情描写（"他皱了皱眉""她嘴角上扬"）
+✅ Qualified:
+Excessive use of facial expressions ("He frowned" "The corners of her mouth turned up")
 
-❌ 不合格：
-不要写得像 AI，要自然。
-→ 自然是什么？没法检查。
+❌ Unsatisfactory:
+Don’t write like an AI, write naturally.
+→ What is nature? There is no way to check.
 ```
 
-**判断标准：** 把一条 AI 易犯错误给任何人看，能不能立刻判断写的时候有没有犯？不能 → 不够具体。
+**Judgment Criteria:** If you show someone a common mistake made by AI, can they
+immediately tell whether they made it when writing it? Cannot → Not specific enough.
 
 ---
 
-### 四、描写层次和手法：给做法
+### 4. Description levels and techniques: give practice
 
-每个手法是可操作的（"紧张时抠指甲"），不是抽象建议（"多写动作少写情绪"）。每个手法有实现案例。
+Each technique is actionable ("pick your nails when nervous"), not abstract advice
+("write more about actions and less about emotions"). Each method has implementation
+examples.
 
 ```
-✅ 合格：
-环境通过角色的注意力过滤：角色在焦虑时看到的不是房间全貌，是出口、窗户、能当武器的东西。
+✅ Qualified:
+The environment is filtered through the character's attention: when the character is anxious, what he sees is not the whole room, but exits, windows, and things that can be used as weapons.
 
-❌ 不合格：
-多用细节描写。
-→ 什么细节？什么场景用？不知道。
+❌ Unsatisfactory:
+Use detailed descriptions.
+→ What details? What scene is it used for? have no idea.
 ```
 
-**判断标准：** 读了手法后，能立刻改写一段现有的文字来应用它？不能 → 不够具体。
+**Judgment Criteria:** After reading the technique, can you immediately rewrite an
+existing text to apply it? Cannot → Not specific enough.
 
 ---
 
-### 写进文件
+### Write to File
 
 ```yaml
-叙事身份: <一句话，含叙事距离和叙事态度>
+Narrative identity: <One sentence, including narrative distance and narrative attitude>
 
-硬约束:
-  - <可执行原则1>
-  - <可执行原则2>
-  - <可执行原则3>
+Hard constraints:
+  - <Executable Principle 1>
+  - <Executable Principle 2>
+  - <Executable Principle 3>
 
-AI 易犯错误:
-  - <具体反模式1>
-  - <具体反模式2>
-  - <具体反模式3>
+AI is prone to making mistakes:
+  - <Specific anti-pattern 1>
+  - <Specific anti-pattern 2>
+  - <Specific anti-pattern 3>
 
-描写层次和手法:
-  - <可操作手法1（含案例）>
-  - <可操作手法2（含案例）>
-  - <可操作手法3（含案例）>
+Description levels and techniques:
+  - <Operation method 1 (including cases)>
+  - <Operation method 2 (including cases)>
+  - <Operation method 3 (including cases)>
 ```
 
 ---
 
-## 第二部分：验收——四字段自检
+## Part 2: Acceptance,Four-field self-inspection
 
-### 判断标准速查
+### Quick Check on Judgment Criteria
 
-| 字段 | 怎么算够 | 怎么算不够 | 修复方式 |
+| Field | How to calculate enough | How to calculate not enough | How to fix |
 |------|---------|-----------|---------|
-| 叙事身份 | 读了知道"我以什么身份在写" | "写个好故事" | 问"距离多远、什么态度" |
-| 硬约束 | 每条约能检查是否违反 | "不要写太AI" | 改成具体反模式 |
-| AI 易犯错误 | 每条对应具体写法 | "要自然" | 给出实际句子对比 |
-| 描写层次和手法 | 读了能立刻用来改写 | "多写细节" | 给具体场景下的手法 |
+| Narrative identity | After reading, you will know "what identity am I writing in" | "write a good story" | ask "how far is the distance and what is the attitude" |
+| Hard constraints | Each contract can be checked for violation | "Don't write too AI" | Change to a specific anti-pattern |
+| AI is prone to making mistakes | Each item corresponds to a specific writing method | "Be natural" | Give actual sentence comparisons |
+| Levels and techniques of description | Can be used to rewrite immediately after reading | "Write more details" | Techniques for specific scenes |
 
-### 自检清单
+### Self-check list
 
-- [ ] 四字段全部有值？
-- [ ] 至少一个字段与默认值不同（风格是被选择过的）？
-- [ ] 叙事身份同时回答了叙事距离和叙事态度？
-- [ ] 硬约束每条都能量化检查？
-- [ ] AI 易犯错误每条都是具体写法，不是抽象概念？
-- [ ] 描写层次和手法每条都有实现方式说明？
-- [ ] 改了一个字段后，其他字段自检过一致性？
+- [ ] Do all four fields have values?
+- [ ] At least one field differs from the default value (style is selected)?
+- [ ] Narrative identity answers both narrative distance and narrative attitude?
+- [ ] Can each hard constraint be quantitatively checked?
+- [ ] AI is prone to making mistakes. Each article is written in a specific way, not an
+      abstract concept?
+- [ ] Are there implementation instructions for each description level and technique?
+- [ ] After changing one field, have other fields self-checked for consistency?
 
 ---
 
-## 案例
+## Case
 
-### 案例一：冷静叙事（仙侠玄幻）
+### Case 1: Calm Narrative (xianxiaxuanhuan)
 
 ```yaml
-叙事身份: 一个冷静但不冷漠的叙事者——客观描述角色行动和环境，不替角色感受。
-  让对话和动作传递情绪，不做心理分析旁白。
+Narrative Identity: A calm but not cold narrator - objectively describing the character's actions and environment without feeling for the character.
+  Let dialogue and action convey emotion, no psychoanalytic narration.
 
-硬约束:
-  - 每章结尾必须有钩子，不能平铺直叙收尾
-  - 不在对话中插入旁白解释角色情感——让读者从语气和用词判断
-  - 对话为主、描写为辅，一段叙事后尽快回到对话推进
-  - "突然""猛然""瞬间"按 common-rules.md 阈值（4次/章，红线段落从宽）
-  - 不写无意义的日常——每个场景必须有冲突或信息推进
+Hard constraints:
+  - There must be a hook at the end of each chapter, not a straightforward ending
+  - Don’t insert narration into the dialogue to explain the character’s emotions - let the reader judge from tone and word choice
+  - Focus on dialogue, supplemented by description. Return to the dialogue as soon as possible after a narrative.
+  - "Suddenly", "Suddenly" and "Instantly" are subject to common-rules.md thresholds (4 times/chapter, the red line paragraphs are wider)
+  - Don’t write meaningless daily routines - every scene must have conflict or information advancement
 
-AI 易犯错误:
-  - 过度使用面部表情描写（"他皱了皱眉""她嘴角上扬"）
-  - 心理活动用"他感到""他意识到""他心想"开头
-  - 战斗场面写成一招一式的慢动作
-  - 环境描写独立成段脱离剧情
-  - 每段开头"他/她"连续超过3次
+AI is prone to making mistakes:
+  - Excessive use of facial expressions ("He frowned" "The corners of her mouth turned up")
+  - Mental activities begin with "he felt", "he realized" and "he thought"
+  - The battle scenes are written in slow motion, one move at a time.
+  - The description of the environment is separated from the plot in separate paragraphs.
+  - Each paragraph begins with "he/she" more than 3 times in a row
 
-描写层次和手法:
-  - 情绪通过动作表达：紧张时抠指甲、愤怒时反而轻声细语
-  - 环境感知融入角色行动：不是"街道很吵"，是"他得扯着嗓子对方才能听见"
-  - 对话用语气和用词差异区分角色——不靠"他说""她说"标签
-  - 时间流逝用环境变化暗示：阳光角度、影子长度、温度变化
-  - 战斗用结果和后果描写代替过程："等声音停下来，他的左臂已经不自然地垂在身侧"
+Description levels and techniques:
+  - Emotions are expressed through actions: picking nails when nervous, speaking softly when angry
+  - Environmental awareness is integrated into the character's actions: It's not "the street is noisy", it's "he has to scream at the other end to hear him"
+  - Dialogue uses differences in tone and wording to differentiate between characters,not relying on "he said" or "she said" labels
+  - The passage of time is suggested by environmental changes: sunlight angle, shadow length, temperature changes
+  - The battle uses results and consequences to describe the process: "When the sound stopped, his left arm was hanging unnaturally by his side."
 ```
 
-### 案例二：贴近角色内心（都市异能）
+### Case 2: Close to the heart of the character (urban superpower)
 
 ```yaml
-叙事身份: 紧贴主角内心的有限视角叙事者——读者只知道主角知道的事，感受主角感受到的情绪。
-  偶尔用内心独白拉近距离，但不做上帝视角的全局解释。
+Narrative Identity: A limited-perspective narrator who stays close to the protagonist's mind - the reader only knows what the protagonist knows and feels the emotions the protagonist feels.
+  Occasionally use inner monologue to close the distance, but do not provide an overall explanation from God's perspective.
 
-硬约束:
-  - 每章保持主角内心视角，不切到其他角色头脑里
-  - 内心独白用角色自己的语言风格，不是书面语
-  - 对话节奏快——一问一答不要超过三回合，不然换场景
-  - "了"字结尾的陈述句每段不超过2个
-  - 场景转换用空行，不用"与此同时""另一方面"过渡
+Hard constraints:
+  - Each chapter maintains the inner perspective of the protagonist and does not cut into the minds of other characters.
+  - The inner monologue is in the character's own language style, not written language.
+  - The dialogue is fast-paced,no more than three rounds of questions and answers, otherwise the scene will be changed.
+  - There should be no more than 2 declarative sentences ending with the word "LE" in each paragraph.
+  - Use blank lines for scene transitions instead of "at the same time" or "on the other hand" transitions.
 
-AI 易犯错误:
-  - 把内心独白写成"他心想""他意识到""他突然发现"
-  - 叙事者替角色做情绪总结（"他感到很难过"）
-  - 用"似乎""仿佛""好像"削弱确定性
-  - 环境描写写成流水账（"他走进房间，房间里有桌子椅子窗户"）
-  - 角色内心戏太长，读者忘了场景在哪
+AI is prone to making mistakes:
+  - Write the inner monologue as "He thought", "He realized", "He suddenly discovered"
+  - The narrator summarizes the character's emotions ("He felt sad")
+  - Use "seems", "as if", "as if" to weaken certainty
+  - The description of the environment is written as a running account ("He walked into the room, which had tables, chairs and windows")
+  - The inner drama of the character is too long, and the reader forgets where the scene is
 
-描写层次和手法:
-  - 内心独白去掉引导标签，直接接入叙事流："这不是个好主意。但他还是推开了门。"
-  - 情绪通过生理反应表达：心跳、呼吸、手抖、口干——不需要"紧张"这个词
-  - 环境通过角色的注意力过滤：角色在焦虑时看到的不是房间全貌，是出口、窗户、能当武器的东西
-  - 对话用错位制造张力：角色说"没事"时手在发抖
-  - 时间跳跃用体感表达："不知道过了多久""感觉像过了一辈子"
+Description levels and techniques:
+  - The inner monologue removes the guide tag and directly enters the narrative flow: "This was not a good idea. But he opened the door anyway."
+  - Emotions are expressed through physiological reactions: heartbeat, breathing, trembling hands, dry mouth - no need for the word "nervous"
+  - The environment is filtered through the character's attention: when the character is anxious, what he sees is not the whole room, but exits, windows, and things that can be used as weapons.
+  - Dialogue uses dislocation to create tension: the character's hands are shaking when he says "It's okay"
+  - Time jump is expressed through body sense: "I don't know how long it has passed" "It feels like a lifetime has passed"
 ```

@@ -1,169 +1,306 @@
-# 题材风格包：民俗怪谈
+# Theme style package: folk customs and ghost stories
 
 
-> 本题材风格包改写自获赠短篇流程包（oh-story 系 + 实测调整），按本仓口径适配：引用为部署后基座路径、已剔除外部体系引用。公开或商用前需原作者确认。
+> This theme style package is adapted from the short story process package (oh-story
+> series + actual measurement adjustment) received as a gift, and is adapted according
+> to the caliber of the repo: the reference is the base path after deployment,
+> and external system references have been eliminated. Confirmation by the original
+> author is required before disclosure or commercial use.
 
 
-> 番茄 / 七猫 / 黑岩 / 盐言通俗短篇。先读 `.claude/knowledge/short-craft/short-craft.md` 通用底座，本包在其上覆盖该题材专属调性。
-> 一句话定位：**民俗规矩与乡土怪谈（冥婚 / 纸人 / 风水 / 头七 / 喜丧 / 出马仙），规矩即命门：破规矩者遭殃、守规矩者活命。** 读者要的是「差一点就」的战栗 + 身边人变异样的悚然 + 恶人破戒遭报的爽。
-
----
-
-## 叙述腔调
-
-第一人称在场亲历者，常带行当身份（接阴人 / 扎纸匠 / 冥婚媒婆 / 捞尸人 / 法医），开口先自报行当和铁规矩。口吻冷静克制、白描见鬼：恐惧写身体反应（汗毛倒竖、后颈发凉、如坠冰窟），不喊不哭诉，与追妻系的成段宣泄正好相反。乡土口语加行话打底：十里八乡、邪性、晦气、脏东西、讲究、忌讳、吉时、脏了手。
-
-两种主导腔调，按主角站位选一：
-
-- **破戒 / 旁观者腔**：我或身边人犯了忌讳，我一边怕一边补救。恐惧是主引擎。
-- **持规矩者腔**：我就是规矩本身的执行人，冷静到吓人（《阴私宅禁地》做人烛、《规矩》只验三天内的尸体）。悚然感来自我的平静。
-
-长辈 / 行家的告诫全用直接引语，且常故意说一半就断。
+> Fanqie / Qimao / Heiyan / Yanyan popular short stories. Read the
+> `.claude/knowledge/short-craft/short-craft.md` universal base first, on which this
+> package covers the exclusive tonality of this theme. One-sentence positioning:
+> **Folk custom rules and local weird stories (underworld marriage/paper figures/feng
+> shui/first seven/happy funerals/horse fairy), rules are the gate of life: those who
+> break the rules will suffer, and those who obey the rules will survive. ** What
+> readers want is the thrill of "almost" + the horror of the people around them
+> mutating + the pleasure of being punished for breaking the rules.
 
 ---
 
-## 开篇范式
+## Narrative Tone
 
-简介多为正文开头逐字重复，且必须放超自然实锤（不留「也许是幻觉」的余地），第 1 节把简介事件慢放补细节。
+The first person refers to those who are present and witness the event, often with the
+identity of their trade (yin collector/papermaker/matchmaker for ghost marriages/body
+collector/forensic doctor), and they first describe their trade and iron rules when
+speaking. The tone is calm and restrained, and the line description is ghost: fear
+describes the physical reaction (the hairs stand on end, the back of the neck feels
+cold, as if falling into an ice cave), neither shouting nor crying, which is exactly the
+opposite of the catharsis of chasing a wife. A base of local colloquialisms plus jargon:
+ten miles away, evil nature, bad luck, dirty things, particular things, taboos,
+auspicious times, dirty hands.
 
-| 开篇式 | 真实范例 |
+There are two dominant tones, choose one according to the protagonist’s position:
+
+- **Breaking the precepts/bystander tone**: I or someone around me has violated a taboo,
+  and I am afraid of it while trying to remedy it. Fear is the main engine.
+- **Rule-keeper's voice**: I am the executor of the rules themselves, and I am so calm
+  and scary ("The Forbidden Area" is a human candle, "The Rules" only examines corpses
+  within three days). The creepiness comes from my calmness.
+
+The warnings from elders/experts are all given in direct quotations, and they are often
+interrupted mid-sentence.
+
+---
+
+## Opening Paradigm
+
+The introduction is mostly repeated verbatim at the beginning of the text, and it must
+be supernatural (leaving no room for "maybe it's an hallucination"). The first section
+slows down the events in the introduction to fill in the details.
+
+| Opening | Real examples |
 |--------|----------|
-| 俗谚开局即实锤 | 《正月切勿剃头》“正月不剃头，剃头死舅舅”的俗谚，原来都是真的。 |
-| 家规自陈 | 《阴私宅禁地》我家有个规矩，家里的生死红烛要彻夜常亮。 |
-| 行当自报+一单异常 | 《接阴人》但那天雨夜里捞上来的女人，不一样。因为，她自己跑了！ |
-| 长辈告诫开场 | 《黄仙噬骨》“娃子，记住喽，深山老林，莫走夜路。” |
-| 白事现场即炸 | 《头七夜，我把全家称给了爷爷》头七这晚，原本冻死的爷爷突然在棺材里诈尸，叩着木板逼全家轮流哭丧。 |
-| 仪式异样细读 | 《阴缘》迎娶沈家小女儿的这天，唢呐声撕开黑夜，我这才看清那顶花轿的异样。 |
-| 铁规矩自立+当场拒单 | 《规矩》我是法医，我的规矩只解剖三天内死亡的尸体。 |
+| The proverb is true at the beginning | "Don't shave your head in the first month" The proverb "If you don't shave your head in the first month, your uncle will die if you shave your head", it turns out to be true. |
+| Self-reported family rules | "The Forbidden Area of the Private House" There is a rule in my family that the red candle of life and death in the house must be lit all night long. |
+| Business self-report + one order anomaly | "The Catcher" But the woman caught that rainy night was different. Because she ran away on her own! |
+| Opening of Elders' Warning | "The Yellow Immortal Eats Bones" "My child, remember, don't walk at night in the deep mountains and old forests." |
+| Explosion at the scene of the funeral | "On the first seven nights, I called the whole family to Grandpa" On the first seven nights, the grandfather who had originally frozen to death suddenly pretended to be dead in the coffin, and knocked on the wooden board to force the whole family to take turns crying in mourning. |
+| Close reading of strange rituals | "Yin Yuan" On the day when I married the youngest daughter of the Shen family, the sound of the suona tore through the darkness, and only then did I see the strangeness of the sedan chair. |
+| Iron rules: self-reliance + reject orders on the spot | "Rules" I am a forensic doctor, and my rule is to only dissect corpses that have died within three days. |
 
 ---
 
-## 钩子母题与密度
+## Hook Motif and Density
 
-密度高但节拍固定：**立规矩、有人破、当场或次日应验**，三段内必须见第一条命（除夕剃头，第二天清晨舅舅吊在房梁上）。之后每节一个新异象，章尾必留没解释的怪事。
+The density is high but the rhythm is fixed: rules are established, someone breaks them,
+and they are fulfilled on the spot or the next day**, and the first life must be met
+within three paragraphs (the head is shaved on New Year's Eve, and the uncle is hung
+from the beam in the early morning of the next day). There will be a new vision in each
+subsequent section, and there will be strange things left unexplained at the end of the
+chapter.
 
-- **规矩三段式**（核心母题）：规矩先明说，读者从明说那刻起就在等应验。破戒的多是主角身边的蠢人 / 恶人（堂弟偷吃供品、老板强逼点睛、堂妹哭丧不掉泪），主角旁观代价再轮到自己。
-- **尸象异常清单**：指甲乌黑、眼睛合不拢、嘴角带笑、尸体竖在水里、寿衣沾泥。一条条摆，逐节加重（眼缝从一条线撑到能塞筷子）。
-- **身边人变异样**：嘴角咧到耳根、眼白无瞳、影子拖着尾巴、说话声从别处响起。恐怖来自熟人脸上的陌生东西。
-- **帮助者有价**：神婆 / 半仙 / 师父能救你，但要钱、要替身、甚至要你的命（《纸人点睛》师父自己就是点睛人，找了一辈子替死鬼）。
-- **阴间账本**：拿过死人的钱、金牙、风水好处，阴间记着账，迟早连本带利讨回（《头七夜》欠债还肉）。
-- **差一点就**：刀尖快碰到喉咙时鸡鸣、火光庇护、香灰糯米压住。救命的窗口永远只差一秒。
-- **人比鬼狠**（世情底色）：鬼守规矩，人不守。尸体一女卖三家、同行媒婆见财起杀心、亲爷爷卖孙续命。真相层常落在人心上。
-
----
-
-## 情绪烈度与模式（烈度 7）
-
-恐惧型烈度：意象狠、叙述稳。主角不许长段心理独白，情绪全走感官和动作。
-
-- 恐惧只写身体：后脖颈的汗毛唰地竖了起来 / 浑身的血瞬间凉了 / 如坠冰窟 / 头皮发麻。一句到位，不叠形容。
-- 恐怖靠熟悉物变样，不靠血浆：《黄仙噬骨》那件蓝布棉袄挂在仓房里，「每逢雪夜就窸窸窣窣地响，像有东西在里头…试衣裳。」
-- 悚然的最高级是轻描淡写：《一梳梳到头》妻子吊死在梁上，他只皱皱眉：「晦气，埋了吧。」
-- 惨烈描写只给破戒者遭报的时刻（肚子胀成水缸、人只剩一张皮），此处放开写，其余时候收着。
-- 邪祟开口要家常、要软：《黄仙噬骨》「后生…帮婆婆找件衣裳…」。越客气越瘆人。
-
----
-
-## 对话风格与真实金句
-
-占比低于言情系（约 30-45%），但每句都承担规矩或炸点。三类台词撑全篇：
-
-**① 规矩告诫（长辈 / 行家口，保命符兼死亡预告）**
-- 《正月切勿剃头》记住，路上无论谁叫你，都不能回头！
-- 《接阴人》黄符别给揭了！千万记住了。不要动那个黄符！
-- 《大伯诈尸》今晚守灵，所有人都不能走。把堂屋的门窗全部封上。蜡烛不能灭，香火不能断。天亮之前，不管听见什么声音，看见什么东西……不要跑。
-- 《替身骨》记住，听见鸡叫前别回头。
-- 《捞尸人的秘密》记住，遇到年轻漂亮的女尸，千万别碰，那是'水娘娘'…
-
-**② 破戒者狂话（不信邪 / 钱大过天，说完必遭报）**
-- 《正月切勿剃头》都什么年代了，还信这个？／什么狗屁忌讳，老子偏不信！
-- 《纸人点睛》你不点，我让你们这铺子明天就倒闭！／出事了我担着。
-- 《纸人挡灾》不就是个死婴吗？乳臭未干，它还敢来找我？
-
-**③ 邪祟与规矩的家常话（恐怖谷）**
-- 《头七夜，我把全家称给了爷爷》嘻嘻，你没掉眼泪。
-- 《阴缘》毕竟，是你亲自帮我化的妆啊。
-- 《捞尸人的秘密》你爷爷欠我的债，该你来还了……
-- 《替身骨》新客要守规矩。要么买件货，要么......留下件东西抵债。
-- 《一梳梳到头》晦气，埋了吧。
+- **Three paragraphs of rules** (core motif): The rules are stated clearly first, and
+  the readers are waiting for their fulfillment from the moment they are stated. Most of
+  the people who break the precept are fools/evil people around the protagonist (the
+  cousin steals the offerings, the boss forces her to wink, the cousin cries without
+  tears), and the protagonist waits and pays the price before it is his turn.
+- **List of anomalies in the corpse**: Black fingernails, eyes that cannot be closed, a
+  smile on the corner of the mouth, the body standing upright in the water, and the
+  shroud is stained with mud. One by one, each section becomes heavier (the eye seams
+  stretch from a single line to the point where you can stuff chopsticks).
+- **People around me behave differently**: the corners of their mouths are grinning to
+  the base of their ears, the whites of their eyes are pupilless, shadows are trailing
+  behind them, and voices are heard from elsewhere. The horror comes from the
+  strangeness in the face of a familiar person.
+- **Helpers have a price**: The goddess/half-immortal/master can save you, but it
+  requires money, a substitute, and even your life (the master himself is the
+  eye-dotting person in "Paper Man Eyes" and has been looking for a scapegoat all his
+  life).
+- **Ledger of the underworld**: If you take money, gold teeth, and Feng Shui benefits
+  from the dead, you will keep an account in the underworld and get it back sooner or
+  later with interest (debts repaid with flesh in "The First Seven Nights").
+- **Almost**: When the tip of the knife is about to touch the throat, the cock crows,
+  the firelight protects it, and the incense ash and glutinous rice hold it down. The
+  window for help is always only one second.
+- **Humans are more ruthless than ghosts** (the background of the world): Ghosts obey
+  the rules, but people do not. The body of a woman is sold to three families, the
+  matchmaker who works with her becomes murderous when she sees the money, and the
+  grandfather sells his grandson to survive. The layer of truth often falls upon the
+  human heart.
 
 ---
 
-## 情绪链库
+## Emotional Intensity and Mode (Intensity 7)
 
-- **EC-规矩索命（默认）**：立规矩 → 有人破戒 → 应验实锤 → 翻旧账 → 卡时辰了断。五阶段，适合单条规矩讲到底的局。
-- **EC-代代孽债（家族线）**：上辈孽债 → 报应上门 → 查族谱旧案 → 补仪式/还债 → 债清人安。五阶段，适合祖荫类怪谈。
-- **EC-活人换命（保命线）**：邪祟缠身 → 帮助者给法 → 法有暗坑 → 岔事反转 → 换命/破局。五阶段，适合主角被推去顶债的局。
+Fear intensity: harsh imagery and stable narrative. The protagonist is not allowed to
+have long psychological monologues, and his emotions are all expressed through his
+senses and actions.
 
-## 招式库
+- Fear only refers to the body: the hairs on the back of the neck stood up suddenly /
+  the blood all over the body suddenly became cold / as if falling into an ice cave /
+  the scalp was numb. One sentence to the point, no overlapping descriptions.
+- Horror relies on the transformation of familiar objects, not blood: the blue
+  cotton-padded jacket in "The Yellow Immortal Eats Bones" hangs in the warehouse,
+  "every snowy night it makes a rustling sound, as if something is inside... trying on
+  clothes."
+- The superlative of horror is understatement: "One Comb to Hair" His wife hanged from a
+  beam, and he only frowned: "It's bad luck, just bury it."
+- The tragic description is only given to the moment when the person who breaks the
+  precept is punished (the belly swells into a water tank, and the person is left with
+  only a piece of skin). Let it be written freely here, and keep the rest of the time.
+- When evil spirits speak, they should be homely and soft: "The young man...help my
+  mother-in-law find some clothes..." in "The Yellow Immortal Eats Bones". The more
+  polite you are, the more creepy you are.
 
-| 招式 | 怎么用 | 真实例 |
+---
+
+## Conversational style and authentic quotes
+
+The proportion is lower than that of the romance genre (about 30-45%), but every
+sentence has rules or explosive points. Three types of lines support the entire article:
+
+**① Rules and warnings (from elders/experts, life-saving charms and death notices)**
+- "Never shave your head during the first month of the year" Remember, no matter who
+  calls you on the road, you can't look back!
+- Don't reveal the yellow talisman in "The Man Who Receives the Yin"! Be sure to
+  remember it. Don't touch that yellow charm!
+- "Uncle Deceived Corpse" There will be a wake tonight and no one can leave. Seal all
+  the doors and windows of the main room. The candle cannot be extinguished and the
+  incense cannot be cut off. Before daybreak, no matter what sound you hear or what you
+  see... don't run away.
+- "Substitute Bone" Remember, don't look back until you hear the rooster crow.
+- "The Secret of the Corpse Recoverer" Remember, if you encounter a young and beautiful
+  female corpse, don't touch it, it's the 'Water Lady'...
+
+**② Those who break the precepts are talking nonsense (do not believe in evil/money is
+too big, and you will be punished after you say it)**
+- "Never shave your head during the first month of the year" is old, do you still
+  believe this? /What a bullshit taboo, I don’t believe it!
+- "Paper Man Eyes" If you don't click, I will make your shop close down tomorrow! / If
+  something happens, I will take care of it.
+- Isn't "Paper Man Preventing Disaster" just a dead baby? How dare you come to me when
+  you are still young?
+
+**③ Homely sayings about evil spirits and rules (uncanny valley)**
+- "For the First Seven Nights, I Called My Whole Family to Grandpa" Hehe, you didn't
+  shed any tears.
+- "Yin Yuan" After all, you personally helped me put on my makeup.
+- "The Secret of the Corpse Digger" It's your turn to repay the debt your grandfather
+  owed me...
+- "Substitute Bones" New guests must abide by the rules. Either buy something, or...
+  leave something to pay off the debt.
+- "Comb it all the way to your head" It's bad luck, just bury it.
+
+---
+
+## Emotion chain library
+
+- **EC-Rules for life (default)**: Establish rules → Someone breaks the rules →
+  Fulfillment → Settlement of old accounts → The card is over. The five stages are
+  suitable for a game where a single rule is followed to the end.
+- **EC-Old debts from generation to generation (family line)**: Debts incurred by
+  previous generations → Retribution comes → Check old genealogy cases → Make up for the
+  debt/repay the debt → The debt will be cleared and everyone will be safe. The five
+  stages are suitable for ancestral ghost stories.
+- **EC - A living person exchanges his life (life-saving line)**: Haunted by evil
+  spirits → The helper gives the Dharma → There are hidden pits in the Dharma → Things
+  turn around → Exchange of lives/break the situation. The fifth stage is suitable for
+  the situation where the protagonist is pushed to pay the debt.
+
+## Move library
+
+| Moves | How to use | Real examples |
 |------|--------|--------|
-| 规矩前置当保险丝 | 开头借行家嘴明说禁忌和后果，读者等应验 | 《纸人点睛》若是点了睛，纸人就能看路了，到时候它认谁，谁就得遭殃 |
-| 简介剧透超自然实锤 | 简介直接放怪事结果，不留科学解释余地 | 《正月切勿剃头》镜子里的自己正举着剃刀——可镜外的我，分明两手空空 |
-| 尸象异常渐进 | 同一处异常逐节加重，当恐怖进度条 | 《大伯诈尸》眼缝从「按了三次都合不拢，露着一条缝」到「撑开到能塞进一根筷子」 |
-| 死亡进度条 | 破戒代价可视化，随情节推进爬升 | 《纸人点睛》「金色的粉末像是长进了皮肤里，顺着血管往上爬」，「若是爬到心脏，我的魂就会被纸人吃掉」 |
-| 行当讲究罗列 | 干活前把流程讲究一条条摆出来压场 | 《接阴人》香灰问路、先用长竹竿轻戳、捞尸钩避免头朝下，免得魂魄倒行 |
-| 帮助者反转有价 | 救你的人也在算计你，救命法本身是坑 | 《纸人点睛》我也是点睛人，我找了一辈子替死鬼 |
-| 阴间账本 | 生前占的便宜死后按规矩清算，逐人执行 | 《头七夜》欠债还肉，「生前从爷爷那里拿了多少钱，今天就得在秤上割下多少两自己的血肉来填。拿东西来抵不管用」 |
-| 二次破戒 | 赔罪成功后又作死，代价翻倍收走 | 《纸人挡灾》赔罪见好又「挖了死婴的坟」，最后「内脏和血肉，被撑死鬼掏空，只剩这一张皮了」 |
-| 死去亲人暗中指路 | 至亲亡魂借声音报信给唯一干净的后辈 | 《头七夜》无人的角落响起奶奶的声音：你们两个蠢丫头，还不赶紧把手里的黄纸全点燃盖在头顶上！ |
-| 世情垫恶再清算 | 先用家长里短立恶人（偏心、抢钱、吃绝户），邪祟只收有罪的 | 《头七夜》大伯先撕下堂妹的玉观音再让她被拖走：你戴着上路不安全，大伯替你收着 |
-| 器物 / 异类视角 | 梳子、黄皮子当叙述者，旁观人心 | 《一梳梳到头》我是把檀木梳，陪了阿鸾十年 |
-| 数字压秤 | 规矩全带具体数字，越具体越可信 | 《给第四十九对冥婚配对时》七七四十九个小时不能有人打扰，中介费四十九万 |
+| The rules are used as a fuse | At the beginning, the taboos and consequences are explained clearly through the words of experts, and the readers wait for them to come true | "Paper Man's Eyes" If the eyes are dotted, the paper man can see the road, and whoever it recognizes will suffer disaster |
+| Introduction spoilers real supernatural stories | The introduction directly shows the results of strange things, leaving no room for scientific explanation | "Don't shave your head in the first month" I see myself in the mirror holding a razor - but outside the mirror, my hands are clearly empty |
+| The abnormality of the corpse is progressive | The same abnormality is getting worse step by step, and the progress bar is terrifying | The eye slit in "Uncle's Deceived Corpse" went from "cannot be closed even after pressing it three times, leaving a slit exposed" to "opened enough to fit a chopstick" |
+| Death progress bar | The cost of breaking the law is visualized and rises as the plot progresses | "Paper Man Eyes" "The golden powder seems to have grown into the skin and climbed up along the blood vessels", "If it crawls to the heart, my soul will be eaten by the paper man" |
+| The profession is about listing | The process is laid out one by one before work | "The Yin Catcher" asks for directions with incense ashes, first pokes lightly with a long bamboo pole, and fishes out the corpse hook to avoid falling head down, so as to avoid the soul going backwards |
+| The helper's reversal has a price | The person who saves you is also plotting against you, and the life-saving method itself is a trap | "Paper Man Eye Dotting" I am also an eye-dotting person, and I have been looking for a scapegoat all my life |
+| Ledger of the underworld | The advantages taken during life will be settled according to the rules after death and implemented person by person | "The First Seven Nights" debt repayment of flesh, "How much money you took from your grandfather during your lifetime, you have to cut off as many taels of your own flesh and blood on the scale today to fill it. It doesn't work to use things to offset it." |
+| Breaking the precept for the second time | After successfully apologizing, he commits suicide, and the price is doubled | "Paper Man Prevents Disaster" After apologizing, he "digs the grave of the dead baby". In the end, "the internal organs and flesh and blood were hollowed out by the ghost, and only this skin is left." |
+| Dead relatives secretly guide the way | The souls of close relatives use their voices to report to the only clean descendants | "The First Seven Nights" Grandma's voice rang out from the deserted corner: You two stupid girls, why don't you quickly light all the yellow paper in your hands and cover your heads! |
+| The world is precipitated by evil and then liquidated | First, use filial piety in the family to set up evil people (favoritism, robbery, and deprivation), and evil spirits only accept the guilty ones | "The First Seven Nights" The uncle first tore off the cousin's Jade Guanyin and then let her be dragged away: It is not safe for you to wear it on the road, so the uncle will keep it for you |
+| Objects / Alien Perspective | The comb and Huangpizi are the narrators, observing people's hearts | "Comb to the Hair" I am a sandalwood comb that has been with Aluan for ten years |
+| Digital Pressure Scale | The rules are all with specific numbers, the more specific the more credible they are | "When Matching the Forty-ninth Ghost Marriage Couple" No one can disturb you for 77 or 49 hours, and the agency fee is 490,000 |
 
 ---
 
-## 节奏骨架
+## Rhythm Skeleton
 
 ```
-简介（规矩 + 破戒 + 应验实锤，逐字重复正文开头）
-→ 第1节 立规矩（长辈告诫 / 行当自报）
-→ 第2-3节 有人破戒，第一条命应验
-→ 逐节升级：尸象异常 → 身边人变样 → 邪祟上门
-→ 中段翻旧账：规矩的来历（族谱 / 旧案 / 上辈孽债）
-→ 帮助者给保命法（有价或有坑）
-→ 卡时辰决战（子时 / 头七 / 天亮前）
-→ 债清 / 换命 / 审判收口
+Introduction (Rules + Breaking the Precepts + Fulfillment, Repeat the Beginning of the Text Verbatim)
+→ Section 1: Establishing rules (admonitions from elders/replying one’s own business)
+→ Verse 2-3 Someone breaks the precepts, and the first destiny is fulfilled
+→ Upgrade step by step: The corpse is abnormal → People around you change → Evil spirits come to your door
+→ Revealing old scores in the middle: the origin of rules (genealogy/old cases/debts of previous generations)
+→ Helpers give life-saving methods (with price or pitfalls)
+→ The decisive battle at card hour (Zi hour/first seven days/before dawn)
+→ Debt discharge/life exchange/trial closing
 ```
 
-时间卡点是天然节拍器：白天缓、入夜炸，子时、头七、鸡鸣、正月十五全是倒计时。疏密：立规矩和应验时刻详写慢放，赶路过场一句带过。忌无限升级：异象要围着同一条规矩转，别一节换一个新怪物把规矩冲散。
+The time points are natural metronomes: slow down during the day, slow down at night,
+midnight, the seventh day of the lunar month, rooster crow, and the fifteenth day of the
+first lunar month are all countdowns. Density: Write down the rules and fulfillment
+moments in detail and play them slowly, and rush through the scene in one sentence.
+Avoid unlimited upgrades: the phenomena must follow the same rules, don't change the
+rules with a new monster every time.
 
 ---
 
-## 收尾范式
+## Closing Paradigm
 
-- 债清物留：事了人走，但物件还在原地（《纸人挡灾》纸人代替我，也代替村民们，永远留在了村子里）。阴冷余韵优于大团圆。
-- 规矩审判收口：破规矩者死透，守规矩者活命并拿到真相；最后一刻再翻主角自己的账做终反转（《头七夜》你也是贼，你早就上了这笔账了！）。
-- 换命 / 替身完成：代价式收尾，活下来的人身上留了记号。
-- 温情变体（民间奇闻线）：善行得封、恩义两清（《黄三姑讨封》你看我像人还是像仙啊？你……你像他的娘！）。
-- 忌讳：结尾加民俗知识小作文、点评式结语（语料里机器生成的尾巴多长这样），收在具体画面上就停。
-
----
-
-## 该题材专属调校（与通用去 AI 规则的偏差）
-
-这些在别的语境是毛病，在本题材是卖点，**别误删**：
-
-- **规矩句式的重复**：同一条规矩原话多次出现（告诫时、破戒时、应验时各一遍），是仪式感不是冗余。
-- **行话与讲究罗列**：成段列流程、列忌讳、列尸象，操作感就是可信感，别压缩成一句概述。
-- **告诫直接引语 + 说一半就断**：「要么买件货，要么......」断在刀口上，别补全。
-- **简介剧透超自然实锤**：别改成「留悬念」的暧昧写法，读者要先确认有鬼才肯进来。
-- **具体数字**：七七四十九小时、四十九万、三更梆子、子时十二点，别泛化成「很久」「一大笔钱」。
-
-本题材额外要避免的：
-
-- 主角成段心理独白和情绪自剖（那是言情系写法，这里恐惧只走身体和动作）。
-- 自造玄学体系。民俗名词用现成的：头七、往生咒、糯米、黄符、生辰八字、讨封、点睛。
-- 意象无限堆叠的梦核升级（一节一个新怪物、符咒套符咒），规矩线会被冲散。
-- 结尾说教升华与「科普腔」解读。仍要避免的通用 AI 味：映入眼帘、心中暗道、沉声道、一丝寒意涌上心头。
-
-> 标点：本题材范例为示意保留了原貌；落到正文按 `.claude/knowledge/short-craft/short-craft.md` 第 8 节执行（不出 `……` / `——`，停顿用短句 / 动作 / 换行）。
+- Debts are cleared and things remain: people leave after the incident, but the objects
+  remain in place ("Paper Man Prevents Disaster" the paper man replaces me and the
+  villagers, staying in the village forever). A bleak aftertaste is better than a happy
+  ending.
+- The trial of the rules ends: those who break the rules die, and those who keep the
+  rules live and get the truth; at the last moment, the protagonist's own account is
+  turned over to make the final reversal (you are also a thief in "The First Seven
+  Nights", you have already been charged with this account!).
+- Life exchange/substitute completion: a costly ending, with marks left on those who
+  survived.
+- Warmth variant (folk anecdote line): Good deeds are awarded, kindness and
+  righteousness are both clear ("Huang Sangu asks for the title" Do you think I look
+  like a human or an immortal? You... you look like his mother!).
+- Taboo: Add a short essay on folklore knowledge and a comment-style conclusion at the
+  end (how long does the machine-generated tail in the corpus look like this)? Stop on
+  the specific screen.
 
 ---
 
-## 配套结构公式（按篇幅选）
+## Exclusive adjustment for this theme (deviation from general AI rules)
 
-- **破戒惊悚型（8-12 节）**：立规矩 → 身边人破戒 → 首命应验 → 尸象逐节升级 → 翻旧账（族谱 / 上辈孽债）→ 帮助者给法（有价）→ 卡时辰决战 → 债清物留。主角全程只犯一次错或不犯错，靠守规矩活到最后。
-- **规矩审判型（6-10 节）**：白事现场规矩显形（哭丧 / 守灵 / 上秤）→ 恶亲戚逐个被清算，每人清算前先亮一宗世情罪（抢玉、拔金牙、藏私房钱）→ 主角干净或有亡魂指路 → 终反转翻主角自己的账 → 审判收口。爽点结构同复仇文，执行人换成规矩本身。
-- **行当奇谭型（8-12 节）**：行当自报 + 铁规矩 → 接到异常一单 → 讲究罗列压场 → 异常升级牵出旧案 → 真相落在人心（人比鬼狠）→ 归行当收尾。冥婚 / 出马仙母题可走惊悚也可走脑洞温情（《冥婚当晚，我嫁给了女鬼》《黄三姑讨封》），按平台调性选：七猫黑岩偏惊悚实锤，盐选可加大女主 / 温情浓度。
+These are flaws in other contexts, but they are selling points in this subject matter.
+**Don’t delete them by mistake**:
+
+- **Repetition of Rule Sentences**: The original words of the same rule appear multiple
+  times (when admonished, when breaking the precept, and when fulfilled). It is a sense
+  of ritual and not redundant.
+- **Jargon and attention to listing**: List the process, taboos, and corpses in
+  paragraphs. The sense of operation is the sense of credibility. Don’t compress it into
+  a summary.
+- **Warning about direct quotation + cutting it off in the middle**: "Either buy
+  something, or..." Cut it off on the edge of the knife, don't complete it.
+- **Introduction spoilers for real supernatural stories**: Don’t change it to an
+  ambiguous way of writing that “leave you in suspense”. Readers must first confirm that
+  there is a ghost before entering.
+- **Specific figures**: Seventy-seven forty-nine hours, four hundred and ninety
+  thousand, three o'clock in the morning, twelve o'clock in the morning, don't
+  generalize it into "a long time" or "a large amount of money".
+
+Additional things to avoid in this topic:
+
+- The protagonist has a psychological monologue and emotional autopsy (that is a romance
+  style, here fear only takes place in the body and movement).
+- Create your own metaphysical system. The folk nouns are ready-made: Touqi, rebirth
+  mantra, glutinous rice, yellow talisman, birth date, begging for a seal, dotting the
+  eyes.
+- The dream core upgrades with infinite stacking of images (new monsters in each
+  section, spells within spells), and the rule lines will be broken up.
+- At the end, the sermon is sublimated and interpreted in a "popular science tone".
+  Generic AI smells that still need to be avoided: the sight of it, the secret thoughts
+  in the mind, the deep voice, and a chill in the heart.
+
+> Punctuation: This theme example retains its original appearance for illustration;
+> when it comes to the main text, follow Section 8 of
+> `.claude/knowledge/short-craft/short-craft.md` (no `...` / `em dash`, use short
+> sentences/actions/line breaks for pauses).
+
+---
+
+## Supporting structural formula (selected according to length)
+
+- **Breaking the precepts and horror type (verses 8-12)**: Establishing rules → People
+  around you break the precepts → Fulfillment of the first destiny → The corpse image is
+  upgraded step by step → Revealing old debts (genealogy / debts committed by previous
+  generations) → Helpers give the Dharma (with a price) → The decisive battle at the
+  card time → Clearing debts and leaving things behind. The protagonist makes only one
+  or no mistakes throughout the game and survives by following the rules until the end.
+- **Rules-based trial type (verses 6-10)**: The scene of the funeral is revealed
+  according to the rules (weeping/waking/weighing on the scale) → Evil relatives are
+  liquidated one by one, and each person must reveal a worldly crime before liquidation
+  (robbing jade, pulling out gold teeth, hiding private money) → The protagonist is
+  clean or there is a dead soul to guide the way → Finally, the protagonist’s own
+  account is turned over → The trial ends. The structure of the satisfying payoff is the
+  same as that of the revenge document, but the executor is replaced by the rule itself.
+- **Travel type (verses 8-12)**: Self-reporting of the trade + iron rules → Receive an
+  unusual order → Pay attention to listing to suppress the situation → Abnormal
+  escalation leads to old cases → The truth will fall into the hearts of the people
+  (people are more ruthless than ghosts) → Return to the trade to finish. The theme of
+  ghost marriage/horse fairy can be scary or wild idea and tender ("On the night of
+  ghost wedding, I married a female ghost", "Huang Sangu asks for a seal"), choose
+  according to the platform tone: Qimao Heiyan is more thriller and solid, and the
+  salt selection can increase the concentration of heroine/warmth.

@@ -1,133 +1,152 @@
-# 对话场景写法
+# How to write dialogue scenes
 
-> 每条技法以 `[标签]` 开头。prompt-crafter 根据场景核心事件匹配标签，只选取对应的技法注入 输出·写作规范。
+> Each technique begins with `[tag]`. prompt-crafter matches tags based on scene core
+> events, and only selects corresponding techniques to inject into output and writing
+> specs.
 
-## 标签选择指南
+## Label Selection Guide
 
-分析 输入·场景原材料 场景的**核心事件**和**角色状态**，按以下规则匹配合适的标签：
+Analyze the input scene raw materials, the **core events** and **character status** of
+the scene, and match the appropriate tags according to the following rules:
 
-| 场景特征 | 匹配标签 | 选取理由 |
+| Scene characteristics | Matching tags | Reason for selection |
 |---------|---------|---------|
-| 角色身份差距大（上司/下属、长辈/晚辈、贵族/平民） | [身份] | 不同身份的人措辞不同，避免统一话术 |
-| 角色在隐瞒、撒谎、回避、有话不说 | [潜台词] | 嘴上说A实际要B，借物喻事 |
-| 角色在对抗、对峙、谈判、争夺话语权 | [拉扯] | 打破一问一答，用反问/情绪切断制造张力 |
-| 角色在争吵、逼问、审问、摊牌 | [拉扯] [潜台词] | 对抗+隐瞒同时存在 |
-| 连续纯台词超过8句（阈值以 chapter-quality-checklist.md 为准） | [动作] | 插动作/神态避免读者丢画面感 |
-| 两个角色闲聊、日常交流、无冲突场景 | [动作] [身份] | 用动作穿插和身份区分维持画面 |
-| 角色有内心活动、欲望、但嘴上不说 | [潜台词] [拉扯]→答非所问 | 内心和台词矛盾 |
+| There is a big gap in role status (supervisor/subordinate, elder/junior, noble/commoner) | [Identity] | People with different statuses use different wording to avoid unified speech |
+| The character is concealing, lying, avoiding, and not saying anything | [Subtext] | Saying A actually wants B, borrowing things to illustrate things |
+| Characters are fighting, confronting, negotiating, and fighting for the right to speak | [Pull] | Breaking up questions and answers, using rhetorical questions/emotional cutting to create tension |
+| Characters are quarreling, questioning, interrogating, and showing off | [Pull] [Subtext] | Confrontation + concealment coexist |
+| More than 8 consecutive pure lines (the threshold is subject to chapter-quality-checklist.md) | [Action] | Insert actions/expressions to prevent readers from losing the sense of the image |
+| Two characters chatting, daily communication, conflict-free scenes | [Action] [Identity] | Use action interspersed and identity distinction to maintain the scene |
+| The character has inner activities and desires, but does not say them verbally | [Subtext] [Pull] → Answer the wrong question | Conflict between heart and lines |
 
-**选取数量：** 每个场景选 2-4 条。如果场景同时匹配多个标签，优先选与核心事件最相关的 2 个。
+**Quantity to select:** Select 2-4 items for each scene. If the scene matches multiple
+tags at the same time, the 2 most relevant to the core event will be selected first.
 
 
 
 
-## [身份] 身份化语言——告别统一话术
+## [Identity] Identification language,Farewell to unified discourse
 
-**核心：** 不同身份的人说不同的话。遮住角色名，读者应该能从说话方式认出是谁。
+**Core:** People with different identities say different things. By hiding the
+character's name, readers should be able to identify who it is by the way they speak.
 
-### 执行细则
+### Implementation details
 
-| 身份 | 说话特点 | 避坑 |
+| Identity | Speaking characteristics | Avoid pitfalls |
 |------|---------|------|
-| **市井小人物** | 俚语、短句、感叹词多，语序松散，少书面词汇 | 不用规整长句 |
-| **知识分子/上位者** | 措辞委婉、话留余地，习惯绕弯表达，不把话说死 | 不说大白话直给 |
-| **冷硬角色（杀手/仇敌）** | 用词极简、语气平淡，少情绪词汇，表面淡漠 | 不做情绪宣泄 |
+| **Little people in the market** | Lots of slang, short sentences, and interjections, loose word order, and little written vocabulary | No need to regularize long sentences |
+| **Intellectual/Superior** | Words are tactful, leave room for words, and are used to expressing in roundabout ways, and do not say it to death | Don’t speak plainly |
+| **Cold character (killer/enemy)** | Minimalist words, flat tone, few emotional words, indifferent surface | No emotional catharsis |
 
-### 模板句式 + 实战例句
-
-```
-❌ 你被开除了，明天不用来。
-
-✅ 他点了根烟，没急着说话。烟雾散开的时候才开口，语气平淡。"眼下公司难处你也清楚，这儿容不下你了，出去另寻出路吧。"
-```
-
-**避坑：** 不同身份角色共用一套说话风格；用书面语写底层人物对话。
-
-
-## [潜台词] 潜台词 & 反差张力——博弈/对峙核心
-
-**核心逻辑：** 嘴上说 A，实际要 B。绝对不直接说出诉求、恨意、分手、交易等核心目的。
-
-### 手法 1：借物喻事
-
-用眼前景物/食物/物件替代核心矛盾。
+### Template sentences + practical examples
 
 ```
-❌ 我们离婚吧，我不想过了。
+❌ You are fired. You don’t have to come tomorrow.
 
-✅ 他给她夹了一块肥肉。"这肉炖了一下午，已经烂透了，该倒了。"
-他盯着盘子没动。"还没凉，凑活能吃，日子也一样。"
+✅ He lit a cigarette and was in no hurry to speak. He spoke only when the smoke cleared, and his tone was calm. "You are well aware of the current difficulties in the company. There is no room for you here. Go out and find another way out."
 ```
 
-### 手法 2：言不由衷
-
-内心极度对立，语气反而平和温和。
-
-**避坑：** 角色直白吐露心声、直接争吵；矛盾点全靠台词点名。
+**Avoid pitfalls:** Characters with different identities share a speaking style; use
+written language to write dialogues between lower-level characters.
 
 
-## [拉扯] 打破一问一答——制造拉扯感
+## [Subtext] Subtext & contrasting tension - the core of game/confrontation
 
-**核心：** 角色不按对方的期待回答，制造不可预测性。
+**Core logic:** Say A, but actually want B. Never directly express core purposes such as
+appeals, hatred, breakup, and transactions.
 
-### 手法 1：答非所问
+### Technique 1: Borrowing objects to describe things
 
-> 适用：逃避问题、不愿表态、内心纠结
-
-**执行：** 不回应提问，跳转至无关景物/事件，用沉默+题外话回避。
+Replace the core conflict with the sight/food/object in front of you.
 
 ```
-"你到底爱不爱我？"
-他走到窗边，看着外面的雨。"这雨再不停，南边庄稼就全毁了。"
+❌ Let’s get a divorce, I don’t want to do it.
+
+✅ He gave her a piece of fat. "This meat has been stewed all afternoon and is already rotten. It's time to pour it out."
+He stared at the plate without moving. "It's not cold yet, so I can eat if I make a living, and the days will be the same."
 ```
 
-### 手法 2：反问压制
+### Technique 2: Don’t mean what you say
 
-> 适用：对峙、试探、占据话语权、强势博弈
+He was extremely conflicted inside, but his tone was calm and gentle.
 
-**执行：** 不正面承认/否认，把问题抛回对方，附加暗示性质问。
+**Avoid pitfalls:** Characters express their feelings directly and argue directly;
+conflicts are all pointed out through lines.
+
+
+## [Pull] Breaking down questions and answers - creating a sense of pulling
+
+**Core:** The character does not answer according to the other party's expectations,
+creating unpredictability.
+
+### Technique 1: Answer the wrong question
+
+> Applicable to: Avoiding problems, unwilling to express opinions, and internally
+> entangled
+
+**Execution:** Do not respond to questions, jump to irrelevant scenes/events, and avoid
+them with silence + digressions.
 
 ```
-"这事是不是你做的？"
-她没抬头，继续翻手里的文件。"你觉得呢？这屋里除了你，还有谁能做得这么绝？"
+"Do you love me or not?"
+He walked to the window and looked at the rain outside. "If this rain doesn't stop, all the crops in the south will be destroyed."
 ```
 
-### 手法 3：情绪切断
+### Technique 2: Questioning and suppressing
 
-> 适用：仇家相见、生死对峙、高位者的轻蔑
+> Applicable: confrontation, testing, occupying the right to speak, strong game
 
-**执行：** 对方释放激烈情绪，本方无视冲突，专注无关小事，再轻描淡写回应。
+**Execution:** Do not admit/deny directly, throw the question back to the other party,
+and attach suggestive questions.
 
 ```
-"十年之仇，今日我定要杀你！"
-他低头吹了吹碗里的汤，皱了皱眉。"汤太咸了，面也煮老了。你刚才说什么？十年前的事，早记不清了，坐下尝尝这家辣椒油？"
+"Did you do this?"
+She didn't look up and continued to flip through the documents in her hand. "What do you think? Besides you, who else in this room can do such a great job?"
 ```
 
-**避坑：** 一问一答机械式对话；冲突场景双方同步放大情绪、互相怒骂。
+### Technique 3: Emotional Cutoff
+
+> Applicable to: Enemies meeting, life and death confrontation, contempt of
+> high-ranking people
+
+**Execution:** The other party releases intense emotions, while the other party ignores
+the conflict, focuses on trivial matters, and then responds lightly.
+
+```
+"Ten years of hatred, I will definitely kill you today!"
+He lowered his head and blew on the soup in the bowl, frowning. "The soup is too salty and the noodles are overcooked. What did you just say? I can't remember what happened ten years ago. Sit down and try this chili oil?"
+```
+
+**Avoid pitfalls:** Mechanical dialogue with one question and one answer; in conflict
+scenes, both parties simultaneously amplify their emotions and curse each other.
 
 
-## [动作] 对话 + 动作/环境穿插——摆脱纯剧本式台词
+## [Action] Dialogue + action/environment interweaving - getting rid of pure script lines
 
-**核心：** 每 1-2 句台词中间，插入 1 个微动作/神态/环境细节。
+**Core:** Insert 1 micro-action/expression/environmental detail in the middle of every
+1-2 lines.
 
-### 细节选择原则
+### Detail selection principles
 
-动作和台词情绪形成反差：紧张→漫不经心、撒谎→下意识小动作。
+There is a contrast between the actions and the emotions of the lines: nervousness →
+carelessness, lying → subconscious little actions.
 
-### 通用动作库（直接调用）
+### General action library (direct call)
 
-| 情绪 | 动作为 |
+| Emotion | Action as |
 |------|-------|
-| 心虚/撒谎 | 抓大腿、修剪指甲、烟灰抖落在身上、视线飘移 |
-| 冷漠/轻视 | 低头做事、不抬头、摆弄手边物件 |
-| 压抑隐忍 | 攥紧手指、喉结滚动、停顿沉默 |
+| Guilty/lying | Scratching thighs, trimming nails, shaking cigarette ash on body, wandering eyes |
+| Indifference/contempt | Working with your head down, not looking up, fiddling with objects at hand |
+| Suppression and forbearance | Clenched fingers, rolled Adam's apple, paused in silence |
 
-### 例句模板
+### Example sentence template
 
 ```
-他指尖无意识摩挲着杯沿。"这事我没法答应你。"
+His fingertips unconsciously rubbed the rim of the cup. "I can't promise you this."
 ```
 
-**写法要点：** 动作在前 → 对话在后 → 动作暗示情绪，不靠台词解释。不需要括号标注。
+**Key points of writing:** Action first → Dialogue last → Actions imply emotions and do
+not rely on lines to explain. No parentheses are required.
 
-**避坑：** 整段连续引号台词，无任何动作、神态补充。
+**Avoid pitfalls:** The whole paragraph of continuous quotation marks, without any
+supplementary actions or expressions.

@@ -1,226 +1,241 @@
 
-# 网文质量检查清单
+# Web article quality check list
 
 
-> 本文件改写自获赠短篇流程包（oh-story 系 + 实测调整），按本仓口径适配：引用为部署后基座路径、已剔除外部体系引用。公开或商用前需原作者确认。
+> This document is adapted from the short flow package (oh-story series + actual
+> measurement adjustment) received as a gift, and is adapted to the caliber of this repo: the reference is the post-deployment base path, and external system
+> references have been eliminated. Confirmation by the original author is required
+> before disclosure or commercial use.
 
 
-## 目录
+## Directory
 
-- [一、通用检查](#一通用检查)
-- [三、短篇专项](#三短篇专项)
+- [1. General inspection](#1-general-inspection)
+- [3. Short story project](#3-short-story-project)
 
-## 一、通用检查
+## 1. General inspection
 
-### 章节结构
-- [ ] 开头有钩子（不是天气/风景/日常开场）
-- [ ] 中段有推进（有事件发生）
-- [ ] 局势有变化（读完这章，世界跟之前不一样了）
-- [ ] 结尾落在变化上（不是总结）
+### Chapter structure
+- [ ] There's a hook in the beginning (not a weather/scenery/everyday opening)
+- [ ] There is advancement in the middle section (an event occurs)
+- [ ] The situation has changed (after reading this chapter, the world is different from
+      before)
+- [ ] The ending falls on the changes (not the summary)
 
-### 开篇检查（前 300-500 字）
-- [ ] 有钩子，能抓住注意力
-- [ ] 不从天气/风景/日常开始
-- [ ] 主角快速出场
-- [ ] 卖点或危机可见
+### Opening Check (First 300-500 words)
+- [ ] Has a hook to grab attention
+- [ ] Don’t start with weather/scenery/daily life
+- [ ] The protagonist appears quickly
+- [ ] Selling point or crisis is visible
 
-### 章节推进
-- [ ] 有核心事件
-- [ ] 局势有变化
-- [ ] 不是水字数（删掉这章会影响理解吗？不会 = 水了）
-- [ ] 任务卡点有用：卡住之后是否带来信息、情绪、关系、代价或伏笔变化？
-- [ ] 推进了主线/关系/设定中的至少一项
+### Chapter advancement
+- [ ] There are core events
+- [ ] The situation has changed
+- [ ] It’s not the word count (will deleting this chapter affect understanding? No =
+      it’s too low)
+- [ ] Task stuck points are useful: Does getting stuck bring about changes in
+      information, emotions, relationships, costs or foreshadowing?
+- [ ] Advance at least one of the main plot/relationship/setting
 
-### 信息传递
-- [ ] 没有大段设定说明文
-- [ ] 信息跟着冲突走（通过事件传递设定）
-- [ ] 设定量可控（一章不超 3 个新概念）
+### Information Transfer
+- [ ] There is no long setting description text
+- [ ] Information follows the conflict (set via event delivery)
+- [ ] The setting amount is controllable (no more than 3 new concepts in one chapter)
 
-### 场景检查
-- [ ] 场景有目标（人物要什么）
-- [ ] 场景有阻碍（什么挡着）
-- [ ] 场景有变化（结束后跟之前不同）
-- [ ] 人物在做事情，不是在感觉事情
-- [ ] 没有可删除的段落
+### Scene Check
+- [ ] The scene has a goal (what the character wants)
+- [ ] The scene is obstructed (what is blocking it)
+- [ ] The scene changes (it ends differently than before)
+- [ ] Characters are doing things, not feeling things
+- [ ] No paragraphs to delete
 
-### 章尾
-- [ ] 结尾落在变化上
-- [ ] 有危机/决定/发现/反转中的至少一个
-- [ ] 不是总结式结尾
-- [ ] 拉住读者翻下一页
+### End of chapter
+- [ ] The ending falls on change
+- [ ] There is at least one of crisis/decision/discovery/reversal
+- [ ] Not a summary ending
+- [ ] Pull the reader to turn the next page
 
-### 语言
-- [ ] 没有空洞的抒情段落
-- [ ] 没有连续多段同一情绪
-- [ ] 对话符合人物身份（不同人说话方式不同）
-- [ ] 情绪通过动作落地（不是直接说"他很难过"）
+### Language
+- [ ] No empty lyrical passages
+- [ ] There are no multiple consecutive paragraphs of the same emotion
+- [ ] The dialogue fits the identity of the characters (different people speak in
+      different ways)
+- [ ] Emotions are reflected through actions (not directly saying "he is sad")
 
-### 连载连续性
-- [ ] 没有遗忘之前的承诺/伏笔
-- [ ] 没有突然塞入大量新设定
-- [ ] 伏笔有推进
-- [ ] 故事引擎还在运转
+### Serial Continuity
+- [ ] Never forget the previous promises/foreshadowing
+- [ ] No sudden rush of new settings
+- [ ] Foreshadowing is advancing
+- [ ] The story engine is still running
 
-### 水（filler）检测
-以下信号出现 = 可能水了：
-- 全章对话没有任何新信息
-- 同一个情绪写了 3 段以上
-- 场景描写超过 500 字但不推进剧情
-- 角色回忆之前发生的事但没有任何新视角
-- 连续 2 章以上没有冲突
-- 删掉无损的流程细节 / 任务卡点 = 水；压缩或删除
+### Water (filler) detection
+The following signals appear = possible water damage:
+- There is no new information in the entire chapter dialogue
+- Wrote more than 3 paragraphs on the same emotion
+- The description of the scene exceeds 500 words but does not advance the plot.
+- The character recalls what happened before but without any new perspective.
+- There is no conflict for more than 2 consecutive chapters.
+- Delete lossless process details/task stuck points = water; compress or delete
 
 ---
 
-### 五维评分标准
+### Five-Dimensional Scoring Criteria
 
-每个维度 0-100 分，根据评分结果选择精修策略。
+Each dimension is scored from 0-100, and the refinement strategy is selected based on
+the scoring results.
 
-### 维度 1：核心一致度
-检查：关键冲突、关键行动、人物动机是否前后一致。
+### Dimension 1: Core Alignment
+Check: Key conflicts, key actions, and character motivations are consistent.
 
-| 问题 | 严重度 | 修复 |
+| Problem | Severity | Fix |
 |------|--------|------|
-| 人物动机突然改变无铺垫 | critical | 补充动机转变的触发事件 |
-| 核心冲突前后不一致 | high | 回溯修改冲突设定 |
-| 关键行动与人物性格矛盾 | high | 调整行动或补充解释 |
-| 次要矛盾遗忘 | medium | 回收或弱化 |
+| There is no foreshadowing for sudden changes in character motivation | critical | Supplementary triggering events for motivation change |
+| Core conflict inconsistency | high | Retroactively modify conflict settings |
+| Conflict between key actions and character | high | Adjust actions or supplementary explanations |
+| Forgetting of secondary contradictions | medium | Recycle or weaken |
 
-### 维度 2：表层重写度
-检查：句式与措辞是否足够原创，避免套路化表达。
+### Dimension 2: Surface rewrite degree
+Check: Whether the sentence structure and wording are original enough and avoid routine
+expressions.
 
-| 问题 | 严重度 | 修复 |
+| Problem | Severity | Fix |
 |------|--------|------|
-| 照搬原句导致语气不自然 | medium | 只在确有 AI 腔时改写，正常原句可保留 |
-| 大量使用 AI 标志词 | high | 替换为具体描述 |
-| 同一句式重复出现 | medium | 变换表达方式 |
-| 描写过于文学化（辞藻堆砌、书面腔、比喻成串） | medium | 改为口语化/动作化；动作化不是切成三五字短句串，改写后叙述仍以逗号长句为主 |
+| Copying the original sentence results in an unnatural tone | medium | Only rewrite if there is indeed an AI accent, the normal original sentence can be retained |
+| Extensive use of AI logo words | high | Replace with specific descriptions |
+| The same sentence appears repeatedly | medium | Change the expression |
+| The description is too literary (a pile of words, a written accent, and a string of metaphors) | medium | Change to colloquial/action-based; action-based does not mean cutting into short sentences of three to five words. After rewriting, the narrative is still mainly long comma sentences |
 
-### 维度 3：格式一致度
-检查：段落是否按戏剧单元/镜头自然断开，主语/角色名节奏是否自然，开头结尾格式是否统一。
+### Dimension 3: Format consistency
+Check: whether the paragraphs are naturally disconnected according to dramatic
+units/shots, whether the rhythm of the subject/character name is natural, and whether
+the beginning and end formats are unified.
 
-| 问题 | 严重度 | 修复 |
+| Problem | Severity | Fix |
 |------|--------|------|
-| 机械按字数切段或主语过密 | medium | 按戏剧单元重排段落，段首点名、段中代词/省略、关键转折再点名 |
-| 章节字数偏离目标 | **high** | 写作/大纲修复时先回到细纲补足计划内情节点，再展开；去AI味已有正文时不得新增剧情 |
-| 格式混乱（对话/描写不统一）| low | 统一格式 |
+| Mechanically cut into segments based on the number of words or the subject is too dense | medium | Rearrange the paragraphs according to drama units, naming at the beginning of the paragraph, pronouns/omissions in the paragraph, and key transitions |
+| Chapter word count deviates from the target | **high** | When writing/outlining repair, go back to the detailed outline to supplement the plot points in the plan before expanding; when removing the AI flavor and existing text, no new plots are allowed |
+| Confusing format (inconsistent dialogue/description) | low | Uniform format |
 
-### 维度 4：可读性
-检查：是否有啰嗦、AI 腔、空泛总结、套路修辞。
+### Dimension 4: Readability
+Check: whether there is verbosity, AI accent, empty summaries, and routine rhetoric.
 
-| AI 腔特征 | 如何识别 | 如何修复 |
+| AI cavity features | How to identify | How to repair |
 |-----------|----------|----------|
-| 空泛总结 | 「他终于明白了」「一切尽在不言中」 | 删掉，用行动代替 |
-| 套路修辞 | 「命运仿佛在和他开玩笑」 | 删掉或换成具体描述 |
-| 比喻堆叠 | 连续多处「像/好像/仿佛/如同」，每个画面都靠比喻解释 | 只留最有叙事功能的少数比喻，其余改成动作、物件、声音或后果 |
-| 情绪标签 | 「他感到一阵悲伤」 | 改为行为表现 |
-| 心理描写空转 | 内心独白无新信息、重复同一情绪或复述读者已知 | 只压缩空转部分；带新信息、决断或情绪转折的独白不按句数压缩 |
+| Vacant summary | "He finally understood" "It's all in words" | Delete and replace with actions |
+| Routine rhetoric | "Fate seems to be joking with him" | Delete or replace with a specific description |
+| Metaphor stacking | There are multiple "like/like/as if/like" in a row, each picture is explained by metaphor | Only a few metaphors with the most narrative function are retained, and the rest are changed into actions, objects, sounds or consequences |
+| Emotion tag | "He felt a pang of sadness" | Change to behavior |
+| Idle psychological description | Internal monologue with no new information, repetition of the same emotion or retelling what the reader already knows | Only the idle part is compressed; monologues with new information, decisions or emotional transitions are not compressed according to the number of sentences |
 
-### 维度 5：逻辑连贯
-检查：句间/段间是否通顺，有无设定冲突。
+### Dimension 5: Logical Coherence
+Check: Whether the sentences/paragraphs are smooth and whether there are any setting
+conflicts.
 
-| 问题 | 严重度 | 修复 |
+| Problem | Severity | Fix |
 |------|--------|------|
-| 设定前后矛盾 | critical | 查找并统一设定 |
-| 时间线错误 | high | 标记时间线并修正 |
-| 角色信息不一致 | high | 建立角色档案对照 |
-| 因果链断裂 | medium | 补充过渡 |
+| Inconsistent settings | critical | Find and unify settings |
+| Timeline error | high | Mark timeline and fix it |
+| Role information is inconsistent | high | Create role profile comparison |
+| Broken causal chain | medium | supplementary transition |
 
-### 精修策略
+### Refine your strategy
 
-根据五维评分结果，选择精修策略：
+Based on the five-dimensional scoring results, select a refinement strategy:
 
-| 主要问题 | 策略 | 说明 |
+| Main Questions | Strategy | Description |
 |----------|------|------|
-| 核心一致度低 | rewrite | 围绕核心冲突重写相关段落 |
-| 字数超标 | compress | 删减不推动剧情的内容 |
-| 无意义卡点 | compress | 保留卡出的变化，压掉流程 |
-| AI 腔重 | de_ai | 替换禁用词、改写句式 |
-| 小问题多 | polish | 打磨语言细节 |
+| Low core coherence | rewrite | Rewrite relevant paragraphs around the core conflict |
+| The word count exceeds the limit | compress | Delete content that does not promote the plot |
+| Meaningless stuck points | compress | Keep the stuck changes and suppress the process |
+| AI accent | de_ai | Replace forbidden words and rewrite sentence patterns |
+| Lots of small problems | polish | polish language details |
 
 ---
 
-## 三、短篇专项
+## 3. Short story project
 
-### 虐爽节奏检查
+### Sad rhythm check
 
-短篇特有的检查项——虐点和爽点的分布是否合理：
+Check items unique to short stories,whether the distribution of abuse points and
+satisfying payoff is reasonable:
 
 ```
-理想分布：虐1 → 虐2 → 虐3 → 爽1(小) → 虐4 → 爽2(大)
-禁忌分布：虐1 → 虐2 → 虐3 → 虐4 → 虐5（无爽点，读者流失）
-禁忌分布：爽1 → 爽2 → 爽3 → 爽4（无铺垫，爽感疲劳）
+Ideal distribution: Abuse 1 → Abuse 2 → Abuse 3 → Enjoy 1 (small) → Abuse 4 → Enjoy 2 (large)
+Taboo distribution: Abuse 1 → Abuse 2 → Abuse 3 → Abuse 4 → Abuse 5 (no satisfying payoff, reader loss)
+Taboo distribution: Shuang 1 → Shuang 2 → Shuang 3 → Shuang 4 (no foreshadowing, Shuang feels tired)
 ```
 
-检查规则：
-- 每 300 字至少 1 个小冲突
-- 虐点间隔不超过全文的 30%
-- 最大爽点必须出现在全文的 70-85% 位置
-- 结尾必须有情绪落点
+Check the rules:
+- At least 1 skirmish per 300 words
+- The spacing between abusive points should not exceed 30% of the full text
+- The maximum satisfying payoff must appear at 70-85% of the full text
+- There must be an emotional ending at the end
 
-### 对话密度检查
+### Conversation Density Check
 
-| 指标 | 合格标准 | 警戒线 |
+| Indicators | Qualification standards | Warning lines |
 |------|----------|--------|
-| 对话占全文比 | 45-65% | <30%（太干）或>75%（太水） |
-| 每章对话条数 | 12-18条/千字 | <8条（缺交互）或>25条（碎片化） |
-| 伤人性对话占比 | 35-45%（虐文）/ 20-30%（爽文） | 虐文<20%（不够痛）/ 爽文>40%（太压抑） |
+| Dialogue to full text ratio | 45-65% | <30% (too dry) or >75% (too watery) |
+| Number of dialogues per chapter | 12-18/1,000 words | <8 (lack of interaction) or >25 (fragmented) |
+| Proportion of hurtful dialogue | 35-45% (abuse) / 20-30% (feel-good fiction) | Abuse <20% (not painful enough) / feel-good fiction > 40% (too depressing) |
 
-### 主角冷静度检查（打脸/复仇文专用）
+### Protagonist’s calmness check (face-slapping/revenge novel only)
 
-| 检查项 | 标准 |
+| Check items | Standards |
 |--------|------|
-| 主角是否有标志性冷静动作？ | 必须有（端水杯/整理西装/转笔等） |
-| 主角是否有情绪失控场面？ | 复仇文最多1次，且必须在前30% |
-| 反派是否比主角更歇斯底里？ | 必须是——反差是爽感来源 |
-| 主角台词是否短于反派？ | 平均短30-50%——越短越有力 |
-| 是否有"审判式对话"？ | 至少2处（主角提问→对方自爆） |
+| Does the protagonist have a signature calm action? | Must have (carry water glass/arrange suit/turn pen, etc.) |
+| Does the protagonist have any emotional outbursts? | A maximum of 1 revenge article can be written, and it must be in the top 30% |
+| Is the villain more hysterical than the protagonist? | Must be - contrast is the source of pleasure |
+| Does the protagonist have shorter lines than the villain? | On average 30-50% shorter - the shorter, the more powerful |
+| Is there a "trial dialogue"? | At least 2 places (the protagonist asks a question → the other party self-destructs) |
 
-### 证据链完整性检查（复仇/打脸文专用）
+### Evidence chain integrity check (dedicated to Revenge/face-slapping text)
 
-| 检查项 | 标准 |
+| Check items | Standards |
 |--------|------|
-| 证据是否分章释放？ | 至少分3次揭露，不能一次全给 |
-| 每个证据是否有铺垫？ | 前文必须埋过线索 |
-| 反派是否每次都先得意再被打脸？ | 必须是——先扬后抑 |
-| 最终证据是否最致命？ | 最后一个证据要改变全局认知 |
-| 是否有"定时炸弹"证据？ | 至少1个主角提前布局的证据 |
+| Is the evidence released in chapters? | Reveal it in at least 3 times, not all at once |
+| Is there any foreshadowing for each piece of evidence? | The clues must be buried in the previous article |
+| Does the villain always feel proud before being face-slapping? | It must be - first rise and then fall |
+| Is the final evidence the deadliest? | The last piece of evidence will change the overall perception |
+| Is there evidence of a "ticking time bomb"? | Evidence that at least one protagonist has planned in advance |
 
-### 追妻/情绪流雷区检查（女频情绪流专用）
+### Wife Chasing/Emotional Flow Minefield Check (female-oriented emotional flow only)
 
-| 雷区 | 自查 |
+| Minefield | Self-examination |
 |------|------|
-| 女主心死后还在照顾男主？ | 拉扯清零——心死后必须彻底抽离，不看不听不在意不照顾 |
-| 男主只渣不苏？ | 没颜值/能力/地位的资本，读者只觉女主眼瞎，不会期待追回 |
-| 回忆杀冗长？ | 大段回忆打断当下情绪，必须短而精、与当下场景一一对应 |
-| 女主觉醒太晚？ | 全程虐到底读者弃文——最迟付费卡点前女主须彻底心死离开 |
-| 男主醒悟太早？ | 女主没走就后悔，虐不透、火葬场没力度——须等女主抽离后再后知后觉 |
-| 轻易破镜重圆？ | 伤太深却随便原谅，前期的虐全白写 |
-| 反派降智无动机？ | 坏得没理由立不住，给个真实动机反而更戳人 |
+| Is the heroine still taking care of the hero after her death? | Pull and clear - the heart must be completely withdrawn after death, without seeing, hearing, caring or caring |
+| Is the male protagonist just a scumbag? | Without the capital of appearance/ability/status, readers only think that the heroine is blind and have no hope of getting it back |
+| Memories are too long? | Large memories interrupt the current mood and must be short and concise, corresponding to the current scene one-to-one |
+| The heroine wakes up too late? | The readers will abandon the article after being tortured throughout the whole process - the heroine must completely give up and leave before the latest payment card point |
+| Did the hero wake up too early? | The heroine will regret it before she leaves, the torture will not be thorough, and the crematorium will not be powerful - you have to wait until the heroine leaves before realizing it later |
+| Is it easy to get back together again? | The hurt is too deep but you forgive easily, all the early abuse is written in vain |
+| The villain has no motive for his downfall? | It’s so bad that there’s no reason why it can’t stand up, but giving a real motive would be more poignant |
 
-### 毒点/代入感/震惊/开头/结尾/情绪/期待感速查
+### Poison point/sense of substitution/shock/beginning/end/emotion/expectation quick check
 
-> 详细的毒点排查见 `genre-writing-techniques.md`「毒点排查核心」；AI 腔自检见 `.claude/knowledge/short-anti-ai.md`。
+> For detailed poison spot troubleshooting, see `genre-writing-techniques.md` "Poison
+> Spot Troubleshooting Core"; for AI cavity self-test, see
+> `.claude/knowledge/short-anti-ai.md`.
 
-| 检查项 | 标准 |
+| Check items | Standards |
 |--------|------|
-| 爽文不爽 | 金手指效果必须展示清楚 |
-| 压制无目的 | 每次压制必须服务于后续爆发 |
-| 反派结局与主角无关 | 反派之死必须因主角行动导致 |
-| 经济/战力崩坏 | 设定前后一致，以普通人为锚点 |
-| 女主/女配降智 | 人设正常可写，老套路别写 |
-| 读者期待长时间不满足 | 适时满足或引入新期待 |
-| 主角行为不可理解 | 必须能理解、能共鸣 |
-| 氛围被突兀梗破坏 | 氛围 > 突兀梗（乐子文除外） |
-| 钩子不回收 | 钩子不回收 = 烂尾 |
-| 震惊分层 | 点→网→深度，不能只写点震惊 |
-| 震惊阶梯递进 | 阶梯式上升，非直线 |
-| 震惊有广度 | 关系网都要有反应 |
-| 前50字有冲突/异常 | 不能是背景铺垫 |
-| 前100字知核心矛盾 | 必须知道 |
-| 开头情绪强度 | ≥7（1-10） |
-| 结尾是具体的 | 动作/对话/画面，禁止总结/反思 |
-| 结尾有余韵 | 读者还想往下看 |
-| 结尾情绪强度 | 虐≥8，爽≥7，治愈≥6 |
-| 情绪对等释放 | 虐多少补多少，反派结局关联主角 |
-| 期待管理 | 两长一短不断，核心卖点贯穿 |
+| feel-good fiction displeasure | golden finger effect must be shown clearly |
+| Suppression has no purpose | Each suppression must serve the subsequent outbreak |
+| The ending of the villain has nothing to do with the protagonist | The death of the villain must be caused by the actions of the protagonist |
+| Economy/Combat Strength Collapse | The setting is consistent, with ordinary people as the anchor |
+| The heroine/female supporting character reduces intelligence | The character can be written normally, but don’t write in the same old way |
+| Readers’ expectations are not satisfied for a long time | Satisfy them at the right time or introduce new expectations |
+| The protagonist’s behavior is incomprehensible | Must be understandable and sympathetic |
+| The atmosphere is ruined by abrupt jokes | Atmosphere > Obtrusive jokes (except Leziwen) |
+| The hook is not recycled | The hook is not recycled = bad end |
+| Shock layering | Click → Net → Depth, you can’t just write about shock |
+| Shocking Ladder Progression | Step-by-Step Ascent, Not a Straight Line |
+| Shock has breadth | The network must respond |
+| There are conflicts/abnormalities in the first 50 words | It cannot be background foreshadowing |
+| Know the core contradiction in the first 100 words | Must know |
+| Beginning emotional intensity | ≥7 (1-10) |
+| The ending is specific | action/dialogue/picture, summary/reflection is prohibited |
+| There is a lingering rhyme at the end | Readers want to read on |
+| Emotional intensity at the end | Sadness ≥ 8, pleasure ≥ 7, healing ≥ 6 |
+| Reciprocal release of emotions | Compensate as much as you torture, the villain’s ending is related to the protagonist |
+| Looking forward to management | Two long and one short are continuous, and the core selling points run through |

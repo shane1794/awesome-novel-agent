@@ -1,7 +1,15 @@
-# 环境描写：东方仙侠
+# Environment description: Eastern xianxia (immortal cultivation)
 
-> 覆盖通用环境描写方法论（`environment/universal.md`）中与仙侠题材不适配的部分。
+> Covers the parts of the general environment description methodology
+> (`environment/universal.md`) that are not suitable for the xianxia theme.
 
-- 环境反映修炼境界和天地灵气。灵气浓郁的地方和灵气枯竭的地方写法不同
-- 环境不只是物理环境，还有"灵觉"层面的感知——高手用神识感知环境，看到的不只是草木还有灵脉和阵法痕迹
-- **避坑**：不要为了炫文笔写大段环境描写——每段环境描写应该服务于角色当前的行动或心境
+- The environment reflects the realm of cultivation and the aura of heaven and earth.
+  Places with strong spiritual energy are written differently than places with depleted
+  spiritual energy.
+- The environment is not only the physical environment, but also the perception at the
+  "spiritual sense" level - the master uses his spiritual sense to perceive the
+  environment, and sees not only the vegetation but also the traces of spiritual veins
+  and formations.
+- **Avoid pitfalls**: Don’t write long paragraphs of environmental description just to
+  show off your writing style - each paragraph of environmental description should serve
+  the character’s current actions or mood.

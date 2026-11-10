@@ -2,80 +2,80 @@
 
 ## Context
 
-仓库反 AI 体系分三层：知识层（`knowledge/anti-ai/*.md`，init.py 按固定清单合并为部署产物 `anti-ai.md`）、生成层（`skills/prompt-crafting.md`，prompt-crafter 按它组装提示词，从 anti-ai.md 只取生成期需要的部分注入）、清创层（`skills/anti-ai.md` 管线 + check-prose.py）。资产包对比结论见 proposal Why；本 change 只动生成层入口与它引用的知识层文件。
+The repo's anti-AI system has three layers: the knowledge layer (`knowledge/anti-ai/*.md`, merged by init.py from a fixed list into the deployed product `anti-ai.md`), the generation layer (`skills/prompt-crafting.md`, where prompt-crafter assembles prompts and injects only the parts of anti-ai.md needed at generation time), and the cleanup layer (`skills/anti-ai.md` pipeline + check-prose.py). The asset-pack comparison conclusions are in the proposal's Why section; this change only touches the generation-layer entry point and the knowledge-layer files it references.
 
-关键既有约束（实现时不可破坏）：
-- 生成与清创分离：writer 不对照负面清单写作，T2/T3 与疲劳词阈值不进提示词（prompt-crafting Step 1.6 + Step 4 自检）。
-- living-voice.md 职责声明「不定义阈值与档位」。
-- structural-heat spec 枚举七条定律 + 不少于 13 种结构，增补必须嵌入既有定律。
-- check-conflicts.py 双闸：SCAN_GLOBS 跨文件阈值冲突 + METHODOLOGY_FILES（anti-ai-writing / boundary-cases）越界数量线检测（`N次/章` 式）。
-- 部署引用一律写 `.claude/knowledge/...` 基座路径（check-agents.py 校验）。
+Key existing constraints (must not be broken during implementation):
+- Generation and cleanup stay separated: the writer does not write against a negative list, and T2/T3 tiers and fatigue-word thresholds do not enter prompts (prompt-crafting Step 1.6 + Step 4 self-check).
+- living-voice.md carries a responsibility statement: "defines no thresholds or tiers".
+- The structural-heat spec enumerates seven laws plus at least 13 structures; additions must be embedded inside the existing laws.
+- check-conflicts.py has two gates: SCAN_GLOBS cross-file threshold conflicts + METHODOLOGY_FILES (anti-ai-writing / boundary-cases) out-of-bounds quantity-line detection (in the form `N times/chapter`).
+- Deployment references always use the `.claude/knowledge/...` base path (verified by check-agents.py).
 
 ## Goals / Non-Goals
 
 **Goals:**
-- 五项生成侧增量全部落地且可通过现有检查链（check-agents / check-conflicts / test_platforms）验证。
-- 新增知识可溯源（文件头标注来源与许可约束）、可校准（数字声明为单书实测默认值）。
-- 生成注入与清创扫描同源（华美空洞家族在 T1 一处定义、两侧使用）。
+- All five generation-side increments land and are verifiable through the existing check chain (check-agents / check-conflicts / test_platforms).
+- New knowledge is traceable (file headers mark the source and license constraints) and calibratable (numbers stated as single-book measured defaults).
+- Generation injection and cleanup scanning share one source (the ornate-emptiness family is defined in one place in T1 and used on both sides).
 
 **Non-Goals:**
-- 不引入资产包清创侧词表增量（无情绪声线家族、顿号罗列、冒号空转、段首零主语评论、翻译腔四族等）——留待后续 change。
-- 不引入 `_precheck.py` / `check_chapter.py` / 检测战史 / 朱雀送检运营内容。
-- 不改 anti-ai 管线（skills/anti-ai.md）与 check-prose.py。
-- 不引入 3-gram 重复检测（与「关键名词不换说法」存在口径张力，检测侧裁决另行 change，见 Decisions D5）。
+- Do not bring in the asset pack's cleanup-side wordlist increments (no emotion-voice families, enumeration with dunhao (Chinese enumeration-comma) lists, empty colon turns, zero-subject comments at paragraph starts, translationese, or the four other families). Those wait for later changes.
+- Do not bring in `_precheck.py` / `check_chapter.py` / detection battle history / Zhuque submission operations content.
+- Do not change the anti-ai pipeline (skills/anti-ai.md) or check-prose.py.
+- Do not bring in 3-gram repetition detection (it has wording tension with "key nouns keep one wording"; the detection-side adjudication goes in a separate change, see Decisions D5).
 
 ## Decisions
 
-### D1: 统计锚落独立知识文件 `knowledge/anti-ai/statistical-anchor.md`
+### D1: Statistical anchors go in a standalone knowledge file, `knowledge/anti-ai/statistical-anchor.md`
 
-Alternative A（写进 prompt-crafting.md）被拒：skill 是流程 SOP，知识应留 knowledge 层，且流程文件不应承载可校准的数字。Alternative B（并入 living-voice.md）被拒：统计锚是量化阈值，与该文件「不定义阈值与档位」职责声明冲突。独立文件便于整体溯源到资产包、将来按书校准时只改一处。init.py 合并清单（L402 元组）加入该文件并更新注释。
+Alternative A (write them into prompt-crafting.md) was rejected: the skill is a flow SOP, knowledge belongs in the knowledge layer, and a flow file should not carry calibratable numbers. Alternative B (merge them into living-voice.md) was rejected: statistical anchors are quantitative thresholds, which conflict with that file's "defines no thresholds or tiers" responsibility statement. A standalone file makes it easy to trace everything back to the asset pack as a whole and to change only one place when calibrating per book later. init.py's merge list (the tuple at L402) gains the file, with its comment updated.
 
-### D2: 统计锚归宿分离——节奏锚进质感要求，关键名词条进写作规范
+### D2: Statistical anchors are homed separately: rhythm anchors go into texture requirements, the key-noun rule goes into writing standards
 
-提示词审计维度 F（去 AI 校验·温感平衡）的 PASS 标准是「无独句段占比硬性指标」，维度 I 要求建议性技法沉底不进硬规则区；而 prompt-crafting 输出为扁平结构，「写作规范」会并入「不可违反规则」列表。因此四类节奏锚（句长/段落/逗号/起句）注入「质感要求」子节——那里本来就是半截话/不完美约束等倾向性要求的家；表述全部用分布倾向（「约每 5 句」「0-4 个不等」），无占比下限，并带让步声明（与红线/字数压缩/T1/认知动词/感官冲突时先让步，低权重场景压缩段豁免）。关键名词不换说法性质不同——它是禁止性硬约束（禁同义词轮换），进「输出·写作规范」，对象限定核心名词/术语/人名，与 common-rules 的情绪词上限、比喻复用条目对象不相交，避免 writer 把「重复好」与「重复≤3次」读成矛盾。Alternative（五类全进写作规范）被拒：会触发维度 F 温感平衡 FAIL 与电报体风险（资产包自警的删过头模式 9）。
+Prompt-audit dimension F (de-AI check, warmth balance) has a PASS standard of "no hard metric on single-sentence paragraph share", and dimension I requires suggestive techniques to sink to the bottom and not enter the hard-rules zone; prompt-crafting output is a flat structure, and "writing standards" merges into the "rules that must not be violated" list. So the four rhythm anchors (sentence length / paragraph / commas / sentence openings) are injected into the "texture requirements" sub-section, which is already home to tendency-style requirements such as half-finished sentences and imperfection constraints. All wording uses distribution tendencies ("about every 5 sentences", "0-4, varying"), with no share floor, plus a concession statement (yield first when conflicting with red lines, word-count compression, T1, cognitive verbs, or senses; compression paragraphs in low-weight scenes are exempt). The key-noun rule is different in nature: it is a prohibitive hard constraint (banning synonym rotation), so it goes into "output: writing standards", with its objects limited to core nouns, terms, and personal names, which do not intersect with common-rules' emotion-word caps and metaphor-reuse entries, so the writer does not read "repetition is good" and "repetition of 3 times or fewer" as a contradiction. The alternative (all five categories into writing standards) was rejected: it would trigger a dimension F warmth-balance FAIL and a telegram-style risk (the asset pack's own warning about over-deletion pattern 9).
 
-去重口径：提示词已有「叙事节奏交替」（禁止通篇等长段落）与质感要求「段落精度分层」，统计锚只补句长/逗号/起句三类微观分布对象，不重复段落交替语义（维度 H 同格式重复即 FAIL）；prompt-crafting「组装后去重检查」同步提示。
+Deduplication wording: prompts already have "alternating narrative rhythm" (banning uniform paragraph lengths throughout) and texture-requirements "paragraph precision layering", so statistical anchors only add three microscopic distribution objects (sentence length, commas, sentence openings) and do not repeat the paragraph-alternation semantics (dimension H treats same-format repetition as FAIL); prompt-crafting's "post-assembly deduplication check" is updated with the same prompt.
 
-### D3: 华美空洞进 common-rules T1，正向原则进 living-voice
+### D3: Ornate emptiness goes into common-rules T1; positive principles go into living-voice
 
-「单句形容词 >3 个」「开篇描写砍到两三笔」是阈值，按仓库规矩阈值只能定义在 common-rules.md（check-conflicts 双闸）——放 T1 家族（带「为什么禁 + 改成什么」），生成侧经既有 T1 简表注入通道取用，清创侧直接扫描，两侧同源。「情绪清单禁 / 偏差表达 / 描写显形」无数字线，按「只增不删」加进 living-voice（git diff 仅新增行），prompt-crafter 经活人感正向要点通道各注入 1-2 句。
+"More than 3 adjectives in a single sentence" and "cut opening descriptions to two or three strokes" are thresholds, and by repo rules thresholds may only be defined in common-rules.md (the check-conflicts double gate). They go into the T1 family (with "why it is banned + what to change it to"), are picked up on the generation side through the existing T1 short-table injection channel, and are scanned directly on the cleanup side, so both sides share one source. "Emotion-list ban / deviant expression / description visibility" have no numeric lines, so they are added to living-voice as additions only (git diff shows only added lines), and prompt-crafter injects 1-2 sentences each through the positive human-feel points channel.
 
-### D4: structural-heat 数据嵌入定律 2/3，不新增定律编号
+### D4: structural-heat data is embedded in laws 2 and 3, with no new law numbers
 
-structural-heat spec（`openspec/specs/structural-heat/spec.md`）枚举「七条定律」为 MUST 内容；新增第八条定律需要改该 spec。对话密度线达标区与中段位置实测是对既有定律 2/3 的数据增补，嵌入原文即可保持 spec 不动。沿用文件头「单书实测默认值、按文风与题材校准」「作者侧优先于检测优化」既有声明；prompt-crafter 场景排序仅参考，不作硬性配额（作者章纲顺序优先）。
+The structural-heat spec (`openspec/specs/structural-heat/spec.md`) enumerates "seven laws" as MUST content; adding an eighth law would require changing that spec. The dialogue-density line passing zone and the mid-section measured data are data additions to the existing laws 2 and 3, so embedding them in the original text keeps the spec untouched. The file header's existing statements ("single-book measured defaults, calibrate by style and genre" and "author side takes priority over detection optimization") are followed; prompt-crafter only references the knowledge when ordering scenes and does not turn it into a hard quota (the author's chapter-outline order takes priority).
 
-### D5: 资产包剔除清单（并记录理由）
+### D5: Asset-pack exclusion list (with reasons recorded)
 
-| 剔除项 | 理由 |
+| Excluded item | Reason |
 |---|---|
-| 视角混用锚（第一人称为主偶尔切第二人称） | 与章纲 `outline.pov` 决定的视角体系直接冲突 |
-| 插入省略号/破折号建议 | 与 common-rules 现行破折号用法判定口径冲突 |
-| 3-gram 重复零容忍 | 与「关键名词不换说法」存在口径张力；裁决口径（功能性锚词重复=人味，非功能短语复用=指纹）需单独设计检测实现，留后续 change |
-| 人味弹药库、翻译腔、高频词库等清创侧内容 | 与质感要求/living-voice/common-rules 重复或属清创范围，见 proposal Why |
+| Point-of-view mixing anchors (first person dominant with occasional switches to second person) | Directly conflicts with the point-of-view system decided by the chapter outline's `outline.pov` |
+| Suggestions to insert ellipses/dashes | Conflicts with common-rules' current dash-usage ruling |
+| 3-gram repetition zero tolerance | Has wording tension with "key nouns keep one wording"; the adjudication wording (functional anchor-word repetition is human flavor, non-functional phrase reuse is a fingerprint) needs a separately designed detection implementation, left for a later change |
+| Human-flavor ammunition, translationese, high-frequency word lists, and other cleanup-side content | Duplicates texture requirements, living-voice, and common-rules, or belongs to the cleanup scope; see the proposal Why |
 
-### D6: 节奏参数每章实例化——区间 + 情绪曲线派生 + 跨章错开
+### D6: Rhythm parameters are instantiated per chapter: ranges + emotional-curve derivation + staggered across chapters
 
-固定参数本身就是新指纹：章内防了均匀，跨章全用同一组值，检测器做跨章统计时每章节奏特征一致；且真人写作的节奏不是常量——紧张戏碎句密、舒缓戏长句慢，参数本质是内容的因变量。因此：知识文件把锚定义为**区间**（碎句约每 4-7 句 1 个、一句话段约每 6-10 段 1 个），prompt-crafter 组装时按本章情绪曲线与场景权重从区间取一组「本章节奏参数」写进质感要求。取值规则三条：①由情绪曲线派生（映射表：紧张/爆发→区间密端，舒缓/铺垫→疏端），不搞无依据随机——LLM 自行「随机」会收敛到中庸点，而情绪曲线章章不同，把变化托付给内容比托付给骰子可靠；②与上一章提示词参数错开（prompt-crafter 读上一章 prompt 文件核对，prompts/ 本就是可读产物）；③参数只约束全章倾向，局部情绪段按既有「叙事节奏交替」反向变速时以情绪段为准——真人味的核心是节奏跟内容走，参数只是防均匀化的下限保护，不是写作目标（真正的人味来源仍是 living-voice 三层：眼下要办的事/细节跟视角/对白在做事）。
+Fixed parameters are themselves a new fingerprint: uniformity is prevented within a chapter, but if every chapter uses the same values, a detector doing cross-chapter statistics sees identical rhythm characteristics in every chapter. And real human writing rhythm is not a constant: tense scenes have dense fragments and gentle scenes have slow long sentences, so parameters are essentially a dependent variable of the content. So the knowledge file defines anchors as **ranges** (fragments about 1 per 4-7 sentences, one-sentence paragraphs about 1 per 6-10 paragraphs), and when assembling, prompt-crafter takes one set of "this chapter's rhythm parameters" from the ranges based on the chapter's emotional curve and scene weights, and writes them into the texture requirements. Three rules for taking values: (1) derive them from the emotional curve (mapping table: tense/outburst goes to the dense end of the range, gentle/setup goes to the sparse end), with no baseless randomness, since an LLM "randomizing" on its own converges to a middle point, while emotional curves differ from chapter to chapter, so entrusting variation to content is more reliable than entrusting it to dice; (2) stagger them against the previous chapter's prompt parameters (prompt-crafter reads the previous chapter's prompt file to check; prompts/ is already a readable product); (3) parameters only constrain the whole chapter's tendency, and when a local emotional passage speeds up or slows down in the opposite direction per the existing "alternating narrative rhythm", the emotional passage wins. The core of human flavor is rhythm following content; parameters are only a floor guard against uniformity, not a writing goal (the real sources of human flavor remain living-voice's three layers: something to do right now, details following the point of view, dialogue while doing things).
 
-### D7: 来源与许可标注
+### D7: Source and license attribution
 
-资产包 README 约定「十九/二十六等实战规则为个人积累，引用请注明出处；公开或商用前请先征得原作者同意」。`statistical-anchor.md` 文件头 MUST 标注改写来源；structural-heat 增补数据同源，在定律内标注「外部单书实测」即可（该文件已有同类标注惯例）。
+The asset pack README states "rules nineteen/twenty-six and other field-tested rules are personal accumulation; cite the source when quoting; ask the original author for permission before public or commercial use". The `statistical-anchor.md` file header MUST mark its rewritten source; the structural-heat added data comes from the same source, so marking "external single-book measurement" inside the laws is enough (that file already has the same annotation convention).
 
 ## Risks / Trade-offs
 
-- [量化锚被模型机械执行，节奏本身变成新模板（章内电报体 / 跨章同参指纹）] → 三重防护：归宿沉底质感要求不进硬规则区（D2）；参数每章实例化、由情绪曲线派生并与上一章错开（D6），跨章不同参；writing-execution Step 5 与 anti-ai Gate D 清创兜底。残余风险：参数取值可按书校准。
-- [每章提示词 token 增量] → 固定注入通道新增约 300 字（统计锚 4 条 + 正向三节 + 华美空洞简表行），约 400-600 tokens/章，低于场景方法论稀疏注入的单章波动量，可接受。
-- [部署产物 `anti-ai.md` 体积上涨] → 约 4-6KB（<10%），单文件合并机制不变，换取消除「生成期节奏无量化锚」的缺口。
-- [新数字触发 check-conflicts 冲突/越界] → 新对象（碎句/逗号/对白占比）与权威源既有阈值对象不重叠；CI 双闸即时暴露，实现时先红后绿验证。
-- [test_platforms 断言不足导致合并遗漏未被发现] → 仿照既有「合并结构热源定律」断言，为统计锚增加合并产物内容断言（先红后绿）。
+- [Quantitative anchors get executed mechanically by the model, and rhythm itself becomes a new template (telegram style within a chapter / same parameters across chapters)] → Triple protection: homed at the bottom in texture requirements, not in the hard-rules zone (D2); parameters instantiated per chapter, derived from the emotional curve, and staggered against the previous chapter (D6), so parameters differ across chapters; writing-execution Step 5 and anti-ai Gate D cleanup as a backstop. Residual risk: parameter values can be calibrated per book.
+- [Token increment per chapter prompt] → The fixed injection channel adds about 300 words (4 statistical-anchor lines + 3 positive sections + the ornate-emptiness short-table row), about 400-600 tokens per chapter, below the per-chapter fluctuation of sparse scene-methodology injection. Acceptable.
+- [Deployed product `anti-ai.md` grows in size] → About 4-6KB (under 10%), with the single-file merge mechanism unchanged, in exchange for closing the "no quantitative anchor for rhythm at generation time" gap.
+- [New numbers trigger check-conflicts conflicts or out-of-bounds] → The new objects (fragments, commas, dialogue share) do not overlap with the authoritative source's existing threshold objects; the CI double gate exposes problems immediately, verified red-first-then-green during implementation.
+- [test_platforms assertions too weak to catch a missed merge] → Following the existing "merged structural-heat law" assertion, add a merged-product content assertion for the statistical anchors (red first, then green).
 
 ## Migration Plan
 
-1. 知识层先行（statistical-anchor.md 新文件 + 三文件增补），跑 check-conflicts / check-agents。
-2. init.py 合并清单更新，test_platforms.py 加断言（先红后绿）。
-3. prompt-crafting.md 注入范围与自检表更新，跑 check-agents。
-4. E2E：`test_platforms.py` 七平台全绿；老项目由 `sync-project.py` 拉取新产物。回滚即 revert 提交，无数据迁移。
+1. Knowledge layer first (statistical-anchor.md as a new file + three files with additions), then run check-conflicts / check-agents.
+2. Update the init.py merge list and add test_platforms.py assertions (red first, then green).
+3. Update prompt-crafting.md injection scope and self-check table, then run check-agents.
+4. E2E: `test_platforms.py` all green on seven platforms; old projects pull the new product via `sync-project.py`. Rollback is a revert of the commit, with no data migration.
 
 ## Open Questions
 
-（无——口径裁决均已在 D5 落定，剩余数字校准属使用期按书调参，不影响本 change。）
+(None. All wording adjudications are settled in D5; remaining numeric calibration is per-book tuning during use and does not affect this change.)

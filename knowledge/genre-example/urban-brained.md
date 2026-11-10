@@ -1,36 +1,37 @@
-# 类型档案：都市脑洞
+# Genre Archives: Urban wild idea
 
-> 拥有金手指系统的男频都市脑洞奇想。
+> Male-oriented urban wild idea with golden finger system.
 
 - **id:** `urban-brained`
-- **label:** 都市脑洞
+- **label:** Urban wild idea
 
 ---
 
-## 题材配置
+## Theme configuration
 
-### 满足类型
-- 系统升级
-- 打脸装逼
-- 获得新能力
-- 隐藏身份揭晓
-
-
-### 章节类型
-- 系统任务
-- 日常装逼
-- 危机应对
-- 脑洞展开
-- 成长升级
+### Satisfy Type
+- System upgrade
+- face-slapping show off
+- gain new abilities
+- Hidden identity revealed
 
 
-### 节奏规则
+### Chapter type
+- System tasks
+- Daily pretense
+- crisis response
+- wild ideaExpand
+- Growth and upgrade
+
+
+### Rhythm Rules
 - max_consecutive_action_chapters: 2
 - max_consecutive_daily_chapters: 2
 - beat_density_min: 2
 
 ---
 
-## 卷级故事弧模板
+## Volume Story Arc Template
 
-默认：获得系统→熟悉规则→积累资源→升级挑战→更大舞台
+Default: Obtain the system → Familiarize yourself with the rules → Accumulate resources
+→ Upgrade challenges → A bigger stage

@@ -1,736 +1,904 @@
-# 卷纲设定指南
+# Outline Setting Guide
 
-> Phase 2 第二步——给选定的一卷填充内容。包括定方向、定核心冲突、拆章节列表、追加新角色/设定。产出写入 `volume-{N}.md` 的 `chapters_summary`。
+> Phase 2 - Fill the selected volume with content. Including setting the direction,
+> defining the core conflict, breaking down the chapter list, and adding new
+> characters/settings. Outputs `chapters_summary` written to `volume-{N}.md`.
 
-**前置条件：** story.md 已有本卷的 story_arc 定位（主线哪一步+核心冲突一句话）。见 `.claude/knowledge/story-arc-style.md`——那里定的是"这卷在主线哪一步"，这里定的是"这卷里面怎么走"。
-
----
-
-**目录**
-
-- [核心原则](#核心原则卷纲服务于写作循环)
-- [一、卷方向确定](#一卷方向确定)
-- [二、核心冲突](#二核心冲突)
-- [三、情绪走向](#三情绪走向)
-- [四、冲突阶梯](#四冲突阶梯)
-- [五、信息差](#五信息差)
-- [六、场景卡](#六场景卡)
-- [七、章节列表](#七章节列表chapters_summary)
-- [八、新角色与设定追加](#八新角色与设定追加)
-- [产出模板](#产出模板)
-- [各字段怎么被下游使用](#各字段怎么被下游使用)
-- [验收](#验收)
+**Prerequisites:** story.md already has the story_arc positioning of this volume (which
+step of the main line + one sentence of the core conflict). See
+`.claude/knowledge/story-arc-style.md` - what is determined there is "which step in the
+main line is this volume", and what is determined here is "how to go in this volume".
 
 ---
 
+**Table of Contents**
+
+- [Core Principles](#core-principle-the-outline-serves-the-writing-cycle)
+- [1. Determining the volume direction](#1-determining-the-volume-direction)
+- [2. Core Conflict](#2-core-conflict)
+- [3. Emotional trend](#3-emotional-trend-the-emotional-arc-of-the-entire-volume)
+- [4. Conflict Ladder](#4-conflict-ladder-the-escalation-of-conflict-layer-by-layer)
+- [5. Information difference](#5-information-gap-the-engine-of-driving-force)
+- [6. Scene card](#6-scene-card-scene-decomposition-of-chapters)
+- [7. Chapter List](#7-chapter-list-chapters_summary)
+- [8. New characters and settings added](#8-new-characters-and-settings-added)
+- [Output Template](#output-template)
+- [How each field is used downstream](#how-each-field-is-used-downstream)
+- [Acceptance](#acceptance)
+
 ---
 
-## 核心原则：卷纲服务于写作循环
+---
 
-> 下面所有规则之前，先问一句：**"拿着这个卷纲，能直接写出每章的方向提案吗？"**
+## Core Principle: The outline serves the writing cycle
 
-卷纲不是给读者看的概要，不是给作者看的笔记——是给写作循环的定向指令。它的唯一用途是：当 Agent 打开 `chapter-planner agent`，读到 `volume-{N}.md` 的 chapters_summary 时，能立刻推理出本章的情节方向提案。
+> Before all the rules below, let me ask: **"With this outline, can I directly write
+> out the direction proposal for each chapter?"**
 
-**判定标准：**
-- chapters_summary 的每条 summary 不是"发生了什么"的梗概，而是"推动什么冲突、改变什么状态"的指令
-- 每章都可以反问："这章服务于核心冲突的哪一步？"
-- 读完卷纲，即使不翻 `chapters/vol-{N}-ch-{M}.md`，也清楚这卷的主线是什么、每章做什么
+The outline is not a summary for readers, not notes for authors - it is a directional
+instruction for the writing cycle. Its only purpose is: when the Agent opens
+`chapter-planner agent` and reads the chapters_summary of `volume-{N}.md`, it can
+immediately deduce the plot direction proposal of this chapter.
 
-**允许的：**
+**Judgment Criteria:**
+- Each summary of chapters_summary is not a summary of "what happened", but an
+  instruction of "what conflicts are promoted and what states are changed"
+- Each chapter can be countered by asking: "Which step in the core conflict does this
+  chapter serve?"
+- After reading the outline, even without turning to `chapters/vol-{N}-ch-{M}.md`, you
+  will know what the main line of this volume is and what each chapter does.
 
-| 行为 | 说明 |
+**Allowed:**
+
+| Behavior | Description |
 |------|------|
-| 章纲留白（非首卷时，后续章只写标题和一句方向） | 首卷必须全部有冲突载体，卷 N+1 允许近端 3 章详细、远端留白，但留白章必须写一句冲突方向 |
-| 卷方向随写作调整核心冲突的表述 | 但不得推翻已归档章节的事实基础 |
+| Leave the chapter outline blank (when it is not the first volume, only the title and one sentence of direction are written in subsequent chapters) | The first volume must all have conflict carriers, volume N+1 allows 3 detailed chapters at the near end, and the far end is left blank, but the blank chapter must write a sentence of conflict direction |
+| The volume direction adjusts the presentation of the core conflict as the writing progresses | but does not overturn the factual basis of the archived chapters |
 
-**禁止的：**
+**Prohibited:**
 
-| 行为 | 后果 |
+| Behavior | Consequences |
 |------|------|
-| 写"主题式"章纲（如"这一章讲信任"）——没有具体冲突事件 | 写作循环无从下手，方向提案变猜谜 |
-| 一章承载多个不相关的主线冲突 | 章纲分裂，正文东拉西扯 |
-| 首卷跳过方向确定（无论是模板还是角色发声）直接写章纲 | 结构塌方——写了 3 章发现方向不对，前面全废 |
-| 卷 N+1 不做角色发声，直接套首卷模板 | 角色状态被忽略，后续行为与历史断裂 |
+| Write a "thematic" chapter outline (such as "This chapter is about trust") - no specific conflict events | There is no way to start the writing cycle, and the direction proposal becomes a guessing game |
+| One chapter carries multiple unrelated main line conflicts | The chapter is divided and the main text is rambling |
+| In the first volume, I skipped the direction determination (whether it was a template or the character's voice) and wrote the chapter outline directly | Structural collapse - after writing 3 chapters, I found that the direction was wrong, and all the previous chapters were useless |
+| Volume N+1 does not have a character voice, and directly uses the template of the first volume | The character status is ignored, and subsequent actions are disconnected from history |
 
 ---
 
-## 一、卷方向确定
+## 1. Determining the volume direction
 
-卷纲的第一步，不是写章纲，是定方向。方向错了，后面全部白写。
+The first step in the outline is not to write the outline, but to set the direction. The
+direction is wrong, and all the rest is written in vain.
 
-**先判断本卷是不是首卷：**
+**First determine whether this volume is the first volume:**
 
-### 1. 首卷：用故事结构模板
+### 1. Volume One: Using the Story Structure Template
 
-**写什么：** 选一个结构模板，把各阶段的功能和章节数分配清楚。
+**What to write:** Choose a structure template and clearly allocate the functions and
+number of chapters in each stage.
 
-**怎么聊：** 读 settings/genre-setting.md 的选定类型。有值就去 `.claude/knowledge/genre-example.md` 找对应类型的 `story_arc_templates`；无值用下面通用模板。Agent 直接输出提案（**不问"你想要哪种"**）：
+**How to Chat:** Read settings/genre-setting.md for selected types. If there is a value,
+go to `.claude/knowledge/genre-example.md` to find the corresponding type of
+`story_arc_templates`; if there is no value, use the following general template. Agent
+directly outputs the proposal (**without asking "which one do you want"**):
 
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  卷 1 结构建议：三幕式
+  Volume 1 Structural Suggestions: Three Acts
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-建议章节数：10-12 章
+Recommended number of chapters: 10-12 chapters
 
-各阶段概览：
-1. setup（约 3-4 章）→ 建立主角处境和核心悬念
-2. confrontation（约 4-5 章）→ 冲突升级，主角主动出击
-3. resolution（约 2-3 章）→ 冲突收束，留下卷末悬念
+Overview of each stage:
+1. setup (about 3-4 chapters) → Establish the protagonist’s situation and core suspense
+2. confrontation (about 4-5 chapters) → the conflict escalates and the protagonist takes the initiative
+3. resolution (approximately 2-3 chapters) → The conflict ends, leaving the suspense at the end of the volume
 
-可换成：起承転結 / 悬疑递进 / 人物弧线
+Can be replaced by: starting point, suspense progression, character arc
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
 
-**通用故事结构模板（题材未定时）：**
+**Universal story structure template (theme is not timed):**
 
-| 模板 | 适合 | 默认分卷 |
+| Template | Suitable | Default volume |
 |------|------|---------|
-| **三幕式**（setup→confrontation→resolution） | 冲突驱动、有明确对手或目标的故事 | setup 3-4章 / confrontation 4-5章 / resolution 2-3章 |
-| **起承転結**（起→承→転→結） | 东方叙事结构，适合慢热细腻的故事 | 起 2-3章 / 承 3-4章 / 転 2-3章 / 結 1-2章 |
-| **悬疑递进**（疑问→线索→反转→答案→余味） | 解谜向、有信息差的故事 | 疑问 1-2章 / 线索 2-3章 / 反转 2章 / 答案 1章 / 余味 1章 |
-| **人物弧线**（日常→转折→挣扎→蜕变→新常态） | 人物驱动、成长向的故事 | 日常 2章 / 转折 2章 / 挣扎 2-3章 / 蜕变 1-2章 / 新常态 1章 |
+| **Three Acts** (setup→confrontation→resolution) | Conflict-driven story with clear opponent or goal | setup Chapter 3-4 / confrontation Chapter 4-5 / resolution Chapter 2-3 |
+| **Qi Cheng Yu Jie** (Qi → Cheng → Fu → Knot) | Oriental narrative structure, suitable for slow and delicate stories | Starting with Chapters 2-3 / Cheng with Chapters 3-4 / Cheng with Chapters 2-3 / Ending with Chapters 1-2 |
+| **Suspense progression** (question → clue → reversal → answer → aftertaste) | Puzzle-oriented, story with information gaps | Questions Chapter 1-2 / Clues Chapters 2-3 / Reversal Chapter 2 / Answer Chapter 1 / Aftertaste Chapter 1 |
+| **Character Arc** (Daily → Turn → Struggle → Transformation → New Normal) | Character-driven, growth-oriented story | Daily Chapter 2 / Turn Chapter 2 / Struggle Chapter 2-3 / Transformation Chapter 1-2 / New Normal Chapter 1 |
 
-**各阶段填写标准：**
+**Filling standards for each stage:**
 
-| 字段 | 填写标准 | 常见问题 |
+| Fields | Filling Standards | Frequently Asked Questions |
 |------|---------|---------|
-| 结构模板选择 | 必须有明确的阶段划分，不是"随便写写" | 只说"先写几章看看"——等同于没有方向 |
-| 各阶段功能 | 每个阶段有明确的一句话功能（如"setup：建立主角处境和核心悬念"），不能用"发展""展开"这样的空词 | "第二阶段：故事展开"——展开什么？谁和谁发生了什么事？ |
-| 章节数分配 | 每阶段分配具体章节数，总数匹配预期卷长。允许作者调整，但必须有数 | "大概 10-15 章"——没有分配，无法判断比例是否合理 |
-| 与题材类型匹配 | 如果选了题材类型，模板应与类型匹配（悬疑类用悬疑递进，修仙类用升级弧线） | 都市恋爱题材用了三幕式但第一幕 8 章——读者等不到冲突就走了 |
+| Structural template selection | There must be a clear division of stages, not "just write" | Just saying "write a few chapters first and take a look" - is equivalent to having no direction |
+| Functions of each stage | Each stage has a clear one-sentence function (such as "setup: establishing the protagonist's situation and core suspense"). Empty words such as "development" and "expansion" cannot be used | "Second stage: story unfolding" - what to unfold? What happened to who and whom? |
+| Chapter number allocation | Each stage is assigned a specific number of chapters, and the total number matches the expected volume length. The author is allowed to adjust, but there must be a number | "About 10-15 chapters" - there is no distribution, it is impossible to judge whether the proportion is reasonable |
+| Match the subject type | If the subject type is selected, the template should match the type (suspense type uses suspense progression, and immortality type uses upgrade arc) | The urban love theme uses a three-act style, but the first act has 8 chapters - the reader leaves without waiting for the conflict |
 
-**示例（起承転結，悬疑题材）：**
-
-```
-✅ 合格：
-起（2章）：建立失踪案悬念 + 主角调查能力展现。第1章接案，第2章勘查现场发现矛盾。
-承（3章）：线索展开 + 第一重反转。第3章发现旧案关联，第4章遭遇阻碍，第5章获得关键突破。
-転（2章）：真相逼近 + 主角个人危机浮现。第6章发现更大阴谋，第7章主角被迫选择。
-結（1章）：小案收束，大局揭开。找到失踪者，但主角知道背后有更大的东西。
-```
+**Example (starting with the knot, suspense theme): **
 
 ```
-❌ 不合格：
-起（3章）：介绍世界观和人物关系。
-承（4章）：故事逐渐展开，冲突慢慢升级。
-転（2章）：故事出现转折。
-結（1章）：故事结束。
+✅ Qualified:
+Introduction (Chapter 2): Establishing suspense about the disappearance case + demonstrating the protagonist’s investigative abilities. Chapter 1 receives the case, Chapter 2 investigates the scene and discovers contradictions.
+Development (Chapter 3): Expansion of clues + first reversal. Chapter 3 discovers the connection between old cases, Chapter 4 encounters obstacles, and Chapter 5 achieves a key breakthrough.
+Turn (Chapter 2): The truth is approaching + the protagonist’s personal crisis emerges. In Chapter 6, a bigger conspiracy is discovered, and in Chapter 7, the protagonist is forced to make a choice.
+Conclusion (Chapter 1): The small case is closed and the big picture is revealed. A missing person is found, but the protagonist knows there is something bigger behind it.
 ```
 
-> 不合格原因：全是空词——"展开""升级""转折""结束"。写不了方向提案。
-
-**作者可能的选择：**
-- "就这个" → 用确认的模板作为卷纲讨论骨架
-- "换 {variant}" → 展示选中的 variant，重新确认
-- "我自己来" → 跳过模板，直入核心冲突讨论
-- "我改一下" → 按作者调整后的结构走
-
-### 2. 卷 N+1：让角色说话
-
-有前卷存档（`archives/` 非空）→ **直接从角色驱动分析开始**，不推模板。已存在的角色有自己的状态和意图，他们告诉作者下一卷该写什么。
-
-**怎么聊：**
-
-**操作流程：**
-1. 读各角色 `settings/character-setting/<id>.md` 的最新 `状态历史`——上一卷结尾他们在哪儿、经历了什么、掌握了什么信息
-3. 对每个活跃角色（含 antagonist/重要配角），生成角色"发声"：
-
-**角色发声格式：**
-
 ```
-【{角色名}的处境】卷末落位——和谁在一起、掌握了什么信息、目前处于什么局面
-【{角色名}未完成的事】上一卷留下的执念/目标/恐惧——什么还没解决
-【{角色名}卷间思考】在卷与卷之间的间隙里，ta 反复在想什么
-【{角色名}现在想做的事】基于当前处境，ta 下一卷最可能推动什么
+❌ Unsatisfactory:
+Introduction (Chapter 3): Introducing the world view and character relationships.
+Development (Chapter 4): The story gradually unfolds and the conflict gradually escalates.
+Turn (Chapter 2): The story takes a turn.
+Conclusion (Chapter 1): The story ends.
 ```
 
-4. 展示给作者。**声音越多，卷的方向越自然**——几个角色的意志冲突会自然形成主线
-5. 作者根据角色发声确定卷方向
+> Reason for failure: All empty words - "expand", "upgrade", "turn" and "end". I can’t
+> write a direction proposal.
 
-**各字段填写标准：**
+**Possible author options:**
+- "That's it" → Use the confirmed template as the outline for discussion
+- "Change {variant}" → Display the selected variant and reconfirm
+- "I'll do it myself" → Skip the template and go straight to the core conflict
+  discussion
+- "I'll change it" → follow the author's adjusted structure
 
-| 字段 | 填写标准 | 常见问题 |
+### 2. Volume N+1: Let the characters speak
+
+There is a previous volume archive (`archives/` is not empty) → **Start directly from
+character-driven analysis**, no template is pushed. Existing characters have their own
+status and intentions, and they tell the author what to write in the next volume.
+
+**How to chat:**
+
+**Operation process:**
+1. Read the latest `status-history` of each character `settings/character-setting/<id>.md` - where
+   they were at the end of the previous volume, what they experienced, and what
+   information they had
+3. For each active role (including antagonist/important supporting role), generate the
+   role "voice":
+
+**Character voice format:**
+
+```
+[{Character Name}'s Situation] The end of the volume is at hand - who is he with, what information he has, and what situation he is currently in.
+[{Character name}'s unfinished business] The obsessions/goals/fear left behind in the previous volume - what has not yet been resolved
+[{Character name}Thinking between volumes] In the gap between volumes, what does he think about repeatedly?
+[What {character name} wants to do now] Based on the current situation, what is he most likely to promote in the next volume?
+```
+
+4. Show to author. **The more sounds, the more natural the direction of the scroll** -
+   the conflict of wills of several characters will naturally form the main line
+5. The author determines the direction of the volume based on the character's voice.
+
+**Filling standards for each field:**
+
+| Fields | Filling Standards | Frequently Asked Questions |
 |------|---------|---------|
-| 活跃角色筛选 | 读各角色 `settings/character-setting/<id>.md` 的状态历史，找出有未完成目标/状态变化的角色。不是所有角色都发言，只选下一卷有戏份的 | 列了全部 12 个角色发声——作者根本看不过来 |
-| 角色处境描述 | 必须具体到"卷末落位"：在哪儿、和谁在一起、掌握了什么信息。不能是"上一卷经历了很多" | "陆征继续调查"——没有落位，没说他知道了什么 |
-| 角色意志冲突 | 多个角色的发声应自然形成冲突或交集。"A 想查真相+B 想掩盖真相+C 想拉拢 A"好于"A 想查真相+B 也想查真相" | 所有角色方向一致——没有冲突就没有主线 |
-| 作者确认 | 角色发声展示后，作者必须明确确认卷方向。不得从发声直接跳到写章纲 | Agent 自认为"作者应该同意"直接开工 |
+| Active character filtering | Read the status history of each character `settings/character-setting/<id>.md` to find characters with unfinished goals/status changes. Not all characters speak, only those who have roles in the next volume | All 12 characters are listed to speak - the author can't see it at all |
+| Character situation description | It must be specific to the "end of the paper": where it is, who it is with, and what information it has. It can't be "I experienced a lot in the previous volume" | "Lu Zheng continues to investigate" - not in place and didn't say what he knew |
+| Conflict of character wills | The voices of multiple characters should naturally conflict or overlap. "A wants to find out the truth + B wants to cover up the truth + C wants to win over A" is better than "A wants to find out the truth + B also wants to find out the truth" | All characters have the same direction - without conflict, there is no main line |
+| Author Confirmation | After the character's voice presentation, the author must clearly confirm the volume direction. Do not jump directly from speaking out to writing an outline | Agent thinks that "the author should agree" and starts working directly |
 
-**示例：**
-
-```
-✅ 合格：
-【陆征的处境】卷末在办公室，发现被翻动。掌握了三件事：苏棠是自愿躲藏的、三年前案子被压了、灰短袖男人在跟踪他。手里有方岩给的旧案卷宗照片。
-【陆征现在想做的事】查出三年前到底发生了什么——谁压了案子、为什么压。苏棠的失踪只是引子，背后的东西才是真正的目标。
-【方岩的处境】在警队内部，知道有人在盯陆征。给了陆征卷宗但被上级警告。
-【方岩现在想做的事】暗中帮陆征但不能暴露。他想知道为什么三年前的案子被压——这和他的职业尊严有关。
-```
+**Example:**
 
 ```
-❌ 不合格：
-【陆征的处境】经历了第一卷的冒险，破获了失踪案。
-【陆征现在想做的事】继续当侦探，接下一个案子。
+✅ Qualified:
+[Lu Zheng’s situation] At the end of the volume, he was in the office and found that it had been turned over. Three things were known: Su Tang voluntarily hid, the case was suppressed three years ago, and the man in gray short sleeves was following him. I have photos of old case files given by Fang Yan.
+[What Lu Zheng wants to do now] Find out what happened three years ago - who suppressed the case and why. Su Tang's disappearance is just the introduction, and what lies behind is the real goal.
+[Fang Yan’s situation] Within the police force, someone knew that someone was watching Lu Zheng. He gave the dossier to Lu Zheng but was warned by his superiors.
+[What Fang Yan wants to do now] Help Lu Zheng secretly but cannot be exposed. He wants to know why the case from three years ago was suppressed - it has something to do with his professional dignity.
 ```
 
-> 不合格原因：没有落位信息，没有具体的已知/未知，没有残留动机。"继续当侦探"等于没有方向。
-
-**兜底：** 角色发声后作者仍然没方向 → 回到上面结构模板，辅助找结构。
-
-### 3. 从发声到章节展开（卷 N+1 独有）
-
-角色发声完成不等于方向已定。发声收集了每个角色的状态和意图，下一步是看这些意图交汇到哪里。
-
-**主线从角色状态的交汇点浮现。** 不是编出来的，是从多个角色的"现在想做的事"中检测出来的。
-
-**第一步：检测主线是否浮现**
-
-把所有活跃角色的"现在想做的事"平铺在一起看：
-
-- ✅ 至少有两个角色的行动方向指向**同一个矛盾点** → 主线自然浮现
-- ✅ 角色方向不全是对抗——有的提供帮助、有的提供信息，但都汇聚到同一根线
-- ❌ 所有角色各走各路，没有交汇 → 要么漏了关键角色，要么主角缺乏明确的行动目标
-
-如果交汇点不明显，问作者一句：
-
-> "这几个角色现在都想推动不同的事——你觉得哪一对的矛盾是这卷最核心的？"
-
-**示例：**
-
 ```
-【陆征现在想做的事】查出三年前到底发生了什么——谁压了案子、为什么压
-【方岩现在想做的事】暗中帮陆征但不能暴露
-【警队某人现在想做的事】阻止陆征翻旧账
-
-交汇点 → "查旧案 vs 压真相" → 主线："陆征触及警队内部保护伞"
+❌ Unsatisfactory:
+[Lu Zheng’s situation] Experienced the adventure in the first volume and solved the disappearance case.
+[What Lu Zheng wants to do now] Continue to be a detective and take on the next case.
 ```
 
-**第二步：检查章节数量是否可推导**
+> Reasons for failure: no placement information, no specific known/unknown, and no
+> residual motivation. "Continuing to be a detective" means having no direction.
 
-每个角色"现在想做的事"大约需要几章来完成。不是猜数，是看本卷涉及几个冲突场景、每个场景需要多少章来推进。
+**Back to the bottom:** The author still has no direction after the character speaks →
+Return to the structure template above to help find the structure.
 
-> "陆征查旧案 3 章 + 方岩线穿插 2 章 + 压案势力施压 2 章 + 汇合高潮 2 章 = 约 9-10 章"
+### 3. From voicing to chapter unfolding (exclusive to Volume N+1)
 
-❌ 章节数说不清来源 → 发声只说了角色状态，没说他们下一步要做什么。回去补齐。
+The completion of the character's voice does not mean that the direction has been
+determined. Voicing collects the state and intent of each character, and the next step
+is to see where those intents intersect.
 
-**第三步：检查章纲是否有方向可循**
+**The main line emerges from the intersection of character states. ** This is not made
+up, it is detected from the "things I want to do now" of multiple characters.
 
-从主线能拆出各阶段的推进方向。不是凭空拆章，是"这个冲突的解决需要先做什么、再做什么"。
+**Step one: Check whether the main line appears**
 
-- ✅ "先查旧案→再遭遇警告→然后找到突破口→最后冲突升级"
-- ❌ "就先写几章看看" → 主线不够清晰，无法推导阶段
+Lay out the "What I want to do now" of all active roles:
 
-**第四步：模板可选但不是必需**
+- ✅ At least two characters’ action directions point to **the same conflicting point** →
+  the main line naturally emerges
+- ✅ The character directions are not all confrontational - some provide help, some
+  provide information, but they all converge on the same thread
+- ❌ All characters go their separate ways without any intersection → Either a key role
+  is missing, or the protagonist lacks a clear action goal
 
-如果主线清晰，模板只是辅助骨架。不用模板也能从角色行动推导出章节方向。模板是结构确认，不是结构发现。
+If the intersection is not obvious, ask the author:
+
+> "These characters are all trying to push for different things now - which pair's
+> conflict do you think is at the heart of this volume?"
+
+**Example:**
+
+```
+[What Lu Zheng wants to do now] Find out what happened three years ago - who suppressed the case and why
+[What Fang Yan wants to do now] Help Lu Zheng secretly but cannot be exposed
+[What someone in the police force wants to do now] Stop Lu Zheng from settling an old score
+
+Intersection → "Investigating old cases vs. suppressing the truth" → Main line: "Lu Zheng touches the internal protective umbrella of the police force"
+```
+
+**Step 2: Check whether the number of chapters can be deduced**
+
+Each character's "what they want to do now" takes approximately a few chapters to
+complete. It’s not about guessing, but looking at how many conflict scenes this volume
+involves and how many chapters each scene requires to advance.
+
+> "3 chapters of Lu Zheng investigating old cases + 2 chapters of Fang Yan's line
+> interspersed + 2 chapters of pressure from the forces suppressing the case + 2
+> chapters of the climax = about 9-10 chapters"
+
+❌ The source of the chapter number is unclear → The voice only talks about the status of
+the characters, not what they will do next. Go back and make up.
+
+**Step 3: Check whether the chapter outline has direction to follow**
+
+The direction of advancement of each stage can be detached from the main line. It's not
+about breaking things out of thin air, it's about "what needs to be done first and what
+needs to be done next to resolve this conflict."
+
+- ✅ "First check old cases → then encounter warnings → then find a breakthrough → and
+  finally the conflict escalates"
+- ❌ "Just write a few chapters first and see" → The main line is not clear enough to
+  deduce the stage
+
+**Step 4: Template optional but not required**
+
+If the main line is clear, the template is just an auxiliary skeleton. Chapter
+directions can be derived from character actions without using templates. Templates are
+structure confirmation, not structure discovery.
 
 ---
 
-## 二、核心冲突
+## 2. Core Conflict
 
-一行话管住整卷。
+One line governs the entire volume.
 
-**写什么：** 本卷核心冲突一句话——和 story.md 分卷列表中的定义一致，但这里可以细化到**本卷内的对抗关系**。
+**What to write:** One sentence for the core conflict of this volume - consistent with
+the definition in the story.md sub-volume list, but here it can be refined to **the
+antagonistic relationship within this volume**.
 
-**怎么聊：** 从 story.md 继承一句，问作者"这卷的主线是这句话对吧？有没有要调整的？"
+**How to talk:** Inherit a sentence from story.md and ask the author, "The main line of
+this volume is this sentence, right? Is there anything that needs to be adjusted?"
 
-✅ 合格："陆征想查出三年前谁压了案子，但警队内部有人要阻止他翻旧账。"
-——有谁（陆征）、想做什么（查清三年前压案真相）、被什么阻碍（警队内部势力阻止）
+✅ Passed: "Lu Zheng wants to find out who suppressed the case three years ago, but
+someone within the police force wants to stop him from settling old scores." - Who (Lu
+Zheng), what does he want to do (find out the truth about the case three years ago),
+what is hindering him (forces within the police force prevent him)
 
-❌ 不合格："陆征在都市中调查各种案件，同时面对自己过去的阴影。"
-——"各种案件"不是一根主线。"过去的阴影"没有具体对抗力量。
+❌ Unqualified: "Lu Zheng investigated various cases in the city while facing the shadow
+of his past." - "Various cases" is not a main line. "Shadows of the Past" has no
+specific counter force.
 
-### 填写标准
+### Fill in the criteria
 
-| 字段 | 填写标准 | 常见问题 |
+| Fields | Filling Standards | Frequently Asked Questions |
 |------|---------|---------|
-| 冲突表述 | 一句话："谁 + 想做什么 + 被什么阻碍"。必须有对抗力量，不能是单向愿望 | "主角想变强"——没有阻碍方，冲突不存在 |
-| 对抗力量 | 阻碍必须是具体的角色/势力/处境，不能是抽象概念 | "对抗命运""对抗社会"——太虚，写不了具体情节 |
-| 与章节的追溯关系 | 每章的 summary 至少含有一个动词指向核心冲突的推进（发现/遭遇/选择/失败/推进/阻碍） | 第 3 章 summary 是"主角去市场买东西"——与主线冲突无关，是填充章节 |
-| 单线 vs 多线 | 一卷只能有一个主线冲突。如果有支线冲突，必须能在 2 句话内说清支线和主线的关系 | 一卷三条线各自独立，每章在三条线间跳——读者跟不住，章纲必然分裂 |
+| Conflict expression | In one sentence: "Who + wants to do + what is hindered by what". There must be a countervailing force, it cannot be a one-way wish | "The protagonist wants to become stronger" - there is no blocking party, and there is no conflict |
+| Opposing force | The obstacle must be a specific role/power/situation, not an abstract concept | "Fighting fate" and "Fighting society" - too imaginary to write a specific plot |
+| Retroactive relationship with chapters | The summary of each chapter contains at least one verb pointing to the advancement of the core conflict (discovery/encounter/choice/failure/advance/obstacle) | The summary of Chapter 3 is "The protagonist goes to the market to buy things" - it has nothing to do with the main conflict, it is a filler chapter |
+| Single line vs multi-line | There can only be one main line conflict in a volume. If there is a conflict between branch lines, the relationship between the branch lines and the main line must be clearly stated in 2 sentences | The three lines in a volume are independent of each other, and each chapter jumps between the three lines - the reader cannot follow, and the chapter outline will inevitably split |
 
-### 两条底线（任一不过，禁止进入 Phase 3）
+### Two bottom lines (if you fail either one, you are prohibited from entering Phase 3)
 
-1. **核心冲突可一句说完**——卷的主线冲突必须能用一句话表述，不需要"因为所以""与此同时""另一方面"。说不清楚就是没想清楚。一卷可以有支线，但主线只能有一根。
-2. **每章有可写的冲突载体**——chapters_summary 的每一条 summary 必须包含一个可写的事件冲突。只有"建立人物""世界观展示""过渡铺垫""关系递进"而无具体冲突事件的章纲等于没写。冲突载体就是"这一章读者看完后什么东西变了"。
+1. **The core conflict can be stated in one sentence** - The main conflict of the volume
+   must be expressed in one sentence, without the need for "because", "at the same
+   time", "on the other hand". I can't say clearly, I just didn't think clearly. A reel
+   can have branch lines, but there can only be one main line.
+2. **Writable conflict carrier for each chapter** - Each summary of chapters_summary
+   must contain a writable event conflict. Chapter outlines that only include "character
+   establishment", "world view display", "transition foreshadowing" and "relationship
+   progression" without specific conflict events are not written. The carrier of
+   conflict is "what changes after the reader reads this chapter."
 
 ---
 
-## 三、情绪走向——整卷的情绪弧线
+## 3. Emotional trend - the emotional arc of the entire volume
 
-冲突回答"情节上发生什么"，情绪走向回答"读者读这卷从头到尾，情绪怎么变化"。同一套冲突，情绪走向不同，读者体验完全不同。
+Conflict answers "what happens in the plot", and emotional direction answers "how does
+the reader's emotions change when reading this volume from beginning to end". The same
+set of conflicts, different emotional trends, and completely different reader
+experiences.
 
-### 定情绪走向
+### Determine the emotional direction
 
-不先问"读者什么心情"——一卷不是一个心情，是一串心情的递进。先问作者：
+Don't first ask "what is the reader's mood?" - a volume is not a mood, but a series of
+progressive moods. Ask the author first:
 
-> **"这卷从头到尾，读者的情绪怎么走？——比如爽卷就是压了又压→翻盘→打脸→装逼；悬疑卷就是层层逼近→突然反转→余韵。"**
+> **"How does the reader's emotions go from the beginning to the end of this volume? -
+> For example, the cool volume is pressing and pressing → turning over → face-slapping
+> → showing off; the suspenseful volume is approaching layer by layer → sudden
+> reversal → aftertaste."**
 
-答案不是单个情绪词，是一条弧线：
+The answer is not a single emotional word, but an arc:
 
-| ✅ 合格（弧线） | ❌ 不合格（单个词） |
+| ✅ Qualified (arc) | ❌ Unqualified (single word) |
 |----------------|-------------------|
-| "压抑→压抑→更压抑→提升→打脸→装逼" | "爽" |
-| "紧张→逼近→震惊→舒缓" | "紧张" |
-| "温暖→冲突→悲伤→希望→温暖" | "温暖" |
-| "愤怒→压抑→蓄势→振奋→满足" | "爽" |
+| "Depressed → Depressed → More depressed → Improved → Face-slapping → Pretentious" | "Cool" |
+| "Tense→Approaching→Shocked→Relieved" | "Tense" |
+| "Warmth → Conflict → Sadness → Hope → Warmth" | "Warmth" |
+| "Angry→depressed→gathering momentum→excited→satisfied" | "cool" |
 
-### 情绪走向类型速查（按弧线模式分）
+### Quick check on types of emotional trends (divided by arc mode)
 
-| 弧线模式 | 典型走向 | 适合题材 |
+| Arc mode | Typical trend | Suitable for subject matter |
 |---------|---------|---------|
-| **先压后爽** | 压抑→压抑→更压抑→提升→打脸→装逼 | 爽文、升级流、复仇 |
-| **层层逼近** | 紧张→紧张↑→逼近→震惊→舒缓 | 悬疑、探案、惊悚 |
-| **张力开合** | 温暖→冲突→悲伤→希望→温暖 | 言情、情感、家庭 |
-| **蓄势爆发** | 压抑→期待→蓄势→振奋→满足 | 竞技、成长、逆袭 |
-| **螺旋递进** | 愤怒→小爽→压抑→中爽→压抑→大爽 | 长篇爽文（防止疲劳） |
+| **Suppress first and then enjoy** | Depressed→depressed→more depressed→enhancement→face-slapping→pretending to be awesome | feel-good fiction, upgrade flow, revenge |
+| **Approaching layers** | Tension → Tension ↑ → Approaching → Shock → Soothing | Suspense, detective, thriller |
+| **Tension opening and closing** | Warmth → Conflict → Sadness → Hope → Warmth | Romance, emotion, family |
+| **Preparing to explode** | Suppression → Expectation → Preparing for momentum → Excitement → Satisfaction | Competition, growth, counterattack |
+| **Spiral Progression** | Anger→Small Feeling→Depression→Medium Feeling→Depression→Great Feeling | Long feel-good fiction (to prevent fatigue) |
 
-### 卷级情绪弧线设计
+### Volume-level emotional arc design
 
-情绪走向 = 一条弧线，有起点、中间转折、终点。弧线中的每一步对应一卷中的一个阶段（模板的一个阶段/冲突阶梯的一层）：
-
-```
-✅ 先压后爽弧（适合爽卷）：
-  压抑（困境建立）→ 压抑↑（压迫升级）→ 更压抑（绝境）
-  → 提升（获得转机）→ 打脸（反杀）→ 装逼（展示成果）
-  → 读者一直被压着，最后集中释放
-
-✅ 层层逼近弧（适合悬疑卷）：
-  紧张（悬念建立）→ 紧张↑（危机逼近）→ 震惊（反转揭露）
-  → 期待（高潮蓄势）→ 舒缓（收束余韵）
-
-❌ 不合格：
-  "爽" → 没有弧线，只是一次性情绪。爽怎么递进？从哪里到哪里？
-  "紧张→紧张→紧张" → 没有变化，读者在第3章麻木
-```
-
-### 章节情绪锚点设计
-
-卷的情绪走向确定后，**每一章就是弧线上的一个点**。在定每章 summary 时标注本章在弧线上的位置：
+Emotional trend = an arc, with a Qidian, a middle turning, and an end point. Each step
+in the arc corresponds to a stage in a volume (a stage of the template/a level of the
+conflict ladder):
 
 ```
-### 1-3：勘查现场
-- **冲突事件**：陆征在现场发现矛盾
-- **情绪锚点**：压抑↑——主角发现有人在阻挠，处境更艰难了
-- **弧线位置**：第3章/共10章——压抑阶段的后段，接近转折点
+✅ Press first and then curl (suitable for curling):
+  Depressed (dilemma established) → Depressed ↑ (Oppression escalated) → More depressed (desperate situation)
+  → Improve (get a turn) → face-slapping (counter-attack) → show off (show results)
+  → The reader has been suppressed and finally released in a concentrated manner
+
+✅ Approaching the arc layer by layer (suitable for suspense volumes):
+  Tension (building suspense) → Tension ↑ (Crisis approaching) → Shock (reversal of revelation)
+  → Anticipation (building up momentum for climax) → Soothing (ending the aftertaste)
+
+❌ Unsatisfactory:
+  "Cool" → No arc, just a one-time emotion. How to progress? From where to where?
+  "Tense → Tension → Tension" → No change, the reader is numb in Chapter 3
+```
+
+### Chapter emotional anchor point design
+
+After the emotional direction of the volume is determined, **each chapter is a point on
+the arc**. When setting the summary of each chapter, mark the position of this chapter
+on the arc:
+
+```
+### 1-3: Survey site
+- **Conflict incident**: Lu Zheng discovered a conflict at the scene
+- **Emotional Anchor**: Depression↑, The protagonist discovers that someone is obstructing him and the situation becomes more difficult.
+- **Arc position**: Chapter 3/Total 10 chapters - the latter part of the repression stage, approaching the turning point
 ```
 
 ---
 
-## 四、冲突阶梯——冲突的逐层升级
+## 4. Conflict ladder - the escalation of conflict layer by layer
 
-核心冲突定义了"谁对抗谁"，但一卷的核心冲突需要**拆解为一系列逐步升级的障碍**。不是一个障碍，而是一架梯子——每层比前一层更高、更险。
+The core conflict defines "who versus whom," but the core conflict of a volume needs to
+be broken down into a series of escalating obstacles. Not an obstacle, but a ladder,each
+level higher and more dangerous than the previous one.
 
-### 阶梯设计原则
+### Ladder design principles
 
-1. **每一层障碍是前一层的直接结果**——主角过了第一关，才触发第二关，不是因为"时间到了该出下一件事"
-2. **每层比前一层更难**——对手更强、代价更大、选择更痛苦
-3. **层与层之间有转折点**——不是"更难的同一种事"，而是"局面发生了根本性变化"
+1. **Each level of obstacle is a direct result of the previous level** - the protagonist
+   passes the first level before triggering the second level, not because "it's time to
+   do the next thing"
+2. **Each level is more difficult than the previous level** - the opponent is stronger,
+   the cost is greater, and the choice is more painful
+3. **There is a turning point between layers** - not "the same thing is harder", but
+   "the situation has fundamentally changed"
 
-### 冲突阶梯结构
+### Conflict Ladder Structure
 
 ```
-视觉化示例（悬疑卷）：
-  第1层（1-1~1-2）：接案→勘查发现矛盾         ← 入门障碍：信息获取
-       ↓ 转折：发现旧案被压
-  第2层（1-3~1-5）：深入调查→遭遇警告          ← 升级障碍：外部阻力
-       ↓ 转折：保护伞露出真面目
-  第3层（1-6~1-7）：关键证人失踪→证据链断裂   ← 重大障碍：损失与挫折
-       ↓ 转折：主角被迫选择
-  第4层（1-8~1-10）：正面冲突→真相浮出         ← 终极障碍：对决
+Visualization example (suspense volume):
+  Level 1 (1-1~1-2): Taking the case → Investigation and finding contradictions ← Barrier to entry: Obtaining information
+       ↓ Turning point: It is discovered that an old case has been suppressed
+  Level 2 (1-3~1-5): In-depth investigation → Encounter warning ← Obstacles to upgrade: External resistance
+       ↓ Turning point: Umbrella reveals its true face
+  Level 3 (1-6~1-7): The key witness is missing → the evidence chain is broken ← Major obstacles: losses and setbacks
+       ↓ Turning point: The protagonist is forced to choose
+  Level 4 (1-8~1-10): Head-on conflict → The truth emerges ← The ultimate obstacle: Showdown
 ```
 
-### 关键转折点设计
+### Key Turning Point Design
 
-一卷必须有 **2-4 个关键转折点**。转折点是"局面发生根本性变化的时刻"，转折点之间是"推进阶段"。
+A reel must have **2-4 key turning points**. The turning point is "the moment when the
+situation fundamentally changes", and the turning points are the "advance stages".
 
-| 转折类型 | 示例 | 效果 |
+| Twist types | Examples | Effects |
 |---------|------|------|
-| **信息转折** | "主角发现旧案被压" | 知道的事变了，目标变了 |
-| **关系转折** | "合作者其实是敌人" | 阵营变了，对抗格局变了 |
-| **状态转折** | "主角失去警队支持" | 资源变了，难度变了 |
-| **事件转折** | "关键证人被杀" | 局势变了，不可逆了 |
+| **Information Turn** | "The protagonist discovers that an old case has been suppressed" | What we know has changed, and the target has changed |
+| **Relationship turning point** | "Cooperators are actually enemies" | The camps have changed, and the confrontation pattern has changed |
+| **Status Transition** | "The protagonist loses the support of the police force" | Resources have changed, difficulty has changed |
+| **Turn of events** | "The key witness was killed" | The situation has changed and is irreversible |
 
-> **判定标准：** 如果没有这个转折点，后面的故事还能不能按原路径走？
-> ——能走 → 说明不是转折点，只是普通推进，调高难度或删除。
-> ——不能走 → 这才是真正的转折。
+> **Judgment Criteria:** Without this turning point, would the rest of the story still
+> follow the original path?, Can walk → Explain that it is not a turning point, just a
+> normal advancement, increase the difficulty or delete it., Can’t walk → This is the
+> real turning point.
 
-### 冲突阶梯验收
+### Conflict Ladder Acceptance
 
-- [ ] **每层障碍比前一层更难**——不是重复同一种对抗（每层都"遇到混混→打赢"就是平的）
-- [ ] **每层之间有清晰的转折点**——局面发生了根本性变化，不是同一件事的延续
-- [ ] **没有"为了有障碍而硬加"的障碍**——每一层都服务于核心冲突的推进
-- [ ] **转折点数量在 2-4 个之间**——太少平铺直叙，太多喘不过气
+- [ ] **Each level of obstacles is more difficult than the previous level** - not
+      repeating the same confrontation (each level is equal if "encounter the gangster →
+      win")
+- [ ] **There is a clear turning point between each layer** - the situation has
+      fundamentally changed and is not a continuation of the same thing
+- [ ] **No obstacles "just for the sake of obstacles" - each layer serves the
+      advancement of the core conflict
+- [ ] **The number of turning points is between 2-4** - too few straightforward
+      narratives, too many breathless
 
 ---
 
-## 五、信息差——驱动力的引擎
+## 5. Information gap, the engine of driving force
 
-驱动力回答"读者为什么想往下读"，而**信息差**是驱动力的核心引擎。读者翻页不是因为有冲突，是因为想知道"接下来会发生什么"——这个"想知道"来自**谁知道什么、谁不知道什么**。
+Driving force answers "why readers want to read on", and **information gap** is the core
+engine of driving force. Readers turn pages not because of conflict, but because they
+want to know "what will happen next" - this "want to know" comes from **who knows what
+and who doesn't know what**.
 
-### 信息差的四个主体
+### Four subjects with poor information
 
-信息差始终是"某方知道某件事，另一方不知道"的关系。涉及四个主体：
+The information gap is always a relationship in which "one party knows something and the
+other party does not." Four subjects are involved:
 
-| 主体 | 代表 | 说明 |
+| Subject | Representative | Description |
 |------|------|------|
-| **主角** | 主角/核心团队 | 读者代入的视角主体 |
-| **配角** | 盟友、中立角色、线人 | 信息在主角和其他角色之间可能不对称 |
-| **反派** | 对手、敌对势力、环境陷阱 | 信息在主角和对抗方之间可能不对称 |
-| **读者** | 阅读者 | 读者可能知道角色不知道的事，反之亦然 |
+| **Protagonist** | Protagonist/Core Team | Reader’s Perspective Subject |
+| **Supporting Characters** | Allies, neutral characters, informants | Information may be asymmetrical between the protagonist and other characters |
+| **Villains** | Opponents, hostile forces, environmental traps | Information may be asymmetric between the protagonist and the antagonist |
+| **Reader** | Reader | The reader may know something that the character does not know and vice versa |
 
-### 信息差的三种关系（按知情方划分）
+### Three types of relationships with information gaps (divided by informed parties)
 
-| 关系 | 模式 | 示例 | 读者心理 |
+| Relationships | Patterns | Examples | Reader Psychology |
 |------|------|------|---------|
-| **主角知道↦其他人不知道** | 主角知道某个关键信息，反派/配角不知道 | 主角有金手指、主角提前得知了阴谋 | 期待——"看他怎么用这个信息" |
-| **反派/配角知道↦主角不知道** | 反派或配角有主角不知道的秘密/陷阱 | 反派设好埋伏等主角，读者/反派都知道只有主角不知道 | 紧张——"别踩进去啊！" |
-| **读者知道↦主角不知道** | 读者通过叙事知道某件事，主角还被蒙在鼓里 | 读者知道这是个误会但角色还在生气 | 焦急——"快说清楚啊！" |
+| **The protagonist knows ↦ Others don't know** | The protagonist knows a certain key information, but the villain/supporting character does not | The protagonist has a golden finger, and the protagonist knows the conspiracy in advance | Expectation - "Let's see how he uses this information" |
+| **The villain/supporting character knows ↦the protagonist does not know** | The villain or supporting character has secrets/traps that the protagonist does not know | The villain sets up an ambush for the protagonist, and the readers/villains know that only the protagonist does not know | Nervous - "Don't step in!" |
+| **The reader knows ↦ the protagonist does not know** | The reader knows something through the narrative, but the protagonist is still kept in the dark | The reader knows it is a misunderstanding but the character is still angry | Anxiety - "Speak clearly!" |
 
-> **注意：** 信息差的重点是说清楚"谁知道什么、谁不知道什么"，不是判断"这是谁的劣势"。
-> 同一信息差中哪方知道、哪方不知道是固定的——信息揭露后关系反转，变成新的信息差。
+> **Note:** The point of information gap is to clarify "who knows what and who doesn't
+> know what", not to judge "whose disadvantage is this". Which party knows and which
+> party does not know the same information gap is fixed - after the information is
+> revealed, the relationship reverses and becomes a new information gap.
 
-### 信息差在卷纲中的标记
+### Marking of information gaps in the syllabus
 
-每章 summary 后面标注该章活跃的信息差。用箭头表示"谁知道 ↦ 谁不知道"：
+After the summary of each chapter, the active information gaps of the chapter are
+marked. Use arrows to express "who knows ↦ who doesn't know":
 
 ```
-### 1-4：陷阱
-- **冲突事件**：陆征根据线人情报前往仓库，但情报是假的——对方已经设好埋伏等他
-- **情绪锚点**：紧张
-- **信息差**：反派知道是陷阱 ↦ 主角不知道 ⬅ 全章悬念来源
+### 1-4: Trap
+- **Conflict Event**: Lu Zheng went to the warehouse based on the informant's information, but the information was false - the other party had set up an ambush waiting for him.
+- **Emotional Anchor**: Tension
+- **Information gap**: The villain knows it’s a trap ↦ The protagonist doesn’t know ⬅ The source of suspense in the whole chapter
 
-### 1-5：反杀
-- **冲突事件**：陆征实际早有准备——他将计就计，反过来钓出了线人背后的人
-- **情绪锚点**：爽
-- **信息差**：主角有后手 ↦ 反派不知道 ✅ 反转了上一章的信息差
+### 1-5: Counterattack
+- **Conflict incident**: Lu Zheng was actually prepared - he used the trick to fish out the person behind the informant
+- **Emotional Anchor**: Cool
+- **Information gap**: The protagonist has a back-up plan ↦ The villain doesn’t know ✅ The information gap in the previous chapter is reversed
 ```
 
-### 信息差的驱动力类型
+### Types of driving forces for poor information
 
-信息差的分布决定了驱动力类型，驱动力决定了整卷的节奏设计：
+The distribution of information gaps determines the type of driving force, and the
+driving force determines the rhythm design of the entire volume:
 
-| 主导驱动力 | 核心机制 | 信息差模式 | 章节节奏设计 |
+| Dominant driving force | Core mechanism | Information gap model | Chapter rhythm design |
 |-----------|---------|-----------|------------|
-| **悬疑驱动** | "想知道真相是什么" | 主角未知真相↦逐步揭露 | 每章末尾留信息钩子，释放一层新信息 |
-| **威胁驱动** | "担心主角会不会死" | 反派知道陷阱↦主角不知道 | 危机螺旋上升，安全期越来越短 |
-| **目标驱动** | "想看主角能不能达成" | 主角知道目标↦反派不知道底牌 | 阶段性成果+新阻碍，循环推进 |
-| **关系驱动** | "关系会怎样发展" | 读者知道真相↦角色还在误会 | 张力累积到揭穿，开合有度 |
-| **信息差驱动**（纯） | "看什么时候拆穿" | 读者全知道↦角色不知道 | 倒计时揭穿，利用读者焦急感 |
+| **Suspense driven** | "Want to know what the truth is" | The unknown truth of the protagonist ↦ is gradually revealed | Information hooks are left at the end of each chapter to release a layer of new information |
+| **Threat driven** | "Worried about whether the protagonist will die" | The villain knows the trap ↦ The protagonist does not know | The crisis spirals and the safety period becomes shorter and shorter |
+| **Goal driven** | "I want to see if the protagonist can achieve it" | The protagonist knows the goal ↦ The villain does not know the trump card | Phased results + new obstacles, cyclical advancement |
+| **Relationship-driven** | "How will the relationship develop?" | The reader knows the truth↦The character still misunderstands | The tension accumulates to reveal, and the opening and closing are moderate |
+| **Information gap driven** (pure) | "Let's see when it will be revealed" | Readers know everything ↦ Characters don't know | Countdown to reveal, taking advantage of readers' anxiety |
 
-**组合使用：** 一卷可以有 1 个主导驱动力 + 1 个辅助驱动力。悬疑驱动为主时，可以局部用威胁驱动制造紧张。
+**Combination use:** A volume can have 1 dominant drive + 1 auxiliary drive. When suspense
+drive is the main focus, threat drive can be used partially to create tension.
 
-### 卷级信息差弧线
+### Volume level information difference arc
 
-卷纲不定义"每章信息差怎么变"——那是章纲的事。卷纲只定义**起点和终点**：这卷开始时主角知道什么不知道什么、反派知道什么不知道什么？结束时谁知道了新信息？中间的弧线由各章节逐步演绎。
+The syllabus does not define "how the information gap changes in each chapter" - that is
+a matter for the chapter syllabus. The outline of the volume only defines **Qidian and
+the end point**: What does the protagonist know and does not know at the beginning of
+this volume, and what does the villain know and do not know? Who learns new information
+by the end? The middle arc is played out step by step from chapter to chapter.
 
-**Step 1：定卷开始时信息差**
+**Step 1: Information difference at the beginning of the fixed volume**
 
-> "这卷开头，主角知道什么、不知道什么？反派知道什么？读者知道什么？"
-
-```
-卷开始时：
-  ⬆ 主角知道：苏棠失踪、警方判定主动离开
-  ⬇ 反派知道：三年前压案的内幕、苏棠在哪
-  👁 读者知道：和主角一样多（代入视角）
-  → 最大的信息差是"反派知道内幕 ↦ 主角不知道"，这是本卷的起点拉力
-```
-
-**Step 2：定卷结束时信息差**
-
-> "这卷结尾，信息到了谁手里？——主角知道了什么以前不知道的？反派失去了什么信息优势？"
+> "At the beginning of this volume, what does the protagonist know and doesn't know?
+> What does the villain know? What does the reader know?"
 
 ```
-卷结束时：
-  ⬆ 主角新知道：旧案被压的事实、保护伞的存在、自己在被盯
-  ⬇ 反派新知道：主角在查，比想象中难缠
-  👁 读者知道：和主角一样
-  → 主角的信息前进了，但和反派的差距仍然存在，这是下一卷的起点
+At the beginning of the volume:
+  ⬆ The protagonist knows: Su Tang disappeared and the police determined that he left voluntarily
+  ⬇ The villain knows: the inside story of the case three years ago and where Su Tang is
+  👁 Readers know: as much as the protagonist (insert perspective)
+  → The biggest information gap is "the villain knows the inside story ↦ the protagonist does not know", this is the Qidian pull of this volume
 ```
 
-**Step 3：起点→终点的弧线方向**
+**Step 2: Information difference at the end of fixed volume**
 
-从起点到终点，信息差的变化趋势是什么？不是每章的细节，是卷级的方向：
+> "At the end of this volume, who has the information? - What did the protagonist know
+> that he didn't know before? What information advantage did the villain lose?"
 
 ```
-✅ 合格：
-  起点：反派知道内幕 ↦ 主角不知道
-  终点：主角知道了内幕的存在，但不知道全部
-  弧线：信息差从"完全不对称"变成"部分平衡"，
-        主角追上了一步，但还不够 → 支撑下一卷继续追查
-
-❌ 不合格：
-  起点：主角什么都不知道
-  终点：主角什么都知道了
-  → 一卷把所有信息差填平了，下一卷没有信息驱动力了
+At the end of the volume:
+  ⬆ The protagonist learns something new: the fact that the old case was suppressed, the existence of a protective umbrella, and that he is being watched
+  ⬇ New villain knowledge: The protagonist is investigating and is more difficult to deal with than expected
+  👁 Readers know: Same as the protagonist
+  → The protagonist’s information has advanced, but the gap with the villain still exists. This is the next volume of Qidian
 ```
 
-### 信息差验收
+**Step 3: Qidian→Arc direction of the end point**
 
-- [ ] **每章标注了信息差**——写清楚"谁知道什么 ↦ 谁不知道什么"
-- [ ] **信息差在卷内有"设→悬→揭"的完整周期**——设了不揭等于白设，揭得太早等于没设
-- [ ] **信息差之间有继承关系**——后一个信息差从前一个的揭穿中产生，不是凭空冒出新秘密
-- [ ] **信息差不是全程倾向同一方**——全程主角知道关键信息而反派不知道 → 没有紧张感；全程反派知道内幕而主角不知道 → 太压抑。需要有交替变化
+What is the changing trend of the information gap from Qidian to the end point? It’s not
+the details of each chapter, it’s the volume-level direction:
+
+```
+✅ Qualified:
+  Qidian: The villain knows the inside story ↦ The protagonist doesn’t know
+  End point: The protagonist knows the existence of the inside story, but does not know everything
+  Arc: Information gap changes from "complete asymmetry" to "partial balance",
+        The protagonist catches up one step, but it is not enough → Support the next volume to continue the pursuit
+
+❌ Unsatisfactory:
+  Qidian: The protagonist knows nothing
+  End point: The protagonist knows everything
+  → One volume fills all the information gaps, and the next volume has no information driving force.
+```
+
+### Information gap acceptance
+
+- [ ] **Information gaps are marked in each chapter** - Write clearly "who knows what ↦
+      who doesn't know what"
+- [ ] **The information gap in the volume has a complete cycle of "setting → suspension
+      → revealing"** - setting it up but not revealing it means setting it up in vain,
+      revealing it too early means there is no setting up
+- [ ] **There is an inheritance relationship between information gaps** - the latter
+      information gap arises from the revelation of the previous one, not a new secret
+      emerging out of thin air
+- [ ] **The information gap does not mean leaning towards the same side throughout the
+      entire process** - The protagonist knows the key information throughout the
+      process but the villain does not → there is no sense of tension; the villain knows
+      the inside story throughout the process but the protagonist does not → too
+      depressing. need for alternation
 
 ---
 
-## 六、场景卡——章节的场景化分解
+## 6. Scene card - scene decomposition of chapters
 
-> 卷纲→章（含冲突点+情绪锚点+信息差）
-> 章纲→场景卡（每卡 3 个信息）
+> Outline → Chapter (including conflict points + emotional anchor points + information
+> gaps) Chapter Outline → Scene Cards (3 information per card)
 
-场景卡是章纲层面的细化工具。一章由 2-5 个场景卡组成，每个场景卡记录三个信息：
+Scene cards are a refinement tool at the chapter level. A chapter consists of 2-5 scene
+cards, each scene card records three pieces of information:
 
-| 字段 | 回答的问题 | 说明 |
+| Fields | Answered Questions | Description |
 |------|-----------|------|
-| **主角想干啥** | Goal——主角在这场景中要达成什么 | 哪怕是被动场景，主角也有目的（"活下来""搞清楚状况"） |
-| **有什么拦着他** | Obstacle——阻碍是什么 | 可以是人（对手）、事（条件不够）、内心（恐惧/犹豫） |
-| **有什么悬念让读者想看下去** | Hook——有什么未解答的问题让读者想知道"然后呢？" | 对应情绪锚点+信息差，读者关心"然后呢？" |
+| **What the protagonist wants to do** | Goal - what the protagonist wants to achieve in this scene | Even in a passive scene, the protagonist has a purpose ("survive", "figure out the situation") |
+| **What's blocking him** | Obstacle - what is the obstacle | It can be people (opponents), things (insufficient conditions), heart (fear/hesitation) |
+| **Is there any suspense that makes readers want to keep reading** | Hook - What unanswered questions make readers want to know "What then?" | Corresponding to emotional anchor + information gap, readers care about "What then?" |
 
-### 场景卡示例
+### Scene card example
 
 ```
-## 章纲：1-3 旧卷宗
+## Chapter Outline: 1-3 Old Files
 
-### 场景一：方岩办公室
-- **主角想干啥**：陆征想从方岩那里拿到三年前压案的内情
-- **有什么拦着他**：方岩不敢说——办公室里有别人，暗示陆征"这案子有人盯着"
-- **有什么悬念让读者想看下去**：读者感觉方岩知道内情但不敢说，更加好奇案子背后是谁
+### Scene 1: Fang Yan’s office
+- **What does the protagonist want to do**: Lu Zheng wants to get the inside information from Fang Yan about the case three years ago.
+- **What's stopping him**: Fang Yan didn't dare to say - there was someone else in the office, hinting to Lu Zheng that "someone is watching this case"
+- **Is there any suspense that makes the reader want to read on**: The reader feels that Fang Yan knows the inside story but dare not tell it, and is even more curious about who is behind the case.
 
-### 场景二：档案室
-- **主角想干啥**：陆征调取三年前卷宗，找到案发记录
-- **有什么拦着他**：档案信息不全，关键几页被抽走了
-- **有什么悬念让读者想看下去**：谁抽走的？卷宗上写过什么不能让人看到的信息？
+### Scene 2: Archives Room
+- **What does the protagonist want to do**: Lu Zheng retrieved the files from three years ago and found the record of the crime
+- **What's stopping him**: The file information is incomplete and a few key pages have been taken away.
+- **Is there any suspense that makes readers want to keep reading**: Who took it away? What information is written in the file that cannot be seen by others?
 
-### 场景三：停车场
-- **主角想干啥**：离开警局时确认自己是否被跟踪
-- **有什么拦着他**：确实有人盯梢——灰短袖男人坐在车里
-- **有什么悬念让读者想看下去**：对方是谁？陆征已经被盯上了，下一步会发生什么？
+### Scene 3: Parking lot
+- **What the protagonist wants to do**: Confirm whether you are being followed when leaving the police station
+- **What's stopping him**: Someone is indeed following him - the man in gray short-sleeves is sitting in the car
+- **Is there any suspense that makes readers want to keep reading**: Who is the other party? Lu Zheng has been targeted, what will happen next?
 ```
 
-### 场景卡三要素原则
+### The three-element principle of scene cards
 
-每卡三要素**缺一不可**：
+Each card has three elements that are **indispensable**:
 
-| 缺失 | 后果 | 修正 |
+| Missing | Consequences | Correction |
 |------|------|------|
-| 没有"主角想干啥" | 流水账——主角被剧情推着走，没有主动性 | 给主角一个目的，哪怕只是"搞清楚自己在哪" |
-| 没有"有什么拦着他" | 没有冲突——主角想干啥就干成了，读者不紧张 | 加一个障碍，大小都行 |
-| 没有"有什么悬念让读者想看下去" | 平铺直叙——写了但读者不关心 | 加一个未解答的问题：读者想知道"接下来呢？" |
+| There is no "what the protagonist wants to do" | Running account - the protagonist is pushed by the plot and has no initiative | Give the protagonist a purpose, even if it is just to "figure out where he is" |
+| There is no "something holding him back" | No conflict - the protagonist does whatever he wants and the reader is not nervous | Add an obstacle, big or small |
+| No "is there any suspense that makes the reader want to keep reading" | Straightforward narrative - written but the reader doesn't care | Add an unanswered question: the reader wants to know "What's next?" |
 
-### 场景卡验收
+### Scene card acceptance
 
-- [ ] **每卡三要素齐全**——没有缺失字段
-- [ ] **场景间有因果递进**——场景一是场景二的原因，场景二是场景三的前提
-- [ ] **场景卡的情绪锚点总和 = 章的情绪锚点**——一章内的场景可以有起伏，但整体服务于章的情绪
-- [ ] **场景卡的信息差有变化**——整章都是"主角不知道"会疲劳，中间可切换到"读者知道主角不知道"增加张力
+- [ ] **Each card has all three elements** - no missing fields
+- [ ] **There is a progression of cause and effect between scenes** - Scene one is the
+      cause of scene two, and scene two is the premise of scene three.
+- [ ] **The sum of the emotional anchor points of the scene card = the emotional anchor
+      point of the chapter** - the scenes within a chapter may have ups and downs, but
+      the overall serves the mood of the chapter
+- [ ] **The information gap of the scene card has changed** - the whole chapter is "the
+      protagonist doesn't know" which will make you tired. In the middle, you can switch
+      to "the reader knows that the protagonist doesn't know" to increase the tension.
 
-## 七、章节列表（chapters_summary）
+## 7. Chapter list (chapters_summary)
 
-chapters_summary 是卷纲最核心的产出——它直接决定了每章的章纲能不能写出来。
+chapters_summary is the core output of the volume outline - it directly determines
+whether the outline of each chapter can be written.
 
-### 1. 章节结构
+### 1. Chapter structure
 
-**写什么：** 每章的 id、title、summary。
+**What to write:** The id, title, and summary of each chapter.
 
-**怎么聊：** 以上一步确认的模板各阶段为骨架（或角色发声推导的方向），逐章填充。首卷从模板第一阶段的章节开始，卷 N+1 从角色发声推导的自然起点开始。
+**How to chat:** Each stage of the template confirmed in the previous step is the
+skeleton (or the direction of the character's voice derivation), which is filled in
+chapter by chapter. The first volume starts with the chapters from the first stage of
+the template, and Volume N+1 starts with the natural Qidian derived from the character's
+vocalizations.
 
-| 字段 | 填写标准 | 常见问题 |
+| Fields | Filling Standards | Frequently Asked Questions |
 |------|---------|---------|
-| id | 格式 "卷号-章号"（如 1-1, 1-2）。连续不跳号 | 1-1, 1-3（跳了 1-2）——写作循环会断 |
-| title | 提供信息量。不用"第X章"或纯功能名。标题本身应该让读者（或 Agent）猜到本章的核心事件 | "第一章"（等于没写）、"过渡章"（暴露了没想清楚内容） |
-| summary | 一句话，含三个要素：**谁做了什么 + 发生了什么事（冲突） + 本章结束时什么变了**。缺一个要素就是不合格 | "主角继续调查"——谁调查？调查什么？发现了什么？什么都没变？ |
+| id | Format "volume number-chapter number" (such as 1-1, 1-2). Continuous numbers without skipping | 1-1, 1-3 (skipping 1-2) - the writing cycle will be broken |
+| title | Provides information. No "Chapter X" or purely functional names are used. The title itself should allow the reader (or Agent) to guess the core events of this chapter | "Chapter 1" (equal to not being written), "Transitional Chapter" (revealing the unclear content) |
+| summary | One sentence, containing three elements: **who did what + what happened (conflict) + what changed at the end of the chapter**. If one element is missing, the person is unqualified | "The protagonist continues to investigate" - who investigates? Investigate what? What was found? Nothing has changed? |
 
-### 2. 冲突载体（每章必检）
+### 2. Conflict carrier (must be checked in every chapter)
 
-每章 summary 必须包含一个可写的事件冲突。下面是四种不合格的章纲类型和对应的修改方法：
+Each chapter summary must contain a writable event conflict. The following are four
+types of unqualified chapters and corresponding modification methods:
 
-| 不合格类型 | 典型句式 | 为什么写不了 | 修改方向 |
+| Unqualified types | Typical sentence patterns | Why can’t I write | Modification direction |
 |-----------|---------|-------------|---------|
-| 主题式 | "本章讲信任""探讨自由与责任" | 没有事件，只有概念。Agent 无法推理出情节 | 把概念变成具体事件：谁在什么事上信任了谁？结果是？ |
-| 功能式 | "建立人物关系""展示世界观" | 功能不是故事。建立人物关系可以写成"两个角色在某件事上发生分歧" | 把功能折入冲突事件：通过某件事来展示/建立 |
-| 梗概式 | "主角经历了一天的冒险" | 没有具体冲突点。一天里有无数件事——Agent 不知道该写哪件 | 指认这一天里最核心的一件事 |
-| 结果式 | "主角赢了比赛" | 只有结果没有冲突过程。赢了谁？怎么赢的？过程中遇到什么阻碍？ | 写出阻碍和对抗："主角在决赛中面对 XXX，通过 YYY 赢得比赛" |
+| Thematic | "This chapter talks about trust" and "discussing freedom and responsibility" | There are no events, only concepts. Agent cannot deduce plot | Turn concepts into concrete events: Who trusted whom about what? turn out? |
+| Functional style | "Establish character relationships" and "show world view" | Functions are not stories. Establishing a character relationship can be written as "two characters disagree on something" | Fold the function into the conflict event: show/establish through something |
+| Summary style | "The protagonist goes through a day of adventure" | No specific points of conflict. There are countless things in a day - Agent doesn't know which one to write about | Identify the most important thing in this day |
+| Result formula | "The protagonist won the game" | There is only the result and no conflict process. Who won? How did you win? What obstacles did you encounter along the way? | Write obstacles and confrontations: "The protagonist faces XXX in the finals and wins the game through YYY" |
 
-**章节间因果链：**
-
-```
-✅ 合格（因果链清晰）：
-1-1  接案 → 1-2  勘查发现矛盾（因为接了案才去勘查）→ 1-3  深入调查遭遇阻碍（因为发现矛盾才追查旧案）
-每一章是前一章的结果、后一章的原因。
-
-❌ 不合格（各章独立）：
-1-1  主角去A地点 → 1-2  主角见B角色 → 1-3  主角获得C物品
-三件事没有因果递进——只是主角去了不同地方做了不同事，不是故事在推进。
-```
-
----
-
-## 八、新角色与设定追加
-
-卷纲讨论中可能发现需要新增角色或补充世界观设定。这些追加必须在进入写作循环前落实。
-
-### 1. 新角色
-
-| 检查项 | 标准 |
-|--------|------|
-| 角色文件已创建 | `settings/character-setting/<id>.md` 存在，字段填写完整度不低于设定阶段标准 |
-| 故事角色已分配 | 不能留空或写"待定" |
-| 必填字段有值 | 世界观 / 自我定位 / 价值观 / 能力 / 技能 / 环境 至少填写了其中与角色功能相关的字段 |
-| 角色诊断（如果本卷戏份 > 1 章） | 生气表现 + 缺点 + 自己目的（参照设定阶段角色诊断标准） |
-| 配角目的明确 | 如果配角只服务于一场戏（送信息/引路/被救），必须标注"一次性角色"或展开为多场景角色 |
-
-### 2. 新设定追加
-
-| 检查项 | 标准 |
-|--------|------|
-| 新设定已写入 `settings/world-setting.md` | 相关字段下追加内容，不是口头讨论完就忘了 |
-| 新设定通过"可感知"反问 | "读者会在正文里感受到这个设定吗？"——答不出就不要加 |
-| 新设定不影响已有章节的一致性 | 如果追加的设定与已归档章节矛盾，必须标注冲突并给出处理方案（修改已归档 / 限制新设定的生效范围 / 放弃追加） |
-
-**示例：**
+**Causal chain between chapters:**
 
 ```
-✅ 合格：
-卷纲讨论中决定"本案需要一位法医角色提供专业线索" →
-  创建 fa-yi-li-ming.md
-    - **故事角色**: 配角
-    - **能力**: 法医专业，能发现常人忽略的尸检细节
-    - **环境**: 市局法医科，与方岩有工作往来
-  角色目的：提供关键线索+作为方岩的"内部信息源"
+✅ Qualified (clear causal chain):
+1-1 Receive the case → 1-2 Contradictions are found in the investigation (the investigation was carried out because the case was accepted) → 1-3 In-depth investigation encounters obstacles (the old case was investigated because of the contradictions)
+Each chapter is the result of the previous chapter and the cause of the next chapter.
 
-❌ 不合格：
-卷纲讨论中觉得"这个世界需要一个地下交易市场" →
-  口头确认了但没有写入 `settings/world-setting.md`
-  三天后开始写第 5 章，Agent 不知道地下市场的规则，自行编造了一个
-  → 与作者意图冲突，第 5 章重写
+❌ Unqualified (each chapter is independent):
+1-1 The protagonist goes to location A → 1-2 The protagonist meets character B → 1-3 The protagonist obtains item C
+There is no causal progression between the three events - it's just that the protagonist went to different places and did different things, not that the story progressed.
 ```
 
 ---
 
-## 产出模板
+## 8. New characters and settings added
 
-确认后按以下格式写入 `volume-{N}.md`：
+During the outline discussion, it may be discovered that new characters or worldview
+settings need to be added. These additions must be implemented before entering the
+writing cycle.
+
+### 1. New roles
+
+| Check items | Standards |
+|--------|------|
+| The role file has been created | `settings/character-setting/<id>.md` exists, and the completeness of the field filling is not lower than the set stage standard |
+| Story role has been assigned | Cannot be left blank or written "To Be Determined" |
+| Required fields have values | World view / Self-positioning / Values / Abilities / Skills / Environment At least the fields related to the role function are filled in |
+| Character diagnosis (if this volume has > 1 chapter) | Angry expression + shortcomings + own purpose (refer to the character diagnosis standards in the setting stage) |
+| The supporting role has a clear purpose | If the supporting role only serves one scene (sending information/leading the way/being rescued), it must be marked as a "one-time role" or expanded into a multi-scene role |
+
+### 2. New settings added
+
+| Check items | Standards |
+|--------|------|
+| New settings have been written to `settings/world-setting.md` | Additional content under relevant fields, do not forget after verbal discussion |
+| The new setting asks questions through "perceivable" | "Will readers feel this setting in the text?" - If you can't answer, don't add it |
+| The new settings do not affect the consistency of existing chapters | If the added settings conflict with the archived chapters, the conflict must be marked and a solution must be given (modify the archived / limit the effective scope of the new settings / abandon the addition) |
+
+**Example:**
+
+```
+✅ Qualified:
+During the outline discussion, it was decided that "this case requires a forensic role to provide professional clues" →
+  Create fa-yi-li-ming.md
+    - **Story Character**: Supporting Role
+    - **Ability**: Forensic medicine major, able to discover autopsy details that ordinary people ignore
+    - **Environment**: Forensic Medicine Department of the Municipal Bureau, working with Fang Yan
+  Role purpose: Provide key clues + serve as Fang Yan's "internal information source"
+
+❌ Unsatisfactory:
+During the outline discussion, I felt that "the world needs an underground trading market" →
+  Confirmed verbally but not written `settings/world-setting.md`
+  Three days later, I started writing Chapter 5. The Agent did not know the rules of the underground market and made up his own
+  → Conflicts with author’s intent, Chapter 5 rewritten
+```
+
+---
+
+## Output Template
+
+After confirmation, write `volume-{N}.md` in the following format:
 
 ```markdown
-# 卷 1：{标题}
+# Volume 1: {title}
 
-## 卷信息
+## Volume information
 
-- **情绪走向**：本卷读者的情绪变化弧线（压抑→压抑→更压抑→提升→打脸→装逼）
-- **核心冲突**：谁 + 做什么 + 被什么阻碍
-- **主导驱动力**：悬疑驱动 / 威胁驱动 / 目标驱动 / 关系驱动 / 信息差驱动
-- **冲突阶梯**：第1层（入门）→ 第2层（升级）→ 第3层（转折）→ 第4层（终极）
-- **预估章节**：N
+- **Emotional trend**: The arc of emotional changes of readers in this volume (depressed→depressed→more depressed→upgraded→face-slapping→pretentious)
+- **Core Conflict**: Who + what + what + hindered by
+- **Leading driving force**: suspense drive/threat drive/goal drive/relationship drive/information gap drive
+- **Ladder of Conflict**: Level 1 (Entry) → Level 2 (Upgrade) → Level 3 (Transition) → Level 4 (Ultimate)
+- **Estimated Chapter**: N
 
-## 章节列表
+## Chapter list
 
-### 1-1：{有信息量的标题}
+### 1-1: {Informative title}
 
-- **冲突事件**：谁做什么 + 冲突事件 + 结束时什么变了
-- **情绪锚点**：读者读这章的心情
-- **信息差**：{谁知道什么} ↦ {谁不知道什么}
+- **Conflict Event**: Who did what + Conflict Event + What changed at the end
+- **Emotional Anchor**: The reader’s mood while reading this chapter
+- **Information gap**: {Who knows what} ↦ {Who doesn’t know what}
 ```
 
-## 各字段怎么被下游使用
+## How each field is used downstream
 
-| 字段 | 谁用 | 怎么用 |
+| Field | Who uses it | How to use it |
 |------|------|--------|
-| chapters_summary | Phase 3.1 方向提案 | 每章方向提案从 chapters_summary 的 summary 推理——"这章要推进什么冲突" |
-| chapters_summary | Phase 3.2 章纲 | 作为章纲的骨架，详细展开 memo 七段 |
-| core_conflict | Phase 3 全部 | 每章反问"这章服务于核心冲突的哪一步？"——确保章节不跑偏 |
-| **情绪走向** | Phase 3.2 章纲 + writer 正文 | 决定每章在弧线上的位置——压抑阶段写短句快节奏，释放阶段写长句细腻感。各章情绪锚点是走向中的一个点 |
-| **主导驱动力** | Phase 3.2 章纲 + writer 正文 | 决定每章的信息释放节奏和信息差设计 |
-| **冲突阶梯** | Phase 3.2 章纲 | 确保每个场景卡中的障碍在对应层级上——不超前使用高层级冲突 |
-| **章节情绪锚点** | writer 正文 | 直接指导正文的情绪渲染方向——本章要让读者紧张，写法就侧重短句和未知感 |
-| **章节信息差** | writer 正文 + prompt-crafter 提示词 | 提示词中注入信息差设计——"读者知道陷阱但主角不知道"驱动读者翻页 |
-| 新角色文件 | Phase 3 正文 | 追加的角色设定在写作时注入提示词 |
+| chapters_summary | Phase 3.1 Direction Proposal | The direction proposal for each chapter is based on the summary reasoning of chapters_summary - "What conflict will this chapter advance" |
+| chapters_summary | Phase 3.2 Chapter outline | As the skeleton of the chapter outline, expand the memo seven paragraphs in detail |
+| core_conflict | Phase 3 All | Each chapter asks "Which step of the core conflict does this chapter serve?" - Make sure the chapter does not go off track |
+| **Emotional Trend** | Phase 3.2 Chapter Outline + Writer Text | Determine the position of each chapter on the arc - write short sentences with a fast pace during the depression stage, and write long sentences with a delicate feel during the release stage. The emotional anchor point of each chapter is a point in the trend |
+| **Leading driving force** | Phase 3.2 Chapter outline + writer text | Determine the information release rhythm and information gap design of each chapter |
+| **Conflict Ladder** | Phase 3.2 Chapter Outline | Make sure the obstacles in each scene card are at the corresponding level - do not use high-level conflicts prematurely |
+| **Chapter Emotional Anchor** | Writer text | Directly guides the emotional rendering direction of the text - this chapter is to make readers nervous, so the writing style focuses on short sentences and a sense of unknown |
+| **Chapter Information Gap** | writer text + prompt-crafter prompt word | Information gap design is injected into the prompt word - "the reader knows the trap but the protagonist does not" drives the reader to turn the page |
+| New character file | Phase 3 text | Additional character settings will be added with prompt words when writing |
 
 ---
 
-## 验收
+## Acceptance
 
-### 卷级验证一：章的故事加起来 = 这卷讲完
+### Volume Level Verification 1: The sum of the chapters’ stories = the volume is finished
 
-指着 chapters_summary，逐章读完所有 summary，问：
+Point to chapters_summary, read all the summaries chapter by chapter, and ask:
 
-> **"这些章合起来，讲完这卷的核心冲突了吗？有没有哪段故事落下了？"**
+> **"Have these chapters taken together completed the core conflict of this volume? Is
+> there any story missing?"**
 
-- ✅ 所有章合起来就是这卷的完整故事，不多不少
-- ❌ 缺了某段关键转折 → 加的章或调整现有章
-- ❌ 多了一章和主线无关的 → 删或融到其他章里
+- ✅ All the chapters together are the complete story of this volume, no more, no less
+- ❌ A key turning point is missing → Add a chapter or adjust an existing chapter
+- ❌ There is an extra chapter that has nothing to do with the main plot → delete or
+  merge it into other chapters
 
-这是卷级的"每卷是总主线的子集"原则映射到章节——**如同 2.0 的"没有这卷主线走不完"，这里对应"没有这章这卷的故事就不完整"**。
+This is the volume-level principle of "each volume is a subset of the main plot" mapped
+to chapters - **just like 2.0's "the main plot cannot be completed without this volume",
+here it corresponds to "the story of this volume is incomplete without this chapter"**.
 
-### 卷级验证二：每章能追溯到卷的冲突
+### Volume level verification 2: Each chapter can be traced back to conflicts in the volume
 
-指着卷的核心冲突，逐章问：
+Pointing to the core conflict of the volume, ask chapter by chapter:
 
-> **"这章的故事在推进卷的冲突的哪一步？"**
+> **"Where does the story in this chapter advance the conflict of the volume?"**
 
-- ✅ "第 1 章接案建立悬念 → 冲突的起点"
-- ✅ "第 3 章发现旧案 → 冲突升级"
-- ❌ "这章在写主角吃饭 → 和卷的冲突无关"
+- ✅ "Chapter 1 takes over the case and builds suspense → Qidian of Conflict"
+- ✅ "Chapter 3: Old case discovered → Conflict escalates"
+- ❌ "This chapter is about the protagonist eating → has nothing to do with the conflict
+  between Juan"
 
-偶尔一章两章偏离是允许的（埋伏笔、调节奏），但多数章对不上 → 要么卷的冲突定义不清，要么章节写飞了。
+Occasionally, deviations between one chapter and two chapters are allowed (for example,
+setting aside the writing, adjusting the rhythm), but most of the chapters do not match
+up → either the conflict of the volume is not clearly defined, or the chapters are
+written out of order.
 
-### 卷级验证三：每章的冲突解决后推进了卷的故事
+### Volume Level Verification 3: The resolution of the conflict in each chapter advances the story of the volume
 
-指着每章的章末变化，问：
+Point to the changes at the end of each chapter and ask:
 
-> **"这章结束后，卷的故事往前走了一步吗？"**
+> **"After the end of this chapter, has Juan's story taken a step forward?"**
 
-- ✅ 发现了关键线索 → 下一步可以追查（故事前进）
-- ✅ 遭遇了阻碍 → 主角被迫换方向（故事转折）
-- ✅ 角色关系变了 → 后续冲突有了新基础（状态改变）
-- ❌ 发现了线索但没影响后续 → 等于没发现
-- ❌ 打了一架但赢了输了都不影响后续 → 等于没打
-- ❌ 主角想通了什么但行为没变 → 等于没想通
+- ✅ Key clues found → The next step can be traced (the story advances)
+- ✅ Encountered an obstacle → The protagonist was forced to change direction (story
+  turning point)
+- ✅ The role relationship has changed → the subsequent conflict has a new basis (status
+  change)
+- ❌ A clue was discovered but it did not affect the follow-up → It means that it was not
+  discovered
+- ❌ If you have a fight, winning or losing will not affect the follow-up → It means
+  there is no fight.
+- ❌ The protagonist has figured something out but his behavior has not changed → It
+  means he has not figured it out
 
-**核心区别：** 验证二问"这章和卷的冲突有关吗"，验证三问"这章结束后卷的推进器向前滚了吗"。有关不等于有用。
+**Core Difference:** The second verification question is "Is this chapter related to the
+conflict in the volume?" The third verification question is "Did the volume's driving force
+carry forward after the end of this chapter?" Relevant does not mean useful.
 
-### 卷级验证四：章的名称符合章的故事
+### Volume Level Verification 4: The name of the chapter matches the story of the chapter
 
-只看 title，不看 summary，问：
+Just look at the title, not the summary, and ask:
 
-> **"只看标题，能猜到这章大概发生什么事吗？"**
+> **"Just by looking at the title, can you guess what is going on in this chapter?"**
 
-- ✅ "委托人" → 猜得到：有人来找主角，大概率是委托案子
-- ✅ "出租屋" → 猜得到：主角去了某个地点，在那里发生了事
-- ❌ "第一章""新的开始""转折" → 信息量为零，任何故事都能用
-- ❌ "迷雾""深渊" → 太虚，猜不到具体发生什么
+- ✅ "Client" → You can guess: Someone is looking for the protagonist, and it is most
+  likely a commissioned case
+- ✅ "Rental House" → Guess: The protagonist went to a certain place and something
+  happened there
+- ❌ "Chapter 1", "New Beginning", "Turning" → The amount of information is zero and can
+  be used in any story
+- ❌ "Mist" "Abyss" → Too virtual, can't guess what exactly happened
 
-title 是给读者（和 Agent）的第一信号。合格的 title 让人看完 summary 后觉得"果然是这个意思"，而不是"标题和内容两回事"。
+The title is the first signal to the reader (and Agent). A qualified title will make
+people think "that's what it means" after reading the summary, rather than "the title
+and the content are two different things".
 
-### 快速嗅探（15 秒）
+### Quick sniff (15 seconds)
 
-三个全过，大概率合格：
+If you pass all three, you have a high probability of passing:
 
-1. **能不看文件说出核心冲突一句话吗？** → 说不出来 → 没想清楚
-2. **随便指一章 summary，能说出"这章结束后什么东西变了"吗？** → 说不出来 → 章纲没有冲突载体
-3. **随便指两章，能说出"为什么第一章之后是第二章、不是直接跳到第三章"吗？** → 说不出来 → 没有因果链
+1. **Can you say one sentence about the core conflict without looking at the document?
+   ** → Can’t tell → Didn’t think clearly
+2. **Just point to a summary of a chapter. Can you tell me "what changed after the end
+   of this chapter"? ** → Can’t tell → There is no conflict carrier in the chapter
+   outline
+3. ** Just point to two chapters at random. Can you tell me "Why is it that Chapter 1 is
+   followed by Chapter 2 instead of jumping directly to Chapter 3?" ** → Can’t tell → No
+   causal chain
 
-### 逐项检查
+### Check item by item
 
-- [ ] **核心冲突可一句说完**（谁 + 做什么 + 被什么阻碍），不对着 yaml 念，张口能说
-- [ ] **卷方向已确定**（首卷有结构模板、卷 N+1 有角色发声+作者确认方向）
-- [ ] **首卷：结构模板选定 + 阶段功能写清 + 章节数已分配**
-- [ ] **卷 N+1：活跃角色已筛选、卷末落位具体、角色意志有冲突、作者已确认方向**
-- [ ] **情绪走向已确立**——是一条弧线（压抑→打脸→装逼），不是单个情绪词
-- [ ] **情绪走向有递进**——弧线有起点、转折、终点，每一步比前一步更推进
-- [ ] **冲突阶梯已设计**——2-4 层障碍，每层比前一层更难，有清晰转折点
-- [ ] **关键转折点已标注**——每个转折是"局面根本性变化"，不是普通推进
-- [ ] **信息差已标注**——每章写清"谁知道什么 ↦ 谁不知道什么"
-- [ ] **主导驱动力已确定**——悬疑/威胁/目标/关系/信息差驱动之一，有主次
-- [ ] **chapters_summary 每章有 id（连续）、title（有信息量）、summary（三要素齐全）**
-- [ ] **每章有可写的冲突载体**——对着 summary 能直接推理出情节方向提案
-- [ ] **每章可追溯到核心冲突**——逐条反问"这章服务于主线冲突的哪一步？"
-- [ ] **章节间有因果递进**——前一章的章末变化是后一章的起点或动机
-- [ ] **未发现"主题式""功能式""梗概式""结果式"不合格章纲**
-- [ ] **所有新增角色文件已创建**，故事角色已分配
-- [ ] **所有新增设定已写入 `settings/world-setting.md`**，通过"可感知"反问
-- [ ] **新增设定与已归档章节无矛盾**（有矛盾则有处理方案）
+- [ ] **The core conflict can be said in one sentence** (who + what + what is hindered
+      by what), you can speak without speaking to yaml.
+- [ ] **The direction of the volume has been determined** (the first volume has a
+      structure template, volume N+1 has character voices + the author confirms the
+      direction)
+- [ ] **First volume: Structural template selected + stage functions written clearly +
+      number of chapters assigned**
+- [ ] **Volume N+1: Active characters have been screened, the end of the volume is
+      detailed, characters have conflicting wills, and the author has confirmed the
+      direction**
+- [ ] **The emotional direction has been established** - it is an arc
+      (suppression→face-slapping→pretending), not a single emotional word
+- [ ] **The emotional direction is progressive** - the arc has Qidian, turning point,
+      and end point, and each step is more advanced than the previous step.
+- [ ] **Conflict ladder designed** - 2-4 levels of obstacles, each level is more
+      difficult than the previous one, with clear turning points
+- [ ] **Key turning points have been marked** - Each turning point is a "fundamental
+      change in the situation", not an ordinary advancement
+- [ ] **Information gaps have been marked** - Write clearly "who knows what ↦ who
+      doesn't know what" in each chapter
+- [ ] **The dominant driving force has been determined** - one of the
+      suspense/threat/target/relationship/information gap drivers, with primary and
+      secondary
+- [ ] **chapters_summary Each chapter has id (continuous), title (with information), and
+      summary (all three elements are complete)**
+- [ ] **Each chapter has a writable conflict carrier**, You can directly deduce the plot
+      direction proposal from the summary
+- [ ] **Each chapter can be traced back to the core conflict** - Ask one by one, "Which
+      step in the main conflict does this chapter serve?"
+- [ ] **There is a progression of cause and effect between chapters** - the change at
+      the end of the previous chapter is the Qidian or motivation of the next chapter
+- [ ] **No unqualified chapter outlines for "topic type", "functional type", "summary
+      type" and "result type" were found**
+- [ ] **All new character files have been created** and story roles have been assigned
+- [ ] **All new settings have been written to `settings/world-setting.md`**, ask through
+      "perceivable"
+- [ ] **There is no conflict between the new settings and the archived chapters** (if
+      there is any conflict, there will be a solution)
 
-### 验证执行
+### Verify execution
 
-按 SKILL.md 自检协议执行（优先 Agent Teams → subAgent → 自检）。拿结论后先改完 fail 项，再进入 Phase 3。
+Execute according to the SKILL.md self-test protocol (Priority Agent Teams → subAgent →
+Self-test). After getting the conclusion, first change the fail item before entering
+Phase 3.

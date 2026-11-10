@@ -1,128 +1,194 @@
-# 短篇去 AI 味口径
+# Short stories to remove the AI flavor
 
-> 短篇专属去 AI 味规则。服务番茄 / 七猫 / 黑岩 / 盐选通俗短篇，不是传统文学，更不是长篇。
-> 部署为独立产物（不与其他文体的反 AI 规则合并）。改写自获赠短篇流程包并按本仓检查项分级原则校准；公开或商用前需原作者确认。
+> Exclusive AI-flavored rules for short stories. Serving Fanqie/Qimao/Black
+> Rock/Yanxuan popular short stories, not traditional literature, let alone
+> full-length novels. Deployed as a stand-alone artifact (not merged with anti-AI
+> rules from other genres). Adapted from the free short story process package and
+> calibrated according to the grading principles of this repo's inspection items;
+> confirmation by the original author is required before being made public or
+> commercial.
 
-## 根本立场：短篇是情绪产品
+## Fundamental position: Short stories are emotional products
 
-短篇靠直白共鸣留人，不靠克制留白。短篇去 AI 味只做一件事：**删空泛的情绪总结句，留有具体反应支撑的情绪。**
+Short stories rely on direct resonance to retain people, not on restrained blank space.
+There is only one thing to do to remove the AI flavor from short stories: **Delete
+empty emotional summary sentences, leaving emotions supported by specific reactions. **
 
-## 一、留删对表（三列结构）
+## 1. Leave-and-delete table (three-column structure)
 
-| 其他文体禁用 | 短篇保留（卖点） | 短篇只删 |
+| Other styles are prohibited | Short stories are retained (selling points) | Short stories are only deleted |
 |---|---|---|
-| 直接写情绪词（心如死灰 / 眼泪不争气） | **留**：这是招牌句 | 删：后面没有任何具体反应的情绪总结句（一丝悲伤涌上心头） |
-| 第一人称审判句 / 剧透 / 火葬场预告 | **留**：在场叙述是爽感来源 | 删：和角色情绪无关、纯交代的作者讲解 |
-| 审判金句 / 心死式章尾 | **留**：读者会截图传播 | 删：空洞哲理升华（人生就是这样 / 她终于明白了） |
+| Write emotional words directly (heart is as hopeless/tears are disappointing) | **Keep**: This is a signature sentence | Delete: An emotional summary sentence without any specific reaction (a trace of sadness wells up in my heart) |
+| First-person judgment sentence / spoiler / crematorium preview | **Stay**: On-site narration is the source of pleasure | Delete: The author's explanation has nothing to do with the character's emotions and is purely descriptive |
+| Golden sentences of judgment / heart-death ending | **Keep**: Readers will take screenshots and spread them | Delete: Empty philosophical sublimation (life is like this / she finally understands) |
 
-**唯一判据：这句带不带主角此刻的主观情绪？** 带就留，中立客观就删。同一句在保留与删除两类中不产生冲突结论。
+**The only criterion: Does this sentence contain the subjective emotions of the
+protagonist at the moment? ** Keep it if you bring it, delete it if it is neutral and
+objective. The same sentence does not produce conflicting conclusions in the two
+categories of retention and deletion.
 
-## 二、情绪怎么写：直写可以，但后面要接场景里的具体动作
+## 2. How to write emotions: You can write directly, but you need to follow the specific actions in the scene.
 
-短篇不禁直接写情绪词，用得很密是正常的。关键在后面一句：**情绪词后面要接一个这个场景里此刻特有的具体动作或物件，不能让情绪词单独飘着。**
+You can’t help but write emotional words directly in short stories, and it’s normal to
+use them very densely. The key is in the next sentence: **after an emotion word, follow it with a concrete action or object specific to this moment in this scene; never let the emotion word float on its own.**
 
-好例：摸到那碗凉掉的排骨汤时，我的心更冰冷了。上面还浮着凝固的油，根本喝不了。
+Good example: When I touched the bowl of cold pork rib soup, my heart became even
+colder. There was still solidified oil floating on it, making it impossible to drink.
 
-删两种：
+Delete two types:
 
-1. 后面接不上任何具体东西、单独出现的情绪总结句（「一丝悲伤涌上心头」「感到深深的绝望」）。
-2. 通用生理反应单独凑数（「指甲掐进掌心」「心猛地一沉」单写就空）——接到此刻的具体物件 / 动作上，要么删。
+1. A summary of the emotion that appears alone and cannot be followed by anything
+   specific ("A trace of sadness came to my heart", "I felt a deep despair").
+2. General physiological reactions are counted individually ("nails dug into palms",
+   "heart suddenly sank" are empty) - connect them to the specific objects/actions at
+   the moment, or delete them.
 
-一个情绪写一次就往下走，不要写完再补一句解释它多疼。
+Write an emotion once and then move on. Don’t finish it and then add a sentence to
+explain how painful it is.
 
-## 三、第一人称所有格清除（本仓新增，正则可查）
+## 3. Clear the first person possessive case (newly added in this repo, the regular form can be checked)
 
-第一人称叙述里，读者已经在主角体内。反复标注「我的 X」是把叙述位置重新推回体外，属旁观者痕迹：
+In first-person narration, the reader is already inside the body of the protagonist.
+Repeatedly marking “my
 
-| 删 | 改成 |
+| Delete | Change to |
 |---|---|
-| 我的心猛地一颤 | 心颤了一下 |
-| 我的灵魂飘在葬礼半空 | 灵魂飘在葬礼半空 |
-| 我的眼眶一热 | 眼眶一热 |
-| 我知道，在他眼里我大概就是这样的存在 | 在他眼里，我大概就是这样的存在 |
-| 我感到一阵灭顶的恐慌 | 一阵恐慌 |
-| 我看到自己的手在抖 | 手在抖 |
+| My heart suddenly trembled | Heart trembled for a moment |
+| My soul floated in midair above the funeral | Soul floated in midair above the funeral |
+| My eyes grew hot | Eyes grew hot |
+| I know, in his eyes I am probably just that sort of person | In his eyes, I am probably just that sort of person |
+| I felt an overwhelming panic | A wave of panic |
+| I saw my hands shaking | Hands shaking |
 
-执行要点：`我知道/我明白/我意识到` → 直接陈述；`我感到/我感受到` → 直接写感受；`我看到自己` → 删，直接写动作；`我的心/我的灵魂/我的眼眶` → 去掉「我的」。
+Implementation points: `我知道/我明白/我意识到` → direct statement; `我感到/我感受到` → directly write
+feelings; `我看到自己` → delete, directly write action; `我的心/我的灵魂/我的眼眶` → remove "my".
 
-## 四、叙述姿态：在场叙述不是 AI 味
+## 4. Narrative posture: on-site narration is not AI-flavored
 
-短篇叙述者可以跳出当下替读者定性、剧透、预告火葬场。这是爽感来源。
+The short story narrator can jump out of the present moment to characterize, spoiler,
+and foretell the crematorium for readers. This is where the pleasure comes from.
 
-| 留（带主角主观情绪） | 删（中立、和角色情绪无关的作者讲解） |
+| Keep (carries the protagonist's subjective emotion) | Delete (neutral author explanation, unrelated to the character's emotion) |
 |---|---|
-| 主观审判句：原来我以为的爱只是一场笑话 | 纯交代背景的作者解说 |
-| 复仇者剧透：他们不知道，我已经是西域摄政王 | 客观描述无关人物的行动 |
-| 火葬场预告：我还不知道，他正发疯似的找我 | 论文式因果讲解：之所以…是因为… |
+| Subjective judgment: the love I thought I had was only a joke | Pure background exposition |
+| Avenger's spoiler: they don't know I am already the regent of the Western Regions | Objective description of unrelated characters' actions |
+| Wife-chasing crematorium foreshadowing: I still did not know, he was frantically searching for me | Essay-style causal explanation: "the reason is... because..." |
 
-判据同一：带主角主观偏色的审判 / 勾追读 → 留；中立无情绪的作者讲解 → 删。
+The criteria are the same: a trial with a subjective color cast of the main character/a
+catchy reading → keep; a neutral and emotionless author's explanation → delete.
 
-## 五、真·AI 腔黑名单（短篇也删）
+## 5. True AI accent blacklist (short stories are also deleted)
 
-| 类别 | 词 / 句 | 处理 |
+| Category | Word/Sentence | Processing |
 |---|---|---|
-| 套话动作 | 映入眼帘 / 只见 / 此时此刻 | 删 |
-| 心理标签 | 心中暗道 / 不由自主 | 删，或用动作展示 |
-| 对话标签腔 | 沉声道 / 淡淡地说 / 嘴角微扬 / 目光如炬 | 换成具体动作或表情 |
-| 论文体 | 不难看出 / 由此可见 / 综上所述 / 事实上 | 删 |
-| 书面连词泛滥 | 于是乎 / 与此同时 / 诚然 / 从而 / 因而 | 口语化或删 |
-| 程度副词扎堆 | 弱化：微微 / 淡淡 / 缓缓 / 轻轻；强化：正 / 正在 / 非常 / 十分 / 极其 / 越来越 / 果然 / 好像 | 每千字 ≤3，按密度删减，不一刀切全删 |
-| 万能比喻 | 像潮水般 / 如闪电般 / 仿佛春风 | 删，或换生活化比喻 |
-| 空泛情绪总结 | 一丝 X 涌上心头 / 感到深深的 X / 一股 X 笼罩全身 | 删，或按第二节补一个具体反应 |
+| Cliched action phrases | "catches the eye" / "lo and behold" / "at this very moment" | Delete |
+| Psychological tags | "said in his heart" / "involuntarily" | Delete, or show through action |
+| Dialogue tag mannerisms | "said in a low voice" / "said lightly" / "the corner of the mouth lifted" / "eyes blazing" | Replace with a concrete action or expression |
+| Essay style | It is not difficult to see / It can be seen from this / In summary / In fact | Delete |
+| Overuse of written connectives | "thereupon" / "meanwhile" / "admittedly" / "thus" / "therefore" | Make colloquial, or delete |
+| Clustered adverbs of degree | Weakening: slightly / faintly / slowly / gently; strengthening: exactly / right now / very / extremely / more and more / as expected / seemingly | No more than 3 per 1,000 words, cut by density, not all at once |
+| Generic metaphors | "like a tide" / "like lightning" / "like a spring breeze" | Delete, or replace with an everyday metaphor |
+| Empty emotion summaries | "a trace of X wells up in the heart" / "feeling deeply X" / "a wave of X envelops the body" | Delete, or add a specific response as in Section 2 |
 
-> 情绪词本身（心如死灰）不在黑名单里——后面接了具体反应就是卖点，别误删。
-> 万能比喻按「成片才处理」口径：功能性比喻（如贯穿道具的物象）是卖点，不设每千字硬上限。
+> The emotional word itself (heartbroken) is not on the blacklist - the specific
+> reaction followed by it is the selling point, so don’t delete it by mistake.
+> Universal metaphors are based on the "finished film only" approach: functional
+> metaphors (such as objects that run through props) are the selling point, and there
+> is no hard limit per thousand words.
 
-## 六、三连排比：有内容留，凑数砍
+## 6. Three-consecutive comparison: If there is content, keep it, make up the number and cut it.
 
-短篇堆苦难常用三连（「在暴雨夜、在手术室门口、在我父亲的葬礼上」）。删掉其中一条信息会少 → 留；三句说同一件事 → 砍到最狠那条。
+Short stories often focus on suffering ("On a rainy night, at the door of the operating
+room, at my father's funeral"). Deleting one of the messages will result in less
+information → remaining; three sentences saying the same thing → cut to the most severe
+one.
 
-## 七、段落形态：同时有下限与上限
+## 7. Paragraph form: both lower limit and upper limit
 
-- **下限（平台形态）**：短段为底色，黑岩一句一段；手机流式阅读，勤换行。
-- **上限（防电报体）**：短句是偶发的情绪重拍，落在峰值，不是通篇底色。禁止把话硬拆成三字碎句成片排列；禁止通篇同长度段落（长短交错才是活的）。
-- 判据：连续 3 段以上都是 3-5 字碎句、且不处于情绪峰值，即电报体，回改。
+- **Lower limit (platform form)**: short paragraphs are the base; Heiyan style is one
+  sentence per paragraph. Mobile feed reading means frequent line breaks.
+- **Upper limit (anti-telegraph style)**: short sentences are occasional emotional
+  accents landing at the peak, not the texture of the whole text. Never force lines
+  into rows of three-character fragments; never make every paragraph the same length
+  (alternating long and short is what feels alive).
+- Criterion: if 3 or more consecutive paragraphs are all 3-5 character fragments and
+  none is at an emotional peak, that is telegraph style; revise it.
 
-## 八、标点硬约束
+## 8. Hard constraints on punctuation
 
-正文统一不出现 `……` / `——` / `—` / `--`。停顿、哽咽、未尽、被打断、留白一律用短句、句号、逗号、动作 beat、换行实现。停顿处做**语义级改写**，不用机械替换。
+The main text never contains `...` / `double em dash` / `em dash` / `--`. Pauses,
+choking up, trailing off, interruptions, and blank space are all done with short
+sentences, periods, commas, action beats, and line breaks. **Semantic-level rewriting**
+is done at the pause, without mechanical replacement.
 
-## 九、角色命名约束（可判定清单）
+## 9. Role naming constraints (decidable list)
 
-模型取名池高度收敛，同一批名字反复出现是可被读者识别的机器痕迹。以下为禁用名与禁用用字（含同音字）：
+The model naming pool is highly convergent, and the repeated occurrence of the same
+batch of names is a trace of the machine that can be recognized by
+readers. The following are banned names and banned characters (including homophones):
 
-- **禁用完整名**：林晚、苏婉、顾默、陈默、陈墨、柳如烟、沈知节、顾轻舟、时锦、苏念。
-- **禁用用字（含同音）**：晚 / 晚辈之晚、晴 / 情 / 情，墨 / 默 / 沫，念 / 姩，浅 / 汐 / 兮。
-- 机制：**不用随机生成**。命名结果落盘进本篇 `setting.md` 的命名记录，改稿与重写以记录为准，MUST NOT 重新生成（保证跨次稳定）。
+- **Full names disabled**: Lin Wan, Su Wan, Gu Mo, Chen Mo, Chen Mo, Liu Ruyan, Shen
+  Zhijie, Gu Qingzhou, Shi Jin, Su Nian.
+- **Banned characters (including homophones)**: 晚 (as in 晚辈, "younger generation"), 晴 / 情, 墨 / 默 / 沫, 念 / 姩, 浅 / 汐 / 兮.
+- Mechanism: **No random generation**. The naming result is put into the naming record
+  of this article `setting.md`. Revisions and rewrites are subject to the record, and
+  MUST NOT be regenerated (to ensure span stability).
 
-## 十、现代概念防火墙（仅古代 / 架空背景题材适用）
+## 10. Modern concept firewall (only applicable to ancient/overhead background themes)
 
-写古代或架空背景时，规划推理用的现代概念不得裸露进正文。词表五类（可机械扫描）：
+When writing about ancient or fictional backgrounds, modern concepts used in planning
+reasoning must not be exposed in the text. Five categories of vocabulary (can be scanned
+mechanically):
 
-1. **现代科技术语**：手机、电话、信号、视频、直播、APP、心理建设。
-2. **网络用语**：靠谱、给力、点赞、破防、内卷、社死、吐槽、脑补、人设（作为词）。
-3. **学术 / 心理学名词**：心理创伤、原生家庭、边界感、内耗、PTSD、人格、潜意识、共情。
-4. **现代制度与职业**：公司、经理、合同、警察、律师、心理咨询师、请假、辞职（古代表达见题材包时代变体）。
-5. **现代时间与计量**：小时（→ 时辰 / 一炷香）、米 / 公里（→ 丈 / 里）、分钟、秒表、摄氏度。
+1. **Modern technology terms**: mobile phone, phone, signal, video, live broadcast, APP,
+   psychological construction.
+2. **Internet terms**: reliable, awesome, like, break defense, involute, social dead,
+   complain, brainstorm, persona (as words).
+3. **Academic/psychological terms**: psychological trauma, family of origin, sense of
+   boundary, internal friction, PTSD, personality, subconscious, empathy.
+4. **Modern System and Occupation**: company, manager, contract, police, lawyer,
+   psychological counselor, asking for leave, resignation (for ancient expressions, see
+   the theme package for era variations).
+5. **Modern Time and Measurement**: Hours (→ hours/one stick of incense),
+   meters/kilometers (→ feet/miles), minutes, stopwatch, degrees Celsius.
 
-执行：进入正文前先做世界观内翻译（找到功能等价表达）；翻译不成立 → 删除该概念，改用感官与行为描写传达相同含义；MUST NOT 用通用喻体绕过。**现代背景题材不适用本条。**
+Execution: Do an intra-worldview translation (find functionally equivalent expressions)
+before entering the main text; the translation is not valid → delete the concept and use
+sensory and behavioral descriptions to convey the same meaning; MUST NOT use universal
+metaphors to bypass it. **This article does not apply to modern background themes. **
 
-## 十一、自检清单（写完每节逐项扫）
+## 11. Self-check list (after writing each section, scan it item by item)
 
-- [ ] 每个情绪词后面都接了具体反应（身体反应 / 动作物件 / 处境判断），没有就是空话，补一个或删
-- [ ] 没有空泛情绪总结句（一丝 X 涌上心头 / 感到深深的 X）
-- [ ] 一个情绪只写一次，没有写完再补一句解释它多疼
-- [ ] 第一人称所有格已清除：无「我的心 / 我的灵魂」；无「我知道 / 我感到 / 我看到自己」引导小句
-- [ ] 在场叙述保留：第一人称审判句 / 剧透 / 火葬场预告在，没误删
-- [ ] 没有中立的作者讲解（和角色情绪无关、纯交代的句子）
-- [ ] 章尾有钩或有判：审判金句 / 火葬场预告 / 心死余韵在；没有空洞哲理升华
-- [ ] 章尾没为工整收口：没凑对仗 / 排比 / 押韵 / 抖机灵的总结
-- [ ] 本篇的招式、开头、结尾、情绪链选择与上一篇不一样
-- [ ] 三连排比有内容：每条带新信息；凑数的砍掉
-- [ ] AI 套话清零：无映入眼帘 / 心中暗道 / 沉声道 / 淡淡地说 / 嘴角微扬 / 不由自主 / 目光如炬
-- [ ] 程度副词每千字 ≤3（弱化与强化两端都算）
-- [ ] 比喻不成片堆叠（功能性比喻保留）
-- [ ] 角色名不在禁用清单内，且与 setting.md 命名记录一致
-- [ ] （古代 / 架空题材）现代词表零命中
-- [ ] 正文无禁用标点（…… / —— / — / --）
-- [ ] 对话口语化：无书面腔，不同角色语气可区分
+- [ ] Each emotional word is followed by a specific reaction (body reaction/action
+      object/situation judgment). If not, it is just empty words. Add one or delete it.
+- [ ] There are no empty emotional summary sentences (a hint of X comes to my heart / I
+      feel a deep X)
+- [ ] Write an emotion only once. If you don’t finish it, add a sentence to explain how
+      painful it is.
+- [ ] The first person possessive has been cleared: no "my heart/my soul"; no "I know/I
+      feel/I see myself" introductory clause
+- [ ] Preservation of on-site narration: first-person judgment
+      sentences/spoilers/crematorium trailer is here, it was not deleted by mistake
+- [ ] There is no neutral author’s explanation (sentences that have nothing to do with
+      the character’s emotions and are purely descriptive)
+- [ ] There is a hook or judgment at the end of the chapter: golden sentences of
+      judgment / preview of the crematorium / lingering aftertaste of death; no empty
+      philosophical sublimation
+- [ ] There is no neat ending at the end of the chapter: there is no
+      dialogue/parallelism/rhyme/clever summary.
+- [ ] The moves, beginning, end, and emotion chain choices of this article are different
+      from the previous one.
+- [ ] There is content in the three-match series: each piece contains new information;
+      the ones that make up the number will be cut off.
+- [ ] AI cliché clearing: nothing caught the eye / secret passage in the mind / deep
+      voice / speaking lightly / corners of the mouth slightly raised / involuntarily /
+      glaring gaze
+- [ ] Adverbs of degree ≤3 per 1,000 words (both ends of weakening and strengthening are
+      counted)
+- [ ] Metaphors are not stacked in pieces (functional metaphors are retained)
+- [ ] The role name is not in the disabled list and is consistent with the naming record
+      in setting.md
+- [ ] (Ancient/Imaginary themes) Modern word list zero hits
+- [ ] There are no prohibited punctuation marks in the text (... /, /, / --)
+- [ ] Colloquial dialogue: no written accent, different characters’ tones can be
+      distinguished

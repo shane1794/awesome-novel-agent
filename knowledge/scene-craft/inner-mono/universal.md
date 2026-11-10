@@ -1,103 +1,125 @@
-# 心理活动/内心独白
+# Psychological activities/inner monologue
 
-> 核心原则：**心理以生理反应、思维碎片、认知崩塌呈现为主，情绪词为辅。**
-> 优先用身体反应（寒意窜体、指尖发抖、牙关紧绷）替代情绪名词，
-> 但允许在关键情绪节点使用 1-2 个情绪词辅助读者理解（"他心底掠过一丝恐惧"），
-> 不要全文依赖情绪词表达。每条技法以 `[标签]` 开头。
+> Core principles: **Psychology is mainly presented with physiological reactions,
+> thought fragments, and cognitive collapse, supplemented by emotional words.
+> **Priority is given to using physical reactions (chills running through the body,
+> trembling fingertips, clenched teeth) instead of emotional nouns, but it is allowed
+> to use 1-2 emotional words at key emotional nodes to assist readers in understanding
+> ("A trace of fear flashed in his heart"), and do not rely on emotional words for
+> expression throughout the text. Each technique begins with `[tag]`.
 
-## 注入时机
+## Injection timing
 
-心理描写不是场景类型，不能通过 输入·场景原材料 场景类型自动检测。prompt-crafter 在**以下任意条件满足时**，额外加载此文件注入 输出·写作规范：
+Psychological description is not a scene type and cannot be automatically detected by
+the input scene raw material scene type. prompt-crafter additionally loads this file to
+inject output and writing specs when any of the following conditions are met:
 
-| 触发条件 | 判断依据 | 示例 |
+| Trigger conditions | Judgment basis | Example |
 |---------|---------|------|
-| **角色遭遇重大事件** | L3 核心悬念/转折涉及角色承受冲击性信息 | 得知亲人被害、发现被背叛、真相揭露 |
-| **角色情绪剧烈波动** | 输入·场景原材料 场景情绪为恐惧/愤怒/崩溃/狂喜等强烈情绪 | 对峙爆发、生死关头、久别重逢 |
-| **角色面临重大抉择** | 本章涉及角色要做关键决定（key_choices） | 选阵营、牺牲谁、要不要赌一把 |
-| **打脸/反转场景** | 对手从不可置信到崩溃的递进过程 | 反派被碾压、阴谋被揭穿 |
-| **角色内心冲突** | 角色想做的事和应该做的事矛盾 | 想救但不能救、想爱但不能爱 |
+| **The character encounters a major event** | L3 core suspense/turning involves the character receiving shocking information | Learning that a loved one has been murdered, discovering that he has been betrayed, and the truth being revealed |
+| **Character emotions fluctuate violently** | Input / scene raw materials Scene emotions are strong emotions such as fear/anger/collapse/ecstasy | Confrontation breaks out, life and death, reunion after a long separation |
+| **The character faces a major choice** | This chapter involves the character making key decisions (key_choices) | Choosing a camp, who to sacrifice, whether to take a gamble |
+| **face-slapping/reversal scene** | The opponent's progressive process from disbelief to collapse | The villain is crushed and the conspiracy is exposed |
+| **Inner conflict of the character** | Conflict between what the character wants to do and what he should do | Want to save but cannot save, want to love but cannot love |
 
-### 加载方式
+### Loading method
 
-不在常规的场景类型加载流程中。在 输入·场景原材料 场景序列填充完毕后，**额外检查**每个场景的核心事件 + 情绪设计 + 关键抉择是否触发以上条件。如果触发，加载 `inner-mono/universal.md` + `inner-mono/{题材}.md`（如存在），经四步转化后追加到 输出·写作规范。
+Not in the regular scene type loading process. After the input scene raw material scene
+sequence is filled in, **extra check** whether the core events + emotional design + key
+decisions of each scene trigger the above conditions. If triggered, load
+`inner-mono/universal.md` + `inner-mono/{genre}.md` (if it exists), and append to output
+and writing specs after four steps of conversion.
 
-## 标签选择指南
+## Label Selection Guide
 
-| 场景特征 | 匹配标签 | 选取理由 |
+| Scene characteristics | Matching tags | Reason for selection |
 |---------|---------|---------|
-| 角色感到恐惧、紧张、焦虑 | [生理] | 用寒意窜体、耳鸣、指尖发抖等身体反应替代"害怕" |
-| 角色愤怒、压抑、隐忍 | [生理] | 用太阳穴突跳、牙关紧绷、呼吸粗重替代"愤怒" |
-| 角色心动、局促、紧张 | [生理] | 用胸口发闷、耳根发烫、肢体僵硬替代"心动" |
-| 角色遭遇大悲、崩溃、狂喜 | [碎片] | 思绪跳脱无逻辑，行为与情绪反差不协调 |
-| 角色目睹颠覆认知的事实 | [崩塌] | 三阶段递进：傲慢质疑→自我欺骗→彻底崩溃 |
-| 打脸/反转场景需要爽感放大 | [崩塌] | 让读者看到反派从不可置信到崩溃的全过程 |
+| The character feels fear, tension, and anxiety | [Physiology] | Replace "fear" with physical reactions such as chills running through the body, ringing in the ears, and trembling fingertips |
+| The character is angry, depressed, and tolerant | [Physiology] | Replace "anger" with twitching temples, clenched teeth, and heavy breathing |
+| The character's heartbeat, embarrassment, and nervousness | [Physiological] | Replace "heartbeat" with tightness in the chest, hot ears, and stiff limbs |
+| The character encounters great tragedy, collapse, and ecstasy | [Fragment] | Thoughts are illogical, and the contrast between behavior and emotion is inconsistent |
+| The character witnesses a fact that subverts his cognition | [Collapse] | Three stages of progression: arrogance and questioning → self-deception → complete collapse |
+| face-slapping/reversal scenes need to be amplified | [Collapse] | Let readers see the whole process of the villain from disbelief to collapse |
 
 
-## [生理] 生理通感法——借身体反应映射情绪
+## [Physiology] Physiological synaesthesia - mapping emotions through body reactions
 
-**核心：** 不直白标注情绪词，通过人体感官、肢体、躯体本能反应间接体现内心状态。
+**Core:** It does not label emotional words directly, but indirectly reflects the inner
+state through the human body's senses, limbs, and body instinctive reactions.
 
-### 情绪→生理反应映射表
+### Emotion → Physiological Response Mapping Table
 
-| 情绪 | 生理信号 |
+| Emotions | Physiological signals |
 |------|---------|
-| **恐惧** | 寒意窜体、耳鸣、口干发涩、指尖发抖、听觉隔绝、喉咙发紧 |
-| **愤怒** | 太阳穴突突直跳、牙关紧绷发酸、指甲掐入皮肉、呼吸粗重、血往头顶涌 |
-| **心动/局促** | 胸口发闷、呼吸短促、耳根发烫、肢体僵硬、手心出汗 |
-| **压抑/隐忍** | 攥紧手指、喉结滚动、牙关紧咬、停顿沉默、胸口堵着一口气 |
+| **Fear** | Chills traveling through the body, tinnitus, dry mouth, trembling fingertips, hearing loss, and tight throat |
+| **Angry** | The temples are pounding, the jaws are tense and sore, the nails are digging into the flesh, the breathing is heavy, and the blood is rushing to the top of the head |
+| **Heartbeat/constriction** | Chest tightness, shortness of breath, hot ears, stiff limbs, sweaty palms |
+| **Suppression/Forbearance** | Clenched fingers, rolled Adam's apple, clenched teeth, paused in silence, and had a tight breath in the chest |
 
 ```
-❌ 得知真相后，他满心恐惧，慌乱不已。
+❌ After learning the truth, he was filled with fear and panic.
 
-✅ 一股寒意直冲头顶，耳内嗡鸣不止，周遭声响尽数远去。
-   他想吞咽，喉咙却干得冒烟，指尖控制不住地轻颤。
+✅ A chill shot straight to the top of my head, my ears were ringing, and all the surrounding sounds were gone.
+   He wanted to swallow, but his throat was so dry that it smoked, and his fingertips trembled uncontrollably.
 ```
 
-**控制使用：** 优先用生理反应代替直接情绪形容词（"害怕"→"指尖发抖"）。允许在关键情绪节点使用 1-2 个情绪词辅助读者理解，但不要全文依赖情绪词表达。
+**Controlled usage:** Prioritize using physiological reactions instead of direct
+emotional adjectives ("fear" → "fingertips shaking"). It is allowed to use 1-2 emotional
+words at key emotional nodes to assist readers in understanding, but do not rely on
+emotional words for the entire text.
 
 
-## [碎片] 思维碎片法——极端情绪下的碎片化思绪
+## [Fragmentation] Thought fragmentation method - fragmented thoughts under extreme emotions
 
-**核心：** 人陷入大悲、狂喜、崩溃等强烈情绪时，思维失去逻辑、语序杂乱、想法跳跃割裂。用错乱自语、矛盾行为强化情绪张力。
+**Core:** When people fall into strong emotions such as great sadness, ecstasy, and
+collapse, their thinking loses logic, the word order is messy, and their thoughts jump
+and fragment. Use confusing self-talk and contradictory behaviors to enhance emotional
+tension.
 
-### 执行细则
+### Implementation details
 
-- 行为与情绪形成反差：表面冷静，动作失控
-- 思绪跳转无逻辑，穿插无关日常念想
-- 动作逐渐失态，细节暴露真实心境
+- Contrast between behavior and emotion: calm on the surface but out of control in
+  actions
+- Thoughts jump around without logic, interspersed with irrelevant daily thoughts
+- The movements gradually lose control, and the details reveal the true state of mind.
 
 ```
-❌ 看着倒下的人，他悲痛大喊，泪水止不住流淌。
+❌ Looking at the fallen man, he shouted in grief and couldn't stop his tears from flowing.
 
-✅ 他神色平静，抬手不停往对方口中塞丹药，嘴里兀自念叨：
-   "只是普通火球术而已，吃了药明天咱们还去逛庙会……
-   衣服脏了，回头我帮你洗。"
-   动作越来越急促，丹药混着黑血洒了满地。
+✅ He looked calm, raised his hand and kept stuffing pills into the other person's mouth, muttering to himself:
+   "It's just an ordinary fireball technique. After taking the medicine, we will go to the temple fair tomorrow...
+   The clothes are dirty. I'll wash them for you later. "
+   The movements became more and more rapid, and the elixir mixed with black blood spilled all over the floor.
 ```
 
-**禁用：** 情绪激动时依旧逻辑清晰、言语规整；直白哭诉、呐喊宣泄。
+**Disabled:** When emotional, the logic is still clear and the speech is regular; cry
+outright and shout to vent.
 
 
-## [崩塌] 递进式心理崩塌——认知失调分层描写
+## [Collapse] Progressive psychological collapse - layered description of cognitive dissonance
 
-**核心：** 人物遭遇颠覆认知的现实时，心理按三阶段逐层滑落，层层递进放大爽感/冲击感。
+**Core:** When a character encounters a reality that subverts his cognition, his
+psychology slides down layer by layer in three stages, gradually amplifying the sense of
+pleasure/shock.
 
-### 三阶段递进
+### Three stages of progression
 
-| 阶段 | 心理状态 | 表现 |
+| Stage | Mental state | Performance |
 |------|---------|------|
-| **第一阶段** | 轻视、嘲讽 | 认定对方耍手段、出意外、不可能是真的 |
-| **第二阶段** | 自我欺骗 | 事实摆在眼前，强行找借口，不肯接受 |
-| **第三阶段** | 彻底崩溃 | 幻想破灭，自尊、认知彻底瓦解，伴随肢体失态 |
+| **Phase 1** | Contempt, ridicule | Believe that the other party is playing tricks, having an accident, and it cannot be true |
+| **Stage 2** | Self-deception | The facts are in front of you, and you forcefully make excuses and refuse to accept them |
+| **The third stage** | Complete collapse | Disillusionment, complete collapse of self-esteem and cognition, accompanied by physical loss of posture |
 
 ```
-❌ 师兄大惊，心想：这不可能，他怎么会这么强？
+❌ The senior brother was shocked and thought: This is impossible, how could he be so strong?
 
-✅ 他嘴角挂着嗤笑，只当对方是故弄玄虚、动了手脚。
-   威压席卷而来，笑容骤然僵住，冷汗爬满额头。
-   心底不停辩解：他定是用了邪术，撑不了多久。
-   灵石炸裂的瞬间，碎屑刮得脸颊生疼。
-   他连连后退，眼中光彩尽失——引以为傲的天赋，此刻沦为笑话。
+✅ He had a sneer on his lips, thinking that the other party was being mysterious and tampering.
+   Coercion swept over him, his smile suddenly froze, and cold sweat covered his forehead.
+   I kept arguing in my heart: He must have used witchcraft and he couldn't last long.
+   The moment the spirit stone exploded, the debris scratched his cheek.
+   He backed away continuously, the luster in his eyes lost all - the talent he was so proud of was now reduced to a joke.
 ```
 
-**禁用：** 心理描写一笔带过，仅单一"不敢相信"；无层次、无过渡直接写崩溃。
+**Disabled:** The psychological description is written in one stroke, with only a single
+"I can't believe it"; there is no hierarchy or transition and it is written directly to
+collapse.

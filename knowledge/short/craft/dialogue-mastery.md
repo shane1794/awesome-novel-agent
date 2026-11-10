@@ -1,286 +1,368 @@
-# 对话设计操作手册
+# Dialogue Design Operation Manual
 
 
-> 本文件改写自获赠短篇流程包（oh-story 系 + 实测调整），按本仓口径适配：引用为部署后基座路径、已剔除外部体系引用。公开或商用前需原作者确认。
+> This document is adapted from the short flow package (oh-story series + actual
+> measurement adjustment) received as a gift, and is adapted to the caliber of this repo: the reference is the post-deployment base path, and external system
+> references have been eliminated. Confirmation by the original author is required
+> before disclosure or commercial use.
 
 
-> 写对话场景时加载。先看决策路由选对话模式，再用操作指令控制质量。
+> Loaded when writing dialogue scenes. First look at the decision-making route and
+> select the dialogue mode, and then use operation instructions to control quality.
 
 ---
 
-## 决策路由
+## Decision Routing
 
-| 你的对话场景是 | 用这种模式 | 操作 |
+| Your dialogue scene is | using this mode | operation |
 |-------------|---------|------|
-| 主角碾压/打脸 | 压制模式 | 对方长篇大论 → 主角一字回应 |
-| 主角亮底牌/反转 | 反转模式 | 对方嚣张 → 主角一句话事实 → 对方沉默 |
-| 关系破裂/心死 | 心死模式 | 对话越回越短：从辩解 → 沉默 → "随意" |
-| 日常互动/立人设 | 日常模式 | 让其他人物参与冲突，不要主角一个人独白 |
-| 群众震惊/弹幕 | 弹幕模式 | 递进：普通人震惊 → 专业人士分析 → 特殊身份者反应 |
-| 信息展示/世界观 | 信息嵌入 | 用角色语气包裹信息，不是机械陈述设定 |
-| 情绪拉扯/虐心 | 情绪推动 | 上行下行交替，像拉锯拉升期待 |
+| The protagonist crushes/face-slapping | Suppression mode | The other party makes a long speech → The protagonist responds with one word |
+| The protagonist shows his trump card/reversal | Reversal mode | The opponent is arrogant → The protagonist tells a fact → The opponent is silent |
+| Relationship breakdown/heart-death | Heart-death mode | Conversations get shorter and shorter: from justification → silence → "casual" |
+| Daily interaction/character design | Daily mode | Let other characters participate in the conflict, do not let the protagonist monologue alone |
+| Mass shock/barrage | Barrage mode | Progression: Ordinary people are shocked → Analysis by professionals → Reactions of people with special status |
+| Information display/world view | Information embedding | Use character tone to wrap information, not mechanical statement settings |
+| Emotional pull/torture | Emotional push | Alternate ups and downs, like a see-saw raising expectations |
 
-### 对话模式选择补充
+### Conversation mode selection supplement
 
-| 对话类型 | 常见问题 | 修正操作 |
+| Conversation Types | FAQ | Corrective Actions |
 |----------|---------|---------|
-| 问答式（通篇一问一答像审讯） | 改为一方主动说，另一方给反应；反应可用动作/表情/心理 |
-| 冲突式（太礼貌不够劲） | 递进五级：委婉拒绝→友好人道→命令否定→PUA式→直接侮辱 |
-| 日常对话（容易变成没功能的水） | 功能是立人设；能让人参与的冲突别让主角独白 |
-| 多人对话（混乱/没营养） | 写前规划每个角色功能：信息提供者/情绪放大器/冲突制造者 |
+| Question-and-answer style (one question and one answer throughout the article is like an interrogation) | Instead, one party takes the initiative to speak, and the other party responds; the response can be through actions/expressions/psychology |
+| Conflict style (too polite and not strong enough) | Progression to five levels: polite rejection → friendly and humane → command denial → PUA style → direct insult |
+| Daily conversations (can easily become functionless water) | Function is to establish the character; don’t let the protagonist monologue in a conflict that allows people to participate |
+| Multi-person dialogue (chaotic/unnutritive) | Plan the function of each role before writing: information provider/emotion amplifier/conflict maker |
 
 ---
 
-## 对话核心规则
+## Conversation Core Rules
 
-每句对话必须承载以下至少一项，否则删除：
+Each dialogue sentence must contain at least one of the following, otherwise it will be
+deleted:
 
-1. **推进剧情**：透露新信息、推动事件发展
-2. **增加期待感**：暗示即将发生的事、制造悬念
-3. **展示人设**：通过语言风格传递角色性格
+1. **Promote the plot**: Reveal new information and promote the development of events
+2. **Increase the sense of anticipation**: hint at what is about to happen and create
+   suspense
+3. **Display character**: Convey character personality through language style
 
-且在情绪场景里，每句还要**回应上一句对方的情绪状态**（承接/偏转/升级/退缩）——对话是两个人的情绪在碰，不是轮流播报信息。只推进剧情、句间无情绪承接 = 机械对话。
+And in emotional scenes, each sentence must respond to the other person's emotional
+state in the previous sentence (accept/deflect/escalate/withdraw) - the conversation is
+about the collision of two people's emotions, not taking turns to broadcast information.
+Only advancing the plot, no emotional continuity between sentences = mechanical
+dialogue.
 
-### 绝对禁止
+### Absolutely prohibited
 
-| 禁止 | 理由 |
+| Prohibited | Reasons |
 |------|------|
-| 配角无脑夸主角 | 假 |
-| 互相解释读者已知信息 | 水字数 |
-| 大段说明文式对话 | 闷 |
-| 所有角色说话方式一样 | 模糊 |
-| 对话说服人物 | 现实中没人被几句话说服，用突发状况代替 |
-| 情绪写完方向变了 | 需回退到情绪拆分 |
+| The supporting character praises the protagonist without thinking | Fake |
+| Explain to each other what readers already know | Water word count |
+| Large expository dialogue | Boring |
+| All characters speak the same way | Blurred |
+| Dialogue to persuade characters | In reality, no one is convinced by a few words, so use emergencies instead |
+| After writing the emotion, the direction has changed | Need to go back to emotion splitting |
 
 ---
 
-## 权力博弈对话
+## Power Game Conversation
 
-### 规则
+### Rules
 
-对话长度 = 权力地位。掌控者话短且冷静，被动者话多且情绪化。
+Conversation length = power position. Controllers are short-talking and calm, while
+passive people are talkative and emotional.
 
-### 压制模式
+### Suppression Mode
 
-结构：对方长篇大论（3-5 行）→ 主角一字回应。
-
-```
-"你以为你是什么东西？我告诉你，这个家轮不到你说话！你嫁进来的那天起就该明白自己的位置。"
-"滚。"
-```
-
-### 反转模式
-
-结构：对方嚣张（2-3 行）→ 主角亮底牌（1 行事实）→ 对方沉默。
+Structure: The other party makes a long speech (3-5 lines) → the protagonist responds
+with one word.
 
 ```
-"你有什么资格管？这是我家的钱，我想怎么花怎么花。"
-"你妈的存折，密码是我的生日。"
+"Who do you think you are? Let me tell you, it's not your turn to speak in this family! You should have understood your position from the day you married in."
+"Get out."
 ```
 
-### 心死模式
+### Reverse Mode
 
-结构：对话越回越短，从辩解到沉默到「随意」。
+Structure: The opponent is arrogant (2-3 lines) → the protagonist shows his trump card
+(1 line of facts) → the opponent is silent.
 
 ```
-"你听我解释，那天不是你想的那样。"
-"嗯。"
-"真的，我可以证明。"
-"随意。"
+"What qualifications do you have to take care of it? This is my family's money. I can spend it however I want."
+"Your mother's bankbook, the password is my birthday."
 ```
 
-### 操作指令
+### Death Mode
 
-- 掌控者/主角亮底牌时：对话 ≤ 10 字，不加动作描写
-- 被压制方：对话 ≥ 20 字，可加动作描写（攥拳/咬唇/站起来）
-- 两人对话时：短句方 = 权力上位，长句方 = 权力下位
+Structure: The dialogue gets shorter and shorter, from defensive to silent to "casual".
+
+```
+"Listen to my explanation, that day was not what you thought."
+"Yeah."
+"Really, I can prove it."
+"Whatever."
+```
+
+### Operation instructions
+
+- When the controller/protagonist shows his trump card: dialogue ≤ 10 words, no action
+  description
+- Suppressed party: dialogue ≥ 20 words, action description can be added (clenching
+  fists/biting lips/standing up)
+- When two people are having a conversation: short sentences = higher power, long
+  sentences = lower power
 
 ---
 
-## 潜台词与议程
+## Subtext and Agenda
 
-### 潜台词规则
+### Subtext Rules
 
-- 角色真实动机绝对不能浅显地写在台词里
-- 现实中人说话都给自己找借口，角色也一样
-- 每句对白同时设计：角色的动机（可能角色自己都没意识到）和角色的借口
+- The true motivations of the characters must not be simply written in the lines.
+- In reality, people always make excuses for themselves when they talk, and the same
+  goes for characters.
+- Each line of dialogue is designed at the same time: the character's motivation (maybe
+  the character himself is not aware of it) and the character's excuse
 
-### 对话议程
+### Dialogue Agenda
 
-- 每个角色进入对话时有自己的议程：想从这场对话中得到什么
-- 两个角色的议程碰撞才是张力来源
-- 双方议程一致（同立场）= 复述，失去意义
+- Each character enters the conversation with an agenda: what they want to get out of
+  the conversation
+- The collision of agendas between the two characters is the source of tension
+- Both parties have the same agenda (same position) = retelling, meaningless
 
-### 语气由三要素决定
+### Tone is determined by three elements
 
-关系 × 场合 × 目的 = 语气
+Relationship × occasion × purpose = tone
 
-| 场合 | 特点 | 适合内容 |
+| Occasion | Features | Suitable content |
 |------|------|----------|
-| 私人（单对单） | 深入、感情流露透彻 | 内心剖白、密谋、表白 |
-| 公众 | 需考虑体面，措辞收敛 | 需要冲击力时可打破（如当众翻脸） |
-| 熟人（朋友/同门） | 深度介于两者之间 | 轻松互动和信息交换 |
+| Private (one-on-one) | In-depth and emotional | Confession, conspiracy, confession |
+| Public | Consider respectability and restrain your words | Break when impact is needed (such as falling out in public) |
+| Acquaintance (friend/student) | Depth somewhere in between | Easy interaction and information exchange |
 
-私密的话在公众场合说才有冲击力。对话中不能完全表达的内容，通过动作、神态、环境补充。
-
----
-
-## 情绪推动对话
-
-### 强情绪对话
-
-- 命令式+否定式最能激发读者情绪："我说的还不够清楚吗？"
-- 最强话术：打着为你好的幌子，句句不离关心，但句句都是嫌弃、指责、厌恶
-- 直接否定比含蓄暗示更伤人
-
-### 情绪连续性
-
-角色情绪是连续的、循序渐进的。从生气到高兴：生气 → 不那么生气 → 不生气 → 高兴，每次转变需对应事件触发。不能跳步。
-
-### 情绪四步法（缺一不可）
-
-1. 遇到事件（失衡状态）
-2. 情绪反应（外在表现：动作、表情、语言）
-3. 内心思考（即使没思考也要写出"没有思考"，表达鲁莽）
-4. 采取行动（基于前三步结果回应）
-
-### 对话不平淡三思路
-
-- 对话本身带来/强化某个核心驱动力（期待、爽感、悬念）
-- 信息交流因某原因受阻碍，阻碍可能导致驱动力到来
-- 发展突然脱离读者预期（但必须合理、符合人设）
-- 把长篇对话塞在期待点和爽点之间：读者为了看爽点愿意忍受中间对话
+Private words have an impact when spoken in public. The content that cannot be fully
+expressed in the dialogue is supplemented through actions, demeanor, and environment.
 
 ---
 
-## 信息展示与世界观引出
+## Emotions drive conversations
 
-- 大量信息通过对话展示会显得啰嗦，部分信息转化为情节、心理描写、旁白、环境、动作
-- 用角色的语气和立场包裹信息，不是机械陈述设定
-- 设定用到哪个稍微带出来就行，不需完完全全讲明白前因后果
-- **角色不当"科普嘴"**：设定/原理/前因后果不能靠任何角色（尤其信息型/AI 配角）整段讲解——Gate G 同样适用于角色台词。拆成角色在压力下挤出的半句话 + 身体反应 + 留白，用到哪带哪点
+### Strong emotional dialogue
 
-### 信息拉扯示例（以"主角新书起飞了"为例）
+- Imperative + negative can best stimulate readers' emotions: "Wasn't what I said clear
+  enough?"
+- The strongest words: Under the guise of being good for you, every word is caring, but
+  every word is disgust, accusation, and disgust.
+- Direct denial hurts more than implicit hints
 
-| 角色 | 台词 | 功能 |
+### Emotional Continuity
+
+Character emotions are continuous and gradual. From angry to happy: angry → not so angry
+→ not angry → happy, each change needs to be triggered by a corresponding event. No
+skipping.
+
+### Four-step method for emotions (all are indispensable)
+
+1. Encountering an event (imbalance state)
+2. Emotional response (external manifestations: movements, expressions, language)
+3. Inner thinking (even if you are not thinking, write "without thinking" to express
+   recklessness)
+4. Take action (response based on the results of the first three steps)
+
+### Three ideas for making the conversation unflattering
+
+- The dialogue itself brings/strengthens a core driving force (expectation, excitement,
+  suspense)
+- The exchange of information is hindered for some reason, and the obstruction may lead
+  to the arrival of driving forces.
+- The development suddenly deviates from the reader's expectations (but it must be
+  reasonable and consistent with the character)
+- Put a long dialogue between the point of expectation and the satisfying payoff:
+  readers are willing to endure the middle dialogue in order to see the satisfying
+  payoff
+
+---
+
+## Information display and worldview elicitation
+
+- Displaying a large amount of information through dialogue will appear verbose, and
+  some information is transformed into plot, psychological description, narration,
+  environment, and action.
+- Use the character's tone and stance to wrap up the information, rather than
+  mechanically stating settings.
+- It is enough to briefly explain which one is used in the setting. There is no need to
+  fully explain the causes and consequences.
+- **The character is inappropriate for "popular science"**: Settings/principles/causes
+  and consequences cannot be explained in the entire paragraph by any character
+  (especially informational/AI supporting characters) - Gate G is also applicable to
+  character lines. Divide it into half a sentence squeezed out by the character under
+  pressure + physical reaction + blank space, use which points
+
+### Example of information pulling (take "The protagonist's new book has taken off" as an example)
+
+| Role | Lines | Function |
 |------|------|------|
-| 甲 | 听说成绩…… | 悬念拉期待 |
-| 乙 | 肯定没人看！ | 下行 + 拉期待 |
-| 甲 | 听说成绩很不错 | 上行 + 拉期待 |
-| 乙 | 首订一万三？ | 展露核心信息 + 达成爽点 |
+| A | I heard about the results... | Suspense and anticipation |
+| B | No one must be watching! | Downward + pull forward |
+| A | I heard the results are very good | Upward + Raising expectations |
+| B | First order of 13,000? | Reveal core information + achieve satisfying payoff |
 
-上行和下行交替，情绪像拉锯不断拉升期待。
+Ups and downs alternate, and emotions are like a see-saw, constantly raising
+expectations.
 
 ---
 
-## 人物语言差异化
+## Character language differentiation
 
-每个角色要有自己的说话方式。对话时经常卡住不知道角色会说什么 → 人设模糊，去总结类似人设的说话方式。
+Each character should have his or her own way of speaking. I often get stuck during
+conversations and don’t know what the character will say → The character is vague, and I
+try to summarize the way of speaking similar to the character.
 
-| 差异化维度 | 操作 |
+| Dimensions of differentiation | Operations |
 |------------|------|
-| 口癖和惯用语 | 给每个主要角色一个标志性用词 |
-| 说话节奏 | 长篇大论 vs 短句连击 |
-| 信息偏好 | 技术型带专业术语，江湖人带切口 |
-| 立场固定 | 某角色永远从某个角度发言（悲观派/乐观派/务实派） |
-| 身份影响措辞 | 老者/少年/贵族/市井，身份不同则措辞、自称、敬谦词不同 |
-| 性格影响语气 | 智谋型话里有话；鲁莽型想到什么说什么；冷静型措辞精确，偶尔情感外露反而有冲击 |
-| 进度影响态度 | 初见/熟悉/对立/亲密，关系阶段不同则语气与信息量不同 |
+| Motto and idioms | Give each main character a signature word |
+| Rhythm of speaking | Long speeches vs short combos |
+| Information preferences | Technical types have professional terminology, and charlatans have incisions |
+| Fixed stance | A certain character always speaks from a certain perspective (pessimist/optimist/pragmatist) |
+| Identity affects the wording | Old man / young man / noble / businessman. Different identities have different wording, self-proclaimed words and respectful words |
+| Personality affects the tone | The resourceful type has something to say; the reckless type says whatever comes to mind; the calm type uses precise words, but the occasional exposure of emotions can have an impact |
+| Progress affects attitude | First meeting/familiarity/opposition/intimacy, different relationship stages have different tone and amount of information |
 
 ---
 
-## 弹幕/群众对话
+## Barrage/mass dialogue
 
-三大核心作用：剧情推进（透露主角不知道的信息）、增加期待感（悬念、猜测）、情绪渲染（群众震惊/激动/愤怒传染读者）。锦上添花，不代替主线。
+Three core functions: plot advancement (revealing information that the protagonist does
+not know), increasing anticipation (suspense, speculation), and emotional rendering
+(shock/excitement/anger infecting readers). The icing on the cake, not replacing the
+main line.
 
-### 设计过的弹幕 vs 没设计的
+### Designed barrages vs undesigned ones
 
-- 没设计：只有"卧槽好厉害"，单调、浪费
-- 设计过：普通人震惊 → 专业人士分析 → 特殊身份者反应 → 情感升华
+- No design: only "fuck it's awesome", monotonous and wasteful
+- Designed: Ordinary people are shocked → Analysis by professionals → Reactions of
+  people with special status → Emotional sublimation
 
-### 操作要点
+### Operational points
 
-- 不同人格化语气，不能每条都一个味
-- 短小精悍，每条不超过一句话核心信息
-- 善用递进：从最初震惊到逐渐认识全貌
-- 可出现"反转"角色：看似路人一句话改变所有人认知
-- 不用每章都写，关键爽点/燃点/泪点前后集中使用
-
----
-
-## 节奏控制
-
-### 大量对话保持节奏
-
-- 不要删掉表现人物性格的语气助词来"精简"
-- 对话段落间穿插动作描写、环境变化、心理活动调节节奏
-- 紧张段落对话短促，舒缓段落可以长一些
-- 关键信息放对话开头或结尾，中间用于拉扯情绪
-
-### 动作和表情处理
-
-- 刻意给每句对话配表情/动作会让行文机械
-- 动作和表情在关键转折处使用效果最好，不需要每句都配
-- 语气平淡场景（喝茶、散步）用微小动作和沉默体现氛围
-
-### 对话的呼吸感
-
-- 连续多轮对话后需要"换气"，插入环境描写或角色心理
-- 适当停顿（动作描写、换行、短句）比连续输出更有张力
-- "你确定？"比长篇解释更有压迫感
+- Different personified tones, not every article has the same tone
+- Short and concise, with no more than one sentence of core information each
+- Make good use of progression: from initial shock to gradual understanding of the whole
+  picture
+- "Reversal" roles can appear: seemingly a passer-by can change everyone's perception
+  with just one sentence
+- You don’t need to write every chapter. The key is to use them before and after
+  satisfying payoff/burning point/tear point.
 
 ---
 
-## 篇幅控制
+## Rhythm Control
 
-### 对话过多时
+### Plenty of dialogue to keep the pace going
 
-- 读者已知信息的对话用叙事一句话概括："爱丽丝向安娜讲述了来城里的原因，安娜听后直皱眉头"
-- 能用突发状况替代的对话段落直接替换
-- 语气词删掉后干巴巴 = 对话本身缺乏信息量，需重写
+- Don't "simplify" by deleting modal particles that express a character's personality
+- Action descriptions, environmental changes, and psychological activities are
+  interspersed between dialogue paragraphs to adjust the rhythm.
+- The dialogue in tense passages should be short, while the relaxing passages can be
+  longer.
+- Key information is placed at the beginning or end of the conversation, and the middle
+  is used to stimulate emotions.
 
-### 对话过少时
+### Action and expression processing
 
-- 能用其他人物对话讲出来的东西，不要让主角旁白平铺直叙
-- 引入配角参与冲突和对话，但新人物必须安排主线戏份
+- Deliberately adding expressions/actions to each sentence of dialogue will make the
+  writing mechanical.
+- Actions and expressions work best when used at key turning points, and there is no
+  need to match every sentence
+- Scenes with a dull tone (drinking tea, walking) use small movements and silence to
+  express the atmosphere
+
+### The breath of conversation
+
+- After multiple rounds of dialogue, you need to "breathe" and insert environmental
+  description or character psychology.
+- Appropriate pauses (action descriptions, line breaks, short sentences) are more tense
+  than continuous output
+- "Are you sure?" is more oppressive than a long explanation
 
 ---
 
-## 以梗填充对话
+## Space control
 
-### 梗式 vs 普通
+### When there are too many conversations
 
-- 普通："兄弟别灰心，你一步步走到今天我是看着你过来的，这点挫折对于你来说算什么事儿？振作起来！"
-- 梗式："兄弟别灰心，我相信你总有人头落地，落地人头，头落地上……卧槽那句话怎么说的来着？兄弟你懂我意思是吧……"
-- 梗式用"说不出来但意思到了"的状态制造趣味
+- The dialogue that the reader already knows is summarized in one narrative sentence:
+  "Alice told Anna the reason for coming to the city, and Anna frowned after hearing
+  it."
+- Dialogue paragraphs that can be replaced by emergencies can be directly replaced
+- The modal particles are deleted and look dry = the dialogue itself lacks information
+  and needs to be rewritten.
 
-### 操作
+### When there is too little dialogue
 
-- 在对话中融入梗或骚话，有效提升整体趣味性
-- 特别是主角或重要配角的突出对话，适合用梗强化记忆点
-- 可用某个梗作为高潮点，整段剧情围绕达成这个梗来设计
-- **场合例外（声线让位）**：高压/生死/悲痛/严肃 beat 里，搞笑担当与轻快配角的玩笑、口头梗、插科打诨一律收敛——声线让位于当前情绪基调，用短、冷、带情绪重量的反应替代；梗只在安全或喘息 beat 放。自检：这句玩笑放进当前基调会不会让读者出戏？会就删/改
+- Don’t let the protagonist’s narration tell things that can be told through dialogue
+  with other characters.
+- Introduce supporting characters to participate in conflicts and dialogues, but new
+  characters must be arranged in the main plot
 
 ---
 
-## 质量检查
+## Fill conversations with memes
 
-### 三大自查项（中一条以上需改进）
+### Terrific vs normal
 
-- [ ] 是否存在大量信息都必须用对话来展示
-- [ ] 对话是否是问答式的一问一答
-- [ ] 是否习惯依赖对话来推动剧情或人物变化
+- Ordinary: "Brother, don't be discouraged. I've watched you step by step until you
+  reach today. What does this setback mean to you? Cheer up!"
+- Meme: "Brother, don't be discouraged. I believe you will always have your head fall to
+  the ground, your head will fall to the ground, your head will fall to the ground...
+  What the hell do you mean by that sentence? Brother, you understand what I mean,
+  right..."
+- Meme style uses the state of "can't say it but the meaning is there" to create
+  interest
 
-### 核心指令检查
+### Operation
 
-- [ ] 权力博弈：掌控者对话 <= 10 字 / 被压制方 >= 20 字，是否有明确的压制/反转/心死模式
-- [ ] 潜台词与议程：每个角色进入对话时有自己的议程，真实动机不在台词中
-- [ ] 人物差异化：遮住角色名后能否区分是谁在说话（7维差异化）
-- [ ] 弹幕递进：普通 → 专业 → 特殊身份，是否有层次感
-- [ ] 对话推动剧情：每段对话结束时，剧情是否往前推了一步
-- [ ] 篇幅控制：单次对话不超过全节 40%，信息密度是否足够
+- Incorporate jokes or jokes into conversations to effectively enhance the overall
+  interest.
+- Especially the prominent dialogues of the protagonist or important supporting
+  characters are suitable for using memes to strengthen memory points.
+- A certain plot can be used as the climax point, and the entire plot is designed around
+  achieving this plot.
+- **Occasion exceptions (vocal give way)**: In high-pressure/life and death/sad/serious
+  beats, the jokes, verbal gags, and gags of the comedic and light supporting roles are
+  all restrained - the vocal line gives way to the current emotional tone, and is
+  replaced by short, cold, and emotionally weighted reactions; jokes are only played in
+  safe or breathing beats. Self-examination: Will this joke, given the current tone,
+  make readers uncomfortable? Delete/change it if you know how
 
-### 检验对话质量
+---
 
-- 对话自然度检查：逐句检查对话是否像自然口语交流，而非书面化的问答稿
-- 对话结尾能否预示接下来的节奏变化
+## Quality check
+
+### Three major self-examination items (more than one needs improvement)
+
+- [ ] Whether there is a large amount of information that must be presented through
+      dialogue
+- [ ] Is the conversation a question-and-answer format?
+- [ ] Are you accustomed to relying on dialogue to promote plot or character changes?
+
+### Core Instruction Check
+
+- [ ] Power game: Dialogue between the controller <= 10 words / Suppressed party >= 20
+      words, is there a clear suppression/reversal/death mode?
+- [ ] Subtext and Agenda: Each character enters the dialogue with their own agenda, and
+      their true motivations are not in the lines
+- [ ] Character differentiation: Can you tell who is speaking after covering the
+      character’s name (7-dimensional differentiation)
+- [ ] Barrage progression: ordinary → professional → special status, whether there is a
+      sense of hierarchy
+- [ ] Dialogue drives the plot: At the end of each dialogue, does the plot move forward
+      one step?
+- [ ] Length control: a single dialogue should not exceed 40% of the entire section, and
+      whether the information density is sufficient
+
+### Check conversation quality
+
+- Conversation naturalness check: Check whether the conversation is like natural spoken
+  communication, sentence by sentence, rather than a written question and answer script.
+- Can the ending of the conversation foreshadow the subsequent change of pace?

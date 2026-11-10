@@ -1,119 +1,152 @@
-# 角色外貌描写
+# Character appearance description
 
-> 不堆砌五官、不中断剧情、不让外貌和角色脱节。每条技法以 `[标签]` 开头。
+> Don’t overlay the facial features, don’t interrupt the plot, and don’t let the
+> appearance be disconnected from the character. Each technique begins with `[tag]`.
 
-## 注入时机
+## Injection timing
 
-角色外貌不是场景类型，不能通过 输入·场景原材料 场景类型自动检测。prompt-crafter 在**以下任意条件满足时**，额外加载此文件注入 输出·写作规范：
+The character's appearance is not a scene type and cannot be automatically detected
+through the input scene raw material scene type. prompt-crafter additionally loads this
+file to inject output and writing specs when any of the following conditions are met:
 
-| 触发条件 | 判断依据 | 示例 |
+| Trigger conditions | Judgment basis | Example |
 |---------|---------|------|
-| **新角色登场** | 本章出场角色中有上一章没出现过的角色 | 第二卷引入新反派，读者第一次见到他 |
-| **角色外貌变化** | 角色经历了受伤、衰老、换装、变身等明显变化 | 主角被毁容后第一次露脸、女配换了装扮风格 |
-| **场景涉及外貌感知** | 输入·场景原材料 场景核心事件或场景描述中包含"看脸/观察外貌/打量"等 | "他打量着对面的人"、"她注意到对方的伤痕" |
+| **New characters appear** | Among the characters appearing in this chapter are those who did not appear in the previous chapter | The second volume introduces a new villain, and readers see him for the first time |
+| **Character Appearance Changes** | The character has undergone significant changes such as injury, aging, clothing changes, and transformations | The protagonist appears for the first time after being disfigured, and the female supporting character has changed her dressing style |
+| **The scene involves appearance perception** | Input / Scene raw materials The core event of the scene or the scene description contains "looking at the face/observing the appearance/sizing", etc. | "He looked at the person opposite", "She noticed the other person's scars" |
 
-### 加载方式
+### Loading method
 
-不放在常规的场景类型加载流程中。在 输入·场景原材料 场景序列填充完毕后，**额外检查**每个场景的核心事件是否触发以上条件。如果触发，加载 `appearance/universal.md` + `appearance/{题材}.md`（如存在），经四步转化后追加到 输出·写作规范。
+Not placed in the regular scene type loading process. After the input scene raw material
+scene sequence is filled in, **extra check** whether the core event of each scene
+triggers the above conditions. If triggered, load `appearance/universal.md` +
+`appearance/{genre}.md` (if it exists), and append to output and writing specs after four
+steps of conversion.
 
-## 标签选择指南
+## Label Selection Guide
 
-| 场景特征 | 匹配标签 | 选取理由 |
+| Scene characteristics | Matching tags | Reason for selection |
 |---------|---------|---------|
-| 角色首次登场、需要给读者第一印象 | [锚点] [动态] | 用核心视觉锚点建立记忆点，借动作带出外貌 |
-| 角色外貌和性格/经历不匹配 | [故事] | 让外貌特征有来历，不是凭空设计 |
-| 出场描写像流水账（从头发写到脚） | [锚点] | 只抓一个标志性特征，其余让读者脑补 |
-| 出场描写像暂停剧情单独介绍 | [动态] | 把外貌融入进场/落座/扫视等连续动作 |
-| 角色特征只在出场用一次后面再没提过 | [故事] | 让特征和角色经历绑定，后续可反复呼应 |
-| 不想直白描写长相、想要更强的冲击力 | [侧面烘托] | 借旁人神态/氛围变化反衬，留给读者想象空间 |
+| The character appears for the first time and needs to give readers the first impression | [Anchor Point] [Dynamic] | Use core visual anchor points to establish memory points and use actions to bring out the appearance |
+| There is a mismatch between the character's appearance and personality/experience | [Story] | Let the appearance have a origin, not just design it out of thin air |
+| The description of the appearance is like a running account (written from hair to toes) | [Anchor point] | Only capture one iconic feature, and let the reader figure out the rest |
+| Appearance description is like a separate introduction after pausing the plot | [Dynamic] | Integrate appearance into continuous actions such as entering/taking a seat/scanning |
+| Character characteristics are only used once and never mentioned again | [Story] | Bind the characteristics to the character's experience, and they can be echoed repeatedly in the future |
+| I don’t want to describe the appearance directly, but I want a stronger impact | [Side contrast] | Use other people’s demeanor/atmosphere changes to contrast, leaving room for the reader’s imagination |
 
 
-## [锚点] 提炼核心视觉锚点——以点代面
+## [Anchor Point] Refining core visual anchor points - using points to represent surfaces
 
-**核心：** 不堆砌全身上下细节，只抓取 1 个标志性特征重点放大，其余交由读者脑补。
+**Core:** Do not pile up the details of the whole body, only grab 1 iconic feature and
+focus on it, and leave the rest to the reader's brain.
 
-### 执行规则
+### Enforce Rules
 
-- 每个角色锁定唯一核心标识：疤痕、眼型、痣、体态、特有纹路
-- 围绕标识做细节刻画，不平均描写头发、五官、身形等常规部位
-- 放弃"沉鱼落雁、剑眉星目、面如冠玉"等通用模板词
-
-```
-❌ 他眉毛粗重，眼睛圆大，脸上留着胡子，模样十分凶悍。
-
-✅ 满脸横肉随呼吸起伏，一道刀疤从左眼角一直延至耳根，戾气扑面而来。
-
-❌ 她容貌秀美，眉眼动人。
-
-✅ 一双狐狸眼笑时眯成细线，眼角那颗泪痣，勾得人心神晃动。
-```
-
-**禁用：** 从头到脚流水账式描写；套用网红古风颜值套词；罗列多个普通五官特征。
-
-
-## [动态] 动态行为外貌化——不暂停剧情
-
-**核心：** 摒弃"人物站定、单独描写长相"的静态写法，将外貌融入进场、落座、扫视、笑容等连续动作中。
-
-### 执行规则
-
-- 外貌描写穿插在人物行动流程里，不中断叙事节奏
-- 身形、气场不靠直白描述，借助环境、衣物、他人反应侧面体现
-- 标志性特征随动作变化露出、延展，强化画面动态感
+- Each character locks a unique core identifier: scars, eye shape, moles, body shape,
+  and unique lines.
+- Create details around the logo, unevenly describing hair, facial features, body shape
+  and other regular parts
+- Abandon common template words such as "Shen Yu Luo Yan, sword eyebrows and star eyes,
+  face like a crown jade" etc.
 
 ```
-❌ 他身材高大魁梧，长相凶狠，气势慑人。
+❌ He has thick eyebrows, round eyes, and a beard on his face, giving him a very fierce look.
 
-✅ 他推门而入，门框微微震颤。阔步落座时，粗布衣衫被紧绷的肌肉撑得发胀。
-   目光扫过全场，被视线触及之人纷纷缩起脖颈。
-   他咧嘴一笑，脸上刀疤随之扭曲。
+✅ The flesh on his face rose and fell with his breathing, a scar extended from the corner of his left eye to the base of his ear, and a violent aura rushed over his face.
+
+❌ She has beautiful appearance and charming eyebrows.
+
+✅ A pair of fox eyes narrow into thin lines when smiling, and the mole at the corner of the eye makes people's hearts tremble.
 ```
 
-**禁用：** 剧情停滞，单独分段纯介绍外貌；全程静态描写，人物无任何动作。
+**Disabled:** A running account-style description from head to toe; applying the ancient
+style expressions of Internet celebrities; listing multiple common facial features.
 
 
-## [故事] 外貌绑定性格/经历/命运——让皮囊讲故事
+## [Dynamic] Visualization of dynamic behaviors,without pausing the plot
 
-**核心：** 外貌细节不止是长相，要和角色职业、过往创伤、性格习惯、人生经历深度绑定，让细节具备叙事性。
+**Core:** Abandon the static writing method of "characters stand still and describe
+their appearance separately", and integrate appearance into continuous actions such as
+entering, sitting down, scanning, and smiling.
 
-### 执行规则
+### Enforce Rules
 
-- 设计专属体态、疤痕、习惯性小动作，并补充背后成因
-- 外貌特征随角色状态、场景反复出现，不是出场写一次就作废
-- 用外在细节暗示身份、阅历、心境
-
-```
-❌ 这名老兵身材高大，外表普通。
-
-✅ 他坐姿始终如标枪般挺直，左腿肌肉会不受控地微微绷紧——
-   那是早年战场遭弹片所伤留下的旧疾。
-```
-
-**禁用：** 外貌与人设、经历完全脱节；特征仅登场使用一次，后续不再呼应。
-
-
-## [侧面烘托] 借旁人之眼写貌——留白高级写法
-
-**核心：** 不直接描述角色长相，借旁人神态、现场氛围变化反衬人物特质，留给读者想象空间，冲击力更强。
-
-### 执行规则
-
-- 禁止堆砌"倾国倾城、貌若天仙"等评价性形容词
-- 通过第三方视角的生理反应、行为停顿、氛围骤变来呈现效果
-- 旁观者的反应越具体（而非笼统的"所有人都看呆了"），冲击力越强
-- 反衬视角的选取要贴合场景：低阶看高阶、平民看贵族、敌人看强者
+- Appearance descriptions are interspersed with the character's action flow without
+  interrupting the narrative rhythm.
+- Body shape and aura do not rely on straightforward descriptions, but are reflected
+  through the environment, clothing, and other people's reactions.
+- Iconic features are revealed and extended with changes in movement, enhancing the
+  dynamic sense of the picture.
 
 ```
-❌ 她容貌绝美，倾国倾城，所有人都被她的美貌震惊。
+❌ He is tall and burly, with a fierce appearance and intimidating momentum.
 
-✅ 她踏入大厅的瞬间，喧嚣声戛然而止。
-   正举杯的客人悬着酒杯忘了饮，服侍生的步伐凭空顿住。
-   烛光映在她脸上，每一个角度都让在场女性移不开目光。
-
-❌ 他长得凶神恶煞，看着就不好惹。
-
-✅ 他往巷口一站，对面几个混混不约而同后退了半步。
-   最前面那个咽了口唾沫，攥刀的手微微发颤。
+✅ He pushed the door open and the door frame trembled slightly. When he strode to sit down, his coarse clothes were swollen by the tight muscles.
+   His gaze swept across the entire place, and those who were touched by his gaze shrank their necks.
+   He grinned, the scar on his face distorting.
 ```
 
-**禁用：** 直白使用"漂亮/英俊/丑/凶"等评价性结论；笼统写"所有人都看呆了"而不交代具体反应细节。
+**Disabled:** The plot is stagnant, and the appearance is purely introduced in separate
+sections; the entire process is described statically, without any movement of the
+characters.
+
+
+## [Story] Appearance binds personality/experience/destiny - let the skin tell the story
+
+**Core:** Appearance details are not just about looks, they must be deeply bound to the
+character’s occupation, past trauma, personality habits, and life experiences, making
+the details narrative.
+
+### Enforce Rules
+
+- Design exclusive body posture, scars, habitual movements, and supplement the causes
+  behind them
+- Appearance characteristics appear repeatedly depending on the character's status and
+  scene. They do not appear once and then become invalid.
+- Use external details to imply identity, experience, and mood
+
+```
+❌ This veteran is tall and ordinary in appearance.
+
+✅ He always sits as straight as a javelin, and the muscles in his left leg will tighten slightly uncontrollably,
+   It was an old disease caused by shrapnel injuries on the battlefield in the early years.
+```
+
+**Disabled:** The appearance is completely disconnected from the personality and
+experience; the characteristics are only used once and will no longer be echoed later.
+
+
+## [Side contrast] Use the eyes of others to describe appearance - advanced writing method of leaving blank space
+
+**Core:** Instead of directly describing the character's appearance, the character's
+characteristics are reflected by the demeanor of others and the changes in the
+atmosphere of the scene, leaving room for the reader's imagination and having a stronger
+impact.
+
+### Enforce Rules
+
+- It is forbidden to pile up evaluative adjectives such as "overwhelming the country and
+  the city, beautiful like a fairy"
+- The effect is presented through physiological reactions, behavioral pauses, and sudden
+  changes in the atmosphere from a third-party perspective.
+- The more specific the bystander's reaction is (rather than the general "everyone is
+  stunned"), the stronger the impact.
+- The choice of contrasting perspective should fit the scene: low-level people look at
+  high-level people, common people look at nobles, and enemies look at strong people.
+
+```
+❌ She was so beautiful that she captivated the country and everyone was shocked by her beauty.
+
+✅ The moment she stepped into the hall, the noise stopped abruptly.
+   The guest who was raising his glass hung his glass and forgot to drink, and the waiter suddenly stopped in his tracks.
+   The candlelight reflected on her face, making the women present unable to look away from every angle.
+
+❌ He looks fierce and is not easy to mess with.
+
+✅ He stood at the entrance of the alley, and several gangsters on the opposite side took half a step back in unison.
+   The one at the front swallowed, and the hand holding the knife trembled slightly.
+```
+
+**Disabled:** Directly use evaluative conclusions such as
+"beautiful/handsome/ugly/ferocious"; generally write "everyone was stunned" without
+explaining specific reaction details.

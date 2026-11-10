@@ -1,176 +1,307 @@
-# 题材风格包：悬疑 / 惊悚 / 细思极恐
+# Theme style package: Suspense/Thriller/Thriller
 
 
-> 本题材风格包改写自获赠短篇流程包（oh-story 系 + 实测调整），按本仓口径适配：引用为部署后基座路径、已剔除外部体系引用。公开或商用前需原作者确认。
+> This theme style package is adapted from the short story process package (oh-story
+> series + actual measurement adjustment) received as a gift, and is adapted according
+> to the caliber of the repo: the reference is the base path after deployment,
+> and external system references have been eliminated. Confirmation by the original
+> author is required before disclosure or commercial use.
 
 
-> 七猫 / 黑岩 / 知乎盐选通俗短篇。先读 `.claude/knowledge/short-craft/short-craft.md` 底座，本包在其上覆盖该题材专属调性；悬念技法本体（信息顺序、期待接力、时间锁等）见 `.claude/knowledge/short-craft/hooks-suspense.md`，本包不重复，只写腔调 / 结构 / 范式层。
-> 一句话定位：**现代悬疑 / 侦探推理 / 惊悚 / 细思极恐。信息差驱动，层层揭底，结尾反转必须能回溯；细思极恐型收尾把最后一块拼图留给读者。** 读者要的是「猜不到，但回头全对上」的智力快感，加上后背发凉的体感。
+> Qimao / Heiyan / Zhihu Salt Selected Popular Short Stories. Read the
+> `.claude/knowledge/short-craft/short-craft.md` base first, on which this package
+> covers the specific tonality of the subject; see
+> `.claude/knowledge/short-craft/hooks-suspense.md` for the ontology of suspense
+> techniques (information sequence, anticipation relay, time lock, etc.). This package
+> does not repeat, only the tone/structure/paradigm layer. Positioning in one
+> sentence: **Modern suspense/detective reasoning/thriller/terrifying if you think
+> about it. Driven by information gaps, the bottom line is revealed layer by layer,
+> and the twist at the end must be traceable; the ending of the horror-type ending
+> leaves the reader with the last piece of the puzzle. ** What readers want is the
+> intellectual pleasure of "can't guess, but everything turns out to be right", plus
+> the physical feeling of chills on the back.
 
 ---
 
-## 叙述腔调
+## Narrative Tone
 
-第一人称**冷静报告体**为主：叙述者用记流水账的平静口吻，陈述极不正常的事（分尸、循环、亲人被抹除），恐怖靠「语气与内容的反差」压出来；恐惧只在异常暴露的一瞬切成体感，随即被理智接管。与追妻 / 复仇的宣泄腔相反：全程克制，不哭诉、不控诉、不连环反问。
+The first-person **calm reporting style** is mainly used: the narrator uses a calm tone
+of chronicling accounts to describe extremely abnormal things (dismemberment, recycling,
+and erasure of relatives). The horror is suppressed by the "contrast between tone and
+content"; the fear only becomes physical at the moment when the abnormality is exposed,
+and is then taken over by reason. Contrary to the cathartic tone of chasing a
+wife/revenge: restrained throughout, no crying, no accusations, no serial rhetorical
+questions.
 
-- 《杀夫那夜，多了一具尸体》我熟练地取出厨房里的整套刀具，小心翼翼地开始了分尸工作。
-- 《怪物的守则》保险起见，就当这一切都是真的好了，我必须认真地对待！
+- "The night I killed my husband, there was an extra corpse." I skillfully took out the
+  entire set of knives in the kitchen and carefully began the work of dismembering the
+  body.
+- "Code of Monsters" To be on the safe side, just pretend that all this is true, I must
+  take it seriously!
 
-**第三人称与多视角在本题材是允许的例外**：侦探推理型可用第三人称跟警探走办案程序（《完美凶杀》），或第一人称业余侦探与第三人称现场交替（《自杀前死掉的人》）。
+**Third person and multiple perspectives are allowed exceptions in this genre**: The
+detective reasoning type can use the third person to follow the police detective through
+the case handling procedures ("Perfect Murder"), or the first person amateur detective
+and the third person scene alternately ("The Man Who Died Before Suicide").
 
-叙述者**可以隐瞒，不可以说谎**：第一人称凶手 / 共谋叙述者只如实记录自己做了什么，不写为什么（《血色闺蜜》的「我」全程陪闺蜜查案，动机捂到最后一节才亮牌）。这是本题材独有的叙述性诡计空间，其他题材不适用。
+The narrator **can conceal but cannot lie**: the first-person murderer/conspirator
+narrator only truthfully records what he did, not why ("I" in "Bloody Girl" accompanies
+his best friend to investigate the case throughout the whole process, and the motive is
+not revealed until the last section). This is a space of narrative trickery unique to
+this genre and not applicable to other genres.
 
 ---
 
-## 开篇范式
+## Opening Paradigm
 
-简介 = 「正常世界 + 一个不可能细节」，两三句写完。第 1 节直接进异常，不铺身世、不解释设定。
+Introduction = "Normal world + an impossible detail", write two or three sentences.
+Section 1 goes directly to the anomaly without explaining the background or settings.
 
-| 开篇式 | 真实范例 |
+| Opening | Real examples |
 |--------|----------|
-| 冷静自白+不可能细节 | 《杀夫那夜，多了一具尸体》杀死丈夫后，我将他分尸，放进了地下室的冰柜里。第二天，冰柜里出现了两双手，三双脚。 |
-| 民俗规矩卡+轮到我 | 《落花洞女》村子有个古怪的习俗。年轻貌美的处女，被洞神选中后，就会不吃不喝，直至死亡。死后肌骨生香，面容安详。我一开始是不信的。直到我的阿姐，被选为「落花洞女」。 |
-| 身上的自我留言 | 《怪物的守则》撸起长袖，我看见自己的右手臂上刻着密密麻麻的一行字。在这行字的下面，歪歪扭扭地刻了三个「正」字。 |
-| 亲人一夜变异 | 《妹妹发高烧痊愈之后》我们被笑得浑身发寒。因为她太乖了。乖得不像是六岁的小姑娘！ |
-| 存在被抹除 | 《除夕夜，我的家人集体消失》王阿姨拉开一条缝，表情像见了鬼：「小姑娘，你一个人住那儿三年了，哪来的爸妈？」 |
-| 死亡通知反转句 | 《血色闺蜜》「你老公陈宇呢？他不在家吗？」「死的就是他。」 |
-| 挑衅读者前瞻钩 | 《完美凶杀》正文第一句：你以为你接近真相了吗？ |
+| Calm confession + impossible details | "The night I killed my husband, there was an extra corpse" After killing my husband, I cut his body into pieces and put it in the freezer in the basement. The next day, two pairs of hands and three pairs of feet appeared in the freezer. |
+| Folk Rules Card + My Turn | "The Girl in the Luohua Cave" There is a weird custom in the village. After a young and beautiful virgin is chosen by the cave god, she will not eat or drink until she dies. After death, the muscles and bones are fragrant and the face is peaceful. I didn't believe it at first. Until my sister was selected as the "Girl of the Luohua Cave". |
+| Self-Message on the Body | "Monster's Code" Rolling up my long sleeves, I saw a dense line of words engraved on my right arm. Under this line of words, three characters "正" were carved crookedly. |
+| Relatives mutated overnight | "After my sister recovered from a high fever" we were laughed to the point of chills all over. Because she is so good. Too good to be a six-year-old girl! |
+| Existence erased | "On New Year's Eve, my family disappeared en masse" Aunt Wang opened a crack and looked like she had seen a ghost: "Little girl, you have lived there alone for three years, where did your parents come from?" |
+| Death Notice Reversal | "Bloody Girlfriends" "Where is your husband Chen Yu? Isn't he at home?" "He is the one who died." |
+| Provocative reader preview hook | First sentence of the text of "Perfect Murder": Do you think you are close to the truth? |
 
 ---
 
-## 钩子母题与密度
+## Hook Motif and Density
 
-密度：每节至少一个新信息差（新异常 / 新证据 / 新证词矛盾），章尾必留信息炸弹。与情感题材的根本区别：钩子不是伤害升级，是「已知与未知的差」被扩大或换方向。
+Density: At least one new information gap (new anomaly/new evidence/new testimony
+contradiction) in each section, and an information bomb must be left at the end of the
+chapter. The fundamental difference from emotional themes: the hook is not an escalation
+of damage, but an expansion or change of direction of the "difference between the known
+and the unknown".
 
-- **不可能细节**：一个具体、可验证、无法解释的小事实，比大场面吓人。多出来的尸块、太新的手机、六岁小孩二十分钟修好的下水道。
-- **全员口径一致的否定**：亲人、邻居、警察统一说你疯了；否定越整齐，越证明有组织。
-- **规矩三条，必破一条**：民俗 / 规则怪谈型先立规矩，读者从立规矩那刻就在等哪条会破（《棺材聘》师傅交代三件事）。
-- **微物证**：反转回溯的锚点。出现时轻描淡写，摊牌时逐一收回。裙子起皱、手腕镯痕、手机划痕、垃圾袋手感、门把手上的皮筋。
-- **知情者微反应**：撒谎者被戳到时的小动作当路标。爸吃饭时下意识掏烟、老李突然挂断电话、妈脸色惨白仍嘴硬。
-- **自我留言接力**：循环 / 失忆型给下一轮的自己留证据，且留言本身可能被篡改（《怪物的守则》「不要相信任何人，包括我自己！」）。
-- **一句式前瞻钩**：《杀夫那夜》「然而事实证明，有些事情确实拖不得。一拖，就出事了。」只预告有事，不说破是什么事。
-
----
-
-## 情绪烈度与模式（烈度 6）
-
-恐惧写体感，不写情绪成语；主角越冷静越可怕。爆发只给一瞬，马上压回冷静分析。
-
-- 恐惧体感三件套：头皮发麻 / 汗毛竖立 / 浑身血液冻住，短促一拍，独立成段。
-- 恐惧与理智交替：体感一拍，下一段立刻回到「我必须弄清楚」的分析态。
-- 崩溃全篇只许一次，放在「全世界都否定我」的至暗点；哭完必须捡起一条新线索。
-
-真实范例：
-
-- 《杀夫那夜，多了一具尸体》那一瞬间，我浑身的血液都冻住了。
-- 《妹妹发高烧痊愈之后》看着妹妹一脸乖巧地说出这么冰冷的话，我一整个头皮发麻，汗毛耸立！
-- 《旅游回来后，老公和儿子失踪了》巨大的恐慌和虚无感像潮水般将我淹没。我强迫自己冷静下来。
-
----
-
-## 对话风格与真实金句
-
-占比 30-45%，低于情感题材。对话是信息装置，不是情绪装置，四类撑全篇：
-
-**① 否定式对话（世界合谋否认）**
-- 《旅游回来后，老公和儿子失踪了》谁？你不是一直单身吗？
-- 《除夕夜，我的家人集体消失》小姑娘，你一个人住那儿三年了，哪来的爸妈？
-
-**② 试探与验证对话（一问一答暴露破绽）**
-- 《妹妹发高烧痊愈之后》「这个积木还是你5岁生日那天，我送给你的礼物呢。」「才不是，这个积木是爸爸给我买的呢。」
-- 《完美凶杀》陈女士，你的裙子皱了。
-
-**③ 揭底摊牌对话（只收旧账）**
-- 《完美凶杀》你说穿白色连衣裙的是你，可是照片中穿白色连衣裙的那个人是右手拿花的。而你是个左撇子。
-- 《血色闺蜜》「是你！」「终于反应过来了，你太笨了！」
-
-**④ 凶手 / 怪物的平静狠话（价值观翻脸）**
-- 《妹妹发高烧痊愈之后》爸爸妈妈对花生过敏，只要他们永远睡过去，就没有人让我当神童了。我就可以一直玩玩具了噢~
-- 《落花洞女》你们是真的蠢到，相信有神杀人？
-- 《完美凶杀》这不是我想要的结果，是她自找的。
+- **Impossible Details**: A small, specific, verifiable, unexplainable fact that is
+  scarier than a big scene. The extra body parts, the too-new mobile phone, the sewer
+  that a six-year-old took twenty minutes to repair.
+- **Unanimous denial by everyone**: Relatives, neighbors, and the police all say you are
+  crazy; the more neat the denial, the more organized it is.
+- **There are three rules, one must be broken**: Folklore/rules ghost story type first
+  establishes the rules, and the reader is waiting for which one will be broken from the
+  moment the rules are established (the master of "Coffin Ren" explains three things).
+- **Microphysical evidence**: Anchor point for reversal of backtracking. Understate it
+  when it comes up, and take it back one by one during the showdown. Wrinkles in your
+  skirt, bracelet marks on your wrists, scratches on your phone, the feel of a garbage
+  bag, the rubber band on your door handle.
+- **Micro-reactions from insiders**: The small movements of a liar when poked serve as
+  signposts. Dad subconsciously took out a cigarette while eating, Lao Li suddenly hung
+  up the phone, and mom looked pale but still spoke harshly.
+- **Self-Message Relay**: The loop/amnesia type leaves evidence for the next round of
+  self, and the message itself may be tampered with ("Monster's Code" "Don't trust
+  anyone, including myself!").
+- **One-sentence preview hook**: "The Night I Killed My Husband" "However, it turns out
+  that some things cannot be delayed. Once delayed, something will happen." It only
+  predicts that something will happen, but does not tell what it is.
 
 ---
 
-## 情绪链库
+## Emotional Intensity and Mode (Intensity 6)
 
-- **EC-剥洋葱（默认）**：日常裂痕 → 合理解释 → 解释崩塌 → 至暗假底 → 微物证翻案。五阶段，适合细思极恐。
-- **EC-恐怖谷（身边人异变线）**：熟悉的人 → 细节不对 → 疯狂验证 → 恐怖实锤 → 无处可逃。五阶段，适合亲人/伴侣异变。
-- **EC-倒计时（时间锁线）**：异常预警 → 时间锁压上 → 查证被断 → 假象破灭 → 零点摊牌。五阶段，适合验货日/头七类硬时限。
+Fear is written in physical sense, not emotional idioms; the calmer the protagonist, the
+scarier it becomes. The explosion only lasts for a moment, and he immediately returns to
+calm analysis.
 
-## 招式库
+- Three-piece set of fear body sensations: scalp numbness/hair standing on end/blood
+  freezing all over the body, one short beat, separate into segments.
+- Alternating fear and reason: one beat of the body sensation, and the next paragraph
+  immediately returns to the analytical state of "I must figure it out."
+- There is only one breakdown in the whole story, and it is placed at the darkest point
+  of "The whole world denies me"; after crying, you must pick up a new clue.
 
-| 招式 | 怎么用 | 真实例 |
+Real example:
+
+- "The night I killed my husband, there was an extra corpse." At that moment, all the
+  blood in my body froze.
+- "After My Sister Recovered from High Fever" Seeing my sister say such cold words with
+  an obedient face, my whole scalp was numb and my hairs stood on end!
+- "After returning from travel, my husband and son disappeared." The huge panic and
+  sense of emptiness overwhelmed me like a tide. I forced myself to calm down.
+
+---
+
+## Conversational style and authentic quotes
+
+Accounting for 30-45%, lower than emotional themes. Dialogue is an information device,
+not an emotional device. Four categories support the entire article:
+
+**① Negative dialogue (the world conspires to deny)**
+- "After returning from travel, my husband and son disappeared" Who? Haven't you always
+  been single?
+- "On New Year's Eve, My Family Disappeared" Little girl, you have lived there alone for
+  three years, where did your parents come from?
+
+**② Testing and verification dialogue (questions and answers reveal flaws)**
+- "After my sister recovered from a high fever" "This building block was a gift from me
+  on your fifth birthday." "No, this building block was bought for me by my father."
+- "Perfect Murder" Ms. Chen, your skirt is wrinkled.
+
+**③ Showdown dialogue (only old accounts will be accepted)**
+- "Perfect Murder" You said it was you wearing the white dress, but the person wearing
+  the white dress in the photo is holding the flower in his right hand. And you are
+  left-handed.
+- "Blood Girlfriend" "It's you!" "I finally realized it, you are so stupid!"
+
+**④ The calm and harsh words of the murderer/monster (values fall apart)**
+- "After My Sister Recovers from High Fever" My parents are allergic to peanuts. As long
+  as they sleep forever, no one will let me be a child prodigy. I can keep playing with
+  toys~
+- "Girl in the Fallen Flower Cave" Are you really so stupid that you believe that gods
+  kill people?
+- "Perfect Murder" This is not the result I wanted, she asked for it.
+
+---
+
+## Emotion chain library
+
+- **EC-peeling the onion (default)**: daily cracks → reasonable explanation → collapse
+  of explanation → darkest false bottom → micro-evidence overturned. The five stages are
+  suitable for careful consideration and extreme fear.
+- **EC-Uncanny Valley (line of changes in people around you)**: Familiar people → Wrong
+  details → Crazy verification → Terrifying reality → Nowhere to escape. Five stages,
+  suitable for changes in relatives/partners.
+- **EC-Countdown (Time Lock Line)**: Abnormal warning → Time lock → Verification
+  interrupted → Illusion shattered → Zero o’clock showdown. Five stages, suitable for
+  inspection day/hard time limit for the first seven categories.
+
+## Move library
+
+| Moves | How to use | Real examples |
 |------|--------|--------|
-| 不可能细节炸弹 | 正常场景里放一个具体、可验证、无法解释的小事实 | 《杀夫那夜》冰柜里多出两双手、三双脚 |
-| 微物证伏笔 | 关键物证提前一两次轻描淡写露面，摊牌时收回 | 《血色闺蜜》第 1 节挂在门把手上的加粗皮筋，最后一句「我弯腰取下了她头上的加粗皮筋，离开了卧室」 |
-| 假底翻真底 | 先给一个能自圆其说的假结论，再用微物证掀翻 | 《完美凶杀》冰块立刀的「模仿自杀」说服全队，一条「画家封笔」微博暴露真凶 |
-| 全员否定阵 | 所有亲近者统一口径否认主角的记忆 | 《旅游回来后》妈妈、婆婆、邻居全说「你一直单身」 |
-| 规矩三条必破一 | 立规矩即立倒计时，破哪条读者猜不到 | 《棺材聘》「棺材万一开了！你无论如何也不要出棺！」下一章弟弟拼命推棺，喊「棺材不打开，我才会没命！」 |
-| 自我留言接力 | 循环 / 失忆下给自己留证据，并防留言被篡改 | 《怪物的守则》手臂刻正字，纸条写「怪物在篡改我的记忆。不要相信任何人，包括我自己！」 |
-| 身份调包 | 双胞胎 / 顶替换命，靠改不掉的身体习惯露馅 | 《完美凶杀》递白纸测出左撇子、外卖员手腕的镯痕 |
-| 知情者微反应 | 撒谎者的小动作当路标，不点破先攒着 | 《妹妹发高烧痊愈之后》爸在饭桌上下意识想掏烟 |
-| 民俗表象人祸底 | 神怪现象一路加码，揭底全是人的算计 | 《落花洞女》洞神是村长献女敛财的遮羞布，异香是致幻花粉 |
-| 凶手叙述者 | 第一人称只记录动作不写动机，尾节亮牌 | 《血色闺蜜》「我」全程陪闺蜜报案查案，实为布局人 |
-| 反常安抚句 | 所有人劝同一句话，这句话本身成为线索 | 《妹妹发高烧痊愈之后》家人、院长、警察都说「放下你妹妹」 |
+| Impossible detail bomb | Put a specific, verifiable, unexplainable fact in a normal scene | There are two extra pairs of hands and three pairs of feet in the freezer in "The Night I Killed My Husband" |
+| Foreshadowing of micro-evidence | Key physical evidence was revealed once or twice in advance, but was withdrawn during the showdown | The thick rubber band hanging on the door handle in the first section of "Blood Girlfriend", the last sentence "I bent down and took off the thick rubber band on her head and left the bedroom" |
+| The false conclusion is turned into the true one | First give a false conclusion that can be justified, and then overturn it with micro-evidence | "Perfect Murder"'s "imitation suicide" with an ice cube knife to convince the whole team, a "painter's seal" Weibo reveals the real murderer |
+| All members deny the memory of the protagonist | All those close to him deny the memory of the protagonist | "After returning from the trip", the mother, mother-in-law, and neighbors all said "You have always been single" |
+| One of the three rules must be broken | Count down immediately when the rules are established, and readers cannot guess which one is broken | "Coffin Appointment" "What if the coffin is opened! Don't get out of the coffin no matter what!" In the next chapter, the younger brother pushed the coffin desperately and shouted, "I will die if the coffin is not opened!" |
+| Self-Message Relay | Loop/Leave evidence for yourself under amnesia and prevent the message from being tampered with | "Monster's Code" is engraved on the arm, and the note reads "The monster is tampering with my memory. Don't trust anyone, including myself!" |
+| Identity transfer | Twins / Substitution of lives, revealing the secret by unchangeable physical habits | "Perfect Murder" handed a white paper to measure the bracelet marks on the left-handed and delivery boy's wrists |
+| Micro-reactions from insiders | A liar's little moves are used as road signs, save them before you point them out | "After my sister recovered from a high fever" Dad subconsciously wanted to take out a cigarette at the dinner table |
+| The appearance of folk customs is the root cause of man-made disasters | The phenomena of gods and monsters are increasing all the time, and it is revealed that they are all human calculations | "The Girl in the Luohua Cave" is the fig leaf used by the village chief to sacrifice his daughter to make money, and the strange fragrance is hallucinogenic pollen |
+| Murderer Narrator | The first person only records the actions but not the motives, and shows his cards at the end | "I" accompany my bestie throughout the whole process of reporting and investigating the case, and is actually the organizer |
+| Abnormal comforting sentences | Everyone advises the same sentence, and the sentence itself becomes a clue | "After my sister recovered from a high fever" family members, the dean, and the police all said, "Let your sister go" |
 
 ---
 
-## 节奏骨架
+## Rhythm Skeleton
 
 ```
-简介（正常世界 + 一个不可能细节）
-→ 第 1-2 节 异常落地，给出第一个「合理解释」
-→ 合理解释被新异常打破（至少两轮）
-→ 中段每节一个新信息差：查证一格、反常一格
-→ 至暗点（全世界否定我 / 调查被断）
-→ 假底：能自圆其说的结论（自杀 / 意外 / 我疯了）
-→ 微物证触发真反转
-→ 摊牌回溯：前文伏笔逐一收回
-→ 收尾（回溯型 / 留白型二选一）
+Introduction (normal world + an impossible detail)
+→ Section 1-2 Abnormal landing, giving the first "reasonable explanation"
+→ Reasonable explanation is broken by new anomaly (at least two rounds)
+→ There is a new information gap in each section in the middle section: one box for verification and one box for anomaly
+→ The darkest point (the whole world denies me/the investigation is interrupted)
+→ False bottom: self-justifying conclusion (suicide/accident/I’m crazy)
+→Microphysical evidence triggers true reversal
+→ Showdown retrospective: The foreshadowing in the previous article is taken back one by one
+→ Closing (choose one of retrospective type / blank type)
 ```
 
-疏密：查证过程一句带过（「警方的调查效率很高」），异常暴露与摊牌处慢放。有时间锁就压上去：寅时、验货日、零点钟声。
+Density: The investigation process is mentioned in one sentence ("The police
+investigation efficiency is very high"), and the abnormal exposure and showdown are
+slowed down. If there is a time lock, press it: Yin hour, inspection day, zero o'clock
+bell.
 
-**回溯是硬约束**：反转依赖的每个证据，摊牌前必须在正文露过面；摊牌只准收旧账，不准掏读者没见过的新证据。
-
----
-
-## 收尾范式
-
-- **回溯型摊牌**：揭底后逐条对应前文微物证。《完美凶杀》审讯室里裙子、左撇子、合照拿花的手、手腕镯痕逐一点收。
-- **细思极恐留白**：不写完整解释，用一个动作或一句话把最后一块拼图留给读者。《血色闺蜜》结尾只写取下皮筋离开，密室手法和下一场「自杀」由读者自己拼；《妹妹发高烧痊愈之后》「接下来，我会承载妹妹的生命和意念」，表面治愈，细想发毛。
-- **循环闭合**：结尾回到开头画面，多一个记号，暗示又一轮开始（《怪物的守则》再次睁眼看到手臂刻字）。
-- **惨胜收尾**：真相大白但主角付出实际代价，不写全员圆满（《落花洞女》主角毁容、爱人入狱二十年）。
-- **番外余波**：主线收束后加半页，暗示恶未除尽（《落花洞女》幕后老板还在，更远的山区又响起请神山歌）。
+**Backtracking is a hard constraint**: Every evidence relied upon for reversal must
+appear in the text before the showdown; only old accounts are allowed in the showdown,
+and new evidence that the reader has not seen is not allowed.
 
 ---
 
-## 该题材专属调校（与通用去 AI 规则的偏差）
+## Closing Paradigm
 
-这些在别的语境是 AI 味，在本题材是卖点，**别误删**：
-
-- **冷静报告体的平白陈述**（叙述异常事件时语气不起波澜，用逗号长句平铺直叙，不煽情）：保留这种克制的腔调，别润色成修辞句；但语气克制不等于句句断成电报体。
-- **关键词原样复现**：微物证的叫法（加粗皮筋 / 划痕 / 裙子皱了）每次出现用同一个词，禁止同义替换，否则读者回溯不起来。
-- **恐怖复沓**：血字重复、咒语式排比（「救救我放我出去救救我放我出去」「我不服！！我就是不服！！」）是体裁内故意重复，别当冗余删。
-- **章尾自问句**：「被我杀死的，又是谁？」保留，这是信息差钩子；只删不制造信息差也不推进的空转设问。
-- **一句式前瞻钩**：「一拖，就出事了」可用；只许预告有事，不许说破是什么事。
-
-反向要求（与追妻等情感题材相反）：
-
-- 直写情绪成语（心如死灰 / 泪如雨下）在本题材是扣分项，恐惧一律走体感。
-- 成段宣泄独白和连环反问压到最低，用理智分析型独白替代。
-
-仍要避免的真·AI 味：映入眼帘、心中暗道、沉声道、嘴角微扬、目光如炬、论文体连词（不难看出 / 由此可见）。
-
-> 标点：本题材范例为示意保留了原貌；落到正文按 `.claude/knowledge/short-craft/short-craft.md` 第 8 节执行（不出 `……` / `——`，停顿用短句 / 动作 / 换行）。
+- **Retrospective Showdown**: After revealing the bottom line, each item corresponds to
+  the previous micro-evidence. In the interrogation room of "Perfect Murder", the skirt,
+  the left-handedness, the hand holding the flower in the photo, and the bracelet marks
+  on the wrist are gradually removed.
+- **If you think carefully, you will be afraid of leaving blanks**: Instead of writing a
+  complete explanation, use an action or a sentence to leave the last piece of the
+  puzzle to the reader. The ending of "Blood Girlfriend" only states that the rubber
+  band is taken off and left, and the secret room technique and the next "suicide" are
+  left to the readers; "After my sister recovers from a high fever" "Next, I will carry
+  my sister's life and thoughts".
+- **Loop Closure**: The ending returns to the opening scene, with one more mark, hinting
+  at the beginning of another round ("Monster's Code" opens his eyes again to see the
+  arm carvings).
+- **Tragic victory ending**: The truth is revealed but the protagonist pays a real
+  price, and everyone is not happy (the protagonist in "The Girl in the Fallen Flower
+  Cave" was disfigured and her lover was imprisoned for twenty years).
+- **Extra aftermath**: A half page is added after the main plot is concluded, implying
+  that the evil has not yet been eliminated (the boss behind "The Girl in the Luohua
+  Cave" is still there, and the song of inviting the gods is heard in the mountainous
+  area further away).
 
 ---
 
-## 配套结构公式（按篇幅选）
+## Exclusive adjustment for this theme (deviation from general AI rules)
 
-> 悬疑钩子密度、超自然真假均以本包为准；genre-writing-formulas 公式九（超自然复仇混合、18 章）面向长篇，不在本包管辖。
+These are AI-flavored in other contexts, but they are selling points in this subject
+matter, **don’t delete them by mistake**:
 
-- **现代悬疑标准型（8-12 章）**：1 章不可能细节落地 → 2-3 章两轮「合理解释被打破」 → 4-6 章查证与新信息差交替，至暗点收在全员否定 → 7-8 章假底成立 → 微物证触发真反转 → 尾章摊牌回溯。第一人称冷静报告体。
-- **细思极恐短打型（5-8 章）**：异常 → 试探验证并留实物证据（口红写字 / 录音 / 刻字） → 半揭底 → 结尾不摊牌，一个动作留最后拼图。全篇不判定超自然真假。
-- **侦探推理型（8-12 章）**：案发与现场微物证清单 → 证词矛盾 → 假结论（自杀 / 意外） → 一个小破绽触发重查 → 审讯摊牌逐条收证。允许第三人称 / 多视角；守公平性，读者能看到侦探看到的一切。
-- **民俗悬疑型（8-12 章）**：民俗规矩卡 → 轮到我或我的亲人 → 神怪表象层层加码 → 人祸真相 → 惨胜加番外余波。神怪氛围可以留，作案手法必须落地（致幻花粉、买通、装神）。
+- **Flat statements in a calm reporting style** (the tone should be calm when narrating
+  abnormal events, use long comma sentences to speak straightforwardly, without
+  sensationalism): Keep this restrained tone and don't polish it into rhetorical
+  sentences; but restrained tone does not mean that the sentences are broken into
+  telegraph style.
+- **Keywords reproduced as they are**: The names of microphysical evidence (thick rubber
+  bands/scratches/wrinkled skirts) should be the same every time they appear. Synonymous
+  substitutions are prohibited, otherwise readers will not be able to recall them.
+- **Horror Repetition**: The repetition of bloody words and the parallelism of spells
+  ("Save me, let me out, save me, let me out", "I don't accept it!! I just don't accept
+  it!!") are intentional repetitions within the genre, and should not be deleted as
+  redundant.
+- **Self-question at the end of the chapter**: "Who was killed by me?" Keep it, this is
+  an information gap hook; it is an idle question that only deletes but does not create
+  an information gap and does not advance it.
+- **One-sentence preview hook**: "If you delay, something will happen" is available; you
+  can only predict something will happen, but you are not allowed to tell what it is.
+
+Reverse requirements (opposite to emotional themes such as chasing wives):
+
+- Directly written emotional idioms (heart is as gray as death/tears are falling like
+  rain) are deducted in this theme, and fear is always physical.
+- Cathartic monologues and serial rhetorical questions are kept to a minimum and
+  replaced with rational and analytical monologues.
+
+The real AI tastes that should be avoided are: catching the eye, secret thoughts in the
+mind, deep voice, slightly raised corners of the mouth, piercing gaze, and essay style
+conjunctions (it is not difficult to see / it can be seen from this).
+
+> Punctuation: This theme example retains its original appearance for illustration;
+> when it comes to the main text, follow Section 8 of
+> `.claude/knowledge/short-craft/short-craft.md` (no `...` / `em dash`, use short
+> sentences/actions/line breaks for pauses).
+
+---
+
+## Supporting structural formula (selected according to length)
+
+> The density of suspense hooks and supernatural authenticity are subject to this
+> package; genre-writing-formulas Formula Nine (Supernatural Revenge Mix, 18 chapters)
+> are for long-form and are not governed by this package.
+
+- **Modern suspense standard type (Chapter 8-12)**: Impossible details come to light in
+  Chapter 1 → Two rounds of "reasonable explanations are broken" in Chapter 2-3 →
+  Verification and new information alternate in Chapter 4-6, and the darkest point is
+  the denial of all members → The false bottom is established in Chapter 7-8 →
+  Micro-physical evidence triggers a true reversal → Showdown and retrospection in the
+  last chapter. First person calm reporting body.
+- **If you think about it carefully, you will be afraid of a bunt type (Chapter 5-8)**:
+  Abnormality → test and verify and leave physical evidence (lipstick
+  writing/recording/engraving) → half-revealed → no showdown at the end, one action to
+  leave the final puzzle piece. The whole article does not determine whether the
+  supernatural is true or false.
+- **Detective reasoning type (Chapter 8-12)**: The crime and the list of micro-evidence
+  at the scene → Conflicting testimonies → False conclusions (suicide/accident) → A
+  small flaw triggers re-investigation → Interrogation showdown to collect evidence item
+  by item. Allows third person/multiple perspectives; to be fair, the reader can see
+  everything the detective sees.
+- **Folklore suspense type (Chapter 8-12)**: Folklore rules card → It’s my or my
+  relatives’ turn → The appearance of gods and monsters is added layer by layer → The
+  truth about man-made disaster → Tragic victory and extra aftermath. The atmosphere of
+  gods and monsters can be retained, but the modus operandi must be implemented
+  (hallucinogenic pollen, bribery, pretending to be a god).

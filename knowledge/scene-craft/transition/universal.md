@@ -1,180 +1,215 @@
-# 场景转场
+# Scene Transition
 
-> 转场不是省略过程，而是让读者自愿忽略时空过渡。每条技法以 `[标签]` 开头。
+> The transition does not omit the process, but allows the reader to voluntarily
+> ignore the transition of time and space. Each technique begins with `[tag]`.
 
-## 注入时机
+## Injection timing
 
-场景转场在以下条件触发时，自动匹配对应标签加载：
+When the scene transition is triggered under the following conditions, the corresponding
+tag will be loaded automatically:
 
-| 触发条件 | 判断依据 | 示例 |
+| Trigger conditions | Judgment basis | Example |
 |---------|---------|------|
-| **时间跳跃** | 场景间存在明显时间断层（数小时/数日/数月） | 打斗结束→次日清晨、闭关→出关 |
-| **空间切换** | 主角从一个地点移动到另一个地点 | 离开茶馆→河畔凉亭、从城市到郊外 |
-| **章节/分节过渡** | 章节末尾或分节处需要承上启下 | 章末悬念、卷与卷之间的时间跨度 |
-| **双线/群戏切换** | 多条故事线交替叙述，切换视角或场景 | 酒楼众人议事→反派地牢密谋 |
-| **回忆/倒叙** | 从现在时间线切入过去事件 | 看到旧物触发回忆、角色讲述过往 |
+| **Time jump** | There is an obvious time gap between scenes (hours/days/months) | The fight ends → the next morning, seclusion → exit |
+| **Space switching** | The protagonist moves from one location to another | Leaving the teahouse → riverside pavilion, from the city to the suburbs |
+| **Chapter/section transition** | The end of a chapter or section needs to connect the previous and the next | Suspense at the end of the chapter, the time span between volumes |
+| **Dual line/group play switching** | Multiple story lines alternately narrated, switching perspectives or scenes | Everyone discussing in the restaurant → Villain plotting in the dungeon |
+| **Memories/Flashbacks** | Cut from the present timeline to past events | Seeing old objects triggers memories and characters tell the past |
 
-## 标签选择指南
+## Label Selection Guide
 
-| 场景特征 | 匹配标签 | 选取理由 |
+| Scene characteristics | Matching tags | Reason for selection |
 |---------|---------|---------|
-| 情绪需要延续、不能断 | [情绪顺延] | 保留上一场残留情绪带入新场景 |
-| 章末需要留住读者 | [危机钩子] | 抛出悬念，读者自动忽略时空跳转 |
-| 昏迷/昼夜/瞬移等感官断层 | [五感反差] | 用2-3种感官前后对比替代直白时间说明 |
-| 跨时空/回忆/长线伏笔 | [物件线索] | 共用一个标志物串联两个场景 |
-| 同城同片区换地点 | [动线镜头] | 跟随行动轨迹自然切换，删减赶路 |
-| 闭关/养伤/蛰伏类时间流逝 | [空镜景物] | 借环境景物变化暗示时间 |
-| 群戏/双线叙事切换 | [对话承接] | 同一句台词无缝衔接两条线 |
+| Emotions need to be continued and cannot be interrupted | [Emotional postponement] | Keep the residual emotions from the previous scene and bring them into the new scene |
+| Readers need to be retained at the end of the chapter | [Crisis hook] | Throwing out suspense, readers automatically ignore the time and space jump |
+| Sensory faults such as coma/day and night/teleportation | [Contrast of five senses] | Use 2-3 senses before and after comparison instead of straightforward time explanation |
+| Across time and space/Memories/Long-term foreshadowing | [Object clues] | Sharing a marker to connect two scenes |
+| Changing locations in the same area in the same city | [Moving shot] | Follow the movement track and switch naturally, cut out the rush |
+| The passage of time in retreat/recuperation/hibernation | [Empty Mirror Scenery] | Use changes in the environment and scenery to suggest time |
+| Group play/dual-line narrative switching | [Dialogue continuation] | The same line seamlessly connects two lines |
 
 
-## [情绪顺延] 保留残留情绪，情绪不断层
+## [Emotional postponement] Preserve the residual emotions, and the emotions are constantly layered
 
-**核心：** 保留上一场残留情绪，带着情绪进入新场景。禁止前后场景情绪完全断裂、角色情绪归零。
+**Core:** Keep the residual emotions from the previous scene and enter new scenes with
+emotions. It is forbidden for the emotions of the scenes before and after to completely
+break and the characters' emotions to return to zero.
 
-### 执行规则
+### Enforce Rules
 
-- 新场景开头先承接上一场的情绪余波，再过渡到新氛围
-- 情绪可以是愤怒、恐惧、愉悦、焦虑等任何状态
-- 可借助环境元素（车内沉香、冷风、茶水等）辅助情绪平复或延续
-
-```
-❌ 男主打完架很生气，两天后去拍卖行捡漏。
-
-✅ 打斗残留的躁意盘踞心底，直至豪车停在拍卖行门前，
-   车内沉香抚平满身戾气，他擦去指缝血渍推门入场。
-```
-
-**禁用：** 情绪断层清零；用"三天后、两日后"直白跳跃。
-
-
-## [危机钩子] 章末悬念钩子，留住读者
-
-**核心：** 上场景结尾抛出悬念或危机，读者关注人物安危，自动忽略时空跳转过程。
-
-### 执行规则
-
-- 在章节末尾或场景切换点设置未解决的危机
-- 危机类型：突发变故、意外消息、危险逼近等
-- 新场景通过"后果展开"自然承接，无需解释时间过渡
+- At the beginning of the new scene, it takes over the emotional aftermath of the
+  previous scene, and then transitions to the new atmosphere.
+- Emotions can be anything from anger, fear, joy, anxiety, etc.
+- Environmental elements (agarwood, cold wind, tea, etc.) in the car can be used to help
+  calm or sustain emotions.
 
 ```
-❌ 女主聚餐接到外婆病重电话，立刻赶往医院。
+❌ The male protagonist was very angry after the fight and went to the auction house to pick up the missing items two days later.
 
-✅ 烛火未熄，急诊来电弹出，女主慌乱打翻水杯，
-   不顾水渍冲出包厢，耳边喧闹散尽，
-   只剩医院冷光与消毒刺鼻气味。
+✅ The remaining restlessness of the fight lingered in my heart until the luxury car parked in front of the auction house.
+   The agarwood in the car soothed the anger all over his body, and he wiped the blood stains from his fingers and opened the door to enter.
 ```
 
-**禁用：** 危机未充分铺垫就抛出让读者困惑；悬念解决后无承接直接切下一段。
+**Disabled:** Clear the emotional gap; use "three days later, two days later" to jump
+directly.
 
 
-## [五感反差] 感官对比替代时间说明
+## [Crisis hook] Suspense hook at the end of the chapter to retain readers
 
-**核心：** 不直白写时间流逝，选取 2-3 种感官（听觉/触觉/嗅觉）前后对比，克制不堆砌。适配昏迷苏醒、昼夜交替、瞬移传送等场景。
+**Core:** The end of the scene above throws suspense or crisis. Readers focus on the
+safety of the characters and automatically ignore the time and space jump process.
 
-### 执行规则
+### Enforce Rules
 
-- 锁定主要变化通道：听觉（嘈杂→寂静）、触觉（粗糙→柔软）、嗅觉（草木→艾草）、光线（暗→亮）
-- 感官从前一场景的残留→渐变→切换为全新新场景氛围
-- 最多使用 3 种感官，过度堆砌反而出戏
-
-```
-❌ 女主山林晕倒，醒来被救到民宿。
-
-✅ 林间嘈杂声响慢慢消散，后背碎石扎人的触感褪去，
-   取而代之是棉麻软垫的温热，草木潮气散尽，
-   艾草茶香漫入鼻腔，她睁眼身处暖灯民宿。
-```
-
-**禁用：** 堆砌超过 3 种感官；用"当她再次醒来时"直白过渡；感官变化节奏混乱。
-
-
-## [物件线索] 共用物件串联跨时空
-
-**核心：** 用一件标志性小物件串联两个场景，替代"几年过去、从前"等旁白，兼做伏笔。
-
-### 执行规则
-
-- 物件选择具备：独特性（读者易记住）、可触性（有质感）、故事性（能关联角色经历）
-- 物件在两个场景中以相同或相似的方式出现（摩挲、注视、提起等）
-- 跨时空场景：通过物件触发回忆或作为时间坐标
+- Set up unresolved crisis at chapter end or scene change point
+- Type of crisis: sudden changes, unexpected news, approaching danger, etc.
+- New scenes are carried over naturally through "consequence unfolding", without the
+  need to explain the time transition
 
 ```
-❌ 五年过去，女主重回老街，想起少年相遇。
+❌ The heroine received a call that her grandmother was seriously ill during a dinner party and rushed to the hospital immediately.
 
-✅ 指尖摩挲褪色桃木平安扣，凹凸触感一如当年，
-   风吹梧桐落叶，眼前街边景象叠印出巷口少年身影。
+✅ Before the candle went out, an emergency call popped up, and the heroine panicked and knocked over the water glass.
+   Ignoring the water stains, I rushed out of the box, and the noise in my ears disappeared.
+   All that is left is the cold light of the hospital and the pungent smell of disinfection.
 ```
 
-**禁用：** 使用烂大街物件（玉佩、同心结等统一样式无识别度）；物件出现一次后不再呼应。
+**Disabled:** The crisis is thrown out without sufficient preparation to confuse the
+readers; after the suspense is resolved, a paragraph is cut directly without continuity.
 
 
-## [动线镜头] 跟随行动轨迹换场景
+## [Five Senses Contrast] Senses Contrast Alternative Time Description
 
-**核心：** 跟随主角行动轨迹自然切换场景，只保留关键动作节点，删减多余赶路细节。
+**Core:** Do not write about the passage of time directly, select 2-3 senses
+(hearing/touch/smell) to compare before and after, and refrain from stacking. Adaptable
+to scenes such as coma and awakening, day and night alternation, teleportation, etc.
 
-### 执行规则
+### Enforce Rules
 
-- 起点→途中的 1-2 个感官锚点（光线变化、声音渐变、温度差异）→终点
-- 只写"离开某处→途中关键感知→到达某处"，省略"出了门、拐了个弯、又走了多久"
-- 通过环境元素的渐变暗示空间移动
-
-```
-❌ 男主离开茶馆，到河边凉亭散心。
-
-✅ 男主碾灭烟蒂走出茶馆檐下，避开人流沿青石河畔慢行，
-   河水凉意拂面，抬眼已是临水凉亭。
-```
-
-**禁用：** 详细描写途中无关细节（红绿灯、路过的店铺清单）；直白写"他走了 xx 分钟后到达"。
-
-
-## [空镜景物] 环境变化暗示时间
-
-**核心：** 依靠环境景物变化暗示时间流逝，适配闭关、养伤、蛰伏等需要略过时间但保留氛围感的剧情。
-
-### 执行规则
-
-- 选择显著的季节/天象/植物变化标志（花开→花落、夏风→秋风、朝阳→月升）
-- 时间流逝的跨度越大，选择的景物变化越显著
-- 通过同一个参照物的变化体现时间感（门缝风、窗外树、炉中火）
+- Lock the main change channels: hearing (noisy → silence), touch (rough → soft), smell
+  (grass → mugwort), light (dark → bright)
+- The senses switch from the residue of the previous scene→gradient→to a completely new
+  scene atmosphere.
+- Use up to 3 senses, overstuffing will cause drama
 
 ```
-❌ 男主闭关二十天，伤势痊愈出关。
+❌ The heroine fainted in Shanlin, woke up and was rescued to a B&B.
 
-✅ 闭关之初门缝涌入初夏热风，待院中槐花落尽，
-   晚风裹挟秋凉，他推开石门，旧伤尽数平复。
+✅ The noisy sounds in the forest slowly dissipated, and the stinging feeling of gravel on my back faded away.
+   It was replaced by the warmth of cotton and linen cushions, and the moisture from the vegetation dissipated.
+   The fragrance of mugwort tea filled her nose, and she opened her eyes and found herself in the warm lamp bed and breakfast.
 ```
 
-**禁用：** 直接写"xx 天后/月后/年后"替代景物描写；景物选择和角色状态无关。
+**Disabled:** Stacking more than 3 senses; using "When She Wakes Again" to make a
+straightforward transition; the rhythm of sense changes is confusing.
 
 
-## [对话承接] 同一句台词切双线
+## [Object Clues] Shared objects connect across time and space
 
-**核心：** 用同一句台词承接两条剧情线，无缝切换多个人物/场景，无需标注"同一时间"类旁白。
+**Core:** Use an iconic small object to connect two scenes, replacing narration such as
+"A few years have passed, once upon a time", and also serving as foreshadowing.
 
-### 执行规则
+### Enforce Rules
 
-- 上场景末尾的台词在后一场景被重复/呼应
-- 两条线之间必须有逻辑关联（正面的共同目标、反面的敌对博弈）
-- 重复台词可以是：完全相同、部分相同、语义对应
+- Object selection should have: uniqueness (easy for readers to remember), tactility
+  (texture), and storytelling (can relate to the character’s experience)
+- The object appears in the same or similar way in both scenes (touched, looked at,
+  lifted, etc.)
+- Scenes across time and space: trigger memories through objects or serve as time
+  coordinates
 
 ```
-❌ 酒楼众人计划夺宝，另一边反派据点也得知消息。
+❌ Five years have passed, and the heroine returns to the old street, remembering the encounter between teenagers.
 
-✅ "明日前往拍卖行夺宝"——酒楼话音落下的同一刻，
-   幽暗地牢里，反派把玩玉佩，重复了相同一句话。
+✅ When you rub the faded peach wood safety buckle with your fingertips, the bumpy and convex touch feels just like it did back then.
+   The wind blows the fallen leaves of the sycamore trees, and the scene on the street in front of you is superimposed on the silhouette of a young man in the alley.
 ```
 
-**禁用：** 台词无关联强行拼接；在毫无关联的剧情线之间使用。
+**Disabled:** Use of bad street objects (jade pendants, concentric knots and other
+uniform styles without recognition); objects will no longer respond after they appear
+once.
+
+
+## [Moving shot] Change the scene following the action trajectory
+
+**Core:** Follow the protagonist's action trajectory to switch scenes naturally, retain
+only key action nodes, and delete redundant details of the journey.
+
+### Enforce Rules
+
+- Qidian → 1-2 sensory anchor points on the way (light changes, sound gradients,
+  temperature differences) → end point
+- Just write "leave somewhere → key perception on the way → arrive somewhere", omit
+  "left the door, turned a corner, and walked for how long"
+- Imply spatial movement through gradients in environmental elements
+
+```
+❌ The male protagonist left the teahouse and went to the pavilion by the river to relax.
+
+✅ The male protagonist crushed the cigarette butts and walked out from under the eaves of the teahouse, avoiding the crowds and walking slowly along the Qingshi River.
+   The coolness of the river washes over my face, and when I look up, I see a pavilion by the water.
+```
+
+**Disabled:** Describe in detail irrelevant details on the way (traffic lights, list of
+shops passing by); simply write "He arrived after walking for xx minutes".
+
+
+## [Empty mirror scene] Environmental changes imply time
+
+**Core:** Relying on changes in the environment and scenery to imply the passage of
+time, it is suitable for plots such as retreat, recuperation, hibernation, etc. that
+require skipping time but retaining a sense of atmosphere.
+
+### Enforce Rules
+
+- Choose significant signs of seasonal/celestial phenomena/plant changes (flowers
+  bloom→flowers fall, summer breeze→autumn breeze, rising sun→moon rise)
+- The greater the span of time, the more significant the changes in the selected scenery
+  will be.
+- The sense of time is reflected through changes in the same reference object (the wind
+  between the door, the tree outside the window, the fire in the furnace)
+
+```
+❌ The male protagonist stayed in seclusion for twenty days and recovered from his injuries.
+
+✅ At the beginning of the retreat, the hot early summer wind poured in through the cracks in the door, and when all the locust flowers in the courtyard were gone,
+   The evening breeze carried the coolness of autumn, and he pushed open the stone door, all his old wounds healed.
+```
+
+**Disabled:** Directly write "xx Queen of Heaven/Queen of Month/Queen of Year" instead
+of scenery description; scenery selection has nothing to do with character status.
+
+
+## [Dialogue Continuation] The same line is cut into two lines
+
+**Core:** Use the same line to connect two plot lines and seamlessly switch between
+multiple characters/scenes without marking the "same time" narration.
+
+### Enforce Rules
+
+- The lines at the end of the previous scene are repeated/echoed in the following scene
+- There must be a logical connection between the two lines (common goal on the positive
+  side, hostile game on the negative side)
+- Repeated lines can be: completely identical, partially identical, or semantically
+  corresponding
+
+```
+❌ Everyone in the restaurant planned to seize the treasure, and the villain's stronghold on the other side also learned the news.
+
+✅ "Go to the auction house tomorrow to grab the treasure" - the same moment the restaurant's voice fell,
+   In the dark dungeon, the villain played with the jade pendant and repeated the same sentence.
+```
+
+**Disabled:** Forcibly splicing lines that are unrelated; used between unrelated plot
+lines.
 
 ---
 
-## 自查口诀
+## Self-examination tips
 
 ```
-转场不靠跳时间，不靠符号来敷衍；
-要么情绪连着走，要么物件牵两头；
-感官换环境，对话接双线；
-空镜带流年。
+Transitions do not rely on time jumps or symbols;
+Either the emotions go together, or the objects lead both ways;
+The senses change the environment, and the dialogue connects two lines;
+The empty mirror brings the passing of time.
 ```

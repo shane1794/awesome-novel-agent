@@ -1,183 +1,225 @@
-# 情感设计方法：三板斧 + 拉扯节奏 + 失败模式
+# Emotional design method: three axes + pulling rhythm + failure mode
 
 
-> 本文件改写自获赠短篇流程包（oh-story 系 + 实测调整），按本仓口径适配：引用为部署后基座路径、已剔除外部体系引用。公开或商用前需原作者确认。
+> This document is adapted from the short flow package (oh-story series + actual
+> measurement adjustment) received as a gift, and is adapted to the caliber of this repo: the reference is the post-deployment base path, and external system
+> references have been eliminated. Confirmation by the original author is required
+> before disclosure or commercial use.
 
 
-> 设计情感桥段时加载。先看决策路由选策略，再用三板斧设计具体段落。
+> Loading when designing emotional segments. First look at the decision-making route
+> selection strategy, and then use the three-piece ax to design specific paragraphs.
 
 ---
 
-## 决策路由
+## Decision Routing
 
-| 你的情感设计场景是 | 用这个策略 | 跳转到 |
+| Your emotional design scenario is | Use this strategy | Jump to |
 |---------------|-----------|----------|
-| 建立角色羁绊（让读者相信关系） | 羁绊铺设（第一斧） | 三板斧 §1 |
-| 制造情感撕裂（反差/错位/背叛） | 情感撕裂（第二斧） | 三板斧 §2 |
-| 写结尾余韵（安静细节击穿读者） | 余韵钝痛（第三斧） | 三板斧 §3 |
-| 规划整体情感节奏曲线 | 拉扯节奏设计 | 拉扯节奏 |
-| 不同题材的情感策略选择 | 题材策略差异 | 按题材 |
-| 检查情感设计是否有效 | 失败模式排查 + 快速自查 | 底部清单 |
+| Establishing character bonds (making readers believe in the relationship) | Laying bonds (the first ax) | Three axes §1 |
+| Create emotional tearing (contrast/dislocation/betrayal) | Emotional tearing (second ax) | Three Axes §2 |
+| Write the lingering rhyme at the end (the quiet details penetrate the reader) | The dull pain in the lingering rhyme (the third axe) | The three-plate axe §3 |
+| Plan the overall emotional rhythm curve | Pull rhythm design | Pull rhythm |
+| Emotional strategy selection for different themes | Differences in theme strategies | By theme |
+| Check if emotional design is effective | Failure mode troubleshooting + quick self-check | Bottom list |
 
 ---
 
-## 情感虐心三板斧
+## Three axes of emotional abuse
 
-### 第一斧：羁绊铺设（前 1/3）
+### The First Ax: Bond Laying (First 1/3)
 
-**目标**：用具体物件/数字/细节建立关系质感，让读者相信这段关系是真实的。
+**Goal**: Use specific objects/numbers/details to establish the texture of the
+relationship and make the reader believe that the relationship is real.
 
-**方法**：
-- 用具体数字建立时间感：「相恋八年」「昏迷五年」「七年光景」
-- 用具体物件承载感情：金锁（姐姐的生日礼物）、账本数字（还债记录）、木头小马（父王磨的）
-- 用重复动作建立习惯：每天一碗粥、每两周来看一次、每年冬天冻得睡不着
+**Method**:
+- Use specific numbers to establish a sense of time: "Eight years of love", "Five years
+  of coma", "Seven years of time"
+- Use specific objects to carry emotions: golden lock (sister’s birthday gift), ledger
+  numbers (debt repayment records), wooden pony (milled by my father)
+- Use repetitive actions to build habits: a bowl of porridge every day, a visit every
+  two weeks, being too cold to sleep every winter
 
-**案例**：
-- 《迟来二十年》：用二十年的账本数字（八万块）建立母女关系的重量
-- 《我在佛前求你》：昏迷五年、求神拜佛的细节、从初中开始的暗恋
-- 《皇弟欺负幼子》：七年质子生涯的具体苦难（跪雪地、挨巴掌、吃馊饭）
+**Case**:
+- "Twenty Years Late": Using twenty years of ledger figures (80,000 yuan) to establish
+  the weight of a mother-daughter relationship
+- "I Beg You in Front of the Buddha": Five years in coma, details of praying to God and
+  worshiping Buddha, secret love since junior high school
+- "The Emperor's Brother Bullying the Youngest Son": The specific sufferings of the
+  seven-year proton career (kneeling in the snow, being slapped, and eating bad food)
 
-**核心**：羁绊越具体，后面的撕裂越痛。不要用「他们很相爱」这种抽象描述。
-
----
-
-### 第二斧：情感撕裂（中后段）
-
-**目标**：制造反差，让读者以为恨对了 → 发现恨错了（或反过来）。
-
-**方法**：
-- **反差法**：先展示温暖一面，再用残酷真相击碎
-- **错位法**：角色 A 以为在保护角色 B，实际上在伤害
-- **延迟真相法**：关键信息在读者最不期待的时候揭示
-
-**案例**：
-- 《姐夫捎路要奶粉钱》：妈妈表面软弱可怜，实际一直操控姐姐索取钱财 → 金锁是假的（金包铜）→ 反差撕裂
-- 《皇弟欺负幼子》：王氏表面温柔（送手炉、煎汤药）→ 实际下药逼疯先皇后 → 用诛心话逼死
-- 《重生弟弟》：弟弟深爱女友 → 女友是诈骗犯 → 怀孕是假的 → 被骗到电诈园区
-
-**核心**：撕裂的力度取决于铺垫的厚度。没有好的羁绊铺设，撕裂就是无根之木。
+**Core**: The more specific the bond, the more painful the tear behind it. Don't use
+abstract descriptions like "They love each other."
 
 ---
 
-### 第三斧：余韵钝痛（结尾）
+### The second ax: emotional tearing (middle and later sections)
 
-**目标**：不用大哭大闹，用安静细节击穿读者防线。
+**Goal**: Create a contrast so that readers think they are right to hate → discover that
+they are wrong to hate (or vice versa).
 
-**方法**：
-- 用日常动作承载巨大情感：继续喂粥、把衣服叠好、不回头
-- 用物件细节制造余韵：坏掉的金锁、木头小马、沾血的戒指
-- 用「不」制造留白：不解释、不回头、不流泪
+**Method**:
+- **Contrast Method**: Show your warm side first, then crush it with the cruel truth
+- **Dislocation Method**: Character A thinks he is protecting character B, but is
+  actually hurting him
+- **Delayed Truth**: Key information is revealed when the reader least expects it
 
-**案例**：
-- 《皇弟欺负幼子》：「他拿着那匹被我磨得很光滑的木头小马……他握着正好。」
-- 《姐夫捎路要奶粉钱》：「我的手机清净了不少。那些困扰我很久的麻烦，在一瞬间变得很小很小。」
-- 《准儿媳打分》：「办了收养手续后，她第一次踏进这个陌生的家……我知道，这一次我没选错。」
+**Case**:
+- "Brother-in-law asks for money for milk powder": The mother looks weak and pitiful,
+  but in fact she keeps controlling her sister to ask for money → The gold lock is fake
+  (gold covered with copper) → The contrast is torn
+- "The Emperor's Brother Bullying the Young Son": Wang's appearance is gentle (giving
+  hand stoves and decoction medicine) → actually drugging the late queen to madness →
+  driving her to death with heart-wrenching words
+- "Reborn Brother": The younger brother loves his girlfriend deeply → The girlfriend is
+  a swindler → The pregnancy is fake → He was deceived into an electronic fraud park
 
-**核心**：最好的余韵不靠大哭，靠「看完之后很久都忘不掉」。
+**Core**: The strength of the tear depends on the thickness of the bedding. Without a
+good bond, if it is torn apart, it will be a rootless tree.
 
 ---
 
-## 情感拉扯节奏设计
+### The Third Ax: Dull Pain in the Aftertaste (End)
 
-### 基本节奏曲线
+**Goal**: No need to cry or make a fuss, use quiet details to break through readers'
+defenses.
+
+**Method**:
+- Use daily actions to carry huge emotions: continue feeding porridge, folding clothes,
+  and never look back
+- Use the details of objects to create a lasting impression: a broken gold lock, a
+  wooden pony, a blood-stained ring
+- Use "no" to create a blank space: no explanation, no looking back, no tears
+
+**Case**:
+- "The Imperial Brother Bullies the Youngest Son": "He was holding the wooden pony that
+  I had polished so smooth... He held it just right."
+- "Brother-in-law asks for money for milk powder": "My mobile phone is much cleaner. The
+  troubles that have been bothering me for a long time became very small in an instant."
+- "Prospective Daughter-in-Law's Rating": "After completing the adoption procedures, it
+  was the first time she stepped into this strange home... I knew that I made the right
+  choice this time."
+
+**Core**: The best aftereffect does not come from crying, but from "you won't be able to
+forget it for a long time after watching it".
+
+---
+
+## Emotional pulling rhythm design
+
+### Basic Rhythm Curve
 
 ```
-温暖 → 残忍 → 善意 → 真相 → 原谅 → 来不及 → 释然 → 细节暴击
+Warmth → Cruelty → Kindness → Truth → Forgiveness → Too Late → Relief → Details Critical
 ```
 
-不是所有故事都走完整曲线。按题材选择子集：
+Not all stories follow a full curve. Select subsets by subject:
 
-| 题材 | 典型节奏 | 核心拉扯 |
+| Theme | Typical rhythm | Core pull |
 |------|----------|----------|
-| 世情/爽文 | 欺压 → 忍耐 → 爆发 → 打脸 | 情绪反弹快、打脸密度高 |
-| 情感/虐心 | 甜蜜 → 破碎 → 挽回 → 错过 | 慢铺垫、后劲大 |
-| 古言/复仇 | 隐忍 → 布局 → 揭穿 → 报应 | 设定简洁、暴力美学 |
-| 悬疑/推理 | 平静 → 不安 → 真相 → 震惊 | 信息差制造不安 |
-| 年代/亲情 | 误解 → 冲突 → 真相 → 和解 | 代际冲突、时代质感 |
+| World situation/feel-good fiction | Oppression → Patience → Explosion → face-slapping | Emotional rebound is fast, face-slapping density is high |
+| Emotional/Sadistic | Sweet → Broken → Redemption → Missed | Slow foreshadowing, great stamina |
+| Ancient Proverbs/Revenge | Forbearance → Layout → Exposed → Retribution | Simple setting, violent aesthetics |
+| Suspense/Mystery | Calm → Uneasy → Truth → Shock | Information gap creates uneasiness |
+| Era/Family | Misunderstanding → Conflict → Truth → Reconciliation | Intergenerational conflict, texture of the times |
 
-### 拉扯原则
+### Pull Principle
 
-1. **每 3-5 个小节有一次情绪转向**（不能一路虐到底或一路爽到底）
-2. **每次转向都要有触发事件**（不能无理由地改变情绪）
-3. **最后一次转向决定结尾余韵的基调**
-4. **爽文允许快速反弹，虐文需要更长铺垫**
-
----
-
-## 按题材的情感策略差异
-
-### 世情/爽文
-
-- 情绪反弹速度：快（受辱后 2-3 节内打脸）
-- 打脸密度：每 3-5 节一次
-- 反派嚣张度：递增（第一次小嚣张，最后一次大嚣张）
-- 结尾基调：痛快、解气
-- 案例：《准儿媳打分》— 打分制反制、铁盒零分、断绝关系
-
-### 情感/虐心
-
-- 羁绊细节密度：高（前 1/3 必须建立深厚羁绊）
-- 反差设计：先暖后冷，先甜后苦
-- 余韵技法：安静结尾 + 物件细节
-- 结尾基调：意难平、释然
-- 案例：《姐夫捎路要奶粉钱》— 金锁真相 → 假爱 → 独立
-
-### 古言/复仇
-
-- 设定简洁原则：人物关系清晰，不搞复杂世界观
-- 暴力美学写法：打脸要直接，不拖泥带水
-- 底牌时机：最后 1/4 揭示最大底牌
-- 结尾基调：大快人心、因果报应
-- 案例：《皇弟欺负幼子》— 一声令下打二十棍 → 查出真相 → 废后
-
-### 悬疑/推理
-
-- 信息差布局：读者知道角色不知道，或反过来
-- 排除法结构：逐步排除可能性，最后只剩真相
-- 动机揭示节奏：先揭示做了什么，再揭示为什么做
-- 结尾基调：细思极恐、原来如此
-- 案例：《重生弟弟》— 重生设定 + 诈骗犯身份 + 电诈园区
-
-### 年代/亲情
-
-- 代际冲突处理：不站队，展示双方的苦
-- 时代细节质感：用时代特有的物件/习俗建立质感
-- 和解节奏：不急和解，先让双方充分受伤
-- 结尾基调：温暖中带着遗憾
-- 案例：《姐夫捎路要奶粉钱》— 亲子关系 → 金锁真相 → 断裂
+1. **There is an emotional turn every 3-5 sections** (You can’t be tortured all the way
+   or happy all the way)
+2. **Every turn must have a trigger event** (cannot change emotions without reason)
+3. **The last turn determines the tone of the ending**
+4. **feel-good fiction allows for a quick rebound, while abusive fiction requires longer
+   preparation**
 
 ---
 
-## 常见失败模式
+## Differences in emotional strategies by subject matter
 
-| 失败模式 | 识别方法 | 修正方向 |
+### Feel-good fiction
+
+- Emotional rebound speed: fast (face-slapping within 2-3 sessions after being
+  humiliated)
+- face-slapping density: once every 3-5 sessions
+- Villain's arrogance: increasing (little arrogance for the first time, big arrogance
+  for the last time)
+- Ending tone: happy and relieved
+- Case: "Points for Prospective Daughter-in-law" - Countermeasures based on points, zero
+  points on the iron box, and severing the relationship
+
+### Emotional/Sadistic
+
+- Bond detail density: high (the first 1/3 must establish a deep bond)
+- Contrast design: warm first and then cold, sweet first and then bitter
+- Finishing technique: quiet ending + object details
+- Ending tone: lingering regret, relief
+- Case: "Brother-in-law asks for money for milk powder" - The golden truth → Fake love →
+  Independence
+
+### Ancient Proverbs/Revenge
+
+- Set the principle of simplicity: clear relationships between characters and do not
+  complicate the world view
+- How to write violent aesthetics: face-slapping should be direct, not muddled
+- Hole card timing: the last 1/4 reveals the biggest hole card
+- Ending tone: happy, karmic retribution
+- Case: "Emperor's younger brother bullies his younger son" - give twenty sticks on one
+  order → find out the truth → abolish the queen
+
+### suspense/mystery
+
+- Information gap layout: the reader knows the character but not the character, or vice
+  versa
+- Elimination structure: eliminate possibilities step by step, and only the truth
+  remains in the end
+- Motivation reveal rhythm: first reveal what you did, then why you did it
+- Ending tone: It’s terrifying to think about it, so that’s how it is
+- Case: "Rebirth of Younger Brother" - Rebirth Setting + Scammer's Identity + Electronic
+  Fraud Park
+
+### Era/Family Relationship
+
+- Intergenerational conflict management: Don’t take sides and show the suffering of both
+  parties
+- Detailed texture of the era: Use objects/customs unique to the era to create texture
+- Rhythm of reconciliation: Don’t rush to reconcile, let both parties be fully injured
+  first
+- Ending tone: warmth with regret
+- Case: "Brother-in-law asks for money for milk powder" - Parent-child relationship →
+  The golden truth → Fracture
+
+---
+
+## Common failure modes
+
+| Failure modes | How to identify | Directions for correction |
 |----------|----------|----------|
-| **太平** | 连续 5+ 节没有情绪转折 | 插入意外事件或新信息 |
-| **太赶** | 重大转折只用了 1 节铺垫 | 给转折至少 3 节铺垫 |
-| **假虐** | 读者不心疼，只是看着难受 | 检查羁绊铺设是否具体 |
-| **割裂** | 前半部分和后半部分像两篇不同的故事 | 用伏笔/物件/主题贯穿 |
-| **烂尾** | 反转后拖了 2000 字还在交代 | 反转后 500 字内收尾 |
-| **人设崩** | 角色在关键时刻的行为不符合前面的人设 | 回顾人设，确保行为逻辑一致 |
+| **Peace** | 5+ consecutive episodes with no emotional twists | Inserting unexpected events or new information |
+| **Too fast** | Only 1 section is used to prepare for the major turning point | At least 3 sections are used to prepare the turning point |
+| **Fake abuse** | Readers don’t feel bad, they just feel uncomfortable watching | Check whether the bond laying is specific |
+| **Split** | The first half and the second half are like two different stories | Use foreshadowing/objects/themes throughout |
+| **Unfinished** | After the twist, it dragged on for 2,000 words and is still explaining | After the twist, it ended within 500 words |
+| **Character collapse** | The character's behavior at critical moments does not conform to the previous character design | Review the character design to ensure that the behavior is logically consistent |
 
 ---
 
-## 快速自查
+## Quick self-examination
 
-设计情感时，用这个清单：
+When designing emotions, use this checklist:
 
-- [ ] 前 1/3 有具体羁绊细节（不是抽象描述）？
-- [ ] 中段有反差/撕裂（读者以为 A → 实际是 B）？
-- [ ] 结尾有安静细节（不是大段抒情）？
-- [ ] 每 3-5 节有情绪转向？
-- [ ] 反派行为符合其人设逻辑？
-- [ ] 不存在上述 6 种失败模式？
+- [ ] Does the first 1/3 have concrete bond details (not abstract descriptions)?
+- [ ] Contrast/tear in the middle (reader thinks A → is actually B)?
+- [ ] Is there a quiet detail at the end (not a big lyrical piece)?
+- [ ] Is there an emotional turn every 3-5 verses?
+- [ ] Does the villain's behavior conform to the logic of his character?
+- [ ] None of the above 6 failure modes exist?
 
 ---
 
-## 三板斧与 SKILL.md 五段结构映射
+## Sanbanax and SKILL.md five-section structure mapping
 
-| 三板斧 | 对应 SKILL.md 五段 | 说明 |
+| Three-axe | Corresponding to five sections of SKILL.md | Description |
 |--------|-------------------|------|
-| 第一斧：羁绊铺设（前 1/3） | 铺垫段（第二段，占 30-40%） | 用物件/数字/习惯建立关系质感 |
-| 第二斧：情感撕裂（中后段） | 升级段（第三段）+ 反转段（第四段） | 反差/错位/延迟真相制造撕裂 |
-| 第三斧：余韵钝痛（结尾） | 结尾段（第五段，占 5-10%） | 安静细节收尾，不写大段抒情 |
+| The first ax: Bond laying (first 1/3) | Padding section (second section, accounting for 30-40%) | Use objects/numbers/habits to build relationship texture |
+| The second axe: Emotional tearing (middle and back sections) | Upgrade section (third section) + reversal section (fourth section) | Contrast/dislocation/delayed truth creates tears |
+| The third ax: dull pain in the aftertaste (end) | Ending paragraph (fifth paragraph, accounting for 5-10%) | End with quiet details, do not write a large lyrical paragraph |

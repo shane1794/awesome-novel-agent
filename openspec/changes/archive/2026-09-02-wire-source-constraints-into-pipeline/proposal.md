@@ -1,28 +1,28 @@
 ## Why
 
-Change `add-zhuque-source-defense` 落地了结构热源知识与章节检查工具，但管线不引用它们就没有效果：writer 起稿仍无结构约束，anti-ai 仍从句子级开始扫，项目也没有承载"战役记录→规则"进化机制的文件骨架。源头降检的主菜是生成期约束，本 change 把知识接进管线并模板化记忆机制。
+The `add-zhuque-source-defense` change landed structural-heat-source knowledge and the chapter check tool, but without pipeline references they have no effect: the writer still drafts with no structural constraints, anti-ai still starts scanning at sentence level, and the project has no skeleton files to carry the "battle log to rules" evolution mechanism. The main course of source-level detection reduction is generation-time constraints, so this change wires the knowledge into the pipeline and templatizes the memory mechanism.
 
 ## What Changes
 
-- `skills/writing-execution.md`：写前增加"每场五行反闭环卡"（人物要办什么/阻力来自谁/演到哪步停/什么不解释/什么留到下场），答不出第 3-5 项不开写。
-- `skills/prompt-crafting.md`：写前约束注入结构禁令（问答链拍数上限、章首冷开场、章尾极简不总结、微闭环/过桥链/证明链禁令），引用 `structural-heat.md`。
-- `skills/anti-ai.md`：Phase 1 扫描前增加结构热源扫描步骤（读 structural-heat.md，命中先改结构再清句子），并在 Phase 2 机器初筛中并列调用 `check-chapter.py`。
-- `templates/sandbox/` 新增三个骨架：检测战役记录（`detect-battles.md`）、回归模式库（`prose-regressions.txt`）、锁定台词白名单（`locked-lines.txt`）。
-- `tools/init.py` 初始化项目时生成上述骨架文件；`tools/sync-project.py`/`test_platforms.py` 覆盖。
+- `skills/writing-execution.md`: add a "five-line anti-closed-loop card per scene" before writing (what the character needs to do / who the resistance comes from / how far the performance goes before stopping / what is not explained / what is left for the next scene); if items 3-5 cannot be answered, do not start writing.
+- `skills/prompt-crafting.md`: inject structural bans into the pre-writing constraints (question-answer chain beat cap, cold chapter openings, minimal chapter endings with no summary, micro-closed-loop / bridge-chain / proof-chain bans), referencing `structural-heat.md`.
+- `skills/anti-ai.md`: add a structural-heat-source scan step before the Phase 1 scan (read structural-heat.md; fix structure first, then clean sentences), and call `check-chapter.py` alongside the Phase 2 machine pre-screen.
+- `templates/sandbox/` adds three skeletons: the detection-battle log (`detect-battles.md`), the regression pattern library (`prose-regressions.txt`), and the locked-lines whitelist (`locked-lines.txt`).
+- `tools/init.py` generates these skeleton files when initializing a project; `tools/sync-project.py` / `test_platforms.py` cover them.
 
 ## Capabilities
 
 ### New Capabilities
 
-- `source-constraint-pipeline`: 源头结构约束管线——writer 写前反闭环卡、prompt 结构禁令注入、anti-ai 结构热源扫描的挂接契约。
+- `source-constraint-pipeline`: the source structural-constraint pipeline, the wiring contract for the writer's pre-writing anti-closed-loop card, prompt structural-ban injection, and anti-ai structural-heat-source scanning.
 
 ### Modified Capabilities
 
-（无既有 spec——本仓库尚无已归档 specs，全部为本批新建。）
+(No existing spec. This repo has no archived specs yet; all of them are newly created in this batch.)
 
 ## Impact
 
-- 修改：`skills/writing-execution.md`、`skills/prompt-crafting.md`、`skills/anti-ai.md`、`tools/init.py`、`tools/test_platforms.py`。
-- 新增：`templates/sandbox/detect-battles.md`、`templates/sandbox/prose-regressions.txt`、`templates/sandbox/locked-lines.txt`。
-- 依赖：依赖 change `add-zhuque-source-defense` 先合入（引用其知识文件与工具）。
-- 话术约束：skills 中作者可见文本不得出现内部名词（切片/热窗/回归库等），须过 `knowledge/format-specs/author-communication.md` 对照表。
+- Changed: `skills/writing-execution.md`, `skills/prompt-crafting.md`, `skills/anti-ai.md`, `tools/init.py`, `tools/test_platforms.py`.
+- Added: `templates/sandbox/detect-battles.md`, `templates/sandbox/prose-regressions.txt`, `templates/sandbox/locked-lines.txt`.
+- Depends on: the `add-zhuque-source-defense` change merged first (it references that change's knowledge file and tool).
+- Wording constraint: author-visible text in skills must not contain internal terms (slices, heat windows, regression libraries, and the like); it must pass the `knowledge/format-specs/author-communication.md` reference table.

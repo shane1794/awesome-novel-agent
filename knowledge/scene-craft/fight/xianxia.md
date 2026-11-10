@@ -1,218 +1,234 @@
-# 战斗场景写法：东方仙侠（超凡级）
+# Battle scene writing method: Eastern xianxia (immortal cultivation) (extraordinary level)
 
-> 覆盖凡人级战斗方法论（`fight/universal.md`）中与仙侠题材不适配的部分。
-> 凡人级战斗参考 `fight/universal.md`——仙侠特有境界压制、法宝对决等在此文件覆盖。
+> Covers the parts of the Mortal Level Combat Methodology (`fight/universal.md`) that
+> are not suitable for the xianxia theme. Mortal level combat reference
+> `fight/universal.md` - xianxia's unique realm suppression, magic weapon duel, etc.
+> are covered in this file.
 
-## 标签选择指南（仙侠覆盖）
+## Label selection guide (xianxia coverage)
 
-| 场景特征 | 匹配标签 | 与通用的差异 |
+| Scene characteristics | Matching tags | Differences from universal |
 |---------|---------|-------------|
-| 境界压制战（高境界碾压低境界） | [动词] [反馈] | 一招定胜负，不写缠斗；反馈是灵力爆破不是物理碎地 |
-| 法宝对决（祭出本命法宝） | [动词] [博弈] | 动词用"祭出/催动/震碎"，博弈用"法宝克制关系" |
-| 法术对轰（远程灵力对抗） | [感官] [节奏] | 感官增加灵力感知，节奏拉长对峙缩短交火 |
-| 近身剑诀/体修搏杀 | [动词] [反馈] | 和通用打斗类似，但添加剑意/灵力灌注细节 |
-| 阵法攻防战 | [博弈] [反馈] | 战术核心是"布阵vs破阵"，反馈是阵法崩碎 |
-| 突破渡劫战 | [节奏] [后果] | 节奏是天劫的阶段性爆发，代价是根基/寿元 |
+| Realm suppression battle (high realm crushes low realm) | [verb] [feedback] | One move determines the outcome, no fighting; feedback is spiritual blasting, not physical ground breaking |
+| Magic weapon showdown (sacrifice your own magic weapon) | [verb] [game] | The verb uses "sacrifice/stimulate/shatter", and the game uses "magic weapon to restrain the relationship" |
+| Spell confrontation (long-range spiritual confrontation) | [Senses] [Rhythm] | Senses increase spiritual perception, rhythm lengthens confrontation and shortens firefights |
+| Close sword skills/physical fighting | [verb] [feedback] | Similar to general fighting, but with added details of sword intent/spiritual power infusion |
+| Formation offensive and defensive battle | [Game] [Feedback] | The core of tactics is "formation formation vs. formation breaking", and the feedback is that the formation collapses |
+| Breaking through the tribulation battle | [Rhythm] [Consequences] | Rhythm is the phased outbreak of tribulation, and the price is foundation/lifetime |
 
 
-## 境界分级——不同层级战斗效果不同
+## Realm grading - different levels of combat have different effects
 
-仙侠打斗没有"通用写法"。练气期和化神期的战斗从力量来源到感知维度全不一样。按参战双方的境界关系分三类：
+There is no "universal writing method" for xianxia fighting. The battles in the Qi
+training stage and the God transformation stage are completely different from the source
+of power to the dimension of perception. According to the realm relationship between the
+two parties participating in the war, they are divided into three categories:
 
-### 一、跨大境界战斗（高境界 vs 低境界）
+### 1. Fighting across major realms (high realm vs low realm)
 
-> 适用：练气 vs 金丹、金丹 vs 元婴等。碾压局。
+> Applicable to: Qi training vs Jin Dan, Jin Dan vs Nascent Soul, etc. Crush the game.
 
-| 维度 | 高境界方 | 低境界方 |
+| Dimension | High realm | Low realm |
 |------|---------|---------|
-| 本质 | 不需要动手，威压即可制服 | 拼尽全力伤不到对方一根毫毛 |
-| 动词 | 随手一挥、目光一扫、袖袍轻拂 | 底牌尽出、燃烧精血、自爆法宝 |
-| 反馈 | 不需要环境反馈——对方连攻击余波都承受不住 | 攻击打在对方护体灵光上，连涟漪都没有 |
-| 感官 | 俯瞰、淡漠、不需要神识 | 神识被碾压、呼吸困难、灵力凝滞 |
-| 节奏 | 极短——秒杀 | 极长——对方在玩 |
-| 博弈 | 无——纯粹碾压 | 唯一机会：对方轻敌→用禁忌秘术搏一线生机 |
-| 代价 | 无 | 根基尽毁、修为全废、身死道消 |
+| Essence | No need to use hands, coercion can subdue | Try your best not to hurt the opponent even a hair |
+| Verb | A wave of hand, a glance, a flick of sleeves | All cards revealed, blood essence burned, self-explosion magic weapon |
+| Feedback | No feedback from the environment is needed - the opponent cannot even withstand the aftermath of the attack | The attack hits the opponent's protective aura, without even ripples |
+| Senses | Overlooking, indifferent, no need for spiritual consciousness | Spiritual consciousness is crushed, difficulty breathing, spiritual power is stagnant |
+| Rhythm | Very short - instant kill | Very long - the opponent is playing |
+| Game | None - pure crushing | The only chance: the opponent underestimates the enemy → uses forbidden secret techniques to fight for a chance of survival |
+| Price | None | The foundation is completely destroyed, the cultivation is completely ruined, the body dies and the Tao disappears |
 
 ```
-❌ 两人大战三百回合，不分胜负。
+❌ The two fought for three hundred rounds, with no winner or loser.
 
-✅ 他还没看清对方的动作，胸口已经多了一个掌印。
-   灵力从掌印处灌入，瞬间封死了他全身经脉。
-   他甚至没能感觉到痛——差距太大了。
+✅ Before he could see the other party's movements clearly, there was already a palm print on his chest.
+   Spiritual power poured in from the palm print, instantly sealing the meridians throughout his body.
+   He couldn't even feel the pain - the difference was too big.
 ```
 
-### 二、同大境界内战斗（同境界不同层级）
+### 2. Fighting in the same realm (same realm but different levels)
 
-> 适用：练气中期 vs 练气后期、筑基初期 vs 筑基圆满等。有明显差距但可弥补。
+> Applicable: mid-stage Qi training vs. late Qi training, early stage of foundation
+> building vs. complete foundation building, etc. There is an obvious gap but it can
+> be bridged.
 
-| 维度 | 高的一方 | 低的一方 |
+| Dimensions | High side | Low side |
 |------|---------|---------|
-| 本质 | 灵力更深厚、法术更精纯 | 靠法宝/战术/底牌缩小差距 |
-| 动词 | 灵力灌注下法术威力明显更大 | 用更巧妙的剑诀、更刁钻的角度弥补 |
-| 反馈 | 逐步压制，对方开始吃力 | 全力防守，寻找破绽 |
-| 博弈 | 正面碾压 | 游斗、诱敌、用环境牵制 |
+| Essence | Deeper spiritual power and purer spells | Relying on magic weapons/tactics/ trump cards to narrow the gap |
+| Verb | The power of the spell is obviously greater under the infusion of spiritual power | Use more clever sword techniques and more tricky angles to make up for it |
+| Feedback | Gradually suppress, the opponent begins to struggle | Defend with all your strength, look for flaws |
+| Game | Frontal crushing | Fighting around, luring the enemy, and using the environment to contain it |
 
 ```
-❌ 两人对了一掌，各退三步。
+❌ The two of them exchanged palms and each took three steps back.
 
-✅ 双掌碰撞，气浪炸开。
-   他退了五步才稳住身形，对方只退了两步。
-   高下立判——但他还有后手。
-   袖中那枚玉简已经悄悄扣在掌心。
+✅ The two palms collide and the air wave explodes.
+   He took five steps back to stabilize his figure, but the opponent only took two steps back.
+   He was decisive - but he had a back-up plan.
+   The jade slip in his sleeve has been quietly clasped in his palm.
 ```
 
-### 三、同境界接近持平
+### 3. Close to the same level
 
-> 适用：两人修为几乎一样。纯拼术法、战术、意志、法宝。
+> Applicable: The two people have almost the same cultivation level. Pure magic
+> spells, tactics, will, and magic weapons.
 
-打法参考通用[博弈]的三大战术（抓破绽/卖破绽/借势），仙侠层面追加探底、法宝克制、阵法困敌。
+The play style refers to the three major tactics of general [game] (catching
+flaws/selling flaws/taking advantage of the situation), and adds bottom exploration,
+magic weapon restraint, and formation trapping enemies at the xianxia level.
 
 
-### 四、按修炼阶段划分战斗表现
+### 4. Combat performance divided by training stages
 
-不同阶段的修士，打斗"画风"完全不同：
+Monks at different stages have completely different fighting "styles":
 
-| 阶段 | 灵力 | 感知 | 攻击方式 | 反馈量级 | 代表写法 |
+| Stage | Spiritual power | Perception | Attack method | Feedback magnitude | Representative writing |
 |------|------|------|---------|---------|---------|
-| **练气期** | 灵力稀薄，打个火球都费劲 | 肉眼+基本感知 | 基础术法、符箓、近身剑术、拳脚 | 炸个土坑、烧焦一片地 | "他掐了个诀，指尖窜起一团火球，掷出去炸开一片火星" |
-| **筑基期** | 灵力成形，可御物 | 灵力外放感知 | 飞剑基础操控、术法增强、身法加速 | 剑气削断树枝、撞碎墙壁 | "剑光一闪，三丈外一根手臂粗的树枝齐根断落" |
-| **金丹期** | 灵力凝实，金丹为核 | 神识初开（十丈内） | 法宝真正威力、神识压迫、金丹异象 | 炸平一个小山头、神识震碎识海 | "金丹一震，威压如潮水涌出，对面练气修士直接跪倒在地" |
-| **元婴期** | 灵力化婴，近乎无穷 | 神识覆盖百丈 | 元婴出窍、法相初现、领域雏形 | 削平半座山、改变局部天气 | "元婴出窍，天地间凝出一尊虚影，一掌拍下，百丈方圆尽成焦土" |
-| **化神期** | 灵力沟通天地 | 神识覆盖百里 | 法天象地、言出法随、天地之力为己用 | 山河破碎、天象异变 | "化神修士一怒，方圆千里的云层被瞬间排空" |
-| **渡劫/大乘** | 即将飞升，近乎仙人 | 神识覆盖千里 | 法则操控、天劫之力、空间撕裂 | 虚空裂缝、规则扭曲 | "大乘修士交手，不是术法对轰，是天地规则的碰撞——一方要火不许燃，一方要水不许流" |
+| **Qi training period** | Spiritual power is so thin that it is difficult to shoot a fireball | Naked eyes + basic perception | Basic spells, talismans, close swordsmanship, fists and kicks | Exploding a pit and scorching the ground | "He made a secret, a fireball sprang up from his fingertips, and threw it to explode a cloud of sparks" |
+| **Foundation Building Period** | Spiritual power is formed and can be used to control objects | Spiritual power is released to the outside world | Basic control of flying swords, enhanced spells, and accelerated body movements | Sword energy cuts branches and smashes walls | "With a flash of sword light, a branch as thick as an arm was broken by its roots three feet away" |
+| **Golden elixir stage** | The spiritual power is solidified, and the golden elixir is the core | The spiritual consciousness is first opened (within ten feet) | The true power of the magic weapon, the oppression of the divine consciousness, the vision of the golden elixir | The flattening of a small hill, the spiritual consciousness shattering the sea of consciousness | "When the golden elixir shook, the pressure surged out like a tide, and the Qi practitioner monk opposite fell to his knees directly" |
+| **Nascent Soul stage** | Spiritual power turns into an infant, almost infinite | Divine consciousness covers a hundred feet | Nascent Soul leaves the body, the first appearance of the law, and the prototype of the domain | Flatten half of the mountain, change the local weather | "The Nascent Soul leaves the body, and a shadow condenses between the sky and the earth. With one palm shot, the area of a hundred feet becomes scorched earth" |
+| **God-Transformation Stage** | Spiritual power communicates with heaven and earth | Divine consciousness covers hundreds of miles | The law of the sky resembles the earth, words are followed, and the power of heaven and earth is used for one's own use | Mountains and rivers are broken, and celestial phenomena change | "The monk of the God-Transformation was angry, and the clouds covering a thousand miles were emptied instantly" |
+| **Transcending Tribulation/Mahayana** | About to ascend, almost an immortal | Divine consciousness covers thousands of miles | Law control, power of heavenly tribulation, space tearing | Cracks in the void, distortion of rules | "The fight between Mahayana monks is not a battle of spells, but a collision of the rules of heaven and earth - one side wants fire but cannot burn, and the other wants water but cannot flow" |
 
 
-## 核心差异速查
+## Quick Look at Core Differences
 
-| 维度 | 通用打法 | 仙侠打法 |
+| Dimension | General play style | xianxia play style |
 |------|---------|---------|
-| 力量来源 | 肌肉、武器、技巧 | 灵力、境界、道心、法宝 |
-| 攻击方式 | 拳脚、刀剑、枪械 | 飞剑、法术、神识、阵法、威压 |
-| 防御方式 | 格挡、闪避、甲胄 | 护体灵光、法器、结界、肉身霸体 |
-| 胜负关键 | 体力、技巧、力量 | 境界、底牌、法宝克制、道心强弱 |
-| 代价 | 流血、骨折、死亡 | 根基受损、寿元燃烧、法宝破碎、走火入魔 |
-| 环境反馈 | 地砖龟裂、墙壁倒塌 | 灵力震荡、山崩地裂、天地变色 |
-| 感知维度 | 视线、声音、触觉 | 神识、灵力感知、剑意、杀气 |
+| Source of power | Muscles, weapons, skills | Spiritual power, realm, Taoist heart, magic weapon |
+| Attack methods | Fists, kicks, swords, firearms | Flying swords, spells, consciousness, formations, pressure |
+| Defense methods | Block, dodge, armor | Body protection aura, magic weapon, barrier, physical dominance |
+| The key to victory or defeat | Physical strength, skills, strength | Realm, trump card, magic weapon restraint, Taoist strength |
+| Price | Bleeding, broken bones, death | Damaged foundation, burning longevity, broken magic weapon, going crazy |
+| Environmental feedback | Cracked floor tiles, collapsed walls | Shock of spiritual energy, landslides and cracks on the ground, discoloration of heaven and earth |
+| Dimension of perception | Sight, sound, touch | Divine consciousness, spiritual perception, sword intention, murderous intent |
 
 
-## [动词] 仙侠专属动词表
+## [verb] Xianxia Exclusive Verb List
 
-### 剑诀/飞剑
+### Sword Technique/Flying Sword
 
-| ❌ 禁用 | ✅ 必用 |
+| ❌ Disabled | ✅ Must Use |
 |---------|--------|
-| 砍、刺、挥 | 祭出、御使、化作流光、分化万千、剑气纵横 |
+| Cut, stab, swing | Sacrifice, use, turn into flowing light, divide into thousands, sword energy vertical and horizontal |
 
-### 法术/灵力
+### Spells/Psychic Powers
 
-| ❌ 禁用 | ✅ 必用 |
+| ❌ Disabled | ✅ Must Use |
 |---------|--------|
-| 发射、打出 | 催动、引爆、凝聚、炸开、灌注、增幅 |
+| Launch, shoot out | Activate, detonate, condense, explode, infuse, amplify |
 
-### 体修/肉身
+### Physical training/physical body
 
-同通用[动词]表的刚猛型（轰、劈、砸、崩），但添加灵力灌注细节。
-
-```
-❌ 他祭出飞剑刺向对方。
-
-✅ 指尖剑诀一引，背后长剑铮然出鞘，化作一道流光直贯云霄，
-   随即凌空折转，剑尖凝聚一点寒芒，如流星坠地直刺而下。
-```
-
-**禁用：** 用现代冷兵器动作写仙侠打斗（"他一刀砍过去"类）。
-
-
-## [反馈] 仙侠版力量反馈
-
-通用[反馈]的公式不变，但反馈素材替换为仙侠版本：
-
-### 万能力量公式（仙侠版）
+The same as the general [verb] expression of the fierce type (bang, split, smash,
+collapse), but with added details of spiritual power infusion.
 
 ```
-攻击动作 + 灵力爆发 + 天地异象 + 余波/余震
+❌ He used his flying sword to stab the opponent.
+
+✅ Using the sword technique on his fingertips, the long sword behind his back was unsheathed and turned into a stream of light that shot straight into the sky.
+   Then it turned around in the air, the tip of the sword gathered a bit of cold light, and pierced down like a meteor falling to the ground.
 ```
 
-### 三套反馈模板
+**Disabled:** Use modern cold weapon movements to write xianxia fights ("cut him with a
+knife" type).
+
+
+## [Feedback] xianxia version power feedback
+
+The general [Feedback] formula remains unchanged, but the feedback material is replaced
+with the xianxia version:
+
+### Universal Power Formula (xianxia version)
 
 ```
-天地反馈：灵气震荡、风云变色、大地龟裂、天穹炸响
-人体反馈：气血翻涌、经脉剧痛、护体灵光碎裂、身形暴退
-余波反馈：剑气余波削平山头、掌风扫过林木尽折
+Attack action + spiritual power burst + heaven and earth phenomena + aftermath/aftershocks
+```
+
+### Three sets of feedback templates
+
+```
+Feedback from heaven and earth: spiritual energy oscillates, wind and clouds change colors, the earth cracks, and the sky explodes
+Feedback from the human body: Qi and blood surging, severe pain in the meridians, body protective aura shattering, body shape shrinking violently
+Aftermath feedback: The sword energy leveled the mountain tops, and the palm wind swept through the trees and broke them.
 ```
 
 ```
-❌ 他一掌拍出，威力巨大。
+❌ He slapped it with one palm, which was extremely powerful.
 
-✅ 单掌推出，方圆百丈灵气骤然一空，
-   天地间炸开一圈透明的涟漪，所过之处山石崩碎、林木尽折。
-   对面那座山头被掌风余波扫过，半边山体无声滑落。
+✅ Push out with a single palm, and the spiritual energy in a radius of a hundred feet is suddenly gone.
+   A circle of transparent ripples exploded between the sky and the earth, causing rocks to shatter and trees to fall wherever it passed.
+   The mountaintop on the opposite side was swept by the aftermath of the palm wind, and half of the mountain slipped silently.
 ```
 
 
-## [感官] 仙侠感官扩展
+## [Senses] xianxia senses expansion
 
-通用[感官]的素材库保留，在此基础上增加仙侠特有感知维度。
+The general [sensory] material library is retained, and xianxia's unique perceptual
+dimension is added on this basis.
 
-### 仙侠独有感官
+### xianxia’s Unique Senses
 
-| 感知维度 | 可用元素 |
+| Perception Dimensions | Available Elements |
 |---------|---------|
-| **灵力感知** | 灵气浓度骤变、灵力压迫感如潮水涌来、四周灵气被抽干 |
-| **神识** | 神识扫过如针扎背、识海震荡、被更高境界神识锁定动弹不得 |
-| **剑意/杀意** | 剑意刺骨、杀意凝成实质、威压如山岳压顶 |
-| **听觉**（仙侠） | 飞剑破空尖啸、轰鸣、天劫雷声、阵法运转的低沉嗡鸣 |
+| **Spiritual Power Perception** | The concentration of spiritual energy changes suddenly, the pressure of spiritual energy surges like a tide, and the surrounding spiritual energy is drained away |
+| **divine consciousness** | The sweep of the divine consciousness is like a needle pricking the back, the sea of consciousness is shaking, and it is locked and unable to move by the higher realm of divine consciousness |
+| **Sword Intent/Killing Intent** | The sword intent is bone-piercing, the killing intent is condensed into substance, and the pressure is like the top of a mountain |
+| **Hearing** (xianxia) | The screams and roars of flying swords piercing the air, the thunder of heavenly tribulation, and the low hum of formation operations |
 
 
-## [节奏] 仙侠节奏差异
+## [Rhythm] xianxia rhythm difference
 
-通用[节奏]的四景切换法保留，但节奏分布不同：
+The general [Rhythm] four-scene switching method is retained, but the rhythm
+distribution is different:
 
-### 仙侠打斗节奏特点
+### Xianxia Fighting Rhythm Characteristics
 
-| 阶段 | 通用节奏 | 仙侠节奏 |
+| Stage | Universal Rhythm | xianxia Rhythm |
 |------|---------|---------|
-| 对峙 | 长句、眼神、气场 | 长句、灵力场碰撞、神识试探、互相探测深浅 |
-| 交火 | 短句连炸 | 中速——法术需要吟唱/掐诀/剑诀指引，不是即时出招 |
-| 转折 | 受伤/力量反转 | 底牌祭出（法宝/秘术/突破）、境界临时爆发 |
-| 结束 | 代价展示 | 对方遁走/灵力耗尽/根基受损——仙侠很少肉身打死 |
+| Confrontation | Long sentences, eyes, aura | Long sentences, collision of spiritual fields, testing of spiritual consciousness, mutual detection of depth |
+| Crossfire | Short sentences in a row | Medium speed - spells require chanting/pinjue/sword art guidance, not instantaneous moves |
+| Turning point | Injury/power reversal | Showing trump cards (magic weapon/secret technique/breakthrough), temporary realm explosion |
+| End | Show the cost | The opponent escapes/exhausts his spiritual power/is damaged - xianxia rarely kills him physically |
 
 ```
-远景：千里之外灵气翻涌如沸，天边云层被染成暗红色。
-中景：两道剑光在云海中追逐碰撞，每次撞击都炸开一圈气浪。
-特写：额角冷汗滑落，指尖掐诀不止，嘴角已有血迹渗出。
-主观：对方剑意扑面而来，识海中被那一剑锁定，避无可避。
+Vision: Thousands of miles away, spiritual energy surges like a boil, and the clouds on the horizon are dyed dark red.
+Medium shot: Two sword lights are chasing and colliding in the sea of clouds, and each collision explodes a circle of air waves.
+Close-up: Cold sweat dripped from his forehead, his fingertips kept kneading, and blood oozed from the corners of his mouth.
+Subjective: The opponent's sword intent rushes towards you, and your consciousness is locked by that sword, making it impossible to avoid it.
 ```
 
 
-## [博弈] 仙侠战术扩展
+## [Game] xianxia tactics expansion
 
-通用[博弈]的三大战术保留，追加仙侠特有战术：
+The three major tactics of general [game] are retained, and xianxia's unique tactics are
+added:
 
-### 仙侠特有战术
+### Xianxia Unique Tactics
 
-| 战术 | 说明 | 效果 |
+| Tactics | Description | Effects |
 |------|------|------|
-| **探底** | 先用小法术试探对方修为深浅，再决定用什么级别的底牌 | 避免盲目开大 |
-| **法宝克制** | 五行相生相克、属性克制——火系法宝克木系法术 | 不是纯力量比拼 |
-| **阵法困敌** | 边打边布阵，把战场变成自己的主场 | 以弱胜强经典手法 |
-| **示弱诱敌** | 故意被击中，让对方以为胜券在握，再用法宝反杀 | 反转爽感 |
+| **Testing** | Use small spells to test the depth of the opponent's cultivation first, and then decide what level of trump card to use | Avoid blindly opening big |
+| **Magical weapon restraint** | The five elements are mutually reinforcing and restraining each other, and the attributes are restrained - the fire magic weapon restrains the wood spell | It is not a pure strength competition |
+| **Array traps enemies** | Set up formations while fighting, turning the battlefield into your home court | The classic method of defeating the strong with the weak |
+| **Show weakness to lure the enemy** | Get hit deliberately to make the opponent think you have a chance to win, and then use magic weapons to counterattack | The feeling of reversal |
 
 
-## [后果] 仙侠代价
+## [Consequences] xianxia price
 
-通用[后果]保留，仙侠特有的代价类型：
+General [consequences] reserved, xianxia-specific cost types:
 
-| 代价类型 | 写法 |
+| Cost type | Writing method |
 |---------|------|
-| **根基受损** | 经脉寸断、丹田出现裂痕、修为跌落境界 |
-| **法宝折损** | 本命法宝出现裂纹、器灵沉眠、法宝品级跌落 |
-| **寿元燃烧** | 以燃烧百年寿元为代价换取短暂力量 |
-| **走火入魔** | 灵力失控、心魔滋生、短暂失去神智 |
+| **The foundation is damaged** | The meridians are broken, the dantian is cracked, and the cultivation level falls |
+| **Magic weapon damaged** | The natal magic weapon has cracks, the weapon spirit is dormant, and the magic weapon level drops |
+| **Shou Yuan Burning** | Burning a hundred years of life in exchange for short-term strength |
+| **Going crazy** | Losing control of spiritual power, breeding inner demons, and temporarily losing consciousness |
 
 ```
-❌ 他受了重伤。
+❌ He was seriously injured.
 
-✅ 他单膝跪地，丹田处传来碎裂般的剧痛——金丹表面多了一道细纹。
-   他伸手擦掉嘴角的血，笑了笑，祭出了那枚不该动用的玉简。
+✅ He knelt on one knee, and there was a crushing pain in his dantian - there was a fine line on the surface of the golden elixir.
+   He stretched out his hand to wipe the blood from the corner of his mouth, smiled, and offered up the jade slip that should not be used.
 ```

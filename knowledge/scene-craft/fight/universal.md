@@ -1,164 +1,183 @@
-# 战斗/对抗场景写法（凡人级）
+# How to write battle/confrontation scenes (mortal level)
 
-> 适用于**凡人/现实级**战斗——拳脚、冷兵器、街头斗殴、冷兵器对战。无超自然力量。
-> 玄幻/仙侠等超自然战斗参考 `fight/xianxia.md`、`fight/{题材}.md`。
->
-> 每条技法以 `[标签]` 开头。prompt-crafter 根据场景核心事件匹配标签，只选取对应的技法注入 输出·写作规范。
+> Suitable for **mortal/realistic** combat - fists and kicks, cold weapons, street
+> fights, and cold weapon battles. No supernatural powers. References to
+> xuanhuan (Eastern fantasy)/xianxia (immortal cultivation) and other supernatural battles are `fight/xianxia.md` and
+> `fight/{genre}.md`. Each technique begins with `[tag]`. prompt-crafter matches tags
+> based on scene core events, and only selects corresponding techniques to inject into
+> output and writing specs.
 
-## 标签选择指南
+## Label Selection Guide
 
-| 场景特征 | 匹配标签 | 选取理由 |
+| Scene characteristics | Matching tags | Reason for selection |
 |---------|---------|---------|
-| 凡人级重武器/力量型/刚猛风格 | [动词] [反馈] | 用精确动词替代"打踢捶"，用环境反馈表现力量 |
-| 凡人级轻武器/敏捷型/刺客风格 | [动词] [感官] | 用"抹挑钻绕"替代"躲闪划"，多感官营造紧张 |
-| 需要表现攻击的威力/伤害 | [反馈] [后果] | 不靠形容词自夸，靠受击反馈+环境破碎 |
-| 战斗节奏单一、读者看累 | [节奏] [感官] | 长短句交替、四景切换、多感官轰炸 |
-| 双方无脑对轰、没有策略 | [博弈] | 加战术动机——抓破绽/卖破绽/借势 |
-| 想写"快"（刀快/剑快/身法快） | [动词] [反馈] | 用结果反写速度，不写"快如闪电" |
-| 想写"重"（拳重/锤重/碾压） | [反馈] [后果] | 用人体反馈+地面破碎写重量 |
+| Mortal-level heavy weapons/power type/violent style | [verb] [feedback] | Use precise verbs to replace "beating, kicking and beating", and use environmental feedback to express strength |
+| Mortal-level light weapons/agility/assassin style | [verb] [sensory] | Use "wipe, pick, drill, and circle" instead of "dodge and draw" to create tension with multiple senses |
+| Need to show the power/damage of the attack | [Feedback] [Consequences] | Do not rely on adjectives to boast, rely on feedback from the attack + environmental destruction |
+| The battle rhythm is single and readers are tired | [Rhythm] [Sensory] | Alternating long and short sentences, switching between four scenes, multi-sensory bombardment |
+| Both sides are brainless and have no strategy | [Game] | Add tactical motivation - catch the weakness/sell the weakness/take advantage of the situation |
+| I want to write "fast" (quick knife/fast sword/fast movement) | [verb] [feedback] | Use the result to write speed in reverse, instead of writing "fast as lightning" |
+| Want to write "heavy" (punch weight/hammer weight/crushing) | [Feedback] [Consequences] | Use human body feedback + ground breaking to write weight |
 
 
-## [动词] 动词降维 + 细节放大
+## [verb] Verb Dimensionality Reduction + Detail Amplification
 
-**核心：** 删掉"敏捷、重拳、厉害"这类主观概括词，把笼统动作拆解成具体部位、精准距离、受力反馈、声响体感。用特写替代总结。
+**Core:** Delete subjective general words such as "agility, punching, and powerful" and
+break down the general movements into specific parts, precise distances, force feedback,
+and sound and body sensations. Replace summaries with close-ups.
 
-### 执行细则
+### Implementation details
 
-- **拆解位移：** 规避"躲开、闪避"，写明肢体动作、偏移距离、相对位置
-- **拆解击打：** 锁定受力点位，补充骨骼、皮肉、声响等直观反馈
-- **全程不用形容词定性**，只用客观画面呈现效果
+- **Dismantle displacement:** Avoid "dodge, dodge", indicate body movements, offset
+  distance, relative position
+- **Disassembly and hitting:** Lock the force point and add intuitive feedback such as
+  bones, skin, and sound.
+- **No qualitative adjectives are used throughout the process**, only objective pictures
+  are used to present the effect.
 
-### 刚猛型 vs 灵动型动词表
+### Vigorous vs. Agile Verb List
 
-| 类型 | ❌ 禁用 | ✅ 必用 |
+| Type | ❌ Disabled | ✅ Must Use |
 |------|---------|--------|
-| **刚猛型**（力量、重武器） | 打、踢、捶、撞 | 轰、劈、砸、崩、碾、凿、拍 |
-| **灵动型**（速度、身法、短刃） | 躲、闪、划、打 | 抹、挑、钻、绕、掠、贴、滑、旋 |
+| **Strength type** (strength, heavy weapons) | Hitting, kicking, hammering, bumping | Blasting, splitting, smashing, collapsing, grinding, chiseling, shooting |
+| **Agility type** (speed, movement, short blade) | Dodge, dodge, slide, hit | Wipe, pick, drill, circle, sweep, stick, slide, spin |
 
 ```
-❌ 他敏捷躲过一拳，一记重拳将对方打飞。
+❌ He quickly dodged a punch and knocked the opponent away with a heavy punch.
 
-✅ 对方拳锋撕裂空气直砸鼻梁，他头部猛地左偏三公分，
-   拳风擦过脸颊，皮肉生疼。
-   五指骤然攥紧，指骨爆起脆响，拳锋轰入对方胸腔，
-   骨裂声清晰响起，对方身躯如断线风筝撞翻木桌，
-   木屑四散飞溅。
+✅ The opponent's fist tore through the air and hit the bridge of his nose. His head suddenly tilted three centimeters to the left.
+   The wind from the fist grazed his cheek, causing his skin to ache.
+   The five fingers suddenly clenched tightly, the knuckles made a crisp sound, and the fist punched into the opponent's chest.
+   The sound of cracking bones sounded clearly, and the opponent's body was like a kite with broken strings, knocking over the wooden table.
+   Sawdust flew everywhere.
 ```
 
-**禁用：** "身手敏捷、威力巨大、势大力沉"等主观评价词。
+**Banned:** Subjective evaluation words such as "agile, powerful, powerful and heavy".
 
 
-## [反馈] 环境互动 + 物理反馈
+## [Feedback] Environmental interaction + physical feedback
 
-**核心：** 不以文字吹嘘威力，让招式和场景产生互动。用景物损毁、气流变化、外物动静侧面放大力量与打斗烈度。
+**Core:** Don’t brag about your power with words, let the moves interact with the scene.
+Use damage to scenery, changes in airflow, and movement of external objects to amplify
+the power and intensity of the fight.
 
-### 执行细则
+### Implementation details
 
-- **范围攻击：** 描写气浪扩散、地面开裂、草木粉碎、碎石飞溅
-- **近身缠斗：** 利用周边器物、墙体、地面作为反馈载体
-- **联动体感：** 补充碎石、气流、尘土带给角色/旁人的直观感受
+- **Range attack:** Describes the spread of air waves, cracking of the ground, smashing
+  of vegetation, and splashing of gravel.
+- **Close combat:** Use surrounding objects, walls, and floors as feedback carriers
+- **Linked body sense:** Supplement the intuitive feelings brought by gravel, airflow,
+  and dust to the character/bystanders
 
-### 万能力量公式
-
-```
-攻击动作 + 受击者形变 + 环境破碎 + 气浪/余波
-```
-
-```
-❌ 他一掌拍在地上，威力巨大，震退众人。
-
-✅ 单掌按向地面，气浪轰然炸开，周遭落叶尽数碾成粉末，
-   青石地面蛛网般龟裂，碎石弹起砸在旁人脸上，刺得皮肤发疼。
-```
-
-### 顶级反写（写快、写重、写利）
+### Universal Power Formula
 
 ```
-写刀快：收刀归鞘，人走十步，身后落叶齐齐断落。
-
-写拳重：拳未至，风压先至，土墙压出清晰拳印。
+Attack action + victim transformation + environment fragmentation + air wave/aftermath
 ```
 
-**禁用：** "惊天动地、气吞山河"等空泛华丽词藻；单纯描述招式本身，无任何环境联动。
+```
+❌ He slapped his palm on the ground with great power, knocking everyone back.
+
+✅ Press the ground with one palm, the air wave explodes, and all the fallen leaves around are crushed into powder.
+   The bluestone floor cracked like spider webs, and the gravel bounced up and hit the faces of others, stinging their skin.
+```
+
+### Top reverse writing (fast writing, heavy writing, and profitable writing)
+
+```
+Write about the sword quickly: put the sword back into its sheath, take ten steps, and all the fallen leaves will fall behind you.
+
+Write about the weight of the punch: Before the punch came, the wind pressure came first, and the earth wall pressed out a clear punch mark.
+```
+
+**Banned:** Vacant and flowery words such as "shaking the earth and swallowing the
+mountains and rivers"; simply describing the move itself without any environmental
+linkage.
 
 
-## [感官] 多感官轰炸——告别只有画面的战斗
+## [Sensory] Multi-sensory bombing - say goodbye to battles with only pictures
 
-**核心：** 战斗不是在看电影，是亲历现场。每场交战至少切换 2 种感官。
+**Core:** Fighting is not something you watch in a movie, it’s something you experience
+live. Switch at least 2 senses per engagement.
 
-### 固定素材库
+### Fixed library
 
-| 感官 | 可用元素 |
+| Senses | Available elements |
 |------|---------|
-| **听觉** | 拳风爆鸣、骨骼脆响、刀锋摩擦闷嘶声、兵刃炸响、急促喘息 |
-| **嗅觉** | 血腥味、铁锈味、硝烟味、尘土焦糊味 |
-| **触觉（体感）** | 虎口震麻、掌心刺痛、肌肉撕裂酸胀、风压压得胸腔发闷、汗水刺眼 |
+| **Hearing** | The blast of fists, the crisp sound of bones, the dull hiss of blade friction, the explosion of weapons, and rapid breathing |
+| **Smell** | The smell of blood, rust, smoke, and burnt dust |
+| **Tactile (somatosensory)** | Numbness in the tiger's mouth, tingling in the palms, muscle tearing and soreness, wind pressure making the chest feel stuffy, and sweat dazzling the eyes |
 
-**规则：** 一场交战至少覆盖 2 种感官，不能只有视觉。
+**Rules:** An engagement involves at least 2 senses, not just sight.
 
 
-## [节奏] 镜头运镜 + 视线牵引
+## [Rhythm] Camera movement + eye traction
 
-**核心：** 模仿影视分镜，用镜头切换控制阅读节奏，强化临场感。
+**Core:** Imitate film and television storyboards, use lens switching to control the
+reading rhythm and enhance the sense of presence.
 
-### 四景切换法
+### Four scene switching method
 
-| 镜头 | 用途 | 写法 |
+| Lens | Purpose | Writing |
 |------|------|------|
-| **远景** | 铺垫整体氛围、环境异动 | 飞鸟惊起、天地异象、场地格局 |
-| **中景** | 人物走位、招式交锋、兵器碰撞 | 两人在林间穿梭、兵刃相撞火星迸射 |
-| **近景/特写** | 汗珠、眼神、伤口、破绽、兵器火星 | 额角冷汗滑落、目光锁住对手咽喉 |
-| **主观镜头** | 以角色视角呈现攻击、放大压迫感 | 长剑在瞳孔中不断放大 |
+| **Vision** | To pave the way for the overall atmosphere and changes in the environment | Birds startled, strange phenomena of heaven and earth, site layout |
+| **Medium Shot** | Character movements, combat moves, weapon collisions | Two people shuttle through the forest, weapons collide and sparks shoot out |
+| **Close shot/close-up** | Sweat beads, eyes, wounds, flaws, weapon sparks | Cold sweat dripping from the forehead, eyes locked on the opponent's throat |
+| **Subjective shot** | Present the attack from the character's perspective and magnify the sense of oppression | The sword is constantly magnifying in the pupils |
 
-### 长句慢、短句快
+### Long sentences slowly, short sentences fast
 
-| 阶段 | 句型 | 效果 |
+| Stage | Sentence pattern | Effect |
 |------|------|------|
-| 对峙铺垫 | 长句 | 压迫铺垫、环境、眼神、气场 |
-| 交手瞬间 | 3-6 字超短句连炸 | 心跳加速、紧张 |
+| Confrontation foreshadowing | Long sentence | Pressure foreshadowing, environment, eyes, aura |
+| The moment of fighting | 3-6 words of ultra-short sentences | Heartbeats are racing and nervous |
 
-### 场景套用模板（林间打斗）
+### Scene application template (fighting in the woods)
 
 ```
-远景：夜色沉沉，林中飞鸟骤然惊起。
-中景：两道黑影在林间穿梭，兵刃相撞，火星迸射。
-特写：额角冷汗滑落，目光死死锁住对手咽喉破绽。
-主观：长剑迎面刺来，锋芒在瞳孔中不断放大。
+Long shot: The night is dark, and the birds in the forest suddenly startle.
+Medium shot: Two black shadows shuttle through the forest, weapons collide, and sparks shoot out.
+Close-up: Cold sweat dripped from his forehead, his eyes fixed on the gap in his opponent's throat.
+Subjective: The long sword stabbed the person face to face, and the sharp edge continued to enlarge in the pupils.
 ```
 
-**禁用：** 全程固定单一视角，镜头无切换；通篇只写两人交手动作无环境。
+**Disabled:** A single perspective is fixed throughout the whole process, and there is
+no camera switching; the whole article only describes the action of two people fighting
+without any environment.
 
 
-## [博弈] 动作戏博弈感——告别无脑互殴
+## [Game] A sense of game in action scenes - say goodbye to mindless fights
 
-**核心：** 每一招都有目的，不是乱打。好看的打斗 = 智商碾压 + 预判博弈 + 绝境利用。
+**Core:** Every move has a purpose, not a random attack. A good-looking fight = crushing
+IQ + predicting the game + taking advantage of desperate situations.
 
-### 三大战术写法
+### Three major strategies for writing
 
-| 战术 | 说明 | 效果 |
+| Tactics | Description | Effects |
 |------|------|------|
-| **抓破绽** | 盯对方重心、旧伤、落脚错位、失衡瞬间 | 读者觉得主角聪明 |
-| **卖破绽** | 故意漏空，引诱对方突进再反杀 | 反转爽感 |
-| **借势** | 沙尘、地形、坡度、障碍物、对手性格惯性 | 战斗不单调 |
+| **Search for flaws** | Keep an eye on the opponent's center of gravity, old injuries, misplaced footing, and moments of imbalance | Readers think the protagonist is smart |
+| **Selling Weaknesses** | Deliberately leaving gaps, luring the opponent to rush forward and then counterattack | The feeling of reversal |
+| **Taking advantage of the situation** | Sand, terrain, slope, obstacles, opponent's character inertia | The battle is not monotonous |
 
 ```
-❌ 双方对轰了十几招，不分胜负。
+❌ The two sides exchanged more than ten moves, with no winner or loser.
 
-✅ 他退了半步，左脚在碎石上滑了一下——重心不稳。
-   对方果然抓住这个机会扑上来。
-   他却笑了。脚跟已经踩实了。
+✅ He took half a step back and his left foot slipped on the gravel - his center of gravity was unstable.
+   As expected, the opponent seized this opportunity and pounced.
+   But he smiled. The heels are firmly planted.
 ```
 
-**禁止：** 双方纯拼力量对轰，无思考、无战术、无预判。
+**Forbidden:** The two sides compete purely with strength, without thinking, tactics, or
+prediction.
 
 
-## [后果] 代价可视化
+## [Consequence] Cost visualization
 
-**核心：** 不写"受伤了"，写后果。
+**Core:** Don't write "injured", write the consequences.
 
 ```
-❌ 他被砍了一刀，受了重伤。
+❌ He was slashed and seriously injured.
 
-✅ 他用左手接刀的时候就知道这手废了。
-   血顺着手臂淌到肘弯，他握了握拳头——手指还能动，但使不上力。
+✅ When he took the knife with his left hand, he knew it was useless.
+   Blood trickled down his arm to the crook of his elbow, and he clenched his fist - his fingers could still move, but he couldn't use the strength.
 ```

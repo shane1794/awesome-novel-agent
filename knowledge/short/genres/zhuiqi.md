@@ -1,101 +1,188 @@
-# 短篇题材风格包：追妻火葬场 / 虐恋意难平
+# Short story style package: wife-chasing crematorium / angsty romancelingering regret
 
-> 适用题材：zhuiqi。改写自获赠短篇流程包的题材风格包（来源 oh-story 系 + 实测调整），按本仓口径改写：引用一律部署后基座路径；公开或商用前需原作者确认。
-> 服务 8 千至 2 万字短篇（盐言 / 番茄短篇 / 黑岩 / 七猫短篇），不是传统文学。
+> Applicable themes: zhuiqi. Adapted from the theme style package of the short story
+> flow package (source oh-story series + actual measurement adjustment), it is
+> rewritten according to the caliber of this repo: the base path after deployment
+> is always quoted; the original author needs to confirm before making it public or
+> commercial. Serves short stories of 8,000 to 20,000 words (Yanyan/Fanqie short
+> stories/Heiyan/Qimao short stories), which are not traditional literature.
 
-## 叙述腔调
+## Narrative Tone
 
-- **第一人称「我」全程主导**，受害者亲历视角。他人视角（男方 / 第三者）只作追悔、得意的补刀短插，不平分篇幅。
-- 腔调双轨，靠「心死」开关切换：受虐段直白宣泄（喊疼、喊委屈、眼泪不争气、成段内心独白和连环反问）；反击 / 反转段冷静审判（抽离、反讽、居高临下、见血不铺陈）。
-- 「心死定格句」是切换枢纽：撞破真相后用一句独立成段的心死宣告（如「那一刻，我的心彻底死了」），把情节从委屈隐忍切到冷静决裂。
-- 情绪宁烈不温。情绪词直接写（心如死灰、几欲作呕），但后面必须接一个本场景此刻特有的具体动作或物件——凉透的汤、摔碎的镯子、攥皱的病历。详见 `.claude/knowledge/short-anti-ai.md` 留删对表。
+- **The first person "I" dominates the whole process**, from the perspective of the
+  victim's personal experience. The perspective of others (male/third party) only shows
+  regret and pride, and the length is not divided equally.
+- The tone is dual-track, switched by the "heart-death" switch: the sadistic section is
+  straightforward and cathartic (screams of pain, grievances, tears of disappointment,
+  internal monologues and serial rhetorical questions); the counterattack/reversal
+  section is calm judgment (withdrawal, irony, condescension, and no elaboration).
+- "Death sentence" is the key to switching: after breaking the truth, use an independent
+  statement of death (such as "At that moment, my heart was completely dead") to change
+  the plot from grievance and tolerance to calm breakup.
+- The mood is rather intense but not warm. Write the emotional word directly
+  (heartbroken, almost sick), but it must be followed by a specific action or object
+  unique to the scene at this moment - cold soup, broken bracelet, crumpled medical
+  records. See the `.claude/knowledge/short-anti-ai.md` retention and deletion table for
+  details.
 
-## 开篇范式
+## Opening Paradigm
 
-前三句必须完成「关系锚 + 强结果」，不做背景铺垫，前 100 字事件密度不少于 3：
+The first three sentences must complete "relationship anchor + strong results" without
+any background preparation. The event density of the first 100 words must be no less
+than 3:
 
-- 关系锚开局：第一句锚定关系与强结果（「离婚协议放在桌上，他已经签了」「我替他挡的那一刀，他记成了别人的功劳」）。
-- 火葬场预告开局：用一句预告男方日后的悔（「我还不知道，那个男人正发疯似的找我」），读者带着「等他悔」的期待往下读。
-- 信物对峙开局：用一个具体物件（婚戒、病历、录音）开启对峙，物件在篇内三次翻转。
-- 全弧剧透导语：150-220 字导语，四维骨架（起因 + 核心冲突 + 人设底色 + 情绪反转）配黄金三角（具体物件 + 信息差 + 留白钩子），一句一段。
+- Relationship anchor opening: The first sentence anchors the relationship with strong
+  results ("The divorce agreement is on the table and he has signed it" "The knife I
+  blocked for him will be credited to others").
+- The crematorium preview starts with a sentence that predicts the man's regret in the
+  future ("I don't know yet, that man is looking for me like crazy"), and the reader
+  reads on with the expectation of "waiting for him to regret".
+- The token confrontation starts: a specific object (wedding ring, medical record, audio
+  recording) is used to start the confrontation, and the object is flipped three times
+  in the chapter.
+- Full arc spoiler introduction: 150-220 words of introduction, four-dimensional
+  skeleton (cause + core conflict + character background + emotional reversal) and
+  golden triangle (specific objects + information gaps + blank hooks), one sentence
+  after another.
 
-## 钩子母题与密度
+## Hook Motif and Density
 
-母题：白月光 / 小青梅触发背叛、偷听或撞破真相一次性砸下、灾难期求救反被辱、朋友圈与物证坐实、数字与年限承重再清零、身份反差底牌、当众羞辱 + 反转倒计时。
+Motif: white moonlight / Xiaoqingmei triggers betrayal, eavesdrops or reveals the truth
+and is smashed at once, asking for help during a disaster period but being humiliated,
+circle of friends and physical evidence are confirmed, numbers and years bear weight and
+then reset, identity contrast trump card, public humiliation + reverse countdown.
 
-密度：正文几乎每节一个新爆料或一次态度反转；每 2-3 节一个钩子；章尾必留钩（悬念或心死余韵），MUST NOT 收束情绪。
+Density: There is a new revelation or attitude reversal in almost every section of the
+text; there is a hook every 2-3 sections; there must be a hook at the end of the chapter
+(suspense or a heart-wrenching aftertaste), and MUST NOT wrap up the emotion.
 
-## 情绪烈度与模式（烈度 9）
+## Emotional Intensity and Mode (Intensity 9)
 
-情绪链见下方「情绪链库」。烈度要求：情绪词直写且密；受虐段允许成段宣泄独白与连环反问；心死与决裂以克制为爽（按收尾范式收敛）；每个情绪写一次就往下走，写完不补刀解释它多疼。
+For the emotion chain, see "Emotion Chain Library" below. Intensity requirements:
+Emotional words should be written directly and densely; the sadomasochistic section
+allows for cathartic monologues and serial rhetorical questions; heartbreak and breakup
+should be restrained (according to the ending paradigm); each emotion should be written
+once and then moved on, and there should be no last touch after writing to explain how
+much it hurts.
 
-## 对话风格与真实金句
+## Conversational style and authentic quotes
 
-三类台词撑全篇：① 施害方道德踩踏 / PUA 狠话（钩子本体，越理直气壮越好）；② 第三者「娇弱委屈」软刀（「对不起，我不是故意的」「都怪我」）；③ 主角心死后冷静审判金句。
+Three types of lines support the entire article: ① The perpetrator’s moral
+trampling/PUA’s cruel words (the more self-righteous the hook, the better); ② The third
+party’s “weak and wronged” soft knife (“I’m sorry, I didn’t mean it”, “It’s all my
+fault”); ③ The protagonist’s calm judgment after death.
 
-金句判据：句子里指向「这一件具体的事 / 这个人」才是审判（「迟来的深情比草还贱」「咱们的账慢慢算」）；只剩谁都能套的人生道理就是空话，删。
+Judgment of golden sentences: sentences that refer to "this specific thing/this person"
+are the judgment ("Belated affection is cheaper than grass" "Our accounts will be
+settled slowly"); the only life principles that can be deceived by anyone are empty
+words, delete them.
 
-## 情绪链库
+## Emotion chain library
 
-选定一条作全篇骨架，阶段覆盖全篇每一节；阶段数不强制与五段对应：
+Select one as the skeleton of the entire article, and the stages cover every section of
+the entire article; the number of stages does not have to correspond to the five
+paragraphs:
 
-- **EC-火葬场（后悔线，默认）**：轻视冷落 → 失去预警 → 疯狂追悔 → 为时已晚。四阶段，适合单视角虐文，节少时首选。
-- **EC-绝望剥离（虐文深水线）**：预警失灵 → 钝刀割肉 → 最后一根稻草 → 尸体化生存 → 消失的艺术。五阶段，适合「我」消失式结局。
-- **EC-智商碾压（复仇反杀线）**：猎物入笼 → 请君入瓮 → 逻辑闭环 → 公开处刑 → 视若无物。五阶段，适合带底牌的重生 / 蛰伏设定，结尾以漠视收束。
+- **EC-Crematorium (regret line, default)**: slight and neglect → lose early warning →
+  crazy regret → it’s too late. Four stages, suitable for single-perspective sadistic
+  writing, the first choice when the festival is short.
+- **EC-Despair Stripping (Deep Water Line of Abuse)**: Early warning failure → Cutting
+  flesh with a dull knife → The last straw → Survival as a corpse → The art of
+  disappearance. Five stages, suitable for the ending of "I" disappearing.
+- **EC-IQ crushing (revenge and counter-killing line)**: Prey in the cage → Please put
+  the king in the urn → Logic closed loop → Public execution → Turn a blind eye. Five
+  stages, suitable for rebirth/hibernation settings with trump cards, ending with
+  indifference.
 
-## 招式库
+## Move library
 
-每条为「公式 + 示例」；使用时必须转化为本篇写法（锚定本篇主角、信息差、情绪节奏），禁止照抄：
+Each item is "formula + example"; when used, it must be converted into the writing
+method of this article (anchoring the protagonist of this article, information gap,
+emotional rhythm), copying is prohibited:
 
-| 招式 | 公式 | 示例 |
+| Moves | Formulas | Examples |
 |------|------|------|
-| 信物翻转 | 物件三次出现，无害→引注意→揭真相，第三次意义颠覆 | 那碗汤第一次是「他叮嘱厨师少盐」（日常），第二次是「她看到外卖单」（引注意），第三次是「他自己点的外卖，送给了别人」（揭真相） |
-| 火葬场预告 | 主角视角预告施害方日后的悔，吊「等他悔」的期待 | 「我还不知道，三天后他会跪在这扇门前」 |
-| 心死定格句 | 撞破真相后一句独立成段的宣告，切换叙事声线 | 「那一刻，我的心彻底死了。」 |
-| 当众处刑 | 把打脸放在有外人见证的场合（宴席、股东会、群聊截图），用众人反应放大 | 群聊里那沓转账记录被逐张发出，先是死寂，然后是她婆婆的语音 |
-| 数字承重 | 用具体数字替代模糊描述，递进再清零 | 「七年，两千五百五十五天，抵不过她一句想看海」 |
-| 求救反辱 | 灾难时刻求救，换来冷漠回应，为后续悔疯蓄力 | 火灾电话里他说「不就是拿你两张演唱会门票吗」 |
-| 底牌后置 | 主角早握底牌但隐忍不发，选在施害方最得意的场合亮出 | 遗嘱宣读会上，她把亲子鉴定轻轻放在桌上 |
+| Token flip | The object appears three times, harmless → attracts attention → reveals the truth, the third time the meaning is subverted | The first time of the bowl of soup is "he told the chef to use less salt" (daily), the second time is "she saw the takeout order" (attracting attention), the third time is "he ordered the takeaway and gave it to others" (revelation of the truth) |
+| Crematorium preview | The protagonist's perspective predicts the perpetrator's future regrets, raising the expectation of "waiting for him to regret" | "I don't know yet, he will kneel in front of this door in three days" |
+| The final sentence of heart-death | An independent statement after breaking the truth, switching the narrative voice | "At that moment, my heart was completely dead." |
+| Execution in public | Put face-slapping in situations witnessed by outsiders (banquets, shareholders' meetings, screenshots of group chats), and use people's reactions to amplify it | The pile of transfer records in the group chat were sent out one by one, first there was dead silence, and then the voice of her mother-in-law |
+| Numerical load-bearing | Use specific numbers to replace vague descriptions, and then clear them to zero | "Seven years and two thousand five hundred and fifty-five days are not enough for her to say she wants to see the sea." |
+| Asking for help and rebelling against humiliation | Asking for help in times of disaster, only to receive an indifferent response, accumulating energy for future regrets | On the phone during the fire, he said, "I'm just giving you two concert tickets." |
+| The trump card is at the back | The protagonist holds the trump card early but holds it back, choosing to show it at the most comfortable occasion for the perpetrator | At the will reading meeting, she gently placed the paternity test on the table |
 
-## 节奏骨架
+## Rhythm Skeleton
 
-| 段 | 占比 | 本题材要点 |
+| Paragraph | Proportion | Key points of this theme |
 |----|------|-----------|
-| 开头 | 前 300-500 字 | 关系锚 + 强结果 + 火葬场预告（可选），禁背景铺垫 |
-| 铺垫 | 30-40% | 阶梯式施害（道德踩踏→经济→生命），信物第一、二次出现，埋 ≥3 条反转线索 |
-| 升级 | 20-30% | 求救反辱或当众羞辱达到峰值，催化性失常放在本段（60-75% 位置），误导线索让读者猜错方向 |
-| 反转 | 10-15% | 底牌亮出 + 揭露（证物 / 证人 / 偷听 / 剥洋葱四选一），揭示时回连全部线索，情绪强度高于此前所有节，峰值维持一节 |
-| 结尾 | 5-10% | 火葬场反转（施害方悔疯、主角无波澜或冷拒）/ 审判金句盖棺 / 漠视收尾，信物第三次出现回扣 |
+| Beginning | First 300-500 words | Relationship anchor + strong results + crematorium preview (optional), no background foreshadowing |
+| Foreshadowing | 30-40% | Step-by-step harm (moral trampling → economic → life), the token appears for the first and second time, and ≥3 reversal clues are buried |
+| Upgrade | 20-30% | Asking for help and retaliation or public humiliation reaches its peak, the catalytic disorder is placed in this paragraph (60-75% position), misleading clues make readers guess the wrong direction |
+| Reversal | 10-15% | Show the trump card + reveal (choose one of four evidences/witnesses/eavesdropping/peeling the onion), all clues are connected when revealing, the emotional intensity is higher than all previous sections, and the peak is maintained for one section |
+| Ending | 5-10% | Crematorium reversal (the perpetrator regrets and goes crazy, the protagonist has no trouble or cold rejection) / The sentence of judgment closes the coffin / The ending of indifference, the token has a rebate for the third time |
 
-## 收尾范式
+## Closing Paradigm
 
-- 火葬场反转：「敦宜，你不要我了吗？」——施害方悔疯悬赏，主角已无波澜或冷拒。
-- 审判金句盖棺：「迟来的深情比草还贱。」
-- 转身离场 / 净身出户：签协议、改嫁、带孩子一去不归、亮身份碾压。
-- 漠视收尾：「那是他们的故事了，与我再无瓜葛。」——比报复更狠。
-- 删：空洞哲理升华（「人生就是这样」「她终于明白了」）。留：指向具体人与事的第一人称审判 / 预告 / 心死余韵——这是读者截图传播的高光。
+- The twist in the crematorium: "Dun Yi, don't you want me anymore?" - The perpetrator
+  regretted offering a reward, and the protagonist no longer had any trouble or cold
+  rejection.
+- The final sentence of judgment is: "Belated love is worthless than grass."
+- Turn around and leave / clean up and leave the house: sign an agreement, remarry, take
+  the children and never come back, show your identity and crush.
+- Ending with indifference: "That's their story, it has nothing to do with me anymore."
+  - More ruthless than revenge.
+- Deleted: Empty philosophical sublimation ("That's how life is" "She finally
+  understands"). Stay: The first-person trial/preview/the lingering aftertaste of
+  heart-death pointing to specific people and things,this is the highlight of the
+  screenshots spread by readers.
 
-## 该题材专属调校（与通用去 AI 规则的差异）
+## Exclusive adjustment for this theme (difference from general AI rules)
 
-- 直接情绪词（心如死灰 / 眼泪不争气）是招牌，保留；只删接不上具体承接的总结句。判据见 `.claude/knowledge/short-anti-ai.md`。
-- 第一人称审判句、火葬场预告、心死式章尾是传播点，保留；只删与角色情绪无关的中立作者讲解。
-- 三连排比（「在暴雨夜、在手术室门口、在我父亲的葬礼上」）：每条带新信息则留，凑数则砍到最狠一条。
-- 章尾不为工整收口：不凑对仗、排比、押韵、抖机灵的总结；结尾留具体悬念或情绪即可。
-- 每篇写法不雷同：招式、开头、结尾与上一篇不一样；本题材包的招式是可选项不是固定流程。
+- Direct emotional words (heartbroken/tears of disappointment) are the signature words
+  and should be retained; only concluding sentences that are not connected to specific
+  details will be deleted. See `.claude/knowledge/short-anti-ai.md` for criteria.
+- The first-person judgment sentence, the crematorium preview, and the ending of the
+  heart-wrenching chapter are communication points and should be retained; only the
+  neutral author's explanations that have nothing to do with the character's emotions
+  will be deleted.
+- Three-match comparison ("On a rainy night, at the door of the operating room, at my
+  father's funeral"): keep each piece of information that brings new information, and
+  then cut the most severe one if you make up the number.
+- There is no neat closing at the end of the chapter: there is no contrast, parallelism,
+  rhyme, or clever summary; just leave specific suspense or emotion at the end.
+- Each article is written differently: the moves, beginning, and end are different from
+  the previous article; the moves in this theme pack are optional and not a fixed
+  process.
 
-## 时代变体（现代 / 古代 / 民国）
+## Era variants (modern/ancient/Republic of China)
 
-- **现代（默认）**：身份词用丈夫 / 未婚夫 / 男友；施害场景用公司、群聊、婚礼；证据用聊天记录、转账、监控。
-- **古代**：身份词用夫君 / 世子 / 将军；施害场景用后宅、宗族、赐婚；证据用账册、书信、对牌；注意现代概念翻译（见 `.claude/knowledge/short-anti-ai.md` 现代词表）。
-- **民国**：身份词用先生 / 太太；施害场景用公馆、戏园、报馆；证据用报纸、电报、照片。
+- **Modern (Default)**: Husband/fiancé/boyfriend are used as identity words; company,
+  group chat, and wedding are used as the victimization scenes; chat records, transfers,
+  and monitoring are used as evidence.
+- **Ancient times**: Husband/Prince/General are used as status words; rear house, clan,
+  and gifted marriage are used as the murder scene; account books, letters, and cards
+  are used as evidence; pay attention to the translation of modern concepts (see
+  `.claude/knowledge/short-anti-ai.md` modern vocabulary list).
+- **Republic of China**: Use Mr./Mrs. as identity words; use mansions, theaters, and
+  newspapers as scenes of the murder; use newspapers, telegrams, and photos as evidence.
 
-## 流派分支
+## Genre Branch
 
-- **小三文学（正妻视角）**：发现 → 取证 → 捉奸决裂。重心在取证链条与当众处刑，男方的悔是余韵不是主线。情绪链选 EC-智商碾压。
-- **死人文学（主角已死，灵魂旁观）**：以灵魂视角看自己的葬礼与身后事，开篇即「我的尸体躺在……」。全程冷静旁观腔，悔疯戏是正文主体。情绪链选 EC-绝望剥离（终点是「消失的艺术」）。
+- **Mistress Literature (Principal Wife's Perspective)**: Discovery → Evidence
+  Collection → Catch the adulterer and break up. The focus is on the chain of evidence
+  collection and public execution. The man's regret is that the aftertaste is not the
+  main plot. Emotion chain chooses EC-IQ crushing.
+- **Death Humanities (the protagonist is dead and the soul is watching)**: Looking at
+  one's own funeral and death from the perspective of the soul, the opening line is "My
+  corpse lies...". The whole process is watched calmly, and the regretful and crazy
+  drama is the main body of the text. Emotion chain selection EC-Despair Stripping (the
+  end point is "The Art of Disappearance").
 
-## 配套结构公式（按篇幅选）
+## Supporting structural formula (selected according to length)
 
-- 8000 字（8-10 节）：单线单反转，EC-火葬场四阶段，一招式贯穿（信物翻转）。
-- 12000 字（11-14 节）：主线 + 一条配角支线，EC-绝望剥离五阶段，双招式（信物翻转 + 当众处刑）。
-- 15000-20000 字（15-20 节）：主线 + 支线 + 时代变体加成，五阶段链全展开，三招式（信物翻转 + 底牌后置 + 数字承重）。
+- 8000 words (sections 8-10): single line and single reversal, EC-four stages of
+  crematorium, one move penetration (token reversal).
+- 12,000 words (verses 11-14): main plot + a supporting branch plot, EC - five stages of
+  despair stripping, two moves (token flipping + public execution).
+- 15,000-20,000 words (sections 15-20): main plot + branch plot + era variant bonus,
+  five-stage chain fully expanded, three moves (token flip + hole card rear position +
+  digital load-bearing).

@@ -1,100 +1,161 @@
-# 短篇写作通用底座
+# A universal base for short story writing
 
-> 短篇网文正文写作的公共父类。服务番茄 / 七猫 / 黑岩 / 盐选通俗短篇（8 千至 2 万字），不是传统文学。
-> 题材风格包（`.claude/knowledge/short-genres/`）在此基础上做覆盖加味；本文件管所有题材共通的原生写法。
-> **总原则：情绪宁烈不温。短篇是情绪产品，靠直白共鸣留人，不靠克制留白。**
+> The public parent class for short web text writing. Serving Fanqie/Qimao/Black
+> Rock/Salt Selected popular short stories (8,000 to 20,000 words), not traditional
+> literature. The theme style package (`.claude/knowledge/short-genres/`) covers and
+> adds flavor on this basis; this file manages the native writing methods common to
+> all themes. **General principle: Emotions should be gentle but not warm. Short
+> stories are emotional products that rely on direct resonance to retain people, not
+> on restraint and blank space. **
 
-## 1. 人称与腔调：第一人称，双轨切换
+## 1. Person and tone: first person, dual-track switching
 
-- 默认第一人称「我」全程主导。他人视角只作追悔 / 得意的补刀短插，不平分篇幅。
-- 腔调双轨，靠「心死」开关切换：受虐段直白宣泄（喊疼、委屈、成段独白与连环反问）；反击 / 反转段冷静审判（抽离、反讽、见血不铺陈）。
-- 心死定格句是切换枢纽：一句独立成段的宣告，把情节从隐忍切到决裂。
+- By default, the first person "I" dominates the whole process. The other person’s
+  perspective is only a short burst of regret/satisfaction, and the length is not
+  divided equally.
+- The tone is dual-track, switched by the "heart-death" switch: the masochistic section
+  is straightforward and cathartic (crying out pain, grievances, monologues and serial
+  rhetorical questions); the counterattack/reversal section is calmly judged
+  (withdrawal, irony, and no elaboration).
+- The final sentence is the key to switching: an independent declaration that cuts the
+  plot from forbearance to rupture.
 
-## 2. 情绪外化：情绪词直接写 + 后接具体承接
+## 2. Externalization of emotions: write emotional words directly + follow with specific instructions
 
-情绪词（心如死灰、几欲作呕）直接写出来是卖点，不是 AI 味。关键在后面：**接一个这个场景此刻特有的具体动作或物件**。
+The emotional words (heartbroken, almost nauseated) written directly are the selling
+point, not AI-flavored. The key is later: **Follow a specific action or object that is
+unique to this scene at this moment**.
 
-- 好例：摸到那碗凉掉的排骨汤时，我的心更冰冷了。上面还浮着凝固的油。
-- 坏例（要删）：一丝悲伤涌上心头。（后面什么都没接）
-- 坏例（要删）：指甲掐进掌心。（哪篇都能套的通用生理反应单写就空）
+- Good example: When I touched the bowl of cold pork rib soup, my heart became even
+  colder. There was still solidified oil floating on it.
+- Bad example (to be deleted): A twinge of sadness comes over me. (Nothing followed)
+- Bad example (to be deleted): nails digging into palms. (The general physiological
+  reactions that can be applied to any article are empty in just writing)
 
-第一人称所有格清除规则见 `.claude/knowledge/short-anti-ai.md` 第三节。
+The first person possessive clearing rules can be found in Section 3 of
+`.claude/knowledge/short-anti-ai.md`.
 
-## 3. 叙述姿态：在场叙述者
+## 3. Narrative posture: present narrator
 
-短篇叙述者高度在场：可以跳出当下替读者定性、剧透、下判词、预告火葬场。这是爽感引擎。
+The narrator of the short story is highly present: he can jump out of the present moment
+to characterize, spoiler, make judgments, and preview the crematorium for the readers.
+This is a fun engine.
 
-- 留：主观审判句、复仇者剧透、火葬场前瞻预告。
-- 删：真·中立全知摄像机腔——和角色情绪无关、纯交代背景的作者解说。
+- Stay tuned: Subjective judgment sentences, Avengers spoilers, and Crematorium
+  previews.
+- Deleted: True Neutral Omniscient Camera Voice - the author's commentary that has
+  nothing to do with the character's emotions and purely explains the background.
 
-## 4. 小节结构：超短章节，一节一炸点
+## 4. Section structure: super short chapters, one section at a time.
 
-- 每个小节：一个背叛升级 / 一次态度反转 + 一句更狠的台词 + 一条读者新获知信息。
-- 节尾不收束情绪、必留钩。
-- 疏密：背叛 / 打脸 / 反转 / 决裂处详写慢放；过场 / 赶路 / 信息交代一句带过。
+- Each section: an escalation of betrayal / an attitude reversal + a harsher line + a
+  piece of new information for the reader.
+- If the emotions are not restrained at the end of the festival, the hook must be left.
+- Density: Betrayal/face-slapping/reversal/breaking point is written in detail and
+  played slowly; cutscene/hurrying/information is conveyed in one sentence.
 
-## 5. 场景写法
+## 5. Scene writing
 
-- **晚进早出**：从场景的冲突中途切入（「他冲进会议室时，所有人都在盯着他」），起床 / 赶路 / 寒暄 / 布置等进入前流程不展开，必要信息一句带过或从后续对话带出。
-- **三维度揉进**：发生（1-2 句含一个具体细节）、感知（至少 1 个感官细节聚焦一个物件或身体部位）、反应（具体身体动作，可含一句极短心理定格），织进同一段连续正文。反模式：拆成三段依次写完。
-- **一段一个镜头**：按新动作 / 新物件 / 新信息 / 新对话 / 视线转移断段，不按维度断段。
-- **任务卡点**：只在角色本来有要办的事时使用，必须卡出情绪、证据、关系或反转变化（删掉试试，无损就删）。
+- **Late in, early out**: Cut from the middle of the conflict in the scene ("When he
+  rushed into the conference room, everyone was staring at him"), the process before
+  getting up/on the way/greetings/arrangements, etc. is not started, and the necessary
+  information is brought out in one sentence or brought out from the subsequent
+  dialogue.
+- **Three-dimensional integration**: Occurrence (1-2 sentences containing a specific
+  detail), perception (at least 1 sensory detail focusing on an object or body part),
+  reaction (specific body movements, including a very short mental freeze sentence), are
+  woven into the same continuous text. Anti-pattern: Split into three paragraphs and
+  write them one after another.
+- **One shot per segment**: segments are segmented according to new actions/new
+  objects/new information/new dialogues/line of sight shifts, not segments.
+- **Task card point**: Only used when the character has something to do. Emotions,
+  evidence, relationships or reversal changes must be blocked (try deleting it, delete
+  it if it is not damaged).
 
-## 6. 钩子：高密度，阶梯式升级
+## 6. Hook: high density, stepped upgrade
 
-- 导语 150-220 字塞 3-5 个事件 / 反转；正文几乎每节一个新爆料或态度反转。
-- 阶梯式升级：道德踩踏 → 经济 → 生命，越揭越大。
-- 爽点节节前推：每节推进一个反打 / 行动 / 亮牌，不停在情绪闭环；节尾留反杀预告。
-- 当众围观放大羞辱：把背叛 / 打脸放在有外人见证的场合，独角戏起不来丢脸感。
+- Introduction 150-220 words packed with 3-5 events/reversals; the main text contains a
+  new revelation or attitude reversal in almost every section.
+- Ladder upgrade: moral trampling → economy → life, the more you expose, the bigger the
+  problem becomes.
+- Satisfying payoff is promoted before each quarter: each quarter promotes a
+  counterattack/action/show card, always in the emotional closed loop; a counterattack
+  notice is left at the end of the quarter.
+- Public viewing amplifies humiliation: Put betrayal/face-slapping in a situation
+  witnessed by outsiders, and a one-man show will not create a sense of humiliation.
 
-## 7. 对话：占比 40-60%，四功能导航
+## 7. Dialogue: 40-60%, four-function navigation
 
-- 每句对话至少完成：推动情节、揭示性格、制造冲突、埋设伏笔之一。连续多句只寒暄、重复已知信息或单纯衔接 → 删。
-- 三类台词撑全篇：施害方道德踩踏狠话（越理直气壮越好）、第三方娇弱委屈软刀、主角心死后冷静审判金句。
-- 权力博弈靠对话长度反转标记：施害方前期长篇输出，主角后期一句话冷怼。
-- 对话独立成行；用动作代替对话标签；引号按平台（默认半角双引号，盐言 `「」`）。
+- Each line of dialogue should complete at least one of the following: advancing the
+  plot, revealing character, creating conflict, and setting up foreshadowing. Multiple
+  sentences in a row that only convey greetings, repeat known information, or simply
+  connect → delete.
+- Three types of lines support the whole story: the morally trampling and cruel words of
+  the perpetrator (the more righteous and confident the better), the weak and grievances
+  of the third party, and the calm judgment of the protagonist after his death.
+- The power game is marked by the reversal of dialogue length: the perpetrator has a
+  long output in the early stage, and the protagonist gives a cold statement in the
+  later stage.
+- Dialogues are on separate lines; actions are used instead of dialogue labels;
+  quotation marks are based on the platform (default half-width double quotation marks,
+  Yanyan `「」`).
 
-## 8. 收尾：不写文学升华
+## 8. Ending: No literary sublimation
 
-| 收口式 | 例 |
+| Closed style | Example |
 |--------|-----|
-| 火葬场反转 | 施害方悔疯 / 悬赏寻找，主角已无波澜或冷拒 |
-| 审判金句盖棺 | 「迟来的深情比草还贱」 |
-| 转身离场 / 净身出户 | 签协议、改嫁、亮身份碾压 |
-| 漠视收尾 | 「那是他们的故事了，与我再无瓜葛」 |
+| Crematorium reversal | The perpetrator regrets his madness / A reward is offered to find the protagonist, and the protagonist has no trouble or cold rejection |
+| Judgment words to close the coffin | "Belated affection is cheaper than grass" |
+| Turn around and leave / clean up and leave home | Sign an agreement, remarry, reveal your identity and crush |
+| Ignore the ending | "That is their story, it has nothing to do with me anymore" |
 
-删：空洞哲理升华。留：指向具体人与事的第一人称审判 / 预告 / 心死余韵。
+Deleted: Empty philosophical sublimation. Stay: A first-person judgment/preview/the
+lingering aftertaste of death that points to specific people and things.
 
-## 9. 节奏与标点
+## 9. Rhythm and punctuation
 
-- 段短、勤换行；一句 20 字上下就落句号，别把逗号拖成流水句。短句是偶发的情绪重拍，落在峰值，不是通篇底色。
-- 标点跟语气走；禁用 `……` / `——` / `—` / `--`，停顿用短句、动作、换行。
-- 三连排比有功能的递进保留，纯修辞凑数砍到最狠一条。
+- Keep paragraphs short and line-break frequently; a sentence of about 20 words should
+  end with a period, and don’t drag commas into running sentences. The short sentences
+  are occasional emotional recaps, which fall at the peak, not the background of the
+  whole story.
+- Punctuation follows the tone; disable `...` / `double em dash` / `em dash` / `--`, use short
+  sentences, actions, and line breaks for pauses.
+- The three-part parallelism is a functional and progressive reservation, and it is
+  purely rhetorical and cuts down to the most ruthless one.
 
-## 10. 贯穿道具：三次出现，三次语义
+## 10. Penetrating props: three occurrences, three semantics
 
-| 次序 | 语义状态 | 要求 |
+| Order | Semantic status | Requirements |
 |------|----------|------|
-| 第一次（铺垫段） | 无害 | 像闲笔，读者不觉得重要 |
-| 第二次（升级 / 反转段） | 引注意 | 读者开始留意，意义仍未揭晓 |
-| 第三次（反转 / 结尾段） | 揭真相 | 意义颠覆，回收前两次 |
+| The first time (preliminary paragraph) | Harmless | Like idle writing, the reader does not think it is important |
+| The second time (upgrade/reversal section) | Attracting attention | Readers begin to pay attention, but the meaning has not yet been revealed |
+| The third time (reversal/ending paragraph) | Revealing the truth | Subversion of meaning, recycling the first two times |
 
-道具不限于实体：一个习惯、一句话、一个数字都行。判据「表层日常、深层致命」。
+Props are not limited to physical objects: a habit, a sentence, a number will do. The
+criterion is "daily on the surface, deadly on the deep".
 
-## 11. 催化性失常（反转助推）
+## 11. Catalytic Abnormality (Reversal Boost)
 
-反转到来前（全文 60-75% 位置）放一个当前解释框架无法解释的矛盾体（死去的人发来消息、与已知事实冲突的物证）。作用不是揭示真相，是逼读者放弃旧假设。同类信息只加强旧假设，不能替代它。
+Before the inversion (60-75% of the text), place a contradiction that cannot be
+explained by the current explanatory framework (a message from a dead person, physical
+evidence that conflicts with known facts). The function is not to reveal the truth but
+to force the reader to abandon old assumptions. The same type of information only
+reinforces the old assumption, not replaces it.
 
-## 12. 开头事件密度
+## 12. Density of opening events
 
-前 100 字 ≥3 个事件；第 1 句就是事件 / 对话 / 信息炸弹。前 3 句禁止无事件承载的环境描写（主语是灯光 / 走廊 / 天气 → 重写）。开篇第一段必须砸下一个可量化、可截图的命级 / 羞辱级赌注，细节要有不可替换的辨识度。
+The first 100 words are ≥3 events; the first sentence is the
+event/conversation/information bomb. The first 3 sentences prohibit environmental
+description without events (the subject is lights/corridor/weather → rewrite). The first
+paragraph of the opening paragraph must place a life-level/humiliation-level bet that is
+quantifiable and screenshotable, and the details must be irreplaceable and identifiable.
 
-## 13. 与长篇的口径差异（写作时对照自查）
+## 13. Difference in caliber compared with the long article (check with self-check when writing)
 
-| 维度 | 短篇口径 |
+| Dimension | Short story |
 |------|----------|
-| 视角 | 第一人称在场、主动剧透火葬场 |
-| 情绪 | 情绪词直接写 + 后接具体反应（不删情绪词） |
-| 节尾 | 审判金句 / 火葬场预告是卖点（不忌讳预告） |
-| 内心 | 成段宣泄独白 + 连环反问是主引擎 |
-| 排比 | 抒情堆苦难有功能则留 |
+| Perspective | First-person presence, active spoiler of the crematorium |
+| Emotions | Write the emotional words directly + followed by specific reactions (do not delete the emotional words) |
+| End of section | Judgment verses / The crematorium preview is a selling point (predictions are not taboo) |
+| Inner heart | Cathartic monologues + serial rhetorical questions are the main engine |
+| Parallelism | Lyrical heaps of suffering, if there is a function, leave them alone |

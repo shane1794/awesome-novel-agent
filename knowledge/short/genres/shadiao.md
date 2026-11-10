@@ -1,161 +1,310 @@
-# 题材风格包：沙雕脑洞
+# Theme style package: shadiawild idea
 
 
-> 本题材风格包改写自获赠短篇流程包（oh-story 系 + 实测调整），按本仓口径适配：引用为部署后基座路径、已剔除外部体系引用。公开或商用前需原作者确认。
+> This theme style package is adapted from the short story process package (oh-story
+> series + actual measurement adjustment) received as a gift, and is adapted according
+> to the caliber of the repo: the reference is the base path after deployment,
+> and external system references have been eliminated. Confirmation by the original
+> author is required before disclosure or commercial use.
 
 
-> 番茄 / 七猫 / 黑岩通俗短篇。先读 `.claude/knowledge/short-craft/short-craft.md` 通用底座，本包在其上覆盖该题材专属调性。
-> 一句话定位：**沙雕喜剧与脑洞设定流：反套路解构、弹幕文、系统流、偷听心声、高概念一句话梗。笑点靠预期违背和人物一本正经地荒诞，脑洞靠「设定推到极致会怎样」。** 读者要的是「笑出声的爽」+「设定还能这么玩的惊喜」+「玩梗玩到最后突然给一口真情」。
+> Fanqie / Qimao / Heiyan popular short stories. Read the
+> `.claude/knowledge/short-craft/short-craft.md` universal base first, on which this
+> package covers the exclusive tonality of this theme. One-sentence positioning:
+> **shadiao (absurdist comedy) comedy and wild idea setting flow: anti-routine deconstruction, barrage
+> text, system flow, eavesdropping, high-concept one-sentence memes. The laughter
+> relies on the violation of expectations and the serious absurdity of the characters,
+> and the wild idea relies on "what will happen if the setting is pushed to the
+> extreme". ** What readers want is "the joy of laughing out loud" + "surprise that
+> the setting can still be played like this" + "a sudden burst of true feelings at the
+> end of the fun."
 
 ---
 
-## 叙述腔调
+## Narrative Tone
 
-第一人称「我」吐槽体全程主导。底座的「受害者双轨宣泄」在本题材整体替换为：**情绪降格的钝感吐槽 + 对荒诞设定一本正经地执行**。
+The first person "I" complains and dominates the whole process. The "victim double-track
+catharsis" of the base is replaced in this theme as a whole: **Insensitive complaints of
+emotional degradation + serious execution of absurd settings**.
 
-- 天塌下来先接一句吐槽：主角遭遇再惨，反应永远比事件低一档。被魔头掐脖子吐血，出口是「不是，哥们你力气怎么这么大啊」（《好消息，我是系统》）；看闺蜜发疯抢未婚夫，内心点评「这精神状态，真癫」（《我在恐怖游戏里送外卖》）。
-- 一本正经地荒诞：角色不知道自己好笑。执行离谱设定时全程严肃走流程，恐怖副本里认真送外卖求五星好评，用女德教条把全家收拾一遍还引经据典。叙述者不许眨眼、不许自评「好笑」。
-- 现代话语错位：把打工人 / 甲方 / 画饼 / KPI 这套职场语言原样搬进修真、后宫、末世。《我在恐怖游戏里送外卖》该死的资本主义风最终也是吹到了副本界。《鸟妃升职记》打工人谢老板恩赐，祝您皇业兴隆，多多发年终奖给我们。
-- 标点可以当台词：「我：……？」「少年：？」独立成段，是本题材合法句式。
-- 弹幕 / 系统 / 心声都是有人格的说话者，不是信息板：会吵架、会怂、会磕 CP、会被主角气到死机。
+- Let’s start with a complaint about The Sky Is Falling: No matter how miserable the
+  protagonist’s experience is, his reaction will always be one level lower than the
+  incident. When a demon choked her and vomited blood, she said, "No, bro, why are you
+  so strong?" ("Good News, I am the System"); when I saw my best friend going crazy and
+  snatching my fiancé, I commented in my mind, "This mental state is really crazy" ("I'm
+  delivering food in a horror game").
+- Seriously absurd: the characters don't know they're funny. When implementing
+  outrageous settings, he strictly followed the procedures throughout the process. In
+  the horror dungeon, he carefully delivered food and asked for five-star reviews. The
+  narrator is not allowed to blink or comment on himself as "funny".
+- Modern discourse is misplaced: the workplace language of workers/Party A/Huabing/KPI
+  is moved as it is into cultivation, the harem, and the end of the world. The damn
+  capitalist wind of "I Deliver Food in a Horror Game" finally spread to the copy world.
+  "Bird Concubine's Promotion Story" A migrant worker thanks his boss for the gift. I
+  wish you a prosperous business and lots of year-end bonuses for us.
+- The punctuation points can be used as lines: "I:...?" "The boy:?" can form an
+  independent paragraph, which is a legal sentence structure for this theme.
+- The barrages/systems/voices are all speakers with personalities, not information
+  boards: they can quarrel, be intimidated, complain about CP, and be angry to death by
+  the protagonist.
 
 ---
 
-## 开篇范式
+## Opening Paradigm
 
-简介就是高概念 demo：把设定的最好笑用法先演一遍（好坏消息对仗、系统对话、弹幕闯入），不藏梗。正文第 1 节把简介的梗放慢重演、补满对话体感。
+The introduction is a high-concept demo: play through the funniest uses of the settings
+(good and bad news battles, system dialogues, barrage intrusions) without hiding any
+jokes. Section 1 of the main text slows down and replays the introductory plot to
+complete the dialogue experience.
 
-| 开篇式 | 真实范例 |
+| Opening | Real examples |
 |--------|----------|
-| 好坏消息对仗 | 《好消息，我是系统》好消息：我是系统！坏消息：该死还是得死… |
-| 系统给 A/B，主角选 C | 《穿进追妻小说，我发财了》系统问我要穿小白花女主还是恶毒女配。我当机立断：我要当NPC！ |
-| 弹幕打断关键动作 | 《弹幕劝我别和离》我正提笔，空中突然出现了一行行文字。【别签别签，男主超爱你的！欢欢宝宝快放下笔啊！】 |
-| 高概念职业自陈 | 《我在恐怖游戏里送外卖》死后我穿越到恐怖游戏里成为了一名外卖员。 |
-| 咸鱼身份 + 降格梦想 | 《百岁咸鱼在末世被迫营业》修真界底层炼丹师，五灵根废柴，苟了一百年。最大的梦想：赚点小钱，混吃等死。 |
-| 规则逃杀第一拍指向自己 | 《炮灰后宅逃杀进行时》我这才意识到，原来，大家都能看见弹幕。（下一拍：不知何时，我的衣服变成了蓝色。） |
-| 能力开局即翻面预告 | 《听见老公和儿子的装穷心声后，我杀疯了》我才知道，原来我听见的心声，都是他们为了榨干我设下的骗局。 |
+| Good news vs. bad news | "Good news, I am the system" Good news: I am the system! Bad News: Die or die... |
+| The system gives A/B, and the protagonist chooses C. | "Traveling into a wife-chasing novel, I made a fortune" the system asked me if I wanted to be a white-flowered heroine or a vicious female supporting character. I made a quick decision: I want to be an NPC! |
+| The barrage interrupts key actions | "The barrage persuades me to break up and leave" I was picking up my pen, and lines of text suddenly appeared in the air. [Don’t sign, don’t sign, the hero loves you so much! Huanhuan baby, put down your pen now! 】 |
+| High-concept career statement | "I Deliver Food in a Horror Game" After death, I traveled through time and became a food delivery person in a horror game. |
+| Salted fish identity + downgraded dream | "A hundred-year-old salted fish is forced to start business in the apocalypse" The alchemist at the bottom of the world of cultivation, a useless person with five spiritual roots, has been living for a hundred years. The biggest dream: to make a little money, eat and die. |
+| The first shot of the Rules Battle Royale is directed at myself | "The Cannon Fodder Backhouse Battle Royale is in Progress" I realized then that it turns out that everyone can see the barrage. (Next shot: At some point, my clothes turned blue.) |
+| Preview of the reversal of Ability at the Beginning | "I went crazy after hearing my husband and son's voices pretending to be poor." I realized that the voices I heard were all a scam they had set up to squeeze me out. |
 
 ---
 
-## 钩子母题与密度
+## Hook Motif and Density
 
-密度要求：每节至少一个笑点或设定新用法，章尾钩子多为「设定出新状况」，不是情绪炸弹。
+Density requirements: At least one laugh point or new usage in each section. The hook at
+the end of the chapter is mostly "setting up a new situation", not an emotional bomb.
 
-- **设定推到极致**（核心母题）：一句话设定立住后，逐章问「这设定还能怎么用」，一次比一次离谱。外卖员能穿梭副本，就顺路帮校长捡头（《我在恐怖游戏里送外卖》王校长，我在楼下捡到了你的头，和外卖一起放校长室门口了哈）；游戏属性同步现实，魅力值解释了艳遇、体力值解释了尴尬（《社畜临死前幻想》）。
-- **信息差喜剧**：我知道你不知道（听心声 / 看弹幕 / 知剧情），错位反应制造笑点。高级版是双向反转：能力本身是局，对面知道你听得见，故意喂假心声（《听见老公和儿子的装穷心声后，我杀疯了》）。
-- **反套路第三选项**：面对套路里的固定角色分工，主角拒绝进场。不当女主不当女配当 NPC（《穿进追妻小说，我发财了》）；全网弹幕叫她远离男主，她偏不（《弹幕叫我远离男主，我偏不》，标题即宣言）。
-- **恶意顺从**：把规则 / 教条按字面执行到荒诞。女德系统要「顺从」，就顺从妹妹「打死我吧」的请求（《侯府全员都在演戏？身为乖乖女的我当真了》既然妹妹有此诚心，姐姐这就成全你）。
-- **弹幕当活人配角**：弹幕分几股互相吵、预警、磕 CP、说虎狼之词，主角边看边被带节奏或反着来。
-- **梗的本地化**：网络梗改造后嵌进情节，由设定长出来。「吃人么」外卖平台；爱驴士、路难威登的假名牌；加斑马、裁猿、熬夜熊猫的小怪。
-- **数字梗与计数器**：第九十九次翻牌子、功德值 +100、干满 500 年享受 VIP 定制化投胎服务。荒诞承诺配精确数字。
-
----
-
-## 情绪烈度与模式（烈度 4）
-
-底座「情绪宁烈不温」在本题材大半失效：**吐槽压着写，烈度让给反差**。
-
-- 崩溃事件用流水账降格处理：《百岁咸鱼在末世被迫营业》我：「嗯？？？我真不是——」关门。送警局。行吧，至少进去了。
-- 荒诞事实平静陈述，比惊叫好笑：睁眼就是钢筋水泥的废墟，三米高的蜥蜴正在啃汽车。我扭头就跑。
-- 倒霉写成自查流程：我翻了翻兜空的。我再翻一遍。没有。我想起来了。昨天饿急了，把那颗淬体丹当糖豆吃了。
-- 全篇只放闸一到两次真情，位置在结尾或中段暗线。放闸时收起所有梗，写素的：《鸟妃升职记》世界是假的，可，爱是真的。所有的感情都是真的。
-- 爽点段（打脸 / 反杀）可以短暂拉到烈度 7-8，收梢必须回到吐槽泄压，打完立刻接一句钝感点评。
-
----
-
-## 对话风格与真实金句
-
-占比 40-55%，短、快、口语。三类台词撑全篇：
-
-**① 一本正经的荒诞宣言（笑点本体）**
-- 《我在恐怖游戏里送外卖》王校长，我在楼下捡到了你的头，和外卖一起放校长室门口了哈。
-- 《侯府全员都在演戏？身为乖乖女的我当真了》这牌坊是纯金实心的，手骨再硬也硬不过妇德啊。
-- 《祭祖后我随机发疯》帅哥你好，我在尼姑庵扫了八年地，本来我的心和秋风一样凉，直到我看到了你，我好像重拾了对生活的热情，帅哥能给我一个微信吗？
-- 《鸟妃升职记》要不，咱俩一人一个被窝？
-
-**② 主角吐槽 / 接梗（钝感降格）**
-- 《我在恐怖游戏里送外卖》不是姐妹，你为了顾景年和我翻脸？
-- 《好消息，我是系统》不是，哥们你力气怎么这么大啊…我感觉内脏都要被震碎了。
-- 《鸟妃升职记》（心声）快说你脸疼头疼没法侍寝，苍天啊，我真的不想再耕地了！
-- 《祭祖后我随机发疯》这辈子虽然没红过，但被绿过，知足了。
-
-**③ 弹幕 / 系统人格化台词**
-- 《弹幕劝我别和离》【哑巴不许结婚！】【装装装，就知道装，这个家都被你装没了！】【男主要是有尾巴，现在已经摇出残影了。】【太甜了，给朕拿点胰岛素来。】
-- 《侯府全员都在演戏？身为乖乖女的我当真了》系统瑟瑟发抖：【完了完了，宿主快跪下认错！这也是父命！】
-- 《穿进追妻小说，我发财了》[我：......谈钱伤感情。][系统：没收剩下的五万！！]
-- 《被弹幕剧透后，我抱紧了反派的大腿》【女主快住手！这疯批反派明天就会把你关进锁灵塔天天双修！】我：……？
-
-对话的权力标记与虐文相反：谁先绷不住谁输。主角靠不接情绪、只接字面意思掌控场面。
+- **Setting pushed to the extreme** (Core Motif): After a sentence of setting is
+  established, I ask "how else can this setting be used" chapter by chapter, and it
+  becomes more and more outrageous every time. The delivery boy can travel through
+  dungeons, so he picks up the principal's head along the way ("I Deliver Food in a
+  Horror Game" Principal Wang, I picked up your head downstairs, and put it with the
+  food at the door of the principal's office); the attributes of the game are
+  synchronized with reality, and the charm value explains the affair, and the physical
+  strength value explains the embarrassment ("Fantasy Before Death of a Social Animal").
+- **Information gap comedy**: I know you don’t know (listen to your heart/watch the
+  barrage/know the plot), misplaced reactions create laughter. The advanced version is a
+  two-way reversal: the ability itself is the game, and the other party knows that you
+  can hear it, and deliberately feeds you fake voices ("I went crazy after hearing the
+  voices of my husband and son pretending to be poor").
+- **The third option against the routine**: Faced with the fixed division of roles in
+  the routine, the protagonist refuses to enter the scene. She should not be a heroine
+  or a heroine, but she should be an NPC ("Into a wife-chasing novel, I got rich"); the
+  entire Internet barrage told her to stay away from the male protagonist, but she
+  refused ("The barrage told me to stay away from the male protagonist, but I didn't
+  want to", the title is a declaration).
+- **Malicious Compliance**: Taking rules/dogma literally to the point of absurdity. If
+  you want to "obey" in the female virtue system, you should obey your sister's request
+  to "beat me to death" ("Are all the members of the Hou family acting? As a good girl,
+  I take it seriously." Since my sister is sincere, I will grant it to you).
+- **The barrage is a living supporting role**: The barrage is divided into several
+  groups to quarrel, warn, talk about CP, and talk about tigers and wolves. The
+  protagonist is led to the rhythm or in reverse while watching.
+- **Localization of memes**: Internet memes are modified and embedded into the plot,
+  growing out of settings. "Can you eat people?" takeout platform; Fake brand names such
+  as Donkey Lovers and Difficult Vuitton; Add zebras, cut apes, and late-night pandas to
+  add monsters.
+- **Numbers and counters**: The ninety-ninth time you turn the card, the merit value is
+  +100, and you can enjoy VIP customized reincarnation service after working for 500
+  years. Ridiculous promises paired with precise numbers.
 
 ---
 
-## 情绪链库
+## Emotional Intensity and Mode (Intensity 4)
 
-- **EC-设定榨汁（默认）**：亮高概念 → 规则立住 → 同一设定榨三次 → 能力反用 → 吐槽泄压。五阶段。
-- **EC-心声外泄（读心/弹幕线）**：能力上线 → 社死名场面 → 信息差反转 → 当众拆穿 → 真情收口。五阶段。
-- **EC-副本现实（脑洞落地线）**：脑洞入侵日常 → 规则怪谈化 → 主线宿怨相撞 → boss 现真身 → 大梦初醒or成真。五阶段。
+The base "emotions are rather intense but not warm" are mostly ineffective in this
+subject matter: **complaining is suppressed while writing, and intensity gives way to
+contrast**.
 
-## 招式库
+- The collapse incident was dealt with in a downgraded way: "A hundred-year-old salted
+  fish is forced to open for business in the apocalypse" Me: "Huh??? I really am not, "
+  Close the door. Send to the police station. Okay, at least we got in.
+- The absurd facts were stated calmly, which was funnier than the screams: When I opened
+  my eyes, I saw the ruins of reinforced concrete, and a three-meter-tall lizard was
+  chewing on the car. I turned around and ran.
+- Unlucky to write down the self-examination process: I rummaged through my pockets and
+  found them empty. I'll read it again. No. I remembered. I was so hungry yesterday that
+  I ate the Body Tempering Pill like a jelly bean.
+- The whole story only reveals true feelings once or twice, and the location is the
+  hidden line at the end or in the middle. When the gate is released, I put away all the
+  jokes and write plainly: "Bird Concubine's Promotion" The world is fake, but love is
+  real. All feelings are real.
+- The satisfying payoff section (face-slapping / counter-kill) can be briefly raised to
+  an intensity of 7-8. To end it, you must return to complaining to relieve pressure.
+  After the fight, you will immediately receive an insensitive comment.
 
-| 招式 | 怎么用 | 真实例 |
+---
+
+## Conversational style and authentic quotes
+
+Accounting for 40-55%, short, fast and spoken. Three types of lines support the entire
+article:
+
+**① A serious absurd declaration (laughing point)**
+- "I Deliver Food in a Horror Game" Principal Wang, I picked up your head downstairs and
+  put it with the food at the door of the principal's office.
+- "Everyone in the Hou family is acting?" As a good girl, I take it seriously." This
+  memorial arch is made of solid gold. No matter how hard the hand bones are, it cannot
+  be as strong as a woman's virtue.
+- "I randomly went crazy after worshiping my ancestors" Hello, handsome guy, I have been
+  sweeping the floor in a nunnery for eight years. Originally, my heart was as cold as
+  the autumn wind, until I saw you, I seemed to have regained my passion for life. Could
+  you give me a WeChat account, handsome guy?
+- "Bird Concubine's Promotion" How about we both share a bed?
+
+**② Protagonist’s complaints/interpretation (insensitive demotion)**
+- "I Deliver Food in a Horror Game" We are not sisters. Are you turning against me
+  because of Gu Jinnian?
+- "Good News, I am the System" No, bro, why are you so strong... I feel like my internal
+  organs are about to be shattered.
+- "Bird Concubine's Promotion" (Voice from the Heart) Tell me that you have a sore face
+  and a headache and can't go to bed. God, I really don't want to plow the land anymore!
+- "I randomly went crazy after worshiping my ancestors" Although I have never been
+  popular in my life, I have been green and I am content.
+
+**③ Barrage/System personified lines**
+- "Barrage Persuading Me to Break Up and Divorce" [Dumb people are not allowed to get
+  married! 】【Pretend to pretend, just pretend, this whole family will be ruined by you!
+  】【The male main character has a tail, and now it has shaken out its afterimage. 】【It's
+  too sweet. Get me some insulin. 】
+- "Everyone in the Hou family is acting?" As a good girl, I take it seriously." The
+  system trembled: "It's over, it's over, host, kneel down and admit your mistake! This
+  is also my father’s destiny! 】
+- "Into the Wife-Chasing Novel, I Got Rich" [Me:...talking about money hurts feelings.
+  ][System: Confiscate the remaining 50,000!! ]
+- "After being spoiled by the barrage, I hugged the villain's thigh tightly" [House
+  heroine, stop it! This crazy villain will imprison you in the Soul Locking Tower
+  tomorrow for double cultivation every day! 】I:...?
+
+The power mark of dialogue is the opposite of abuse: whoever fails to hold back first
+loses. The protagonist controls the scene by ignoring emotions and taking literal
+meanings.
+
+---
+
+## Emotion chain library
+
+- **EC-Set Juicing (Default)**: Highlight the concept → Stick to the rules → Juice three
+  times with the same setting → Reverse use of abilities → Complain and relieve
+  pressure. Five stages.
+- **EC-Voice leaked (mind reading/barrage line)**: Ability online → Famous scenes of
+  social death → Information gap reversal → Revealed in public → True feelings closed.
+  Five stages.
+- **EC-Copy Reality (Wild Idea Implementation Line)**: Wild idea invades daily life →
+  Rules turn into strange stories → Main line feuds collide → The boss appears in his
+  true form → The big dream wakes up or comes true. Five stages.
+
+## Move library
+
+| Moves | How to use | Real examples |
 |------|--------|--------|
-| 高概念一句话梗 | 设定一句话说完就能笑，标题和简介先亮，不藏 | 《我在恐怖游戏里送外卖》死后我穿越到恐怖游戏里成为了一名外卖员 |
-| 反套路第三选项 | 套路给二选一，主角选场外答案 | 《穿进追妻小说，我发财了》我当机立断：我要当NPC！ |
-| 恶意顺从 | 规则字面执行到荒诞，裁判被迫判合规 | 《侯府全员都在演戏》系统死机两秒弹出一行绿字：【逻辑判定中，宿主行为响应他人请求，符合“顺从”与“成全”功德值+100！】 |
-| 信息差装傻 | 听得见装听不见，反应全错位 | 《听见老公和儿子的装穷心声后》听完卖惨心声只竖大拇指：你真是妈的好孩子！妈就知道像你这么优秀的人一定有出息！ |
-| 弹幕带节奏 | 弹幕分股吵架、预警、磕 CP，主角顺着或反着来 | 《被弹幕剧透后》【快撒娇！反派吃软不吃硬！】我手一抖，将婚契塞回袖中 |
-| 现代梗错位移植 | 职场 / 网络话语搬进古代、末世、副本 | 《鸟妃升职记》果然没有耕坏了的地，只有累死的牛！ |
-| 情绪降格钝感 | 大祸临头写成流水账加一句「行吧」 | 《百岁咸鱼在末世被迫营业》关门。送警局。行吧，至少进去了。 |
-| 荒诞道具具体化 | 笑点落在一件煞有介事的实物上 | 《侯府全员都在演戏》掏出系统新手礼包送的“御赐贞节牌坊”微缩模型，双手高举挡在脸前 |
-| 谐音改名梗 | 品牌、怪物、平台起歪名，一组连排 | 《社畜临死前幻想》加斑马，叩公鸡、熬夜熊猫、裁猿、将猩；《穿进追妻小说》爱驴士、路难威登 |
-| 倒计时插叙 | 危机步数 / 秒数切开回忆或分析，拉紧张又塞信息 | 《炮灰后宅逃杀进行时》还有五步。（插身世）还有四步。（插推理）一步。 |
-| 梗后翻真 | 玩梗人设铺满全篇，关键处一次放真情 | 《鸟妃升职记》临终对谈：世界是假的，可，爱是真的 |
-| 沙雕撩拨 | 用不要脸的直球台词打穿高冷角色 | 《被弹幕剧透后》我馋你身子，疯批大佬我最爱…… |
+| High-concept one-sentence meme | Set to make you laugh after saying one sentence. The title and introduction are shown first and not hidden | "I Deliver Food in a Horror Game" After death, I traveled to a horror game and became a delivery boy |
+| The third option against the routine | Choose one of the two routines, and the protagonist chooses the off-site answer | "Enter the novel about chasing a wife, I made a fortune" I made a decision immediately: I want to be an NPC! |
+| Malicious obedience | The literal implementation of the rules is ridiculous, and the referee is forced to rule in compliance | The system of "Everyone in the Hou Mansion is Acting" crashes for two seconds and a line of green text pops up: [In logical judgment, the host's behavior responds to the requests of others and is consistent with "obedience" and "accomplishment". Merit value +100! 】 |
+| Poor information, pretending to be stupid | Hearing and pretending not to hear, the reaction is completely misplaced | "After hearing the voices of my husband and son pretending to be poor" After hearing the voices of the poor, I just gave a thumbs up: You are such a good boy! Mom knew that an outstanding person like you must have a future! |
+| The barrage brings the rhythm | The barrage is divided into groups to quarrel, warn, and talk about CP, and the protagonist goes one way or the other | "After being spoiled by the barrage" [Quickly act like a baby! The villain prefers the weak to the strong! 】I shook my hand and stuffed the marriage contract back into my sleeve |
+| Misplaced transplantation of modern memes | Workplace / Internet discourse moves into ancient times, apocalypse, and copies | "Bird Concubine's Promotion" indeed has no damaged land, only exhausted cows! |
+| Emotional degradation and dullness | Write down a running account of impending disaster and add the sentence "Okay" | "100-year-old salted fish is forced to open for business in the last days" is closed. Send to the police station. Okay, at least we got in. |
+| Absurd props materialized | The point of laughter falls on a serious object | "Everyone in the Marquis is Acting" took out the miniature model of the "Imperial Chastity Archway" given in the system novice gift pack, and raised his hands in front of his face |
+| Homophonic name change memes | Brands, monsters, and platforms give wrong names, a series | "Fantasy Before Death of Social Animals" adds zebras, knocks roosters, stays up late pandas, cuts apes, and generals; "Into the Wife-Chasing Novel" Lovers Donkeys, Road Difficulties Vuitton |
+| Countdown to narration | Crisis steps/seconds cut through memories or analysis, straining and stuffing information | There are five steps left in "The Escape from the Cannon Fodder's Backhouse in Progress". (Insert life experience) There are four steps left. (insert reasoning) one step. |
+| Idioms are followed by truths | Idioms are spread throughout the whole story, and true feelings are shown at the key points | Death Conversation in "Bird Concubine's Promotion": The world is fake, but love is real |
+| shadiao teases | Use shameless direct lines to break through the cold character | "After being spoiled by the barrage" I am greedy for your body, the crazy boss is my favorite... |
 
 ---
 
-## 节奏骨架
+## Rhythm Skeleton
 
 ```
-简介亮高概念（把设定最好笑的用法先演一遍）
-→ 第1节慢放重演简介的梗、立设定规则
-→ 设定用法逐节升级（同一设定至少榨三次，一次比一次离谱）
-→ 中段信息差反转（能力被反用 / 设定背后另有真相 / 弹幕情报有假）
-→ 高潮：设定与主线宿怨相撞（副本 boss 是未婚夫；心声骗局当众拆穿）
-→ 真情或爽点收口，最后一句吐槽泄压
+Introduction to highlight the concept (act out the funniest usage of the settings first)
+→ Section 1 Slow-motion reenactment introduction and set rules
+→ Upgrade the setting usage section by section (extract the same setting at least three times, each time more outrageous than the last)
+→ The information gap is reversed in the middle (the ability is reversed / there is another truth behind the setting / the barrage information is false)
+→ Climax: The setting collides with the main feud (the boss of the dungeon is the fiancé; the voice of the heart scam is revealed in public)
+→ True love or satisfying payoff, the last sentence is to complain and relieve pressure
 ```
 
-疏密：设定演示与笑点段慢写足对话细节；过场和情绪一句带过。弹幕刷屏可连排 3-5 条不嫌多，解释性叙述越少越好。笑点之间不留超过一屏的干燥说明。
+Density: Setting up demonstrations and punch lines are written slowly with sufficient
+dialogue details; cutscenes and emotions are conveyed in one sentence. There can be 3-5
+bullet screens in a row, and the fewer explanatory narratives, the better. Don't leave
+more than one screen of dry exposition between punchlines.
 
 ---
 
-## 收尾范式
+## Closing Paradigm
 
-- 沙雕转真情：收起全部梗，放一次闸。《鸟妃升职记》皇帝临终坦白穿越者身份，她答「臣妾早知道」，全篇吐槽在此刻兑换成重量。
-- 设定闭环：能力 / 弹幕在故事讲完时消失或回收。《弹幕劝我别和离》所有天书瞬间从我眼前消失了。原来在他们看来我们这个故事就要结束了。
-- 反套路归于平凡：本该杀疯的角色选小日子。《弹幕劝我别和离》番外女配自白：普通人的一生哪有话本子里那样波澜壮阔，不过是小满胜万全。
-- 爽点收口 + 吐槽泄压：反杀完成后不煽情，用一句钝感点评落地（姐爆红了。／我真的是，天选打工人。）。
-
----
-
-## 该题材专属调校（与通用去 AI 规则的偏差）
-
-这些在别的语境是 AI 味 / 水字数，在本题材是卖点，**别误删**：
-
-- **网络梗与流行语**：保留，但要求化用不搬运。梗要嵌进情节、由设定长出来（「吃人么」平台是副本界的外卖软件；发疯台词是系统逼的），不是叙述者随口复读热词。原样整段抄流行语超过一句就是搬运。
-- **标点台词与单字成段**：「我：……？」「少年：？」「行吧。」「关门。送警局。」保留，这是节奏不是残句。
-- **弹幕块【】连续刷屏、同款句式复读**：是合唱效果不是冗余，别合并别精简。
-- **系统面板 / 规则列表的说明文腔**：保留，煞有介事的格式感本身是笑点载体，别改写成流畅叙述。
-- **底座「情绪宁烈不温」在本题材反着执行**：吐槽体的克制钝感是卖点，别按底座把情绪加烈；只在真情放闸段回到底座写法。
-
-仍要避免的真·AI 味：解释笑点（梗抛完再补一句为什么好笑）、上帝视角总结人物性格、无信息量的口水吐槽连刷（每句吐槽必须带出新信息或新反应）、把钝感写成愤怒宣泄、映入眼帘 / 嘴角微扬 / 沉声道这类通用套词。
-
-> 标点：本题材范例为示意保留了原貌。落到正文，本包仅「标点当台词」一式（如 `我：……？`）允许 `……`；其余规则性正文与叙述按 `.claude/knowledge/short-craft/short-craft.md` 第 8 节执行，不出 `……` / `——`，停顿用短句 / 动作 / 换行。
+- Shadiao turns to true feelings: Put away all the jokes and release the gate once. In
+  "Bird Concubine's Promotion", the emperor confesses her identity as a time traveler
+  before her death, and she replies, "I knew it earlier." The whole article's complaints
+  are converted into weight at this moment.
+- Set a closed loop: the ability/barrage disappears or is recycled when the story is
+  finished. "Barrage Advising Me to Farewell and Leave" All the heavenly books
+  disappeared from my eyes in an instant. It turns out that it seemed to them that our
+  story was coming to an end.
+- The anti-routine is ordinary: the character who should be killed and crazy chooses to
+  live a small life. "The barrage persuaded me to say goodbye and leave" has a
+  confession from the female protagonist: The life of an ordinary person is not as
+  magnificent as in the novel, but Xiaoman wins Wanquan.
+- Satisfying payoff closing + complaining to relieve pressure: after the counter-attack
+  is completed, there is no sensationalism, and it is delivered with an insensitive
+  comment (My sister is famous. / I am really the chosen worker.).
 
 ---
 
-## 配套结构公式（按篇幅选）
+## Exclusive adjustment for this theme (deviation from general AI rules)
 
-- **信息差型（弹幕 / 心声 / 知剧情，8-12 节）**：获得能力（第 1 节内完成）→ 第一次使用立规则 → 依赖升级、靠能力连收好处 → 中段双向反转（能力被反用 / 情报有假）→ 借能力完成当众反杀或误会大和解 → 能力闭环消失 + 真情收口。
-- **高概念职业 / 穿书型（8-11 节）**：设定 demo → 三次升级使用（一次比一次离谱，各给一节）→ 设定与旧怨相撞（故人进入副本 / 原剧情追杀主角）→ boss 或幕后是旧识 → 翻面收口，留一句吐槽泄压。
-- **恶意顺从复仇型（7-10 节）**：荒诞规则立起 → 逐个对象「字面满足」各给一节（每节一个可视化计数：功德值、热搜、赏钱）→ 对手识破规则想反用 → 主角用规则的最终解释权完成大招 → 规则来源揭底。
+In other contexts, these are AI flavor/water word counts, but in this subject matter
+they are selling points, **don’t delete them by mistake**:
+
+- **Internet memes and buzzwords**: Reserved, but required to be used and not moved. The
+  meme should be embedded in the plot and grown out of the setting (the "Eat People"
+  platform is the delivery software in the copy world; the crazy lines are forced by the
+  system), rather than the narrator reciting hot words casually. Copying the entire
+  paragraph of a popular phrase for more than one sentence is a transfer.
+- **Punctuated lines and single words into paragraphs**: "Me:...?" "Young man:?" "Okay."
+  "Close the door. Send to the police station." Keep it, this is a rhythm, not a
+  sentence.
+- **Barrage block [] continuously refreshes the screen and repeats the same sentence
+  pattern**: It is a chorus effect, not redundant, do not merge or streamline.
+- **System panel/rule list explanatory style**: Keep it, the serious formatting itself
+  is a carrier of laughter, don’t rewrite it into a smooth narrative.
+- **The base "emotions are intense but not warm" are reversed for this theme**: The
+  restrained and insensitive style of complaining is the selling point. Don't press the
+  base to intensify the emotions; only return to the base writing method when the true
+  feelings are released.
+
+Real AI tastes that should be avoided: explaining the point of laughter (adding a
+sentence after the joke about why it’s funny), summarizing the character’s personality
+from a God’s perspective, making repeated comments without information (each comment
+must bring out new information or a new reaction), writing insensitivity as a vent of
+anger, and general phrases such as catching the eye / slightly raising the corners of
+the mouth / speaking in a deep voice.
+
+> Punctuation: This theme example retains its original appearance for illustration.
+> Coming to the main text, this package only allows `...` for the "punctuation as
+> lines" (such as `我：...？`); the rest of the regular text and narrative are
+> implemented according to Section 8 of
+> `.claude/knowledge/short-craft/short-craft.md`, without `...` / `em dash`, and short
+> sentences/actions/line breaks are used for pauses.
+
+---
+
+## Supporting structural formula (selected according to length)
+
+- **Information difference type (barrage/voice/knowledge of the plot, sections 8-12)**:
+  Obtaining abilities (completed within the 1st section) → Using rules for the first
+  time → Relying on upgrades, relying on abilities to continuously receive benefits →
+  Two-way reversal in the middle (ability is reversed / information is false) → Using
+  abilities to complete public counter-attacks or misunderstandings and reconciliation →
+  The closed loop of abilities disappears + the true feelings are closed.
+- **High-concept occupation/book-traveling type (sections 8-11)**: Set up the demo →
+  upgrade and use it three times (each time is more outrageous than the last, give one
+  section for each) → set up to collide with old grudges (an old friend enters the
+  dungeon / hunts down the protagonist in the original plot) → the boss or an old
+  acquaintance behind the scenes → turn over and close it, leaving a comment to relieve
+  stress.
+- **Malicious obedience and revenge type (verses 7-10)**: Absurd rules are established →
+  Each object is given a section for "literal satisfaction" (each section has a visual
+  count: merit points, hot searches, reward money) → The opponent sees through the rules
+  and wants to reverse them → The protagonist uses the final interpretation of the rules
+  to complete the big move → The source of the rules is revealed.

@@ -1,7 +1,14 @@
-# 环境描写：悬疑刑侦
+# Environmental description: suspense criminal investigation
 
-> 覆盖通用环境描写方法论（`environment/universal.md`）中与悬疑刑侦题材不适配的部分。
+> Covers the parts of the general environment description methodology
+> (`environment/universal.md`) that are not suitable for suspense criminal
+> investigation themes.
 
-- 环境是线索的载体。每个场景细节都可能成为物证
-- 环境描写不只是氛围，它在为读者埋物证。写"烟灰缸里有三根烟蒂"可能是线索，不能随便写
-- **避坑**：不要为了氛围而写环境——悬疑刑侦里环境描写的每一句话都要经过"这是线索还是纯氛围"的检验
+- The environment is the carrier of clues. Every detail of the scene may become physical
+  evidence
+- Environmental description is not just about atmosphere, it is burying physical
+  evidence for readers. Writing "There are three cigarette butts in the ashtray" may be
+  a clue, so don't write it casually.
+- **Avoid pitfalls**: Don't write about environment for the sake of atmosphere - every
+  sentence describing the environment in a suspenseful criminal investigation must be
+  tested by "Is this a clue or pure atmosphere?"

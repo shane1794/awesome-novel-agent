@@ -1,448 +1,579 @@
-# 题材写作公式
+# Theme Writing Formula
 
 
-> 本文件改写自获赠短篇流程包（oh-story 系 + 实测调整），按本仓口径适配：引用为部署后基座路径、已剔除外部体系引用。公开或商用前需原作者确认。
+> This document is adapted from the short flow package (oh-story series + actual
+> measurement adjustment) received as a gift, and is adapted to the caliber of this repo: the reference is the post-deployment base path, and external system
+> references have been eliminated. Confirmation by the original author is required
+> before disclosure or commercial use.
 
 
-> **用途**：21个题材的结构骨架、情绪节拍、必选场景、关键规则。按题材分类，可直接套用。
-> **语气**：指令式——每个公式都是可直接套用的结构骨架。
-> **配合**：优先使用当前 skill 内的通用技法 reference；story-setup 部署后使用项目本地 agent reference bundle 中的写作技法、结构格式、题材风格模块副本。
-> **适用范围**：本文件的节奏参数（500-800 字/节、短句白描等）只适用于短篇和爽文小节；长篇正文的叙述句仍以逗号长句为主（句长标准），不要把短篇小节的句法带进长篇。
+> **Purpose**: Structural skeleton, emotional beats, required scenes, and key rules of
+> 21 themes. Classified by subject matter, can be applied directly. **Tone**:
+> Imperative - each formula is a structural skeleton that can be directly applied.
+> **Coordination**: Give priority to using the common technique reference in the
+> current skill; after story-setup is deployed, use the copy of the writing technique,
+> structure format, and theme style module in the local agent reference bundle of the
+> project. **Scope of application**: The rhythm parameters of this document (500-800
+> words/section, short sentence outlines, etc.) are only applicable to short stories
+> and feel-good fiction sections; the narrative sentences of long text are still
+> mainly comma-long sentences (sentence length standard), do not bring the syntax of
+> short story sections into long stories.
 
 ---
 
-## 决策路由：按题材选公式
+## Decision routing: select formulas according to subject matter
 
-> 写之前先定位题材，找到对应公式，按公式结构推进。
+> Before writing, locate the subject matter, find the corresponding formula, and
+> proceed according to the formula structure.
 
-| 题材/类型 | 对应公式 | 篇幅 |
+| Subject/type | Corresponding formula | Length |
 |-----------|---------|------|
-| 现代复仇/打脸 | 公式一 | 6章短篇 |
-| 古代宅斗/身份反转 | 公式二 | 8节 |
-| 虐恋复仇/灵魂视角 | 公式三 | 7节 |
-| 都市系统/逆袭长篇 | 公式四 | 前3章 |
-| 玄幻仙侠/重生逆袭 | 公式六 | 19章 |
-| 年代重生/双重复仇 | 公式七 | 19章 |
-| 宫闱宅斗/女帝逆袭 | 公式八 | 19章 |
-| 现代悬疑/超自然视角 | 公式九 | 18章 |
-| 架空历史/性别反转(追妻火葬场) | 公式十 | 19章 |
-| 重生复仇/离婚逆袭 | 公式十二 | 10章 |
-| 总裁豪门/白月光虐恋 | 公式十三 | 8-11章 |
-| 女频复仇 vs 男频复仇 | 公式十四 | 通用对比 |
-| 宫闱宅斗/隐忍腹黑型 | 公式十五 | 8章 |
-| 追夫火葬场/不原谅型 | 公式十六 | 8章 |
-| 年代重生/医术复仇型 | 公式十七 | 8章 |
-| 灵魂视角家庭虐文 | 公式十八 | 5章 |
-| 细节线索驱动型复仇 | 公式十九 | 8-13章 |
-| 反套路嫁祸型重生 | 公式二十 | 7章 |
-| 公开审判式打脸 | 公式二十一 | 通用场景 |
+| Modern revenge/face-slapping | Formula 1 | 6 chapters short story |
+| Ancient inner-court intrigue/identity reversal | Formula 2 | Section 8 |
+| angsty romance revenge/soul perspective | Formula 3 | Section 7 |
+| Urban System/Counterattack Novel | Formula 4 | First 3 Chapters |
+| xuanhuanxianxia/Rebirth Counterattack | Formula 6 | Chapter 19 |
+| Era Rebirth/Double Revenge | Formula 7 | Chapter 19 |
+| Palace inner-court intrigue/Empress’ counterattack | Formula 8 | Chapter 19 |
+| Modern suspense/supernatural perspective | Formula 9 | Chapter 18 |
+| Alternate history/gender reversal (wife-chasing crematorium) | Formula 10 | Chapter 19 |
+| Rebirth and Revenge/Divorce Counterattack | Formula 12 | Chapter 10 |
+| President's Rich Family/white moonlightangsty romance | Formula Thirteen | Chapters 8-11 |
+| female-oriented revenge vs male-oriented revenge | Formula 14 | General comparison |
+| Gong Wei inner-court intrigue/bearing evil type | Formula 15 | Chapter 8 |
+| Chasing Husband Crematorium/Unforgiven Type | Formula 16 | Chapter 8 |
+| Rebirth of the Era/Medical Revenge Type | Formula Seventeen | Chapter 8 |
+| Soul Perspective Domestic Abuse Article | Formula 18 | Chapter 5 |
+| Detailed and clue-driven revenge | Formula 19 | Chapters 8-13 |
+| Anti-routine rebirth | Formula 20 | Chapter 7 |
+| Public trial face-slapping | Formula 21 | Common scenarios |
 
 ---
 
-## 公式一：现代复仇/打脸短篇（6章）
+## Formula 1: Modern revenge/face-slapping short story (6 chapters)
 
-| 章 | 节点 | 要点 |
+| Chapter | Node | Key Points |
 |----|------|------|
-| 1 | 当众背叛 | 主角当场冷静反击，暂胜 |
-| 2 | 冷静处理 | 冻结/收回权力，交代背景 |
-| 3 | 对方反扑 | 反派找上门，用证据打脸 |
-| 4 | 揭示真相 | 监控/证据暴露反派真面目 |
-| 5 | 对方求饶 | 展示更多证据，彻底碾压 |
-| 6 | 最终加冕 | 新格局+隐藏真相揭露 |
+| 1 | Betrayal in public | The protagonist calmly counterattacks on the spot and wins temporarily |
+| 2 | Deal with it calmly | Freeze/take back power and explain the background |
+| 3 | The opponent counterattacks | The villain comes to the door, face-slapping with evidence |
+| 4 | Reveal the truth | Surveillance/evidence reveals the true face of the villain |
+| 5 | The other party begs for mercy | Show more evidence and crush it completely |
+| 6 | Final coronation | New pattern + hidden truth revealed |
 
-**情绪**：愤怒→爽→紧张→更爽→极爽→余韵+震撼
-**必选场景**：当众羞辱开场、冷静到可怕的反击、标志性动作、逐层揭露证据、反派自曝、隐藏伏笔回收
-**规则**：主角永不失态；用动作替代情绪；对方越歇斯底里主角越平静；先让反派得意再翻转
+**Emotion**: Angry → Refreshing → Nervous → More Refreshing → Extremely Refreshing →
+Aftertaste + Shock
+**Must-select scenes**: public humiliation at the beginning, terrifyingly calm
+counterattack, iconic actions, layer by layer revelation of evidence, self-exposure of
+the villain, recycling of hidden foreshadowings
+**Rules**: The protagonist never loses his composure; use actions to replace emotions;
+the more hysterical the opponent is, the calmer the protagonist will be; let the villain
+be proud first and then reverse the situation
 
 ---
 
-## 公式二：古代宅斗/身份反转（8节）
+## Formula 2: Ancient inner-court intrigue/identity reversal (8 verses)
 
-| 节 | 节点 | 要点 |
+| Section | Node | Points |
 |----|------|------|
-| 1 | 被弃回归 | 亲生父母当众羞辱，主角冷观 |
-| 2 | 后院交锋 | 被妹妹陷害被打，暗线启动 |
-| 3 | 身份初露 | 关键人物关注，展示信物 |
-| 4 | 被软禁 | 妹妹告密，陷入绝境 |
-| 5 | 身份揭露 | 圣旨到，全场震惊 |
-| 6 | 反击推进 | 查账，权贵站队 |
-| 7 | 对方反扑 | 谣言+联合打压 |
-| 8 | 最终碾压 | 面圣/真相大白，对方覆灭 |
+| 1 | Abandoned Return | Biological parents humiliated in public, protagonist looks on coldly |
+| 2 | Backyard confrontation | Being framed and beaten by my sister, the secret line was activated |
+| 3 | Identity first revealed | Key figures pay attention and display tokens |
+| 4 | Under house arrest | My sister snitched and was in a desperate situation |
+| 5 | Identity revealed | The edict arrived, and everyone was shocked |
+| 6 | Counterattack and advancement | Check the accounts, the powerful take sides |
+| 7 | Counterattack by the other party | Rumors + joint suppression |
+| 8 | Final crushing | Face to face/The truth is revealed, the opponent is destroyed |
 
-**情绪**：压抑×3→释放→释放→短暂再压→终极释放
-**必选场景**：回归羞辱、被冤枉被打、信物展示、身份揭露名场面、妹妹恶毒递进、父母偏心加码
-**规则**：分步揭露身份；压抑3节释放1节；父母用"偏心"写不用"坏"写；妹妹恶从阴阳怪气→陷害→要杀
+**Emotions**: Suppression×3→Release→Release→Brief Re-Suppression→Ultimate Release
+**Required Scenes**: Return to humiliation, being wrongly accused and beaten, token
+display, famous identity reveal scene, sister’s vicious progression, parents’ increased
+favoritism
+**Rules**: Reveal identity step by step; 3 sections of repression and 1 section of
+release; parents write "eccentric" instead of "bad"; sister is evil and evil → framed →
+killed
 
 ---
 
-## 公式三：虐恋复仇/灵魂视角（7节）
+## Formula 3: angsty romance revenge/soul perspective (7 sections)
 
-| 节 | 节点 | 要点 |
+| Section | Node | Points |
 |----|------|------|
-| 1 | 死亡回溯 | 3年前被渣男害死，灵魂视角开启 |
-| 2 | 虐待现场 | 渣男威胁家人，保镖打人 |
-| 3 | 小三虚伪 | 小三装可怜，撕碎死亡证明 |
-| 4 | 开棺/真相 | 孩子"那是妈妈"，血书，定时文件发布 |
-| 5 | 舆论反转 | 热搜+股价暴跌+小三被甩 |
-| 6 | 崩溃现场 | 掐小三，家族问责 |
-| 7 | 收尾 | 哥哥布局，渣男最后一句话 |
+| 1 | Death Retrospection | Killed by a scumbag 3 years ago, the soul perspective is opened |
+| 2 | Abuse scene | Scumbag threatens family, bodyguard beats people |
+| 3 | The mistress is hypocritical | The mistress pretends to be pitiful and tears up the death certificate |
+| 4 | Open coffin/truth | Child "That's the mother", blood letter, regular document release |
+| 5 | Public opinion reverses | Hot searches + stock price plummet + mistress dumped |
+| 6 | Crash scene | Pinch mistress, family accountability |
+| 7 | Ending | Brother’s plan, the scumbag’s last words |
 
-**情绪**：窒息→暴怒→冰冷→心碎→爽→快意→苍凉
-**必选场景**："保小不保大"；对比场景（家人被打vs渣男给小三买东西）；孩子一句话击穿防线；定时发布证据；开棺；渣男崩溃
-**规则**：灵魂飘在半空视角；"想阻止却无能为力"；现在+3年前回忆交替；渣男合理化自己的恶；小三每句话都是毒
+**Emotions**: suffocation → rage → cold → heartbreak → refreshing → pleasure →
+desolation
+**Required Scene**: "Protect the child but not the elder"; comparison scene (family
+being beaten vs. the scumbag buying things for the mistress); the child breaks the line
+of defense with one sentence; evidence is released regularly; the coffin is opened; the
+scumbag collapses
+**Rules**: Perspective of the soul floating in mid-air; "I want to stop it but can't do
+anything"; alternating memories between now and 3 years ago; the scumbag rationalizes
+his evil; every word of the mistress is poisonous
 
 ---
 
-## 公式四：都市系统/逆袭长篇（前3章）
+## Formula 4: Urban System/Counterattack Long Story (First 3 Chapters)
 
-| 章 | 节点 | 要点 |
+| Chapter | Node | Key Points |
 |----|------|------|
-| 1 | 离婚+系统激活 | 仙人跳反转→离婚→系统激活 |
-| 2 | 系统面板+新手奖励 | "报废边缘"吐槽→新手礼包→离婚 |
-| 3 | 离婚后+新装备 | 机车出场→前妻后悔伏笔→父子关系 |
+| 1 | Divorce + System Activation | Immortal Jump Reversal → Divorce → System Activation |
+| 2 | System panel + novice rewards | "Border of scrapping" complaints → novice gift pack → divorce |
+| 3 | After divorce + new equipment | motorcycle appearance → ex-wife regrets foreshadowing → father-son relationship |
 
-**必选场景**：中年危机够惨；系统面板讽刺数据；新手礼包立刻见效；前妻后悔伏笔；隐藏装备；子女关系
-**规则**：系统评价+主角吐槽是核心笑点；每章结尾必有系统奖励；反差是爽点来源；生活化细节建真实感
-
----
-
-## 公式六：玄幻仙侠/重生逆袭（19章）
-
-```
-导语[前世被害全貌]→重生回到关键节点→故意不按前世行事→对手自疑自乱
-→周围人不解→对手越陷越深→关键人物相助→逐步瓦解反派→最终决战→开放式HE
-```
-
-**情绪**：憋屈→爽→悬疑→更爽→紧张→温暖
-**必选场景**：前世死亡详细残忍；重生后第一件事"反常"；对手自我怀疑是核心爽点；逐步揭露前世真相；关键助力者有排面；结尾留白暗示感情
-**规则**：不做和前世一样的事=最大金手指；用反常行为制造信息差；仙侠设定服务情感线不堆设定
+**Required scene**: The mid-life crisis is tragic enough; the system panel satirizes the
+data; the novice gift package takes effect immediately; the ex-wife regrets the
+foreshadowing; hidden equipment; children's relationship
+**Rules**: System evaluation + protagonist’s complaints are the core points of laughter;
+there must be system rewards at the end of each chapter; contrast is the source of
+satisfying payoff; life-like details create a sense of reality
 
 ---
 
-## 公式七：年代重生/双重复仇（19章）
+## Formula 6: xuanhuanxianxia/rebirth counterattack (Chapter 19)
 
 ```
-导语[前世被利用]→双重生→女主选完全不同的路→男主(天阉)温柔登场
-→揭发渣男前世罪行→渣男自以为赢→更多证据揭露→渣男崩溃
-→男主真实身份揭露→华丽打脸→男主后悔BE收尾
+Introduction [Full picture of being killed in a previous life] → Rebirth and return to a key node → Deliberately not acting according to the previous life → Opponent becomes self-doubtful and confused
+→ People around are confused → The opponent gets deeper and deeper → Key figures help → Gradually disintegrate the villain → Final battle → Open HE
 ```
 
-**情绪**：愤怒→解气→甜→紧张→极爽→余韵
-**必选场景**：前世付出导语交代清；双重生博弈；年代细节（的确良、大团结、赤脚医生）；男主看似缺陷实则完美；渣男崩溃写足；结尾用渣男视角写后悔
-**规则**：年代感靠真实历史细节；"替罪羊"比"被出轨"更有冲击力；双重生=双重信息战；渣男绝望反衬女主洒脱
+**Emotion**: Frustrated → Refreshing → Suspense → More Refreshing → Tension → Warmth
+**Required scene**: The death in the previous life is detailed and cruel; the first
+thing after rebirth is "abnormal"; the opponent's self-doubt is the core satisfying
+payoff; the truth of the previous life is gradually revealed; the key helper has a good
+reputation; the ending is left blank to imply feelings
+**Rules**: Don’t do the same thing as in the previous life = maximum golden finger; use
+abnormal behavior to create information gaps; xianxia (immortal cultivation) sets the service emotional line
+and does not set it up
 
 ---
 
-## 公式八：宫闱宅斗/女帝逆袭（19章）
+## Formula Seven: Era Rebirth/Double Revenge (Chapter 19)
 
 ```
-家族被害→被迫替嫁→表面顺从暗中布局→带走所有资源离开
-→新势力中积蓄力量→发现更大阴谋→联合盟友→反攻京城→旧势力崩溃→称帝+改革+HE
+Introduction [Being used in the past life] → Double life → The female protagonist chooses a completely different path → The male protagonist (Heavenly Eunuch) makes a gentle appearance
+→Expose the scumbag’s past life crimes→The scumbag thinks he has won→More evidence is revealed→The scumbag collapses
+→The male protagonist’s true identity is revealed→Gorgeous face-slapping→The male protagonist regrets the BE ending
 ```
 
-**情绪**：悲愤→隐忍→悬念→爽→极爽→满足
-**必选场景**：家族被害够惨；替嫁展示智慧；"带走家产"是转折点；每步布局有合理动机；反攻名场面；称帝后改革体现格局
-**规则**：主角从不解释计划让读者自己猜；古文对话有古味但不太文言；布局有"回顾时恍然大悟"效果；反派是"利益驱动的冷漠"
+**Emotion**: Angry → Relieved → Sweet → Nervous → Extremely Refreshing → Aftertaste
+**Required Scenes**: The introduction of the sacrifice in the past life clearly
+explains; the game of twins; the details of the era (Chen Liang, Great Unity, Barefoot
+Doctor); the male protagonist seems to have flaws but is actually perfect; the scumbag's
+collapse is fully written; the ending is written from the perspective of the scumbag and
+regrets
+**Rules**: The sense of age relies on real historical details; "scapegoat" is more
+impactful than "being cheated on"; double life = double information war; the scumbag's
+despair contrasts with the free and easy heroine
 
 ---
 
-## 公式九：现代悬疑/超自然视角（18章）
+## Formula 8: Inner-court intrigue/Empress’ counterattack (Chapter 19)
 
 ```
-设定[鬼伪装成人]→被骗入局→发现怨气能升级→顺水推舟
-→揭露犯罪网络→鬼能力升级→对付小喽啰→找幕后黑手
-→揭露前世死因→最终对决→法律+超自然双重惩罚
+The family was killed → forced to marry → superficially obeyed the secret plan → took away all resources and left
+→ Accumulate strength among new forces → Discover a bigger conspiracy → Join allies → Counterattack the capital → Collapse of old forces → Proclaim emperor + reform + HE
 ```
 
-**情绪**：好奇→紧张→爽→更爽→震撼→痛快
-**必选场景**：设定一句话说清；被骗后"不慌反喜"；鬼视角独特信息差；每次升级解锁前世记忆；反派反应是爽点；双重惩罚比单杀更解气
-**规则**：鬼视角是独特卖点；"鬼不怕恶人，恶人怕鬼"；悬疑线+复仇线交织；每章结尾有反转或新发现
+**Emotion**: sadness and anger → tolerance → suspense → pleasure → extreme pleasure →
+satisfaction
+**Must-selected scenes**: The family was killed miserably; the substitute marriage shows
+wisdom; "taking away the family property" is the turning point; every step of the layout
+has reasonable motives; the famous counterattack scene; the reform after becoming
+emperor reflects the pattern
+**Rules**: The protagonist never explains the plan and lets the readers guess for
+themselves; the dialogues in ancient Chinese have an ancient flavor but are not very
+classical; the layout has the effect of "sudden realization when looking back"; the
+villain is "profit-driven indifference"
 
 ---
 
-## 公式十：架空历史/性别反转（19章）
+## Formula 9: Modern suspense/supernatural perspective (18 chapters)
 
 ```
-被家暴/被误解→配偶偏心外人→失望到放弃→决定离开
-→配偶不以为然→离开后变好→配偶后悔→配偶疯狂赎罪→主角不原谅→悲剧/开放式
+Setting [Ghost disguised as a human] → Being tricked into the game → Discovering that resentment can be upgraded → Going with the flow
+→Expose the criminal network→Upgrade the ghost's ability→Deal with the minions→Find the mastermind behind the scenes
+→Reveal the cause of death in the previous life→Final showdown→Double punishment of law + supernatural
 ```
 
-**情绪**：憋屈→更憋屈→释然→轻松→暗爽→意难平
-**必选场景**：开篇被冤枉/被打；"白月光"型情敌够白莲花；主角离开干净利落；配偶后悔递进；主角不原谅是全文态度；结局不HE更有余韵
-**规则**：性别反转是外壳，核心是"不被珍惜的人选择离开"；每次"忍忍就好"都是对读者愤怒加码；配偶后悔越详细读者"不原谅"越坚决；悲剧性来自"来不及了"
+**Emotion**: Curiosity → Nervous → Refreshing → More Refreshing → Shocked → Happy
+**Required scene**: The setting is made clear in one sentence; after being deceived,
+"don't panic but feel happy"; the ghost's perspective has unique information and poor
+information; each upgrade unlocks past life memories; the villain's reaction is
+satisfying payoff; double punishment is more relieving than single kill
+**Rules**: The ghost perspective is a unique selling point; "Ghosts are not afraid of
+evil people, evil people are afraid of ghosts"; suspense lines + revenge lines are
+intertwined; there is a reversal or new discovery at the end of each chapter
 
 ---
 
-## 公式十二：重生复仇/离婚逆袭（10章）
+## Formula 10: Alternate History/Gender Reversal (Chapter 19)
 
 ```
-前世被害→重生到关键节点→冷静接受离婚→拿走应得财富
-→投资已知成功项目→系统学习提升→前夫后悔→前夫试图挽回→坚决拒绝→华丽蜕变
+Domestic violence/misunderstanding → Spouse favors outsiders → Disappointed to the point of giving up → Decide to leave
+→The spouse does not take it seriously→Becomes better after leaving→The spouse regrets→The spouse makes crazy atonement→The protagonist does not forgive→Tragedy/open-ended
 ```
 
-**情绪**：憋屈→释然→爽→更爽→极爽→满足
-**必选场景**：前世死法和前夫直接相关；重生后第一反应"笑了"；离婚干脆要钱要利不要人；投资展示智慧；前夫后悔递进；最终蜕变有具体体现
-**规则**："知道了结局，现在要改变过程"；冷静是最大武器；每个决定有前世记忆支撑；前夫带有"理所当然地忽视"的缺陷，避免纯坏；投资线和感情线分开
+**Emotion**: Aggrieved → More aggrieved → Relieved → Relaxed → Secretly happy →
+lingering regret
+**Required scene**: Being wronged/beaten at the beginning; the "white moonlight" love
+rival is as white as a lotus; the protagonist leaves cleanly; the spouse regrets
+progressively; the protagonist does not forgive is the attitude of the whole story; the
+ending is not HE and has a lingering aftertaste
+**Rules**: Gender reversal is the shell, and the core is "those who are not cherished
+choose to leave"; every time "just endure it" increases the reader's anger; the more
+detailed the spouse's regret, the more determined the reader will be to "not forgive";
+the tragedy comes from "it's too late"
 
 ---
 
-## 公式十三：总裁豪门/白月光虐恋（8-11章）
+## Formula 12: Rebirth and Revenge/Divorce Counterattack (Chapter 10)
 
 ```
-1-2章 虐(建立矛盾)：伤害层层升级(言语→行为→身体)
-3-4章 觉醒(心死离开)：临界事件(目睹背叛/身体极限)
-5-6章 反转(真相揭露)：监控/证据/白月光自曝
-7-8章 惩罚(追悔被拒)：渣男崩溃/反派落败
-9-10章 治愈(新生活)：女主独立/新恋情
+Victimized in previous life → reborn at a critical point → calmly accept the divorce → take away the wealth he deserves
+→ Invest in known successful projects → Systematic learning and improvement → Ex-husband regrets → Ex-husband tries to save → Firm refusal → Gorgeous transformation
 ```
 
-**情绪比例**：虐30%→觉醒15%→爽35%→治愈20%
-**虐三层**：言语伤害→行为伤害→身体伤害
-**必选场景**：开篇信息炸弹；白月光出场每句话羞辱女主；临界事件（监控/母亲去世丈夫带秘书旅行）；死遁/消失30%作品使用；渣男追悔被拒；新恋情暗示50%
-**简介6步**：情境设定→冲突引爆→对话金句→女主转折→悬念钩子→身份预告
-**规则**：100%第一人称；伤害性对话"精准刺痛"非谩骂；觉醒是一瞬间；爽按序释放不能乱序
+**Emotion**: Frustrated → Relieved → Refreshed → More Refreshed → Extremely Refreshed →
+Satisfied
+**Required scene**: The way of death in the previous life is directly related to the
+ex-husband; the first reaction after rebirth is "laughing"; the divorce simply requires
+money and benefits rather than others; investment shows wisdom; the ex-husband regrets
+progressively; the final transformation is concretely reflected
+**Rules**: "Knowing the outcome, now we have to change the process"; calmness is the
+greatest weapon; every decision is supported by past life memories; the ex-husband has
+the flaw of "naturally ignoring" to avoid pure badness; investment lines and emotional
+lines are separated
 
 ---
 
-## 公式十四：女频 vs 男频复仇/打脸
+## Formula Thirteen: President's Rich Family/white moonlightangsty romance (Chapter 8-11)
 
-### 女频万能公式
-- **开头(前10%)**：第一人称「我」；3句内建立核心矛盾；重生则150字内完成前世回顾
-- **发展(10-50%)**：反派每500字升级一次；主角表面隐忍；心声制造信息差；每800字一次小打脸
-- **高潮(50-80%)**：终极真相/身份揭露；公开审判式打脸；每500字一次大打脸
-- **收尾(80-100%)**：反派下场；新生活开启；≤200字温情收尾
+```
+Chapter 1-2 Abuse (creating conflicts): The damage escalates layer by layer (words → behavior → body)
+Chapter 3-4 Awakening (Dead Heart and Leaving): Critical Event (Witnessing Betrayal/Physical Limit)
+Chapter 5-6 Reversal (truth revealed): surveillance/evidence/white moonlight self-exposure
+Chapter 7-8 Punishment (regret for being rejected): The scumbag collapses/the villain loses
+Chapter 9-10 Healing (new life): heroine’s independence/new relationship
+```
 
-### 男频万能公式
-- **开头(前10%)**：第一段最大屈辱；不铺垫直接炸裂；关键数据具体
-- **发展(10-40%)**：隐忍篇幅比女频短；靠行动非心声展示能力
-- **反击(40-70%)**：直接碾压不解释；碾压必须当众
-- **高潮(70-90%)**：身份揭露；称呼改变=身份揭露；集体震惊
-- **收尾(90-100%)**：反派覆灭；200-400字温情线
+**Emotion ratio**: Abuse 30% → Awaken 15% → Refresh 35% → Heal 20%
+**Three levels of abuse**: verbal harm → behavioral harm → physical harm
+**Required scene**: information bomb at the beginning; white moonlight appears and
+humiliates the heroine with every sentence; critical event (surveillance/mother's death,
+husband travels with secretary); death escape/disappearance 30% of works used; scumbag
+regrets rejection; 50% new love hints
+**Introduction 6 steps**: Situation setting→Conflict detonation→Dialogue lines→The
+heroine’s turning point→Suspense hook→Identity trailer
+**Rules**: 100% first person; harmful dialogue "precise sting" is not abusive; awakening
+is an instant; pleasure is released in order and cannot be out of order
 
-### 核心差异
+---
 
-| 指标 | 女频 | 男频 |
+## Formula 14: female-oriented vs male-oriented revenge/face-slapping
+
+### female-oriented Universal Formula
+- **The beginning (top 10%)**: first person "I"; establish the core conflict within 3
+  sentences; complete the past life review within 150 words for rebirth
+- **Development (10-50%)**: The villain upgrades every 500 words; the protagonist
+  appears to be forbearing; the voice creates information gaps; a small face-slapping
+  every 800 words
+- **Climax (50-80%)**: Ultimate truth/identity reveal; public trial style face-slapping;
+  one big face-slapping every 500 words
+- **Ending (80-100%)**: The end of the villain; the beginning of a new life; a warm
+  ending of ≤200 words
+
+### male-oriented Universal Formula
+- **The beginning (first 10%)**: The biggest humiliation in the first paragraph; it
+  explodes without any foreshadowing; the key data is detailed
+- **Development (10-40%)**: Forbearance is shorter than female-oriented; demonstrates
+  ability through actions rather than words.
+- **Counterattack (40-70%)**: Crush directly without explanation; Crush must be done in
+  public
+- **Climax (70-90%)**: Identity revealed; title change = identity revealed; collective
+  shock
+- **Ending (90-100%)**: The villain is destroyed; 200-400 words of tenderness
+
+### Core differences
+
+| indicators | female-oriented | male-oriented |
 |------|------|------|
-| 情绪触发密度 | 3.23次/千字 | 2.50次/千字 |
-| 反转密度 | 1.77次/千字 | 1.21次/千字 |
-| 反转类型 | 信息差型（心声/真相） | 力量型（身份/实力） |
-| 反派类型 | 渣男+绿茶+偏心父母 | 兄弟+老板+势利眼 |
-| 复仇方式 | 信息差式（真相揭露） | 力量式（实力碾压） |
+| Emotional trigger density | 3.23 times/thousand words | 2.50 times/thousand words |
+| Inversion density | 1.77 times/thousand words | 1.21 times/thousand words |
+| Reversal type | Information gap type (voice/truth) | Power type (identity/strength) |
+| Villain type | Scumbag + green tea + eccentric parents | Brother + boss + snobbery |
+| Revenge style | Information difference style (truth revealed) | Power style (strength crushing) |
 
 ---
 
-## 公式十五：宫闱宅斗/隐忍腹黑型（8章）
+## Formula 15: Inner-court intrigue/hidden evil type (Chapter 8)
 
 ```
-1 主动入局(明知丈夫爱寡嫂仍嫁入)
-2 以退为进(比情敌更贤惠→情敌嫉妒失控)
-3 借力打力(情敌假晕骗丈夫→丈夫发现被骗→对情敌失望)
-4 静待自毁(情敌社交场合闯祸→主角旁观)
-5 意外之喜(情敌怀孕→孩子交主角扶养)
-6 釜底抽薪(情敌不能再育→主角成为孩子母亲)
-7 设局收网(宫宴支开丈夫→情敌杀婆婆→主角"恰好"撞见)
-8 终极反转(揭示从头到尾都在操纵→独占家产)
+1 Taking the initiative to enter the game (knowing that her husband loves the widowed sister-in-law but still marrying her)
+2 Retreat to advance (be more virtuous than your love rival → your love rival is jealous and out of control)
+3. Use strength to gain strength (the love rival pretends to be stunned and deceives the husband → the husband discovers that he has been cheated → is disappointed with the love rival)
+4 Waiting for self-destruction (love rival gets into trouble in social situations → the protagonist watches)
+5 Unexpected joy (love rival becomes pregnant → the child is handed over to the protagonist to raise)
+6. Pulling the fire under the cauldron (the love rival can no longer have children → the protagonist becomes the mother of the child)
+7 Set up a trap to close the net (the husband is sent away at the palace banquet → the love rival kills the mother-in-law → the protagonist "happens" to bump into him)
+8 The ultimate reversal (revealing that he was controlling from beginning to end → monopolizing the property)
 ```
 
-**情绪**：好奇→爽(情敌自毁)→更爽(主角不动声色)→震撼(结尾反转)
-**必选场景**：开篇反常行为；情敌自毁三连（假晕→失言→杀婆婆）；每次让步都是布局；结尾内心独白揭示真相
-**规则**：主角从不主动出手；每次情敌犯错后主角都是"受害者"或"好人"；结尾用主角内心独白形成认知反转
+**Emotion**: Curiosity → Refreshment (the love rival self-destructs) → Even more
+pleasure (the protagonist remains calm) → Shock (reversal at the end)
+**Required scene**: Abnormal behavior at the beginning; love rival self-destructs three
+times in a row (fake faint → gaffe → kill mother-in-law); every concession is a setup;
+inner monologue at the end reveals the truth
+**Rules**: The protagonist never takes the initiative; every time the love rival makes a
+mistake, the protagonist is the "victim" or the "good guy"; at the end, the
+protagonist's inner monologue is used to form a cognitive reversal
 
 ---
 
-## 公式十六：追夫火葬场/不原谅型（8章）
+## Formula 16: Husband-Chasing Crematorium/Unforgiven Type (Chapter 8)
 
 ```
-1 发现真相(999次引诱失败→发现暗恋继父)→决定离婚
-2 彻底死心(回忆付出→被拒屈辱)→最后的温柔
-3 妻子失控(看到继父给别的女人号码后暴怒，但不为男主)
-4 被虐(继父绑架男主→妻子和继父开心聊天)→彻底绝望
-5 决然离开(妻子以为欲擒故纵→烧了男主东西)
-6 丑闻曝光(半年后举报信→继父出卖妻子→身败名裂)
-7 重逢(妻子找到男主→发现已有新恋人→眼神陌生)
-8 不原谅(妻子跟踪→天台对峙→坚决不回头)
+1 Discovered the truth (999 failed attempts at seduction → Discovered secret love for stepfather) → Decided to divorce
+2 Completely giving up (remembering the sacrifice → humiliation of being rejected) → the final tenderness
+3 The wife lost control (she became furious after seeing her stepfather give her number to another woman, but not the male protagonist)
+4 Abused (stepfather kidnaps male protagonist → Wife and stepfather chat happily) → Complete despair
+5 Decided to leave (the wife thought she was playing hard to get → burned the hero’s belongings)
+6 Scandal exposed (report letter half a year later → stepfather betrayed his wife → ruined his reputation)
+7 Reunion (the wife finds the male protagonist → discovers she has a new lover → looks strange)
+8 Unforgiven (Wife follows → Confrontation on rooftop → Determined not to look back)
 ```
 
-**情绪**：绝望→平静→新生→痛快→苍凉
-**必选场景**："第N次"制造递进绝望；撞见真相；妻子的"无所谓"；继父出卖妻子；新恋人对比；天台对峙BE
-**规则**：男主越冷静越有力；妻子后悔越详细读者越觉得活该；新恋人证明"有人会珍惜我"；不原谅比强行HE更有力量
+**Emotion**: despair → calm → rebirth → happiness → desolation
+**Required scene**: "The Nth time" creates progressive despair; encountering the truth;
+wife's "indifferent"; stepfather betrays wife; comparison of new lovers; rooftop
+confrontation BE
+**Rules**: The calmer the hero, the more powerful he is; the more detailed the wife’s
+regret, the more readers feel she deserves it; the new lover proves that "someone will
+cherish me"; unforgiveness is more powerful than forced HE
 
 ---
 
-## 公式十七：年代重生/医术复仇型（8章）
+## Formula Seventeen: Rebirth of the Era/Medical Revenge Type (Chapter 8)
 
 ```
-1 前世极惨(被500块卖→生育工具→火烧死)→重生
-2 金手指展示(银针→给植物人丈夫治疗)→化解前世危机
-3 以退为进(面对挑衅不怒→用医术赢得贵人信任)
-4 关键转折(丈夫醒来→利用股权要价→获公司股份)
-5 步步为营(丈夫保护→逐渐放下心防→感情线推进)
-6 收网布局(发现公公被毒杀→丈夫坦白下毒→丈夫也在复仇)
-7 复仇高潮(公公葬礼→警察抓大房→大房逃亡)
-8 BE但圆满(丈夫癌症去世→复仇成功→孩子和事业留给主角)
+1 The previous life was extremely miserable (sold for 500 yuan → fertility tools → burned to death) → rebirth
+2 golden finger display (silver needle → treating husband who is in a vegetative state) → resolving past life crisis
+3. Use retreat to advance (not angry in the face of provocation → use medical skills to win the trust of noble people)
+4 Key turning point (husband wakes up → uses equity to ask for price → obtains company shares)
+5 Step by step (husband’s protection→gradually letting go of guard→advancing the emotional line)
+6 Closing the net (discovering that the father-in-law was poisoned → the husband confessed to the poisoning → the husband also took revenge)
+7 Revenge climax (father-in-law’s funeral → police arrest the big house → big house escapes)
+8 BE but complete (husband dies of cancer → revenge is successful → children and career are left to the protagonist)
 ```
 
-**情绪**：愤怒→爽→紧张→极爽→苍凉
-**必选场景**：前世极惨层层递进；重生后第一个反常（不再害怕）；医术金手指；贵人相助；丈夫反转（植物人其实在装/半清醒）；BE结局
-**规则**：年代感靠细节（500块、冲喜、银针）；医术要有专业性；大房的恶要具体；BE是"得到了一切但失去了最重要的人"
+**Emotion**: Angry → Refreshing → Nervous → Extremely Refreshing → Desolation
+**Required scene**: The previous life was extremely miserable and progressive; the first
+abnormality after rebirth (no longer afraid); medical skills golden finger; noble help;
+husband's reversal (the vegetative person is actually pretending/semi-conscious); BE
+ending
+**Rules**: The sense of age depends on the details (500 yuan, happy luck, silver
+needle); medical skills must be professional; the evil of the big house must be
+specific; BE is "gained everything but lost the most important person"
 
 ---
 
-## 公式十八：灵魂视角家庭虐文（5章）
+## Formula 18: Domestic Abuse Article from the Soul’s Perspective (5 Chapters)
 
 ```
-1 病中被虐(重病被逼做事→身体崩溃→灵魂飘起)
-2 旁观真相(灵魂看到家人冷漠→配角拱火→母亲为"面子"变本加厉)
-3 证据浮出(父亲发现→手机/日记/监控暴露真相→全家崩溃)
-4 审判清算(逐出族谱→配角被惩→反派得报应)
-5 重生暖心(投胎温暖家庭→温馨细节呼应前世缺失)
+1 Being abused while ill (seriously ill and forced to do things → the body collapsed → the soul floated)
+2 Watching the truth (the soul sees the indifference of the family → the supporting role becomes angry → the mother intensifies for "face")
+3 Evidence emerges (father discovers → mobile phone/diary/surveillance exposes the truth → the whole family collapses)
+4 Judgment and reckoning (expelled from the family tree→supporting characters punished→villains get retribution)
+5 Rebirth and heart-warming (reincarnation in a warm family → warm details echo the lack of previous lives)
 ```
 
-**情绪**：窒息→心碎→释放→痛快→治愈
-**必选场景**：身体最脆弱时遭最大伤害（脊椎术后逼祭祖/剖腹产逼做饭）；"我的魂魄慢慢飘起"；配角拱火；母亲的"面子"执念；手机/日记作为证据；重生到温暖家庭
-**规则**：灵魂视角能看到但无法阻止；身体细节必须具体（脊椎错位的脆响、护腰被扯下的刺啦）；母亲后悔写够（从"她最会装"到嚎叫崩溃）；重生结尾用对比；最后一句必须温暖
+**Emotions**: suffocation → heartbreak → release → joy → healing
+**Must-selected scenes**: The body suffers the greatest damage when it is most
+vulnerable (forced to worship ancestors after spine surgery/forced to cook after
+caesarean section); "My soul slowly floats"; Supporting characters fight against the
+fire; Mother's obsession with "face"; Mobile phone/diary as evidence; Rebirth into a
+warm family
+**Rules**: The soul's perspective can be seen but cannot be stopped; the physical
+details must be specific (the crisp sound of the spine's dislocation, the thorns of the
+waist guard being torn off); the mother regrets writing enough (from "she is the best at
+pretending" to the howling collapse); the end of rebirth uses contrast; the last
+sentence must be warm
 
-### 开头金句模板
+### Opening Sentence Template
 
-| 模板 | 示例 |
+| Template | Example |
 |------|------|
-| 病中被逼 | "我刚做完脊椎手术，医生再三嘱咐静养三个月。妈妈却攥着我手腕：快点，祭祀要开始了。" |
-| 产后被逼 | "我刚剖腹产七天，刀口泛着疼。老公推开门：今天家里来客，你去做几个菜。" |
-| 过敏被锁 | "我刚做完手术，想拿急救吸入器，就被表妹抢了过去：舅妈你看，她又装病想偷懒！" |
+| Forced during illness | "I had just completed spinal surgery, and the doctor repeatedly told me to rest for three months. But my mother held my wrist: hurry up, the sacrifices are about to begin." |
+| Forced after giving birth | "I just had a caesarean section seven days ago, and the incision is sore. My husband opened the door and said: There are guests at home today, please make some dishes." |
+| Allergies are locked | "I just finished the operation and wanted to get the emergency inhaler, but my cousin snatched it away: Auntie, look, she is pretending to be sick again and wants to be lazy!" |
 
 ---
 
-## 公式十九：细节线索驱动型复仇（8-13章超短章节制）
+## Formula 19: Revenge driven by details and clues (super short chapters 8-13)
 
 ```
-1 发现异常(微小细节→冷静应对)
-2-3 暗中调查(职业优势系统收集证据→发现更大阴谋)
-4-5 布局反击(法律文件→证据陷阱→第三方施压)
-6-7 公开对峙(公开场合递交文件→对方崩溃→真相浮出)
-8+ 连环反击(对方反扑→逐一破解→主角全新开始)
+1 Discover anomalies (tiny details → respond calmly)
+2-3 Secret investigation (career advantage system collects evidence → discovers a bigger conspiracy)
+4-5 Lay out counterattack (legal documents → evidence trap → third party pressure)
+6-7 Public confrontation (submit documents in public → the other party collapses → the truth emerges)
+8+ Continuous Counterattacks (The opponent counterattacks→Crack one by one→The protagonist starts anew)
 ```
 
-**情绪**：警觉→压抑→冷静→爽→极爽→豁达
-**必选场景**：一个触发细节（钥匙扣/避孕套品牌/发票/香水味）；职业优势展示；证据链系统构建；"笑着点头"时刻；反向利用对方棋子；"人情味很贵"收尾
-**规则**：超短章节制（每章500-1000字）；主角永远冷静；证据逐章释放；双面人写法；背叛层层加码；冷描写大情绪
+**Emotion**: Alert → Depressed → Calm → Refreshing → Extremely Refreshing → Open-minded
+**Required scene**: a triggering detail (keychain/condom brand/invoice/perfume scent);
+professional advantage display; evidence chain system construction; "smile and nod"
+moment; reverse use of the opponent's chess piece; "human touch is expensive" ending
+**Rules**: Super short chapters (500-1000 words per chapter); the protagonist is always
+calm; evidence is released chapter by chapter; two-faced writing method; betrayal is
+layered; cold description of big emotions
 
-### 调查链条模板
+### Investigation chain template
 ```
-异常物件→搜索确认→实地调查→系统取证(银行/监控/社交)→布局反击→公开审判
+Abnormal objects→Search and confirm→On-the-spot investigation→System evidence collection (banking/surveillance/social)→Lay out counterattack→Public trial
 ```
 
 ---
 
-## 公式二十：反套路嫁祸型重生（7章）
+## Formula 20: Counter-routine rebirth (Chapter 7)
 
 ```
-1 重生+假意顺从(知道遗产是陷阱→"你既然想要，就都给你吧")
-2 暗中布局(确认继承人身份→准备移民→假意亲近渣男)
-3 小试锋芒(不再忍白月光→展示反常行为→制造悬念)
-4 冲突升级(被陷害→用条件反击)
-5 身份揭露(权威人物→"我沈家家主明明是简希"→对方崩溃)
-6 收网(给对方"既要又要"的选择→看他自掘坟墓)
-7 华丽退场(揭露所有真相→移民离开→头也不回)
+1 Rebirth + Pretended obedience (Knowing that inheritance is a trap → "Since you want it, I'll give it to you")
+2 Secret plan (confirm the identity of the heir→prepare to immigrate→pretend to get close to the scumbag)
+3 A small test of edge (no longer tolerate the white moonlight → show abnormal behavior → create suspense)
+4 Conflict escalates (being framed → counterattack with conditions)
+5 Identity revealed (authoritative figure → "I, the head of the Shen family, is clearly Jian hope" → the other party collapses)
+6. Close the net (give the opponent the choice of "both want and want" → watch him dig his own grave)
+7. Make a grand exit (reveal all the truth → the immigrants leave → never look back)
 ```
 
-**情绪**：了然→爽→更爽→极爽→痛快→豁达
-**必选场景**："给你吧"时刻；白月光三连试探（撒娇→哭闹→威胁）；渣男"既要又要"；身份揭露名场面；冷眼旁观对方自毁；"头也不回"式离开
-**规则**："给你就是最好的惩罚"；前世记忆每章穿插一小段；主角情绪是"苍凉的笑"；最大蔑视是漠视
+**Emotion**: Clear → Refreshing → More Refreshing → Extremely Refreshing → Happy →
+Open-minded
+**Must-selected scenes**: "I'll give it to you" moment; white moonlight's three
+consecutive tests (acting like a baby → crying → threatening); the scumbag "wants both
+and wants"; the famous identity reveal scene; watching the other party self-destruct
+indifferently; leaving "without looking back"
+**Rules**: "I give you the best punishment"; each chapter is interspersed with a short
+paragraph of past life memories; the protagonist's emotion is "a desolate smile"; the
+greatest contempt is indifference
 
 ---
 
-## 公式二十一：公开审判式打脸
+## Formula 21: Public trial face-slapping
 
-### 核心场景设计
+### Core scene design
 ```
-1 设定"竞技场"(股东大会/家族寿宴/公司大堂)——必须公开
-2 反派先"赢"(当众宣布胜利、羞辱主角)
-3 主角标志性冷静(端起水杯/整理西装/笑了笑)
-4 逐层揭露(一张一张甩证据)
-5 反派逐级崩溃(得意→慌张→绝望→崩溃)
-6 标志性驱逐台词
-7 背影离场(全场死寂中头也不回)
+1 Set up the "arena" (shareholders meeting/family birthday banquet/company lobby) - must be made public
+2. The villain "wins" first (announces victory in public and humiliates the protagonist)
+3 The protagonist’s iconic calmness (picking up the water glass/arranging the suit/smiling)
+4. Expose layer by layer (discard evidence one by one)
+5 The villain collapses step by step (proud → panic → despair → collapse)
+6 Iconic Expulsion Lines
+7 Leaving the scene with his back (without looking back in the dead silence)
 ```
 
-### 标志性动作库
+### Iconic Move Library
 
-| 动作 | 效果 |
+| Action | Effect |
 |------|------|
-| 端起水杯，喝了一口 | 冷静到可怕 |
-| 转着车钥匙悠悠往里走 | 胜利者的从容 |
-| 顺手拿起一杯香槟 | 战场上的优雅 |
-| 慢慢蹲下身与她平视 | 居高临下的慈悲 |
+| Picked up the water glass and took a sip | Scarily calm |
+| Turning the car key and walking slowly inside | The calmness of a winner |
+| Picking up a glass of champagne | Elegance on the battlefield |
+| Slowly squat down to look at her level | Condescending compassion |
 
-### 驱逐台词库
+### Expulsion Script Library
 
-| 台词 | 场景 |
+| Lines | Scene |
 |------|------|
-| "与狗，不得入内" | 逐出公司 |
-| "从今天起，她连这栋大楼的大门都不能再踏进半步" | 永久驱逐 |
+| "No dogs allowed" | Expelled from company |
+| "From today on, she will not be able to even step through the door of this building." | Permanent eviction |
 
-动作库与台词库只示意「冷静反差 + 权力宣告」的方向，禁止照搬原句：高频套句已是可检索的模板指纹，每本书按人设自造。
+The action library and line library only indicate the direction of "calm contrast +
+declaration of power", and it is forbidden to copy the original sentences:
+high-frequency formulas are already searchable template fingerprints, and each book is
+self-made according to the character.
 
 ---
 
-## 短篇题材创作要点速查表
+## Cheat Sheet for Key Points in Short Story Creation
 
-### 世情/爽文
-- 打脸密度：每3-5节一次，反派嚣张度逐级递增
-- 受辱后2-3节内必须反击
-- 主角主动设局或果断反击
-- 反派有自洽作恶逻辑
-- 打脸后不拖泥带水，断绝/收走/报警干脆利落
-- 爽文章节500-800字/节，感官细节揉进动作节拍中（不单独成句），身体反应用动作白描
+### Feel-good fiction
+- face-slapping density: once every 3-5 sessions, the villain’s arrogance increases step
+  by step
+- You must fight back within 2-3 quarters after being humiliated.
+- The protagonist takes the initiative to set up a trap or counterattacks decisively
+- The villain has a self-consistent logic for doing evil
+- No sloppiness after face-slapping, cut off/take away/alarm simply and neatly
+- Feel-good fiction chapters are 500-800 words/section, sensory details are blended into
+  the action rhythm (not separate sentences), and body reactions are described in action
+  lines.
 
-### 情感/虐心
-- 前1/3用具体物件/数字/习惯建立关系质感
-- 先温暖→残酷真相击碎
-- 结尾用安静细节不写大段抒情
-- 离开要有明确触发事件
-- 离开后展现新生活质感
+### Emotional/Sadistic
+- The first 1/3 uses specific objects/numbers/habits to establish relationship texture
+- Warmth first→cruel truth crushes
+- Use quiet details at the end instead of large lyrical paragraphs
+- There must be a clear trigger event for leaving
+- Show a new quality of life after leaving
 
-### 古言/复仇
-- 人物关系一笔带清不搞复杂世界观
-- 打脸直接果断不拖泥带水
-- 最大底牌留在最后1/4揭示
-- 身份/实力作为天然底牌
-- 恶人结局与恶行形成对应
+### Ancient Proverbs/Revenge
+- The relationships between the characters are explained in one stroke without making
+  the world view complicated.
+- face-slapping is direct, decisive and not sloppy
+- The biggest hole card is left in the last 1/4 to reveal
+- Identity/strength as a natural trump card
+- The ending of the evil person corresponds to his evil deeds
 
-### 悬疑/推理
-- 信息差布局（读者知/角色不知，或反过来）
-- 排除法结构逐步排除表面解释
-- 动机揭示：先做了什么→再为什么做
-- 重生/穿越作为信息差工具不展开设定
-- 每次反转揭示部分真相引出更大问题
+### suspense/mystery
+- Information gap layout (reader knows/character doesn’t know, or vice versa)
+- Elimination method structure gradually eliminates superficial explanations
+- Motivation revelation: what you did first → then why you did it
+- Rebirth/travel as an information gap tool does not expand settings
+- Each twist reveals part of the truth and leads to bigger questions
 
-### 年代/亲情
-- 展示双方苦不简单站队
-- 用时代特有物件/习俗建质感
-- 不急于和解先让双方充分受伤
-- 断亲有反复和挣扎
-- 断裂后用新关系填补
+### Era/Family Relationship
+- Showing how difficult it is for both sides to take sides
+- Use period-specific objects/customs to create a sense of texture
+- Don’t be in a hurry to reconcile. Let both parties be fully hurt first.
+- There are repetitions and struggles in cutting off a relationship
+- Fill the gap with new relationships
 
-### 钩子密度分级
+### Hook density grading
 
-| 题材 | 密度 | 偏好 |
+| Subject matter | Density | Preferences |
 |------|------|------|
-| 复仇/爽文 | 极高：每2节 | 打脸、底牌、代价 |
-| 悬疑 | 高：每2-3节 | 信息差、倒计时、反转 |
-| 情感/虐心 | 中高：每3节 | 情感、反差、余韵 |
-| 古言/宫斗 | 中高：每2-3节 | 底牌、打脸、代价 |
-| 年代/亲情 | 中：每3-4节 | 情感、反差、余韵 |
+| Revenge/feel-good fiction | Extremely high: every 2 periods | face-slapping, trump card, price |
+| Suspense | High: every 2-3 quarters | Information gap, countdown, reversal |
+| Emotion/Sadness | Medium to high: every 3 verses | Emotion, contrast, aftertaste |
+| Ancient saying/palace intrigue | Medium to high: every 2-3 quarters | Trump card, face-slapping, price |
+| Era/Family Love | Medium: Every 3-4 stanzas | Emotion, contrast, aftertaste |
 
 ---
 
-## 质量检查清单
+## Quality Checklist
 
-> 写完每个公式后逐项核对。全部通过才算合格。
+> After writing each formula, check it item by item. All must be passed to be
+> considered qualified.
 
-- [ ] **公式对位**：所用公式与题材标签匹配，没有混用不相关公式
-- [ ] **情绪节拍完整**：情绪曲线与公式要求的节拍一致，没有跳过或乱序
-- [ ] **必选场景齐全**：每个"必选场景"都在文中出现，没有遗漏
-- [ ] **核心规则遵守**：公式"规则"部分的每一条都已落实
-- [ ] **篇幅合规**：章/节数量在公式规定范围内
-- [ ] **女频/男频区分**：如果是复仇打脸类，已按公式十四的核心差异调整写法
-- [ ] **钩子密度达标**：按题材速查表的密度要求，每N节有明确钩子
-- [ ] **开头3秒抓人**：第一段/第一句已建立核心冲突或信息炸弹，没有慢热铺垫
+- [ ] **Formula Counterpoint**: The formulas used match the subject tags, and no
+      irrelevant formulas are mixed.
+- [ ] **Emotional Beat Complete**: The emotion curve is consistent with the beat
+      required by the formula, without skipping or out-of-order
+- [ ] **Complete must-select scenes**: Every "must-select scene" appears in the text,
+      and nothing is missing
+- [ ] **Core Rules Compliance**: Every item in the "Rules" portion of the formula has
+      been implemented
+- [ ] **Length Compliance**: The number of chapters/sections is within the range
+      specified by the formula
+- [ ] **Female-oriented/male-oriented distinction**: If it is a revenge face-slapping
+      class, the writing method has been adjusted according to the core difference of
+      Formula 14
+- [ ] **Hook density meets standard**: According to the density requirements of the
+      theme cheat sheet, there are clear hooks in every N sections
+- [ ] **Catch people in the first 3 seconds**: The first paragraph/first sentence has
+      established the core conflict or information bomb, and there is no slow-burning
+      foreshadowing.

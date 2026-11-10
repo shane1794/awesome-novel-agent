@@ -1,27 +1,27 @@
 ## Why
 
-源头约束（前两个 change）能把外部 AI 检测的修复轮次压到最少，但无法保证归零：切片边界由全文分布决定、检测器持续升级、同文本复测有波动。需要一个作者手动触发的可选校准环节——送外部检测、按逐片结果定向修、达标锁版，并把每轮经验沉淀进项目的战役记录与回归库。
+Source constraints (the previous two changes) can push the number of external AI detection fix rounds to a minimum, but cannot guarantee zero: slice boundaries are decided by the whole text's distribution, detectors keep upgrading, and re-testing the same text fluctuates. An optional calibration step triggered manually by the author is needed: submit to an external detector, fix by per-segment results, lock the version when it passes, and distill each round's lessons into the project's battle log and regression library.
 
 ## What Changes
 
-- 新增 `skills/detect-loop.md`：平台无关的外部检测校准闭环 SOP（送外部 AI 检测器→读逐片结果→只修最高分片段→边界稳定/等长微调→达标锁版→沉淀战役记录与回归串）。
-- `skills/novel-dispatch.md` 调度表增加作者触发可选 phase（作者说"送检/过一遍检测"才启动，不进默认管线）。
-- 工程对接以适配器形式描述：仓库内不含任何检测平台自动化脚本、逆向协议与密钥；本地工具的对接方式见 skill 内说明。
-- 明确合规边界：SOP 只面向作者对自己稿件的自愿校准，不包装检测器对抗、不绕平台风控。
+- Add `skills/detect-loop.md`: a platform-independent SOP for the external-detection calibration loop (submit to an external AI detector, read per-segment results, fix only the highest-scoring segment, keep boundaries stable with equal-length fine-tuning, lock the version when it passes, distill the battle log and regression strings).
+- `skills/novel-dispatch.md` dispatch table gains an author-triggered optional phase (it only starts when the author says "submit it / run it through detection"; it does not enter the default pipeline).
+- Engineering integration is described as an adapter: the repo contains no detection-platform automation scripts, reverse-engineered protocols, or keys; how a local tool connects is described inside the skill.
+- State the compliance boundary explicitly: the SOP only serves the author's voluntary calibration of their own manuscript; it does not package detector evasion or bypass platform risk controls.
 
 ## Capabilities
 
 ### New Capabilities
 
-- `detect-loop`: 作者触发的外部检测校准闭环——送检、逐片修复、锁版与经验沉淀的流程契约。
+- `detect-loop`: an author-triggered external-detection calibration loop, the flow contract for submission, per-segment fixes, locking, and lessons learned.
 
 ### Modified Capabilities
 
-（无既有 spec。）
+(No existing spec.)
 
 ## Impact
 
-- 新增：`skills/detect-loop.md`。
-- 修改：`skills/novel-dispatch.md`（可选 phase 行 + 断点续跑语义备注）。
-- 依赖：依赖 `wire-source-constraints-into-pipeline` 先合入（复用 `sandbox/detect-battles.md` 与 `sandbox/prose-regressions.txt`、check-chapter 复跑）。
-- 明确不入库：检测平台自动化脚本、接口逆向文档、密钥模板、浏览器指纹方案。
+- Added: `skills/detect-loop.md`.
+- Changed: `skills/novel-dispatch.md` (optional phase row + breakpoint-resume semantics note).
+- Depends on: `wire-source-constraints-into-pipeline` merged first (reuses `sandbox/detect-battles.md` and `sandbox/prose-regressions.txt`, plus the check-chapter re-run).
+- Explicitly not added: detection-platform automation scripts, interface-reversing docs, key templates, browser-fingerprint schemes.

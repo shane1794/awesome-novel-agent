@@ -1,46 +1,56 @@
-# scene-craft — 场景写作方法论
+# Scene-Craft, Scene Writing Methodology
 
-> **用途：经四步转化后注入提示词，AI 直接使用，无需作者决策**
+> **Purpose: After four steps of transformation, prompt words are injected and AI can
+> be used directly without the need for author decision-making**
 
-本目录下的方法论文档在写作循环中由 **prompt-crafter 按需自动加载**，经过四步转化法（锚定角色→锚定信息差→锚定情绪节奏→融合输出）后注入输出·写作规范。
+The methodology documents in this directory are automatically loaded on demand by
+**prompt-crafter** in the writing cycle. After a four-step transformation method
+(anchoring role → anchoring information difference → anchoring emotional rhythm → fusion
+output), output and writing specs are injected.
 
-**不需要**问作者"这段对话用什么技巧写"——场景级写法的选择是执行层面的操作，不是创作决策。
+**No need** to ask the author "What technique was used to write this dialogue?" - the
+choice of scene-level writing method is an execution-level operation, not a creative
+decision.
 
-## 加载机制
+## Loading Mechanism
 
 ```
-输入·场景原材料填充完毕
+Input and scene raw materials are filled in
   │
-  ├─ 常规场景类型 → scene-craft/{类型}/universal.md
-  │                  + scene-craft/{类型}/{题材}.md（存在则覆盖）
+  ├─ General scene types → scene-craft/{type}/universal.md
+  │ + scene-craft/{type}/{theme}.md (overwrite if exists)
   │
-  ├─ 特殊检查 → appearance/（新角色登场/外貌变化时）
-  │              inner-mono/（重大事件/情绪波动时）
+  ├─ Special inspection → appearance/(when a new character appears/appearance changes)
+  │ inner-mono/(major events/during emotional fluctuations)
   │
-  └─ 输出 → 四步转化 → 注入输出·写作规范
+  └─ Output → Four-step transformation → Inject output and writing specs
 ```
 
-## 目录结构
+## Directory structure
 
 ```
 scene-craft/
 ├── README.md
 ├── index.md
-├── prose/             文笔技法（始终加载）
-├── pov/               视角切换（始终加载）
-├── death-scene/       角色死亡/下线
-├── dialogue/          对话场景
-├── fight/             战斗场景
-├── appearance/        角色外貌描写
-├── inner-mono/        心理活动
-├── environment/       环境描写
-├── group-scene/       群像场景
-└── transition/        过渡场景
+├── prose/writing techniques (always loaded)
+├── pov/ perspective switching (always loaded)
+├── death-scene/ character death/offline
+├── dialogue/ dialogue scene
+├── fight/ fight scene
+├── appearance/ character appearance description
+├── inner-mono/ psychological activity
+├── environment/ environment description
+├── group-scene/ group portrait scene
+└── transition/ transition scene
 ```
 
-## 添加新文件的规则
+## Add rules for new files
 
-1. 每个场景类型一个目录，内含 `universal.md`（通用）+ `{题材}.md`（特化覆盖）
-2. 每条技法以 `[标签]` 开头，方便 prompt-crafter 按场景事件匹配
-3. 例句必须满足三要素（主语+动作+对话/结果+情绪暗示）
-4. **不需要在文件里写"什么时候用"——由 prompt-crafter 自动检测**（场景类型检测或特殊条件触发）
+1. One directory for each scene type, containing `universal.md` (general) + `{genre}.md`
+   (specialized coverage)
+2. Each technique starts with `[tag]` to facilitate prompt-crafter to match according to
+   scene events.
+3. Example sentences must meet three elements (subject + action + dialogue/result +
+   emotional suggestion)
+4. **No need to write "when to use" in the file - it is automatically detected by
+   prompt-crafter** (scene type detection or triggering by special conditions)

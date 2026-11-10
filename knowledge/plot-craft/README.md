@@ -1,45 +1,52 @@
-# plot-craft — 剧情设计方法论
+# Plot-Craft, Plot Design Methodology
 
-> **用途：与作者讨论，AI 展示方案让作者决策，不自动注入**
+> **Purpose: Discuss with the author, let the author decide on the AI display plan, no
+> automatic injection**
 
-## 说明
+## Description
 
-本目录下的方法论文档在卷纲/章纲规划时由 **volume-planner / chapter-planner 读取**，作为与作者讨论时的参考素材。
+The methodology documents in this directory are read by **volume-planner /
+chapter-planner** during volume/chapter planning and serve as reference materials for
+discussions with the author.
 
-AI **不能自己决定**剧情走向、冲突类型、反转方式——这些都是创作层面的核心决策，必须由作者确认后才能落地。
+AI **cannot decide** the plot direction, conflict type, and reversal method on its
+own,these are core decisions at the creative level and must be confirmed by the author
+before they can be implemented.
 
-## 使用方式
+## Usage
 
 ```
-卷纲规划
-  ├─ 立情绪走向 → 展示悲剧套路/情绪拉扯手法，问作者倾向哪种
-  ├─ 设冲突阶梯 → 展示冲突升级手法，问作者每层怎么设计
-  ├─ 拆场景卡（首章） → 展示开篇钩子手法，让作者选择
-  └─ 定核心冲突 → 展示剧情反转思路，讨论是否需要
+Outline planning
+  ├─ Establish the emotional direction → Show the tragedy routine/emotional pulling technique and ask the author which one he prefers
+  ├─ Set up a conflict ladder → Show conflict escalation techniques and ask the author how to design each layer
+  ├─ Unpack the scene card (first chapter) → Show the opening hook technique and let the author choose
+  └─ Determine the core conflict → Show plot reversal ideas and discuss whether it is necessary
 
-章纲规划
-  ├─ 设冲突阶梯 → 展示冲突升级/反转手法，讨论本章转折点
-  ├─ Hooks 操作 → 展示钩子手法，讨论用什么钩子
-  └─ 拆场景卡（首章） → 展示开篇钩子，让作者选
+Chapter planning
+  ├─ Set up a conflict ladder → Demonstrate conflict escalation/reversal techniques and discuss the turning point of this chapter
+  ├─ Hooks operation → Demonstrate hook techniques and discuss what hooks to use
+  └─ Unpack the scene card (first chapter) → Show the opening hook and let the author choose
 ```
 
-## 目录结构
+## Directory structure
 
 ```
 plot-craft/
 ├── README.md
-├── index.md                           # 目录
-├── conflict-escalation.md（implicit） # 冲突升级四大技法
-├── hook-techniques.md                 # 钩子悬念三种写法
-├── tragedy-techniques.md              # 悲剧虐心四种套路
-├── emotional-pull.md                  # 情绪拉扯四层+节奏控速
-├── opening-hooks.md                   # 开篇抓读者五种钩子
-└── plot-twists.md                     # 剧情反转三招高阶公式
+├── index.md # Directory
+├── conflict-escalation.md (implicit) # Four techniques for conflict escalation
+├── hook-techniques.md # Three ways to write hooks and suspense
+├── tragedy-techniques.md # Four Tragedy Tragedy Techniques
+├── emotional-pull.md # Four levels of emotional pull + rhythm control
+├── opening-hooks.md # Five hooks to grab readers at the beginning
+└── plot-twists.md # Three high-level formulas for plot reversal
 ```
 
-## 添加新文件的规则
+## Add rules for new files
 
-1. 每条技法必须有正反示例 + 禁用项，不写空泛理论
-2. 在文件开头注明适用阶段（卷纲/章纲/两者皆可）
-3. 在 action skill 中增加引用（参考现有引用方式）
-4. **必须明确"和作者讨论"的触发条件——不是自动执行**
+1. Each technique must have positive and negative examples + prohibited items, do not
+   write empty theories
+2. Indicate the applicable stage at the beginning of the document (outline/chapter/both)
+3. Add a reference in the action skill (refer to the existing reference method)
+4. **The triggering conditions for "discuss with the author" must be clear - not
+   automatic execution**

@@ -1,3 +1,4 @@
-# 群像场景
+# Group portrait scene
 
-> 📝 待补充——需要从写作教程/UP主视频中提取方法论。
+> 📝 To be added - the methodology needs to be extracted from the writing tutorial/UP
+> main video.

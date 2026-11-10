@@ -1,116 +1,145 @@
-# 开篇抓读者方法论
+# Methodology for grabbing readers at the beginning
 
-> 针对读者短时耐心，五类通用型神级开头钩子，适配全网文题材。
->
-> **首章特别约束：** 平台流量逻辑下，开篇 500 字决定初始留存。读者仅给 3 秒判断时间，前 500 字必须完成"抛石头→炸水花"——石头 = 冲突/金手指/反转钩子，水花 = 对立画面、猎奇反差、情绪冲击。
->
-> 开篇三大拒绝：拒绝慢热（开局直接矛盾）、拒绝静态写景（第一段有人有事）、拒绝自我介绍（世界观后置穿插）。适用于第一卷第一章设计。
-
----
-
-## 一、悬念留白钩——秘密半抛，只露现象不解释
-
-**核心：** 展示诡异反常的表层现象，彻底隐藏原因。用信息留白勾起读者探索欲。
-
-### 执行细则
-
-- 开篇直接抛出反常、违背常理的画面与行为
-- 只展示结果，绝不解释原因——解释是悬念的天敌
-- 文字极致精简，不铺垫背景、不介绍人设、不交代前情
-- 制造多个连环疑问，锁住读者注意力
-
-```
-❌ 我的爷爷性格很古怪，村里人都惧怕他，背后藏着隐秘的缘由。
-
-✅ 我爷爷每天给自己上香，对着自己的灵位啃食蜡烛。
-   村里人素来怕他，后来我才知晓，他们真正恐惧的人，从来都是我。
-```
-
-**禁用：** 开篇解释现象原因；大段铺垫背景、人物设定；把秘密全盘托出。
+> For the short-term patience of readers, five types of universal god-level opening
+> hooks are adapted to the themes of all online articles. **Special restrictions on
+> the first chapter:** Under the platform traffic logic, the first 500 words determine
+> the initial retention. Readers are only given 3 seconds to judge, and the first 500
+> words must complete "throwing stones → splashing water" - stones = conflict/golden
+> finger/reversal hook, splashes = opposing images, curious contrasts, and emotional
+> impact. Three major rejections at the beginning: rejection of a slow start (the
+> opening is directly contradictory), rejection of static scene description (someone
+> has something to do in the first paragraph), and rejection of self-introduction
+> (post-interpolation of worldview). Applicable to the design of Volume 1, Chapter 1.
 
 ---
 
-## 二、极度反差钩——认知错位，荒诞冲突打破固有认知
+## 1. Leave a blank hook for suspense - the secret is half thrown away, only the phenomenon is revealed without explanation
 
-**核心：** 身份与行为的极致错位——崇高身份+荒诞行为、强大人设+离谱日常，制造荒诞感。
+**Core:** Shows weird and abnormal surface phenomena and completely hides the reasons.
+Use blank information to arouse readers' desire to explore.
 
-### 执行细则
+### Implementation details
 
-- 第一句直接抛出反差画面，不铺垫、不过渡
-- 刻意制造逻辑不和谐，让读者脑海产生大量疑问
+- The opening chapter directly throws out abnormal and unconventional images and
+  behaviors.
+- Only show the results, never explain the reasons - explanations are the enemy of
+  suspense
+- The text is extremely concise, without laying out the background, introducing the
+  characters, or explaining the previous events.
+- Create multiple chain questions to lock readers’ attention
 
 ```
-❌ 苏杰今天大婚，心境却格外复杂，没有半分喜悦。
+❌ My grandfather has a very weird personality. Everyone in the village is afraid of him. There is a secret reason behind it.
 
-✅ 今天是苏杰的大婚之日，他却静静坐在棺材里，慢条斯理吃着案上的贡品。
-
-✅ 业内顶尖的专业驱魔师，今日接到最离谱的单子——
-   帮邻居家的二哈驱魔，只因那条狗，正熟练背诵着初等知识表。
+✅ My grandfather burns incense for himself every day and eats candles facing his spiritual place.
+   The people in the village had always been afraid of him, but I later learned that the person they were really afraid of was me.
 ```
 
-**禁用：** 身份与行为匹配、无错位反差；画面平淡常规，贴合大众固有认知。
+**Disabled:** Begin with an explanation of the cause of the phenomenon; lay out the
+background and character settings in large sections; reveal all the secrets.
 
 ---
 
-## 三、矛盾前置钩——风暴开局，直接切入最高潮冲突
+## 2. Extreme contrast hook - cognitive dislocation, absurd conflicts break inherent cognition
 
-**核心：** 跳过所有铺垫，开篇直接把主角扔进生死危机、背叛绝境、对立冲突的风暴中心。
+**Core:** The ultimate mismatch between identity and behavior - sublime identity +
+absurd behavior, powerful personality + outrageous daily life, creating a sense of
+absurdity.
 
-### 执行细则
+### Implementation details
 
-- 开篇即高潮，直接写冲突结果、致命危机、重大背叛
-- 自带三重张力：危险压迫感、认知反差、未解疑问
-- 绝不从起因、日常、背景慢慢铺垫
+- The first sentence directly throws out a contrasting picture without any foreshadowing
+  or transition.
+- Deliberately create logical dissonance and create a lot of questions in readers' minds
 
 ```
-❌ 陆铭在宗门勤恳效力三年，屡屡被同门针对，慢慢发现宗门并不善待自己。
+❌ Su Jie is getting married today, but his mood is extremely complicated and he is not happy at all.
 
-✅ 冰冷的剑尖死死抵在咽喉，陆铭骤然醒悟，
-   自己拼死守护了三年的宗门，上下所有人，全都想取他性命。
+✅ Today is Su Jie’s wedding day, but he sits quietly in the coffin, eating the tributes on the table slowly.
+
+✅ The top professional exorcist in the industry received the most outrageous order today,
+   I helped my neighbor's Erha exorcise demons because the dog was reciting elementary knowledge tables proficiently.
 ```
 
-**禁用：** 循序渐进铺垫剧情；开篇写日常、修炼、人际关系铺垫，无即时冲突。
+**Disabled:** Identity and behavior match, no misalignment; the picture is plain and
+conventional, in line with the inherent public perception.
 
 ---
 
-## 四、颠覆设定钩——世界观炸弹，陌生化猎奇开局
+## 3. The hook in front of the conflict - the beginning of the storm, directly cutting into the climax of the conflict
 
-**核心：** 将新颖的世界观规则在开篇直接抛出，用日常语气描述极致荒诞的规则，抓住读者猎奇心理。
+**Core:** Skipping all the foreshadowing, the protagonist is thrown directly into the
+center of the storm of life and death crisis, desperate situation of betrayal, and
+conflict at the beginning.
 
-### 执行细则
+### Implementation details
 
-- 开篇第一句抛出核心颠覆性设定，不藏、不拖、不后放
-- 采用「日常语气+反常规则」的陌生化写法
-- 搭配具象画面（数值、对比、行为），让设定落地
+- The climax begins at the beginning, directly describing the outcome of the conflict,
+  fatal crisis, and major betrayal.
+- Comes with three tensions: dangerous pressure, cognitive contrast, and unanswered
+  questions
+- Never start from the origin, daily routine, and background.
 
 ```
-❌ 这个世界的规则十分特殊，寿命可以交易，富人寿命悠长，穷人寿命短暂。
+❌ Lu Ming worked diligently in the sect for three years and was repeatedly targeted by his fellow sect members. He gradually discovered that the sect did not treat him well.
 
-✅ 这世间从无金钱贫富，唯有寿命分贵贱。
-   陈平望着手腕上仅剩二十四小时的倒计时，
-   又看向富人面板上五百年的寿命余额，眼底生出决绝——他要抢一次时间。
+✅ The cold sword tip was pressed firmly against his throat, Lu Ming suddenly woke up,
+   Everyone in the sect that he had guarded for three years desperately wanted to take his life.
 ```
 
-**禁用：** 开篇常规现实逻辑，无新颖设定；核心世界观藏在后续章节，开篇平淡无亮点。
+**Disabled:** Foreshadowing the plot step by step; starting with daily life,
+cultivation, and interpersonal relationships, without immediate conflicts.
 
 ---
 
-## 五、极致情绪钩——不公拉满，低位蓄力反弹
+## 4. Subvert the setting hook - world view bomb, strange start of defamiliarization
 
-**核心：** 塑造极致的不公与委屈，拉满读者愤怒、憋屈、不甘的情绪。用情绪落差铺垫后续翻盘爽感。
+**Core:** The novel worldview rules are thrown out directly at the beginning, and the
+extremely absurd rules are described in a daily tone to capture the reader's curiosity.
 
-### 执行细则
+### Implementation details
 
-- 构建「极致付出+极致亏欠」的强烈反差
-- 聚焦不公待遇，而非单纯苦难，强化读者代入式愤怒
-- 情绪压得越低，后续翻盘爽感爆发力越强
+- The first sentence of the opening chapter throws out the core subversive setting, do
+  not hide, do not delay, and do not put it behind
+- Adopt the defamiliarization writing method of "everyday tone + unconventional rules"
+- Pair it with concrete images (numeric values, comparisons, behaviors) to make the
+  settings come true.
 
 ```
-❌ 苏杰镇守边关多年十分辛苦，归来后受尽委屈，心中满是不甘。
+❌ The rules of this world are very special. Lifespan can be traded. Rich people have long lifespans, while poor people have short lifespans.
 
-✅ 苏杰十年戍边，浴血护家国。归乡那日，
-   他拼死守护的朝堂仇人端坐高堂，他的妻子举杯敬酒，
-   白发老父跪在漫天风雪中，俯首为众人请罪。
+✅ There is no such thing as money or wealth in this world, only longevity.
+   Chen Ping looked at the countdown on his wrist with only twenty-four hours left.
+   Then he looked at the five-hundred-year life balance on the rich man's panel, and there was determination in his eyes - he wanted to steal time.
 ```
 
-**禁用：** 单纯堆砌苦难、无对立不公；情绪平淡、无落差、无法引发读者共情。
+**Disabled:** The opening chapter has conventional realistic logic and no novel
+settings; the core worldview is hidden in subsequent chapters, and the opening chapter
+is dull and has no highlights.
+
+---
+
+## 5. The ultimate emotional hook - unfair pull, low accumulation and rebound
+
+**Core:** Create the ultimate injustice and grievance, filling readers with anger,
+frustration, and unwillingness. Use the emotional gap to pave the way for a subsequent
+comeback.
+
+### Implementation details
+
+- Create a strong contrast of "extreme dedication + extreme debt"
+- Focus on unfair treatment, rather than pure suffering, to strengthen readers’
+  vicarious anger
+- The lower your emotions are suppressed, the more explosive and exciting the subsequent
+  comeback will be.
+
+```
+❌ Su Jie worked very hard guarding the border for many years. After returning, he suffered many injustices and was filled with unwillingness.
+
+✅ Su Jie spent ten years guarding the border and protecting his country with blood. The day I returned home,
+   The enemy in the court whom he guarded to the death was sitting in the high hall, while his wife raised her glass and made a toast.
+   The white-haired old man knelt in the wind and snow, bowing his head to apologize for everyone.
+```
+
+**Banned:** Simple piles of suffering, no confrontation and injustice; flat emotions, no
+gaps, and inability to arouse readers' empathy.

@@ -1,146 +1,165 @@
-# 视角切换技法
+# Perspective Switching Technique
 
-> 生硬的视角切换是留存率的大杀手。三招让视角转换自然流畅，既有沉浸感又有高级感。
->
-> 本章法始终加载——无论什么场景类型都涉及视角处理。
+> Rough perspective switching is a big killer of retention rates. The three tricks
+> make the perspective change natural and smooth, giving you a sense of immersion and
+> high-end. This method is always loaded - no matter what scene type involves
+> perspective handling.
 
 
-## 一、视角分界原则——一个场景一个核心视角
+## 1. Principle of perspective demarcation - one scene, one core perspective
 
-**核心：** 一个自然段内不能出现两个或以上的人物视角。坚持一个场景一个核心视角——从谁出发，就全程待在他脑袋里。
+**Core:** Two or more character perspectives cannot appear in one natural segment.
+Adhere to one scene and one core perspective - whoever you start from will stay in his
+head throughout the whole process.
 
-### 执行规则
+### Enforce Rules
 
-- 主角看不见的，不写
-- 主角猜不到的，通过他的观察写出对方神态，不直接写对方内心
+- What the protagonist cannot see is not written
+- What the protagonist can't guess is that he writes about the other person's demeanor
+  through his observations, rather than directly writing about the other person's heart.
 
 ```
-❌ 张三心里想这顿饭真难吃。李四看着张三心想他怎麼一脸嫌弃。
+❌ Zhang San thought to himself that this meal was really terrible. Li Si looked at Zhang San and wondered why he looked so disgusted.
 
-✅ 张三夹起一块肉嚼了两下，眉头皱了起来。
-   对面的李四注意到他放下筷子，脸色不太好看。
+✅ Zhang San picked up a piece of meat and chewed it twice, then frowned.
+   Li Si across from him noticed that he put down his chopsticks and his expression was not very good.
 ```
 
-### 必须换视角时的处理：物理分段法
+### What to do when the perspective must be changed: Physical segmentation method
 
-| 方式 | 用法 | 效果 |
+| Method | Usage | Effect |
 |------|------|------|
-| 分隔线 | `···` 分割 | 明确告知读者镜头换了 |
-| 小标题 | 上章"叶晨的底牌"，下章"林奥天的绝望" | 章节级视角切割 |
+| Divider line | `···` split | Clearly inform readers that the lens has been changed |
+| Subtitle | Previous chapter "Ye Chen's trump card", next chapter "Lin Aotian's despair" | Chapter-level perspective cutting |
 
-**要点：** 确保读者情绪连续，不在主角和配角之间反复横跳。
+**Points:** Make sure the reader's emotions are continuous and do not jump repeatedly
+between the protagonist and supporting characters.
 
 
-## 二、物理转场——给视角转换找物理契机
+## 2. Physical transition - find physical opportunities for perspective change
 
-**核心：** 视角不能跳过去，要自然走过去。利用视线、声音、动作作为交接点。
+**Core:** The angle of view cannot be jumped over, but must be walked over naturally.
+Use sight, sound, and movement as communication points.
 
-### 手法 1：视线牵引
+### Technique 1: Eye traction
 
-通过主角的视线将镜头带到另一方。
-
-```
-❌ 叶晨在楼下吃饭。此时二楼包间的林奥天冷哼一声，心想这叶晨真是找死。
-
-✅ 叶晨抬头看了一眼二楼的方向。
-   雕花窗帘后，林奥天正负手而立，目光正好对上叶晨。
-   他眼底的杀意瞬间升腾。
-```
-
-### 手法 2：声音媒介
-
-通过听到的声音将镜头带向声源。
+The camera is brought to the other side through the protagonist's gaze.
 
 ```
-一楼叶晨正喝着酒，忽然听到二楼传来一声杯子碎裂的脆响。
-他抬头看向二楼。
-   林奥天摔碎了茶杯，碎片溅了一地。
+❌ Ye Chen was eating downstairs. At this time, Lin Aotian, who was in the private room on the second floor, snorted coldly, thinking that Ye Chen was really looking for death.
+
+✅ Ye Chen looked up and glanced in the direction of the second floor.
+   Behind the carved curtains, Lin Aotian stood with his hands behind his back, his eyes meeting Ye Chen.
+   The killing intent in his eyes instantly rose.
 ```
 
-### 手法 3：动作接力
+### Technique 2: Sound Medium
 
-用一个动作把叙述权从一个人交给另一个人。
-
-```
-张三盯着桌上的照片发呆。
-   一只手搭上了他的肩膀，回头看是李四。
-
-   李四看着张三通红的眼眶，心里咯噔一下。
-```
-
-**要点：** 像接力棒一样——动作的交汇点就是视角的交接点。
-
-
-## 三、信息差错位法——换视角是为了制造反差
-
-**核心：** 换视角不是为了交代剧情，是为了制造信息差和爽感。双方写一样的内容是废话文学。
-
-### 执行规则
-
-- 切换要快——像电影里的闪回或反应镜头，给一个特写马上拉回来
-- 配角视角永远服务于主角——所有配角视角都是为了给主角抬轿子
-- 不在配角视角里写两三千字，读者会因为太想看主角而弃书
+Use the sound you hear to bring the camera to the source of the sound.
 
 ```
-❌ 主角抬着炉子很开心。配角视角：主角真的很开心。
-
-✅ 主角在大庭广众之下炼成了一枚极品丹药。
-   台下那个一直瞧不起主角的炼丹大师：
-   "这不可能，这手法明明已经失传了……他一个废物怎么会？"
+Ye Chen was drinking wine on the first floor when he suddenly heard the sound of a glass breaking from the second floor.
+He looked up to the second floor.
+   Lin Aotian broke the tea cup, and the pieces scattered on the floor.
 ```
 
-### 制造悬念的信息差切换
+### Technique 3: Movement relay
+
+Use an action to transfer narrative power from one person to another.
 
 ```
-主角对妻子说等下去参加饭局。
-   反派正在安排人在饭局上杀掉主角。
-   读者知道陷阱，主角不知道。
-   悬念：读者想看主角怎么活下来。
+Zhang San stared at the photos on the table in a daze.
+   A hand put on his shoulder, and he turned around to see it was Li Si.
+
+   Li Si looked at Zhang San's red eyes, and his heart skipped a beat.
 ```
 
-**禁用：** 切换后在配角视角停留过久；双方视角内容重复无信息差。
+**Key Points:** Like a baton - the intersection of actions is the intersection of
+perspective.
 
 
-## 四、镜头式写作（Camera as Camera）
+## 3. Information misalignment method - changing the perspective is to create contrast
 
-**核心原则：** 忘记全知视角，你是跟在主角身后的摄像机。读者只能看到主角所看到、听到、闻到、摸到的——不写"他心想""他感到"。
+**Core:** Changing the perspective is not to explain the plot, but to create information
+gaps and a sense of refreshment. It is nonsense literature for both sides to write the
+same content.
 
-### 三镜头法
+### Enforce Rules
 
-| 镜头 | 视角 | 内容 | 功能 |
+- Cut quickly - like a flashback or reaction shot in a movie, pull back immediately
+  after a close-up
+- The perspective of supporting characters always serves the protagonist - all the
+  perspectives of supporting characters are to carry the sedan chair for the protagonist
+- If you don’t write two or three thousand words from the supporting character’s
+  perspective, readers will abandon the book because they want to see the protagonist
+  too much.
+
+```
+❌ The protagonist is very happy carrying the stove. Supporting Character's POV: The main character is really happy.
+
+✅ The protagonist refined a top-quality elixir in public.
+   The alchemy master in the audience who has always looked down on the protagonist:
+   "This is impossible. This technique has obviously been lost... How could he, a loser, do it?"
+```
+
+### Information gap switching to create suspense
+
+```
+The protagonist told his wife to wait for the dinner.
+   The villain is arranging for someone to kill the protagonist at the dinner party.
+   The reader knows the trap, the protagonist does not.
+   Suspense: Readers want to see how the protagonist survives.
+```
+
+**Disabled:** Staying in the supporting character's perspective for too long after
+switching; the contents of both perspectives are repeated and there is no information
+difference.
+
+
+## 4. Camera as Camera
+
+**Core Principle:** Forget omniscient perspective, you are the camera following the
+protagonist. Readers can only see what the protagonist sees, hears, smells, and touches
+- do not write "what he thinks" or "what he feels".
+
+### Three Lens Method
+
+| Lens | Perspective | Content | Features |
 |------|------|------|------|
-| 镜头 1—特写（近景） | 近景 | 主角动作、表情、心理 | 推进主线，读者代入 |
-| 镜头 2—远景（中景） | 远景 | 配角反应、环境变化、围观者 | 扩展信息面，制造反差 |
-| 镜头 3—画外音（旁白） | 旁白 | 设定补充、背景交代 | 适时补充必要信息 |
+| Shot 1,Close-up (close shot) | Close shot | Protagonist’s movements, expressions, psychology | Promote the main line, readers become involved |
+| Shot 2,Long shot (medium shot) | Long shot | Supporting characters’ reactions, environmental changes, onlookers | Expand the information surface and create contrast |
+| Shot 3,Voice-over (narration) | Narration | Supplementary setting, explanation of background | Supplement necessary information in a timely manner |
 
-镜头交替原则：核心交替是 1 和 2，镜头 3 穿插使用。设定都由冲突引出，不单独写设定段。
+Shot alternation principle: The core alternation is 1 and 2, shot 3 is used alternately.
+Settings are all triggered by conflicts, and setting sections are not written
+separately.
 
-### 高危检查清单
+### High-risk checklist
 
-**视角红线（严格禁止）：**
+**View red line (strictly prohibited):**
 
-| 写法 | 示例 | 处理 |
+| Writing | Examples | Processing |
 |------|------|------|
-| 全知叙事 | "此时的他还不知道，三天后……" | 删除，停在当下 |
-| 上帝视角 | "如果她知道真相……" | 删除，只写主角已知信息 |
-| 心理分析 | "他内心深处其实……" | 删掉，用动作外化 |
+| Omniscient narrative | "At this time, he still doesn't know that three days later..." | Delete, stop at the moment |
+| God's perspective | "If she knew the truth..." | Delete, only write the known information about the protagonist |
+| Psychological analysis | "Deep down in his heart, he actually..." | Delete and use actions to externalize |
 
-**高危词替换：**
+**High risk word replacement:**
 
-| 禁用 | 替代 |
+| Disable | Replace |
 |------|------|
-| 他感到紧张 | 他的手在抖 |
-| 她很伤心 | 她转过身，肩膀微微颤动 |
-| 他深吸一口气 | 他把烟摁灭在烟灰缸里 |
-| 她眼中闪过一丝惊讶 | 她的手停在了半空 |
-| 仿佛/犹如/一丝/一抹 | 删除或白描 |
-| 眼中闪过/嘴角勾起/眉头微皱 | 具体动作替代 |
-| 不容置疑/不易察觉 | 删除，直接写事实 |
+| He feels nervous | His hands are shaking |
+| She was sad | She turned around, her shoulders shaking slightly |
+| He took a deep breath | He put out his cigarette in the ashtray |
+| A trace of surprise flashed in her eyes | Her hand stopped in mid-air |
+| As if/as if/a trace/touch | Delete or outline |
+| A flash in the eye/a raised corner of the mouth/a slight frown on the brow | Specific action replacement |
+| Undoubted/imperceptible | Delete, write the facts directly |
 
-**高危句式：**
+**High-risk sentence patterns:**
 
-| 句式 | 处理 |
+| Sentence pattern | Processing |
 |------|------|
-| "……，带着……"（"他说，带着一丝无奈"） | 删"带着"，动作替代 |
-| "他/她知道……" | 直接展示，不告诉 |
-| 万能比喻/陈词滥调 | 改成生活化比喻或白描 |
+| "..., with..." ("He said, with a hint of helplessness") | Delete "with" and replace with action |
+| "He/She knows..." | Show directly, don't tell |
+| Universal metaphor/cliché | Change to life-like metaphor or line drawing |

@@ -1,90 +1,120 @@
-# 悲剧/虐心写法
+# Tragedy/sadistic writing
 
-> 悲剧不是让角色受苦，是让读者心碎。四种经典悲剧套路，适用于卷纲阶段的情绪走向设计、章纲阶段的关键情节设计。
-
----
-
-## 一、先糖后刀·极致对比
-
-**核心：** 先浓墨重彩描绘美好日常，把幸福感拉到顶峰；在最接近幸福的时刻彻底击碎。用"云端跌落"的落差制造悲剧感。
-
-### 执行规则
-
-- 前期铺垫足量细碎温情、专属回忆、未来约定，建立读者情感羁绊
-- 毁灭节点选在幸福最高点，斩断未完成的心愿与憧憬
-- 重点刻画"遗憾"，而非单纯写角色受难
-
-```
-❌ 两人日子很苦，男主早早离世，女主十分悲伤。
-
-✅ 二人试好婚服，连孩子的名字都已想好，婚房布置一新。
-   婚礼前夜，男主为护女主，倒在了家门之前。
-   所有憧憬尽数落空。
-```
-
-**禁用：** 开篇直接虐、无情感铺垫；为虐而虐，苦难堆砌却无美好对照。
+> Tragedy is not about making the characters suffer, it is about breaking the hearts
+> of the readers. Four classic tragedy routines are suitable for the design of
+> emotional trends in the outline stage and the key plot design of the chapter outline
+> stage.
 
 ---
 
-## 二、错位付出·误解与迟来真相
+## 1. Sugar first, then knife / Extreme contrast
 
-**核心：** 利用信息差制造宿命式误会——角色为守护他人主动背负骂名、伪装恶人、独自承受痛苦；真相迟迟延后揭晓，让被守护者陷入永久愧疚。
+**Core:** Firstly, depict the beautiful daily life with thick and vivid colors, bringing
+happiness to the peak; and completely crush it at the moment closest to happiness. Use
+the gap of "falling from the clouds" to create a sense of tragedy.
 
-### 执行规则
+### Enforce Rules
 
-- 误会源于客观困境/善意隐瞒，不设计"一句话就能解释"的低级误会
-- 角色全程默默付出、承受曲解，甚至被自己守护的人伤害
-- 高潮放在真相大白时刻，侧重描写事后的悔恨与遗憾
+- The early stage lays out enough details of warmth, exclusive memories, and future
+  promises to establish readers’ emotional bonds.
+- The destruction node is chosen at the highest point of happiness to cut off
+  unfulfilled wishes and longings.
+- Focus on portraying "regret" rather than simply writing about the character's
+  suffering
 
 ```
-❌ 两人产生误会，故意不解释，互相敌视。
+❌ The two of them lived a very hard life. The male protagonist passed away early and the female protagonist was very sad.
 
-✅ 他为保全众人，甘愿化身反派，承受全城唾骂，最终殒命。
-   待到真相公之于众，被他守护的人再无弥补的机会。
+✅ The two of them tried on their wedding clothes, even thought about the names of their children, and the wedding room was newly decorated.
+   On the eve of the wedding, the hero fell in front of the house to protect the heroine.
+   All hopes have come to nothing.
 ```
 
-**禁用：** 刻意装傻、强行闭口的弱智误会；真相快速揭开，无长久的愧疚留白。
+**Banned:** The opening chapter is directly sadistic, with no emotional foreshadowing;
+sadistic for the sake of sadistic, piling up suffering without any beautiful contrast.
 
 ---
 
-## 三、向命运低头·极致无力感
+## 2. Misplaced contribution, misunderstanding and belated truth
 
-**核心：** 塑造强大、骄傲的角色，因挚爱/责任被迫放下尊严、妥协退让；拼尽全力抗争后，依旧败给宿命与现实。
+**Core:** Using information gaps to create fatal misunderstandings - the character takes
+the initiative to bear infamy in order to protect others, pretends to be a villain, and
+suffers alone; the truth is revealed after a delay, making the person being protected
+fall into permanent guilt.
 
-### 执行规则
+### Enforce Rules
 
-- 先铺垫角色过往的风光、傲骨，形成人设反差
-- 逼迫角色做出尊严让步，行为动机绑定亲情、爱情等软肋
-- 努力之后依旧迎来坏结局，强化"徒劳无功"的心酸
+- The misunderstanding stems from objective difficulties/well-intentioned concealment,
+  and is not designed to be a low-level misunderstanding that can be explained in one
+  sentence.
+- The character silently sacrifices throughout the whole process, endures
+  misunderstandings, and is even hurt by the people he protects.
+- The climax is placed when the truth is revealed, focusing on the regret and regret
+  afterwards.
 
 ```
-❌ 高手落魄潦倒，日子过得十分艰难。
+❌ The two misunderstood, deliberately did not explain, and became hostile to each other.
 
-✅ 昔日意气风发的顶尖剑客，为给重病妻子换一碗热粥，
-   在仇家面前屈膝下跪。捧着温热的粥赶回家，爱人已然断气。
-   他捂着碗喃喃自语，生怕粥凉掉。
+✅ In order to protect everyone, he was willing to turn into a villain, endure the reviling of the whole city, and eventually died.
+   When the truth is made public, the people he protects will have no chance to make amends.
 ```
 
-**禁用：** 角色全程软弱，无前后人设反差；抗争后迎来反转圆满，消解悲剧内核。
+**Banned:** A mentally retarded misunderstanding of deliberately pretending to be stupid
+and forcibly keeping silent; the truth is revealed quickly, leaving no lasting guilt.
 
 ---
 
-## 四、惯性残留·物是人非（细节慢性刀）
+## 3. Bow to fate / Extreme sense of powerlessness
 
-**核心：** 角色离世后，不直白写痛哭悲伤，而是通过生活习惯、下意识动作、旧物件等日常细节，体现生者走不出过往的状态。
+**Core:** Create a strong and proud character who is forced to put down his dignity and
+compromise because of his true love/responsibility; after fighting with all his
+strength, he still loses to fate and reality.
 
-### 执行规则
+### Enforce Rules
 
-- 聚焦衣食住行等微小习惯、旧物件、固有偏好
-- 以"下意识举动→猛然惊醒"的结构制造情绪触点
-- 克制抒情，用客观行为代替大哭、哭诉等外放情绪
+- First, lay out the character’s past scenery and pride to form a contrast in the
+  character’s personality.
+- Forcing characters to make dignity concessions, and binding behavioral motivations to
+  weaknesses such as family affection and love
+- Even after hard work, we still get a bad ending, which strengthens the sadness of
+  "futility"
 
 ```
-❌ 爱人走后，女主日日以泪洗面，活在痛苦里。
+❌ The master is down and out and has a very difficult life.
 
-✅ 他离开半年，她路过水果摊，照旧买下他爱吃的苹果。
-   走到门口习惯性抬手呼喊，空荡的走廊只剩声控灯明灭，
-   才恍然记起，那人早已不在。
+✅ The former high-spirited top swordsman exchanged a bowl of hot porridge for his seriously ill wife.
+   Kneel down before your enemies. Rushing home with warm porridge in hand, my lover has already passed away.
+   He muttered to himself while holding the bowl, for fear that the porridge would get cold.
 ```
 
-**禁用：** 大段直白抒情、反复哭诉；仅描写离别瞬间，无后续生活细节呼应。
+**Disabled:** The character is weak throughout the whole process, and there is no
+contrast between the characters before and after; after the struggle, there is a
+reversal and perfection, which dissolves the core of the tragedy.
+
+---
+
+## 4. Remaining inertia / things are right and people are different (Details Chronic Knife)
+
+**Core:** After the death of the character, we do not write about crying and sorrow
+directly, but through daily details such as living habits, subconscious actions, old
+objects, etc., to reflect the state of the living that cannot get out of the past.
+
+### Enforce Rules
+
+- Focus on small habits, old objects, and inherent preferences such as food, clothing,
+  housing, and transportation
+- Create emotional touch points with the structure of "subconscious action → sudden
+  awakening"
+- Restrain emotional expression and use objective behavior to replace external emotions
+  such as crying and whining.
+
+```
+❌ After her lover left, the heroine cried every day and lived in pain.
+
+✅ Half a year after he left, she passed by a fruit stall and bought his favorite apples as usual.
+   When I walk to the door, I habitually raise my hand and shout. In the empty corridor, only the voice-activated lights turn on and off.
+   Then I suddenly remembered that that person was no longer there.
+```
+
+**Banned:** Large paragraphs of straightforward lyricism and repeated crying; only
+describing the moment of parting, without subsequent echoes of life details.

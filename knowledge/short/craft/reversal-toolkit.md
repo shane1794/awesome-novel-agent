@@ -1,353 +1,416 @@
-# 反转设计工具箱
+# Inverse Design Toolbox
 
 
-> 本文件改写自获赠短篇流程包（oh-story 系 + 实测调整），按本仓口径适配：引用为部署后基座路径、已剔除外部体系引用。公开或商用前需原作者确认。
+> This document is adapted from the short flow package (oh-story series + actual
+> measurement adjustment) received as a gift, and is adapted to the caliber of this repo: the reference is the post-deployment base path, and external system
+> references have been eliminated. Confirmation by the original author is required
+> before disclosure or commercial use.
 
-> 操作手册：反转类型、嵌套反转、误导技巧、打脸节奏。按决策路由选用，按设置/揭示步骤执行，用自检清单验收。
-> 反转类型枚举：视角 / 身份 / 动机 / 时间线 / 信息 / 认知 / 无反转（甜宠、喜剧、报应型可用无反转，但须以强共鸣或强余韵补足传播）。
+> Instructions manual: reversal types, nested reversals, misdirection techniques,
+> face-slapping rhythm. Follow the decision-making route selection, follow the
+> setup/display steps, and use the self-check list for acceptance. Enumeration of
+> reversal types: Perspective/Identity/Motive/Timeline/Information/Cognition/No
+> reversal (sweet romance, comedy, and retribution types can use no reversal, but must
+> be communicated with strong resonance or strong aftertaste).
 
-## 决策路由
+## Decision Routing
 
-| 你要设计什么 | 用哪种反转 | 关键操作 |
+| What do you want to design | Which inversion to use | Key operations |
 |-------------|-----------|---------|
-| 角色不是你以为的人 | 身份反转 | 埋3处行为细节暗示 |
-| 真相从另一个角度完全不同 | 视角反转 | 引入另一角色视角打破认知 |
-| 角色做某事的原因不是你以为的 | 动机反转 | 高压场景中二选一暴露真动机 |
-| 时间顺序跟读者理解不同 | 时间线反转 | 不撒谎只调叙述顺序 |
-| 读者掌握了错误信息 | 信息反转 | 新证据直接否定旧"事实" |
-| 读者对整个角色/关系的理解被颠覆 | 认知反转 | 全程铺感情色彩，结尾翻转色彩 |
-| 甜宠/喜剧/报应型，本就没有反转 | 无反转 | 走报应兑现或甜度递进，不硬塞反转 |
-| 要叠多层反转 | 嵌套反转 | 主次分明，间隔递减 |
+| The character is not who you thought he was | Identity reversal | Buried 3 behavioral details hints |
+| The truth is completely different from another perspective | Perspective reversal | Introducing another character's perspective to break the perception |
+| The reason why the character does something is not what you think | Motive reversal | Choose one of the two in a high-pressure scene to reveal the true motive |
+| The chronological order is different from the reader's understanding | Timeline reversal | Don't lie, just adjust the narrative order |
+| Readers have misinformation | Information reversal | New evidence directly refutes old "facts" |
+| The reader's understanding of the entire character/relationship is subverted | Cognitive reversal | Emotional coloring throughout, flipping color at the end |
+| Sweet romance/comedy/retribution type, there is no reversal | No reversal | Retribution or sweetness progression, no reversal forced |
+| To stack multiple layers of reversals | Nested reversals | Clear priorities and decreasing intervals |
 
 ---
 
-## 反转类型
+## Invert type
 
-### 1. 身份反转
+### 1. Identity reversal
 
-**触发条件**：角色真实身份与读者认知不同。
+**Trigger condition**: The character’s true identity is different from the reader’s
+perception.
 
-**设置步骤**：
-1. 确定表面身份和隐藏身份
-2. 通过行为细节泄露（禁止用叙述者直接说明）
-3. 回看至少埋3处暗示
+**Setup steps**:
+1. Determine apparent and hidden identities
+2. Revealed through behavioral details (direct description by narrator is prohibited)
+3. Watch back and bury at least 3 hints
 
-**揭示步骤**：
-1. 用场景同时揭示身份和动机
-2. 禁止让角色自说"其实我是XX"
-3. 选在读者最不期待揭示的时机
+**Revealing Steps**:
+1. Use scenes to simultaneously reveal identity and motivations
+2. It is forbidden for characters to say "Actually, I am XX"
+3. Choose a moment when readers least expect it to be revealed
 
-| 表面身份 | 隐藏身份 | 铺垫线索 |
+| Surface identity | Hidden identity | Foreshadowing clues |
 |----------|----------|----------|
-| 乖巧继女 | 幕后操控者 | 总在关键时刻「恰好」不在场 |
-| 热心邻居 | 伤害主角的人 | 对主角家里的布局太熟悉了 |
-| 死去的恋人 | 还活着 | 「遗物」里有一件不该存在的东西 |
-| 陌生人 | 主角失忆前的至亲 | 叫出了主角只有至亲才知道的小名 |
+| The obedient stepdaughter | The manipulator behind the scenes | Always "happens" not to be there at the critical moment |
+| Enthusiastic neighbor | The person who hurts the protagonist | Too familiar with the layout of the protagonist's home |
+| Dead lover | Still alive | There is something in the "relic" that shouldn't exist |
+| Stranger | The protagonist's close relative before he lost his memory | Called the protagonist a nickname that only his close relatives know |
 
-示例铺排：
-```
-铺垫1（5%）：邻居帮修水管，对水管走向异常熟悉
-铺垫2（25%）：邻居「随口」提到主角家灯每天几点关
-铺垫3（50%）：梦到有人站床前，醒来闻到烟味——邻居抽烟
-揭示（75%）：监控里，每晚站床前的人穿邻居那件灰色外套
-```
+Sample layout: @@CODEBLOCK0@@
 
-### 2. 视角反转
+### 2. Perspective reversal
 
-**触发条件**：叙事者视角是片面的，真相从另一个角度完全不同。
+**Trigger condition**: The narrator's perspective is one-sided, and the truth is
+completely different from another perspective.
 
-**设置步骤**：
-1. 确保所有叙述都是事实，但不是全部事实
-2. 叙述者解读引导读者走错方向
-3. 关键信息被「合理地」跳过或淡化
-4. 叙述者自己也真诚地相信这套叙事——他不是在骗读者，他自己也被骗了
+**Setup steps**:
+1. Make sure all narratives are factual, but not all the facts
+2. The narrator's interpretation leads the reader in the wrong direction
+3. Key information is "reasonably" skipped or downplayed
+4. The narrator himself sincerely believes this narrative - he is not deceiving the
+   reader, he himself is deceived
 
-**揭示步骤**：
-1. 引入另一角色视角/证词
-2. 展示主角「没看到」的场景
-3. 用证据打破认知
+**Revealing Steps**:
+1. Introduce another character’s perspective/testimony
+2. Show scenes that the protagonist "didn't see"
+3. Use evidence to break perceptions
 
-| 主角视角 | 真实视角 | 关键差异 |
+| Protagonist's perspective | Real perspective | Key differences |
 |----------|----------|----------|
-| 丈夫出轨对不起我 | 我才是被蒙在鼓里的第三者 | 时间线上的空白 |
-| 同事在排挤我 | 我的「好心」一直在伤害别人 | 别人视角下我的行为 |
-| 我在拯救这段关系 | 我在控制对方 | 对方的反应其实是在自保 |
-| 我是受害者 | 我是施害者 | 记忆被叙述者篡改了 |
+| I'm sorry that my husband cheated on me | I was the third party who was kept in the dark | Blank space on the timeline |
+| My colleagues are ostracizing me | My "good intentions" keep hurting others | My behavior from the perspective of others |
+| I'm saving the relationship | I'm controlling the other person | The other person's reaction is actually to protect themselves |
+| I am the victim | I am the perpetrator | The memory has been tampered with by the narrator |
 
-**铁律**：叙述者必须真诚地相信自己的视角，禁止叙述者明知真相而故意误导读者。
+**Iron Rule**: The narrator must sincerely believe in his or her own perspective. The
+narrator is prohibited from deliberately misleading readers despite knowing the truth.
 
-### 3. 动机反转
+### 3. Motivation reversal
 
-**触发条件**：角色做某事的真正原因与读者以为的不同。
+**Trigger**: The character's real reason for doing something is different from what the
+reader thinks.
 
-**设置步骤**：
-1. 给角色一个「表面动机」让读者觉得合理
-2. 真正动机藏在表面之下
-3. 埋下行为细节与表面动机的微小矛盾（矛盾不要太大）
+**Setup steps**:
+1. Give the character a "surface motivation" that makes sense to readers
+2. The real motives lie beneath the surface
+3. Bury minor contradictions between behavioral details and superficial motives (don’t
+   make the contradiction too big)
 
-**揭示步骤**：
-1. 制造高压场景迫使角色二选一
-2. 表面动机指向选A，但角色选了B
-3. 选择行为直接暴露真正动机
+**Revealing Steps**:
+1. Create high-pressure situations that force characters to choose between two options
+2. The superficial motivation points to choosing A, but the character chooses B.
+3. Choice behavior directly reveals true motivations
 
-| 表面动机 | 真正动机 | 行为矛盾线索 |
+| Surface motives | True motives | Clues to behavioral contradictions |
 |----------|----------|-------------|
-| 想和前夫复婚 | 想拿回藏在婚房里的东西 | 从不关心他的生活，只关心那套房子 |
-| 保护妹妹 | 嫉妒妹妹，想控制她 | 每次「保护」都让妹妹更孤立 |
-| 追求公平正义 | 报个人私仇 | 目标人物恰好和当年的事有关 |
-| 害怕失去朋友 | 害怕朋友发现自己背叛了她 | 每次朋友接近真相就制造新危机 |
+| Want to remarry my ex-husband | Want to get back the things hidden in the wedding room | Never care about his life, only care about the house |
+| Protect my sister | Jealous of my sister and want to control her | Every time I "protect", my sister becomes more isolated |
+| Pursuing fairness and justice | Avenging personal revenge | The target person happens to be related to the events of that year |
+| Fear of losing friends | Fear of friends finding out that they have betrayed her | Creating a new crisis every time a friend gets closer to the truth |
 
-### 4. 时间线反转
+### 4. Timeline reversal
 
-**触发条件**：故事的实际时间顺序与读者理解的顺序不同。
+**Trigger**: The actual chronological order of the story is different from the order the
+reader understands.
 
-**设置步骤**：
-1. 确定真实时间顺序和读者理解的顺序
-2. 用叙述技巧让读者以为A在B之前，实际B在A之前
-3. 不撒谎，只调整叙述顺序
-4. 用时态、季节、物品新旧作为天然时间线索
+**Setup steps**:
+1. Determine true chronological order and the order that readers understand
+2. Use narrative techniques to make readers think A comes before B, but actually B comes
+   before A
+3. Don’t lie, just adjust the order of the narrative
+4. Use tense, season, and old and new items as natural time clues
 
-**揭示步骤**：
-1. 找一个不可能存在的时间矛盾
-2. 或让角色提到「还没发生」的事
-3. 或展示物品状态与时间线不符
+**Revealing Steps**:
+1. Find an impossible time contradiction
+2. Or let the character mention something that "hasn't happened yet"
+3. Or the status of displayed items does not match the timeline
 
-| 读者以为的时间线 | 真实时间线 | 揭示方式 |
+| What the reader thinks is the timeline | The real timeline | How to reveal |
 |------------------|-----------|----------|
-| 丈夫丧妻后变质 | 妻子「死后」还活着 | 时间戳对不上的消息 |
-| 姐姐在弟弟出事后崩溃 | 弟弟出事因姐姐先做了某事 | 医院记录上的时间 |
-| 两人正在恋爱 | 这是一段回忆，已分开 | 「我当时不知道那是最后一次」 |
-| 重生后第二天 | 重生前的最后一天循环 | 镜子里倒影和之前不一样 |
+| Husband deteriorates after losing his wife | Wife is still alive after "death" | News with mismatched timestamps |
+| Sister breaks down after brother's accident | Brother's accident happens because sister did something first | Time on hospital records |
+| The two are in love | This is a memory, separated | "I didn't know it was the last time" |
+| The second day after rebirth | The last day before rebirth | The reflection in the mirror is different from before |
 
-**铁律**：写完必须画时间线图自查。
+**Iron Rule**: After writing, you must draw a timeline chart for self-examination.
 
-### 5. 信息反转
+### 5. Information reversal
 
-**触发条件**：读者（和主角）掌握了错误的关键信息。
+**Trigger**: The reader (and the protagonist) has the wrong key information.
 
-**设置步骤**：
-1. 给读者一个来自可靠来源的「事实」
-2. 所有人物基于此「事实」行动
-3. 在后果中埋下矛盾证据
+**Setup steps**:
+1. Give readers a “fact” from a reliable source
+2. All characters act based on this "fact"
+3. Burying conflicting evidence in the aftermath
 
-**揭示步骤**：
-1. 新证据直接否定旧「事实」
-2. 读者和主角同时发现被骗
-3. 前面所有剧情获得新解读
+**Revealing Steps**:
+1. New evidence directly negates old "facts"
+2. The reader and the protagonist discover at the same time that they have been cheated
+3. All previous plots receive new interpretations
 
-| 错误信息 | 真实信息 | 揭示的连锁反应 |
+| Misinformation | Real information | The chain reaction of revelations |
 |----------|----------|---------------|
-| 遗嘱遗产给长子 | 遗嘱被调包，本给次子 | 长子所有「孝心」都是演戏 |
-| 医生说孩子亲生 | DNA报告被篡改 | 配偶从受害者变加害者 |
-| 朋友说看到他出轨 | 朋友在撒谎 | 朋友的「安慰」其实是操控 |
-| 老板说提拔我 | 岗位已取消 | 老板画饼为让我多干活 |
+| The inheritance in the will was given to the eldest son | The will was subcontracted and the original was given to the second son | All the "filial piety" of the eldest son was just acting |
+| Doctor says the child is biological | DNA report has been tampered with | Spouse changes from victim to perpetrator |
+| My friend said she saw him cheating | My friend was lying | My friend’s “comfort” was actually manipulation |
+| The boss said to promote me | The position has been cancelled | The boss tried to persuade me to work more |
 
-**核心区别**：信息反转是认知层面的——你以为世界是A，其实是B。核心是「一条假信息」。
+**Core difference**: Information reversal is at the cognitive level - you think the
+world is A, but it is actually B. The core is "a piece of false information."
 
-### 6. 认知反转
+### 6. Cognitive reversal
 
-**触发条件**：读者对某个角色/关系的整体理解被颠覆；重点在整段感情色彩翻转，而非单条信息纠错。
+**Trigger condition**: The reader's overall understanding of a certain
+character/relationship is subverted; the focus is on the flipping of the entire
+relationship, rather than on the correction of a single piece of information.
 
-**与信息反转的区别**：信息反转翻一条事实（遗嘱归属、亲子关系真伪）；认知反转翻读者对整个角色/关系的感情判断（恨了全程的妈其实一直在护着她）。信息反转改事实答案，认知反转改"我对他的感觉"。
+**Differences from information reversal**: Information reversal reverses a fact (will
+ownership, authenticity of parent-child relationship); cognitive reversal reverses the
+reader's emotional judgment of the entire character/relationship (the mother who hated
+the whole process was actually protecting her). Information reversal changes the factual
+answer, and cognitive reversal changes "how I feel about him."
 
-**设置步骤**：
-1. 全程让读者积累一种感情色彩（这个妈狠心/这个丈夫凉薄/这个对手纯坏）
-2. 每个负面场景都埋一个被忽略的反向细节（狠话之后多塞了钱、转身擦了眼泪）
-3. 细节要小到读者当时不在意，回看才发现处处都是
+**Setup steps**:
+1. The whole process allows readers to accumulate a sense of emotion (this mother is
+   cruel/this husband is cold/this opponent is purely evil)
+2. Every negative scene buries an overlooked reverse detail (stuffing more money after
+   harsh words, turning around and wiping tears)
+3. The details should be so small that the reader doesn’t notice them at the time, only
+   to look back and realize they are everywhere
 
-**揭示步骤**：
-1. 用一个场景或一件遗物，让所有负面行为同时获得反向解读
-2. 不解释，让读者自己把全程重新过一遍
-3. 揭示后情绪从"恨/怨"翻成"亏欠/意难平"
+**Revealing Steps**:
+1. Use a scene or a relic to give all negative behaviors a reverse interpretation at the
+   same time
+2. No explanation, let readers go through the whole process again by themselves
+3. After the reveal, the emotion was translated from "hate/resentment" to "lingering
+   regret"
 
-| 全程认知 | 翻转后认知 | 反向细节铺垫 |
+| Full cognition | Cognition after flipping | Reverse detail preparation |
 |----------|-----------|-------------|
-| 后妈刻薄赶我走 | 她赶我走是怕她仇家牵连我 | 每次骂完都往我包里塞钱 |
-| 丈夫冷漠不管家 | 他在外面替我扛了所有债 | 深夜接的"应酬"电话都是催债 |
-| 师父偏心打压我 | 他压我是知道我会被盯上 | 每次罚我都安排在别人看得见的地方 |
+| My stepmother was mean and drove me away | She drove me away because she was afraid that her enemies would implicate me | She always stuffed money into my bag after scolding |
+| My husband is indifferent and careless | He has shouldered all my debts outside | The "social" calls I receive late at night are all debt collection |
+| Master suppresses me eccentrically | He suppresses me knowing that I will be targeted | Every time he punishes me, he arranges it in a place where others can see |
 
-**追妻/世情主力反转**：这是追妻火葬场、世情最常用的反转——男主/婆婆/亲人全程被恨，结尾翻成"原来一直在爱/在护"，意难平拉满。
+**Wife-chasing crematorium/worldly love main reversal**: This is the most commonly used
+reversal of wife-chasing crematorium and worldly love - the male
+protagonist/mother-in-law/relatives are hated throughout the whole process, and the
+ending is translated as "it turns out that I have always loved/protected", which is full
+of lingering regret.
 
-### 7. 无反转
+### 7. No reversal
 
-**触发条件**：甜宠、喜剧、反差萌、报应型复仇/重生——这类故事本就没有传统反转，硬塞反转反而毁节奏。
+**Trigger conditions**: sweet romance, comedy, contrasting cuteness, retributive
+revenge/rebirth - this type of story does not have a traditional twist, and forcing a
+twist will ruin the rhythm.
 
-**爽感来源（替代反转）**：
-- **报应兑现型**（复仇/重生爽文）：爽点不在"真相翻转"，在反派一步步走向毁灭、每条恶行精确对应一条报应（以彼之道还施彼身）。用报应设计表：恶行→报应→爽感来源。
-- **甜度递进型**（甜宠/青春）：爽点在关系一步步升温，反差萌反复"装失败"。全程正向情绪阶梯上升，不经历反转的负向回落。
+**Source of pleasure (alternative reversal)**:
+- **Retribution type** (revenge/rebirth feel-good fiction): The satisfying payoff is not
+  about "reversing the truth", but when the villain is heading towards destruction step
+  by step, and each evil deed corresponds to an exact retribution (repaying what he did
+  to the other). Use the retribution design table: evil deeds → retribution → source of
+  pleasure.
+- **Progressive sweetness type** (sweet romance/youth): Satisfying payoff gradually
+  heats up the relationship, but Meng repeatedly "pretends to fail". The whole process
+  is a positive emotional ladder rise, without any negative reversal.
 
-**写法要点**：
-1. 不为"显得有设计感"硬加反转
-2. 报应型：每个报应要让读者等过、铺过，兑现时才解气
-3. 甜宠型：升温节拍密集，每节给一个甜点/反差点
+**Key points of writing**:
+1. Don’t forcefully reverse it for the sake of “appearing to have a sense of design”
+2. Retribution type: Each retribution requires readers to wait and deal with it, and
+   only then can they feel relieved when it is fulfilled.
+3. Sweet romance type: The heating rhythm is intensive, and each section gives a sweet
+   spot/contrast point
 
-> 无反转类型可跳过反转铺垫阈值，但传播风险须以强共鸣 / 强话题 / 强余韵补足（见构思 SOP 的选题匹配节）。
-
----
-
-## 嵌套反转
-
-一篇短篇可叠 2-3 层反转，必须主次分明。
-
-### 双层嵌套
-
-```
-读者以为：A（铺垫阶段）
-第一层反转：其实是 B！（70%处）
-第二层反转：B 也是假的，其实是 C！（90%处）
-```
-
-**执行要求**：
-- 第一层反转必须足够有说服力，让读者接受B就是真相
-- 第一层后给1-2段「消化时间」
-- 第二层要能同时解释A和B，比第一层更震撼
-
-示例：
-```
-铺垫：丈夫出轨了，妻子收集证据准备离婚
-第一层（70%）：丈夫没出轨，那女人是他线人——他在调查妻子的公司
-第二层（90%）：妻子公司确实有问题；举报人换成妻子自己，丈夫只是被引导发现
-——她故意让丈夫发现，只有丈夫「不经意」揭发她才能拿到保险赔偿
-```
-
-### 三层嵌套（慎用）
-
-**使用条件**：只有15000字以上能装下三层。
-
-**执行要求**：
-- 间隔递减：第一层50-60%，第二层75-80%，第三层90-95%
-- 第三层必须最短最狠——一句话就够
-- 最后一层必须回答前面所有疑问
-- 每层都要有情感冲击，不只是信息冲击
-- 题材限制：只适合高智商悬疑、精心设计的复仇
+> The non-reversal type can skip the reversal foreshadowing threshold, but the risk of
+> transmission must be supplemented by strong resonance/strong topic/strong aftertaste
+> (see the topic matching section of the SOP).
 
 ---
 
-## 反转时机
+## Nested reverse
 
-### 最佳揭示位置
+A short story can be stacked with 2-3 levels of reversal, and the priorities must be
+clear.
 
-| 反转类型 | 最佳位置 | 原因 |
+### Double nesting
+
+```
+Readers think: A (preparatory stage)
+The first level of reversal: It’s actually B! (at 70%)
+The second level of reversal: B is also false, it is actually C! (at 90%)
+```
+
+**Implementation Requirements**:
+- The first level of reversal must be convincing enough to make the reader accept that B
+  is the truth.
+- Give 1-2 "digestion time" after the first level
+- The second level should be able to explain A and B at the same time, which is more
+  shocking than the first level.
+
+Example: @@CODEBLOCK2@@
+
+### Three levels of nesting (use with caution)
+
+**Conditions of use**: Only 15,000 words or more can fit into three levels.
+
+**Implementation Requirements**:
+- Decreasing intervals: 50-60% for the first layer, 75-80% for the second layer, 90-95%
+  for the third layer
+- The third level must be the shortest and most ruthless - one sentence is enough
+- The last level must answer all the previous questions
+- Each layer must have an emotional impact, not just informational impact
+- Subject matter restrictions: only suitable for high IQ suspense and well-designed
+  revenge
+
+---
+
+## Reversal Timing
+
+### Best Reveal Position
+
+| Inversion type | Best position | Reason |
 |----------|----------|------|
-| 身份反转 | 65-75% | 留够时间展示身份变化后的新冲突 |
-| 视角反转 | 70-80% | 需要足够篇幅建立错误认知 |
-| 动机反转 | 75-85% | 动机要在角色做出关键选择前揭示 |
-| 时间线反转 | 80-90% | 时间线需要最长铺垫 |
-| 信息反转 | 70-80% | 揭示后需要展示连锁反应 |
-| 认知反转 | 75-90% | 感情色彩要全程积累够才翻得动 |
+| Identity reversal | 65-75% | Allow enough time to show new conflicts after identity change |
+| Perspective reversal | 70-80% | Sufficient space is needed to establish misconceptions |
+| Motivation reversal | 75-85% | Motivation should be revealed before the character makes a key choice |
+| Timeline reversal | 80-90% | The timeline requires the longest preparation |
+| Information reversal | 70-80% | Need to show chain reaction after reveal |
+| Cognitive reversal | 75-90% | Emotional overtones must be accumulated throughout the process before you can move |
 
-### 时机铁律
+### The iron law of timing
 
-- 禁止在50%之前揭示——铺垫不够，反转没力度
-- 禁止在95%之后揭示——揭示后没有展开空间
-- 最优区间：70-85%
-- 双反转：第一个在55-65%，第二个在80-90%
+- It is forbidden to reveal before 50% - not enough preparation and no strong reversal
+- Forbidden to reveal after 95% - no room for expansion after reveal
+- Optimal interval: 70-85%
+- Double reversal: first at 55-65%, second at 80-90%
 
 ---
 
-## 误导技巧
+## Misleading techniques
 
-误导要引导读者自己走向错误结论，不能欺骗读者。
+Misleading should lead readers to wrong conclusions and cannot deceive readers.
 
-### 两大底层路径
+### Two underlying paths
 
-- **加法路径（分层法）**：在真实信息上叠加假信息。线索既可用逻辑线A解释为A'，也可用B解释为B'。A'是误导方向（常见故事），B'是真相（不常见故事）。误导读者以为是A'时，必须同时暗埋与B'相关的线索。
-- **减法路径（信息残缺法）**：不添加假信息，隐藏关键信息的一部分。只让主角得知成功的部分。导致下行的最好不是主角主动行动获得的，可以让配角获得那半信息后交给主角时发生意外。
+- **Additive path (layered method)**: superimpose false information on real information.
+  The clue can be interpreted either as logical line A as A' or as B as B'. A' is the
+  misleading direction (common story), B' is the truth (uncommon story). When misleading
+  readers into thinking it is A', clues related to B' must also be buried.
+- **Subtractive path (information incomplete method)**: Do not add false information and
+  hide part of the key information. Only let the protagonist know the successful part.
+  The best thing that leads to the downward movement is not obtained by the
+  protagonist's initiative. The supporting character can have an accident when he gets
+  half of the information and hands it to the protagonist.
 
-### 五种技巧速查
+### Five quick tips
 
-| 技巧 | 操作方法 | 示例 |
+| Tips | How-to | Examples |
 |------|---------|------|
-| 选择性叙述 | 主角只关注某些信息，读者跟着走 | 主角在意丈夫和女同事暧昧，忽略「客户」的奇怪电话 |
-| 情绪引导 | 用情绪场景引导判断 | 暖的父女戏→其实是愧疚，他做了对不起女儿的事 |
-| 假线索（红鲱鱼） | 给可疑角色/事件吸引注意力 | 诡异邻居和主线无关，真正威胁是一直正常的人 |
-| 刻板印象利用 | 利用社会认知偏见 | 强势婆婆其实是保护儿媳，她知道一些儿媳不知道的事 |
-| 信息分层 | 真相同假信息混在一起 | 丈夫确实秘密联系人（真）→前女友（假）→亲妹妹（真） |
+| Selective narration | The protagonist only pays attention to certain information, and the reader follows along | The protagonist is concerned about the affair between his husband and his female colleague, and ignores the strange phone calls from the "client" |
+| Emotional guidance | Use emotional scenes to guide judgment | Nuan’s father-daughter drama → Actually it’s guilt, he did something sorry for his daughter |
+| False clues (red herrings) | Draw attention to suspicious characters/events | The weird neighbor has nothing to do with the main plot, the real threat is the normal person |
+| Utilization of stereotypes | Utilization of social cognitive biases | A strong mother-in-law actually protects her daughter-in-law. She knows some things that her daughter-in-law does not know |
+| Information layering | True and false information mixed together | Husband’s secret contact person (true) → ex-girlfriend (false) → biological sister (true) |
 
-**红鲱鱼铁律**：红鲱鱼必须在故事里有自己的功能（推进情节/增加趣味），只是不是反转的答案。
-
----
-
-## 反转自检清单
-
-### 合理性
-- [ ] 回看铺垫至少有3处暗示指向反转
-- [ ] 反转不依赖巧合——角色选择推动了反转
-- [ ] 没有引入前面完全没提过的新信息
-
-### 冲击力
-- [ ] 反转后情绪强度高于反转前
-- [ ] 反转改变了读者对前面所有剧情的理解
-- [ ] 反转让读者想翻回开头重看
-
-### 公平性
-- [ ] 读者有可能在反转前猜到（不是必须，但有可能）
-- [ ] 没有对读者撒谎——只是没说出全部真相
-- [ ] 揭示方式自然，不靠角色大段独白解释
-
-### 节奏
-- [ ] 反转揭示不超过300字（快速、干脆）
-- [ ] 揭示后有足够篇幅展示反转影响
-- [ ] 反转后结尾在反转产生的情绪上收束
+**The Iron Rule of Red Herrings**: Red herrings must have their own function in the
+story (advancing the plot/adding interest), but they are not inverted answers.
 
 ---
 
-## 常见反转错误
+## Reverse self-check checklist
 
-| 错误 | 问题 | 修正 |
+### Rationality
+- [ ] Looking back, there are at least three hints of a reversal in the foreshadowing.
+- [ ] Reversals don’t rely on coincidence - character choices drive the reversals
+- [ ] No new information is introduced that has not been mentioned before
+
+### Impact
+- [ ] The emotional intensity after the reversal is higher than before the reversal
+- [ ] Reversal changes the reader's understanding of all previous plots
+- [ ] Reversal makes readers want to go back to the beginning and read again
+
+### Fairness
+- [ ] It is possible for the reader to guess before the reversal (not required, but
+      possible)
+- [ ] Not lying to the reader,just not telling the whole truth
+- [ ] Revealed in a natural way, without relying on long monologues from characters to
+      explain
+
+### Rhythm
+- [ ] Reverse reveal no longer than 300 words (quick and crisp)
+- [ ] Sufficient space after the reveal to show the reversal impact
+- [ ] After the reversal, the ending ends with the emotions generated by the reversal.
+
+---
+
+## Common reversal mistakes
+
+| Bugs | Problems | Fixes |
 |------|------|------|
-| 天降反转 | 前面完全没铺垫 | 至少埋3条线索 |
-| 解释过多 | 大段文字解释反转 | 用行动/场景让读者自己明白 |
-| 反转太弱 | 读者早就猜到了 | 加误导或换反转类型 |
-| 反转太多 | 3个以上反转堆在一起 | 砍到1-2个做到极致 |
-| 反转无感 | 只改变信息没改变情绪 | 反转必须同时改变读者情感判断 |
-| 反转作弊 | 引入前面不存在的信息 | 所有反转要素必须在前文中出现过 |
+| A sudden reversal | No foreshadowing at all | At least 3 clues buried |
+| Too much explanation | Reverse explanation in large paragraphs | Use actions/scenes to let readers understand |
+| The reversal is too weak | Readers have already guessed it | Add misleading or change the reversal type |
+| Too many reversals | More than 3 reversals piled together | Cut to 1-2 to achieve the ultimate goal |
+| Reversal without feeling | Only changes the information but not the emotion | Reversal must also change the reader's emotional judgment |
+| Reversal cheating | Introduce information that does not exist previously | All reversal elements must have appeared in the previous text |
 
 ---
 
-## 特殊反转技法
+## Special reversal technique
 
-### 虚晃一枪反转法
+### Feint shot reversal method
 
-先给出"应该不会发生"的预期让读者放松，然后意外以反转形式发生。类似鬼片推开门什么都没有->松口气->回头撞鬼。
+First give the expectation that "it shouldn't happen" to make readers relax, and then
+the unexpected happens in the form of a reversal. Similar to a ghost movie, when you
+open the door and see nothing -> breathe a sigh of relief -> turn around and hit the
+ghost.
 
-### 超额收获反转
+### Extra Harvest Reversal
 
-反转后收获超出预期，产生二次惊喜：
-- 短篇：主角以为只解决一个问题，结果连带解决了隐藏的更大问题
-- 网游文模式：Boss爆三样——立刻能用的 / 送人拉关系的 / 暂时用不到但一看很厉害的
+After the reversal, the harvest exceeded expectations and produced a second surprise:
+- Short story: The protagonist thought he was solving only one problem, but ended up
+  solving a larger hidden problem as well.
+- Online game writing mode: Three types of boss explosions - those that can be used
+  immediately / those that can be given as gifts to build relationships / those that
+  cannot be used temporarily but look very powerful at first glance
 
-### 情绪拉扯反转标准流程
+### Emotional pull and reversal standard process
 
-1. 展示物品/能力强大，读者期待+1
-2. 配角因信息差认为鸡肋，读者期待打脸+1
-3. 展示反派特性恰好克制，读者期待+1
-4. 配角拿更强装备打反派失败，期待+1
-5. 众人看衰主角，期待继续+1
-6. 主角秒杀，期待满足
-7. 众人震惊，配角马后炮分析，期待满足
-8. 新一轮收获，满足+新期待产生
+1. Display items/powerful abilities, readers expect +1
+2. The supporting characters feel useless due to poor information, and readers expect
+   face-slapping+1
+3. Shows the villain's characteristics with just the right amount of restraint, and
+   readers expect +1
+4. The supporting character fails to defeat the villain with stronger equipment, expect
+   +1
+5. Everyone looks down on the protagonist and looks forward to continuing +1
+6. The protagonist is killed instantly, and the expectation is satisfied
+7. Everyone was shocked, the supporting cast analyzed it after the fact, and expected to
+   be satisfied
+8. A new round of harvest, satisfaction + new expectations arise
 
 ---
 
-## 打脸的深层节奏
+## Face-Slapping Deep Rhythm
 
-### 三种打脸方式
+### Three face-slapping methods
 
-| 方式 | 特点 | 适用场景 |
+| Method | Features | Applicable scenarios |
 |------|------|----------|
-| 主动挑衅->打脸 | 简单粗暴 | 小白文最常见 |
-| 对手挑衅->被打脸 | 压主角同时给读者安全感和反击暗示 | 需要积蓄仇恨时 |
-| 借他人之手打脸 | 支持者代为回击，无损主角形象 | 保持主角高逼格时 |
+| Active provocation->face-slapping | Simple and crude | The most common white text |
+| The opponent provokes -> is face-slapping | Suppressing the protagonist while giving readers a sense of security and a hint of counterattack | When you need to accumulate hatred |
+| Borrow the hands of others to face-slap | Supporters will fight back on their behalf without damaging the protagonist's image | When maintaining the protagonist's high profile |
 
-### 打脸节奏铁律
+### face-slapping Rhythmic Irony
 
-- 压抑不能太长——连输8场写3万字不行，改成连输4场+略写
-- 压的同时必须给读者信心暗示（主角自信到自大："我们还是联赛前四！"）
-- 比起主角被欺负，读者更厌恶主角自暴自弃
-- 高潮部分要拉长，最大化利用（球迷反应、解说员、赛后跟进）
-- 大高潮不要险胜——充分铺垫后要尽情碾压，干净利落的大胜
+- Don’t be depressed for too long - losing 8 games in a row and writing 30,000 words
+  won’t work. Instead, lose 4 games in a row + write abbreviations.
+- While pressing, it must also give readers a hint of confidence (the protagonist is so
+  confident that he is arrogant: "We are still the top four in the league!")
+- Rather than the protagonist being bullied, readers are more disgusted by the
+  protagonist giving up on himself
+- The climax should be elongated and maximized (fan reaction, commentators, post-match
+  follow-up)
+- Don’t win the big climax by a narrow margin - after sufficient preparation, crush it
+  to your heart’s content and achieve a clean victory.
 
-### 高潮间过渡
+### Transition Between Climaxes
 
-升级练功也有爽点，但大爽点落在升级后打脸，读者期待升级后的兑现。
+There is also a satisfying payoff for upgrading exercises, but the big satisfying payoff
+falls face-slapping after the upgrade, and readers are looking forward to the
+fulfillment after the upgrade.

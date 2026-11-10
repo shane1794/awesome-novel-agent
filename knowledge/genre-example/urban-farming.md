@@ -1,37 +1,38 @@
-# 类型档案：都市种田
+# Type Archives: Urban Farming
 
-> 重生年代文、职场商战文、种田建设等都市文。
+> Urban writings such as rebirth era writing, workplace business war writing, farming
+> construction, etc.
 
 - **id:** `urban-farming`
-- **label:** 都市种田
+- **label:** Urban farming
 
 ---
 
-## 题材配置
+## Theme configuration
 
-### 满足类型
-- 生意兴隆
-- 技术突破
-- 资产增值
-- 打脸商业对手
-- 建设成果
-
-
-### 章节类型
-- 日常经营
-- 商业博弈
-- 技术攻关
-- 人际周旋
-- 时代变迁
+### Satisfy Type
+- Business is booming
+- technological breakthrough
+- Asset appreciation
+- face-slapping business rivals
+- Construction results
 
 
-### 节奏规则
+### Chapter type
+- daily operations
+- business game
+- Technical research
+- interpersonal dealings
+- Changing times
+
+
+### Rhythm Rules
 - max_consecutive_action_chapters: 1
 - max_consecutive_daily_chapters: 4
 - beat_density_min: 1
 
 ---
 
-## 卷级故事弧模板
+## Volume Story Arc Template
 
-默认：起步→积累→扩张→遇阻→突破→新高度
+Default: Start → Accumulate → Expand → Encounter obstacles → Breakthrough → New heights

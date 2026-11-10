@@ -1,37 +1,37 @@
-# 类型档案：都市日常
+# Genre Archives: Urban Daily
 
-> 都市情感、现实生活等都市文。
+> Urban emotions, real life and other urban literature.
 
 - **id:** `urban-daily`
-- **label:** 都市日常
+- **label:** Urban daily life
 
 ---
 
-## 题材配置
+## Theme configuration
 
-### 满足类型
-- 生活小确幸
-- 关系升温
-- 职场进步
-- 误会解开
-- 温暖瞬间
-
-
-### 章节类型
-- 日常生活
-- 情感交流
-- 职场成长
-- 家庭温情
-- 人际交往
+### Satisfy Type
+- Life is a small blessing
+- Relations heat up
+- career advancement
+- misunderstanding resolved
+- Warm moment
 
 
-### 节奏规则
+### Chapter type
+- daily life
+- emotional communication
+- Career growth
+- family warmth
+- interpersonal communication
+
+
+### Rhythm Rules
 - max_consecutive_action_chapters: 1
 - max_consecutive_daily_chapters: 4
 - beat_density_min: 1
 
 ---
 
-## 卷级故事弧模板
+## Volume Story Arc Template
 
-默认：日常→波澜→应对→成长→回归日常
+Default: Daily→Trouble→Coping→Growth→Return to Daily

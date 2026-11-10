@@ -1,8 +1,15 @@
-# 对话场景写法：悬疑刑侦
+# How to write dialogue scenes: suspenseful criminal investigation
 
-> 覆盖通用对话方法论（`dialogue/universal.md`）中与悬疑刑侦题材不适配的部分。
+> Covers the parts of the general dialogue methodology (`dialogue/universal.md`) that
+> are not suitable for suspense criminal investigation themes.
 
-- 对话即信息战。每句台词都携带信息（线索/误导/试探），没有无意义的社交寒暄
-- "角色不说真话"在悬疑中不是性格决定的，是案情决定的——每个角色隐瞒的内容本身就是线索
-- 权力动态：审问者和被审问者的权力不对等贯穿始终。刑警问话用短句+沉默施压，嫌疑人用反问+回避防守
-- **避坑**：不要写市民向警察长篇解释案情的对话（"是这样的，那天晚上……"）——信息应通过勘查和物证揭示，不是靠角色说
+- Dialogue is information warfare. Every line carries information
+  (clues/misleads/tests), no meaningless social pleasantries
+- "Characters don't tell the truth" in suspense is not determined by character, but by
+  the circumstances of the case - what each character conceals is itself a clue
+- Power Dynamics: The power asymmetry between interrogator and interrogated is present
+  throughout. The criminal police use short sentences + silence to apply pressure when
+  questioning, and the suspect uses rhetorical questions + evasive defense.
+- **Avoidance**: Don’t write long dialogues in which citizens explain the case to the
+  police ("Well, that night...") - information should be revealed through investigation
+  and physical evidence, not through character telling

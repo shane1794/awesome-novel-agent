@@ -1,37 +1,37 @@
-# 类型档案：动漫衍生
+# Genre Archives: Anime Derivatives
 
-> 游戏、动漫等偏二次元向的同人作品。
+> Games, anime and other fan works with a two-dimensional orientation.
 
 - **id:** `anime-derivative`
-- **label:** 动漫衍生
+- **label:** animation derivative
 
 ---
 
-## 题材配置
+## Theme configuration
 
-### 满足类型
-- 角色互动
-- 名场面还原
-- 剧情if线
-- cp发糖
-- 战力讨论
-
-
-### 章节类型
-- 主线重绎
-- 日常补全
-- 战斗还原
-- if线展开
-- 角色solo回
+### Satisfy Type
+- character interaction
+- Restoration of famous scenes
+- Plot if line
+- cp sugar
+- Discussion on combat power
 
 
-### 节奏规则
+### Chapter type
+- Reinterpretation of the main plot
+- Daily completion
+- Battle restoration
+- if line expansion
+- Character solo return
+
+
+### Rhythm Rules
 - max_consecutive_action_chapters: 3
 - max_consecutive_daily_chapters: 2
 - beat_density_min: 1
 
 ---
 
-## 卷级故事弧模板
+## Volume Story Arc Template
 
-默认：根据原作结构适配
+Default: adapted according to the structure of the original work

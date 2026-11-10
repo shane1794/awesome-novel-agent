@@ -1,37 +1,38 @@
-# 类型档案：都市修真
+# Genre Archives: Urban Cultivation
 
-> 以修真为力量体系的都市文。
+> Urban literature with cultivation as the power system.
 
 - **id:** `urban-cultivation`
-- **label:** 都市修真
+- **label:** Urban Cultivation
 
 ---
 
-## 题材配置
+## Theme configuration
 
-### 满足类型
-- 境界突破
-- 法宝炼成
-- 打脸装逼
-- 秘境夺宝
-- 身份揭晓
-
-
-### 章节类型
-- 修炼日常
-- 都市生活
-- 修真争斗
-- 势力博弈
-- 秘境探险
+### Satisfy Type
+- Realm breakthrough
+- Magic weapon made
+- face-slapping show off
+- Treasure Hunt in Secret Realm
+- Identity revealed
 
 
-### 节奏规则
+### Chapter type
+- Daily practice
+- urban life
+- Cultivation battle
+- Game of power
+- Secret adventure
+
+
+### Rhythm Rules
 - max_consecutive_action_chapters: 2
 - max_consecutive_daily_chapters: 2
 - beat_density_min: 1
 
 ---
 
-## 卷级故事弧模板
+## Volume Story Arc Template
 
-默认：入世→修炼→冲突→秘闻→危机→飞升/隐退
+Default: Entering the world → Cultivation → Conflict → Secrets → Crisis →
+Ascension/Retirement

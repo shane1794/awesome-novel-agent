@@ -1,492 +1,609 @@
-# 通用写作技法
+# General Writing Techniques
 
 
-> 本文件改写自获赠短篇流程包（oh-story 系 + 实测调整），按本仓口径适配：引用为部署后基座路径、已剔除外部体系引用。公开或商用前需原作者确认。
+> This document is adapted from the short flow package (oh-story series + actual
+> measurement adjustment) received as a gift, and is adapted to the caliber of this repo: the reference is the post-deployment base path, and external system
+> references have been eliminated. Confirmation by the original author is required
+> before disclosure or commercial use.
 
 
-> 跨题材通用写作时加载。先看决策路由选技法区域，再按操作执行。
-> 题材公式见 genre-writing-formulas.md。
+> Loading when writing universally across genres. First look at the decision-making
+> route and select the technique area, and then execute it according to the operation.
+> See genre-writing-formulas.md for genre formulas.
 
 ---
 
-## 决策路由
+## Decision Routing
 
-| 你的写作场景是 | 用这些技法 | 见第 X 节 |
+| Your writing situation is | Use these techniques | See Section X |
 |---------------|-----------|----------|
-| 设计核心梗/卖点 | 核心梗驱动法 + 升级感三步法 | 通用铁律 |
-| 设计人设 | 三层标签反差法 + 人设拆解从缺点开始 | 通用铁律 / 底部 |
-| 写开头 | 开头技法（7 种） | 通用铁律 |
-| 写震惊/打脸场景 | 震惊场景九种写法 + 三翻四震 | 震惊场景 |
-| 写比赛/对决 | 比赛场景写作前提 + 胜负设计 | 比赛场景 |
-| 写感情线推进 | 感情线四阶段 + CP 行为八种类型 | 感情线 |
-| 控制情绪节奏 | 情绪操控核心法则 + 信息差运用 | 情绪操控 |
-| 排查毒点/闷点 | 毒点排查核心 + 情绪三层次 | 情绪操控 |
-| 写女频相关 | 女频读者心理 + 沙雕风 | 女频技法 |
-| 控制视角/人物 | 短篇视角控制法则 | 视角控制 |
-| 写喜剧/flag | 喜剧 flag 机制 | 底部 |
-| 排查是否像 AI | 短篇写作硬性规范 | 硬性规范 |
+| Design core meme/selling point | Core meme driving method + three-step method to create a sense of upgrade | Universal iron law |
+| Designing characters | Three-layer label contrast method + dismantling characters starting from shortcomings | Universal iron law / bottom |
+| Writing the beginning | Beginning techniques (7 types) | Universal iron rules |
+| Writing shocking/face-slapping scenes | Nine ways to write shocking scenes + three turns and four shocks | Shocking scenes |
+| Writing competitions/matches | Prerequisites for writing competition scenarios + winning or losing design | Competition scenarios |
+| Writing and advancing the emotional line | The four stages of the emotional line + the eight types of CP behaviors | The emotional line |
+| Controlling the Rhythm of Emotions | Core Rules of Emotional Control + Application of Information Gap | Emotional Control |
+| Check for poisonous points/boring points | Core of poisonous points detection + three levels of emotions | Emotional manipulation |
+| Writing about female-oriented | Female-oriented reader psychology + shadiao (absurdist comedy) style | Female-oriented techniques |
+| Control perspective/character | Short story perspective control rules | Perspective control |
+| Write comedy/flag | Comedy flag mechanism | Bottom |
+| Check whether it looks like AI | Rigid specifications for short story writing | Rigid specifications |
 
 ---
 
-## 通用写作铁律
+## Universal writing rules
 
-### 核心梗驱动法
+### Core Meme Driven Method
 
-核心梗 = 完整情绪链条（特定期待→特定满足）。
+Core story = complete emotional chain (specific expectations → specific satisfaction).
 
-**核心梗三层递进设计**：
-- 一代 = 主题/中心思想（如：改变命运）
-- 二代 = 题材核心（如：升级修炼）
-- 三代 = 核心情绪（如：莫欺少年穷）
+**Three-layer progressive design of core themes**:
+- Generation = theme/central idea (e.g.: changing destiny)
+- Second generation = core of the theme (e.g. upgrading and training)
+- Three generations = core emotions (eg: don’t bully young people into poverty)
 
-**构建顺序**：核心卖点→情绪套路→根据套路设计剧情
+**Construction sequence**: Core selling point → Emotional routine → Design the plot
+according to the routine
 
-### 三层标签反差人设法
+### Three layer label contrast man trying
 
-| 层 | 说明 | 示例 |
+| Layers | Description | Example |
 |----|------|------|
-| 身份标签 | 大众刻板印象 | 合欢宗圣女→蛇蝎美人 |
-| 表现标签 | 普通关系中的特质 | 高冷、不食人间烟火 |
-| 内在标签 | 突发事件/亲密关系揭示 | 底色善良、勤俭持家 |
+| Identity tags | Popular stereotypes | Acacia saint → femme fatale |
+| Performance tags | Traits in ordinary relationships | Aloof and unworldly |
+| Internal tags | Unexpected incidents/intimate relationship revelations | Kind-hearted, thrifty and house-keeping |
 
-越反差越好。角色进入第三层后，第一二层的行为做不出来了。
+The more contrast, the better. After the character enters the third level, the behaviors
+on the first and second levels cannot be performed.
 
-### 展示优于告知
+### Show is better than telling
 
-展示必须包含：铺垫、期待、爽点；人物目的、行动、态度；情节铺垫、反转、后续。
+The presentation must include: foreshadowing, expectations, and satisfying payoff;
+characters’ purpose, actions, and attitudes; plot foreshadowing, reversal, and
+follow-up.
 
-### 事件驱动 vs 情感驱动
+### Event driven vs emotion driven
 
-| 类型 | 驱动来源 | 读者关心 | 特点 |
+| Type | Driver Source | Reader Care | Features |
 |------|----------|----------|------|
-| 事件驱动 | 外部冲突 | 能不能打赢？ | 节奏快、爽点明确 |
-| 情感驱动 | 内部冲突 | 为什么这么想？ | 持续拉扯、人物悬念 |
+| Event-driven | External conflict | Can it be won? | Fast pace, clear satisfying payoff |
+| Emotionally driven | Internal conflict | Why do you think so? | Continuous pulling, character suspense |
 
-事件悬念是一次性的，人物悬念是持续性的。
+The suspense of events is one-time, but the suspense of characters is continuous.
 
-### 矛盾冲突抛出公式
+### Conflict Throwing Formula
 
-【反派人设】+【动机】+【行为】+【态度】+【主角受伤害程度】
+[Villain Design] + [Motive] + [Behavior] + [Attitude] + [Protagonist’s Damage Level]
 
-三种冲突类型：
-1. **利益掠夺型** — 反派需要资源，代价转给主角
-2. **祸害转移型** — 反派受罚，主角承受代价
-3. **针锋相对型**（矛盾最激烈）— 主角特质打破反派秩序
+Three conflict types:
+1. **Profit Predation**, The villain needs resources, and the cost is passed on to the
+   protagonist
+2. **Disaster transfer type** - the villain is punished and the protagonist bears the
+   price
+3. **Tit for tat** (the most intense conflict) - the protagonist's characteristics break
+   the villain's order
 
-### 叙事单元体系
+### Narrative Unit System
 
-| 情绪模块 | 核心 | 必备要素 | 爽点来源 |
+| Emotion module | Core | Essential elements | Source of satisfying payoff |
 |--------|------|----------|----------|
-| 英雄救美 | 关系质变 | 危机→拯救→评价上升 | 被救者好感UP |
-| 装逼 | 落差对比 | 展示能力→他人震惊 | 优越感 |
-| 以小搏大 | 赌博赢利 | 小代价→搏的过程→大收获 | 占便宜心理 |
-| 少年热血 | 明知不可为而为之 | 不公→善良人受苦→决心→成功 | 正义感 |
-| 临危受命 | 超越众人 | 突发危机→众人无法→主角出手 | 孤胆英雄感 |
-| 好人好报 | 善有善报 | 善举→暗示回报→兑现 | 因果报应 |
+| Hero saves beauty | Qualitative change in relationship | Crisis→Rescue→Rise in evaluation | The favorability of the rescued increases |
+| Show off | Compare the gap | Show ability → shock others | Sense of superiority |
+| Play small to win big | Profit from gambling | Small price → process of gambling → big gain | The psychology of taking advantage |
+| Young blood | Doing something even though you know you can't do it | Injustice → Kind people suffer → Determination → Success | Sense of justice |
+| Taking orders in the face of danger | Surpassing everyone | Sudden crisis → No one can help → Protagonist takes action | The feeling of being a lone hero |
+| Good people are rewarded | Good deeds are rewarded | Good deeds → Implied rewards → Fulfillment | Karma |
 
-**核心原则**：同一情绪模块（如英雄救美）可重复用，但每次必须换场景/对象/代价。判断标准：连续两个爽点读者反应递减，就是磨损了，换触发点而非加大力度。
+**Core Principle**: The same emotional module (such as a hero saving a beauty) can be
+used repeatedly, but the scene/object/cost must be changed each time. Judgment criteria:
+If the reader's response decreases for two consecutive satisfying payoffs, it means it
+is worn out. Change the trigger point instead of increasing the intensity.
 
-组合规则：上升型可单独用；下行型后必须接上升型；组合效果>单独使用。
+Combination rules: rising type can be used alone; downward type must be followed by
+rising type; combination effect > used alone.
 
-### 升级感三步设计法
+### Three-step design method for a sense of upgrade
 
-1. **列出起点** — 主角当前身份、资源、处境
-2. **列出终点** — 场景结束后主角的收获
-3. **反向设置情绪缺口** — 针对终点收获，前文铺垫需求
+1. **List Qidian**, The protagonist’s current identity, resources, and situation
+2. **List Endpoints**, What the protagonist learns after the scene ends
+3. **Setting the emotional gap in reverse**, Aiming at the end point harvest, the
+   previous article paved the way for needs
 
-| 获得什么 | 铺垫什么 |
+| What to gain | What to pave the way for |
 |----------|----------|
-| 关键证据 | 配角强调证据稀缺 |
-| 地位提升 | 展示该地位的权力威势 |
-| 人物帮助 | 展示该人物的价值 |
-| 金手指觉醒 | 展示主角此前的无力 |
+| Crucial evidence | Supporting characters emphasize the scarcity of evidence |
+| Status enhancement | Demonstrate the power and authority of the status |
+| Character Help | Demonstrate the value of this character |
+| Awakening of golden finger | Showing the protagonist’s previous powerlessness |
 
-**多角度对比法**：伤害输出、社会地位、他人评价、自身感受——四维度体现升级前后差异。
+**Multi-angle comparison method**: Damage output, social status, other people's
+evaluation, one's own feelings - four dimensions reflect the difference before and after
+the upgrade.
 
-### 开头技法
+### Opening Techniques
 
-| 技法 | 说明 | 范例 |
+| Techniques | Instructions | Examples |
 |------|------|------|
-| 病中被逼 | 身体最脆弱时被逼最累的事 | "我刚做完脊椎手术...妈妈却攥着我的手腕：快点，祭祀要开始了。" |
-| 异常物件 | 不该出现的物件引发全局 | "避孕套日期突然变了，连味道也变成了我过敏的芒果味。" |
-| 旁观死亡 | 第一句灵魂飘起 | "我的魂魄慢慢飘起来，看着妈妈铁青的脸。" |
-| 公开背叛 | 第一句被当众背刺 | "我亲手养大的妹妹，拿着百亿签字笔，越过了我。" |
-| 假意顺从 | 重生后主动给出前世拼死保护的东西 | "你既然想要，就都给你吧。反正谁拿到谁就大祸临头。" |
-| 死亡回溯 | 第一句交代死法和凶手 | "孕八月发现老公出轨，情绪崩溃导致早产。手术台上大出血。" |
-| 冷发现 | 发现异常后冷笑而非哭闹 | "我笑着点头。当天就去月子中心记下预约单，转身给法务部写了封举报信。" |
+| Forced during illness | The most tiring thing to be forced when the body is at its weakest | "I just finished spinal surgery... but my mother held my wrist: hurry up, the sacrifice is about to begin." |
+| Abnormal objects | Objects that should not appear cause the whole situation | "The date of the condom suddenly changed, and even the smell changed to the mango flavor that I am allergic to." |
+| Watching death | The first sentence of the soul is floating | "My soul is slowly floating up, looking at my mother's livid face." |
+| Public betrayal | The first sentence was stabbed in the back in public | "The sister I raised with my own hands crossed me with a tens of billions of pens." |
+| Pretended obedience | After rebirth, take the initiative to give things that you fought to protect in your previous life | "Since you want it, I'll give it to you. Whoever gets it will be in trouble." |
+| Death retrospective | The first sentence explains the manner of death and the murderer | "I discovered that my husband was cheating on me in the eighth month of my pregnancy, and my emotional breakdown led to premature birth. There was massive bleeding on the operating table." |
+| Cold discovery | Sneered instead of crying after discovering the abnormality | "I smiled and nodded. I went to the confinement center to write down the appointment form that day, then turned around and wrote a report letter to the legal department." |
 
-### 导语写法
+### Introduction writing method
 
-导语＝短篇付费/过稿的第一道留人关（约 150-300 字）。三者别混：导语是**全篇引**，`hooks-paragraph` 是段钩，上面的开头技法是首句炸点。四要点：
+Introduction = the first step in retaining people for paid/post-draft short stories
+(approximately 150-300 words). Don’t confuse the three: the introduction is **full
+quotation**, `hooks-paragraph` is the paragraph hook, and the above opening technique is
+the highlight of the first sentence. Four key points:
 
-1. 信息密度拉满：只留身份 + 核心关系 + 核心矛盾 + 情绪落点，其余全删。
-2. 冲突前置：先给最炸的结果，再倒回去讲起因。
-3. 情绪可直给定调：导语以事件炸点为主，情绪可直接定调（"我心如死灰""恨他入骨"），不要求藏；只避免空泛无处境的抒情堆砌。追妻类还可在结尾埋火葬场前瞻预告（"可后来他后悔了"）。
-4. 留缺口：只抛问题、给结果，不解答，逼读者往下翻。
+1. The information density is full: only keep identity + core relationships + core
+   conflicts + emotional points, and delete the rest.
+2. Pre-conflict: give the most explosive result first, and then go back and talk about
+   the cause.
+3. Emotions can directly set the tone: the introduction mainly focuses on the explosive
+   points of the event, and the emotions can directly set the tone ("My heart is as gray
+   as death", "I hate him to the bone"), and there is no need to hide it; just avoid
+   empty and situationless lyrical piling up. The wife-chasing genre can also provide a
+   preview of the burial in the crematorium at the end ("But he regretted it later").
+4. Leave a gap: only ask questions and give results, without answers, forcing readers to
+   scroll down.
 
-两个上手公式：
+Two formulas to get started:
 
-- 结果倒序式（追妻常用）：先写最终走向，倒着排时序——"我把房产证还给他那天，他堵着门不让我走。可三年前我求他别签字时，他头都没回。"
-- 悬念式（反转常用）：反常行为 + 半句真相 + 故意不说完——"婆婆这半个月突然对我热络，每天变着花样炒菜。直到我整理她抽屉，翻到那份过户协议。"
+- Reverse order of results (commonly used when chasing a wife): write the final
+  direction first, and arrange the time in reverse order - "The day I returned the real
+  estate deed to him, he blocked the door and refused to let me leave. But three years
+  ago, when I begged him not to sign, he didn't even look back."
+- Suspense style (commonly used in reverse): abnormal behavior + half-truth +
+  deliberately not finishing the sentence - "My mother-in-law has suddenly become very
+  warm to me in the past half month, and she cooks in different ways every day. Until I
+  sorted out her drawers and found the transfer agreement."
 
-### 情绪操控高级技法
+### Advanced Emotional Manipulation Techniques
 
-1. **阶梯式背叛**：每一章揭露一个更大的背叛（道德→经济→生命）
-2. **冷热对比法**：主角越冷，对方越歇斯底里，反差越大越爽
-3. **双面人剥皮术**：先写表面好，再层层剥开真相（复制粘贴的关心模板）
-4. **前世记忆穿插法**：每章穿插一小段前世回忆，让读者理解"反常行为"
-5. **审判式对话**：主角永远在提问、永远在审判、永远居高临下
+1. **Ladder Betrayal**: Each chapter reveals a greater betrayal (moral → economic →
+   life)
+2. **Hot and Cold Contrast Method**: The colder the protagonist is, the more hysterical
+   the other party is. The greater the contrast, the more enjoyable it is.
+3. **Double Skinning Technique**: Write the surface first, then peel off the truth layer
+   by layer (copied and pasted care template)
+4. **Past life memory interspersing method**: Each chapter is interspersed with a short
+   paragraph of past life memories to allow readers to understand "abnormal behavior"
+5. **Judgmental dialogue**: The protagonist is always asking questions, always judging,
+   and always condescending.
 
-### 结构创新技法
+### Structural Innovation Techniques
 
-1. **超短章节制**：每章500-1000字，每章一个小爆点，适合手机阅读
-2. **线索物贯穿法**：一个物件贯穿全文，承载情绪+剧情双重功能
-3. **时空对照法**：同一时间两个空间对比（哥哥被打vs渣男给小三挑飞机）
-4. **定时炸弹式证据**：主角生前设置的自动发送证据，关键时刻引爆
+1. **Super short chapter format**: Each chapter is 500-1000 words, each chapter has a
+   small breaking point, suitable for reading on mobile phones
+2. **Clue object penetration method**: An object runs through the entire text, carrying
+   the dual functions of emotion and plot
+3. **Time and Space Contrast Method**: Comparison of two spaces at the same time
+   (brother being beaten vs. a scumbag giving the mistress a ride)
+4. **Time bomb evidence**: The protagonist set up the automatic transmission of evidence
+   before his death, and detonated it at the critical moment.
 
-### 回旋镖布局
+### Boomerang Layout
 
-把"因果报应"落到写作上：写前期男主每件施害、每句狠话时，顺手在伏笔回查清单记一笔；后期逐条原样还回去——同场景、同台词、攻守对调。这是 `reversal-toolkit.md` 报应兑现型在写作端的做法，与伏笔回收合用；对得准比还得多更重要。
+Put "karma" into your writing: when writing about every harm done and every harsh word
+said by the male protagonist in the early stage, make a note of it in the foreshadowing
+review list; in the later stage, return it one by one as it is - the same scene, the
+same lines, and the offense and defense are reversed. This is the `reversal-toolkit.md`
+retribution cashing method on the writing side, and it is combined with foreshadowing
+recycling; it is more important to be accurate than to have too many.
 
-| 前期（埋） | 后期（还） |
+| Early stage (buried) | Late stage (returned) |
 |-----------|-----------|
-| 女主做好饭等他到半夜，他一句"不回" | 他做好饭等女主，她连门都不让进 |
-| 女主病危他说"自己处理" | 他病危住院，她只让助理送花圈 |
-| 当众说女主是"家里的保姆" | 他想牵手被甩开，女主"这位不熟的先生" |
+| The heroine waited for him until midnight to prepare a meal, but he said "no reply" | He waited for the heroine to prepare a meal, but she wouldn't even let him in |
+| When the heroine was critically ill, he said he would "handle it by himself" | He was critically ill and hospitalized, but she only asked her assistant to send wreaths |
+| He called the heroine "the nanny at home" in public | He wanted to hold hands but was thrown away, the heroine was "this unfamiliar gentleman" |
 
-### 结尾高级技法
+### Advanced ending techniques
 
-1. **重生暖心式**：投胎温暖家庭，温馨细节呼应前世缺失
-2. **余韵道具式**：用一个物件暗示未来，不说破
-3. **大长镜头式**：主角一步步走向大门，身后所有人震惊
-4. **反讽对位式**：用反派视角写最讽刺的结局——漠视比报复更有力
+1. **Rebirth and heart-warming style**: Reincarnation warms the family, warm details
+   echo the missing things in the previous life
+2. **After Effects Prop Style**: Use an object to hint at the future without telling it.
+3. **Long lens style**: The protagonist walks towards the door step by step, everyone
+   behind him is shocked
+4. **Ironic Counterpoint**: Use the villain's perspective to write the most ironic
+   ending - indifference is more powerful than revenge
 
-### 对话密度与功能
+### Conversation Density and Functionality
 
-| 平台 | 对话占比 | 功能分布 |
+| Platform | Conversation proportion | Function distribution |
 |------|----------|----------|
-| 知乎盐言 | 50-60% | 情绪推动40%、信息揭露35%、人物塑造25% |
+| Zhihu Yanyan | 50-60% | Emotional promotion 40%, information disclosure 35%, character creation 25% |
 
-### 核心金句模板
+### Core golden sentence template
 
-| 场景 | 金句 |
+| Scene | Phrases |
 |------|------|
-| 冷静审判 | "你的人情味不是用来原谅背叛和欺骗的。我的温情很贵，只给值得的人。" |
-| 彻底决裂 | "血缘，原来并不可靠。" |
-| 身份揭露 | "一派胡言！我沈家家主明明是简希。" |
-| 旁观死亡 | "她不知道，我想要的，只是一句疼不疼。" |
-| 最终漠视 | "那是他们的故事了，与我再无瓜葛。" |
-| 讽刺审判 | "你三十三岁了，不是十三岁。一句被迷惑，就能把责任推干净？" |
+| Calm Judgment | "Your human touch is not used to forgive betrayal and deception. My warmth is very expensive and is only given to those who are worthy." |
+| A complete break | "Blood relations, it turns out, are not reliable." |
+| Identity Revealed | "That's nonsense! The head of the Shen family is obviously Jian hope." |
+| Watching Death | "She doesn't know, all I want is a word of pain or not." |
+| Final indifference | "That is their story, and it has nothing to do with me anymore." |
+| Ironic Trial | "You are thirty-three years old, not thirteen. Can you shirk the responsibility just by being confused?" |
 
-### 短篇写作硬性规范
+### Hard rules for short story writing
 
-| 规范 | 要求 | 违规示例 |
+| Specifications | Requirements | Violation Examples |
 |------|------|----------|
-| 开头100字内冲突 | 第一句就是信息炸弹 | "在一个阳光明媚的早晨..." |
-| 对话占正文45-65% | 每个对话推进剧情或揭示性格 | 大段独白/旁白 |
-| 每段不超过3句话 | 1句强调，2-3句正常，4句+拆分 | 超过4句的段落 |
-| 情绪词后接具体动作 | 直写情绪成语，后面接一个场景里的具体动作或物件（见 short-craft 第2节），只删后面接不上具体东西的情绪总结句 | 《为给白月光出气，男友群发我私密照》我紧紧抿着嘴唇，直到尝到血腥味 |
-| 每个场景两个功能 | 推进+揭示 / 铺垫+推高 / 呈现信息 | 单功能场景删除 |
-| 结尾用动作/对话 | 不升华、不总结、不感慨 | "从此以后她明白了..." |
-| 主角有标志性动作 | 复仇型端水杯；系统型吐槽面板 | 无辨识度 |
-| 每章一个信息炸弹 | 改变读者认知的新信息 | 章尾无新信息 |
+| Conflict within the first 100 words | The first sentence is an information bomb | "On a sunny morning..." |
+| Dialogue accounts for 45-65% of the text | Each dialogue advances the plot or reveals character | Large monologue/narration |
+| Each paragraph should not exceed 3 sentences | 1 sentence for emphasis, 2-3 sentences for normal, 4 sentences + split | Paragraphs of more than 4 sentences |
+| Emotional words followed by specific actions | Write emotional idioms directly, followed by specific actions or objects in a scene (see section 2 of short-craft), only delete emotional summary sentences that cannot be followed by specific things | "To vent my anger on white moonlight, my boyfriend sent me private photos in a group" I pursed my lips tightly until I tasted the smell of blood |
+| Two functions per scene | Promote + reveal / foreshadow + promote / present information | Single-function scene deletion |
+| End with action/dialogue | No sublimation, no summary, no emotion | "From now on, she understood..." |
+| The protagonist has iconic actions | Revenge-type water cup; Systematic complaint panel | Unrecognizable |
+| One information bomb per chapter | New information that changes the reader's perception | No new information at the end of the chapter |
 
-**结尾三种黄金模式**：A. 反派视角收尾；B. 开放式暗示；C. 仪式感收场。
+**Three golden modes at the end**: A. Ending from the villain’s perspective; B. Open
+hint; C. Ritual ending.
 
-**重生文核心**：第一件事做"前世绝不会做的事"。
+**Core of Rebirth Article**: The first thing to do is "something you would never do in
+your previous life."
 
-**灵魂/鬼视角**：全知但无力改变——旁观者的残忍比直接参与更震撼。
-
----
-
-## 情绪操控核心法则
-
-1. **情绪对等释放**：反派多恶劣，反击就多爽。投入多少负面情绪，释放时就有对应量级正面释放
-2. **情绪缺口制造**：先让读者渴望，再满足
-3. **该爽不爽比毒点还毒**：放底牌后反派必须受对应压制，金手指效果必须清清楚楚展示
-
-### 信息差运用法则
-- 信息差是期待感的核心：读者知道但角色不知道
-- 在信息差基础上，反派恰好被克制——期待叠加
-- 信息差抹平时就是爽点爆发
-- 传递信息差的重点是关系网角色前后情绪反转
-- 震惊熟人比震惊陌生人更爽
-
-### 毒点排查核心
-- 爽文不爽就是毒——金手指效果必须展示清楚
-- 连续多次破坏读者期待引发信任危机
-- 主角行为必须能理解、能共鸣、能接受
-- 反派死亡太简单或与主角无关 = 完读率杀手
-- 氛围感被突兀的梗破坏 = 除乐子文外都要避免
+**Soul/Ghost Perspective**: Omniscient but powerless to change - the cruelty of
+bystanders is more shocking than direct participation.
 
 ---
 
-## 感情线写作法则
+## Core rules of emotional manipulation
 
-### 爱情线阶段推进原则
-- 推进 = 爱情阶段的推进（萍水相逢→怦然心动→暧昧→确认→深化）
-- 好感度质变事件在细纲/章纲层面设计
-- 日常文好感度：小事件串联缓慢增长，不要猛增大事件
-- 开头前期不写太暧昧的内容，要符合当前阶段
+1. **Reciprocal release of emotions**: No matter how bad the villain is, the
+   counterattack will be great. No matter how much negative emotion you invest, there
+   will be a positive release of the corresponding magnitude when you release it.
+2. **Emotional Gap Creation**: Make readers desire first, then satisfy them
+3. **The discomfort is worse than the poison**: After placing the trump card, the
+   villain must be suppressed accordingly, and the golden finger effect must be clearly
+   displayed.
 
-### 日常文/狗粮文核心
-- 核心是男女主之间的**细节互动**
-- 从人设入手构建关系进展
-- 情绪变化 + 细节互动 = 读者想看的
-- 新鲜舞台 + 稳定人设 + 重复亲密接触 = 有效循环
+### Information gap application rules
+- The information gap is at the heart of the sense of expectation: the reader knows but
+  the character does not
+- Based on the information gap, the villain happens to be restrained - expect
+  superposition
+- When the information gap is wiped out, the satisfying payoff will explode.
+- The key point in conveying poor information is the emotional reversal of the roles in
+  the network.
+- It’s better to shock an acquaintance than a stranger
 
-### 好感度与事业线绑定法
-- 帮助女主和事业线目标完全绑定，本质是同一件事
-- 事业线推进自然带动好感度提升
-- 主事业线的文：能忍受较长接触
-- 主爱情线的文：尽快进入女主主动给予情绪价值的阶段
+### Poison spot investigation core
+- feel-good fiction Displeasure is poison - the golden finger effect must be clearly
+  demonstrated
+- Repeatedly destroying readers' expectations and triggering a crisis of trust
+- The protagonist’s behavior must be understandable, sympathetic, and acceptable
+- Villain death is too simple or has nothing to do with the protagonist = completion
+  rate killer
+- The sense of atmosphere is ruined by abrupt jokes = avoid this except for fun articles
 
 ---
 
-## 女频读者心理与写作技法
+## Rules for writing emotional lines
 
-### 读者心理特征
+### Love line stage advancement principles
+- Advancement = advancement of the love stage (unexpected encounter → heartbeat →
+  ambiguity → confirmation → deepening)
+- The event of qualitative change in favorability is designed at the level of
+  outline/chapter
+- Favorability of daily articles: small events will increase slowly in series, don’t
+  increase the number of big events suddenly
+- Don’t write too ambiguous content at the beginning. It should be in line with the
+  current stage.
 
-1. **围观八卦视角为主**：重点在"围观八卦"产生共鸣，代入感居次
-2. **安全感需求极高**：文案/简介必须暗示成功或希望
-3. **主体性敏感**：女主缺乏主体性会提高吸引力和留存风险
-4. **情绪产品导向**：不论什么风格，本质都是情绪产品
+### The core of daily writing/dog food writing
+- The core is the **detailed interaction** between the male and female protagonists
+- Building relationship progress from the perspective of personality
+- Emotional changes + detailed interactions = what readers want to see
+- Fresh stage + stable character + repeated intimate contact = effective cycle
 
-### 感情流"扮猪吃虎"写法
-- 核心机制：通过能力反差打破强弱定位，制造性张力
-- 扮猪理由必须合理——有明确动机
-- 能力揭露时机精准——对方最需要保护时反转
-- 反差越大越有张力
-- 隐藏身份线索提前埋，不能突然冒出
+### Favorability and career line binding method
+- Helping the heroine to completely bind her career goals is essentially the same thing
+- Advancement of career lines will naturally lead to increased favorability
+- Articles on the main career line: Can tolerate long contact
+- Main love line articles: Enter the stage where the heroine takes the initiative to
+  give emotional value as soon as possible
 
-### 沙雕风写作（女频修真/古言）
-- 人物互动、反应、玩梗是主要看点
-- 轻松表面下主线可能严谨甚至带刀
-- 角色被"调侃"不硬刚而是宠着让着→"团宠"
-- 主角"不正经"但实力在线，反差是魅力
-- 轻度沙雕也可火；对话造梗是核心技能
+---
 
-### 女频平台写法定位
+## Female-Oriented Reader Psychology and Writing Techniques
 
-| 平台 | 定位 | 写作校准 |
+### Reader psychological characteristics
+
+1. **The perspective of "watching the gossip" is the main one**: The focus is on
+   "watching the gossip" to resonate, and the sense of substitution comes second.
+2. **Extremely high need for security**: Copywriting/introduction must imply success or
+   hope
+3. **Subjectivity Sensitivity**: The heroine’s lack of subjectivity will increase the
+   risk of attraction and retention.
+4. **Emotional product orientation**: No matter what style, the essence is emotional
+   products
+
+### How to write "pretending to be a pig and eating a tiger" in emotional flow
+- Core mechanism: break the positioning of strength and weakness through ability
+  contrast and create sexual tension
+- The reason for pretending to be a pig must be reasonable - there must be a clear
+  motive
+- The timing of ability reveal is precise - reverse when the opponent needs protection
+  the most
+- The greater the contrast, the greater the tension.
+- Hidden identity clues should be buried in advance and cannot appear suddenly.
+
+### shadiao style writing (female-oriented cultivation/ancient Chinese)
+- Character interactions, reactions, and jokes are the main highlights
+- The main line under the relaxed surface may be rigorous and even carry a knife
+- When a character is "ridiculed", the character is not tough but pampered and let go →
+  "group pet"
+- The protagonist is "not serious" but his strength is online. The contrast is charming
+- Mild shade can also make people popular; dialogue making is the core skill
+
+### female-oriented Platform Writing Positioning
+
+| Platform | Positioning | Writing Calibration |
 |------|------|------|
-| 晋江 | 高质量女频 | 文案安全感、主体性、人物细节要求高 |
-| 起点女频 | 长线稳定型 | 慎用于强商业短篇，需验证目标读者 |
-| 番茄 | 下沉吸量型 | 强钩子、强情绪、快反馈 |
-| 七猫 | 强情绪女频 | 甜虐交替、极限推拉、沙雕/玄幻可用 |
+| Jinjiang | High-quality female-oriented | Copywriting has high requirements for security, subjectivity, and character details |
+| Qidianfemale-oriented | Long-term stable type | Use with caution in strong commercial short stories, target readers need to be verified |
+| Fanqie | Sinking volume type | Strong hook, strong emotion, fast feedback |
+| Qimao | Strong emotional female-oriented | Sweet and sad alternation, extreme push and pull, shadiao/xuanhuan (Eastern fantasy) available |
 
-### 简介文案安全法则
-- 缺少女主成功剧情→读者缺乏安全感→吸引力和留存风险升高
-- 悬疑型文案叠加过多→读者理解不了
-- 文案和文名货不对板→劝退
-- 女主被虐过重→整体偏虐→吸引力和留存风险升高
-- 事业线突出的文→文案必须体现事业成功暗示
+### Introduction to Copywriting Safety Rules
+- Lack of a successful heroine → Readers lack a sense of security → Increased risk of
+  attraction and retention
+- Too much suspense copy → readers can’t understand it
+- The copywriting and the product are not right → persuade them to quit
+- The heroine is overly abused → overall abused → the risk of attraction and retention
+  increases
+- Copywriting with a prominent career line → Copywriting must reflect hints of career
+  success
 
-### 写作关键认知
-- 参考优先级：对标书分析 > 理论框架
-- 对标书至少三本才能总结核心特点
-- 读者反馈分析：从目标平台最新读者评论中提取高频需求关键词，作为写作校准依据
-- 越远的剧情越模糊（粗纲），越近的越清晰（细纲）
-- 文风服务于情绪，关键是精准满足目标读者情感需求
+### Key cognition of writing
+- Reference priority: Bid analysis > Theoretical framework
+- At least three bidding documents can be used to summarize the core features.
+- Reader feedback analysis: Extract high-frequency demand keywords from the latest
+  reader comments on the target platform as a basis for writing calibration
+- The farther away the plot is, the vaguer it is (broad outline), and the closer it is,
+  the clearer it is (fine outline).
+- Writing style serves emotions, and the key is to accurately meet the emotional needs
+  of target readers.
 
 ---
 
-## 震惊场景九种写法
+## Nine ways to write shocking scenes
 
-| 类型 | 手法 | 示例 |
+| Type | Technique | Example |
 |------|------|------|
-| 普通震惊 | 事件+一人震惊 | 配角目睹主角实力直接反应 |
-| 多人递进 | A震惊→B震惊（B身份高于A） | 小人物先惊，大佬更惊 |
-| 解说式 | 旁白解说+角色震惊 | 先渲染一击精妙，再写观者反应 |
-| 画面式 | 宏大画面+角色震惊 | 天地变色特效后接观者跪拜 |
-| 对比式 | 角色与自身对比后震惊 | "这还是刚才那头魔猿？" |
-| 问号式 | 自问自答后震惊 | "我扪心自问能做到吗？不可能！" |
-| 变换地点 | 地点1→2→3依次震惊 | 消息扩散式多方势力被震撼 |
-| 身心分层 | 身体反应+心理反应 | "浑身冰寒"+"心神俱震"分层 |
-| 人设反差 | 先不屑后震惊 | "不过如此"→"我一定是在做梦" |
+| Ordinary shock | Event + one person shocked | Supporting character reacts directly to the protagonist's strength |
+| Multiple people progressively | A is shocked → B is shocked (B’s identity is higher than A) | The little guy is shocked first, the big guy is even more shocked |
+| Explanatory style | Narration and character shock | First render the exquisite attack, and then write the audience’s reaction |
+| Picture style | Grand picture + character shock | The color-changing special effects of heaven and earth followed by the audience kneeling down |
+| Comparative style | The character is shocked after comparing himself with himself | "Is this the same demon ape just now?" |
+| Question mark style | Shocked after asking and answering the question | "I asked myself, can I do it? Impossible!" |
+| Changing locations | Locations 1→2→3 were shocked in sequence | The news spread and many forces were shocked |
+| Physical and mental layering | Physical reaction + psychological reaction | "Cold all over" + "Shocked" layering |
+| Character contrast | First disdain and then shock | "Nothing more than that" → "I must be dreaming" |
 
-**核心**：震惊的爽感来自"落差"——先铺垫角色原有认知（轻蔑/自信），再打破它。
+**Core**: The refreshing feeling of shock comes from the "gap" - first pave the way for
+the character's original perception (contempt/confidence), and then break it.
 
-### 三翻四震技法
+### Three turns and four shock techniques
 
 ```
-翻1：主角宣布选择→众人反应
-翻2：具体选择内容（出人意料）→众人再反应
-翻3：追问原因/更深反转→更大反应
-震终：权威角色最高评价→落选者黯然退场（压一压情绪）
+Turn 1: The protagonist announces his choice → everyone reacts
+Turn 2: Specific selection content (unexpected) → everyone will react
+Turn 3: Asking for reasons/deeper reversal → greater reaction
+At the end of the shock: The authoritative role has the highest evaluation → the loser retires sadly (suppresses emotions)
 ```
 
-每一"翻"要比前一"翻"震惊层级更高，每次反转必须有新信息量。
+Each "turn" has a higher level of shock than the previous "turn", and each reversal must
+have a new amount of information.
 
 ---
 
-## 比赛场景写作前提
+## Prerequisites for writing competition scenarios
 
-写比赛/对决前，必须向读者披露：
+Before writing about a game/matchup, you must disclose to your readers:
 
-1. **赌注/代价**：输赢的得失
-2. **双方实力对比**：至少暗示优劣势
-3. **主角获胜路径**：至少能看到一条可能的路径
-4. **对手特殊性**：这一战为什么值得写
+1. **Bet/Price**: Gains and losses of winning or losing
+2. **Strength comparison between the two sides**: At least hints at the advantages and
+   disadvantages
+3. **Protagonist’s winning path**: At least one possible path can be seen
+4. **Speciality of Opponent**: Why is this battle worth writing about?
 
-### 胜负设计
+### Winning or losing design
 
-| 模式 | 难度 | 效果 | 要点 |
+| Mode | Difficulty | Effects | Key Points |
 |------|------|------|------|
-| 以强击弱 | 低 | 性价比最高 | 信息差制造落差，搭配装逼 |
-| 势均力敌 | 中 | 紧张感强 | 一个中故事只写一次，用在大高潮 |
-| 以弱胜强 | 高 | 爽感最强但风险大 | 必须有合理解释，不能降智 |
+| Use the strong to defeat the weak | Low | The most cost-effective | Poor information creates a gap, paired with pretentiousness |
+| Evenly matched | Medium | Strong sense of tension | Write a medium story only once and use it for the climax |
+| The weak defeats the strong | High | The most satisfying but high risk | There must be a reasonable explanation and cannot be used to trick people |
 
 ---
 
-## 感情线四阶段推进法
+## Four-stage promotion method of love line
 
 ```
-熟悉阶段→试探阶段→暧昧阶段→确认关系
+Familiarity stage→Testing stage→Ambiguous stage→Confirmation of relationship
 ```
 
-| 阶段 | 状态 | 核心写法 | 禁忌 |
+| Stage | Status | Core writing | Taboo |
 |------|------|----------|------|
-| 熟悉 | 朋友/陌生人 | 展示人设，制造初印象 | 不能做恋人行为 |
-| 试探 | 有好感不确定 | 试探行为，误会和甜蜜 | 不能直接表白 |
-| 暧昧 | 朋友以上恋人以下 | 偶尔做恋人事，脸红心跳 | 女频此阶段必须拉长 |
-| 确认 | 正式情侣 | 撒狗粮+最大阻力事件 | 不能再退回试探 |
+| Familiar | Friend/Stranger | Show your personality and create a first impression | Don’t be a lover |
+| Temptation | Uncertain feelings of affection | Tentative behavior, misunderstandings and sweetness | Cannot confess directly |
+| Ambiguous | More than friends and less than lovers | Occasionally doing romantic things, blushing and heartbeat | female-oriented This stage must be prolonged |
+| Confirmation | Official couple | Spreading dog food + the biggest resistance event | Cannot return to the test |
 
-**铁律**：必须什么阶段干什么事。跨越阶段做事只会显得油腻。
+**Iron Rule**: What must be done at what stage. Doing things across stages will only
+look greasy.
 
-### CP行为八种类型（好感度达标才出现）
+### Eight types of CP behaviors (appear only when the favorability level reaches the standard)
 
-| 行为类型 | 适用好感度 |
+| Behavior type | Applicable favorability |
 |----------|-----------|
-| 亲密行为（肢体接触+） | 高好感 |
-| 主权行为（争风吃醋、宣示主权） | 中高好感 |
-| 信赖行为（无条件信任、分享秘密） | 中好感+ |
-| 护短行为（对方犯错也优先维护） | 中好感+ |
-| 特殊待遇（对待对方与别人完全不同） | 中好感 |
-| 安抚行为（敏锐察觉不好情绪并安抚） | 中好感+ |
-| 优先特权（做决定时对方是最重要因素） | 中高好感 |
-| 默契行为（不约而同做同一件事） | 高好感 |
+| Intimacy (physical contact +) | High opinion |
+| Sovereign behavior (jealousy, assertion of sovereignty) | Medium to high opinion |
+| Trust behavior (unconditional trust, sharing secrets) | Favorability + |
+| Protective behavior (give priority to protecting the other party if they make mistakes) | Favorable + |
+| Special treatment (treating the other person completely differently from others) | Favorability |
+| Soothing behavior (acutely detecting bad emotions and soothing them) | Medium to favorable impression + |
+| Priority privileges (the other party is the most important factor when making decisions) | Medium to high favorability |
+| Tacit behavior (doing the same thing in unison) | High favorability |
 
-好感度必须通过剧情积累，不能凭空跳级。
+Favorability must be accumulated through the plot, and levels cannot be jumped out of
+thin air.
 
 ---
 
-## 喜剧 flag 机制
+## Comedy Flag Mechanism
 
-| 角色 | flag 规则 |
+| role | flag rule |
 |------|-----------|
-| 主角 | 不收 flag，或搞笑地收（不搞笑就变毒点） |
-| 反派 | 必收 flag（说了大话必须被打脸） |
-| 其他 | 一般收 flag |
+| Protagonist | Don’t accept the flag, or accept it in a funny way (if not funny, it becomes a bit poisonous) |
+| Villain | Must collect flag (if you speak big words, you must be face-slapping) |
+| Others | Generally accepted flag |
 
-反派的 flag 是爽点预告；主角的 flag 是喜剧张力——"我绝不会..."紧跟被打脸才好笑。
-
----
-
-## 短篇视角控制法则
-
-### 出场人物控制
-- 开篇主要人物一对一或一对二，场景用"小"不用"大"
-- 一对多时按重要程度降低配角存在感
-- 切忌一拥而上出场
-- 配角目光和心理描写集中于主角身上
-
-### 视角数量控制
-- 默认第一人称受害者亲历全程主导（番茄/七猫/黑岩短篇绝大多数如此）；他人视角（渣男/白月光/反派）仅作追悔/得意的补刀短插，不平分篇幅
-- 多视角悬疑等例外：至多 2-3 个视角，不超过3个
-- 超过3个且各写各的无联系，大概率掉追读
-- 敌人视角：让读者更清楚就写，让读者更多猜测就不写
-- 敌人视角一般只写一个，占三个名额之一
+The villain's flag is the satisfying payoff trailer; the protagonist's flag is comic
+tension - "I will never..." followed by face-slapping is funny.
 
 ---
 
-## 情绪的三个层次与共鸣触发
+## Short story perspective control rules
 
-### 情绪的三层分离
+### Character control
+- At the beginning, the main characters are one-on-one or one-on-two, and the scene is
+  "small" rather than "big".
+- In one-to-many situations, the presence of supporting characters is reduced according
+  to their importance.
+- Don’t show up in a rush
+- The supporting characters’ gaze and psychological description focus on the protagonist
 
-| 层次 | 说明 |
+### View number control
+- By default, the first-person perspective of the victim dominates the entire process
+  (most of Fanqie/Qimao/Heiyan short stories are like this); the other person's
+  perspective (scumbag/white moonlight/villain) is only a short interlude of
+  regret/satisfaction, and the length is not divided equally.
+- Exceptions such as multi-perspective suspense: at most 2-3 perspectives, no more than
+  3
+- If there are more than 3 and each is written separately, there is no connection, and
+  there is a high probability that the follow-up will be lost.
+- Enemy Perspective: Write if you want readers to know more clearly, and don’t write if
+  you want readers to guess more.
+- Generally, only one enemy perspective is written, accounting for one of three places.
+
+---
+
+## Three levels of emotion and resonance triggers
+
+### Three levels of emotional separation
+
+| Level | Description |
 |------|------|
-| 角色情绪 | 角色自己感受到的 |
-| 文本传递情绪 | 文本要传达给读者的 |
-| 读者感受情绪 | 读者实际感受到的 |
+| Character emotions | What the character feels |
+| The text conveys emotions | What the text wants to convey to the reader |
+| The reader feels the emotion | What the reader actually feels |
 
-三者不能混为一谈。同一场景可以角色在哭、文本在撩、读者在爽。
+The three cannot be confused. In the same scene, the character can be crying, the text
+can be teasing, and the reader can be happy.
 
-### 情绪锚点
+### Emotional Anchor
 
-**定义**：能引起读者内心共鸣的具体桥段。情绪通过锚点"触碰"读者内心，不能靠直接描写堆出来。
+**Definition**: A specific passage that resonates with the reader's heart. Emotions
+"touch" the reader's heart through anchor points and cannot be piled up through direct
+description.
 
-**特征**：发生在现实世界、大众经常经历或感受的；不需要细致描写，几个关键细节就够。
+**Characteristics**: It happens in the real world and is often experienced or felt by
+the public; no detailed description is required, just a few key details are enough.
 
-**示例**：
+**Example**:
 
-| 传递情绪 | 差的写法 | 好的锚点 |
+| Convey emotion | Poor writing | Good anchor points |
 |----------|----------|----------|
-| 母爱伟大 | 母亲天天煮饭搞家务 | 母亲偷偷给每个同学鞠躬拜托善待失明的孩子 |
-| 生存很难 | 主角挖草根吃树皮 | 众人争相压低价格，主角直接举手"我不要钱，只要一顿饭" |
-| 师生情深 | 老师认真上课 | 老师把唯一棉袄给学生，自己穿单衣在雪地里走 |
+| Great maternal love | Mother cooks and does housework every day | Mother secretly bows to each classmate and asks to be kind to the blind child |
+| Survival is difficult | The protagonist digs roots and eats tree bark | Everyone is scrambling to lower the price, and the protagonist directly raises his hand "I don't want money, just a meal" |
+| The deep love between teachers and students | The teacher takes the class seriously | The teacher gives the only cotton-padded jacket to the students and walks in the snow wearing single clothes |
 
-### 好钢用在刀刃上
-1. 先构思大剧情（最大矛盾→中→小）
-2. 在大剧情高潮处放置最精彩的锚点
-3. 其他部分可以稍平淡
-4. 情绪铺垫过程 = 剧情推进过程
+### Good steel is used on the blade
+1. Conceive the big plot first (biggest conflict → medium → small)
+2. Place the most exciting anchor point at the climax of the plot
+3. Other parts can be a little bland
+4. Emotional foreshadowing process = plot advancement process
 
-**设计路径**：矛盾→情绪要求→人物/背景/设定→具体桥段
+**Design path**: Contradiction→Emotional
+requirements→Characters/background/setting→Specific sections
 
 ---
 
-## 反派嘲讽新思路
+## Villain taunts new ideas
 
-| 类型 | 传统做法 | 新思路 |
+| Type | Traditional Practice | New Ideas |
 |------|----------|--------|
-| 目的 | 戳主角痛点，引发不爽 | 显露反派无知，引发看乐子 |
-| 读者反应 | 替主角委屈 | 看笑话等反转 |
-| 主角回应 | 绞尽脑汁想反击 | 放松、不在意即可 |
+| Purpose | Poke the protagonist's pain points and cause discomfort | Reveal the villain's ignorance and cause fun |
+| Reader reactions | Feeling wronged for the protagonist | Watching jokes and other reversals |
+| Protagonist's response | racking his brains to fight back | just relax and don't care |
 
-**操作**：确定主角优势，让反派极尽嘲讽主角的优势点。反派越嘲讽，读者越知道反派无知。
-**保留戳痛点**：对象换为主角的亲朋好友——让反派攻击他们的弱点引发读者愤怒。
-
----
-
-## 人设拆解从缺点开始
-
-- 正面人物 = 优点掩盖了缺点
-- 负面人物 = 缺点掩盖了优点
-- 关键要素：角色有什么「不平之气」——必须能引起共鸣
-
-**人设丰富法**：以杀伐果断为例——正向=干净利落；反向=没人情味。强化或弱化"人情味"区分主角/配角。角色有血有肉 = 优缺点共存。
+**Operation**: Determine the protagonist's advantages and let the villain mock the
+protagonist's advantages. The more sarcastic the villain is, the more the reader knows
+the villain is ignorant.
+**Save for poking at the pain points**: The targets are changed to the protagonist’s
+friends and relatives,let the villain attack their weaknesses to trigger readers’ anger.
 
 ---
 
-## 以小搏大情绪模块四要素
+## Dismantling the character starts from the shortcomings
 
-1. **主角独有手段**：为什么能以小搏大
-2. **搏的过程**：关键在过程不在结果
-3. **赚翻了的感觉**：收获远超预期
-4. **明确的搏的目标**：主角必须清楚自己要什么
+- Positive person = strengths cover up weaknesses
+- Negative person = Weaknesses overshadow strengths
+- Key element: What kind of "grievance" does the character have - it must be relatable
 
----
-
-## 爽点本质
-
-**爽点本质** = 改变人际关系
-
-打脸的爽不在赢，在关系翻转——婆婆从颐指气使变成求你别走、渣男从甩你变成堵门挽留。设计爽点先问：这一下改变了谁对主角的态度？
+**Character enrichment method**: Take decisive killing as an example - forward = clean
+and neat; reverse = impersonal. Strengthen or weaken the "human touch" to distinguish
+the protagonist/supporting role. Characters are flesh and blood = strengths and
+weaknesses coexist.
 
 ---
 
-## 质量检查
+## The four elements of the module of using small measures to achieve big emotions
 
-写作时对照：
+1. **Protagonist's unique method**: Why can we win big with small things?
+2. **The process of fighting**: The key is the process, not the result
+3. **The feeling of making a lot of money**: The harvest far exceeded expectations
+4. **Clear fighting goal**: The protagonist must know what he wants
 
-- [ ] 开头 100 字内有信息炸弹（不是风景/天气）？
-- [ ] 每个场景至少两个功能（推进+揭示 / 铺垫+推高）？
-- [ ] 情绪是否通过锚点触碰读者内心，而非直接描写出来？
-- [ ] 震惊场景有落差铺垫（先建立角色原有认知再打破）？
-- [ ] 感情线推进没跳阶段（熟悉→试探→暧昧→确认）？
-- [ ] 反派 flag 必收、主角 flag 不收或搞笑收？
-- [ ] 视角控制在 2-3 个（不超过 3）？
-- [ ] 对话占正文 45-65%，每句对话推剧情或揭示性格？
-- [ ] 结尾用动作/对话收（不升华、不总结、不感慨）？
-- [ ] 没有"该爽不爽"的段落（金手指效果展示清楚）？
+---
+
+## Satisfying Payoff Essence
+
+**satisfying payoff essence** = changing relationships
+
+The joy of face-slapping is not about winning, but about the flipping of the
+relationship,the mother-in-law changes from bossing you around to begging you not to
+leave, and the scumbag changes from dumping you to blocking the door to get you to stay.
+The designer satisfying payoff first asked: Whose attitude towards the protagonist has
+been changed by this?
+
+---
+
+## Quality check
+
+Check when writing:
+
+- [ ] Information bomb (not scenery/weather) in the first 100 words?
+- [ ] At least two functions per scene (advance + reveal / foreshadowing + promotion)?
+- [ ] Does the emotion touch the reader's heart through an anchor rather than directly
+      describing it?
+- [ ] Is there a gap in the shocking scene (first establish the character's original
+      understanding and then break it)?
+- [ ] Has the love line advanced through any stages (familiarity → testing → ambiguity →
+      confirmation)?
+- [ ] The villain flag must be collected, the protagonist flag must not be collected, or
+      is it funny?
+- [ ] Control the viewing angles at 2-3 (no more than 3)?
+- [ ] Dialogue accounts for 45-65% of the text. Does each line of dialogue advance the
+      plot or reveal character?
+- [ ] End with action/dialogue (no sublimation, no summary, no emotion)?
+- [ ] There is no paragraph about "should I feel good or not" (the golden finger effect
+      is clearly displayed)?

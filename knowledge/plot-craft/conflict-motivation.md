@@ -1,79 +1,90 @@
-# 冲突动机类型速查
+# Quick Check on Types of Conflict Motives
 
-> 卷纲阶段判断冲突双方"不能退让的理由"是否成立的参考框架。
-> agent 自行读取匹配，不展示给作者。
+> The reference frame used in the outline stage to judge whether the "reasons for not
+> giving in" between the conflicting parties are valid. The agent reads the matches by
+> itself and does not show them to the author.
 
 ---
 
-## 有效动机类型
+## Effective Motivation Types
 
-以下动机能让角色"输了/退了会失去具象的东西"，冲突站得住。
+The following motivations allow the character to "lose something concrete if he
+loses/retreats" and the conflict is tenable.
 
-| 类型 | 本质 | 示例 | 判断标志 |
+| Type | Essence | Example | Judgment Flag |
 |------|------|------|---------|
-| **生存威胁** | 输了会死/家人会死/生存基础崩塌 | "这个案子翻出来，灭口的人会找上我全家" | 不退 → 活；退 → 死/失去一切 |
-| **身份认同** | 退了就不再是"自己" | "我是警察，把这个案子和了我就不是人了" | 退=否定了自己是谁 |
-| **执念创伤** | 在这件事上栽过，不能再栽一次 | "三年前搭档死在这个案子上，我答应了要查到底" | 退=背叛过去/背叛死者 |
-| **不可逆损失** | 退了就永远拿不回来，没有第二次机会 | "她只剩72小时，退了就找不到了" | 窗口期、倒计时、唯一机会 |
-| **情感绑定** | 退了就是背叛了某个人 | "他救过我的命，我不能在他出事的时候抽身" | 退=情感债务违约 |
-| **道德底线** | 退了这辈子过不去自己这关 | "我可以输，但不能用栽赃的手段赢" | 退=否定了自己的道德准则 |
+| **Existential Threat** | If you lose, you will die/your family will die/the foundation of survival will collapse | "If this case is revealed, the people who silence me will find my whole family" | Don't retreat → live; retreat → die/lose everything |
+| **Identity** | If you retire, you will no longer be "yourself" | "I am a policeman. If I settle this case, I will no longer be a human being." | Retreat = Deny who you are |
+| **Obsession Trauma** | I've been wronged in this matter, I can't be wronged again | "My partner died in this case three years ago, and I promised to get to the bottom of it" | Retreat = betray the past/betray the deceased |
+| **Irreversible loss** | If you withdraw, you will never get it back, there is no second chance | "She only has 72 hours left, if she withdraws, she will not be found" | Window period, countdown, only chance |
+| **Emotional Binding** | Retreating is betraying someone | "He saved my life, I can't withdraw when something happens to him" | Retreating = breach of emotional debt |
+| **Moral bottom line** | If you retreat, you will never be able to overcome your own difficulties in this life | "I can lose, but I can't win by frame-up means" | Retreating = denying one's own moral principles |
 
-### 使用规则
+### Usage rules
 
-- 冲突一方至少覆盖 **1 种** 有效动机
-- 双方动机需要  **互斥** ——A 的生存威胁和 B 的身份认同撞上，双方都退不了
-- 同一角色在不同卷可以激活不同动机类型，底色不变但情境变了
+- One party to the conflict covers at least **1** valid motive
+- The motivations of both parties need to be **mutually exclusive** - A's survival
+  threat and B's identity collide, and neither party can retreat.
+- The same character can activate different motivation types in different volumes. The
+  background color remains the same but the situation changes.
 
 ---
 
-## 无效动机（追问信号）
+## Invalid motivation (questioning signal)
 
-以下动机看起来像理由，实际推不出"不退让"行为。出现任一条 → 问作者补充具体内容。
+The following motivations look like reasons, but they cannot actually lead to the
+behavior of "not giving in". Any item appears → Ask the author to add specific content.
 
-| 类型 | 示例 | 为什么无效 | 追问方向 |
+| Type | Example | Why it doesn't work | Ask for directions |
 |------|------|-----------|---------|
-| **天生邪恶** | "他就是坏人""反派不需要理由" | 没解释为什么不能退——坏人也可以退 | "他为什么会选这条路？退了他会失去什么？" |
-| **剧情需要** | "他要阻止主角不然故事写不下去" | meta 理由，不是角色理由 | "从这个角色的角度看，ta 有什么切身损失？" |
-| **抽象概念** | "为了正义""守护世界和平" | 太远太大，不落到具体损失 | "正义被破坏会怎样？这个损失对 ta 个人意味着什么？" |
-| **职业义务** | "他是警察所以必须阻止主角" | 职业要求可以辞职，不是不可退让 | "除了职业身份，ta 个人有什么理由不退？" |
-| **服从命令** | "上级让他这么做的" | 服从可以被打断——上级死了/命令撤销了 | "如果命令撤销了，ta 自己还想这么做吗？" |
+| **Born Evil** | "He is the bad guy" "Villains don't need a reason" | No explanation why they can't retreat - bad guys can retreat too | "Why would he choose this path? What will he lose if he retreats?" |
+| **Plot needs** | "He has to stop the protagonist or the story will not go on" | Meta reasons, not character reasons | "From this character's perspective, what personal losses does he have?" |
+| **Abstract concept** | "For justice" and "protecting world peace" | Too far and too big to fall into specific losses | "What will happen if justice is destroyed? What does this loss mean to him personally?" |
+| **Professional Obligations** | "He is a police officer, so he must stop the protagonist" | Professional requirements include resignation, not ineligibility | "Except for professional status, what personal reason does he have not to retreat?" |
+| **Obey orders** | "The superior asked him to do this" | Obedience can be interrupted - the superior is dead/the order is revoked | "If the order is revoked, does he still want to do it?" |
 
 ---
 
-## 互斥性检查
+## Mutual exclusivity check
 
-双方都有动机还不够——动机必须不可调和。按以下层级判断：
+It is not enough that both parties have motives,the motives must be irreconcilable.
+Judge according to the following levels:
 
 ```
-不可调和（冲突硬）：
-  主角要 X ← 反派要 Y，且 X 和 Y 不能共存
-  例：主角要公开真相 ← 反派要掩盖真相（X 成就则 Y 必然失败）
+Irreconcilable (hard conflict):
+  The protagonist wants X ← The villain wants Y, and X and Y cannot coexist.
+  Example: The protagonist wants to reveal the truth ← The villain wants to cover up the truth (X achieves Y, which means Y must fail)
 
-可调和（冲突软，需加固）：
-  主角要 X ← 反派要 Y，但存在 Z 方案让双方各退一步
-  例：主角要查案 ← 反派要阻止他 → 主角换案子查就能解决
+Adjustable (soft conflict, need to be reinforced):
+  The protagonist wants X ← The villain wants Y, but there is a plan Z for both parties to take a step back
+  Example: The protagonist wants to investigate a case ← The villain wants to stop him → The protagonist can solve the problem by changing the case to investigate
 
-不构成冲突（无冲突）：
-  主角要 X，反派目标与 X 无关
-  例：主角要查案，反派只是想在旁边看着 → 这不是冲突
+Does not constitute a conflict (no conflict):
+  The protagonist wants X, the villain’s goal has nothing to do with X
+  Example: The protagonist wants to investigate the case, but the villain just wants to watch from the side → This is not a conflict
 ```
 
-### 加固方法
+### Reinforcement methods
 
-如果发现冲突落在"可调和"层级，选以下方式加固：
+If it is found that the conflict falls at the "reconcilable" level, choose the following
+methods to reinforce it:
 
-1. **加倒计时/窗口期** ——"只能选一个，没有时间兼顾"
-2. **加不可逆损失** ——"这一步退了，下次机会永远不会再来"
-3. **加情感绑定** ——"这件事牵扯到某个不能辜负的人"
-4. **加伦理困境** ——"选 X 不代表能回避 Y 的代价，没有干净的选项"
+1. **Add countdown/window period** - "You can only choose one, there is no time to
+   consider both"
+2. **Add irreversible losses** - "If you take this step back, the next opportunity will
+   never come again."
+3. **Add emotional binding** - "This matter involves someone who cannot be let down."
+4. **Add ethical dilemma** - "Choose X does not mean you can avoid the cost of Y, there
+   is no clean option"
 
 ---
 
-## 使用时机
+## When to use
 
-| 环节 | 使用方式 |
+| Links | How to use |
 |------|---------|
-| 卷纲定核心冲突 | 读双方角色设定的层3价值观，对照本表判断动机类型；推不出则问作者 |
-| 卷纲验收 | 对照本表检查验收项"冲突双方都有不能退让的理由" |
+| Outline of the paper to determine the core conflict | Read the level 3 values set by both parties, and compare the type of motivation with this table; if you cannot deduce it, ask the author |
+| Outline Acceptance | Check the acceptance item "Both parties in the conflict have reasons why they cannot give in" against this form |
 
-注意：本表是 agent 判断参考，不写入卷纲/章纲/提示词，不展示给作者。
+Note: This table is a reference for agent judgment. It will not be written into the
+volume outline/chapter outline/prompt words, and will not be shown to the author.

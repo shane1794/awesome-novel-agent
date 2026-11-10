@@ -1,37 +1,37 @@
 ## Context
 
-- 前置：`add-zhuque-source-defense`（知识+工具）与 `wire-source-constraints-into-pipeline`（管线挂接+骨架）已合入；`sandbox/detect-battles.md`、`sandbox/prose-regressions.txt`、`sandbox/locked-lines.txt` 已是项目骨架文件。
-- 来源包的闭环经验（逐片结果→修最高窗→锁版→沉淀）已验证有效，但其工程载体（CDP 脚本、验证码求解、指纹农场、接口逆向文档）不可入库。
-- 调度契约在 `skills/novel-dispatch.md`（order 类型清单 + 断点续跑语义），agent 细则在 `agents/novel-agent.md` 的 THINK 树。
+- Prerequisites: `add-zhuque-source-defense` (knowledge + tools) and `wire-source-constraints-into-pipeline` (pipeline wiring + skeleton) are merged; `sandbox/detect-battles.md`, `sandbox/prose-regressions.txt`, and `sandbox/locked-lines.txt` are already project skeleton files.
+- The closed-loop lessons from the source pack (per-segment results, fix the highest window, lock, distill) are verified effective, but its engineering carriers (CDP scripts, captcha solving, fingerprint farms, interface-reversing docs) must not enter the repo.
+- The dispatch contract lives in `skills/novel-dispatch.md` (order type list + breakpoint-resume semantics); agent details live in the `agents/novel-agent.md` THINK tree.
 
 ## Goals / Non-Goals
 
 **Goals:**
 
-- 把闭环的"流程知识"入库、"工程载体"留本地：skill 教方法，不携带工具。
-- 与既有调度/降级/锁版语义无缝衔接。
+- Put the loop's "flow knowledge" in the repo and keep its "engineering carriers" local: the skill teaches the method and carries no tools.
+- Connect seamlessly with the existing dispatch, degradation, and locking semantics.
 
 **Non-Goals:**
 
-- 不实现任何检测平台对接代码。
-- 不把 detect-loop 设为默认管线环节。
-- 不做自动修文到满分（修文动作仍由 anti-ai 语义执行，本 skill 只给修复纪律）。
+- Do not implement any detection-platform integration code.
+- Do not make detect-loop a default pipeline stage.
+- Do not auto-rewrite to a perfect score (rewriting still runs under anti-ai semantics; this skill only sets the fix discipline).
 
 ## Decisions
 
-1. **order 类型最小扩展。**
-   `detect-loop-order.md` 一个新 order 类型，调度表加一行"作者触发"；`agents/novel-agent.md` THINK 树同步一个分支。备选"并入 anti-ai phase 作 Phase 5"被否：会把可选环节变成默认路径，且 anti-ai 的退出码/报告契约会被稀释。
-2. **平台无关的适配器接口。**
-   skill 只约定三件事：送检入口（本地命令或作者手动网页送检）、结果文件（逐片：起止位置/分数/文本）、判定阈值参数。来源包的 CDP/验证码/额度类脚本与逆向文档属绕过平台风控的工具，**不保留、不迁移、永不入库**（2026-08-31 已删除本地副本）；仓库只保留结果文件格式契约，对接方式由作者以合法途径自备（如官方 API 或手动网页送检）。
-3. **修复纪律独立成节，复用 anti-ai 的执行语义。**
-   "只修最高分片段/边界稳定/等长微调/止损"是修文纪律，写进 skill 供任何执行者（anti-ai agent 或作者手改后的 agent 协助）遵循；具体 Gate 改法仍按 anti-ai.md。
-4. **锁版语义复用 archives 的快照惯例。**
-   锁版快照落 `archives/`（或作者指定位置），哈希记录进战役记录文件；不新增锁版基础设施。
-5. **合规声明写进 skill 正文。**
-   用途限定（作者自稿自愿校准）、资产隔离（无自动化脚本入仓）作为验收项，防止后续贡献者把本地工具误提交。
+1. **Minimal order-type extension.**
+   One new order type, `detect-loop-order.md`, with one "author-triggered" row added to the dispatch table; the `agents/novel-agent.md` THINK tree gains one matching branch. The alternative, "merge it into the anti-ai phase as Phase 5", was rejected: it would turn an optional stage into a default path and dilute anti-ai's exit-code and report contract.
+2. **Platform-independent adapter interface.**
+   The skill only specifies three things: the submission entry point (a local command or the author manually submitting on a website), the result file (per segment: start/end positions, score, text), and the decision-threshold parameters. The source pack's CDP, captcha, and quota scripts and reversing docs are tools for bypassing platform risk controls, so they are **not kept, not migrated, and never enter the repo** (local copies deleted 2026-08-31); the repo keeps only the result-file format contract, and the author provides the connection method through legitimate means (such as an official API or manual web submission).
+3. **Fix discipline as its own section, reusing anti-ai's execution semantics.**
+   "Fix only the highest-scoring segment / keep boundaries stable / equal-length fine-tuning / stop-loss" is rewriting discipline, written into the skill for any executor (the anti-ai agent or an agent assisting after the author's manual edits) to follow; the specific Gate fixes still follow anti-ai.md.
+4. **Locking semantics reuse the archives snapshot convention.**
+   Lock snapshots land in `archives/` (or a location the author specifies), with the hash recorded in the battle-log file; no new locking infrastructure is added.
+5. **The compliance statement is written into the skill body.**
+   Purpose limits (the author's own manuscript, voluntary calibration) and asset isolation (no automation scripts in the repo) are acceptance items, so later contributors do not accidentally commit local tools.
 
 ## Risks / Trade-offs
 
-- 平台无关化会让 skill 对"具体怎么送检"语焉不详，首次使用者可能觉得抽象 → skill 内给一个"本地对接工具的最小结果文件示例"（纯格式示例，非任何真实平台协议）。
-- "连续两轮 <0.05 止损"等数值纪律来自单一实测项目，其他检测器未必适用 → 阈值参数化并在 skill 标注来源与适用范围。
-- 作者触发语义依赖调度层准确识别自然语言 → 与既有"作者确认关卡"同机制，风险可控。
+- Making it platform-independent leaves the skill vague about "how exactly to submit", which may feel abstract to first-time users. Mitigation: the skill includes a "minimal result-file example for a local integration tool" (a pure format example, not any real platform protocol).
+- Numeric discipline such as "stop-loss after two consecutive rounds under 0.05" comes from a single measured project and may not fit other detectors. Mitigation: thresholds are parameterized, and the skill marks their source and scope.
+- Author-trigger semantics depend on the dispatch layer accurately recognizing natural language. Mitigation: it uses the same mechanism as the existing "author confirmation gate", so the risk is controlled.

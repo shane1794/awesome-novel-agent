@@ -1,37 +1,37 @@
-# 类型档案：历史脑洞
+# Genre Archives: Historical wild idea
 
-> 脑洞向历史，一般有金手指。
+> Wild idea goes to history, usually with golden finger.
 
 - **id:** `historical-brained`
-- **label:** 历史脑洞
+- **label:** History wild idea
 
 ---
 
-## 题材配置
+## Theme configuration
 
-### 满足类型
-- 工业革命
-- 商业垄断
-- 军事胜利
-- 计谋得逞
-- 打脸古代人
-
-
-### 章节类型
-- 穿越适应
-- 金手指运用
-- 势力扩张
-- 科技推进
-- 权力博弈
+### Satisfy Type
+- industrial revolution
+- commercial monopoly
+- military victory
+- The plan succeeded
+- face-slapping ancient people
 
 
-### 节奏规则
+### Chapter type
+- time travel adaptation
+- golden finger application
+- expansion of power
+- Technology advancement
+- power game
+
+
+### Rhythm Rules
 - max_consecutive_action_chapters: 2
 - max_consecutive_daily_chapters: 2
 - beat_density_min: 2
 
 ---
 
-## 卷级故事弧模板
+## Volume Story Arc Template
 
-默认：穿越→立足→发展→遇阻→突破→崛起
+Default: travel → gain a foothold → develop → encounter obstacles → break through → rise

@@ -1,8 +1,13 @@
-# 战斗场景写法：悬疑刑侦
+# How to write battle scenes: suspense criminal investigation
 
-> 覆盖通用战斗方法论（`fight/universal.md`）中与悬疑刑侦题材不适配的部分。
+> Covers the parts of the general combat methodology (`fight/universal.md`) that are
+> not suitable for suspense criminal investigation themes.
 
-- 对抗不是武力对决，是信息追逐。大部分"战斗"是追逐、跟踪、搜查、密室内的心理博弈
-- 没有"战力"概念，对抗结果由信息差和现场条件决定
-- 代价可视化：追查过程中的精神代价＞身体代价——失眠、被威胁后的心理压力比皮外伤更有力
-- **避坑**：不要写刑警打斗——悬疑刑侦的核心是智力对抗，不是格斗
+- Confrontation is not a duel with force, but a pursuit of information. Most of the
+  "battle" is chasing, tracking, searching, and psychological games in secret rooms.
+- There is no concept of "combat power", and the outcome of the confrontation is
+  determined by information differences and on-site conditions.
+- Visualization of cost: Mental cost in the tracing process > Physical cost - insomnia
+  and psychological pressure after being threatened are more powerful than skin trauma
+- **Avoid pitfalls**: Don’t write about detective fights,the core of suspense criminal
+  investigation is intellectual confrontation, not fighting.

@@ -1,37 +1,37 @@
-# 类型档案：悬疑灵异
+# Genre Archives: Suspense and Supernatural
 
-> 男频探案、悬疑、恐怖、风水奇术等。
+> Male-oriented detective, suspense, horror, Feng Shui magic, etc.
 
 - **id:** `suspense-paranormal`
-- **label:** 悬疑灵异
+- **label:** Suspense and supernatural
 
 ---
 
-## 题材配置
+## Theme configuration
 
-### 满足类型
-- 灵异破解
-- 驱邪成功
-- 真相揭示
-- 逃生成功
-- 怨气化解
-
-
-### 章节类型
-- 灵异调查
-- 驱邪斗法
-- 恐怖探索
-- 幕后追查
-- 事件收尾
+### Satisfy Type
+- Psychic cracking
+- Exorcism successful
+- truth revealed
+- Escape successful
+- Resentment resolved
 
 
-### 节奏规则
+### Chapter type
+- paranormal investigation
+- exorcism
+- horror exploration
+- Behind the scenes
+- Ending of the event
+
+
+### Rhythm Rules
 - max_consecutive_action_chapters: 2
 - max_consecutive_daily_chapters: 2
 - beat_density_min: 1
 
 ---
 
-## 卷级故事弧模板
+## Volume Story Arc Template
 
-默认：异象→调查→深入→危机→破局→收尾
+Default: Vision → Investigation → In-depth → Crisis → Breakthrough → Ending

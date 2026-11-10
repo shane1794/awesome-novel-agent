@@ -1,163 +1,271 @@
-# 题材风格包：甜宠恋爱线
+# Theme style package: sweet romance love line
 
 
-> 本题材风格包改写自获赠短篇流程包（oh-story 系 + 实测调整），按本仓口径适配：引用为部署后基座路径、已剔除外部体系引用。公开或商用前需原作者确认。
+> This theme style package is adapted from the short story process package (oh-story
+> series + actual measurement adjustment) received as a gift, and is adapted according
+> to the caliber of the repo: the reference is the base path after deployment,
+> and external system references have been eliminated. Confirmation by the original
+> author is required before disclosure or commercial use.
 
 
-> 番茄 / 七猫 / 知乎盐选通俗短篇。先读 `.claude/knowledge/short-craft/short-craft.md` 通用底座，本包在其上覆盖该题材专属调性。
-> 一句话定位：**甜宠恋爱线：纯甜双向奔赴 / 先虐后甜 / 暗恋成真 / 先婚后爱 / 救赎，HE 收尾。** 读者要的是「被偏爱的例外感」+「嘴硬心软的拉扯」。甜的密度与「糖里带钩」决定粘性；虐只做糖的杠杆，不做主菜。
+> Fanqie / Qimao / Zhihu Salt Selected Popular Short Stories. Read the
+> `.claude/knowledge/short-craft/short-craft.md` universal base first, on which this
+> package covers the exclusive tonality of this theme. Positioning in one sentence:
+> **sweet romance love line: pure sweetness goes in both directions / abuse first,
+> then sweetness / secret love comes true / marriage first, love later / redemption,
+> ending with HE. ** What readers want is "the sense of exception of being favored" +
+> "the pull of a hard-spoken and soft-hearted person". The density of sweetness and
+> the "hook in the sugar" determine the stickiness; the sugar is only a lever for the
+> sugar, not the main course.
 
 ---
 
-## 叙述腔调
+## Narrative Tone
 
-第一人称「我」（多为女主）主导，轻快、自嘲、口语。主引擎是**内心吐槽小剧场**：表面言行与心理活动的反差制造喜感，嘴上「关你什么事」，心里「这人今天是怎么了？吃错药了？」。允许沙雕自称（本小姐 / 本公主 / 本喵）。只有心动瞬间才切慢镜头，放大身体微反应。
+The first person "I" (mostly the heroine) dominates, and is brisk, self-deprecating, and
+colloquial. The main engine is **Inner Complaint Theater**: The contrast between
+superficial words and deeds and psychological activities creates a sense of joy, saying
+"None of your business", but thinking "What happened to this person today? Did he take
+the wrong medicine?". Shadiao (absurdist comedy) is allowed to call herself (this lady/this princess/this
+meow). Only the slow motion is cut at the moment of heartbeat to magnify the body's
+micro-reactions.
 
-先虐后甜 / 救赎支线的前段换压抑克制腔：留白、不解释（《贪心》「没有。」我，撒了谎。他，没有回头。）。糖是熬出来的奖赏，一进糖区就切回轻快。
+Torture first, then sweetness/The first part of the redemption branch is repressed and
+restrained: blank, no explanation ("Greedy" "No." I lied. He did not look back.). Sugar
+is the reward of boiling it down. As soon as you enter the sugar zone, you switch back
+to briskness.
 
-男主台词少而金贵。冰块脸 / 毒舌 / 病弱伪装均可，但开口必须是撩点或反差点，不给他解释性长台词。
+The male protagonist has few lines but precious gold. You can pretend to be an ice cube
+face, have a poisonous tongue, or pretend to be sick, but your words must be flirtatious
+or contrasting, and you won’t be given long explanatory lines.
 
 ---
 
-## 开篇范式
+## Opening Paradigm
 
-黄金简介一次抛出「关系错位 + 一句杀伤力台词」，误会即高概念。简介可以剧透反差点（他有多宠 / 他其实是谁），不剧透两人怎么走到一起。
+The golden introduction throws out "relationship misalignment + a lethal line" at once,
+and the misunderstanding is a high concept. The introduction can spoil the plot (how
+doted he is/who he actually is), but not how the two got together.
 
-| 开篇式 | 真实范例 |
+| Opening | Real examples |
 |--------|----------|
-| 误发消息 / 打错电话 | 《误拨给死对头后》电话那头传来低沉又戏谑的声音：「周稚欢，你看清楚，我是谁？」 |
-| 荒诞事件牵线 | 《心上樱》「哥哥不愿去见相亲对象，被爸爸打断了腿。」而那个躺在病床上，腿上打着厚厚石膏的人。正是我的相亲对象…… |
-| 修罗场 + 对照组 | 《撞入他怀中》情人节渣未婚夫抱走下药的前女友，「我」跌进从不近女色的小叔叔怀里 |
-| 强设定自白 | 《公主嫁到》我是大周赫赫有名的混混公主。／《人间渡》我亲了他一口，笑道：「借你人头一用。」 |
-| 闯祸定终身 | 《夫君他柔弱不能自理》醉酒后，不小心睡了一个病秧子。他堵在我家门口，要我负责 |
-| 重逢式 | 《真心话不冒险》男人回头。我人麻了。这张脸，是我六年没见的前男友 |
+| Wrong message/wrong call | "After mistakenly dialing the enemy" A low and joking voice came from the other end of the phone: "Zhou Zhihuan, please see clearly, who am I?" |
+| Absurd incident matching | "Sakura in My Heart" "My brother didn't want to meet his blind date, so his father broke his leg." And the man lying on the hospital bed with a thick plaster on his leg. It's my blind date... |
+| Shura Field + Control Group | "Into His Arms" On Valentine's Day, my scumbag fiancé took away my drugged ex-girlfriend, and "I" fell into the arms of my uncle who was never close to women |
+| Confessions of a strong setting | "The Princess Marries" I am a famous gangster princess in the Great Zhou Dynasty. / "Human Crossing" I kissed him and said with a smile, "I'll lend you my head." |
+| Getting into trouble is destined to last a lifetime | "My husband is weak and cannot take care of himself" After being drunk, he accidentally slept with a sick man. He blocked my door and asked me to take responsibility |
+| Reunion Style | "Truth or Take Risks" The man looks back. I'm numb. This face is my ex-boyfriend whom I haven’t seen in six years |
 
 ---
 
-## 钩子母题与密度
+## Hook Motif and Density
 
-甜宠的钩不是背叛升级，是**悬着的糖**：每节至少一个心动微事件，章尾不收糖，留一个未解疑点或情感悬置。
+The hook of sweet romance is not the escalation of betrayal, but the **suspended
+sugar**: at least one heart-pounding micro-event in each section, and there is no sugar
+at the end of the chapter, leaving an unsolved mystery or emotional suspense.
 
-- **马甲 / 身份错位**（头号母题）：双马甲互撩、隐藏大佬、认错人、网恋对象是身边人。错位维持多久，追读就维持多久；每节让错位差一点被戳穿再滑走。
-- **例外感投喂**：冰块男主只对女主破例。热橙汁、剔好刺的鱼、一支簪子。物件越小，例外越大。
-- **强制同框装置**：赐婚 / 联姻 / 提亲堵门 / 病房陪护 / 住进同屋，把两人锁死在一个空间里日常发酵。
-- **吃醋触发器**：前任、旧情传闻、男模。甜宠里情敌是工具不是威胁，功能是逼出占有欲和委屈。
-- **「他好像瞒着我什么」**：深夜电话、被删的朋友圈、叫他爸爸的孩子。虐钩，短用，真相必须洗白。
-- **危机见真心**：挡箭、发烧、受伤。嘴硬由行动戳破。
-
----
-
-## 情绪烈度与模式（烈度 6）
-
-日常段低烈度轻快，心动瞬间瞬时拉高再速降。峰值靠**身体微反应放大**，不靠情绪成语堆叠：
-
-- 心跳系：《心上樱》我心跳轻轻乱了一拍，没好意思再接话。／《误拨给死对头后》我愣在原地，心跳瞬间漏了一拍。
-- 温度系：《心上樱》耳朵瞬间烫得要命，我几乎是从床上跳了下来。／《公主嫁到》我呆呆地站在原地，耳朵突然火一般热。
-- 被抓包系：《公主嫁到》赵明姝似笑非笑：「哦？那你耳朵红什么？」我下意识摸耳朵，才知上当。
-
-先虐后甜段烈度可短暂到 8，一次到位就转场，不反复碾：《便宜男友桌下爱》我以为他是来救人的，没想到是来杀我的。
-
----
-
-## 对话风格与真实金句
-
-占比 50-65%。长度分配与虐文相反：**女主话痨铺场，男主一句收网**。四类台词撑全篇：
-
-**① 男主反差撩 / 占有宣言（低频高杀伤）**
-- 「放心，我对你没兴趣。」「不过那小子，确实配不上你。」（《误拨给死对头后》）
-- 「夫人，凉。」（《夫君他柔弱不能自理》，剑架脖子上还在卖弱）
-- 「我不凶的，和他分手，不叫哥哥好不好？」（《贪心》）
-- 「看见你，真好。」（《真心话不冒险》）
-
-**② 女主嘴贫 / 口不择言（高频铺糖）**
-- 「我可以在你腹肌上面弹奏肖邦的夜曲吗？」（《一遇沦陷》）
-- 「你求我啊。」（《误拨给死对头后》，逼出男主蚊子哼一样的「求你。」）
-- 「霍言殊，你若是笑一笑，会更好看。」（《撞入他怀中》）
-
-**③ 委屈小狗 / 吃醋台词**
-- 「为什么把我拉黑？」（《财神爷》）
-- 「我和他，哪里像了？」「我又哪点，不如他了？」（《财神爷》）
-- 「那些日夜的陪伴，你对我的撒娇，你对我的表白，都是你在耍我？」（《财神爷》）
-
-**④ 心动确认句（一句定格，独立成段）**
-- 「不丑，而且这个最好吃。」（《心上樱》，歪饺子）
-- 「公主，」他声音极轻，「等臣回来。」（《公主嫁到》）
-- 「这不是你的错。」（《人间渡》，救赎线的落点句）
+- **Vests / Misplaced Identity** (number one theme): Two vests flirting with each other,
+  hiding the boss, admitting the wrong person, online dating with someone close to you.
+  As long as the dislocation lasts, the pursuit will last as long as it lasts; each
+  section allows the dislocation to be almost exposed before slipping away.
+- **Feeding a sense of exception**: The male protagonist of Ice Cube only makes
+  exceptions for the female protagonist. Hot orange juice, fish with good spines, and a
+  hairpin. The smaller the object, the larger the exception.
+- **Forced co-frame device**: Marriage grant/marriage/marriage proposal to block the
+  door/ward escort/living in the same room, locking two people in a space for daily
+  fermentation.
+- **jealousy triggers**: ex, rumors about old relationships, male models. In sweet
+  romance, the love rival is a tool, not a threat, and its function is to force out
+  possessiveness and grievances.
+- **"He seems to be hiding something from me"**: late-night phone calls, deleted
+  Moments, children calling him daddy. Abuse hook, short-term use, the truth must be
+  cleared up.
+- **Truth is revealed in crisis**: Blocking an arrow, having a fever, being injured.
+  Hard words are exposed by actions.
 
 ---
 
-## 情绪链库
+## Emotional Intensity and Mode (Intensity 6)
 
-- **EC-错位心动（误会线，默认）**：高概念误会 → 强制同框 → 日常糖点 → 误会爆发 → 真相告白。五阶段。
-- **EC-双向暗恋（互不知道线）**：各自藏心 → 试探错位 → 吃醋外溢 → 隐情揭穿 → 双向奔赴。五阶段。
-- **EC-先虐后甜（追妻平替线）**：错待对方 → 意识到失去 → 短虐补过 → 郑重告白 → 补糖收尾。五阶段，虐段不超三成。
+The daily intensity is low and brisk, and the heartbeat instantly increases and then
+decreases rapidly. The peak value is amplified by physical micro-reactions and does not
+rely on the stacking of emotional idioms:
 
-## 招式库
+- Heartbeat Series: "Sakura in My Heart" My heart beat slightly wildly, and I was too
+  embarrassed to answer the question. / "After dialing the enemy by mistake" I froze on
+  the spot, and my heart skipped a beat for a moment.
+- Temperature: "Sakura in My Heart" My ears were instantly hot to death, and I almost
+  jumped out of bed. / "The Princess Gets Married" I stood there blankly, my ears
+  suddenly felt like fire.
+- The one who got caught: "The Princess Married" Zhao Mingshu seemed to be smiling but
+  not smiling: "Oh? Then why are your ears red?" I subconsciously touched my ears and
+  realized that I had been fooled.
 
-| 招式 | 怎么用 | 真实例 |
+The intensity of the first torture and then sweet section can be briefly set to 8, and
+the scene will be changed once it is reached, without repeated crushing: "Cheap
+Boyfriend's Desk Love" I thought he was here to save people, but I didn't expect that he
+was here to kill me.
+
+---
+
+## Conversational style and authentic quotes
+
+Accounting for 50-65%. The length distribution is opposite to that of a sadistic novel:
+**The female protagonist's chatterbox fills the scene, while the male protagonist closes
+the network with one sentence**. Four types of lines support the entire article:
+
+**① The male protagonist’s contrasting flirtation/declaration of possession (low
+frequency and high damage)**
+- "Don't worry, I'm not interested in you." "But that kid is really not worthy of you."
+  ("After Dial to the Rival by Mistake")
+- "Madam, Ryo." ("My husband is too weak to take care of himself", the sword is still
+  hanging on his neck)
+- "I'm not cruel. If I break up with him, why don't I call him brother?" ("Greed")
+- "It's so good to see you." ("Truth or Taking Risks")
+
+**② The heroine is poor-tongued/talks indiscriminately (high-frequency sugar-coating)**
+- "Can I play Chopin's Nocturne on your abdominal muscles?" ("Downfall")
+- "Please, beg me." (In "After Calling the Rival by Mistake," the male protagonist was
+  forced to hum like a mosquito, "Please.")
+- "Huo Yanshu, if you smile, you will look better." ("Crashing into His Arms")
+
+**③ The wronged puppy/jealous lines**
+- "Why did you block me?" ("The God of Wealth")
+- "How are he and I similar?" "In what way am I inferior to him?" ("The God of Wealth")
+- "Those days and nights with me, your coquettishness towards me, your confessions to
+  me, are you playing tricks on me?" ("The God of Wealth")
+
+**④ Heartbeat confirmation sentence (a fixed sentence, independent paragraph)**
+- "It's not ugly, and this is the most delicious." ("Sakura in My Heart", crooked
+  dumplings)
+- "Princess," he said in a very soft voice, "wait for my return." ("The Princess
+  Married")
+- "It's not your fault." ("Human Crossing", the ending sentence of the redemption line)
+
+---
+
+## Emotion chain library
+
+- **EC-Misplaced Heartbeat (Misunderstanding Line, Default)**: High concept
+  misunderstanding → forced sharing → daily sweets → misunderstanding breaks out → truth
+  confession. Five stages.
+- **EC-Two-way secret love (mutual ignorance)**: Each hides his or her own heart → Tests
+  and dislocations → Jealousy spills over → Revealing secrets → Going in both
+  directions. Five stages.
+- **EC-Torture first and then sweetness (chasing wife replacement line)**: Treat the
+  other party wrong → realize the loss → make up for it with short torture → solemn
+  confession → end with sugar supplement. In the fifth stage, the abuse section does not
+  exceed 30%.
+
+## Move library
+
+| Moves | How to use | Real examples |
 |------|--------|--------|
-| 误发消息开局 | 一条错发的消息 / 错认的对象建立关系，错位本身即钩 | 《财神爷》老板睁着湿漉漉的小狗眼，委屈地问我：为什么把我拉黑？ |
-| 例外感投喂 | 只对女主破例，用小物件写大偏爱 | 《误拨给死对头后》把自己面前的热橙汁推到我手边：「喝这个。」／《笺误》「你爱吃糖醋鱼，便给你剔好了。」 |
-| 嘴硬心软 | 好意必须配一个不领情的理由 | 《误拨给死对头后》「我只是不想我的员工被欺负，影响工作效率。」／《人间渡》他要是死了，我的美人头就没了 |
-| 弱势伪装 | 病弱 / 无害人设藏大佬底牌，揭底即爽点 | 《夫君他柔弱不能自理》我眼睁睁看着，我那柔弱不能自理的夫君，把我武功高强的竹马，打得……满地找牙 |
-| 强制同框 | 赐婚 / 提亲 / 陪护，把两人锁进一个空间 | 《公主嫁到》「景天，从今日起，你就是平遥的驸马，给朕好好管教她！」我两眼一黑 |
-| 撩拨反杀 | 女主长期撩不动，男主某天突然接招反压 | 《一遇沦陷》「不是想摸腹肌吗？或者还有其他地方？」「你自己来，还是我教你？」 |
-| 吃醋修罗场 | 情敌 / 前任出现，男主发疯或秒变委屈 | 《财神爷》【呵呵，拿了我的钱，还想去泡仔，天下能有这么好的事？】 |
-| 心动打卡 | 身体微反应记录心动进度，同篇换部位换写法 | 《心上樱》我心跳轻轻乱了一拍，没好意思再接话 |
-| 危机见真心 | 挡箭 / 发烧 / 受伤，行动戳破嘴硬 | 《人间渡》霍翀翻过身来，把我整个人压在了他身下，宽背挡住了从背后射来的箭 |
-| 认知错位萌 | 非人 / 天真视角误读人类常识，糖从误读里长 | 《人间渡》「给你切瘤子啊。」／《皇帝饲主的日常》「这只猫怎么这么重？」 |
-| 马甲揭穿名场面 | 面具 / 身份当众掉落，糖与爽同发 | 《财神爷》面具应声而落……「秦晓晓？？」老板颤抖着声音，表情一丝丝裂开，「你就是森森？？？」 |
-| 撕剧本宣言 | 穿书 / 弹幕流：当众推翻既定命运，转头选自己人 | 《乖乖女怒撕剧本》既然我是女主，剧情就由我说了算 |
-| 虐钩短用 | 「他瞒着我什么」造短虐，真相揭开糖翻倍 | 《便宜男友桌下爱》透过玻璃，我清楚的看到了男孩的口型：「爸爸」 |
+| Start by sending a wrong message | A wrong message / A wrongly recognized person establishes a relationship, and the mismatch itself is the hook | The boss of "God of Wealth" opened his wet puppy eyes and asked me aggrievedly: Why have you blocked me? |
+| Feeding the sense of exception | Only make exceptions for the heroine, use small objects to write big preferences | "After mistakenly calling the enemy" pushed the hot orange juice in front of me to my hand: "Drink this." / "Mistakes" "You like to eat sweet and sour fish, so I'll pick it up for you." |
+| Hard-spoken but soft-hearted | Good intentions must be accompanied by an ungrateful reason | "After mistakenly calling the enemy" "I just don't want my employees to be bullied and affect work efficiency." / "Human Crossing" If he dies, my beauty will be gone |
+| Disguise of weakness | Sick/harmless people hide the trump card of the boss, reveal it and satisfying payoff | "My husband is weak and can't take care of himself" I watched helplessly as my weak husband, who couldn't take care of himself, beat my strong martial arts horse until... his teeth were all over the floor |
+| Forced to be in the same frame | Marriage grant/proposal/accompanying, locking two people into a space | "The Princess Marries" "Jingtian, from today on, you are Pingyao's consort, please discipline her!" My eyes darkened |
+| Tease and kill | The heroine has been unable to seduce for a long time, but the male protagonist suddenly takes the initiative one day and counterpresses | "A Fall" "Don't you want to touch your abdominal muscles? Or are there other places?" "You do it yourself, or should I teach you?" |
+| Jealous Shura Field | Love rival / ex appears, the hero goes crazy or becomes aggrieved instantly | "God of Wealth" [Haha, you took my money and still want to pick up boys, how can such a good thing happen in the world? 】 |
+| Heartbeat check-in | The body's micro-reactions record the progress of the heartbeat, and the same article is written in different parts and words | "Sakura in My Heart" My heart beat slightly wildly, and I was too embarrassed to answer the phone |
+| Truth is revealed in crisis | Blocking arrows / Fever / Injured, actions expose the harsh words | "Huo Chong" turned over and pressed my whole body under him, his broad back blocked the arrows shot from behind |
+| Cognitive dislocation and cuteness | Inhuman/innocent perspective misunderstanding of human common sense, sugar grows from misunderstanding | "Human Crossing" "I will cut a tumor for you." / "The Daily Life of the Emperor's Owner" "Why is this cat so heavy?" |
+| The famous scene of the vest being revealed | The mask/identity is dropped in public, and the sweets and refreshments are given out at the same time | The mask of "God of Wealth" falls off... "Qin Xiaoxiao??" The boss's voice trembled, and his expression cracked, "You are Sensen???" |
+| Declaration of tearing up the script | Book threading / barrage flow: overturning the established destiny in public, turning around and choosing one of your own | "The Good Girl Angrily Tearing Up the Script" Since I am the heroine, I have the final say in the plot |
+| Short-term torture hook | "What is he hiding from me" short-term torture, the truth is revealed and the sugar is doubled | "Cheap Boyfriend's Desk Love" Through the glass, I clearly saw the boy's mouth shape: "Daddy" |
 
 ---
 
-## 节奏骨架
+## Rhythm Skeleton
 
 ```
-黄金简介（高概念误会 + 杀伤力台词）
-→ 第1章重写简介事件、坐实错位
-→ 强制同框装置上线
-→ 日常糖点循环（每节一个心动微事件，章尾留钩）
-→ 吃醋 / 情敌小高潮
-→ 误会爆发 / 危机（虐段，短）
-→ 真相揭开 + 告白（糖峰值）
-→ 确认关系 + 补糖收尾
+Golden introduction (high concept misunderstanding + lethal lines)
+→ Chapter 1: Rewrite the introduction event and establish the misplacement
+→ Force devices on the same frame to go online
+→ Daily sugar snack cycle (one heartbeat micro-event in each section, with a hook at the end of the chapter)
+→ Jealousy/love rival’s mini-orgasm
+→ Misunderstanding breaks out/crisis (abuse paragraph, short)
+→ The truth revealed + confession (sugar peak)
+→ Confirm the relationship + finish with sugar supplement
 ```
 
-疏密：心动瞬间慢放（动作、对视、一句台词拆三行），日常过场一句带过。虐段总量不超过全篇三成，且不连排两个虐章；每个误会要么当节解开，要么下节解开，不过夜拖三章。
+Density: Slow down the heartbeat moment (actions, stares, one line divided into three
+lines), and daily cutscenes are passed through in one sentence. The total amount of
+abuse chapters should not exceed 30% of the whole story, and no two abuse chapters
+should be arranged in a row; each misunderstanding must be solved in one section or in
+the next section, and it cannot be delayed for three chapters overnight.
 
 ---
 
-## 收尾范式
+## Closing Paradigm
 
-- 告白 + 马甲 / 误会全部揭开，当面兑现，不留暗线。
-- 男主视角番外：把前文的糖回放加浓，交代他从何时沦陷。真实范例：《财神爷》番外：替身又何妨？我会努力让自己变成正主。
-- 婚礼 / 领证 / 回归日常斗嘴定格，用一句拌嘴而非抒情收束。
-- 危机化解型：痊愈 / 团圆后立刻回到轻快日常（《便宜男友桌下爱》出院当天就被抓包耍赖）。
+- Confession + vest / misunderstandings are all revealed and fulfilled in person,
+  leaving no hidden clues.
+- Extra from the male protagonist's point of view: Replay the sweetness of the previous
+  article to thicken it and explain when he fell. Real example: "The God of Wealth"
+  Extra: What's the point of being a substitute? I will work hard to make myself the
+  right person.
+- Wedding/certificate/return to daily bickering freezes, ending with a bickering rather
+  than lyricism.
+- Crisis-resolving type: Return to light daily life immediately after recovery/reunion
+  ("Cheap Boyfriend's Desk Love" was caught cheating on the day he was discharged).
 
-HE 是硬约束：不开放式、不 BE、不留第三者复活的口子。
-
----
-
-## 该题材专属调校（与通用去 AI 规则的偏差）
-
-这些在别的语境是 AI 味，在本题材是卖点，**别误删**：
-
-- **内心吐槽小剧场 / 自问自答**（「吃错药了？」「几个意思？」）：保留，这是喜感与代入的主引擎。
-- **网络语与流行梗**（已读乱回、I 人、磕 CP、PTSD）：现代篇保留，是口语质感的一部分；古代篇禁用，换成「本小姐」式的俏皮自称。
-- **心动微反应重复打卡**（耳朵红 / 心跳漏拍）：保留复现，这是读者的打卡点；但同篇换部位换写法，不连续两节用同一处。
-- **男主金句式短台词**：保留「一句收网」，哪怕显得戏剧化；别为自然感把它稀释成长段解释。
-
-仍要避免的真·AI 味：映入眼帘、嘴角微扬、眼底闪过一丝、宠溺地笑、心中暗道、论文体连词（不难看出 / 由此可见），以及用叙述总结心动（一股甜蜜涌上心头）替代身体微反应。
-
-> 标点：本题材范例为示意保留了原貌；落到正文按 `.claude/knowledge/short-craft/short-craft.md` 第 8 节执行（不出 `……` / `——`，停顿用短句 / 动作 / 换行）。
+HE is a hard constraint: no openness, no BE, no hole for the resurrection of a third
+party.
 
 ---
 
-## 配套结构公式（按篇幅选）
+## Exclusive adjustment for this theme (deviation from general AI rules)
 
-- **纯甜双向奔赴型（8-12 节）**：误会开局 → 强制同框 → 糖点循环 4-6 节 → 吃醋小高潮 → 短危机 / 误会 → 告白 HE。全程轻快，虐不过夜。
-- **先虐后甜 / 破镜重圆型**：前三到四成篇幅压抑（误会 / 隐瞒 / 前尘旧账），真相一次炸开，之后每颗糖按双倍浓度发。虐是糖的杠杆：读者忍多久，糖就多甜；但虐因必须能洗白（任务 / 苦衷 / 错认），不能是真背叛。
-- **先婚后爱型（古代居多）**：被迫成婚（赐婚 / 提亲计 / 联姻）→ 婚内日常破冰 → 例外感堆叠 → 旧情传闻 / 情敌测试 → 互揭心迹。张力来自「名分先行、真心后至」的时间差。
-- **救赎型**：天真强者 × 满身伤痕者。认知错位萌铺糖，危机互救见真心，落点是「这不是你的错」式的接住；被救的一方要先为对方破一次例。
+These are AI-flavored in other contexts, but they are selling points in this subject
+matter, **don’t delete them by mistake**:
+
+- **Inner Complaint Theater / Self-Question and Answer** ("Did you take the wrong
+  medicine?" "What do you mean?"): Retention, this is the main engine of joy and
+  empathy.
+- **Internet slang and popular memes** (read random replies, I people, CP, PTSD):
+  retained in the modern chapter, which is part of the texture of spoken language;
+  banned in the ancient chapter, replaced by the playful self-proclaimed "Miss Me".
+- **Repetitive check-in of cardiac micro-reactions** (red ears/missed heartbeat): Keep
+  the recurrence, which is the reader’s check-in point; but in the same article, change
+  the location and writing method, and do not use the same place in two consecutive
+  sections.
+- **The male protagonist’s golden short lines**: Keep the “one sentence to close the
+  net”, even if it seems dramatic; don’t dilute it into a paragraph explanation for the
+  sake of naturalness.
+
+The real taste of AI that should still be avoided: the sight of someone, a slight raise
+of the corner of the mouth, a twinkle in the eye, a fond smile, secret thoughts in the
+mind, essay style conjunctions (not difficult to see / can be seen from this), and the
+use of narrative to summarize the heartbeat (a surge of sweetness in the heart) instead
+of physical micro-reactions.
+
+> Punctuation: This theme example retains its original appearance for illustration;
+> when it comes to the main text, follow Section 8 of
+> `.claude/knowledge/short-craft/short-craft.md` (no `...` / `em dash`, use short
+> sentences/actions/line breaks for pauses).
+
+---
+
+## Supporting structural formula (selected according to length)
+
+- **Pure sweet two-way rush type (8-12 sessions)**: Misunderstanding at the beginning →
+  Forced same frame → Sugar point cycle 4-6 sessions → Jealous climax → Short
+  crisis/misunderstanding → Confession HE. The whole process is brisk and can't be
+  tortured overnight.
+- **Abuse first and then sweetness/Re-rounding after breaking the mirror**: The first
+  30% to 40% of the text is suppressed (misunderstanding/concealment/old accounts from
+  the past), the truth is revealed at once, and then each candy is distributed at double
+  the concentration. Abuse is the leverage of sugar: as long as the reader tolerates it,
+  the sugar will become sweeter; but the cause of the abuse must be able to be cleared
+  away (mission/difficulty/misrecognition), and it cannot be a true betrayal.
+- **Marriage first, love later type (mostly in ancient times)**: Forced marriage
+  (granted marriage/proposal plan/marriage) → daily ice-breaking within marriage →
+  overlapping sense of exception → rumors of old love / love rival test → revealing each
+  other’s secrets. The tension comes from the time difference of "name comes first,
+  sincerity comes later".
+- **Redemption type**: The naive and strong person × the person covered with scars.
+  Cognitive dislocation is cute and sweet, and mutual rescue in crisis shows sincerity.
+  The point is to catch the "it's not your fault" style; the party being rescued must
+  first make an exception for the other party.

@@ -1,90 +1,105 @@
-# 钩子/悬念方法论
+# Hook/Suspense Methodology
 
-> 三种顶级悬念钩子写法，拆解自上百万爆款作品。
-> 适用于章纲阶段的 hooks 设计，与 `chapter-setting-style.md` 的 payoff_plan 配合使用。
-
----
-
-## 一、认知错位钩子——反直觉制造悬念
-
-**核心：** 抛出违背常理的结果，隐藏原因，制造逻辑缺口。读者的脑子里蹦出一个"？"，就会追着你的笔杆子走。
-
-### 执行规则
-
-- 开篇直接呈现反常现象，刻意留白起因
-- 利用"常理 vs 现实"的强烈反差，制造疑问
-- 前 100 字完成反差抛出，不做多余铺垫
-
-```
-❌ 主角意外身死，穿越回到家中，过往有很多复杂恩怨。
-
-✅ 他死而复生踏回家门，双亲面露惊惧——
-   上一刻，亲手了结他性命的正是眼前二人。
-```
-
-**要点：** 像丢炸弹一样把反常现象丢到读者脸上，然后转身就跑。**不要在开头解释设定。**
+> Three top suspense hook writing methods, dismantled from millions of popular works.
+> Suitable for hooks design at the chapter outline stage, used in conjunction with
+> payoff_plan of `chapter-setting-style.md`.
 
 ---
 
-## 二、信息差钩子——靠不对称制造情绪
+## 1. Cognitive dislocation hook - counter-intuitive to create suspense
 
-### 玩法 A：主角&读者知情，其他人不知情（扮猪吃虎/重生流）
+**Core:** Throw out results that go against common sense, hide the reasons, and create
+logical gaps. When a "?" pops up in the reader's mind, they will chase your pen.
 
-**核心：** 读者和主角掌握优势信息，配角/反派被蒙在鼓里并不断挑衅，放大对打脸反转的期待感。
+### Enforce Rules
 
-```
-❌ 主角拥有强大实力，众人很快发现并纷纷敬畏他。
-
-✅ 末日将至，他拼命囤积物资，邻里只当他贪小利、举止怪异，
-   不停出言嘲讽。无人知晓他手握未来所有危机的答案。
-```
-
-**要点：** 这是期待感悬念——提前把诱饵抛给读者，读者为了看到爽的结局，必须忍受前面的铺垫。
-
-### 玩法 B：读者知情，主角不知情（压迫式焦虑）
-
-**核心：** 借用上帝视角，提前向读者披露危机，主角浑然不觉。读者会产生强烈的焦虑感——"别踩进去！"
+- The anomaly is presented directly at the beginning, and the cause is deliberately left
+  blank.
+- Use the strong contrast between "common sense vs. reality" to create doubts
+- The first 100 words complete the contrast and throw out no unnecessary foreshadowing.
 
 ```
-❌ 朋友心怀歹意，准备下毒陷害主角。
+❌ The protagonist died unexpectedly and traveled back home. There were many complicated grievances in the past.
 
-✅ 主角举杯畅饮，对新结识的好友全然信任。
-   没人知晓，对方方才已在酒中掺入剧毒，正隐在门后冷眼窥视。
+✅ He came back from the dead and stepped home, his parents looked horrified,
+   The last moment, it was the two people in front of him who took his life with their own hands.
 ```
 
-**要点：** 利用读者的上帝视角制造参与感。读者不是看客，是和主角一起赛跑的参与者。
+**Key Points:** Throw the anomaly in the reader's face like a bomb and then run away.
+**Don't explain settings at the beginning. **
 
 ---
 
-## 三、急速倒计时钩子——限时危机
+## 2. Information gap hook - relying on asymmetry to create emotions
 
-**核心：** 开篇直接给主角绑定死亡/惩罚/绝境倒计时，利用人本能的危机心理留住读者。
+### Gameplay A: The protagonist & readers know, but others do not (pretend to be a pig and eat the tiger/rebirth flow)
 
-### 执行规则
-
-- 开篇第一段就抛出时间期限 + 致命后果
-- 弱化前情提要，直接把主角推入绝境
-- 全程强化"时间不断流逝"的压迫感
+**Core:** Readers and protagonists have superior information, and supporting
+characters/villains are kept in the dark and constantly provoked, amplifying the sense
+of expectation for face-slapping reversal.
 
 ```
-❌ 主角身陷牢狱，处境艰难，后续会受到惩罚。
+❌ The protagonist has great strength, and everyone quickly discovers and respects him.
 
-✅ 他在死牢中醒来，只剩两日时限，查不出真相，便要被流放至蛮荒边陲。
+✅ The end is approaching, and he desperately hoards supplies. The neighbors only think that he is greedy for small profits and behaves strangely.
+   Constantly making sarcastic remarks. No one knows that he holds the answers to all future crises.
 ```
 
-**要点：** 读者想的不是"这书写得好不好"，而是"他怎么活下来"。
+**Points:** This is anticipatory suspense - the bait is thrown to the readers in
+advance, and the readers must endure the foreshadowing in order to see the satisfying
+ending.
+
+### Gameplay B: The reader knows, the protagonist does not (oppressive anxiety)
+
+**Core:** Using God's perspective, the crisis is disclosed to the readers in advance,
+without the protagonist being aware of it. The reader is left with a strong sense of
+anxiety - "Don't step in!"
+
+```
+❌ The friend has evil intentions and is preparing to poison the protagonist.
+
+✅ The protagonist toasts and drinks freely, trusting his new friends completely.
+   No one knew that the other party had just mixed the poison into the wine and was peeping coldly from behind the door.
+```
+
+**Key points:** Use the reader’s perspective to create a sense of involvement. The
+reader is not a spectator, but a participant in the race with the protagonist.
 
 ---
 
-## 通用原则
+## 3. Rapid countdown hook,limited time crisis
 
-> 不要在第一页就把所有底牌亮出来。**要像剥洋葱一样，剥开一层，里面还有一层。**
-> 每一次结尾都要留下一个新的问题，让读者看完后脑子里不是"哦原来是这样"，
-> 而是"我草，接下来呢？"
+**Core:** The opening chapter directly binds the death/punishment/desperate countdown to
+the protagonist, using human instinctive crisis psychology to retain readers.
 
-| 钩子类型 | 读者心理 | 最佳使用位置 |
+### Enforce Rules
+
+- Throw out time limit + fatal consequences in the first paragraph
+- Weaken the background story and directly push the protagonist into a desperate
+  situation
+- Strengthen the oppressive feeling of "time keeps passing" throughout the process
+
+```
+❌ The protagonist is in prison, in a difficult situation, and will be punished later.
+
+✅ He woke up on death row, with only two days left. If he could not find out the truth, he would be exiled to the wild frontier.
+```
+
+**Key points:** What readers think about is not "whether the book is well written", but
+"how did he survive".
+
+---
+
+## General principles
+
+> Don’t reveal all your cards on the first page. **Be like peeling an onion, peel off
+> one layer and there will be another layer inside. **Every ending should leave a new
+> question, so that the reader’s mind after reading is not “Oh, so that’s it”, but “Oh
+> my god, what’s next?”
+
+| Hook Types | Reader Psychology | Best Places to Use |
 |---------|---------|-------------|
-| 认知错位 | "为什么？"——解谜欲 | 开篇/章节末尾 |
-| 信息差A（主角知道） | "快打脸！"——期待感 | 铺垫段、日常段 |
-| 信息差B（读者知道） | "别踩进去！"——焦虑感 | 危机前、对峙前 |
-| 急速倒计时 | "来得及吗？"——紧迫感 | 开篇、转折点 |
+| Cognitive dislocation | "Why?" - desire to solve puzzles | Beginning/end of chapter |
+| Information gap A (the protagonist knows) | "Fast face-slapping!" - sense of anticipation | foreshadowing, daily routine |
+| Information gap B (readers know) | "Don't step in!" - Anxiety | Before crisis, before confrontation |
+| Rapid countdown | "Is it too late?" - sense of urgency | Beginning, turning point |

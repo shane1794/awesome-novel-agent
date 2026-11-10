@@ -1,36 +1,36 @@
-# 类型档案：男频衍生
+# Type file: male-oriented derivative
 
-> 影视剧男频同人小说。
+> Male-oriented fan fiction for film and television dramas.
 
 - **id:** `male-derivative`
-- **label:** 男频衍生
+- **label:** male-oriented derivative
 
 ---
 
-## 题材配置
+## Theme configuration
 
-### 满足类型
-- 名场面还原
-- 角色高光重现
-- 留白补全
-- if线展开
-
-
-### 章节类型
-- 主线重绎
-- 支线展开
-- 日常补全
-- 原创剧情
-- 角色深挖
+### Satisfy Type
+- Restoration of famous scenes
+- Character highlight reappearance
+- Blank completion
+- if line expansion
 
 
-### 节奏规则
+### Chapter type
+- Reinterpretation of the main plot
+- Branch line expansion
+- Daily completion
+- Original plot
+- role digging
+
+
+### Rhythm Rules
 - max_consecutive_action_chapters: 3
 - max_consecutive_daily_chapters: 2
 - beat_density_min: 1
 
 ---
 
-## 卷级故事弧模板
+## Volume Story Arc Template
 
-默认：根据原作结构适配
+Default: adapted according to the structure of the original work

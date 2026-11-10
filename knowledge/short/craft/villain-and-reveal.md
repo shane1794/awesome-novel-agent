@@ -1,162 +1,182 @@
-# 反派系统 + 真相揭露机制
+# Villain System + Truth Revealing Mechanism
 
 
-> 本文件改写自获赠短篇流程包（oh-story 系 + 实测调整），按本仓口径适配：引用为部署后基座路径、已剔除外部体系引用。公开或商用前需原作者确认。
+> This document is adapted from the short flow package (oh-story series + actual
+> measurement adjustment) received as a gift, and is adapted to the caliber of this repo: the reference is the post-deployment base path, and external system
+> references have been eliminated. Confirmation by the original author is required
+> before disclosure or commercial use.
 
 
-> 反派设计模板、真相揭露方式、报应设计。Phase 2 设计反派时加载。
-
----
-
-**本文件职责**（其他内容去哪看）：
-- 各题材的反派套路（世情打脸反派、重生复仇反派等）已在 genre-writing-formulas.md，本文件只提供通用设计模板
-- 本文件的反派人设模板 `{身份}+{动机}+{作恶方式}+{致命弱点}` 侧重「设计蓝图」，genre-writing-formulas.md 的 `{人设}+{动机}+{行为}+{态度}+{受伤害程度}` 侧重「矛盾冲突公式」——前者用于 Phase 2 设计，后者用于 Phase 3 写作
+> Villain design template, truth reveal method, retribution design. Phase 2 is loaded
+> when designing the villain.
 
 ---
 
-## 1. 反派设计模板
+**Responsibilities of this document** (Where to read other content):
+- Villain routines for each genre (face-slapping villains, reborn villains with revenge,
+  etc.) are already in genre-writing-formulas.md. This file only provides general design
+  templates.
+- The villain character template `{identity}+{motivation}+{wrongdoing-method}+{fatal-weakness}` in this document focuses on
+  "design blueprint", while the `{persona}+{motivation}+{behavior}+{attitude}+{harm-degree}` in
+  genre-writing-formulas.md focuses on "conflict formula" - the former is used for Phase
+  2 design, and the latter is used for Phase 3 writing.
 
-### 人设模板
+---
 
-填写以下模板，写入设定.md：
+## 1. Villain design template
+
+### Character template
+
+Fill in the following template and write settings.md:
 
 ```
-反派：
-- 身份：{与主角的关系}
-- 动机：{自洽的作恶逻辑：贪婪/嫉妒/控制欲/报复/自保}
-- 作恶方式：{具体手段：言语打压/经济控制/社交孤立/人身伤害/法律构陷}
-- 致命弱点：{可被主角利用的弱点：贪婪/傲慢/秘密/依赖/恐惧}
-- 报应：{与恶行对应的结局}
+Villain:
+- Identity: {relationship with protagonist}
+- Motive: {Self-consistent evil logic: greed/jealousy/desire for control/revenge/self-preservation}
+- Ways of committing evil: {Specific means: verbal suppression/economic control/social isolation/personal harm/legal frame-up}
+- Fatal Weakness: {Weaknesses that can be exploited by the protagonist: Greed/Arrogance/Secret/Dependence/Fear}
+- Retribution: {the ending corresponding to the evil deed}
 ```
 
-### 嚣张度递增阶梯
+### Arrogance increasing ladder
 
-反派行为必须逐级递增，不跳跃也不重复：
+The villain's actions must be performed step by step, without jumping or repeating:
 
-| 级别 | 行为类型 | 示例 |
+| Level | Behavior type | Example |
 |------|----------|------|
-| 小恶（前 1/3） | 言语打压、冷暴力 | 「你嫁进来就算烧高香了」 |
-| 中恶（中段） | 经济/社交伤害 | 偷拿存折、在外败坏名声、挑拨关系 |
-| 大恶（后段） | 人身/法律伤害 | 下药、构陷、逼死、拐卖 |
+| Little Evil (First 1/3) | Verbal Suppression, Cold Violence | "If you marry in, it will be a big deal" |
+| Medium evil (middle section) | Economic/social harm | Stealing bankbooks, ruining reputation outside, and sowing relationships |
+| Big Evil (Second Section) | Personal/Legal Injury | Drugging, Framing, Forced to Death, and Trafficking |
 
-### 5 种反派类型速查
+### 5 Villain Types Quick Facts
 
-| 类型 | 特征 | 代表作 | 致命弱点 |
+| Type | Characteristics | Representative Works | Fatal Weakness |
 |------|------|--------|----------|
-| 操控型 | 以爱为名控制一切 | 王氏（皇弟） | 控制欲导致行事留下证据 |
-| 贪婪型 | 无底线索取 | 准儿媳 | 贪心过度暴露真面目 |
-| 伪装型 | 隐藏真实身份/目的 | 诈骗犯（重生弟弟） | 身份经不起调查 |
-| 嚣张型 | 仗势欺人，有恃无恐 | 萧琅（皇弟） | 傲慢导致不看身后 |
-| 软刀型 | 示弱博同情，暗中操控 | 妈妈（姐夫捎路） | 假面被证据击碎 |
+| Controlling type | Controls everything in the name of love | Wang (the emperor's younger brother) | Desire for control leads to actions that leave evidence |
+| Greedy type | Unfounded solicitation | Daughter-in-law-to-be | Greedy and excessive exposure of true colors |
+| Disguise type | Hide true identity/purpose | Scammer (reborn younger brother) | Identity cannot withstand investigation |
+| Arrogant type | Bullying others with power and having no fear | Xiao Lang (the emperor's younger brother) | Arrogance leads to not looking behind oneself |
+| Soft knife type | Showing weakness to win sympathy, secretly controlling | Mother (brother-in-law passing by) | The mask is shattered by evidence |
 
 ---
 
-## 2. 真相揭露机制
+## 2. Truth disclosure mechanism
 
-### 4 种揭露方式
+### 4 Ways to Reveal
 
-#### 证物揭露
+#### Expose evidence
 
-物理证据一锤定音。
+The physical evidence was conclusive.
 
-操作：在铺垫段埋入「看似无关紧要的物件/文件」，揭露时翻转其意义。
-
-```
-铺垫：妈妈脖子上总戴着一把金锁，说是姐姐送的
-揭露：打开金锁，里面刻着「金包铜」三个字
-暴击：她从来没打开过这把锁
-```
-
-#### 证人揭露
-
-第三方视角打破谎言。
-
-操作：安排一个边缘角色（仆人/邻居/同事），在关键时刻说出主角不知道的信息。
+Operation: Bury "seemingly insignificant objects/documents" in the foreshadowing
+section, and flip their meaning when revealed.
 
 ```
-铺垫：周嬷嬷总是欲言又止
-揭露：周嬷嬷临终前交给主角一封信——先皇后的供状
-暴击：王氏知道这封信的存在，所以一直在找周嬷嬷
+Foreshadowing: Mom always wears a gold lock around her neck, saying it was a gift from her sister.
+Revealed: Open the gold lock and find the words "gold covered with copper" engraved inside
+Critical Strike: She never opened the lock
 ```
 
-#### 偷听/撞见
+#### Witness Reveal
 
-主角获取隐藏信息。
+A third-party perspective breaks the lies.
 
-操作：设计一个「主角不该在场的场景」，让主角无意中看到/听到真相。
-
-```
-铺垫：妈妈每次接电话都走到阳台上
-揭露：主角路过阳台，听到妈妈说「那个金锁是假的，她到现在都不知道」
-暴击：电话那头是姐夫
-```
-
-#### 延迟剥洋葱
-
-一层真相引出更深真相。
-
-操作：每层用一个节揭露，每层都比上一层更残酷。
+Operation: Arrange a marginal character (servant/neighbor/colleague) to tell information
+that the protagonist does not know at a critical moment.
 
 ```
-第1层：弟弟的女友不是她说的那个人
-第2层：女友是诈骗犯，有犯罪记录
-第3层：怀孕是假的
-第4层：弟弟已经被骗到电诈园区
+Foreshadowing: Aunt Zhou always hesitates to speak
+Revealed: Aunt Zhou gave the protagonist a letter before she died - the late Queen's confession
+Critical attack: Wang knew the existence of this letter, so she has been looking for Aunt Zhou.
 ```
 
-### 按题材选择揭露节奏
+#### overhear/catch
 
-| 题材 | 推荐方式 | 节奏 |
+The protagonist obtains hidden information.
+
+Operation: Design a "scene where the protagonist should not be present" so that the
+protagonist can accidentally see/hear the truth.
+
+```
+Foreshadowing: Mom walks to the balcony every time she answers the phone
+Reveal: The protagonist passes by the balcony and hears her mother say, "That gold lock is fake, she still doesn't know it."
+Critical attack: It’s my brother-in-law on the other end of the phone
+```
+
+#### Delayed peeling of onions
+
+One layer of truth leads to a deeper truth.
+
+Operation: Each level is revealed with one stanza, each level more brutal than the last.
+
+```
+Level 1: My brother’s girlfriend is not who she says she is
+Level 2: The girlfriend is a fraudster and has a criminal record
+Level 3: The pregnancy is fake
+Level 4: My younger brother has been deceived into the electronic fraud park
+```
+
+### Choose the rhythm of disclosure according to the subject matter
+
+| Theme | Recommended method | Rhythm |
 |------|----------|------|
-| 世情/爽文 | 证物揭露 或 证人揭露 | 一次大揭露，干净利落 |
-| 情感/虐心 | 偷听/撞见 + 延迟剥洋葱 | 分层揭露，层层更痛 |
-| 古言/复仇 | 证人揭露 + 证物揭露 | 先证人铺垫再证物一锤 |
-| 悬疑/推理 | 延迟剥洋葱 | 全程分层，最后一块拼图 |
-| 年代/亲情 | 偷听/撞见 | 意外发现，情绪冲击最大 |
+| Feel-good fiction | Evidence disclosure or witness disclosure | A big reveal, clean and tidy |
+| Emotional/sadistic | Overhearing/bumping in + delayed peeling of the onion | Layered revelations, each layer hurts more |
+| Ancient Proverbs/Revenge | Witness exposure + evidence disclosure | Witnesses first prepare the ground and then the evidence is hammered |
+| Suspense/Mystery | Delayed peeling of the onion | Layered throughout, the last piece of the puzzle |
+| Era/Family Relationship | Overhearing/Bumping into | Unexpected discovery, the greatest emotional impact |
 
 ---
 
-## 3. 反派报应设计
+## 3. Villain’s retribution design
 
-### 规则
+### Rules
 
-报应必须与恶行形成对应。恶行有多重，报应就有多重。
+Retribution must correspond to the evil deed. The magnitude of the evil deeds is the
+magnitude of the retribution.
 
-### 对应原则
+### Correspondence principle
 
-| 恶行 | 报应 | 对应逻辑 |
+| Evil deeds | Retribution | Corresponding logic |
 |------|------|----------|
-| 逼死在冷宫 | 自己住进冷宫 | 因果轮回 |
-| 偷拿存折 | 账户被冻结，一分拿不到 | 偷失去的，连自己的也失去 |
-| 以爱为名操控 | 被所有人抛弃 | 假爱真控，最终无人可控 |
-| 诈骗钱财 | 被更狠的人骗进园区 | 骗子被更高级骗子收割 |
+| Forced to die in the cold palace | Living in the cold palace by myself | Karma and reincarnation |
+| Steal the passbook | The account is frozen and you can’t get a penny | If you steal what is lost, you will lose even your own |
+| Control in the name of love | Abandoned by everyone | Fake love and real control, ultimately no one can control |
+| Scamming money | Being tricked into the park by more ruthless people | Scammers are harvested by more advanced scammers |
 
-### 4 种报应模式
+### 4 Modes of Retribution
 
-| 模式 | 适用场景 | 操作 |
+| Mode | Applicable Scenario | Operation |
 |------|----------|------|
-| 法律制裁 | 现代背景，恶行触犯法律 | 报警/起诉/判决，用简短几句交代 |
-| 社会性死亡 | 虚伪型/操控型反派 | 真相公开，所有人看清真面目 |
-| 因果轮回 | 古言/复仇题材 | 做过的事回到自己身上 |
-| 精神崩溃 | 虐心/意难平题材 | 反派得到一切却发现失去了唯一重要的东西 |
+| Legal sanctions | Modern background, evil deeds violate the law | Call the police/prosecution/judgment, explain in a few sentences |
+| Social Death | Hypocritical/Manipulative Villain | The truth is disclosed and everyone can see the true face |
+| Karma and reincarnation | Ancient proverbs/revenge themes | What you have done comes back to you |
+| Mental breakdown | Sadistic/lingering regret theme | The villain gained everything but found that he had lost the only important thing |
 
-### 报应强度校准
+### Retribution Strength Calibration
 
-- 报应强度 = 恶行强度 × 1.0-1.2（不过度也不轻描淡写）
-- 不写长段报应描写，2-3 句带过，留白给读者
-- 报应的「爽」来自对应感，不是来自描写长度
+- Retribution intensity = Evil deed intensity × 1.0-1.2 (neither excessive nor
+  understatement)
+- Don’t write a long description of retribution, just 2-3 sentences and leave it blank
+  for the reader.
+- The "pleasure" of retribution comes from the sense of correspondence, not from the
+  length of the description.
 
 ---
 
-## 4. 反转有效性自检（Phase 2 使用）
+## 4. Inversion validity self-test (used in Phase 2)
 
-写完 outline 后，用这个自检确认反转真的能反转读者：
+After you finish writing your outline, use this self-test to confirm that inverting
+really inverts readers:
 
-| 检查项 | 通过标准 | 不通过 = 需要 |
+| Check Items | Pass Criteria | Fail = Required |
 |--------|---------|-------------|
-| 读者知道真相的时机 | >60% 合理；50-60% 灰区需审视反转力度；<50% 不算反转（三档口径见本仓短篇构思 SOP `skills/short-plan.md` 验证节） | 调整线索释放节奏，延后真相揭露 |
-| 是否有误导假线索 | ≥ 1 条读者会信的假线索 | 加入红鲱鱼或选择性叙述误导 |
-| 真相线索隐蔽度 | 回看能找到但正读时会忽略 | 线索藏在日常细节中，不用强调语气 |
-| 角色知道 vs 读者知道 | 反转前读者和角色至少有一方不知道真相 | 制造信息差：读者不知道 / 角色不知道 / 双方都不知道 |
+| The timing for readers to know the truth | >60% is reasonable; 50-60% gray area needs to review the intensity of reversal; <50% is not considered a reversal (see the SOP `skills/short-plan.md` verification section for the third level of caliber) | Adjust the rhythm of clue release and delay the revelation of the truth |
+| Are there any misleading false clues | ≥ 1 false clue that readers will believe | Add red herrings or selective narrative misleading |
+| Concealment of truth clues | Can be found when looking back but ignored when reading | Clues are hidden in daily details, no need to emphasize the tone |
+| The character knows vs the reader knows | Before the reversal, at least one of the reader and the character does not know the truth | Creating an information gap: the reader does not know / the character does not know / both parties do not know |
 
-**失败模式**：「延迟揭露」不算反转。读者在第 2 节就知道真相，后面 10 节只等角色追上来 = 延迟揭露，读者会无聊。真正的反转发生在揭示那一刻，让读者和角色一起震惊。
+**Failure Mode**: "Delayed Reveal" does not count as a reversal. The reader knows the
+truth in section 2 and then spends the next 10 sections just waiting for the characters
+to catch up = delayed reveal and the reader will be bored. The real twist comes in the
+moment of reveal, shocking both the reader and the character.

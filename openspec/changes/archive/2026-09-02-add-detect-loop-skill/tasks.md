@@ -1,17 +1,17 @@
 ## 1. detect-loop skill
 
-- [x] 1.1 写 `skills/detect-loop.md`：触发条件、适配器接口（稿件路径入/逐片结果文件出/阈值参数）、最小干预修复纪律、锁版与沉淀流程、合规声明（验证：对照 spec 逐条核对；话术过 author-communication 对照表）
-- [x] 1.2 附结果文件格式示例（纯格式，不含真实平台协议）（验证：示例可被流程直接引用）
-- [x] 1.3 `python tools/check-agents.py`（验证：exit 0）
+- [x] 1.1 Write `skills/detect-loop.md`: trigger conditions, adapter interface (manuscript path in / per-segment result file out / threshold parameters), minimal-intervention fix discipline, locking and lessons-learned flow, compliance statement (verify: check each item against the spec; wording checked against the author-communication reference table)
+- [x] 1.2 Attach a result-file format example (format only, no real platform protocol) (verify: the example can be referenced directly by the flow)
+- [x] 1.3 `python tools/check-agents.py` (verify: exit 0)
 
-## 2. 调度接入
+## 2. Dispatch wiring
 
-- [x] 2.1 `skills/novel-dispatch.md` 调度表加 detect-loop 可选 phase 行 + 作者触发语义 + 断点续跑备注（验证：与既有 phase 行格式一致）
-- [x] 2.2 `agents/novel-agent.md` THINK 树补 detect-loop 分支（验证：`check-agents.py` exit 0；与 dispatch 表无冲突）
+- [x] 2.1 Add a detect-loop optional phase row to the `skills/novel-dispatch.md` dispatch table, plus author-trigger semantics and a breakpoint-resume note (verify: format matches existing phase rows)
+- [x] 2.2 Add a detect-loop branch to the `agents/novel-agent.md` THINK tree (verify: `check-agents.py` exit 0; no conflict with the dispatch table)
 
-## 3. 收尾与发版
+## 3. Wrap-up and release
 
-- [x] 3.1 全量检查：`check-agents.py` + `check-conflicts.py` + `py_compile` + `test_platforms.py`（验证：全绿）
-- [ ] 3.2 真机演练一次：本地送检工具（用户自备）→ 走完 修最高窗→锁版→沉淀 全流程（验证：战役记录新增一轮、回归串入库、check-chapter 复跑 exit 0）
-  - 2026-08-31 已验证触发与降级语义：claude 无头会话正确识别"送检"意图、本地无工具时按 skill 优雅终止并给作者大白话说明、未越权写文件；真机外测全流程仍待作者自备检测途径
-- [x] 3.3 发版 `chore: bump version to v4.24.0`，更新 `VERSION` 与 `docs/releasenotes/releasenote-4.24.0.md`（验证：`check-version.py` 通过）
+- [x] 3.1 Full checks: `check-agents.py` + `check-conflicts.py` + `py_compile` + `test_platforms.py` (verify: all green)
+- [ ] 3.2 One live walkthrough: local submission tool (author-provided) through the full fix-highest-window, lock, distill flow (verify: the battle log gains one round, regression strings enter the library, check-chapter re-run exits 0)
+  - Verified 2026-08-31 for trigger and degradation semantics: a headless Claude session correctly recognized the "submit it" intent, ended gracefully with a plain-language explanation to the author when no local tool existed, and wrote no files beyond its authority; the full live external test still waits for the author to provide a detection route
+- [x] 3.3 Release `chore: bump version to v4.24.0`, updating `VERSION` and `docs/releasenotes/releasenote-4.24.0.md` (verify: `check-version.py` passes)

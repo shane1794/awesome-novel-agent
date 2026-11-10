@@ -1,85 +1,105 @@
-# 角色死亡/下线写法
+# Character death/offline writing method
 
-> 写死一个角色，目的不是让他消失，而是让他以另一种方式永生在读者心里。三类高段位死亡写法。
+> The purpose of writing a character to death is not to make him disappear, but to
+> make him immortal in the hearts of readers in another way. Three types of high-level
+> death writing methods.
 
-## 注入时机
+## Injection timing
 
-死亡场景通过 输入·场景原材料 场景类型无法自动检测。prompt-crafter 在以下条件满足时加载此文件：
+The death scene passes the input / scene raw material. The scene type cannot be
+automatically detected. prompt-crafter loads this file when the following conditions are
+met:
 
-| 触发条件 | 判断依据 |
+| Trigger conditions | Judgment basis |
 |---------|---------|
-| 输入·场景原材料 场景核心事件涉及角色死亡/牺牲/下线 | "阵亡""陨落""牺牲""被杀""死"等关键词 |
-| L3 核心悬念涉及角色生死 | 本章是关键角色的死亡转折点 |
+| Input / Scene raw materials The core event of the scene involves the character's death/sacrifice/offline | Keywords such as "killed in action", "fall", "sacrifice", "killed", "death" |
+| The core suspense of L3 involves the life and death of the character | This chapter is the turning point of the death of the key character |
 
-加载方式：同特殊检查流程，在 输入·场景原材料 场景序列填充完毕后额外检查。
-
-
-## [遗憾] 差一点就——遗憾的巅峰
-
-**核心：** 角色明明只要再坚持一秒钟就能拥抱光明，却永远留在了黑暗里。给予读者极大希望，在最高点瞬间掐灭。
-
-### 执行细则
-
-- 前面铺垫大量期待：他想吃的那碗面、想见的那个人、想洗清的冤屈
-- 希望拉到最满的时刻，突然收走一切
-- 读者伤心的不是死，而是"那条永远发不出去的短信"
-
-```
-❌ 主角完成了使命，含笑九泉。
-
-✅ 他忍辱负重十年，终于拿到了足以定罪的证据。
-   他掏出手机，给等了他十年的姑娘发短信——
-   "任务结束了，我明天娶你。"
-   按下发送键的前一秒，子弹贯穿了他的胸膛。
-```
-
-**要点：** 差一点点的遗憾，会像一根刺扎在读者心里好几年。
+Loading method: Same as the special inspection process, with additional inspection after
+the input scene raw material scene sequence is filled.
 
 
-## [延迟真相] 带着误解死去——真相的延迟
+## [Regret] Almost - the pinnacle of regret
 
-**核心：** 角色死时带着误解和骂名，甚至死有余辜。死后真相才被揭开，之前的恨意反弹成翻倍的愧疚。
+**Core:** The character clearly wants to embrace the light as long as he persists for
+one second, but he remains in the darkness forever. It gives readers great hope, which
+is instantly extinguished at the highest point.
 
-### 执行细则
+### Implementation details
 
-- 角色生前做过很多让主角误会反感的事——每一件坏事背后藏着一个深情的真相
-- 通过遗物、记忆碎片、敌人口吻揭开埋藏已久的真相
-- 给读者三段情绪：觉得他死得好 → 疑惑 → 彻底崩溃
+- A lot of expectations are laid ahead: the bowl of noodles he wants to eat, the person
+  he wants to see, the grievances he wants to clear.
+- At the moment when hope is at its fullest, everything is suddenly taken away
+- What makes readers sad is not death, but "the text message that can never be sent."
 
 ```
-❌ 反派死了，主角松了口气，一切结束。
+❌ The protagonist completed his mission and smiled happily.
 
-✅ 他一直追杀佐助，处处下死手。
-   他倒下的时候，佐助甚至觉得解脱了。
-   直到后来佐助才发现——那个追杀他的哥哥，
-   是为了保护他才背负了一世骂名。
-   所有绝情都是为了保全他，
-   所有骂名都是为了在黑暗中给他撑一把伞。
+✅ He endured the humiliation for ten years and finally got enough evidence to convict him.
+   He took out his mobile phone and sent a text message to the girl who had been waiting for him for ten years,
+   "The mission is over, I will marry you tomorrow."
+   A second before he pressed the send button, a bullet penetrated his chest.
 ```
 
-**禁用：** 角色死得太快，真相立刻揭晓，没有愧疚发酵的空间。
+**Points:** A little regret will stick in the reader's heart like a thorn for several
+years.
 
 
-## [平淡余韵] 极致的平淡——后劲流
+## [Delayed truth] Dying with misunderstanding - Delay of truth
 
-**核心：** 不要写死的瞬间多么惊天动地。真正极致的情绪是无声的——角色死后世界依然在运转，但处处都是他不在的空缺。
+**Core:** Characters die with misunderstandings and infamy, and even deserve to die. It
+was only after his death that the truth was revealed, and the previous hatred rebounded
+into doubled guilt.
 
-### 执行细则
+### Implementation details
 
-- 死亡瞬间可以写得很突然、很平淡
-- 真正的刀子在葬礼之后——通过"习惯的打破"来写空缺
-- 不写悲伤，写下意识的行为、写空了的角落、写再也送不出的东西
+- The character did many things during his lifetime that made the protagonist
+  misunderstood and disgusted - behind every bad thing there is an affectionate truth.
+- Uncover long-buried truths through relics, memory fragments, and enemy voices.
+- Give the reader three emotions: Feeling that he died well → Doubt → Completely
+  collapsed
 
 ```
-❌ 爱人走了，主角痛哭流涕，悲伤欲绝。
+❌ The villain is dead, the protagonist is relieved and everything is over.
 
-✅ 他回到家，习惯性喊了一句"妈，我回来了"。
-   然后才愣住——没人会应了。
-
-   多年后他功成名就，站在万人中央。
-   他下意识看向那个角落——以前无论成败，
-   那个人总站在那里对他笑。
-   现在那个角落空了，青苔都长出来了。
+✅ He has been chasing Sasuke and killing him everywhere.
+   When he fell, Sasuke even felt relieved.
+   It wasn't until later that Sasuke discovered that the brother who was chasing him,
+   It was for protecting him that he suffered a lifetime of infamy.
+   All the ruthlessness is to protect him,
+   All the infamy is to give him an umbrella in the dark.
 ```
 
-**要点：** 物是人非。不直接写死亡，写死亡带来的空缺。这种细水长流的刀法能在读完书几年后仍让人鼻酸。
+**Disabled:** The character dies too quickly, the truth is revealed immediately, and
+there is no room for guilt to ferment.
+
+
+## [Bland aftertaste] The ultimate blandness - the staying power flow
+
+**Core:** Don’t write down how earth-shattering the moment of death is. The real
+ultimate emotion is silent - the world continues to function after the character dies,
+but there are gaps everywhere in his absence.
+
+### Implementation details
+
+- The moment of death can be written very suddenly and very plainly
+- The real knife is after the funeral - writing the void through the "breaking of
+  habits"
+- Don’t write about sadness, write about conscious behavior, write about empty corners,
+  and write about things that can never be given away.
+
+```
+❌ When his lover left, the protagonist cried and was heartbroken.
+
+✅ When he got home, he habitually shouted "Mom, I'm back".
+   Then he was stunned - no one would respond.
+
+   Many years later he became famous and stood among thousands of people.
+   He subconsciously looked towards that corner - no matter success or failure in the past,
+   The man always stood there and smiled at him.
+   Now that corner is empty and moss has grown.
+```
+
+**Key points:** Things are different and people are different. Don’t write about death
+directly, write about the vacancy caused by death. This long-flowing knife technique can
+still make people's noses sore years after reading the book.

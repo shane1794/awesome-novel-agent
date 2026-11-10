@@ -1,25 +1,45 @@
-# 案例 2 验收检查清单（anti-ai 用，替代旧 Gate G / distill-style.py check）
+# Case 2 Acceptance Check List (for anti-ai, replacing the old Gate G/distill-style.py check)
 
-## 触发
-对每章正文跑指令遵循验收：读同章 `prompts/vol-{N}-ch-{M}-prompt.md` 的
-【词汇】【句式】【节奏】【修辞与感官】【情绪表达】【对话风格】【衔接】【视角】
-【硬性规则】【整体基调】【风格参考例句】逐条对照正文判定。用与生成同一份提示词（同源）。
-（双态：未蒸馏态提示词无量化节、含正文定性四字段 → 按定性条验收「叙事身份/硬约束/AI易犯错误/描写层次」；已蒸馏态 → 下方四类条 + 【风格参考例句】作风格锚点逐句对照正文。遗留 jieba 卡（confidence>0 无声音层）的硬性规则/基调/例句按 §6.0b 回退读正文定性四字段，例句以描写层次示例充当。）
+## Trigger
+Run the instruction-following acceptance check on each chapter's text: read the same chapter's `prompts/vol-{N}-ch-{M}-prompt.md` for its
+[Vocabulary] [Sentence Pattern] [Rhythm] [Rhetoric and Sensation] [Emotional Expression]
+[Conversation Style] [Cohesion] [Perspective] [Hard Rules] [Overall Tone] [Style
+Reference Examples] of the same chapter and compare them with the text one by one to
+judge. Use and generate the same prompt word (cognate). (Two states: Undistilled state
+prompt word has no quantified stanzas and contains text qualitative four fields → accept
+"narrative identity/hard constraints/AI error prone/descriptive level" according to the
+qualitative bar; distilled state → four categories of bars below + [style reference
+example sentence] make style anchor point to compare the text sentence by sentence. The
+rigid rules/tone/example sentences of the legacy jieba card (confidence>0 silent layer)
+are according to §6.0b Go back and read the four qualitative fields of the text, and the
+example sentences serve as descriptive level examples).
 
-## 检查项（四类）
-1. 数值/占比条：「对话约 48%」→ 本章对话是否明显偏离（偏离即违反，不要求数值精确）。
-2. 硬性规则条：逐条判定（如「禁止'宛如'」→ 查是否出现；出现即违反）。
-3. 建模规则条：节奏参数（对话密集区≥4轮后必须独白缓冲、纯叙述≤3句）、对话模式（D-01~）、
-   锚点（章首/章尾语义闭环）逐条判定。
-4. 软引导条：整体基调是否吻合。
+## Check items (four categories)
+1. Value/proportion bar: "About 48% of the dialogue" → Whether the dialogue in this
+   chapter deviates significantly (deviation is a violation, and the numerical accuracy
+   is not required).
+2. Rigid rules: Judgment one by one (such as "No 'like'" → check whether it appears; if
+   it appears, it is violated).
+3. Modeling rules: rhythm parameters (dialogue-intensive area must be monologue buffered
+   after ≥4 rounds, pure narrative ≤3 sentences), dialogue mode (D-01~),
+Anchor points (semantic closed loop at the beginning/end of the chapter) are determined
+one by one.
+4. Soft guide strip: Whether the overall tone is consistent.
 
-## 违反报告格式（写入 archives/*.anti-ai.md 验收节）
-| 条号 | 原文要求 | 正文表现 | 违反与否 | 建议 |
-结论：PASS / FAIL（违反条数 / 总条数）
+## Violation report format (written in archives/*.anti-ai.md acceptance section)
+| Article number | Original text requirements | Text performance | Violation or not | Suggestions |
+Conclusion: PASS / FAIL (number of violations / total number of violations)
 
-## 确定性判定口径（本文自含，不依赖 tools/*.py）
-- **violated 判定**（「违反与否」列与结论计数）：`true/是/yes/1/违反/违反了` → 违反；`false/否/空/其余字符串` → 不违反。匹配前剥尾部标点与语气词（`是。`→`是`、`yes。`→`yes`、`违反了`→`违反`、`是；`→`是`）；LLM 输出的字符串布尔一律按此收敛，防误抽卡。
-- **verdict**：任一违反 → FAIL；全部不违反 → PASS。
-- **should_reroll（抽卡）**：当前轮 round<3 且本轮违反条数>0 → 重写（violations 报告喂回 writer）。
-- **pick_best（超 3 轮取最优）**：取违反条数最少的一轮；同分取最新一轮。
-- **format_report**：上表逐条 + 结论行 `结论：FAIL/PASS（违反数/总条数）`。
+## Deterministic judgment caliber (this article is self-contained and does not rely on tools/*.py)
+- **violated judgment** ("violated or not" column and conclusion count):
+  `true/是/yes/1/违反/违反了` → violated; `false/否/空/other字符串` → not violated. Peel off the
+  trailing punctuation and modal particles before matching (`是。`→`是`, `yes。`→`yes`,
+  `违反了`→`违反`, `是；`→`是`); the string Boolean output by LLM will all converge according to
+  this to prevent accidental card drawing.
+- **verdict**: Any violation → FAIL; none of them are violated → PASS.
+- **should_reroll (card draw)**: The current round is <3 and the number of violations in
+  this round is >0 → rewrite (the violations report is fed back to the writer).
+- **pick_best (pick the best after 3 rounds)**: Take the round with the fewest
+  violations; take the latest round if there are ties.
+- **format_report**: The above table item by item + conclusion line
+  `Conclusion: FAIL/PASS (violations/total)`.
