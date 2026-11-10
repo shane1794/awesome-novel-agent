@@ -1,357 +1,357 @@
-# awesome-novel-agent 架构文档
+# awesome-novel-agent Architecture
 
-> 面向开发者理解实现细节。面向使用者的内容见 [README.md](./README.md)。
-> 当前版本：v4.28.0
+> For developers who want to understand the implementation details. User-facing content lives in [README.md](./README.md).
+> Current version: v4.28.0
 
 ---
 
-## 1. 系统架构
+## 1. System architecture
 
-### 1.1 总体：状态驱动的 ReAct 循环
+### 1.1 Overview: state-driven ReAct loop
 
-核心架构是**状态驱动循环**。每个 agent（含 novel-agent 与所有子 agent）都按 ReAct 模式运行：`OBSERVE → THINK → ACT → VERIFY → LOOP`（唯一例外：`reader` 声明 `react: false`——评审是一次性阅读评价，不走状态驱动循环，见 `agents/reader.md` 的 Invocation Integration 说明）。
+The core architecture is a **state-driven loop**. Every agent (novel-agent and all sub-agents) runs in ReAct mode: `OBSERVE → THINK → ACT → VERIFY → LOOP` (the only exception: `reader` declares `react: false`, because review is a one-off read and evaluation, not a state-driven loop; see the Invocation Integration notes in `agents/reader.md`).
 
-- **OBSERVE**：从文件系统重建状态，不依赖上一次运行的上下文缓存（Context Isolation）
-- **THINK**：读 `.agent/status.md` 的 `phase` 字段，判断当前该做什么、该谁做
-- **ACT**：写 order 文件 → 通过 Agent 工具调度子 agent（novel-agent）；或直接执行本环节任务（子 agent）
-- **VERIFY**：检查产出文件存在、order 文件 `status` 是否为 `DONE`
-- **LOOP**：回到 OBSERVE，直到当前阶段完成
+- **OBSERVE**: rebuild state from the file system, never relying on cached context from the previous run (Context Isolation)
+- **THINK**: read the `phase` field in `.agent/status.md` to decide what to do now and who should do it
+- **ACT**: write an order file, then dispatch the sub-agent through the Agent tool (novel-agent); or execute this phase's task directly (sub-agents)
+- **VERIFY**: check that output files exist and that the order file `status` is `DONE`
+- **LOOP**: return to OBSERVE until the current phase is done
 
-**路由依据是 `.agent/status.md#phase`**（setup/outline/draft/anti-ai/review/archive/finished），不是 `chapter.md#status`。`chapter.md#status`（outline→draft→archived）只表示章节自身的生命周期，不影响 agent 调度路由。
+**Routing is based on `.agent/status.md#phase`** (setup/outline/draft/anti-ai/review/archive/finished), not on `chapter.md#status`. `chapter.md#status` (outline→draft→archived) only describes the chapter's own lifecycle and does not affect agent dispatch routing.
 
-卷完成判定与完本终态：updater 归档后**只输出卷完成报告**，不写完成位；`last_volume_completed` 与 `phase: finished` 由 **novel-agent 裁决写入**（比对已归档章数 vs 卷规划章数）。phase=finished 为终态，不再调度。
+Volume completion and the finished-book end state: after archiving, updater **only outputs a volume completion report** and writes no completion flag; `last_volume_completed` and `phase: finished` are **decided and written by novel-agent** (comparing archived chapter count vs. the volume's planned chapter count). phase=finished is the end state; nothing more is dispatched.
 
-### 1.2 入口检测（SKILL.md）
+### 1.2 Entry detection (SKILL.md)
 
-Skill 入口（主 agent 加载 SKILL.md 后）先做项目状态检测，之后才交棒给 novel-agent：
+The skill entry (after the main agent loads SKILL.md) first detects the project state, then hands off to novel-agent:
 
 ```
-检测项目状态
-├─ story.yaml 存在 → 旧版 2.x → 执行自动迁移（备份 → init.py → 按 templates/migration 映射转换）
-├─ story.md 不存在 → 询问作者 → python tools/init.py [path] [--genre N] → @novel-agent
-└─ story.md 存在 → 已有项目
-    ├─ python tools/sync-project.py . --check → exit 1 → 询问作者是否同步更新
-    └─ → @novel-agent 继续写作
+Detect project state
+├─ story.yaml exists → legacy 2.x → run automatic migration (backup → init.py → convert per templates/migration mapping)
+├─ story.md does not exist → ask the author → python tools/init.py [path] [--genre N] → @novel-agent
+└─ story.md exists → existing project
+    ├─ python tools/sync-project.py . --check → exit 1 → ask the author whether to sync updates
+    └─ → @novel-agent continues writing
 ```
 
-同步新鲜度由 `.agent/.sync-fingerprint` 记录，用于检测 skill 仓库更新是否需要同步进项目。
+Sync freshness is recorded in `.agent/.sync-fingerprint`, used to detect whether skill repository updates need syncing into the project.
 
-### 1.3 主 Agent 与子 Agent
+### 1.3 Main agent and sub-agents
 
-| 角色 | 职责 |
+| Role | Responsibility |
 |-----|------|
-| **novel-agent** | 顶层总指挥（`@novel-agent` 加载进主 AI）。检测 phase、写 order 文件、通过 Agent 工具调度子 agent。**不直接代劳子 agent 的工作，不用 Bash，不写任何内容文件** |
-| **子 Agent × 8** | volume-planner / chapter-planner / prompt-crafter / writer / anti-ai / reader / updater / style-distiller。各自负责一个环节，由 novel-agent 调度，完成后将 order 标记 `status: DONE` |
+| **novel-agent** | Top-level director (loaded into the main AI via `@novel-agent`). Detects phase, writes order files, dispatches sub-agents through the Agent tool. **Does not do sub-agents' work for them, does not use Bash, does not write any content files** |
+| **Sub-agents × 8** | volume-planner / chapter-planner / prompt-crafter / writer / anti-ai / reader / updater / style-distiller. Each owns one phase, is dispatched by novel-agent, and marks its order `status: DONE` when finished |
 
-> **写作基底规范**（`knowledge/format-specs/writing-base.md`，部署为 `.claude/knowledge/writing-base.md`，非 agent，不可调度）——永久加载、不可篡改。
-> writer 的写作 sub-agent 动笔前先加载此基底，再叠加章节提示词；与基底冲突时以基底为准。
+> **Writing base spec** (`knowledge/format-specs/writing-base.md`, deployed as `.claude/knowledge/writing-base.md`, not an agent, cannot be dispatched): permanently loaded, must not be altered.
+> Before writing, the writer's writing sub-agent loads this base first, then layers the chapter prompt on top; when the two conflict, the base wins.
 
-### 1.4 Agent 分工
+### 1.4 Agent responsibilities
 
-| Agent | 职责 | 由谁调度 |
+| Agent | Responsibility | Dispatched by |
 |-------|------|----------|
-| `volume-planner` | 主线拆纲 + 卷纲规划（四维方法论） | novel-agent |
-| `chapter-planner` | 章纲生成（memo + 情绪设计 + 场景卡 + hooks） | novel-agent |
-| `prompt-crafter` | 6 元素提示词组装（冲突优先级 + 四步转化 + 稀疏注入） | novel-agent |
-| `writer` | 正文生成 + AI 味自检（写作 sub-agent 先经 writing-base 基底） | novel-agent |
-| `anti-ai` | Gate A-F 管线检测 + 量化评分定级 + 逐项清除 | novel-agent |
-| `reader` | 深度评审（可选，作者需要时调度） | novel-agent |
-| `updater` | 归档 lore-keeping + 设定变更 + 记忆兜底 | novel-agent |
-| `style-distiller` | 风格蒸馏（LLM 双态：脚本统计引擎已退役 → 蒸馏主卡/场景卡/版本快照） | novel-agent |
+| `volume-planner` | Main-arc breakdown + volume outline planning (four-dimension methodology) | novel-agent |
+| `chapter-planner` | Chapter outline generation (memo + emotional design + scene cards + hooks) | novel-agent |
+| `prompt-crafter` | 6-element prompt assembly (conflict priority + four-step transformation + sparse injection) | novel-agent |
+| `writer` | Prose generation + AI-flavor self-check (writing sub-agent goes through the writing-base base first) | novel-agent |
+| `anti-ai` | Gate A-F pipeline detection + quantified scoring and grading + item-by-item removal | novel-agent |
+| `reader` | Deep review (optional, dispatched when the author wants it) | novel-agent |
+| `updater` | Archive lore-keeping + setting changes + memory fallback | novel-agent |
+| `style-distiller` | Style distillation (LLM dual-mode: the script statistics engine is retired; produces distillation master cards / scene cards / version snapshots) | novel-agent |
 
-### 1.5 调度架构
+### 1.5 Dispatch architecture
 
-> order 类型清单以 `skills/novel-dispatch.md` 为唯一权威，本图是主线摘要；逐分支判定细则见 `agents/novel-agent.md` 的 THINK 树。
+> The order type list takes `skills/novel-dispatch.md` as its single authority; this diagram is a main-flow summary. Per-branch decision rules live in the THINK tree in `agents/novel-agent.md`.
 
 ```
-主 AI（加载 @novel-agent）
+Main AI (loaded with @novel-agent)
   │
-  ├── 读 status.md → 判断当前 phase
-  ├── 写 order 文件到 .agent/task/{type}-order.md（只含输入/输出路径，不含执行步骤）
-  ├── 通过 Agent 工具调度子 agent
-  │     ├── setup   → updater          （setting-update-order.md）
-  │     ├── setup   → style-distiller  （style-distill-order.md，文风设定决策流程选蒸馏时）
-  │     ├── 任意 phase → style-distiller（style-distill-order.md，作者说"修改文风设定"等触发）
-  │     ├── outline → volume-planner   （volume-plan-order.md）
-  │     ├── outline → chapter-planner  （chapter-plan-order.md）
-  │     ├── draft   → prompt-crafter   （prompt-craft-order.md）
-  │     ├── draft   → writer           （writing-order.md）
-  │     ├── anti-ai → anti-ai          （anti-ai-order.md）
-  │     ├── anti-ai FAIL → writer      （writing-order.md，rewrite_of + round + violations，round<3）
-  │     ├── review  → reader           （reader-review-order.md，可选）
-  │     ├── archive → updater          （archive-order.md）
-  │     ├── 归档后重写某章 → updater    （rollback-order.md，撤销该章归档，status 回 outline）
-  │     ├── 卷完成 → updater           （memory-sweep-order.md，记忆兜底）
-  │     └── # 卡冻结：归档后无风格增量更新
-  ├── 子 agent 完成后将 order 覆盖为 status: DONE
-  └── 检测到 order 标记 DONE → 推进下一阶段（setup 例外：setting-update-order DONE 后需作者确认设定，再推进 phase）
+  ├── Read status.md → decide the current phase
+  ├── Write an order file to .agent/task/{type}-order.md (input/output paths only, no execution steps)
+  ├── Dispatch the sub-agent through the Agent tool
+  │     ├── setup   → updater          (setting-update-order.md)
+  │     ├── setup   → style-distiller  (style-distill-order.md, when the style-setting decision flow picks distillation)
+  │     ├── any phase → style-distiller (style-distill-order.md, triggered when the author says "change the style settings" or similar)
+  │     ├── outline → volume-planner   (volume-plan-order.md)
+  │     ├── outline → chapter-planner  (chapter-plan-order.md)
+  │     ├── draft   → prompt-crafter   (prompt-craft-order.md)
+  │     ├── draft   → writer           (writing-order.md)
+  │     ├── anti-ai → anti-ai          (anti-ai-order.md)
+  │     ├── anti-ai FAIL → writer      (writing-order.md, rewrite_of + round + violations, round<3)
+  │     ├── review  → reader           (reader-review-order.md, optional)
+  │     ├── archive → updater          (archive-order.md)
+  │     ├── rewrite a chapter after archiving → updater (rollback-order.md, undo that chapter's archive, status back to outline)
+  │     ├── volume done → updater      (memory-sweep-order.md, memory fallback)
+  │     └── # Freeze card: no incremental style updates after archiving
+  ├── After finishing, the sub-agent overwrites its order as status: DONE
+  └── When an order is detected as DONE → advance to the next phase (setup is the exception: after setting-update-order is DONE, the author must confirm the settings before the phase advances)
 ```
 
-**关键规则：**
-- novel-agent 是唯一调度者，**一次只 dispatch 一个任务**，等完成再调下一个
-- order 文件只写输入文件路径 + 输出目标路径 + `status: pending`，**不包含执行步骤、规则、方法论**（SOP 在子 agent 的 skill 定义里）
-- 子 agent 完成任务后用 Write 覆盖 order 的 `status: pending` 为 `status: DONE`（**不删除文件**——子 agent 无删除权限，删除会导致完成信号永不触发）
-- novel-agent 完成判定：order 存在且 `status: DONE` 且 outputs 全部存在非空 → 完成；order 不存在 → 子 agent 意外中断，进重试
-- 归档幂等：updater 追加前按章节锚点查重，整章完成后写 `.agent/archiving/{chapter}.done`，重派从断点继续（见 §2 数据流）
-- novel-agent 不得被 Agent 工具作为 subagent 调度（否则失去 Agent 工具权限，调度链断裂）
+**Key rules:**
+- novel-agent is the only dispatcher, **dispatches one task at a time**, and waits for it to finish before dispatching the next
+- Order files contain only input file paths + output target paths + `status: pending`, **no execution steps, rules, or methodology** (SOPs live in the sub-agents' skill definitions)
+- After finishing, a sub-agent uses Write to overwrite the order's `status: pending` as `status: DONE` (**do not delete the file**: sub-agents have no delete permission, and deleting it would mean the completion signal never fires)
+- novel-agent's completion check: order exists and `status: DONE` and all outputs exist and are non-empty means done; order missing means the sub-agent was interrupted unexpectedly, so retry
+- Archive idempotency: before appending, updater deduplicates by chapter anchor; after a whole chapter is done, it writes `.agent/archiving/{chapter}.done`, and a re-dispatch resumes from the checkpoint (see §2 Data flow)
+- novel-agent must not be dispatched as a sub-agent by the Agent tool (it would lose its Agent tool permission and the dispatch chain would break)
 
 ---
 
-## 2. 数据流
+## 2. Data flow
 
 ```
-[入口] 检测 → init.py 初始化 / 2.x 迁移 / sync 同步
+[Entry] Detect → init.py init / 2.x migration / sync
   │
-[setup] 与作者讨论设定 → updater 写 settings/
+[setup] Discuss settings with the author → updater writes settings/
   │
-[outline] story.md → volumes/volume-{N}.md（情绪走向 / 冲突阶梯 / 信息差 / 场景卡）
-  │        volume → chapters/vol-{N}-ch-{M}.md（章内微弧线 / 场景卡 / hooks）
+[outline] story.md → volumes/volume-{N}.md (emotional arc / conflict ladder / information gap / scene cards)
+  │        volume → chapters/vol-{N}-ch-{M}.md (in-chapter micro-arc / scene cards / hooks)
   │
-[draft]  chapter.md → prompt-crafting（6 元素组装）→ prompts/vol-{N}-ch-{M}-prompt.md
-  │        → writer（写作 sub-agent 先读 writing-base 基底 + prompt）→ archives/*.draft.md
+[draft]  chapter.md → prompt-crafting (6-element assembly) → prompts/vol-{N}-ch-{M}-prompt.md
+  │        → writer (writing sub-agent reads the writing-base base + prompt first) → archives/*.draft.md
   │
-[anti-ai] draft → Phase 1-4 管线 → archives/*.anti-ai.md
+[anti-ai] draft → Phase 1-4 pipeline → archives/*.anti-ai.md
   │
-[review] reader 深度评审（可选）
+[review] reader deep review (optional)
   │
-[archive] updater 归档（**幂等**，见 §1.5 关键规则）：
-  │        先建快照 `.agent/{chapter}-draft-ai.md`（从 .draft.md 复制，审计基线）→ 查 `.agent/archiving/{chapter}.done`，存在则只补缺失项
-  │        判定定稿并 Write 生成 archives/*.md（中间稿 .draft.md/.anti-ai.md 保留不删）
+[archive] updater archives (**idempotent**, see §1.5 key rules):
+  │        First build a snapshot `.agent/{chapter}-draft-ai.md` (copied from .draft.md, audit baseline) → check `.agent/archiving/{chapter}.done`; if it exists, only fill in missing items
+  │        Decide the finalized draft and Write archives/*.md (intermediate .draft.md/.anti-ai.md are kept, not deleted)
   │        chapter.md#status → archived
-  │        character-setting 追加角色状态（按 `## vol-N-ch-M` 锚点查重）→ timeline 追加事件（查重）
-  │        快照 vs 定稿 diff → 语义合并到 .claude/knowledge/anti-ai.md + 动态记忆（writing-memory.md）（查重）
-  │        写 {chapter}.done → 推进 status.md → order 标记 DONE
+  │        Append character status to character-setting (deduplicate by the `## vol-N-ch-M` anchor) → append events to timeline (deduplicated)
+  │        Snapshot vs. finalized draft diff → semantically merge into .claude/knowledge/anti-ai.md + dynamic memory (writing-memory.md) (deduplicated)
+  │        Write {chapter}.done → advance status.md → mark the order DONE
 ```
 
 ---
 
-## 3. 文件结构
+## 3. File structure
 
 ```
 {project-name}/
-├── story.md              # 项目索引（元信息 + 主线拆纲）
+├── story.md              # Project index (metadata + main-arc breakdown)
 ├── settings/
-│   ├── world-setting.md  # 世界观
-│   ├── writing-style.md  # 写作风格（蒸馏后含量化层主卡）
-│   ├── genre-setting.md  # 题材设定
-│   ├── foreshadowing.md  # 跨卷伏笔全局台账（init 生成空台账 / updater Step 8 维护，从 chapter.md#payoff_plan 汇总）
-│   ├── timeline.md       # 时间线（归档时追加）
+│   ├── world-setting.md  # World building
+│   ├── writing-style.md  # Writing style (quantified master card after distillation)
+│   ├── genre-setting.md  # Genre configuration
+│   ├── foreshadowing.md  # Cross-volume foreshadowing ledger (empty ledger generated by init / maintained by updater Step 8, aggregated from chapter.md#payoff_plan)
+│   ├── timeline.md       # Timeline (appended at archive time)
 │   ├── character-setting/
-│   │   └── <id>.md       # 每角色一个
-│   ├── style-profiles/   # 分场景风格卡（style-distiller 蒸馏产出：dialogue/fight/group-scene/…）
-│   │   └── genre-baselines/  # 题材风格基线（base/benchmark/delta）
-│   └── .style-versions/  # 蒸馏版本快照（style-distiller 蒸馏时生成）
+│   │   └── <id>.md       # One file per character
+│   ├── style-profiles/   # Per-scene style cards (style-distiller output: dialogue/fight/group-scene/…)
+│   │   └── genre-baselines/  # Genre style baselines (base/benchmark/delta)
+│   └── .style-versions/  # Distillation version snapshots (created at distill time)
 ├── volumes/
-│   └── volume-{N}.md     # 卷纲
+│   └── volume-{N}.md     # Volume outline
 ├── chapters/
-│   └── vol-{N}-ch-{M}.md # 章纲（status: outline → draft → archived）
+│   └── vol-{N}-ch-{M}.md # Chapter outline (status: outline → draft → archived)
 ├── prompts/
-│   └── vol-{N}-ch-{M}-prompt.md  # 6 元素提示词
-├── sandbox/              # 推演沙盘记录（可选，roleplay-sandbox 产出）
-├── novel-samples/        # 文风蒸馏样本（作者把待学文风的文章放这里，style-distiller 专用）
+│   └── vol-{N}-ch-{M}-prompt.md  # 6-element prompt
+├── sandbox/              # Roleplay sandbox records (optional, roleplay-sandbox output)
+├── novel-samples/        # Style distillation samples (author puts articles to learn from here, style-distiller only)
 ├── archives/
-│   ├── *.draft.md        # 草稿（writer 输出，历史留档）
-│   ├── *.anti-ai.md      # 去 AI 味后版本（历史留档）
-│   └── *.md              # 定稿（updater 归档时 Write 生成；归档后正文读取一律以此为准，中间稿不删）
+│   ├── *.draft.md        # Drafts (writer output, kept as history)
+│   ├── *.anti-ai.md      # AI-flavor-removed version (kept as history)
+│   └── *.md              # Finalized prose (written by updater with Write at archive time; after archiving, always read this file for prose, intermediate drafts are not deleted)
 ├── .agent/
-│   ├── status.md         # ★ phase 路由依据（唯一持久状态）
-│   ├── task/             # order 文件（临时，完成后 status→DONE 留存待删）
-│   ├── archiving/        # 归档 checkpoint（{chapter}.done，防重放重复）
-│   └── {chapter}-draft-ai.md  # AI 原版快照（审计基线，归档后保留，靠 .done 标记区分过期）
-├── .claude/ 或 .opencode/ 或 .zcode/ 或 .dsh/
-│   ├── agents/           # Agent 定义（init.py 部署；zcode/dsh 无 agents，agents 即 .zcode/skills/ / .dsh/skills/）
-│   ├── knowledge/        # 反 AI 规则 / 文风偏好 / 场景方法论 / 永久记忆 / 格式规范
-│   └── memory/           # 动态写作记忆（volume/chapter/prompt/writing）
+│   ├── status.md         # ★ phase routing basis (the only persistent state)
+│   ├── task/             # Order files (temporary, kept after completion with status→DONE pending deletion)
+│   ├── archiving/        # Archive checkpoints ({chapter}.done, prevents replay duplication)
+│   └── {chapter}-draft-ai.md  # AI original snapshot (audit baseline, kept after archiving, distinguished as stale by the .done marker)
+├── .claude/ or .opencode/ or .zcode/ or .dsh/
+│   ├── agents/           # Agent definitions (deployed by init.py; zcode/dsh have no agents, agents are .zcode/skills/ / .dsh/skills/)
+│   ├── knowledge/        # Anti-AI rules / style preferences / scene methodology / permanent memory / format specs
+│   └── memory/           # Dynamic writing memory (volume/chapter/prompt/writing)
 ```
 
 ---
 
-## 4. Skill 仓库结构与部署
+## 4. Skill repository structure and deployment
 
-### 4.1 仓库目录
+### 4.1 Repository directories
 
 ```
-agents/          # Agent 定义（frontmatter: role / react / skills / knowledge）
-skills/          # 子 agent 的 SOP（anti-ai、prompt-crafting、memory-recording、volume-arc 等）
-knowledge/       # 静态参考知识 → 部署到项目 .claude/knowledge/
-templates/       # 项目骨架模板（settings/volumes/chapters/migration/…）
-tools/           # init.py（初始化）、sync-project.py（同步更新）
+agents/          # Agent definitions (frontmatter: role / react / skills / knowledge)
+skills/          # Sub-agent SOPs (anti-ai, prompt-crafting, memory-recording, volume-arc, etc.)
+knowledge/       # Static reference knowledge → deployed to project .claude/knowledge/
+templates/       # Project skeleton templates (settings/volumes/chapters/migration/…)
+tools/           # init.py (init), sync-project.py (sync updates)
 ```
 
-### 4.2 knowledge/ 两层分类（按用途）
+### 4.2 knowledge/ two-layer classification (by purpose)
 
-| 目录 | 用途 | 决策者 |
-|------|------|--------|
-| `scene-craft/` | 场景写作方法论——按场景类型匹配，四步转化后自动注入 prompt | **AI 自动** |
-| `format-specs/` | 格式规范——章纲/卷纲/提示词/记忆格式 | 系统固定 |
-| `genre-example/` | 题材案例——初始化后继承到项目 | 题材决定后自动 |
-| `plot-craft/` | 剧情设计方法论（冲突升级/钩子/反转/悲剧） | **作者决策** |
-| `character-craft/` | 角色设定方法论（认知 6 层模型/反派模板） | **作者决策** |
-| `title-craft/` | 取书名方法论 | **作者决策** |
-| `anti-ai/` | 反 AI 规则（common-rules / boundary-cases / {genre} 正反例） | **AI 自动** |
+| Directory | Purpose | Decided by |
+|------|------|------|
+| `scene-craft/` | Scene writing methodology: matched by scene type, injected into the prompt after four-step transformation | **AI automatic** |
+| `format-specs/` | Format specs: chapter outline / volume outline / prompt / memory formats | System fixed |
+| `genre-example/` | Genre examples: inherited into the project after init | Automatic after the genre is decided |
+| `plot-craft/` | Plot design methodology (conflict escalation / hooks / reversals / tragedy) | **Author decision** |
+| `character-craft/` | Character setting methodology (6-layer cognition model / villain templates) | **Author decision** |
+| `title-craft/` | Book title methodology | **Author decision** |
+| `anti-ai/` | Anti-AI rules (common-rules / boundary-cases / {genre} good-vs-bad examples) | **AI automatic** |
 
-**场景方法论目录**：`scene-craft/{类型}/universal.md` + `{题材}.md` 特化，含 `prose/`、`pov/`（始终加载，稀疏注入）与 `dialogue/`、`fight/`、`appearance/`、`inner-mono/`、`death-scene/`、`environment/`、`group-scene/`、`transition/`（按场景类型触发）。
+**Scene methodology directories**: `scene-craft/{type}/universal.md` + `{genre}.md` specializations, containing `prose/` and `pov/` (always loaded, sparsely injected) plus `dialogue/`, `fight/`, `appearance/`, `inner-mono/`, `death-scene/`, `environment/`, `group-scene/`, and `transition/` (triggered by scene type).
 
-### 4.3 部署
+### 4.3 Deployment
 
-- **Claude Code**：init.py 部署 agent 定义到 `.claude/agents/`，知识到 `.claude/knowledge/`，建 `.claude/memory/` 动态记忆桩
-- **OpenCode**：init.py 同时部署到 `.opencode/agents/`，OpenCode 自动发现 `@novel-agent` 等
-- **Codex**：init.py 部署 9 个自定义 agent 为 `.codex/agents/*.toml`（TOML 转换产物，引用改写为 `.codex/knowledge|memory`），独立工具为 `.codex/skills/<name>/SKILL.md`；novel-agent 用 `spawn_agent` 调度子 agent
-- **ZCode**：init.py 部署 9 个 agent 为 `.zcode/skills/<name>/SKILL.md`（skill 转换产物，引用改写为 `.zcode/knowledge|memory`；ZCode 无项目级 agents 目录，agents 即 skills，与 Reasonix 同构）；novel-agent 用 `Agent` 工具按 skill 名调度子 agent
-- **dsh（DeepSeek Harness）**：init.py 部署 9 个 agent 为 `.dsh/skills/<name>/SKILL.md`（skill 转换产物，frontmatter 只保留 dsh 识别的 `name`/`description`，引用改写为 `.dsh/knowledge|memory`；dsh 无项目级 agents 目录，agents 即 skills，与 ZCode 同构）；novel-agent 用 `subagent` 工具调度子 agent（prompt 要求子 agent 先 `skill(name=...)` 加载自身指令）
-- **Grok Build**：init.py 部署 9 个自定义 agent 为 `.grok/agents/*.md`（Grok 原生发现路径，frontmatter 映射为 Grok 工具名，SOP 内联，引用改写为 `.grok/knowledge|memory`），独立工具为 `.grok/skills/<name>/SKILL.md`；novel-agent 用 `spawn_subagent` 调度子 agent（必须在主会话运行，Grok 子代理深度上限为 1）
-- **安装**：`install.sh` / `install.ps1` 将 skill 装到用户级 skills 目录
+- **Claude Code**: init.py deploys agent definitions to `.claude/agents/`, knowledge to `.claude/knowledge/`, and builds `.claude/memory/` dynamic memory stubs
+- **OpenCode**: init.py also deploys to `.opencode/agents/`; OpenCode auto-discovers `@novel-agent` and the rest
+- **Codex**: init.py deploys the 9 custom agents as `.codex/agents/*.toml` (TOML conversion output, references rewritten to `.codex/knowledge|memory`), standalone tools as `.codex/skills/<name>/SKILL.md`; novel-agent dispatches sub-agents with `spawn_agent`
+- **ZCode**: init.py deploys the 9 agents as `.zcode/skills/<name>/SKILL.md` (skill conversion output, references rewritten to `.zcode/knowledge|memory`; ZCode has no project-level agents directory, agents are skills, same layout as Reasonix); novel-agent dispatches sub-agents with the `Agent` tool by skill name
+- **dsh (DeepSeek Harness)**: init.py deploys the 9 agents as `.dsh/skills/<name>/SKILL.md` (skill conversion output, frontmatter keeping only the `name`/`description` keys dsh recognizes, references rewritten to `.dsh/knowledge|memory`; dsh has no project-level agents directory, agents are skills, same layout as ZCode); novel-agent dispatches sub-agents with the `subagent` tool (the prompt tells the sub-agent to load its own instructions with `skill(name=...)` first)
+- **Grok Build**: init.py deploys the 9 custom agents as `.grok/agents/*.md` (Grok's native discovery path, frontmatter mapped to Grok tool names, SOPs inlined, references rewritten to `.grok/knowledge|memory`), standalone tools as `.grok/skills/<name>/SKILL.md`; novel-agent dispatches sub-agents with `spawn_subagent` (must run in the main session, Grok sub-agent depth limit is 1)
+- **Install**: `install.sh` / `install.ps1` install the skill into the user-level skills directory
 
 ---
 
-## 5. prompt-crafting 提示词组装管线
+## 5. prompt-crafting prompt assembly pipeline
 
-### 5.1 流程
+### 5.1 Flow
 
 ```
-Step 1  读取输入源（writing-style / volume / chapter / 涉及角色设定 / genre-example / anti-ai 规则）
-Step 1.5 加载全局冲突裁定优先级（裁决后续规则冲突，不产出到 prompt 文本）
-Step 2  按 6 元素结构填充：角色 / 任务指示 / 背景信息 / 案例 / 输入 / 输出
-Step 3  冲突检测（前后一致性核对）
-Step 4  验收自检 → 写入 prompts/vol-{N}-ch-{M}-prompt.md
+Step 1  Read input sources (writing-style / volume / chapter / involved character settings / genre-example / anti-ai rules)
+Step 1.5 Load the global conflict-resolution priority (resolves later rule conflicts, produces no prompt text)
+Step 2  Fill the 6-element structure: characters / task instruction / background info / examples / input / output
+Step 3  Conflict detection (before/after consistency check)
+Step 4  Acceptance self-check → write prompts/vol-{N}-ch-{M}-prompt.md
 ```
 
-### 5.2 冲突裁定优先级（从高到低）
+### 5.2 Conflict-resolution priority (highest to lowest)
 
-| 优先级 | 规则 | 说明 |
+| Priority | Rule | Notes |
 |--------|------|------|
-| 1 | 约束红线 | 情节红线 / 角色禁区 / 边界禁止，任何压缩不得删红线 |
-| 2 | 字数 | 目标字数硬性约束，超限按"压缩低权重场景 > 高权重场景次要元素"策略 |
-| 3 | T1 词（修饰类） | 仿佛/一丝/不禁/不由得等（突然/忽然/猛然 属语境敏感类，≤4次/章，红线段落从宽），超阈值时保留有叙事功能的 |
-| 4 | 认知动词 | 意识到/发现/明白/感到，换外部动作或直接感知；关键情绪节点可简要使用（≤2次/章，见 narrative-rules.md 规则 2），其余不让步 |
-| 5 | 感官/X了一下 | 每场景 ≤2 种感官细化（声音线索若为红线关键信息可豁免） |
-| 6 | 写作规范 | 其余写作规范与技法，与以上冲突时自动让步 |
+| 1 | Hard constraint lines | Plot red lines / character forbidden zones / boundary bans; no compression may delete a red line |
+| 2 | Word count | Hard target word-count constraint; when over the limit, compress by the "compress low-weight scenes before secondary elements of high-weight scenes" strategy |
+| 3 | T1 words (modifier class) | 仿佛 (as if), 一丝 (a trace of), 不禁 (cannot help but), 不由得 (involuntarily), etc. (突然/忽然/猛然, suddenly/abruptly/with a start, are context-sensitive, at most 4 times per chapter, relaxed in red-line passages); when over the threshold, keep ones that serve the narrative |
+| 4 | Cognition verbs | 意识到 (realize), 发现 (notice), 明白 (understand), 感到 (feel); replace with external actions or direct perception; key emotional beats may use them briefly (at most 2 times per chapter, see narrative-rules.md rule 2), no concession otherwise |
+| 5 | Senses / "X了一下" ("X a little") | At most 2 kinds of sensory detail per scene (a sound clue may be exempted if it is red-line key information) |
+| 6 | Writing specs | All other writing specs and techniques; yield automatically when they conflict with the above |
 
-### 5.3 场景方法论加载（四步转化法）
+### 5.3 Scene methodology loading (four-step transformation)
 
-场景方法论不能整段复制进 prompt，必须**稀疏抽取**（每类型最多 2 条）后经四步转化：
+Scene methodology must not be copied into the prompt in full. It must be **sparsely extracted** (at most 2 items per type) and passed through four transformation steps:
 
-1. **锚定角色**——把"角色A/角色B"套到具体的人（性格、微习惯）
-2. **锚定信息差**——谁在瞒、瞒什么、为什么（决定"不说真话"的方向）
-3. **锚定情绪节奏**——紧张/压抑/舒缓对应不同句式与动作穿插频率
-4. **融合输出**——生成可直接写入"输出·写作规范"的具体写法指引
+1. **Anchor the characters**: fit "Character A / Character B" to specific people (personality, small habits)
+2. **Anchor the information gap**: who is hiding what, and why (decides the direction of "not telling the truth")
+3. **Anchor the emotional rhythm**: tense / oppressive / relaxed passages map to different sentence patterns and action-interleaving frequency
+4. **Fuse the output**: produce concrete writing guidance that can go straight into the "Output: Writing Specs" section
 
-### 5.4 输出结构（扁平化）
+### 5.4 Output structure (flattened)
 
-- **不可违反规则**：约束红线 + 字数 + T1词/认知动词/感官 + 叙事规则 + 写作规范，合成一个列表减少嵌套
-- **场景写作指引**：四步转化后的场景写法（独立子节）
-- **质感要求**：不完美约束（无用细节 / 半截话 / 段落精度分层）
+- **Rules that must not be violated**: hard constraint lines + word count + T1 words / cognition verbs / senses + narrative rules + writing specs, combined into one list to reduce nesting
+- **Scene writing guidance**: scene writing after four-step transformation (standalone subsection)
+- **Texture requirements**: imperfection constraints (useless details / half-finished lines / paragraph precision layering)
 
 ---
 
-## 6. 记忆系统
+## 6. Memory system
 
-### 6.1 两级架构
+### 6.1 Two-level architecture
 
 ```
-.claude/memory/               动态记忆（各环节实时记录，updater 兜底维护）
-  ├── volume-memory.md         卷纲反馈
-  ├── chapter-memory.md        章纲反馈
-  ├── prompt-memory.md         提示词反馈
-  └── writing-memory.md        正文写作反馈（writer/reader 记录）
-         │ use_count >= 4 晋升
+.claude/memory/               Dynamic memory (recorded live at each phase, maintained by updater as fallback)
+  ├── volume-memory.md         Volume outline feedback
+  ├── chapter-memory.md        Chapter outline feedback
+  ├── prompt-memory.md         Prompt feedback
+  └── writing-memory.md        Prose writing feedback (recorded by writer/reader)
+         │ use_count >= 4 promotes
          ▼
-.claude/knowledge/permanent-memory.md   永久记忆（高频条目沉淀）
-         │ 连续 3 次 sweep 未引用 → 作者确认后降级删除
+.claude/knowledge/permanent-memory.md   Permanent memory (high-frequency entries settle here)
+         │ 3 consecutive sweeps without a reference → demote and delete after author confirmation
 ```
 
-### 6.2 捕获时机（memory-recording）
+### 6.2 Capture moments (memory-recording)
 
-以下情况视为需要记录的反馈，各 agent 在对话中直接追加到对应 memory 文件：
+The following count as feedback worth recording; each agent appends it directly to the matching memory file during conversation:
 
-| 时机 | 判断标准 |
+| Moment | Test |
 |------|---------|
-| 作者明确否定 | 说"不对""不好""不是这样"并给出替代方向 |
-| 作者主动提出规则 | 说"以后都这样""记住这个" |
-| 作者修正已接受内容 | 回头修改已确认的产出 |
-| 作者提供正例 | 说"这就对""就是这样"或指参考材料 |
+| Author explicitly rejects something | Says "不对" ("that's wrong"), "不好" ("not good"), or "不是这样" ("not like this") and gives an alternative direction |
+| Author states a rule proactively | Says "以后都这样" ("do it this way from now on") or "记住这个" ("remember this") |
+| Author revises accepted content | Goes back and changes output that was already confirmed |
+| Author gives a positive example | Says "这就对" ("that's right") or "就是这样" ("exactly like this"), or points to reference material |
 
-**不作为记忆：** 临时随口反问、纯功能性操作确认、明确说"先这样后面再说"。
+**Not memory:** casual rhetorical questions in passing, purely functional operation confirmations, or an explicit "leave it like this for now, revisit later".
 
-### 6.3 生命周期
+### 6.3 Lifecycle
 
 ```
-写入 memory/ → 被 agent 引用（use_count++）→ use_count >= 4
-→ 晋升到 permanent-memory.md（保留全部字段 + [promoted YYYY-MM-DD]）
-→ 连续 3 次 sweep 未引用 → 展示给作者确认 → 删除
+Write to memory/ → referenced by an agent (use_count++) → use_count >= 4
+→ Promoted to permanent-memory.md (all fields kept + [promoted YYYY-MM-DD])
+→ 3 consecutive sweeps without a reference → show to the author for confirmation → delete
 ```
 
-- 单文件 >50 条 → updater 压缩：保留最近 30 条，其余按（领域+类型）分组摘要
-- 追加前查重：结论 + 场景一致则跳过
+- A single file with more than 50 entries → updater compresses it: keep the most recent 30 entries, summarize the rest grouped by (domain + type)
+- Deduplicate before appending: skip when the conclusion + scenario match an existing entry
 
-### 6.4 归档语义合并（updater diff）
+### 6.4 Archive semantic merge (updater diff)
 
-归档时对比 AI 原版快照（`.agent/{chapter}-draft-ai.md`）vs 定稿（`archives/*.md`）：
+At archive time, compare the AI original snapshot (`.agent/{chapter}-draft-ai.md`) against the finalized draft (`archives/*.md`):
 
-1. 完全相同 → 跳过
-2. 语义重复 → 合并为一条，用更好的表述
-3. 场景重叠 → 扩展已有条目场景范围
-4. 冲突 → 询问作家确认
+1. Identical → skip
+2. Semantically duplicated → merge into one entry, using the better wording
+3. Scenarios overlap → extend the existing entry's scenario range
+4. Conflict → ask the writer to confirm
 
-结果写入 `.claude/knowledge/anti-ai.md` 和写作记忆（`.claude/memory/writing-memory.md`），标注 `[writer-preference]`。
+Results go into `.claude/knowledge/anti-ai.md` and the writing memory (`.claude/memory/writing-memory.md`), tagged `[writer-preference]`.
 
 ---
 
-## 7. 去 AI 味管线（anti-ai）
+## 7. AI-flavor removal pipeline (anti-ai)
 
-anti-ai 是独立子 agent，输入 `archives/*.draft.md`，输出 `archives/*.anti-ai.md`。**不改剧情，只改表达。**
+anti-ai is a standalone sub-agent. It takes `archives/*.draft.md` as input and outputs `archives/*.anti-ai.md`. **It changes expression only, never plot.**
 
 ```
-Phase 1  扫描   按 Gate A-F 分类标记 AI 味位置
-         A 禁用词 / B 句式套路 / C 心理描写 / D 节奏 / E 对话 / F 结尾
-Phase 2  诊断   机器初筛（check-prose.py，可降级）+ 6 项量化指标打分，定级（轻 / 中 / 重）
-Phase 3  清除   按定级范围逐 Gate 修改，多轮收敛（同段连续两轮无改动跳过，全文上限 3 轮）
-Phase 4  报告   字数变化 + 修改统计 + 前后对比 + 机器复跑核验
+Phase 1  Scan      Tag AI-flavor spots by Gate A-F
+         A banned words / B sentence clichés / C psychological description / D pacing / E dialogue / F endings
+Phase 2  Diagnose  Machine first pass (check-prose.py, may degrade) + 6 quantified metrics scored, graded (light / medium / heavy)
+Phase 3  Remove    Fix gate by gate within the grade's range, converging over multiple rounds (skip a paragraph after two consecutive rounds with no change; at most 3 rounds for the whole text)
+Phase 4  Report    Word-count change + edit statistics + before/after comparison + machine re-run verification
 ```
 
-- **误杀防护**：修改前读 `knowledge/anti-ai/boundary-cases.md` 做豁免判定，命中则跳过标 `[SKIP: 误杀防护]`
-- **删除量上限**：轻 ≤15% / 中 ≤25% / 重 ≤35%
-- **白名单**：同级目录存在 `.anti-ai-whitelist` 时，其中段落跳过所有 Gate
+- **False-positive protection**: before editing, read `knowledge/anti-ai/boundary-cases.md` and apply the exemption check; on a hit, skip and tag `[SKIP: 误杀防护]` (false-positive protection)
+- **Deletion cap**: light at most 15% / medium at most 25% / heavy at most 35%
+- **Whitelist**: when a `.anti-ai-whitelist` file exists in the same directory, its paragraphs skip all Gates
 
 ---
 
-## 8. 工具与工程
+## 8. Tools and engineering
 
-| 工具 | 用途 | 何时运行 |
+| Tool | Purpose | When it runs |
 |------|------|---------|
-| `tools/init.py` | 项目初始化（选题材 → 建骨架 → 部署 agent/skills/知识/工具脚本 → 建记忆桩 → 生成 CLAUDE.md/AGENTS.md → 写 status.md） | 全新项目 / 2.x 迁移后 |
-| `tools/sync-project.py` | 将 skill 仓库更新同步进已有项目（`--check` 只检测） | 入口检测到指纹过期时 |
-| `install.sh` / `install.ps1` | 安装 skill 到用户级目录 | 首次安装 |
-| `.github/workflows/static.yml` | CI 静态检查 | 推送时 |
+| `tools/init.py` | Project init (pick genre → build skeleton → deploy agents/skills/knowledge/tool scripts → build memory stubs → generate CLAUDE.md/AGENTS.md → write status.md) | New project / after 2.x migration |
+| `tools/sync-project.py` | Sync skill repository updates into an existing project (`--check` only detects) | When entry detection finds a stale fingerprint |
+| `install.sh` / `install.ps1` | Install the skill into the user-level directory | First install |
+| `.github/workflows/static.yml` | CI static checks | On push |
 
 ---
 
-## 9. 扩展点
+## 9. Extension points
 
-### 贡献社区 defaults
+### Contributing community defaults
 
-1. 作家在 `.claude/memory/` 积累自己的模式
-2. 说"贡献这个模式"
-3. 生成 community-ready 格式
-4. 提 PR 到 `knowledge/anti-ai/`
+1. A writer accumulates their own patterns in `.claude/memory/`
+2. Say "contribute this pattern"
+3. It is generated in community-ready format
+4. Submit a PR to `knowledge/anti-ai/`
 
-### 新增题材类型
+### Adding a new genre type
 
-1. 在 `knowledge/genre-example/` 添加题材填充案例
-2. 在 `knowledge/anti-ai/` 添加反 AI 默认模式
-3. 添加 `scene-craft/{类型}/{题材}.md` 题材特化方法论
+1. Add a genre example in `knowledge/genre-example/`
+2. Add anti-AI default patterns in `knowledge/anti-ai/`
+3. Add a `scene-craft/{type}/{genre}.md` genre-specialized methodology
 
 ---
 
-## 10. 关键约束
+## 10. Key constraints
 
-- **`.agent/status.md#phase`** — agent 调度路由依据，唯一持久状态
-- **`chapters/*.md#status`** — 章节生命周期 `outline → draft → archived`
-- **order 文件** — `.agent/task/*-order.md`，子 agent 完成后覆盖 `status: pending → DONE`（不删除），novel-agent 以 `status: DONE` 确认完成
-- **`archives/*.md`** — 正文唯一存放处；`.draft.md` = 草稿；`.anti-ai.md` = 去 AI 味后；归档后定稿一律读 `.md`，`.draft.md`/`.anti-ai.md` 为历史留档（不删）
-- **`.agent/{chapter}-draft-ai.md`** — AI 原版快照，归档 diff 基线；归档后保留（审计留档，靠 `.agent/archiving/{chapter}.done` 标记区分过期）
-- **`.agent/archiving/{chapter}.done`** — 归档完成 checkpoint，重派时从断点继续，防 append 重放重复
-- **`.claude/memory/*.md`** — 追加写入，不覆盖
-- **novel-agent** — 不用 Bash、不写内容文件、不越权代劳、绝不访问项目外路径
-- **设定写入** — settings/ 必须经 updater（setting-update 模式），novel-agent 不得直接写。例外：style-distiller 拥有 settings/writing-style.md、settings/style-profiles/、settings/.style-versions/ 专属写白名单，其余 settings 仍归 updater
-- **作家本地记录优先于 references defaults**
+- **`.agent/status.md#phase`**: agent dispatch routing basis, the only persistent state
+- **`chapters/*.md#status`**: chapter lifecycle `outline → draft → archived`
+- **order files**: `.agent/task/*-order.md`; after finishing, sub-agents overwrite `status: pending → DONE` (do not delete), and novel-agent confirms completion on `status: DONE`
+- **`archives/*.md`**: the only place for prose; `.draft.md` = draft; `.anti-ai.md` = AI-flavor-removed; after archiving, always read the finalized `.md`, with `.draft.md`/`.anti-ai.md` kept as history (not deleted)
+- **`.agent/{chapter}-draft-ai.md`**: AI original snapshot, the archive diff baseline; kept after archiving (audit record, distinguished as stale by the `.agent/archiving/{chapter}.done` marker)
+- **`.agent/archiving/{chapter}.done`**: archive completion checkpoint; a re-dispatch resumes from the checkpoint and prevents append replay duplication
+- **`.claude/memory/*.md`**: append-only, never overwrite
+- **novel-agent**: does not use Bash, does not write content files, does not overstep its authority, never accesses paths outside the project
+- **Setting writes**: settings/ must go through updater (setting-update mode); novel-agent must not write them directly. Exception: style-distiller holds an exclusive write whitelist for settings/writing-style.md, settings/style-profiles/, and settings/.style-versions/; all other settings still belong to updater
+- **The writer's local records take priority over references defaults**

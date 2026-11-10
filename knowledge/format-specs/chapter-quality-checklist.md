@@ -1,690 +1,878 @@
-# 正文验收标准
+# Text acceptance criteria
 
-> **职责声明：** 本文件是验收清单（诊断探针集）。与 `common-rules.md` 重叠的对象，阈值以 common-rules.md 为准、此处只引用不重复定义；common-rules.md 未覆盖的诊断项（本文件专属的疲劳词/句式探针）允许自行定义，但不得与 common-rules.md 冲突。
+> **Responsibility Statement:** This document is an acceptance checklist (diagnostic
+> probe set). For objects that overlap with `common-rules.md`, the threshold value is
+> subject to common-rules.md, and only non-duplicate definitions are quoted here;
+> diagnostic items not covered by common-rules.md (fatigue word/sentence probes
+> exclusive to this file) are allowed to be defined by yourself, but they must not
+> conflict with common-rules.md.
 
-**定位：** subagent 正文的追溯诊断工具集——当正文不符合作者预期时，定位问题出在哪个环节（prompt / 章纲 / 风格参考），以便针对性修正。所有验收项不是终审法官，是诊断探针。
+**Positioning:** Subagent's text traceability diagnostic tool set - when the text does
+not meet the author's expectations, locate the link (prompt/chapter outline/style
+reference) where the problem lies, so that targeted corrections can be made. All
+acceptance items are not the final judge, they are diagnostic probes.
 
-subagent 生成正文后，主 Agent 对正文进行逐项检查。但这些检查不是为了"拦住不合格正文"——**正文是否合格，作者说了算。** 检查的目的是：当作者说"不对"时，能快速定位问题源头。
+After the subagent generates the text, the main agent checks the text item by item. But
+these checks are not to "stop unqualified text" - the author has the final say whether
+the text is qualified or not. ** The purpose of the inspection is to quickly locate the
+source of the problem when the author says "wrong".
 
 ---
 
-## 最高原则
+## Highest Principle
 
-> **正文评价标准就一个：是否符合作者预期。**
+> **There is only one criterion for evaluating the text: whether it meets the author's
+> expectations. **
 
-下面所有规则是辅助判断的工具，不是终审法官。规则全部通过但作者觉得不对 → 以作者判断为准。规则部分未过但作者觉得没问题 → 尊重作者判断。
+All rules below are tools to aid judgment and are not the final judge. All the rules are
+passed but the author feels it is wrong → The author’s judgment shall prevail. The rules
+part has not been passed but the author thinks it is okay → respect the author’s
+judgment.
 
-规则的价值在于提供结构化的检查维度，降低遗漏。但每一章的最终裁决者是作者本人，不是规则本身。
+The value of rules is to provide structured inspection dimensions and reduce omissions.
+But the final arbiter of each chapter is the author himself, not the rules themselves.
 
 ---
 
-## 全局冲突裁定表
+## Global conflict resolution table
 
-规则冲突时按此优先级裁决。此表在 prompt-crafter 阶段已预加载到 prompt 的任务指示和写作规范中，writer 和 auditor 在此处参考，不重复裁定。
+When rules conflict, this priority will be used to decide. This table has been preloaded
+into prompt's task instructions and writing specifications during the prompt-crafter
+stage, and writers and auditors refer to it here without duplication of rulings.
 
-### 优先级 hierarchy（从高到低）
+### Priority hierarchy (from high to low)
 
-| 优先级 | 规则 | 说明 | 执行要求 | 冲突例 |
+| Priority | Rules | Description | Implementation requirements | Conflict examples |
 |--------|------|------|---------|--------|
-| 1（最高） | 约束红线 | 情节红线、角色禁区、边界禁止 | 任何时候不得删改红线内容。字数压缩不能导致红线缺失。感官例外仅限于作为红线关键信息的声音线索 | 字数超限时不得为凑字数删除红线情节 |
-| 2 | 字数 | 以章纲 memo 目标字数为准（±10%） | 超字数时优先压缩低权重场景（场景1/2过渡/中权重段落），压缩不得触碰红线。高权重场景核心冲突段不动。压缩顺序由质量层决定（写作规范级内：文风/情绪优先）——先砍环境/路人/过渡描写，保留情绪段落与文风要求段落 | 感官细化要求让字数膨胀时，先减低权重场景的非核心描写 |
-| 3 | T1词（修饰类） | 仿佛、一丝、不禁、不由得等（突然/忽然/猛然 属语境敏感类，≤4次/章，红线段落从宽） | 超阈值时优先保留有叙事功能的，删除无功能的赘词。红线段落出现时从宽（保留节奏功能） | 叙事规则要求"对话生动"与T1词阈值冲突时，T1词优先 |
-| 4 | 认知动词 | 意识到、发现、明白、感到、觉得、认为 | 替换为外部动作或直接感知描写；关键情绪节点可简要使用（≤2次/章，见 narrative-rules.md 规则 2），其余不让步 | 字数不够时不得为了省字数保留"他感到" |
-| 5 | 感官/X了一下 | 每场景建议≤2种，可至3种；X了一下结构 | 声音线索如果是红线关键信息可不计数。其他感官超阈值时精简。X了一下有节奏功能时可保留 | 感官名额已满但红线需要声音描写时，声音例外不占名额 |
-| 6（最低） | 写作规范 | 所有其他写作规范和技法指引（含叙事规则、基底铁律） | 与以上第1-5条冲突时自动让步 | 叙事规则要求"对话用短句"与字数要求冲突时，字数优先 |
+| 1 (highest) | Constrained red lines | Plot red lines, character restricted areas, boundary prohibitions | Red line content may not be deleted or modified at any time. Word count compression cannot result in missing red lines. The sensory exception is limited to sound cues that are key information in the red line | When the word count exceeds the limit, the red line plot may not be deleted to make up the word count |
+| 2 | Word count | Subject to the target word count of the chapter outline memo (±10%) | When the word count exceeds, priority will be given to compressing low-weight scenes (scene 1/2 transition/medium-weight paragraph), and the compression must not touch the red line. The core conflict segment of high-weighted scenes does not move. The order of compression is determined by the quality layer (within the writing standard level: writing style/emotion first) - cut the environment/passers-by/transition description first, and retain the emotional paragraphs and paragraphs requiring writing style | When sensory refinement requirements inflate the number of words, reduce the weight of non-core descriptions of scenes first |
+| 3 | T1 words (modification category) | As if, a trace, can't help, can't help but etc. (suddenly/suddenly/suddenly belongs to the context-sensitive category, ≤4 times/chapter, the red line paragraph is wider) | When the threshold is exceeded, priority is given to retaining narrative functions, and non-functional redundant words are deleted. Be lenient when the red line paragraph appears (retaining the rhythm function) | When the narrative rules require "vivid dialogue" and the T1 word threshold conflicts, the T1 word takes precedence |
+| 4 | Cognitive verbs | Realize, discover, understand, feel, feel, think | Replace with external action or direct perception description; key emotional nodes can be used briefly (≤2 times/chapter, see narrative-rules.md rule 2), and the rest will not be compromised | When the number of words is not enough, "he feels" cannot be retained to save word count |
+| 5 | Senses/X | It is recommended to have ≤2 types per scene, and can be up to 3 types; I checked the structure | Sound clues are not counted if they are red line key information. Other senses are streamlined when they are suprathreshold. X can be retained if there is a rhythm function | When the sensory quota is full but the red line requires sound description, the sound exception will not occupy the quota. |
+| 6 (minimum) | Writing standards | All other writing standards and technical guidelines (including narrative rules, basic iron rules) | Automatic concessions when conflicting with items 1-5 above | When the narrative rules require "short sentences for dialogue" and the word count requirement conflict, the word count takes precedence |
 
-### 场景例外（从原规则优先级继承，优先级不高于上述裁定表）
+### Scenario exception (inherited from the original rule priority, the priority is not higher than the above ruling table)
 
-以上六层优先级始终优先。在满足优先级的前提下，以下场景可从宽执行：
+The above six levels of priority always take precedence. On the premise that priorities
+are met, the following scenarios can be executed leniently:
 
-- **密集对话段**：对话标签规则从宽（允许适度副词修饰），段落长度规则暂停，句式阈值从宽（保对话自然度优先）
-- **高潮冲突段**：疲劳词阈值从宽（允许适度情绪直述），句式约束从宽（破折号/否定句式不计入阈值），段落可放宽至 ≤2000 字
-- **极简白描段**：疲劳词阈值从宽（允许刻意重复制造节奏），段落可放宽至 ≤150 字，单句段占比不受限
+- **Dense dialogue paragraphs**: The rules for dialogue tags are relaxed (moderate
+  adverb modifications are allowed), the paragraph length rules are suspended, and the
+  sentence threshold is relaxed (the naturalness of the dialogue is prioritized)
+- **Climax Conflict Paragraph**: The fatigue word threshold is relaxed (moderate
+  emotional direct expression is allowed), the sentence structure constraints are
+  relaxed (dashes/negative sentence structures are not included in the threshold), and
+  the paragraph can be relaxed to ≤2000 words
+- **Minimalist white paragraphs**: The threshold for tired words is relaxed (deliberate
+  repetition is allowed to create rhythm), paragraphs can be relaxed to ≤150 words, and
+  the proportion of single paragraphs is not limited
 
-其余日常叙事、情绪铺垫段——严格执行全部规则。
-
----
-
-## 【冲突裁定】检查项1 — 字数检查
-
-**定位：** 检查正文字数是否符合章纲 memo 目标字数（±10%），以及压缩策略是否按优先级执行。此检查项验证 prompt-crafter 注入的压缩策略是否被 writer 正确执行。
-
-**检查步骤：**
-1. 统计正文总字数
-2. 若在章纲 memo 目标字数的 ±10% 范围内 → ✅ 通过
-3. 若超出上限（>目标 ×1.1）→ 检查压缩策略执行情况：
-   - 低权重场景（特别是场景1/2的过渡段）是否已精简？
-   - 中权重场景的非核心段落是否已压缩？
-   - 高权重场景的核心冲突段落是否保留了？
-   - 情节红线内容是否被保留？若被删减 → ❌
-4. 若低于下限（<目标 ×0.9）→ 检查是否有场景细节缺失：
-   - 高权重场景是否已充分细化？
-   - 情绪拐点是否到位？
-   - 是否为压缩而误删了红线内容？
-
-**判定：**
-| 情况 | 判定 |
-|------|------|
-| 字数达标（章纲 memo 目标 ±10%） | ✅ |
-| 字数超限但压缩策略正确执行（低权重已压缩、红线未删） | ⚠️ 字数超限，建议针对低权重场景进一步压缩 |
-| 字数超限且红线内容被删 | ❌ 违反优先级 1，需恢复红线内容，重新压缩低权重场景 |
-| 字数不足且高权重场景细节饱满 | ⚠️ 字数不足，建议检查是否漏写了场景 |
-| 字数不足且高权重场景草率 | ❌ 需补充高权重场景细节 |
-
-**根因追溯：** 字数问题 → 查 prompt 任务指示·目标字数字段的压缩策略是否明确 → 查 writer 执行时是否按策略操作。
+The rest of the daily narrative and emotional foreshadowing sections - all rules are
+strictly followed.
 
 ---
 
-## 【冲突裁定】检查项2 — 感官检查
+## [Conflict Determination] Check Item 1, Word Count Check
 
-**定位：** 检查每场景感官细化数是否合理（建议≤2种，可至3种），以及声音例外是否正确使用。此检查项验证 prompt-crafter 注入的感官分层策略是否被 writer 正确执行。
+**Positioning:** Check whether the number of main words meets the target word number of
+the chapter memo (±10%), and whether the compression strategy is implemented according
+to priority. This check verifies whether the compression strategy injected by
+prompt-crafter is correctly executed by the writer.
 
-**检查步骤：**
-1. 逐场景统计感官细化种类（视觉、听觉、嗅觉、触觉、味觉中做了细化描写的有哪几种）
-2. 若每场景 ≤ 2 种 → ✅ 通过
-3. 若某场景 > 2 种 → 检查是否有声音例外：
-   - 超出部分的感官是否属于声音线索（听觉类细化描写）？
-   - 该声音线索是否是本章情节红线的关键信息（枪声=战斗信号、脚步声=危险标志等）？
-   - 是 → 允许不计入，标记为 🎵 声音例外
-   - 否 → ❌ 感官超限，需精简
-4. 若场景中有声音线索但仅作为简短白描保留：
-   - 确认是否是红线关键信息（不是环境装饰音如"鸟叫声"）
-   - 确认是"简短白描"（不超过1-2句）而非大段环境描写
+**Check steps:**
+1. Statistics of the total number of words in the text
+2. If it is within ±10% of the target word count of the chapter outline memo → ✅ Passed
+3. If the upper limit is exceeded (> target ×1.1) → Check the execution of the
+   compression strategy:
+   - Have low-weight scenes (especially the transition section of scene 1/2) been
+     streamlined?
+   - Are non-core passages of medium-weight scenes condensed?
+   - Are the core conflict passages of high-weight scenes retained?
+   - Are plot redlines preserved? If deleted → ❌
+4. If it is lower than the lower limit (< target ×0.9) → Check whether there are missing
+   scene details:
+   - Have high-weighted scenes been sufficiently detailed?
+   - Is the emotional turning point in place?
+   - Was the redline content accidentally deleted for compression?
 
-**判定：**
-| 情况 | 判定 |
+**Judgment:**
+| Situation | Judgment |
 |------|------|
-| 每场景 ≤ 2 种感官细化 | ✅ |
-| 超出但全部为合法的声音例外（红线关键声音+简短白描） | ✅ 并在报告中标明 🎵 例外 |
-| 超出且有非例外感官（装饰性环境音、多余触觉等） | ❌ 需精简到≤2种，优先保留红线相关感官 |
+| The word count reaches the standard (outline memo target ±10%) | ✅ |
+| The word count exceeds the limit but the compression strategy is executed correctly (low weight has been compressed, red lines are not deleted) | ⚠️ The word count exceeds the limit, it is recommended to further compress low-weight scenarios |
+| The word count exceeds the limit and the redline content is deleted | ❌ Priority 1 is violated, the redline content needs to be restored and low-weighted scenes need to be recompressed |
+| The number of words is insufficient and high-weight scenes are full of details | ⚠️ The number of words is insufficient, it is recommended to check whether there are missing scenes |
+| Insufficient word count and sloppy high-weighted scenes | ❌ Need to add details of high-weighted scenes |
 
-**二义性覆盖示例：**
-| 场景 | 声音类型 | 是否算例外 | 原因 |
+**Root cause tracing:** Word count problem → Check whether the prompt task instructions
+and the compression strategy of the target word number field are clear → Check whether
+the writer operates according to the strategy when executing.
+
+---
+
+## [Conflict Determination] Inspection Item 2,Sensory Inspection
+
+**Positioning:** Check whether the number of sensory refinements per scene is reasonable
+(recommended ≤ 2 types, up to 3 types), and whether sound exceptions are used correctly.
+This check verifies whether the sensory layering strategy injected by prompt-crafter is
+correctly implemented by the writer.
+
+**Check steps:**
+1. Scene-by-scene statistics of detailed sensory categories (which of the senses of
+   vision, hearing, smell, touch, and taste are detailed descriptions)
+2. If ≤ 2 types per scene → ✅ Passed
+3. If a scene > 2 types → check if there are sound exceptions:
+   - Are the extra senses considered sound cues (auditory detailed description)?
+   - Is this sound clue key to the chapter's plot line (gunshot = battle signal,
+     footsteps = danger sign, etc.)?
+   - Yes → Allow not counting, marked 🎵 Sound exceptions
+   - No → ❌ Sensory overload, need to be streamlined
+4. If there are audio cues in the scene but are kept only as brief sketches:
+   - Confirm whether it is red line key information (not environmental decoration sound
+     such as "bird chirping")
+   - Make sure it is a "short description" (no more than 1-2 sentences) rather than a
+     long description of the environment
+
+**Judgment:**
+| Situation | Judgment |
+|------|------|
+| ≤ 2 sensory refinements per scene | ✅ |
+| Exceed but all legal sound exceptions (red line key sounds + short white description) | ✅ and mark 🎵 Exceptions in the report |
+| Exceeds and has non-exceptional senses (decorative ambient sounds, redundant touch, etc.) | ❌ Need to be streamlined to ≤2 types, with priority to retain red line related senses |
+
+**Ambiguous coverage example:**
+| Scene | Sound type | Exception | Reason |
 |------|---------|-----------|------|
-| 战斗·枪声响起 | "枪响了" 1句白描 | ✅ 例外 | 红线关键信息（战斗触发标志） |
-| 环境·鸟鸣 | "窗外有鸟叫" 1句带过 | ❌ 非例外，计入感官名额 | 环境装饰音，不是红线信息 |
-| 追击·脚步声逼近 | "脚步声越来越近" 2句 | ✅ 例外 | 红线关键信息（追击危险升级） |
-| 日常·远处叫卖 | "远处传来小贩的叫卖声" 3句 | ❌ 非例外，计入感官名额 | 环境真实感，不是情节红线 |
+| Battle / gunshots | "Gunshots fired" 1 sentence line drawing | ✅ Exceptions | Red line key information (combat trigger sign) |
+| Environment / Birdsong | "There are birds chirping outside the window" in 1 sentence | ❌ Not an exception, counted in the sensory quota | Environmental decoration sound, not red line information |
+| Pursuit / Footsteps are approaching | "Footsteps are getting closer and closer" 2 sentences | ✅ Exceptions | Red line key information (pursuit danger upgrade) |
+| Everyday hawking in the distance | "The sound of hawking from a distance is heard" 3 sentences | ❌ Not an exception, counted in the sensory quota | The realism of the environment, not the red line of the plot |
 
-**根因追溯：** 感官超标 → 查 prompt 写作方法论·感官分层取舍是否注入声音例外 → 查 writer 执行时是否滥用例外条件。
+**Root cause tracing:** Sensory exceedance → Check whether prompt writing methodology /
+sensory hierarchical selection has injected sound exceptions → Check whether exception
+conditions are abused during writer execution.
 
 ---
 
-## 【冲突裁定】检查项3 — 优先级执行一致性
+## [Conflict Determination] Check Item 3 - Priority Execution Consistency
 
-**定位：** 检查正文中是否存在违反优先级 hierarchy 的情况——低优先级规则压过了高优先级规则。
+**Positioning:** Check whether there are violations of the priority hierarchy in the
+text - low-priority rules override high-priority rules.
 
-**检查步骤：**
-1. 扫描正文中所有表现出"规则冲突"的段落（某条规则被遵守了但更高优先级的规则被违反了）
-2. 确认冲突方向是否与优先级表一致
+**Check steps:**
+1. Scan the text for all paragraphs that exhibit "rule violations" (a rule is followed
+   but a higher-priority rule is violated)
+2. Confirm whether the conflict direction is consistent with the priority table
 
-**二义性覆盖示例（当规则边界不清晰时如何判定）：**
-| 冲突场景 | 现象 | 全局裁定表裁决 | 正确做法 |
+**Ambiguous coverage example (how to determine when the rule boundary is not clear):**
+| Conflict Scenario | Phenomenon | Global Ruling Table Ruling | Correct Practice |
 |---------|------|---------------|---------|
-| 字数 vs 感官 | 字数不够了，所以把感官细化删到只剩1种 | 字数优先级2 > 感官优先级5 | ✅ 正确。字数高于感官，感官精简是合理的 |
-| 字数 vs 红线 | 字数超了，把红线情节删了一段 | 红线优先级1 > 字数优先级2 | ❌ 错误。任何时候红线 > 字数。应压缩低权重场景 |
-| 声音例外 vs 感官 | 场景有3种感官细化：视觉+触觉+听觉（声音例外申报） | 声音例外需满足：红线关键信息+简短白描 | 检查声音是否是红线信息。是→✅例外成立；否→❌感官超限 |
-| 写作规范 vs 红线 | 写作规范要求"对话用短句"，但红线段落需要长句传递信息 | 红线优先级1 > 写作规范优先级6 | ✅ 正确。红线段落可突破写作规范限制 |
-| T1词 vs 写作规范 | T1词"突然"在红线段落出现3次，写作规范要求全部替换 | T1词在红线段落从宽（保留节奏功能） | ✅ 正确。红线段落中T1词可保留 |
-| 认知动词 vs 字数 | 替换认知动词会让字数增加，导致超限 | 认知动词优先级4 > 字数优先级2 | ❌ 错误。认知动词必须替换（关键情绪节点 ≤2次/章除外），再通过压缩低权重场景控制字数 |
+| Number of words vs senses | The number of words is not enough, so I refined the senses to only 1 type | Word count priority 2 > Sensory priority 5 | ✅ Correct. The word count is higher than the senses, and the senses are streamlined |
+| Word Count vs Red Line | The word count exceeded, and a section of the red line plot was deleted | Red Line Priority 1 > Word Count Priority 2 | ❌ Error. Any time redline > word count. Low weight scenes should be compressed |
+| Sound exception vs. senses | The scene has 3 sensory refinements: vision + touch + hearing (sound exception declaration) | Sound exception needs to meet: red line key information + short white description | Check whether the sound is red line information. Yes→✅Exception established; No→❌Sensory limit |
+| Writing standards vs red lines | Writing standards require "short sentences for dialogue", but red line paragraphs require long sentences to convey information | Red line priority 1 > Writing standards priority 6 | ✅ Correct. Redline paragraphs can break the limits of writing standards |
+| T1 words vs writing standards | The T1 word "suddenly" appears 3 times in the redline paragraph, and the writing standards require all replacements | T1 words should be used more broadly in the redline paragraph (retaining the rhythm function) | ✅ Correct. T1 words in redline paragraphs can be retained |
+| Cognitive verbs vs word count | Replacing cognitive verbs will increase the word count, resulting in an overrun | Cognitive verb priority 4 > Word count priority 2 | ❌ Error. Cognitive verbs must be replaced (except for key emotional nodes ≤2 times/chapter), and the word count is controlled by compressing low-weight scenes |
 
-**根因追溯：** 优先级执行异常 → 查 prompt 的约束红线是否声明最高优先级 → 查 prompt 写作规范中是否有与全局裁定矛盾的旧表述。
+**Root cause tracing:** Priority execution exception → Check whether the constraint red
+line of prompt declares the highest priority → Check whether there are old statements in
+the prompt writing specification that are inconsistent with the global ruling.
 
 ---
 
-## 一、AI 味检测——疲劳词
+## 1. AI taste detection-fatigue words
 
-疲劳词本身不是错词，但某些词在一章内高频出现（3 次以上）即形成"AI 腔"。以下按类别列出阈值和替代策略。
+The word fatigue itself is not a wrong word, but when certain words appear frequently
+(more than 3 times) in a chapter, they form "AI accent". Thresholds and alternative
+policies are listed below by category.
 
-### 1. 副词类
+### 1. Adverb class
 
-> **阈值来源：** 以下疲劳词阈值以 `common-rules.md` 为准（突然/忽然/猛然 4次/章，竟然/居然 3次/章，红线段落从宽）。本表只保留替代策略。
+> **Threshold source:** The following fatigue word thresholds are based on
+> `common-rules.md` (suddenly/suddenly/suddenly 4 times/chapter,
+> unexpectedly/unexpectedly 3 times/chapter, the red line paragraph is wider). This
+> table only retains alternative strategies.
 
-| 疲劳词 | 单章阈值 | 替代策略 |
+| Fatigue Words | Single Chapter Threshold | Alternative Strategies |
 |--------|---------|---------|
-| 忽然、突然 | 见 common-rules.md | 大多数"突然"是多余的——事件本身的意外性已经传达了"突然"。删掉"突然"，直接写事件 |
-| 竟然、居然 | 见 common-rules.md | 让读者自己判断"竟然"，不要替读者惊讶。删掉"竟然"，事实本身够意外就够了 |
-| 默默、微微 | 见 common-rules.md（T1 语境敏感类，不在词表则按 T1 处理） | 用具体动作替代。"默默地站起来" → "他站起来，椅子腿蹭过地面，声音比平时轻" |
-| 渐渐、逐渐 | 2 次 | 删掉副词，用变化的细节来体现渐进。"天色渐渐暗下来" → "窗外梧桐的影子从地面爬上了墙" |
-| 依旧、仍然 | 2 次 | 用状态描写替代。"他依旧坐在那里" → "他的姿势和一小时前完全一样" |
+| Sudden, sudden | See common-rules.md | Most "sudden" is redundant - the unexpectedness of the event itself already conveys "sudden". Delete "suddenly" and write the event directly |
+| As expected, unexpectedly | See common-rules.md | Let the readers judge "actually" by themselves, don't be surprised for the readers. Delete "even", the fact itself is surprising enough |
+| Momo, Weiwei | See common-rules.md (T1 context-sensitive category, if it is not in the vocabulary, it will be treated as T1) | Replace with specific actions. "Stand up silently" → "He stood up, the legs of his chair scraping the ground, his voice softer than usual" |
+| Gradually, gradually | 2 times | Delete the adverb and use changing details to reflect gradualness. "The sky is getting dark" → "The shadow of the sycamore tree outside the window climbed from the ground to the wall" |
+| Still, still | 2 times | Replace with status description. "He's still sitting there" → "His posture is exactly the same as an hour ago" |
 
-### 2. 动词类
+### 2. Verb class
 
-| 疲劳词 | 单章阈值 | 替代策略 |
+| Fatigue Words | Single Chapter Threshold | Alternative Strategies |
 |--------|---------|---------|
-| 露出（笑容/表情） | 3 次 | "露出微笑" → 写笑的具体方式。"她笑起来" 或 "嘴角动了一下" |
-| 勾起（回忆/嘴角） | 2 次 | 写触发回忆的具体事物，不是"勾起"这个动作 |
-| 泛起（涟漪/暖意/酸楚） | 2 次 | 用身体感受替代。"心里泛起暖意" → "他把那碗粥推回来，又加了一勺糖" |
-| 浮现（画面/记忆） | 2 次 | 直接写回忆内容或触发细节，不写"浮现"这个中间层 |
-| 陷入（沉默/沉思/回忆） | 2 次 | 写沉默之后的具体行为或状态 |
-| 涌起（情绪/回忆） | 2 次 | 用身体反应替代。"愤怒涌起" → "他的手指用力扣进掌心" |
-| 充斥 | 1 次 | 几乎总是可以删掉或用具体描写替代 |
+| Show (smile/expression) | 3 times | "Show a smile" → Write the specific way to smile. "She smiled" or "The corners of her mouth moved" |
+| Remind (memory/corner of mouth) | 2 times | Write the specific thing that triggered the memory, not the action of "reminding" |
+| Emerge (ripples/warmth/sourness) | 2 times | Replace with physical feelings. "He felt warm in his heart" → "He pushed the bowl of porridge back and added another spoonful of sugar" |
+| Emergence (picture/memory) | 2 times | Directly write the memory content or trigger details, without writing the intermediate layer of "emergence" |
+| Fall into (silence/contemplation/memory) | 2 times | Write about the specific behavior or state after silence |
+| Welling (emotion/memory) | 2 times | Replace with physical reaction. "A surge of anger" → "His fingers dug hard into his palms" |
+| Flooded | 1 time | Can almost always be deleted or replaced with a specific description |
 
-### 3. 形容词/抽象词类
+### 3. Adjective/abstract part of speech
 
-| 疲劳词 | 单章阈值 | 替代策略 |
+| Fatigue Words | Single Chapter Threshold | Alternative Strategies |
 |--------|---------|---------|
-| 复杂、微妙 | 各 3 次 | 写具体矛盾。"情绪复杂" → 写两种对立的冲动同时存在 |
-| 难以言喻、莫名 | 各 1 次 | 既然"难以言喻"，就不要用这个词来逃避——写出那个难以言喻的东西的具体表现 |
-| 异样、浓重 | 各 2 次 | 写具体的异样在哪、浓重的是什么 |
+| Complex, subtle | 3 times each | Write specific contradictions. "Mixed emotions" → Write about the simultaneous existence of two opposing impulses |
+| Indescribable, inexplicable | 1 time each | Since it is "indescribable", don't use this word to escape - write the specific expression of that indescribable thing |
+| Strange and strong | 2 times each | Write down the specific differences and what is strong |
 
-### 4. 连接词类
+### 4. Connect parts of speech
 
-| 疲劳词 | 单章阈值 | 替代策略 |
+| Fatigue Words | Single Chapter Threshold | Alternative Strategies |
 |--------|---------|---------|
-| 然而、不过 | 4 次 | 大多数转折不需要"然而"——前后句的内容本身就是转折。删除连接词，让句子直接碰撞 |
-| 于是 | 3 次 | "于是"是 LLM 的条件反射——前后两件事有因果，"于是"就是多余的胶水。删除后因果更自然 |
-| 随即、紧接着 | 2 次 | 删掉。动作的自然顺序不需要时间副词标注 |
-| 与此同时 | 1 次 | "与此同时" = 我不会写转场。直接用新场景开头的画面来转场 |
+| However, however | 4 times | Most transitions do not require "however" - the content of the preceding and following sentences is the transition itself. Remove the connectives and let the sentences collide directly |
+| So | 3 times | "So" is the conditioned reflex of LLM - two things before and after have cause and effect, and "So" is the extra glue. Cause and effect becomes more natural after deletion |
+| Immediately, immediately afterwards | 2 times | Delete. The natural sequence of actions does not require temporal adverb annotation |
+| Meanwhile | 1 time | "At the same time" = I can't write transitions. Directly use the scene at the beginning of the new scene to transition |
 
-### 5. 身体反应类（疲劳模板）
+### 5. Physical reaction category (fatigue template)
 
-| 疲劳词 | 单章阈值 | 替代策略 |
+| Fatigue Words | Single Chapter Threshold | Alternative Strategies |
 |--------|---------|---------|
-| 瞳孔一缩、身体一僵 | 2 次 | 这两个是 LLM 最顽固的癖好——恐惧是瞳孔一缩、震惊是身体一僵。换成具体场景：恐惧可以是手抖到按不了打火机，震惊可以是杯子倒了忘了扶 |
-| 倒吸一口凉气 | 1 次 | 网文频率太高，读者已经麻木。换成具体的呼吸变化或其他身体反应 |
-| 呼吸一滞 | 1 次 | 同上——已经被用滥了的生理反应 |
+| Pupils shrink and body freezes | 2 times | These two are LLM's most stubborn habits - fear causes pupils to shrink, and shock causes body to freeze. Let’s put it into a specific scenario: Fear can be that your hands are shaking so much that you can’t press the lighter, shock can be that you forgot to hold the cup when it fell over |
+| Take a breath | 1 time | The frequency of online articles is too high, and readers have become numb. Change to specific breathing changes or other body responses |
+| Stagnation of breathing | 1 time | Same as above - a physiological response that has been overused |
 
-### 6. 元叙事类和学术腔
+### 6. Metanarrative and academic accent
 
-| 疲劳词/句式 | 处理方法 |
+| Fatigue words/sentence patterns | Treatment methods |
 |-------------|---------|
-| 本章讲述了、接下来、在这一章中、故事还在继续 | **全部删除**。这些是章纲里的定位语句，被 subagent 抄进了正文。AI 味检测最快速的一条：正文中不允许出现"本章""下一章""故事""读者" |
-| 综上所述、总而言之、从某种意义上说、不可否认、显而易见 | 删除。正文不是议论文 |
-| 似乎、也许、大概、仿佛 | 见 common-rules.md（3次/500字）。用确定性描写替代模糊词——不是"他似乎很生气"，是"他把烟掐了，搓了三次手指" |
+| This chapter tells, next, in this chapter, the story continues | **Delete all**. These are positioning sentences in the chapter outline and are copied into the text by the subagent. The fastest AI flavor detection: "This chapter", "next chapter", "story" and "reader" are not allowed in the text |
+| To sum up, in summary, in a sense, undeniable, obvious | Delete. The text is not an argumentative essay |
+| Seem, maybe, probably, as if | See common-rules.md (3 times/500 words). Replace vague words with definite descriptions - not "He seemed angry", but "He put out his cigarette and rubbed his fingers three times" |
 
-### 7. 英文高危疲劳词
+### 7. High-risk fatigue words in English
 
-英文题材（LitRPG / Progression Fantasy 等）额外检查：`delve` / `tapestry` / `testament` / `embodiment` / `harbinger` / `veritable` / `inexorable` / `nonetheless` / `furthermore` / `however` / `seemed to` / `as if`。中文题材可跳过此项。
+English themes (LitRPG / Progression Fantasy, etc.) Extra checks: `delve` / `tapestry` /
+`testament` / `embodiment` / `harbinger` / `veritable` / `inexorable` / `nonetheless` /
+`furthermore` / `however` / `seemed to` / `as if`. You can skip this item for Chinese
+themes.
 
-### 疲劳词扫描方法
+### Fatigue word scanning method
 
-1. 将正文粘贴到纯文本编辑器
-2. Ctrl+F 逐个搜索上述疲劳词
-3. 每命中一次记录行号
-4. 按类别汇总次数
-5. 超阈值的词 → 逐个替换（不是批量删除——每个词都要判断是否有叙事功能）
+1. Paste the text into a plain text editor
+2. Ctrl+F Search the above fatigue words one by one
+3. Record line number for each hit
+4. Total times by category
+5. Words that exceed the threshold → replace one by one (not deleted in batches - each
+   word must be judged whether it has narrative function)
 
 ---
 
-## 二、AI 味检测——句式违规
+## 2. AI flavor detection - sentence pattern violations
 
-8 种结构性句式癖好和 6 种句式规则。逐项扫描，超阈值标记。
+8 structural sentence quirks and 6 sentence rules. Item-by-item scanning,
+super-threshold flagging.
 
-### 1. 结构性句式癖好（8 种）
+### 1. Structural sentence patterns (8 types)
 
-参考 `tic-patterns.yaml` 的定义。每种模式有单章阈值，超过触发警告。
+Refer to the definition of `tic-patterns.yaml`. Each mode has a single chapter
+threshold, exceeding which triggers a warning.
 
-#### 1.1 "不是……而是"句式
-
-```
-单章阈值: 3 次 | 严重度: high
-说明: 检查正文中的"不是……而是"对比结构。有叙事功能的保留（区分表象与动机），无叙事功能的直接删除否定分句。
-```
-
-#### 1.2 "没有……只是/只不过"句式
+#### 1.1 "It's not...but" sentence pattern
 
 ```
-单章阈值: 3 次 | 严重度: medium
-说明: "不是而是"变体。超过阈值时删除"没有"分句，保留"只是"后的内容。
+Single chapter threshold: 3 times | Severity: high
+Instructions: Check the contrastive structure of "not...but" in the text. The narrative function is retained (distinguish between representation and motivation), but the negative clauses without narrative function are directly deleted.
 ```
 
-#### 1.3 否定-纠正句式
+#### 1.2 "No...just/only" sentence pattern
 
 ```
-单章阈值: 2 次 | 严重度: high
-命中模式: "不，不是这样""其实并非如此""更准确地说"
-说明: 有叙事功能的保留（角色分两步发现事实），无叙事功能的删除否定分句。
+Single chapter threshold: 3 times | Severity: medium
+Description: Variation of "not but". When the threshold is exceeded, the "without" clause is deleted and the content after "just" is retained.
 ```
 
-#### 1.4 破折号解释句式
-
-> **阈值引用 common-rules.md：** 破折号按用法判定（允许停顿/节奏、对话打断；删除间注式冗余），不设数量线。本项仅作诊断提示——若破折号后接代词展开解释（"——他/她/它/这/那"）过多，说明陷入间注式冗余，按 common-rules.md 用法判定处理。判定原则：删掉破折号及两侧内容，意思是否变模糊？不变则删。
-
-#### 1.5 公式化副词
-
-> **阈值引用 common-rules.md：** 公式化副词按 T1 出现即换处理（common-rules.md 最毒句式/一级禁用词档位），不设宽松阈值。本项仅作诊断提示。
+#### 1.3 Negation-Correction Sentence Pattern
 
 ```
-命中模式: "不由得""不禁""忍不住""不由自主地""下意识地""鬼使神差地"
-说明: 删掉副词，让动作自己说话。"他不禁后退了一步" → "他后退了一步"。
+Single chapter threshold: 2 times | Severity: high
+Hit Pattern: "No, that's not it" "It's not that" "More accurately"
+Explanation: The narrative function is retained (the character discovers the facts in two steps), but the negative clauses without narrative function are deleted.
 ```
 
-#### 1.6 "一边……一边"句式
+#### 1.4 Dashes explain sentence patterns
+
+> **Threshold reference common-rules.md:** Dashes are determined by usage (allow
+> pauses/pacing, dialogue interruptions; remove punctual redundancy), and there is no
+> number line. This item is only a diagnostic tip - if there are too many dashes
+> followed by pronoun expansion explanations ("--he/she/it/this/that"), it means that
+> it has fallen into indirect redundancy and will be handled according to the
+> common-rules.md usage judgment. Judgment principle: If you delete the dash and the
+> content on both sides, will the meaning become blurred? If not, delete it.
+
+#### 1.5 Formulaic adverbs
+
+> **Threshold reference common-rules.md:** Formulaic adverbs are processed as soon as
+> they appear in T1 (common-rules.md is the most poisonous sentence
+> pattern/first-level banned word level), and there is no loose threshold. This item
+> is for diagnostic purposes only.
 
 ```
-单章阈值: 2 次 | 严重度: medium
-说明: 超过阈值时拆成独立动作或突出一个主动作。2 次以内且有叙事功能的保留。
+Hit mode: "can't help it", "can't help it", "can't help it", "involuntarily", "subconsciously", "by some strange coincidence"
+Instructions: Delete the adverb and let the action speak for itself. "He couldn't help but take a step back" → "He took a step back".
 ```
 
-#### 1.7 "就在这时/正在这时/突然"句式
+#### 1.6 "On one side... on the other side" sentence pattern
 
 ```
-单章阈值: 5 次 | 严重度: medium
-
-这是常见转场手法，阈值较高，但每 500 字出现 2 次以上暴露模板感。
-修复：删掉过渡词直接写事件。"就在这时，门开了" → "门开了。"
+Single chapter threshold: 2 times | Severity: medium
+Note: When the threshold is exceeded, split it into independent actions or highlight a main action. Within 2 times and the narrative function is retained.
 ```
 
-#### 1.8 身体部位情绪模板
+#### 1.7 "At this moment/at this moment/suddenly" sentence pattern
 
 ```
-单章阈值: 6 次 | 严重度: high
-命中模式: "眼神/目光/瞳孔/心头/心里/心中/心底/手心/指尖/喉咙" + "一/微/暗/沉/紧/颤/抖/缩/松/暖/寒/凉/热/酸"
-说明: 情绪用具体动作外化，不套公式。"心里一暖" → "她往他碗里多夹了一块肉"。
+Single chapter threshold: 5 times | Severity: medium
+
+This is a common transition technique with a high threshold, but it appears more than 2 times every 500 words to expose the sense of template.
+Fix: Delete transition words and write events directly. "Just then, the door opened" → "The door opened."
 ```
 
-### 2. 其他句式规则
+#### 1.8 Body Part Emotion Template
 
-#### 2.1 "随着"开头
+```
+Single chapter threshold: 6 times | Severity: high
+Hit pattern: "eyes/eyes/pupils/heart/heart/heart/bottom of heart/palms/fingertips/throat" + "a/slight/dark/heavy/tight/trembling/trembling/shrinking/warm/cold/cool/hot/sour"
+Explanation: Emotions are externalized with specific actions, without formulas. "My heart felt warm" → "She put an extra piece of meat into his bowl".
+```
 
-"随着脚步声靠近，他的心跳加速" → "脚步声靠近。心跳加速。" 删掉"随着"，把两件事拆成两个句子，因果自现。
+### 2. Other sentence rules
 
-#### 2.2 "让/令/使"句式
+#### 2.1 Beginning with "With"
 
-"这一幕让他想起了昨天" → "他想起了昨天。" 删掉"让"，让主语直接行动。"让"是作者在操纵角色，角色自己会行动。
+"As the footsteps approached, his heartbeat accelerated." → "As the footsteps
+approached. His heartbeat accelerated." Delete "as", split the two things into two
+sentences, and the cause and effect will appear.
 
-#### 2.3 "当"句式
+#### 2.2 "Let/order/make" sentence pattern
 
-"当他走进房间时，所有人看着他" → "走进房间。所有人看着他。" 删掉"当……时"，把从句变成独立的动作句。
+"This scene reminded him of yesterday" → "He remembered yesterday." Delete "let" and let
+the subject act directly. "Let" means that the author is controlling the character, and
+the character will act on its own.
 
-#### 2.4 "了"的滥用
+#### 2.3 "Dang" sentence pattern
 
-| 规则 | 阈值 |
+"When he walked into the room, everyone looked at him" → "When he walked into the room.
+Everyone looked at him." Delete "when..." and turn the clause into an independent action
+sentence.
+
+#### 2.4 Abuse of "LE"
+
+| Rules | Thresholds |
 |------|------|
-| 每段"了"的数量 | ≤ 3 个 |
+| The number of "LE" in each paragraph | ≤ 3 |
 
-过度使用：↓
-> "他放下了杯子，走到了窗前，打开了窗户，看了看外面的街道，然后叹了口气。" ← 5 个"了"连成一条
+Overuse: ↓
+> "He put down the cup, walked to the window, opened the window, looked at the street
+> outside, and then sighed." ← 5 "了" in a row
 
-修复：删掉一半"了"，换成短句——"他放下杯子。杯底磕在桌上。起身走到窗前。"
+Repair: Delete half of the "er" and replace it with a short sentence - "He put down the
+cup. The bottom of the cup hit the table. He got up and walked to the window."
 
-#### 2.5 感知词掩盖
-
-```
-规则: "看到/听到/闻到/感到"后接抽象描述 = 感知词掩盖。删掉感知词，直接写感官内容。
-例: "他看到房间一片狼藉" → "房间里一片狼藉"
-```
-
-#### 2.6 连续同结构开头
+#### 2.5 Perceptual word masking
 
 ```
-规则: 避免连续 5 句以上以相同主语或连词开头
-重点检查: 他 / 她 / 这时 / 接着 / 然后 / 于是 / 便 / 就 / 却 / 但
-修复: 变换主语或句式——"他走到窗前。他看了看外面。" → "窗外很安静。转身的时候，膝盖撞到了茶几。"
+Rule: "see/hear/smell/feel" followed by an abstract description = perception word masking. Delete the sensory words and write sensory content directly.
+Example: "He saw that the room was in a mess" → "The room was in a mess"
 ```
 
-### 句式扫描方法
+#### 2.6 Continuous with the same structure at the beginning
 
-句式违规不像疲劳词可以 Ctrl+F（部分可以），建议：
+```
+Rule: Avoid more than 5 sentences in a row starting with the same subject or conjunction
+Key points to check: he/she/at this time/then/then/so/then/just/but/but
+Repair: Change the subject or sentence structure - "He walked to the window. He looked outside." → "It was quiet outside the window. When he turned around, his knees hit the coffee table."
+```
 
-1. 打印正文或换字体阅读（换字体可以打破脱敏）
-2. 用笔逐段标注句式开头（连续 5 句同主语画圈）
-3. 搜索正则：`不是.*(而是|是)`、`没有.*(只是|而是)`、`不由得|不禁|忍不住|不由自主|下意识`
-4. "了"扫描：每段数"了"，超 3 个标记
+### Sentence scanning method
 
-> **场景例外：** 密集对话段和高潮冲突段句式阈值从宽（破折号/否定句式不计入单章阈值，优先保对话自然度和情绪张力）。详见顶部 全局冲突裁定表·场景例外。
+Unlike fatigue words, you can Ctrl+F (some of them can) for sentence violation.
+Suggestions:
+
+1. Print the text or change the font to read (changing the font can break
+   desensitization)
+2. Use a pen to mark the beginning of the sentence paragraph by paragraph (circle 5
+   consecutive sentences with the same subject)
+3. Search regular rules: `不是.*(而是|是)`, `没有.*(只是|而是)`, `不由得|不禁|忍不住|不由自主|下意识`
+4. "了" scan: The number of "了" in each paragraph exceeds 3 marks
+
+> **Scenario exceptions:** Sentence thresholds for intensive dialogue sections and
+> climactic conflict sections are relaxed (dash/negative sentence patterns are not
+> counted in the single chapter threshold, and priority is given to ensuring the
+> naturalness of dialogue and emotional tension). See the top Global Conflict
+> Determination Table / Scenario Exceptions for details.
 
 ---
 
-## 三、AI 味检测——重复内容
+## 3. AI flavor detection - duplicate content
 
-大段重复是 AI 生成的常见问题。分 5 类检测：
+Large repetitions are a common problem with AI generation. Detection is divided into 5
+categories:
 
-### 3.1 段落开头重复
-
-```
-规则: 避免连续4段以相同主语/场景词开头
-检测: 提取每段首句前5词，搜索连续4个相同模式
-修复: 变换段首主语（他→她→窗外→转场→用动作开头）
-```
-
-### 3.2 句式重复
+### 3.1 Repetition at the beginning of a paragraph
 
 ```
-规则: 避免连续6句相同句式
-检测: 统计句式结构（陈述句/短句/对话/感叹句），连续6个同类型标记
-修复: 陈述→短句→对话交替出现
+Rule: Avoid 4 consecutive paragraphs starting with the same subject/scene word
+Detection: Extract the first 5 words of the first sentence of each paragraph and search for 4 consecutive identical patterns
+Repair: Change the subject at the beginning of the paragraph (he → her → outside the window → transition → start with an action)
 ```
 
-### 3.3 描写对象重复
+### 3.2 Sentence repetition
 
 ```
-规则: 禁止连续2段描写同一物品/人物的不同属性
-检测: 提取每段描写的核心对象，连续2段出现同一对象标记
-修复: 场景换一个对象，或用动作代替描写
+Rule: Avoid 6 sentences in a row with the same sentence pattern
+Detection: Statistical sentence structure (declarative sentence/short sentence/dialogue/exclamation sentence), 6 consecutive tags of the same type
+Repair: statement → short sentence → dialogue appears alternately
 ```
 
-### 3.4 情绪词重复
+### 3.3 Duplication of description objects
 
 ```
-规则: 紧张/开心/难过/愤怒/害怕等情绪词单章≤3次
-检测: 情绪词列表搜索，超阈值标记
-修复: 用身体反应/动作替代情绪词直述
+Rules: It is prohibited to describe different attributes of the same item/person in two consecutive paragraphs.
+Detection: Extract the core object described in each paragraph, and the same object mark appears in 2 consecutive paragraphs
+Repair: Change the scene to an object, or use actions instead of descriptions
 ```
 
-### 3.5 意象/比喻重复
+### 3.4 Repetition of emotional words
 
 ```
-规则: 用过的比喻/意象本章不再用
-检测: 记录正文出现的比喻，重复出现标记
-修复: 换新的感官描写
+Rules: Nervous/happy/sad/angry/fearful and other emotional words should be used ≤3 times in a single chapter
+Detection: Emotional word list search, super-threshold tagging
+Fix: Use physical reactions/actions instead of direct emotional words
 ```
 
-**扫描方法：**
-1. 段落开头：提取每段首5词，搜索连续4个相同前缀
-2. 句式：按句号分句，统计句型比例，连续5同型标记
-3. 描写对象：提取每段核心名词，连续2段同一名词标记
-4. 情绪词：搜索"紧张、开心、难过、愤怒、害怕、兴奋、激动、失望"等情绪词
-5. 意象：记录比喻句（如"像X一样""如同X"），重复出现标记
+### 3.5 Image/metaphor repetition
+
+```
+Rules: Used metaphors/imagery are no longer used in this chapter
+Detection: Record the metaphors that appear in the text, and repeat the marks
+Fix: Updated sensory descriptions
+```
+
+**Scan method:**
+1. Beginning of paragraph: Extract the first 5 words of each paragraph and search for 4
+   consecutive same prefixes
+2. Sentence pattern: separate sentences according to periods, count the proportion of
+   sentence patterns, 5 consecutive marks of the same type
+3. Description object: extract the core nouns of each paragraph, and mark the same noun
+   in 2 consecutive paragraphs
+4. Emotional words: Search for emotional words such as "nervous, happy, sad, angry,
+   scared, excited, excited, disappointed"
+5. Imagery: record figurative sentences (such as "like X", "like X"), repeated
+   occurrence of marks
 
 ---
 
-## 三、对话规则
+## 3. Dialogue rules
 
-### 1. 对话标签
-
-```
-规则: 对话标签以"说/道/问"为主，占 80% 以上；禁止副词修饰对话标签
-例: "陆征严肃地说" → "陆征说。方岩停在柜子前面，手悬在半空"
-```
-
-### 2. 对话间隔
+### 1. Conversation tags
 
 ```
-规则: 对话之间必须有动作/环境/内心活动作为节奏间隔，连续 8 句纯对话 = 违规
-例外: 密集对话段（刻意用对话推进的段落）阈值放宽至 12 句
-评估: 已蒸馏时优先按提示词渲染的对话占比（dialogue_pct）评估，而非硬编码句数
+Rules: Dialogue tags are mainly "say/dao/ask", accounting for more than 80%; adverbs are prohibited from modifying dialogue tags
+Example: "Lu Zheng said seriously" → "Lu Zheng said. Fang Yan stopped in front of the cabinet, his hand hanging in the air"
 ```
 
-### 3. 感叹号和省略号
+### 2. Conversation interval
 
 ```
-规则: 不能用 "!" 替代情绪描写；每段最多 1 个感叹号
+Rules: There must be action/environment/inner activities as rhythm intervals between dialogues, 8 consecutive sentences of pure dialogue = violation
+Exception: Threshold for dialogue-heavy passages (paragraphs deliberately advanced with dialogue) is relaxed to 12 sentences
+Evaluation: When distilled, the proportion of dialogues rendered by prompt words (dialogue_pct) is evaluated first, rather than the number of hard-coded sentences.
 ```
 
-### 4. 说明书式对话
+### 3. Exclamation marks and ellipses
 
 ```
-规则: 角色不能互相告知已知信息。检查正文中是否有角色在帮读者补背景。
+Rules: Do not use "!" instead of emotional description; maximum 1 exclamation point per paragraph
 ```
 
-### 5. 对话意图
+### 4. Instructional dialogue
 
 ```
-规则: 每段对话至少有一个意图——说服、试探、隐藏、拒绝、转移话题、获取信息、施加压力
-
-无意图的对话（闲聊式、问候式）= 填充，应删除或改为叙事
+Rules: Characters cannot tell each other known information. Check to see if there are characters in the text who are filling in the background for the reader.
 ```
 
-> **场景例外：** 密集对话段对话标签规则从宽（允许适度副词修饰），连续纯对话阈值放宽至 12 句。详见顶部 全局冲突裁定表·场景例外。
+### 5. Dialogue intention
+
+```
+Rules: Every conversation has at least one intention - to persuade, to test, to hide, to refuse, to change the subject, to obtain information, to apply pressure
+
+Unintentional dialogue (small talk, greetings) = filler, should be deleted or changed to narrative
+```
+
+> **Scenario exceptions:** Dialogue labeling rules for dense dialogue segments are
+> relaxed (moderate adverb modification is allowed), and the continuous pure dialogue
+> threshold is relaxed to 12 sentences. See the top Global Conflict Determination
+> Table / Scenario Exceptions for details.
 
 ---
 
-## 四、设定合规校验
+## 4. Set compliance verification
 
-**参照基准：** `settings/world-setting.md`、角色人设文档、题材规则（genre-taboos）
+**Reference Baseline:** `settings/world-setting.md`, character design documents, genre
+rules (genre-taboos)
 
-**判定规则：** 任意一项违反 → §五不合格。所有项通过 → ✅。违反项需标记根因（缺设定参考/prompt 未注入/seed 遗漏）。
+**Judgment Rules:** Any violation → §5 is disqualified. All items passed → ✅. Violations
+need to be marked with root causes (missing setting reference/prompt not injected/seed
+missing).
 
-### 1. 世界观规则遵守
-- 能力边界：角色的修为/魔法/科技能力未超出设定范围
-- 规则一致性：世界的基本规则（社会等级、物理法则、力量体系）未被违反
-- 时空逻辑：地理、时间线与设定一致，无矛盾
+### 1. Observe worldview rules
+- Ability Boundary: The character's cultivation/magic/technological abilities do not
+  exceed the set range
+- Rule consistency: the basic rules of the world (social hierarchy, physical laws, power
+  systems) are not violated
+- Time and space logic: geography, timeline and setting are consistent, no contradiction
 
-### 2. 角色一致性（OOC 检测）
-- 核心性格：本章性格表现与人设一致（内向不会突然主动搭讪）。违反 ≥ 1 处 → ❌
-- 能力边界：角色不做超出设定能力的事。违反 ≥ 1 处 → ❌
-- 知识边界：角色不说/不知道其不可能知道的信息。违反 ≥ 1 处 → ❌
-- 关系状态：角色间关系与人设相符。违反 ≥ 1 处 → ❌
+### 2. Role consistency (OOC detection)
+- Core character: The character performance in this chapter is consistent with the
+  character (introvert will not suddenly take the initiative to strike up a
+  conversation). Violation ≥ 1 → ❌
+- Ability Boundaries: The character does not do anything beyond the set capabilities.
+  Violation ≥ 1 → ❌
+- Knowledge Boundary: The character does not say/know information that he or she cannot
+  possibly know. Violation ≥ 1 → ❌
+- Relationship status: The relationship between the characters is consistent with the
+  personality. Violation ≥ 1 → ❌
 
-### 3. 题材禁忌
-对照 taboos 列表逐条确认。1 条触犯 → ❌
+### 3. Taboo subject matter
+Check the taboos list one by one. 1 offense → ❌
 
-### 4. 信息连续性
-- 前章已破坏的物品/建筑未无故复原。矛盾 ≥ 1 处 → ❌
-- 上章结尾的角色状态与本章衔接合理。矛盾 ≥ 1 处 → ❌
+### 4. Information continuity
+- Objects/buildings that were destroyed in the previous chapter were not restored
+  without reason. Contradiction ≥ 1 → ❌
+- The character status at the end of the previous chapter connects well with this
+  chapter. Contradiction ≥ 1 → ❌
 
-### 5. 设定版本对齐（长篇小说附加）
-长篇小说专用。当正文章节引入新设定元素时，检查与 setting-change-log.md 的版本一致性：
-- 新引入的组织/地点/能力名称和特性未与已有设定冲突。冲突 → ❌
-- 本卷内已变更的设定，后续章节未使用旧版本描述。漂移 → ❌
-- 显着设定偏离已在 setting-change-log.md 备案。应备案未备案 → ❌
+### 5. Set version alignment (additional to novels)
+Exclusively for novels. When a new setting element is introduced in the body section,
+check for version consistency with setting-change-log.md:
+- The newly introduced organization/location/ability names and characteristics do not
+  conflict with existing settings. Conflict → ❌
+- The settings that have been changed in this volume will not be described in the old
+  version in subsequent chapters. Drift → ❌
+- Significant setting deviations are documented in setting-change-log.md. Should be
+  filed but not filed → ❌
 
 ---
 
-## 五、章纲兑现校验
+## 5. Verification of Chapter Outline Fulfillment
 
-章纲 memo 承诺的事情，正文做到了吗？
+Did the main text of the chapter achieve what the memo promised?
 
-### 1. required_changes 逐条核对
+### 1. required_changes Check Item by Item
 
-章纲 memo 的 `required_changes` 是本章最核心的承诺。正文写完后，逐条过：
+`required_changes` of the chapter outline memo is the core commitment of this chapter.
+After writing the main text, go through it one by one:
 
-| 检查项 | 方法 |
+| Check items | Methods |
 |--------|------|
-| 每条"从什么变成什么"在正文中实际发生了吗？ | 在正文中找出对应段落。找不出来 = 未兑现 |
-| 改变的类型匹配吗？ | 章纲写的是"信息改变"，正文不能只是一句"他知道了很多" |
-| 读者能感受到改变吗？ | 不是作者知道变了——是纸上写出来的东西让读者知道变了 |
+| Did each "what became what" actually happen in the text? | Find the corresponding paragraph in the text. Can't find = not honored |
+| Does the changed type match? | The outline of the chapter is about "information changes", and the main text cannot just be "He knows a lot" |
+| Can readers feel the change? | It’s not the author who knows what’s changed - it’s what’s written on paper that lets readers know what’s changed |
 
 ```
-规则: required_changes 每条必须有对应正文段落，不能用概括句带过。在正文中找出具体段落确认兑现。
+Rules: required_changes Each item must have a corresponding body paragraph and cannot be included in a summary sentence. Find specific passages in the text to confirm fulfillment.
 ```
 
-### 2. payoff_plan 逐条核对
+### 2. Check payoff_plan item by item
 
-| 检查项 | 方法 |
+| Check items | Methods |
 |--------|------|
-| must_resolve 每条钩子都在正文中收束了吗？ | 找到收束的具体段落。找不到 = 漏写 |
-| must_hold 每条钩子没有被意外泄露？ | 正文没有透露被压住的信息 |
-| partial_advance 每条钩子推进到位了吗？ | 对比章纲的 advance 描述和正文的推进程度——推进不足或推进过头都是偏离 |
+| must_resolve Is every hook resolved in the text? | Find the specific passage that concludes. Not found = missing |
+| must_hold each hook is not accidentally leaked? | The text does not disclose suppressed information |
+| partial_advance Is each hook advanced in place? | Compare the advance description of the chapter outline with the degree of advancement of the main text - insufficient advancement or excessive advancement are deviations |
 
-### 3. micro_payoffs 兑现
+### 3. micro_payoffs Redemption
 
-章纲的 micro_payoffs 至少 1 个必须兑现。在正文中确认：
-- 已兑现：在正确位置有具体场景（非叙述概括），读者能感知到"有收获"
-- 未兑现：仅一句话带过或在正文中找不到对应位置 → ❌
+At least 1 of the chapter's micro_payoffs must be honored. Confirm in the text:
+- Fulfilled: There is a specific scene (not a narrative summary) in the right place, and
+  the reader can perceive "something gained"
+- Unfulfilled: only mentioned in one sentence or the corresponding position cannot be
+  found in the text → ❌
 
-### 4. key_choices 兑现
+### 4. key_choices Redemption
 
-章纲 key_choices ≥ 1 条未在正文中找到对应段落（含动机与章纲不一致）→ ❌
+Chapter outline key_choices ≥ 1 No corresponding paragraph found in the text (including
+motivation inconsistent with the chapter outline) → ❌
 
-### 5. prohibitions 未触犯
+### 5. Prohibitions Not Violated
 
-逐条对照 prohibitions，确认正文没有触犯。如果有触犯 → 立即修改。
-
----
-
-## 六、钩子兑现检查
-
-钩子管理不在 settings/foreshadowing.md 中——真相源在各章 chapter.md 的 hooks 字段和 memo.payoff_plan（foreshadowing.md 仅作跨卷伏笔台账）。正文检查时确认：
-
-- [ ] **本章新埋的钩子**在正文中确实出现了（有具体场景，不是一句暗示）→ 无场景 ❌
-- [ ] **本章收束的钩子**在正文中完成了闭环（有完整段落，读者不会错过）→ 找不到闭环段落 ❌
-- [ ] **payoff_plan 未遗漏**——列了但正文找不到对应内容 → ❌
-- [ ] **长铺垫钩子收束有分量**：铺垫 ≥ 2 章的钩子收束字数 ≥ 100 字且有具体场景 → ❌ 仅一句话带过或仅内心独白
-- [ ] **跨卷伏笔遗漏（长篇小说附加）**：扫描 foreshadowing.md 中来自前卷的活跃伏笔，确认本章没有忘记提及应该推进的旧伏笔 → 前卷伏笔在本章可提及但未触及 ❌
+Check the prohibitions one by one to confirm that the text does not violate them. If
+there is any violation → modify it immediately.
 
 ---
 
-## 七、阅读体验校验
+## 6. Hook redemption check
 
-**参照基准：** 章纲 爽点设计、情绪曲线、钩子规划
+Hook management is not in settings/foreshadowing.md - the source of truth is in the
+hooks field of each chapter's chapter.md and memo.payoff_plan (foreshadowing.md is only
+for cross-volume foreshadowing). Confirm during text check:
 
-**判定规则：** 每节 3 项中 ≥ 2 项通过 → 本节 ✅。4 节中 ≥ 3 节 ✅ → §八 ✅。
-
-### 1. 爽点落地
-- [ ] 有具体落地场景（非概括性描述）→ 仅概括无场景 ❌
-- [ ] 情绪释放与章纲定位一致 → 走偏 ❌
-- [ ] 读者能感知到爽点（非"写到了但没感觉"）→ 读完后无爽感 ❌
-
-### 2. 情绪曲线匹配
-- [ ] 抑→扬→收三段与章纲对齐（该压抑的段落没写得太松弛）
-- [ ] 转折点情绪渲染到位（该紧张时紧张了，该温情时温情了）
-- [ ] 无意外跑偏（章纲"压抑收尾"没写成"阳光结局"）→ 跑偏 ❌
-
-### 3. 章尾牵引力
-- [ ] 有情绪缺口（未解决/未挑明/未收束的线）→ 所有线都收干净了 ❌
-- [ ] 没有"安全着陆"（所有冲突在本章内完美解决）
-- [ ] 读者读完有"然后呢？"的感觉 → 读完毫无悬念 ❌
-
-### 4. 阅读获得感
-读者至少获得一项：
-- 新信息（剧情推进）
-- 情绪体验（笑了/紧张了/触动了）
-- 关系进展（角色关系变化或变化预告）
+- [ ] **The new hook in this chapter** does appear in the main text (there is a specific
+      scene, not a hint) → No scene ❌
+- [ ] **The closing hook of this chapter** The closed loop is completed in the main text
+      (there is a complete paragraph, the reader will not miss it) → The closed loop
+      paragraph cannot be found ❌
+- [ ] **payoff_plan is not missing**, It is listed but the corresponding content cannot
+      be found in the text → ❌
+- [ ] **Long foreshadowing and hook closing are important**: Foreshadowing ≥ 2 chapters,
+      the number of words for hook closing is ≥ 100 words and there are specific scenes
+      → ❌ Only one sentence or only inner monologue
+- [ ] **Missing foreshadowing across volumes (additional to full-length novel)**: Scan
+      foreshadowing.md for active foreshadowing from previous volumes to confirm that
+      this chapter has not forgotten to mention old foreshadowing that should be
+      advanced → Foreshadowing from previous volumes can be mentioned in this chapter
+      but not touched ❌
 
 ---
 
-## 八、技术质量
+## 7. Reading experience verification
 
-### 1. 视角一致
+**Reference Baseline:** Chapter outline satisfying payoff design, emotion curve, hook
+planning
 
-```
-规则: 全章使用单一视角（除非章纲标注双视角）
-检测: 第三人称有限视角只能写视角角色的所见所闻，不能跳他人内心。搜索"心想""他/她意识到""他/她感到"等跨视角信号词。
-```
+**Judgment Rules:** ≥ 2 out of 3 items in each section are passed → this section ✅. ≥ 3
+out of 4 sessions ✅ → §8 ✅.
 
-### 2. 时态/人称一致
+### 1. The implementation of satisfying payoff
+- [ ] There are specific implementation scenarios (non-general description) → only
+      summary without scenarios ❌
+- [ ] Emotional release is consistent with the positioning of the chapter → deviation ❌
+- [ ] Readers can feel the satisfying payoff (not "I wrote it but didn't feel it") →
+      There is no sense of satisfaction after reading ❌
 
-```
-规则: 全章时态一致、人称一致。同一场景内不能来回跳。
-```
+### 2. Emotion curve matching
+- [ ] The three paragraphs of Decrease→Ascending→Conclusion are aligned with the outline
+      of the chapter (the depressing paragraphs are not written too loosely)
+- [ ] The emotions at the turning points are well rendered (be nervous when you should
+      be nervous, be warm when you should be warm)
+- [ ] No unexpected deviations (the "depressive ending" in the chapter outline was not
+      written as "sunny ending") → deviations ❌
 
-### 3. 段落长度
+### 3. End-of-chapter traction
+- [ ] There is an emotional gap (unresolved/unclarified/unclosed threads) → all the
+      threads are closed ❌
+- [ ] There is no "safe landing" (all conflicts are perfectly resolved within this
+      chapter)
+- [ ] Readers will have a feeling of "What next?" after reading → There will be no
+      suspense after reading ❌
 
-```
-规则:
-- 单段建议 ≤ 250 字（高潮段可放宽），≥ 20 字（单句段除外）
-- 单句段占比建议 15%-35%，用于节奏强调
-- 4 个逗号以上建议考虑拆段，但不强制
-```
-> **场景例外：** 高潮冲突段 ≤ 2000 字；密集对话段规则暂停；极简白描段 ≤ 150 字且单句段占比不受限。详见顶部 全局冲突裁定表·场景例外。
-
----
-
-## 九、内容质量
-
-### 1. 上帝视角摘要和元叙述
-
-```
-规则: 正文中不得出现"本章讲述了""故事还在继续""在这一章中"等元叙事语句；不得出现画外音式总结评价
-检测: 搜索"本章""故事""读者"等元叙事信号词。≥ 1 处 → ❌
-```
-
-### 2. 预设读者反应
-
-```
-规则: 正文不应指导读者怎么感受。禁止"让人感到""令人不禁""读者看到这里……"
-检测: 搜索"让人""令人""读者"等预设信号词。≥ 1 处 → ❌
-```
-
-### 3. 无夹带非正文内容
-
-检查正文中不应存在的内容（≥ 1 处 → ❌）：
-- [ ] 引导语（"下面开始写正文""第X章正式开始"）
-- [ ] 文末总结（"以上就是第X章的内容""这章主要写了"）
-- [ ] 括号注释（"（此处可以写得更好）""（这一段可以考虑删掉）"）
-- [ ] subagent 的自我评价（"我觉得这段描写不错""这里呼应了前面的"）
-
-### 4. 信息准确
-
-- [ ] 角色名拼写一致（不能陆征/陆正/陆铮混用）
-- [ ] 时间线不矛盾（昨天说的"一周前"到今天不能变成"三天前"）
-- [ ] **story_date 连续性（长篇小说附加）**：本章 `story_date` 与上一章的间隔合理（无跳跃断裂或时间倒流）。已在 timeline.md 中追踪 → 无记录 ❌
-- [ ] 物品状态不矛盾（上章碎了的花瓶本章不能完好在桌上）
-- [ ] 人物关系不矛盾（上章"第一次见面"本章不能"多年前就认识"——除非这是设计好的伏笔）
+### 4. Sense of gain from reading
+Readers get at least one:
+- New information (plot advancement)
+- Emotional experience (laughing/nervous/touched)
+- Relationship progress (changes or changes in role relationships)
 
 ---
 
-## 十、风格一致性
+## 8. Technical quality
 
-### 1. 与写作风格对齐
+### 1. Consistent perspective
 
-对照 `.claude/knowledge/writing-style.md` 的四字段：
+```
+Rules: Use a single perspective throughout the chapter (unless the chapter outline indicates dual perspective)
+Detection: The third-person limited perspective can only write about what the perspective character sees and hears, but cannot jump into other people's hearts. Search for cross-perspective signal words such as "thinking", "he/she realizes", "he/she feels", etc.
+```
 
-| 字段 | 判定标准 |
+### 2. Tense/person agreement
+
+```
+Rules: The tense and person should be consistent throughout the chapter. You cannot jump back and forth within the same scene.
+```
+
+### 3. Paragraph length
+
+```
+Rules:
+- It is recommended that a single paragraph should be ≤ 250 words (the climax section can be relaxed), ≥ 20 words (except for single paragraphs)
+- The recommended proportion of a single segment is 15%-35%, used for rhythm emphasis
+- It is recommended to consider splitting if there are more than 4 commas, but it is not mandatory.
+```
+> **Scenario exceptions:** Climactic conflict paragraph ≤ 2000 words; rules for dense
+> dialogue paragraphs are suspended; minimalist white description paragraphs ≤ 150
+> words and the proportion of single sentences is not limited. See the top Global
+> Conflict Determination Table / Scenario Exceptions for details.
+
+---
+
+## 9. Content quality
+
+### 1. God’s perspective summary and meta-narrative
+
+```
+Rules: Meta-narrative statements such as "this chapter tells it", "the story continues", "in this chapter", etc. are not allowed in the text; no voice-over summary comments are allowed
+Detection: Search for meta-narrative signal words such as "this chapter", "story", and "reader". ≥ 1 place → ❌
+```
+
+### 2. Define reader responses
+
+```
+Rule: The text should not tell the reader how to feel. It is forbidden to "make people feel", "cannot help", "readers see this..."
+Detection: Search for preset signal words such as "人人", "人人", and "reader". ≥ 1 place → ❌
+```
+
+### 3. No inclusion of non-text content
+
+Check for content that should not be in the text (≥ 1 → ❌):
+- [ ] Introduction ("Start writing the text below" "Chapter X officially begins")
+- [ ] Summary at the end of the article ("The above is the content of Chapter X" "This
+      chapter is mainly written")
+- [ ] Bracket comments ("(This can be written better)""(This paragraph can be deleted)")
+- [ ] Subagent's self-evaluation ("I think this description is good" "This echoes the
+      previous one")
+
+### 4. Information is accurate
+
+- [ ] The character names must be spelled the same (Lu Zheng/Lu Zheng/Lu Zheng cannot be
+      mixed)
+- [ ] The timeline is not inconsistent (the "one week ago" mentioned yesterday cannot
+      become "three days ago" today)
+- [ ] **story_date Continuity (Novel Plus)**: This chapter `story_date` is reasonably
+      spaced from the previous chapter (no jump breaks or time lapses). Tracked in
+      timeline.md → No records ❌
+- [ ] The status of the items is not inconsistent (the broken vase in the previous
+      chapter cannot be left intact on the table in this chapter)
+- [ ] The relationship between the characters is not contradictory ("first meeting" in
+      the previous chapter cannot be "met many years ago" in this chapter - unless this
+      is a well-designed foreshadowing)
+
+---
+
+## 10. Style consistency
+
+### 1. Align with writing style
+
+Compare the four fields of `.claude/knowledge/writing-style.md`:
+
+| Field | Judgment Criteria |
 |------|---------|
-| 叙事身份 | 正文体现写作身份。身份=克制白描时出现煽情长段 → ❌ |
-| 硬约束 | 逐条检查。违反 ≥ 1 条 → ❌ |
-| AI 易犯错误 | 逐条检查。命中 ≥ 1 处 → 标记修改，3 处以上 → ❌ |
-| 描写层次和手法 | 至少 1 种推荐技法在正文中可识别 |
+| Narrative identity | The text reflects the writing identity. Identity=Restraint from long and sensational paragraphs in line drawing → ❌ |
+| Hard constraints | Check item by item. Violation ≥ 1 → ❌ |
+| AI is prone to mistakes | Check each item one by one. Hit ≥ 1 → Mark modified, 3+ → ❌ |
+| Levels and techniques of description | At least 1 recommended technique can be identified in the text |
 
-### 2. 题材味道
+### 2. The flavor of the subject matter
 
-如果项目配置了 `genre-setting.md`，检查正文是否传递了该题材的核心味道：
-- 题材核心味道至少可感知 1 项（从"想知道真相的驱动力/力量体系细节/日常真实感/避免现代穿越"中对应）
-- 题材禁忌（genre_taboos）：0 触犯
+If the project is configured with `genre-setting.md`, check whether the text conveys the
+core flavor of the theme:
+- At least 1 item of the core flavor of the subject matter can be perceived
+  (corresponding from "The driving force to know the truth/Details of the power
+  system/Daily reality/Avoiding modern time travel")
+- Taboos (genre_taboos): 0 violated
 
-**判定：** 核心味道 0 项 → ❌；禁忌 ≥ 1 条触犯 → ❌
+**Judgment:** Core taste 0 items → ❌; Taboo ≥ 1 violation → ❌
 
-### 3. 行文节奏
+### 3. Rhythm of writing
 
-- [ ] 叙事段/场景段交替。连续 1000 字无对话 ∪ 连续 500 字纯对话 → ❌
-- [ ] 情绪强波动：同一章内至少 1 次强弱交替。全程高能或全程平静 → ❌
-- [ ] 情绪最高点不在章末（高潮在章末前 1/4 处附近，章末是钩子）
-
----
-
-## 正文验收总表（7 项）
-
-### L1 表层文本
-- [ ] **疲劳词** — 六大类各自未超阈值（详见 §一）
-- [ ] **句式违规** — 所有句式规则未触发警告（详见 §二）
-- [ ] **重复内容** — 段落开头/句式/描写对象/情绪词/意象 各自未超阈值（详见 §三）
-- [ ] **对话规则** — 标签/间隔/意图/感叹号全部合规（详见 §四）
-
-### L2 内容合规
-- [ ] **设定合规** — 世界观/OOC/禁忌/连续性 全部通过（详见 §五）
-- [ ] **章纲兑现** — required_changes/payoff/prohibitions 全部兑现（详见 §六）
-- [ ] **钩子兑现** — 新埋/收束/分量全部到位（详见 §七）
-
-### L3 + 基础质量
-- [ ] **阅读留存** — 爽点 + 曲线 + 章末牵引力 + 获得感 合计 ≥ 3 子项通过（详见 §八）
-- [ ] **基础质量** — 视角/时态/段落/内容质量/风格/字数全部合格（详见 §九~§十一）
+- [ ] Narrative segment/scenario segment alternation. 1000 words in a row without
+      dialogue ∪ 500 words in a row with dialogue → ❌
+- [ ] Strong mood swings: at least 1 alternation of strong and weak emotions in the same
+      chapter. High energy throughout or calm throughout → ❌
+- [ ] The highest emotional point is not at the end of the chapter (the climax is around
+      1/4 before the end of the chapter, and the end of the chapter is the hook)
 
 ---
 
-### 执行方式
+## General form of text acceptance (7 items)
 
-**优先级：Agent Teams > subAgent > 自检**
+### L1 surface text
+- [ ] **Fatigue words**, each of the six categories does not exceed the threshold (see §
+      1 for details)
+- [ ] **Sentence pattern violation**, All sentence pattern rules do not trigger warnings
+      (see §2 for details)
+- [ ] **Duplicate content**, The beginning of the paragraph/sentence structure/object of
+      description/emotional words/imagery do not exceed the threshold (see §3 for
+      details)
+- [ ] **Dialogue Rules**, Tags/intervals/intentions/exclamation points are all compliant
+      (see §4 for details)
 
-1. **Agent Teams（最优）**：开独立 reviewer agent，传入本章正文 + 本章章纲（chapter.md）+ `.claude/knowledge/writing-style.md` + `anti-ai.md`（如存在）+ 本清单。reviewer agent 逐项核查，对每项给出"通过/不通过 + 证据（引用正文原文）"。疲劳词扫描和句式扫描让 agent 自动做（正则匹配），人工只做确认。
-2. **subAgent（次优）**：同上，使用 subagent 执行审查。subagent 对"内容质量"和"风格一致性"的判断力弱于完整 agent，建议 AI 味检测（疲劳词/句式规则）用 subagent，内容质量部分主 Agent 亲自过。
-3. **主 Agent 自检（兜底）**：严格按本清单逐项过。特别注意三个高危盲区：
-   - **疲劳词脱敏**：主 Agent 刚读完生成文本，对疲劳词已脱敏。不依赖"读起来的感觉"——必须跑一遍关键词搜索，逐词核对阈值。
-   - **memo 承诺自欺**：最容易对自己说"虽然没有明写，但暗示了"。检查方法是：指着正文的具体段落回答"这句话兑现了章纲的哪条承诺"？指不出来就是没兑现。
-   - **对话节奏盲区**：连续大段对话读起来"挺快的"反而容易被跳过检查。把纯对话行单独提取出来，数中间隔了几次动作/环境描写。连续 8 句纯对话无间隔 → 标记。
+### L2 content compliance
+- [ ] **Setting Compliance**, Worldview/OOC/Taboo/Continuity All passed (see §5 for
+      details)
+- [ ] **Chapter Outline Cashing**, required_changes/payoff/prohibitions All cashing out
+      (see §6 for details)
+- [ ] **Hook cashing**, New burial/contraction/weight are all in place (see § 7 for
+      details)
 
-**拿到结论后怎么做：** 诊断结果指向问题环节——AI 味重 → 查 prompt 输出·写作规范的约束是否到位；memo 未兑现 → 查种子核心事件是否覆盖；视角跳跃 → 查 prompt 视角锁定字段。修完对应环节再生成。**但最终正文是否归档，由作者判断，不是由清单判定。**
+### L3 + base quality
+- [ ] **Reading retention**, satisfying payoff + curve + end-of-chapter traction + sense
+      of gain Total ≥ 3 sub-items passed (see §8 for details)
+- [ ] **Basic Quality**, Perspective/Tense/Paragraph/Content Quality/Style/Word Count
+      are all qualified (see §9~§11 for details)
 
 ---
 
-## 验收报告格式
+### Execution method
 
-检查完成后按此格式输出一份分层报告：
+**Priority: Agent Teams > subAgent > Self-Test**
+
+1. **Agent Teams (optimal)**: Open an independent reviewer agent and pass in the text of
+   this chapter + this chapter's outline (chapter.md) +
+   `.claude/knowledge/writing-style.md` + `anti-ai.md` (if it exists) + this list. The
+   reviewer agent checks each item item by item and gives "pass/fail + evidence (quote
+   from the original text)" for each item. The agent automatically performs fatigue word
+   scanning and sentence pattern scanning (regular matching), while manual verification
+   only takes place.
+2. **subAgent (suboptimal)**: Same as above, using a subagent to perform the review. The
+   subagent's judgment of "content quality" and "style consistency" is weaker than that
+   of the complete agent. It is recommended to use a subagent for AI flavor detection
+   (fatigued word/sentence rules), and the content quality part should be handled by the
+   agent himself.
+3. **Main Agent self-inspection (double check)**: Strictly follow this list item by
+   item. Pay special attention to three high-risk blind spots:
+   - **Fatigue word desensitization**: The main agent has just finished reading the
+     generated text and has been desensitized to fatigue words. It does not rely on the
+     "feeling of reading" - you must run a keyword search and check the threshold word
+     by word.
+   - **memo Commitment Self-deception**: It is easiest to say to yourself "Although it
+     is not written explicitly, it is implied." The check method is: point to a specific
+     paragraph in the text and answer "Which promise of the chapter outline does this
+     sentence fulfill?" If you can't point it out, you haven't fulfilled it.
+   - **Dialogue rhythm blind spot**: A long continuous dialogue reads "quite quickly"
+     but can easily be skipped and checked. Pure dialogue lines are extracted
+     separately, with several action/environment descriptions interspersed in the
+     number. 8 consecutive sentences of pure dialogue without gaps → mark.
+
+**What to do after getting the conclusion:** The diagnosis result points to the problem
+link - AI is heavy → check whether the constraints of prompt output and writing specs
+are in place; memo is not fulfilled → check whether the seed core event is covered;
+perspective jump → check the prompt perspective lock field. Regenerate after completing
+the corresponding link. **But whether the final text is archived or not is determined by
+the author, not by the list. **
+
+---
+
+## Acceptance report format
+
+After the inspection is completed, a hierarchical report will be output in this format:
 
 ```markdown
-## 正文验收报告：第 X 章
+## Text Acceptance Report: Chapter X
 
-### 总评
-✅ 通过 / ⚠️ 有条件通过 / ❌ 需修改
+### General comments
+✅ Passed / ⚠️ Conditionally passed / ❌ Needs modification
 
-### 分层结果
-| 层级 | 通过率 | 关键发现 |
+### Stratified results
+| Tier | Pass Rate | Key Findings |
 |------|--------|---------|
-| L1 表层文本（§一~§四） | n/4 | |
-| L2 内容合规（§五~§七） | n/3 | |
-| L3+基础质量（§八~§十一） | n/2 | |
+| L1 surface text (§1~§4) | n/4 | |
+| L2 content compliance (§5~§7) | n/3 | |
+| L3+Basic Quality (§8~§11) | n/2 | |
 
-### 未通过项详情
-| 检查项 | 结果 | 正文引用 | 根因追溯 |
+### Details of failed items
+| Check items | Result | Text citation | Root cause tracing |
 |--------|------|---------|---------|
-| (项名) | ❌ | (原文段落) | 输出·写作规范 / 种子核心事件 / 章纲memo / 设定参考 |
+| (item name) | ❌ | (original text paragraph) | output and writing specs / seed core events / chapter outline memo / setting reference |
 | ... | ... | ... | ... |
 
-### 处理建议
-- ✅ 全部通过 → 去掉 -draft 归档
-- ⚠️ 轻微问题 → 针对性修改后归档
-- ❌ 重大问题 → 修复对应环节后重新生成
+### Handling suggestions
+- ✅ All passed → Remove -draft archive
+- ⚠️ Minor problem → Archive after targeted modifications
+- ❌ Major problem → Repair the corresponding link and regenerate it
 ```

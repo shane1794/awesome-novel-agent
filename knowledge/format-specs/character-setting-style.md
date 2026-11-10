@@ -1,448 +1,568 @@
-# 角色设定指南
+# Character setting guide
 
-> 先填基本信息，再逐层聊认知6层模型。聊完写进 `settings/character-setting/<id>.md`。
-> 反派设定参考 `.claude/knowledge/character-craft/villain-types.md`——三类高智商反派模板（棋手型/殉道者型/拟态者型）。
-> 6 层从第 1 层开始层层向下影响。1-3 层务虚（决定为什么做），4-6 层务实（决定怎么做）。
-
----
-
-## 原则 1：角色是决策引擎，不是履历表
-
-**规则：** 设定填完要能推断角色在任何情境下会怎么想、怎么做。填了一堆信息但推不出行为 → 那是履历表，不是角色设定。
-
-✅ 正确：
-> **世界观**: 强者制定规则，弱者遵守规则。
-> → 遇到不公平的事，角色不会抱怨，会想怎么变强。
-
-❌ 错误：
-> 性格：聪明、冷静、理性
-> → 标签堆砌。"聪明"怎么表现？冷静到什么程度？遇到亲友遇险还冷静吗？
-
-**判断标准：** 给出意外情境（"有人当街刺杀他旁边的陌生人"），能否不假思索说出角色会怎么做？说不出来 → 设定不够具体，继续聊。
+> Fill in the basic information first, and then talk about the 6-layer model layer by
+> layer. After the chat, write it into `settings/character-setting/<id>.md`. Villain
+> setting reference `.claude/knowledge/character-craft/villain-types.md` - three types
+> of high-intelligence villain templates (chess player type/martyr type/mimic type).
+> The 6 layers start from layer 1 and work their way down. Levels 1-3 are pragmatic
+> (deciding why to do something), and levels 4-6 are pragmatic (deciding how to do
+> something).
 
 ---
 
-## 原则 2：主角必须有真缺点
+## Principle 1: Personas are decision engines, not resumes
 
-**规则：** "太正直""太善良""太信任别人"不是缺点——它们是换种说法夸角色。真缺点是让角色在关键时刻**做错选择**的东西。
+**Rules:** After completing the setting, you must be able to infer what the character
+would think and do in any situation. Filled in a bunch of information but can’t derive
+any behavior → That’s a resume, not a role setting.
 
-✅ 正确：
-> 冲动（遇到亲友遇险直接冲上去，不计后果）
-> 多疑（谁都信不过，需要帮助时张不开口）
-> 自卑（觉得自己不配被救，关键时刻放弃求救）
+✅ Correct:
+> **World view**: The strong make the rules and the weak follow the rules. → When
+> something unfair happens, the character will not complain, but will think about how
+> to become stronger.
 
-❌ 错误：
-> "他太善良了" / "他太正直了" / "他太信任别人了"
-> → 这些是优点的变体。读者能感觉到作者在夸角色。
+❌ Error:
+> Personality: smart, calm, rational → tag stacking. How to show "smart"? How calm are
+> you? Are you still calm when your relatives and friends are in danger?
 
-**判断标准：** 这个缺点是否会在第 3-5 章让角色做出错误决定？不会 → 这不是真缺点，换个。
-
----
-
-## 原则 3：配角有自驱动目的
-
-**规则：** 配角不是为主角存在的。拿走主角，配角有自己的欲望和恐惧，能独立行动。
-
-✅ 正确：
-> 林燕是暗网线人，她帮主角是因为欠人情，但她有自己的生存法则——不站队、不出头、活得久。必要时会为自保而背叛主角。
-> → 拿走主角，林燕还是那个在灰色地带求生的女人，继续做她的情报买卖。
-
-❌ 错误：
-> 老张是主角的朋友，总是在主角需要的时候出现帮忙。
-> → 工具人。拿走主角，老张就消失了。
-
-**判断标准：** 把主角从故事里拿走，这个配角还有事做吗？没有 → 退回加自驱动目的。
+**Judgment Criteria:** Given an unexpected situation ("Someone assassinated the stranger
+next to him on the street"), can you tell what the character will do without thinking?
+Can't tell → The setting is not specific enough, so continue chatting.
 
 ---
 
-## 基本信息
+## Principle 2: The protagonist must have real flaws
 
-先确定这些，再进认知模型。
+**Rules:** "Too honest", "Too kind", "Too trusting" are not flaws - they are ways to
+compliment the character. A true flaw is something that causes a character to make the
+wrong choice at a critical moment.
 
-问作者：
-1. "角色叫什么？在故事里是主角、反派还是配角？（protagonist / antagonist / supporting）"
-2. "ta 长什么样？有什么标志性的外貌特征？"
-3. "ta 的背景是什么——出身、经历、来处？"
-4. "ta 有什么标志性的口头禅、粗口之类的语言特征？"
+✅ Correct:
+> Impulsive (rushing forward when relatives and friends are in danger, regardless of
+> the consequences) Suspicious (cannot trust anyone, and do not ask for help when in
+> need) Inferior self-esteem (feeling that they are not worthy of being rescued,
+> giving up asking for help at critical moments)
 
-写进文件：
+❌ Error:
+> "He is too kind" / "He is too honest" / "He is too trusting" → These are variations
+> of strengths. The reader can feel that the author is praising the character.
+
+**Judgment Criteria:** Does this flaw lead to the character making poor decisions in
+Chapters 3-5? No → This is not a real shortcoming, change it.
+
+---
+
+## Principle 3: Supporting Characters Have Self-Driven Purposes
+
+**Rules:** Supporting characters are not there for the main character. Take away the
+main character and the supporting characters have their own desires and fears and can
+act independently.
+
+✅ Correct:
+> Lin Yan is a darknet informant. She helps the protagonist because she owes a favor,
+> but she has her own rules of survival - don't take sides, don't stand out, and live
+> as long as possible. Will betray the protagonist when necessary to protect himself.
+> → Take away the protagonist, Lin Yan is still the woman who survives in the gray
+> area and continues her intelligence business.
+
+❌ Error:
+> Lao Zhang is the protagonist's friend and always appears to help the protagonist
+> when he needs it. → Tool man. Take away the protagonist and Lao Zhang disappears.
+
+**Judgment Criteria:** Take the protagonist out of the story. Does the supporting
+character still have something to do? No → return plus self-driven purpose.
+
+---
+
+## Basic information
+
+Determine these first, and then enter the cognitive model.
+
+Ask the author:
+1. "What is the name of the character? Is it the protagonist, antagonist or supporting
+   role in the story? (protagonist / antagonist / supporting)"
+2. "What does he look like? What are his iconic features?"
+3. "What is his background - origin, experience, where he comes from?"
+4. "What are his signature catchphrases, foul language and other language features?"
+
+Write to file:
 
 ```markdown
-### 基本信息
-- **代号**: <拼音id>
-- **名称**: <中文名>
-- **故事角色**: protagonist / antagonist / supporting
-- **外貌**: 外貌特征
-- **背景**: 出身经历
-- **语言特征**: 标志性口头禅、粗口
+### Basic information
+- **Code**: <Pinyin id>
+- **Name**: <Chinese name>
+- **Story Role**: protagonist / antagonist / supporting
+- **Appearance**: Physical characteristics
+- **Background**: Life experience
+- **Language Features**: Iconic catchphrases, foul language
 ```
 
-**基本信息不是设定核心，但决定了角色在故事里的位置和读者对ta的第一印象。**
+**Basic information is not the core of the setting, but it determines the character's
+position in the story and the reader's first impression of him or her. **
 
 ---
 
-## 认知 6 层模型
+## Cognitive 6-layer model
 
-从第 1 层开始逐层往下聊。每层依赖上一层已经定了，不跳层、不倒序。
+Start from level 1 and work your way down. Each layer's dependence on the previous layer
+has been determined, and there will be no skipping of layers or reversing the order.
 
-**结构：**
+**Structure:**
 ```
-务虚（为什么做）          务实（怎么做）
-层1 世界观   ←难         层4 能力    ←可变
+Retreat (why to do it) Pragmatism (how to do it)
+Level 1 World View ← Difficulty Level 4 Ability ← Variable
   ↓                       ↓
-层2 我的定位 ←难         层5 技能    ←可变
+Level 2 My Position ← Difficulty Level 5 Skills ← Variable
   ↓                       ↓
-层3 价值观   ←难         层6 环境    ←可变
+Level 3 Values ← Difficult Level 6 Environment ← Variable
 ```
 
-**可变性规则：** 上三层（世界观→自我定位→价值观）越往上越难改变——世界观几乎定型，价值观可能在重大事件冲击下松动。下三层（能力→技能→环境）随剧情可自然变化：角色可以学新技能、换环境、能力成长。剧情推动的实质是"下三层在变，上三层被动摇"的过程。
+**Rule of variability:** The upper three levels (worldview→self-positioning→values)
+become more difficult to change as you go up - the worldview is almost fixed, and values
+may loosen under the impact of major events. The lower three layers (ability → skill →
+environment) can change naturally according to the plot: characters can learn new
+skills, change environments, and grow in ability. The essence of the plot promotion is
+the process of "the lower three levels are changing and the upper three levels are
+shaken".
 
-**上三层的改变必经非常磨难。** 不是靠一次对话或一个突发事件——需要持续冲击、反复验证、让角色无法用旧信念解释新现实，最终崩塌重建。
+**Changes on the upper three levels must be very difficult. ** It doesn’t rely on a
+single conversation or a sudden incident - it requires continuous impact, repeated
+verification, making the characters unable to use old beliefs to explain the new
+reality, and finally collapse and rebuild.
 
-**例子——层2 自我定位：**
-> 角色认定自己是"魔头"，无故杀人、灭宗派，该做的一样不少。但他的世界观（层1）有一条底线——"这个天下必须存在，不能毁灭"。所以他做的所有事，都有一个前提：不影响天下存亡。只要天下不会毁灭，他照杀照灭，毫无心理负担。
->
-> 这就是层1和层2的微妙关系：世界观没有让他变好，只是给"魔"画了一个边界。他客观上消灭了一些威胁天下存亡的存在——但他不是为了天下，只是因为那些威胁碰到了他的底线。他依然觉得自己是魔头，天下人对他的恐惧没有错。
->
-> 要改变"我是魔头"这个自我定位，不是靠别人说他好话——是要让他亲眼看到，一个真正的好人做了他做的事，依然选择做好人。他需要意识到"我选做魔头是因为我怕做好人的代价"，而这个意识需要他在生死关头为保护某人牺牲自己，然后活下来面对"我为什么这么做了"的问题。
+**Example - Layer 2 Self-positioning:**
+> The character believes that he is a "devil", killing people for no reason and
+> destroying sects, and he has a lot to do. But his worldview (level 1) has a bottom
+> line - "This world must exist and cannot be destroyed." Therefore, everything he
+> does has a premise: it does not affect the survival of the world. As long as the
+> world is not destroyed, he can kill and destroy without any psychological burden.
+> This is the subtle relationship between layer 1 and layer 2: the worldview does not
+> make him better, it just draws a boundary for the "devil". He objectively eliminated
+> some existences that threatened the survival of the world - but he was not doing it
+> for the sake of the world, just because those threats hit his bottom line. He still
+> felt that he was a demon and that the world's fear of him was not wrong. To change
+> the self-positioning of "I am a devil", it is not to rely on others to say good
+> things about him - it is to let him see with his own eyes that a truly good person
+> has done what he did and still chooses to be a good person. He needs to realize that
+> "I chose to be a devil because I am afraid of the cost of being a good person", and
+> this awareness requires him to sacrifice himself to protect someone in a
+> life-or-death situation, and then survive to face the question "Why did I do this?"
 
-**例子——层3 价值观：**
-> 国家和自己家都需要角色的时候，角色选什么？
->
-> 如果角色的价值观是"先有国再有家"，那当国家征召时，他会放下家人奔赴前线。不是因为他不在乎家人——而是因为两个价值冲突时，"国"排在家前面。这个选择不需要改变，它是价值观在起作用。
->
-> 真正考验价值观的，不是"选对的"——是"两个都对但只能选一个"。角色必须在两个他同样珍视的东西之间选择，而选择的结果定义了他到底是谁。
+**Example - Layer 3 Values:**
+> When both the country and your family need a character, which character should you
+> choose? If the character's values are "Country first, then family", then when the
+> country calls for help, he will leave his family behind and go to the front line.
+> It's not because he doesn't care about his family - it's because when two values
+> conflict, "country" comes first. This choice does not need to change, it is values
+> that work. The real test of values is not "choosing the right one" - it is "both
+> are right but you can only choose one." The character must choose between two things
+> he values equally, and the outcome of that choice defines who he really is.
 
-**对比——层4 能力：**
-> 反过来，层4 能力的改变不需要这种级别的磨难。沈牧的弓箭能力在第一章就可以进步：从三箭连发脱靶到三箭中二，练习和实战就能自然发生。
+**Comparison - Level 4 Abilities:**
+> In turn, changes to Tier 4 capabilities do not require this level of ordeal. Shen
+> Mu's bow and arrow ability can be improved in the first chapter: from missing the
+> target with three arrows to hitting two of three arrows, it can happen naturally in
+> practice and actual combat.
 
-### 层 1：世界观——角色怎么看这个世界
+### Layer 1: Worldview - how the character sees the world
 
-聊清楚"角色认为这个世界是怎么运作的"。不是作者的设定，是角色**自己相信**的版本。
+Talk clearly about "how the character thinks the world works." It's not the author's
+setting, it's the character's own version of what he believes.
 
-问这一句：
-> "在你角色眼里，这个世界是什么样的？什么人活得下去、什么人活不下去？"
+Ask this:
+> "What does the world look like in the eyes of your character? Who can survive and
+> who cannot survive?"
 
-✅ 正确：
-> 强者制定规则，弱者遵守规则。抱怨没用，变强才有用。
+✅ Correct:
+> The strong make the rules and the weak follow the rules. Complaining is useless,
+> becoming stronger is useful.
 
-❌ 错误：
-> 他相信正义。（太抽象——正义意味着什么具体行为？）
+❌ Error:
+> He believes in justice. (Too abstract - what specific actions does justice mean?)
 
-**判断标准：** 世界观是否会导致角色和其他人（尤其是其他角色）冲突？不会 → 太温和了，让角色有点偏执。
+**Judgment Criteria:** Does the worldview cause the character to conflict with other
+people (especially other characters)? Wouldn't → be too gentle and make the character a
+little paranoid.
 
-**本节自检（过完再进层 2）：**
-- [ ] 世界观是角色自己相信的版本，不是作者设定的世界规则？
-- [ ] 世界观能解释角色为什么用这种方式做事？
-
----
-
-### 层 2：我的定位——角色怎么看待自己
-
-聊清楚"角色觉得自己是什么样的人"。注意：不一定是他实际的样子——认知偏差就是戏剧空间。
-
-问这一句：
-> "角色觉得自己是什么样的人？——注意，问的是ta怎么想的，不一定符合事实。"
-
-✅ 正确：
-> 觉得自己冷静理性谋定后动，但实际遇到亲友遇险第一反应是冲上去，理性是事后找补的。
-> → 自我认知有偏差。角色每次冲动完都会给自己找理由。
-
-❌ 错误：
-> 他很自信。（自信是结果，不是看待自己的方式。）
-
-**判断标准：** 自我认知和实际行为之间有没有差距？没有 → 角色太"自洽"了，没有成长空间。
-
-**本节自检（过完再进层 3）：**
-- [ ] 自我定位是角色怎么看待自己，不是作者对ta的评价？
-- [ ] 自我定位和实际行为之间有差距（认知偏差）？
-
----
-
-### 层 3：价值观——艰难抉择的源头
-
-聊清楚"什么事角色打死不做、什么事会破例"。价值观是用来**被挑战**的——角色在"价值观 A 和价值观 B 冲突"时的选择，才是真正的角色塑造。
-
-问这一句就够了：
-> "有什么事是角色打死不会做的？——如果非做不可呢？什么条件会让他破例？"
-
-✅ 正确：
-> 不背叛兄弟。不欺压平民。可以利用对手但不能侮辱对手的尊严。
-> → 每个都能被挑战——如果背叛兄弟能救更多人呢？
-
-❌ 错误：
-> 重视友情、善良正直。
-> → 太抽象。重视到什么程度？会为朋友杀人吗？
-
-**判断标准：** 能否给每个 value 设计一个"如果……会怎样"的挑战场景？不能 → 太抽象，继续问细节。
-
-**本节自检（过完再进层 4）：**
-- [ ] 价值观至少 2 条具体的行为边界（不是抽象美德）？
-- [ ] 每条 value 都能被"如果……会怎样"挑战？
+**Self-check in this section (go to level 2 after passing this):**
+- [ ] Is the worldview the version the character believes in, not the rules of the world
+      set by the author?
+- [ ] Can the worldview explain why the character behaves the way he does?
 
 ---
 
-### 层 4：能力——角色拥有哪些能力
+### Layer 2: My Positioning,How the character sees himself or herself
 
-聊清楚"角色实际能做什么、输出上限在哪"。能力不是头衔——"金丹境"不是能力描述，"金丹境能御剑飞行"才是。
+Talk clearly about "what kind of person the character thinks he is." Note: Not
+necessarily what he actually looks like - cognitive biases are the space for drama.
 
-问这一句：
-> "角色实际能做什么？输出上限在哪？——能打几个？范围多大？什么情况下会失效？"
+Ask this:
+> "What kind of person does the character think he is? - Note that you are asking what
+> he thinks, which may not necessarily be true."
 
-✅ 正确：
-> 能在十步内察觉杀气来源；单手拉八十斤弓，三箭连发不脱靶；过目不忘但需要时间回忆。
+✅ Correct:
+> I think I am calm, rational and make decisions before taking action, but in reality,
+> when my relatives and friends are in danger, my first reaction is to rush forward,
+> and my rationality is to make amends afterwards. → Self-perception is biased. The
+> character will find reasons for himself every time he is impulsive.
 
-❌ 错误：
-> 武功高强。（多高？打得过几个人？和谁差不多？）
+❌ Error:
+> He is very confident. (Confidence is the result, not the way you view yourself.)
 
-**判断标准：** 每个能力能不能答出"范围、上限、限制条件"？不能 → 不够具体。
+**Judgment Criteria:** Is there a gap between self-perception and actual behavior? No →
+The character is too "self-consistent" and has no room for growth.
 
-**本节自检（过完再进层 5）：**
-- [ ] 能力有明确输出上限（能打几个/范围多大/啥情况失效）？
-- [ ] 能力是具体表现（"御剑飞行"），不是头衔（"金丹境"）？
-
----
-
-### 层 5：技能——角色会做什么具体的事
-
-技能和能力不同——能力是"能不能打"，技能是"会做饭还是会算账"。技能有来源就有局限。
-
-问这一句：
-> "角色学过什么具体技术？从哪学的？——码头帮工学的市井术在朝堂上没用。"
-
-✅ 正确：
-> 青帮底层混出来的市井生存术（听脚步辨人数、看衣着断身份）；跟账房先生学过珠算和记账。
-
-❌ 错误：
-> 精通琴棋书画。（来源呢？没人天生精通。）
-
-**判断标准：** 技能的使用场景是否有限制？（这技能在什么情境下没用？）没有 → 太万能了。
-
-**本节自检（过完再进层 6）：**
-- [ ] 技能至少 1 项，有来源说明（从哪学的/为什么会的）？
-- [ ] 技能有使用场景限制（什么地方/情境下不适用）？
+**Self-check in this section (go to level 3 after passing this):**
+- [ ] Self-positioning is how the character sees himself, not the author's evaluation of
+      him or her?
+- [ ] Is there a gap between self-positioning and actual behavior (cognitive bias)?
 
 ---
 
-### 层 6：环境——成长环境和当前处境
+### Layer 3: Values,the source of hard choices
 
-聊清楚"角色在什么环境下成长、现在处在什么位置"。出身决定行为基线——穷小子的选择和富公子不会一样。
+Let’s talk clearly about “what things the character will not do and what things will be
+made an exception to”. Values are meant to be challenged - the character's choice when
+"value A and value B conflict" is the real character creation.
 
-问这两句：
-1. "角色在什么环境下长大的？这对ta现在有什么影响？"
-2. "角色现在处在什么位置？有什么甩不掉的包袱？"
+This is enough to ask:
+> "What is there that a character wouldn't do if he was killed? - What if he had to do
+> it? What conditions would make him make an exception?"
 
-✅ 正确：
-> 苍梧山脚猎户之子，父母死于妖兽袭村，被青帮老掌柜收养。在码头帮工长大，见过三教九流。
+✅ Correct:
+> Don't betray your brothers. Do not bully civilians. You can take advantage of your
+> opponent but you can't insult your opponent's dignity. → Everyone can be challenged
+> - What if betraying your brothers can save more people?
 
-❌ 错误：
-> 出身贫寒。（贫寒到什么程度？当前有什么具体包袱？这和故事主线有什么关系？）
+❌ Error:
+> Value friendship, kindness and integrity. → Too abstract. To what extent does it
+> matter? Would you kill someone for your friends?
 
-**判断标准：** 当前处境能不能解释"角色为什么第一章在这个位置"？不能 → 处境和剧情脱节。
+**Judgement criteria:** Can you design a "what if..." challenge scenario for each value?
+Cannot → be too abstract and keep asking for details.
 
-**本节自检（过完进输出）：**
-- [ ] 出身和处境与世界设定一致（角色在世界观里有对应位置）？
-- [ ] 当前处境能解释角色在故事开场时的位置和状态？
-- [ ] 六个字段全部有值，没有空字段？
+**Self-check in this section (go to level 4 after passing this):**
+- [ ] Values at least 2 concrete behavioral boundaries (not abstract virtues)?
+- [ ] Each value can be challenged with "What if..."?
 
 ---
 
-## 常见错误
+### Layer 4: Abilities - What abilities does the character have?
 
-| 错误 | 表现 | 改法 |
+Let's talk clearly about "what the character can actually do and what the upper limit of
+output is." Ability is not a title - "Golden Core Realm" is not an ability description,
+"Golden Core Realm can fly with a sword" is.
+
+Ask this:
+> "What can the character actually do? What is the upper limit of the output? How many
+> hits can it take? What is the range? Under what circumstances will it fail?"
+
+✅ Correct:
+> He can detect the source of murderous intent within ten steps; he can pull an
+> eighty-pound bow with one hand and fire three arrows without missing the target; he
+> has a photographic memory but it takes time to recall.
+
+❌ Error:
+> Highly skilled in martial arts. (How tall? How many people can you beat? Who are you
+> similar to?)
+
+**Judgment criteria:** Can you answer "scope, upper limit, and restrictions" for each
+ability? Cannot → Not specific enough.
+
+**Self-check in this section (go to level 5 after passing this):**
+- [ ] Does the ability have a clear output upper limit (how many can it hit/how big is
+      its range/under what circumstances does it fail)?
+- [ ] Is the ability a specific performance ("Sword Flying"), not a title ("Golden Core
+      Realm")?
+
+---
+
+### Layer 5: Skills - specific things the character does
+
+Skills and abilities are different - abilities are "whether you can fight", skills are
+"can you cook or settle accounts". Skills have sources and limitations.
+
+Ask this:
+> "What specific skills has the character learned? Where did they learn it? - The
+> street skills learned by the dock workers are useless in court."
+
+✅ Correct:
+> He is a member of the lower-level Qinggang gang and has acquired the skills of
+> survival in the market (identifying people by listening to footsteps and identifying
+> identities by looking at clothes); he has learned abacus and bookkeeping from the
+> accountant.
+
+❌ Error:
+> Proficient in chess, calligraphy and painting. (Where’s the source? No one is born a
+> master.)
+
+**Judgment Criteria:** Are there any restrictions on the usage scenarios of skills? (In
+what situation is this skill useless?) No → Too versatile.
+
+**Self-check in this section (go to level 6 after passing it):**
+- [ ] At least 1 skill, with source description (where did you learn it/why did you get
+      it)?
+- [ ] Does the skill have usage scenario restrictions (in what places/situations is it
+      not applicable)?
+
+---
+
+### Layer 6: Environment - growth environment and current situation
+
+Talk clearly about "the environment in which the character grew up and where he is now."
+Origin determines the baseline of behavior - the choices of a poor boy will not be the
+same as those of a rich boy.
+
+Ask these two questions:
+1. "What environment did the character grow up in? How does it affect him now?"
+2. "Where is the character now? Is there any baggage that he can't shake off?"
+
+✅ Correct:
+> The son of an Orion at the foot of Cangwu Mountain, his parents died in a monster
+> attack on the village, and he was adopted by the old boss of the Qing Gang. I grew
+> up working as a dock worker and saw all kinds of people.
+
+❌ Error:
+> Born into poverty. (How poor is it? What specific burdens do you currently have? How
+> does this relate to the main line of the story?)
+
+**Judgment criteria:** Can the current situation explain "why the character is in this
+position in the first chapter"? Cannot → The situation is disconnected from the plot.
+
+**Self-test in this section (input and output after completion):**
+- [ ] Are the origin and situation consistent with the world setting (the character has
+      a corresponding position in the worldview)?
+- [ ] Does the current situation explain the character's position and state at the
+      beginning of the story?
+- [ ] All six fields have values and there are no empty fields?
+
+---
+
+## Common mistakes
+
+| Error | Performance | Correction |
 |------|------|------|
-| 标签代替设定 | "高冷/腹黑/傲娇" | 拆成世界观和定位——为什么高冷？什么经历导致的？ |
-| 假缺点 | "太正直/太善良/太信任别人" | 换成让角色做错选择的真缺点（冲动/多疑/自卑） |
-| 工具人配角 | 配角只为主角存在，拿走主角就消失 | 给配角自己的欲望和恐惧 |
-| 能力无边界 | "武功高强""能力很强" | 加具体上限——能打几个、范围多大、什么情况会失效 |
-| 处境和剧情脱节 | 出身写了一大堆，但和主线毫无关系 | 每个处境信息都要能回答"这对剧情有什么用" |
-| 代入感错位 | 主角是读者代入对象，不是读者仰望对象 | 主角不是完美偶像，是让读者觉得"换我也可能这么做"的人 |
+| Tags instead of settings | "Aloof/Dirty/Tsundere" | Divided into worldview and positioning - why aloof? What experience led to it? |
+| Fake flaws | "Too honest/too kind/too trusting of others" | Replaced with real flaws that make the character make wrong choices (impulsiveness/suspiciousness/low self-esteem) |
+| Tool man supporting role | The supporting role only exists for the protagonist, and will disappear if you take away the protagonist | Give the supporting role his own desires and fears |
+| Ability without boundaries | "Strong martial arts" and "Strong ability" | Add specific upper limits - how many can be hit, what is the range, and under what circumstances it will fail |
+| The situation is disconnected from the plot | I wrote a lot about my background, but it has nothing to do with the main plot | Every situation information must be able to answer "What is the use of this to the plot" |
+| The sense of substitution is misplaced | The protagonist is the person the readers substitute for, not the person the readers look up to | The protagonist is not the perfect idol, but the person who makes the readers feel "I might do the same thing if it were me" |
 
 ---
 
-## 输出去哪
+## Where does the output go?
 
-`settings/character-setting/<拼音id>.md`，每角色一文件。
+`settings/character-setting/<pinyin-id>.md`, one file per character.
 
-### 持有物
+### Possessions
 
-角色当前拥有的物品、装备、道具等。归档时 updater 根据正文变化自动增删更新。
+The items, equipment, props, etc. currently owned by the character. When archiving, the
+updater automatically adds, deletes, and updates based on text changes.
 
 ```markdown
-### 持有物
-| 名称 | 类型 | 来源 | 状态 | 备注 |
+### Possessions
+| Name | Type | Source | Status | Remarks |
 |------|------|------|------|------|
-| 青霜剑 | 法器 | 黑风寨缴获 | 使用中 | 剑身有裂纹，需修复 |
-| 培元丹×3 | 丹药 | 宗门月例 | 未使用 | — |
+| Qingshuang Sword | Magic weapon | Seized by Heifeng Village | In use | The sword has cracks and needs to be repaired |
+| Peiyuan Pill × 3 | Pill | Sect Monthly Rules | Unused |, |
 ```
 
-- **类型:** 物品的大类标识（法器/丹药/装备/证件/武器/情报等），不限
-- **来源:** 从哪获得的（缴获/购买/赠予/炼制等）
-- **状态:** 使用中/未使用/已消耗/已损毁/已转赠 —— 归档时 updater 按剧情变更
+- **Type:** The general category identification of the item (magic
+  weapon/elixir/equipment/document/weapon/intelligence, etc.), no limit
+- **Source:** Where did you get it (capture/purchase/gift/refining, etc.)
+- **Status:** In use/unused/consumed/destroyed/rewarded - when archived updater changes
+  according to the plot
 
-### 经历
+### Experience
 
-角色参与过的重大事件、探索过的地点、完成的任务。不限题材——秘境探索、副本攻略、案件调查、战场经历都算"经历"。
+Major events the character has participated in, locations explored, and tasks completed.
+There is no limit to the subject matter - secret realm exploration, dungeon strategy,
+case investigation, and battlefield experience all count as "experience".
 
 ```markdown
-### 经历
-| 事件/地点 | 类型 | 结果 | 状态 |
+### Experience
+| Event/Place | Type | Result | Status |
 |-----------|------|------|------|
-| 苍梧遗迹 | 秘境探索 | 获得培元丹配方 | 进行中 |
-| 万骨窟 | 秘境探索 | 获得玄冥骨甲 | 已完成 |
+| Cangwu Ruins | Secret Realm Exploration | Obtaining the Peiyuan Pill Formula | In Progress |
+| Ten Thousand Bone Cave | Secret Realm Exploration | Obtain Xuanming Bone Armor | Completed |
 ```
 
-- **类型:** 事件大类（秘境探索/副本攻略/任务/战场/调查等），不限
-- **结果:** 主要收获、变化
-- **状态:** 进行中/已完成 —— 归档时 updater 更新
+- **Type:** Event categories (secret exploration/dungeon
+  guide/mission/battlefield/investigation, etc.), no limit
+- **Results:** Main takeaways, changes
+- **Status:** In progress/completed - updated by updater when archiving
 
-### 剧情履历
+### Plot resume
 
-记录角色在各章中实际做了什么、关系怎么变。归档时 updater 从正文提取追加。
+Record what the characters actually do in each chapter and how their relationships
+change. When archiving, the updater extracts and appends from the body.
 
 ```markdown
-### 剧情履历
+### Plot resume
 
-#### 第 1 卷第 3 章
-- **行为:** 击杀了黑风寨寨主赵虎，救出被掳村民
-- **关系变化:** 与黑风寨残部变为敌对；被救村民张伯欠他一条命
+#### Volume 1 Chapter 3
+- **Behavior:** Killed Zhao Hu, the leader of Black Wind Village, and rescued the captive villagers
+- **Relationship changes:** Became hostile with the remnants of Heifeng Village; the rescued villager Zhang Bo owed him a life
 
-#### 第 1 卷第 5 章
-- **行为:** 拒绝了青帮老掌柜的拉拢，选择独自追查妖兽来源
-- **关系变化:** 与青帮从合作变为疏远；林燕暗中留意他的动向
+#### Volume 1 Chapter 5
+- **Behavior:** Rejected the solicitation of the old shopkeeper of the Qing Gang and chose to trace the source of the monster alone
+- **Changes in relationship:** Cooperation with the Qinggang changed to alienation; Lin Yan secretly paid attention to his movements
 ```
 
-- **行为:** 角色在本章实际做的事（含对象、结果），一句话说清
-- **关系变化:** 与谁的关系发生了什么性质变化（敌对/合作/疏远/欠人情等），无则空
+- **Behavior:** What the character actually did in this chapter (including objects and
+  results), stated clearly in one sentence
+- **Relationship changes:** What changes have occurred in the nature of the relationship
+  with whom (hostility/cooperation/estrangement/owing favors, etc.), if not, it will be
+  empty
 
 ---
 
-## 案例
+## Case
 
-以下案例供聊到对应角色类型时参考。
+The following cases are for reference when talking about the corresponding role types.
 
-### 案例一：仙侠玄幻——主角沈牧
+### Case 1: xianxiaxuanhuan, Protagonist Shen Mu
 
 ```markdown
-### 基本信息
-- **代号**: shen-mu
-- **名称**: 沈牧
-- **故事角色**: protagonist
-- **外貌**: 身形精瘦，手掌粗糙，左眉一道旧疤
-- **背景**: 苍梧山脚猎户之子，父母死于妖兽袭村，被青帮老掌柜收养
-- **语言特征**: 说话带码头粗粝气，急了眼骂娘，口头禅"他奶奶的"
+### Basic information
+- **Codename**: shen-mu
+- **Name**: Shen Mu
+- **Story Role**: protagonist
+- **Appearance**: Slender build, rough palms, an old scar on the left eyebrow
+- **Background**: The son of Orion at the foot of Cangwu Mountain, his parents died when monsters attacked the village, and he was adopted by the old shopkeeper of the Qing Gang
+- **Language Features**: He speaks in a rough voice, scolds his mother when he is anxious, and his catchphrase is "his grandma's"
 
-### 认知6层模型
-- **世界观**: 强者制定规则，弱者遵守规则。抱怨没用，变强才有用。
-- **自我定位**: 觉得自己冷静理性谋定后动，但实际遇到亲友遇险第一反应是冲上去，理性是事后找补的。
-- **价值观**: 不背叛兄弟。不欺压平民。可以利用对手但不能侮辱对手的尊严。
-- **能力**: 能在十步内察觉杀气来源；单手拉八十斤弓，三箭连发不脱靶；过目不忘但需要时间回忆。
-- **技能**: 青帮底层混出来的市井生存术（听脚步辨人数、看衣着断身份）；跟账房先生学过珠算和记账。
-- **环境**: 在码头帮工长大，见过三教九流。目前的落脚点是青帮老掌柜给的一间偏房，在码头附近的巷子里。
+### Cognitive 6-layer model
+- **World view**: The strong make the rules and the weak follow the rules. Complaining is useless, becoming stronger is useful.
+- **Self-positioning**: I think I am calm, rational and make decisions before taking action, but in reality, when my relatives and friends are in danger, my first reaction is to rush forward, and my rationality is to make amends afterwards.
+- **Values**: Never betray your brothers. Do not bully civilians. You can take advantage of your opponent but you can't insult your opponent's dignity.
+- **Ability**: Can detect the source of murderous intent within ten steps; can pull an 80-pound bow with one hand and fire three arrows without missing the target; has photographic memory but needs time to recall.
+- **Skills**: Survival skills from the bottom of the Qing Gang (identifying people by footsteps, identifying identities by looking at clothes); learned abacus and bookkeeping from the accountant.
+- **Environment**: I grew up working as a dock worker and saw all kinds of people. The current place of residence is a side room given by the old shopkeeper of the Qinggang, in an alley near the dock.
 
-### 剧情履历
+### Plot resume
 
-#### 第 1 卷第 3 章
-- **行为:** 击杀了黑风寨寨主赵虎，救出被掳村民
-- **关系变化:** 与黑风寨残部变为敌对；被救村民张伯欠他一条命
+#### Volume 1 Chapter 3
+- **Behavior:** Killed Zhao Hu, the leader of Black Wind Village, and rescued the captive villagers
+- **Relationship changes:** Became hostile with the remnants of Heifeng Village; the rescued villager Zhang Bo owed him a life
 
-#### 第 1 卷第 5 章
-- **行为:** 拒绝了青帮老掌柜的拉拢，选择独自追查妖兽来源
-- **关系变化:** 与青帮从合作变为疏远；林燕暗中留意他的动向
+#### Volume 1 Chapter 5
+- **Behavior:** Rejected the solicitation of the old shopkeeper of the Qing Gang and chose to trace the source of the monster alone
+- **Changes in relationship:** Cooperation with the Qinggang changed to alienation; Lin Yan secretly paid attention to his movements
 ```
 
-### 案例二：都市异能——配角林燕
+### Case 2: Urban Supernatural Power - Supporting Actor Lin Yan
 
 ```markdown
-### 基本信息
-- **代号**: lin-yan
-- **名称**: 林燕
-- **故事角色**: supporting
-- **外貌**: 三十出头，穿着不起眼，走路没声音，人群中多看一眼都记不住的脸
-- **背景**: 江城市棚户区长大，父亲坐牢、母亲在工厂打工。十三岁开始混街头
-- **语言特征**: 说话不带脏字但句句带刺，口头禅"你说呢"
+### Basic information
+- **Codename**: lin-yan
+- **Name**: Lin Yan
+- **Story Role**: supporting
+- **Appearance**: He is in his early thirties, dressed inconspicuously, walks silently, and has a face that cannot be remembered even if he is seen in the crowd.
+- **Background**: I grew up in a shantytown in Jiangcheng City. My father is in prison and my mother works in a factory. Started living on the streets at the age of thirteen
+- **Language Features**: Speech without swear words, but every sentence is pungent, and the catchphrase is "What do you say?"
 
-### 认知6层模型
-- **世界观**: 这世道没有黑白，只有"惹不惹得起"。特管处和暗网都不是好东西，但跟他们作对的人更惨。
-- **自我定位**: 觉得自己是个小心翼翼的中间人，不站队、不出头、活得久。但偶尔会在不该出手的时候出手帮人——事后自己都无法解释。
-- **价值观**: 不碰毒品和人口买卖。可以出卖情报但不能出卖命。欠的人情一定要还。
-- **能力**: 能记住见过一面的人的脸和声纹，三年后还能认出来。开锁——从普通挂锁到电子密码锁，都能在三分钟内打开。伪装——换了装束和走路姿势后，熟人迎面走过都认不出。
-- **技能**: 江城市区活地图——知道所有监控盲区、暗巷、废弃建筑。跟老锁匠学过三个月开锁，后来自己练出来的。
-- **环境**: 给暗网跑腿送过三年货，知道太多不该知道的事。特管处不知道她的存在。现在住在城南一间出租屋，窗户对着后巷，随时能翻窗走。
+### Cognitive 6-layer model
+- **World view**: There is no right or wrong in this world, only "what you can't afford to provoke". Neither the Special Administrative Office nor the Dark Web are good things, but those who go against them are even worse.
+- **Self-positioning**: I feel that I am a careful middleman, not taking sides, not standing out, and living as long as possible. But occasionally he would help others when he shouldn't have done so - and he couldn't explain it afterwards.
+- **Values**: No drugs or human trafficking. You can sell information but not your life. The favors owed must be repaid.
+- **Ability**: Can remember the face and voiceprint of someone you have met once, and still recognize it three years later. Lock opening - from ordinary padlocks to electronic combination locks, they can all be opened within three minutes. Disguise - After changing your clothes and walking posture, you won't be able to recognize someone you know when they walk by you.
+- **Skills**: Jiangcheng City Urban Living Map - Know all surveillance blind spots, dark alleys, and abandoned buildings. I learned lockpicking from an old locksmith for three months, and then I learned it myself.
+- **Environment**: I have been delivering goods to the dark web for three years, and I know too many things that I shouldn’t know. The Special Branch was unaware of her existence. Now I live in a rental house in the south of the city. The window faces the back alley and I can climb out at any time.
 ```
 
 ---
 
-## 两步总检（聊完后走）
+## Two-step general inspection (leave after chatting)
 
-全部聊完、写入文件后，走两步自检。不过不进下一阶段。
+After you have finished chatting and writing the file, do a two-step self-check. But
+don't go to the next stage.
 
-### 第一步：格式检查
+### Step One: Format Check
 
-- [ ] 文件名是拼音 id，不是中文？
-- [ ] `故事角色` 是三个之一（protagonist / antagonist / supporting）？
-- [ ] 基本信息字段完整（代号 / 名称 / 故事角色 / 外貌 / 背景 / 语言特征）？
-- [ ] 六层全部有值，没有空字段？
+- [ ] The file name is Pinyin ID, not Chinese?
+- [ ] `story-role` is one of the three (protagonist / antagonist / supporting)?
+- [ ] Are the basic information fields complete (codename/name/story
+      character/appearance/background/language characteristics)?
+- [ ] All six levels have values and no empty fields?
 
-### 第二步：可用性检查
+### Step Two: Availability Check
 
-| 检查项 | 怎么查 | 不通过处理 |
+| Check items | How to check | Failed processing |
 |--------|--------|-----------|
-| 行为可推断 | 给角色意外情境，能说出角色反应？ | 说不出→退回，设定不够具体 |
-| 主角真缺点 | 缺点是否会在第 3-5 章导致角色做错选择？ | 假缺点→退回重写 |
-| 配角自驱动 | 拿走主角，配角还有事做吗？ | 工具人→退回加自驱动目的 |
-| 能力有边界 | 每个能力有明确输出上限？ | "很强"无边界→退回加限制 |
-| 技能有来源 | 每个技能交代了从哪学的？ | 无来源→退回补充 |
-| 与世界一致 | 出身和处境在世界观里有对应位置？ | 脱节→退回调整 |
+| Behavior can be inferred | If the character is given an unexpected situation, can you tell the character's reaction? | Can't tell → Return, the setting is not specific enough |
+| Protagonist’s True Weaknesses | Will the shortcomings cause the character to make wrong choices in Chapters 3-5? | False shortcomings → return and rewrite |
+| Supporting characters are self-driven | Take away the protagonist, will the supporting characters still have something to do? | Toolman → return plus self-driving purpose |
+| Abilities have boundaries | Is there a clear output upper limit for each ability? | "Very strong" without boundaries → return and add restrictions |
+| Skills have sources | Where did you learn each skill? | No source → Return for supplement |
+| Consistent with the world | Do origins and circumstances have corresponding positions in the worldview? | Disjointed→Return to Adjustment |
 
 ---
 
-## 第三步：角色活检（场景扮演测试）
+## Step Three: Character Biopsy (Scenario Play Test)
 
-格式和可用性检查通过后，让角色在场景中**活一次**。Agent 根据角色的6层设定动态生成测试场景，然后以角色身份回答：选什么、怎么做、说什么。作者判断"像不像"。
+After the format and usability checks pass, let the character live in the scene for
+once. Agent dynamically generates test scenarios based on the 6-layer settings of the
+character, and then answers as the character: what to choose, how to do it, and what to
+say. The author determines whether it is "like or not".
 
-**规则：** 场景从角色的具体设定生长——他有层3的价值观冲突，场景就压那个冲突。他有层1的世界观信条，场景就撞那个信条。不跑通用题。
+**Rules:** The scene grows from the character's specific settings - he has a level 3
+value conflict, and the scene overrides that conflict. He has a level 1 world view and
+creed, and the scene conforms to that creed. Don’t take general questions.
 
-### 流程
+### Process
 
-1. Agent 读角色6层 + 语言特征
-2. Agent 根据设定生成 **3 个测试场景**（见下方案例），每个场景附带一个明确的问题
-3. Agent 以角色身份回答——给出角色的选择、行为、原话
-4. 作者逐条评判："像" / "不太像" / "根本不对"
-5. 有"不太像"或"根本不对" → Agent 回溯定位偏差出在哪一层 → 回到对应层补充讨论 → 修改后重测该场景
+1. Agent reads character level 6 + language features
+2. Agent generates **3 test scenarios** according to the settings (see the case below),
+   each scenario comes with a clear question
+3. Agent answers as a character - giving the character's choices, actions, and original
+   words
+4. The author evaluates each item: "similar" / "not very similar" / "not at all right"
+5. There are "not very similar" or "not right at all" → Agent traces back to which layer
+   the positioning deviation occurs → returns to the corresponding layer for additional
+   discussion → retests the scenario after modification
 
-### 场景生成原则
+### Scene generation principles
 
-| 测试维度 | 目标层 | 场景从哪里长出来 |
+| Test dimensions | Target layer | Where the scene grows from |
 |---------|--------|----------------|
-| 价值观冲突 | 层3 | 从角色的价值观条目生长——他有"不背叛兄弟"，场景就设兄弟和正义二选一 |
-| 世界观冲击 | 层1 | 从角色的世界观信条生长——他信"强者制定规则"，场景就让他目睹弱者赢了强者 |
-| 自我认知偏差 | 层2 | 从自我定位和实际行为的差距生长——他觉得"我是魔头"，场景就让他救了一个不该救的人 |
-| 处境反应 | 层6+语言特征 | 从出身和处境生长——码头长大的，场景就在码头和官差起冲突 |
-| 能力极限 | 层4 | 从能力上限生长——他有上限，场景就压过那条线 |
+| Values Conflict | Layer 3 | Grows from the character's value items - he has "not betraying brothers", and the scene has a choice between brothers and justice |
+| World view impact | Layer 1 | Grows from the character's world view creed - he believes that "the strong make the rules", the scene allows him to witness the weak defeat the strong |
+| Self-perception bias | Layer 2 | Grows from the gap between self-positioning and actual behavior - he felt "I am a devil", and the scene made him save a person who shouldn't be saved |
+| Situation reaction | Layer 6+ language features | Growing up from birth and environment - growing up on the dock, the scene is the conflict between the dock and the official |
+| Limit of Ability | Layer 4 | Grow from the upper limit of ability - if he has the upper limit, the scene will exceed that line |
 
-### 案例
+### Case
 
-> **角色：沈牧（仙侠，码头出身，相信强者制定规则）**
->
-> Agent 生成的测试场景：
->
-> 场景1（压层1 世界观）：你看见一个手无寸铁的凡人指着金丹修士的鼻子骂。修士抬手要杀人。周围没人敢管。你会怎么做？你心里怎么想？
->
-> 场景2（压层3 价值观+层2 自我定位）：你发现你欠了人情的青帮老掌柜在贩卖妖兽幼崽给炼邪功的散修。你答应过他欠的命一定会还。他让你把风。你怎么办？
->
-> 场景3（压层6 处境+语言特征）：你带着伤回到码头，发现你的偏房被一个外地来的商人占了。他扔给你一袋钱让你滚。周围都是你认识的码头帮工。你怎么说、怎么做？
->
-> Agent 以沈牧身份回答的场景1：
-> 选择：冲上去拉开凡人，挡在中间。
-> 行为：左手推凡人退三步，右手按住弓弦，不拔箭。眼睛盯着修士的手。
-> 原话："他还不了你一巴掌。你要杀就杀，别在码头脏了我的地。"
-> 心里想：这人找死不关我事，但修士在码头乱杀人，官府封港我他妈去哪打渔。
->
-> 作者判断："像。" → 通过。
->
-> 如果作者说"不像——沈牧不会管闲事"→ Agent 回退分析：层1世界观有冲突——他信"强者制定规则"，但行为选择了介入。是层1不够准确，还是层2有未表达的自我定位（他觉得自己冷血但实际也有底线）？→ 补充讨论后，重测场景1。
+> **Character: Shen Mu (xianxia (immortal cultivation), born in the dock, believes that the strong make the
+> rules)** Test scenario generated by Agent: Scene 1 (Layer 1 World View): You see an
+> unarmed mortal pointing at the Jindan monk’s nose and cursing. The monk raised his
+> hand to kill. No one dares to care around. what will you do? What do you think?
+> Scenario 2 (Layer 3 Values + Layer 2 Self-positioning): You find that the old
+> shopkeeper of the Qing Gang to whom you owe a favor is selling monster cubs to rogue
+> cultivators who practice evil arts. You promised that you would repay the life you
+> owed him. He lets you look out. What should you do? Scene 3 (Layer 6 Situation +
+> Language Features): You return to the dock injured and find that your side room is
+> occupied by a businessman from out of town. He throws you a bag of money and tells
+> you to get lost. Surrounded by dock workers you know. What do you say and do?
+> Scenario 1 where Agent answered as Shen Mu: Choice: rush forward and pull away the
+> mortal, blocking the middle. Behavior: Push the mortal back three steps with your
+> left hand, hold the bow string with your right hand, and do not pull out the arrow.
+> His eyes were fixed on the monk's hands. Original words: "He can't give you a slap
+> in the face. If you want to kill me, kill me. Don't dirty my land at the dock." I
+> thought to myself: It's none of my business that this person is seeking death, but
+> the monks are killing people at the dock and the government has closed the harbor.
+> Where the hell am I going to fish. Author's judgment: "Like." → Passed. If the
+> author says "It's not like that - Shen Mu doesn't mind his own business" → Agent
+> fallback analysis: There is a conflict in the world view at level 1 - Thaksin
+> believed that "the strong make the rules", but chose to intervene. Is it that level
+> 1 is not accurate enough, or does level 2 have an unexpressed self-positioning (he
+> thinks he is cold-blooded but actually has a bottom line)? → After additional
+> discussion, retest scenario 1.
 
-### 活检通过标准
+### Biopsy passing criteria
 
-三个场景全部作者判定"像" → 角色设定可用。无需追求每个细节都完美，只要角色在关键冲突上的反应可预测、一致，就算合格。
+All three scenes were judged "like" by the author → character settings are available.
+There is no need to strive for perfection in every detail, as long as the characters’
+reactions to key conflicts are predictable and consistent.

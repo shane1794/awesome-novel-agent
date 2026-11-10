@@ -1,2 +1,2 @@
-# 打包下载时排除 reference/（视频、截图等大文件）
+# Exclude reference/ (videos, screenshots, and other large files) when downloading an archive
 reference/ export-ignore

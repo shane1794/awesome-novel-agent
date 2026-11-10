@@ -1,41 +1,50 @@
-# 悬疑刑侦反AI规则
+# Suspense Crime Investigation Anti-AI Rules
 
-> 适用题材：suspense-crime
+> Applicable themes: suspension-crime
 
-## 高频AI病句正反例
+## High-Frequency AI-Style Bad Sentences: Incorrect vs. Correct Examples
 
-### 1. 线索发现
+### 1. Clues discovery
 
-❌ "他注意到桌上有一支钢笔，这个细节引起了他的注意"
-✅ "桌上有一支钢笔。他拿起来看了看，墨水是新的。用过，但最近没灌。"
+❌ "He noticed a pen on the table, and this detail caught his attention" ✅ "There was a
+pen on the table. He picked it up and looked at it. The ink was new. It had been used,
+but it had not been filled recently."
 
-### 2. 推理直述
+### 2. Direct reasoning
 
-❌ "他推断出凶手一定是内部人员"
-✅ "他盯着那张名单。圈了三个人。把纸翻过来，背面是空的。"
+❌ "He concluded that the murderer must be an insider" ✅ "He stared at the list. He
+circled three people. Turning the paper over, the back was empty."
 
-❌ "他似乎想到了什么"
-✅ "他停了一下。手指在桌上敲了两下。然后把椅子往后推了推。"
+❌ "He seemed to have thought of something" ✅ "He paused. He tapped his fingers on the
+table twice. Then he pushed the chair back."
 
-### 3. 排比式线索分析
+### 3. Comparative clue analysis
 
-❌ "也许是情杀，也许是财杀，也许是仇杀"
-✅ "他一根烟接一根烟地抽。烟灰缸满了。地上还有几个揉成团的纸团。"
+❌ "Maybe it was love killing, maybe it was financial killing, maybe it was vendetta" ✅
+"He smoked one cigarette after another. The ashtray was full. There were still a few
+crumpled paper balls on the ground."
 
-### 4. 情绪直述
+### 4. Direct emotional statements
 
-❌ "他感到案情愈发扑朔迷离"
-✅ "他揉了揉眼睛。纸上的字开始晃。看了一晚上，什么都没想出来。"
+❌ "He felt that the case was becoming more and more confusing" ✅ "He rubbed his eyes.
+The words on the paper began to shake. After reading it all night, he couldn't think of
+anything."
 
-### 5. 真相揭露
+### 5. Truth revealed
 
-❌ "原来一切都在他的掌控之中"
-✅ "他把文件夹合上。夹子边缘磨毛了，用了挺久。他靠回椅背，叹了口气。"
+❌ "It turned out that everything was under his control" ✅ "He closed the folder. The
+edges of the folder were frayed and had been used for a long time. He leaned back in his
+chair and sighed."
 
-## 写作要点
+## Writing points
 
-1. **线索写细节** — 不写"注意到"，写"钢笔是新的""烟灰缸满了"
-2. **推理写动作** — 揉眼睛、敲桌子、翻来覆去看同一张纸
-3. **情绪写状态** — 疲惫、焦虑、卡住了，写具体的身体反应
-4. **真相用画面收尾** — 不写"原来是这样"，用一个意味深长的画面结束
-5. **节奏要压** — 悬疑不能一直快，适当慢下来写等待和煎熬
+1. **Clues write details**, Instead of writing "noticed", write "the pen is new" and
+   "the ashtray is full"
+2. **Inferential Writing Actions**, Rub your eyes, knock on the table, look at the same
+   piece of paper over and over again
+3. **Emotional writing status** - tired, anxious, stuck, write specific physical
+   reactions
+4. **The truth ends with a picture**, Instead of writing "So that's how it is", end with
+   a meaningful picture.
+5. **The pace must be tight** - Suspense cannot be fast all the time, slow down
+   appropriately to write about waiting and suffering

@@ -1,104 +1,117 @@
-# 写作记忆格式规范
+# Writing memory format specification
 
-> 写作记忆系统：`memory/` 下为动态记忆（按阶段分 4 个文件），`knowledge/` 下为永久记忆（晋升后的高频条目）。每个条目记录作者在写作过程中提供的正反反馈，供后续流程参考。
+> Writing memory system: Dynamic memory under `memory/` (divided into 4 files by
+> stage), permanent memory under `knowledge/` (high-frequency entries after
+> promotion). Each entry records the positive and negative feedback provided by the
+> author during the writing process for reference in subsequent processes.
 
 ---
 
-## 一、文件结构
+## 1. File structure
 
 ```
-<平台目录>/
-├── memory/                          # 动态记忆（各环节实时记录）
-│   ├── volume-memory.md             # 卷纲环节记忆
-│   ├── chapter-memory.md            # 章纲环节记忆
-│   ├── prompt-memory.md             # 提示词环节记忆
-│   └── writing-memory.md            # 正文写作环节记忆
+<Platform Directory>/
+├── memory/ # Dynamic memory (real-time recording of each link)
+│ ├── volume-memory.md # Volume link memory
+│ ├── chapter-memory.md # Chapter link memory
+│ ├── prompt-memory.md # Prompt word link memory
+│ └── writing-memory.md # Text writing session memory
 │
 └── knowledge/
-    └── permanent-memory.md          # 永久记忆（从 memory/ 晋升的高频条目）
+    └── permanent-memory.md # Permanent memory (high-frequency entries promoted from memory/)
 ```
 
-> 平台目录由 init.py 按 `--platform` 决定：Claude Code → `.claude/`、OpenCode → `.opencode/`、Reasonix → `.reasonix/`、Codex → `.codex/`、ZCode → `.zcode/`、dsh → `.dsh/`、Grok Build → `.grok/`。
+> The platform directory is determined by init.py by `--platform`: Claude Code →
+> `.claude/`, OpenCode → `.opencode/`, Reasonix → `.reasonix/`, Codex → `.codex/`,
+> ZCode → `.zcode/`, dsh → `.dsh/`, Grok Build → `.grok/`.
 
-## 二、文件头
+## 2. File header
 
-每个文件以元信息头部开头：
+Each file begins with a meta-information header:
 
 ```markdown
-# {阶段}写作记忆
+# {stage}writing Memory
 
-> {用途描述}
+> {Description of use}
 
-**相关 Agent:** {agent 列表}
-**相关 Skill:** {skill 列表}
+**Related Agent:** {agent list}
+**Related Skills:** {skill list}
 
 ---
 
-## 条目列表
+## Entry list
 ```
 
-## 三、条目格式
+## 3. Entry format
 
-每条记忆包含以下字段：
+Each memory contains the following fields:
 
-| 字段 | 必填 | 说明 |
+| Field | Required | Description |
 |------|------|------|
-| **阶段** | 是 | 来源阶段：卷纲 / 章纲 / 提示词 / 正文 |
-| **类型** | 是 | 正面案例 / 反面案例 / 规则 |
-| **领域** | 是 | 该阶段下的细分领域（见下文各文件 §四） |
-| **原文** | 是 | 作者反馈原文摘要，保留关键语句 |
-| **结论** | 是 | 提炼为可复用的规则或操作指引 |
-| **场景** | 是 | 什么情况下这条规则适用 |
-| **来源** | 是 | 触发本次记录的 Agent |
-| **日期** | 是 | YYYY-MM-DD |
+| **Stage** | Yes | Source stage: Volume outline/Chapter outline/Prompt words/Text |
+| **Type** | Yes | Positive Case / Negative Case / Rule |
+| **Field** | Yes | Subdivided areas under this stage (see §4 of each document below) |
+| **Original text** | Yes | The author provides feedback on the original summary and retains key sentences |
+| **Conclusion** | Yes | Distilled into reusable rules or operational guidelines |
+| **Scenario** | Yes | When does this rule apply |
+| **Source** | Yes | The Agent that triggered this recording |
+| **Date** | Yes | YYYY-MM-DD |
 
-完整写法：
+Complete writing:
 
 ```markdown
-### {序号}. {类型}：{一句话摘要}
+### {Serial number}. {Type}: {One sentence summary}
 
-- **阶段:** {阶段名}
-- **类型:** {正面案例|反面案例|规则}
-- **领域:** {领域}
-- **原文:** {作者反馈原文摘要}
-- **结论:** {提炼的规则}
-- **场景:** {适用条件}
-- **来源:** {agent 名}
-- **日期:** {YYYY-MM-DD}
-- **use_count:** {引用次数，晋升用}
-- **last_used:** {YYYY-MM-DD，最近引用日期}
+- **Phase:** {Phase name}
+- **Type:** {positive case|negative case|rule}
+- **Field:** {Field}
+- **Original text:** {Author’s feedback summary}
+- **Conclusion:** {refined rules}
+- **Scenario:** {Applicable conditions}
+- **Source:** {agent name}
+- **Date:** {YYYY-MM-DD}
+- **use_count:** {number of citations, used for promotion}
+- **last_used:** {YYYY-MM-DD, last cited date}
 ```
 
-> `use_count` 和 `last_used` 用于追踪条目使用频率，由 agent 在引用时递增，updater 在兜底时据此执行晋升/降级。
+> `use_count` and `last_used` are used to track the frequency of entry usage. They are
+> incremented by the agent when referencing, and the updater performs
+> promotion/demotion based on this when referencing.
 
-## 四、条目生命周期
+## 4. Item life cycle
 
 ```
-memory/ 条目 ──use_count >= 4──→ .claude/knowledge/permanent-memory.md
-permanent-memory.md 条目 ──连 3 次 sweep 未使用──→ 标记待移除 → 作者确认后删除
+memory/ entry ──use_count >= 4──→.claude/knowledge/permanent-memory.md
+permanent-memory.md entry──3 consecutive sweeps Unused──→ Mark for removal → Delete after confirmation by the author
 ```
 
-### 4.1 晋升条件（memory → permanent）
+### 4.1 Promotion conditions (memory → permanent)
 
-| 条件 | 说明 |
+| Conditions | Description |
 |------|------|
-| use_count >= 4 | 该条记忆已被不同 agent/环节引用 4 次以上 |
-| 结论清晰可复用 | 晋升前确认结论是通用规则而非一次性场景 |
-| 无冲突 | 与已有永久记忆无矛盾 |
+| use_count >= 4 | This memory has been referenced more than 4 times by different agents/links |
+| The conclusion is clear and reusable | Confirming the conclusion before promotion is a general rule rather than a one-time scenario |
+| No conflict | No conflict with existing permanent memory |
 
-晋升操作：从 `memory/*.md` 移除该条目，追加到 `.claude/knowledge/permanent-memory.md`，保留所有原始字段 + `[promoted YYYY-MM-DD]` 标记。
+Promotion operation: Remove the entry from `memory/*.md`, append to
+`.claude/knowledge/permanent-memory.md`, retaining all original fields + `[promoted
+YYYY-MM-DD]` tags.
 
-### 4.2 降级条件（permanent → 移除）
+### 4.2 Downgrade conditions (permanent → remove)
 
-| 条件 | 说明 |
+| Conditions | Description |
 |------|------|
-| 连续 3 次 sweep 中 `last_used` 未更新 | 3 个写作周期内无任何 agent 引用该条目 |
-| 作者确认 | 移除前询问作者确认 |
+| `last_used` has not been updated in 3 consecutive sweeps | No agent has cited this entry within 3 writing cycles |
+| Author confirmation | Ask author for confirmation before removal |
 
-降级操作：展示给作者确认后删除条目。如果作者认为仍有价值，重置 `skip_count = 0` 保留。
+Downgrade operation: Show the author for confirmation and then delete the entry.
+Resetting `skip_count = 0` is reserved if the author thinks there is still value.
 
-### 4.3 使用追踪规则
+### 4.3 Use tracking rules
 
-- agent 在引用某条记忆并应用到产出后，递增该条目的 `use_count` 并更新 `last_used`
-- 同一写作环节内多次引用同一条目只计 1 次（防止同环节刷计数）
-- updater sweep 时检查 `last_used`，跨环节未更新则累加 `skip_count`
+- After the agent references a certain memory and applies it to the output, it
+  increments the entry's `use_count` and updates `last_used`
+- Multiple references to the same item in the same writing session will only be counted
+  once (to prevent the count from being reset in the same session)
+- Check `last_used` during updater sweep. If cross-link is not updated, `skip_count`
+  will be accumulated.

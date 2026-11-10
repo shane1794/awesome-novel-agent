@@ -1,41 +1,52 @@
-# 悬疑灵异反AI规则
+# Suspense Paranormal Anti-AI Rules
 
-> 适用题材：suspense-paranormal、suspense-brained
+> Applicable themes: suspension-paranormal, suspension-brained
 
-## 高频AI病句正反例
+## High-Frequency AI-Style Bad Sentences: Incorrect vs. Correct Examples
 
-### 1. 灵异氛围堆砌
+### 1. Building a supernatural atmosphere
 
-❌ "阴森的气息弥漫在空气中，让人毛骨悚然"
-✅ "走廊灯又闪了一下。他抬头看了一眼，灯泡蒙着灰，晃了半天自己停了。他低头继续走。"
+❌ "A sinister atmosphere filled the air, making people's hair stand on end." ✅ "The
+corridor light flashed again. He looked up and saw that the light bulb was covered with
+dust. After shaking for a long time, it stopped. He lowered his head and continued
+walking."
 
-### 2. 恐怖直述
+### 2. Horror narrative
 
-❌ "他感到一阵恐惧，后背发凉"
-✅ "他把手缩进袖子里。袖子是凉的，但他没出门。屋里比外面还冷。"
+❌ "He felt a sense of fear and a chill down his back" ✅ "He put his hands into his
+sleeves. The sleeves were cold, but he didn't go out. It was colder inside the house
+than outside."
 
-❌ "黑暗中仿佛有什么东西在注视着他"
-✅ "他蹲下来，假装系鞋带。余光往上看了一眼。什么都没有。他站起来，走了。"
+❌ "There seemed to be something watching him in the darkness" ✅ "He squatted down and
+pretended to tie his shoes. He glanced up from the corner of his eye. There was nothing.
+He stood up and left."
 
-### 3. 排比式感知
+### 3. Parallel Perception Lists
 
-❌ "也许是风声，也许是幻觉，也许什么都没有"
-✅ "他站了一会儿。风把窗帘吹起来，又落下去。他等了几秒，窗帘又动了。他把窗户关上了。"
+❌ "Maybe it was the sound of the wind, maybe it was an illusion, maybe it was nothing" ✅
+"He stood for a while. The wind blew the curtains up and then fell down. He waited for a
+few seconds, and the curtains moved again. He closed the window."
 
-### 4. 超自然描写
+### 4. Supernatural descriptions
 
-❌ "一股神秘的力量将门推开"
-✅ "他看着门。门慢慢开了。他往后退了一步。门又关上了一点。他等着。"
+❌ "A mysterious force pushed the door open" ✅ "He looked at the door. The door slowly
+opened. He took a step back. The door closed a little more. He waited."
 
-### 5. 情绪直述
+### 5. Direct emotional statements
 
-❌ "他心跳加速，意识到有什么不对劲"
-✅ "他咽了口唾沫。嗓子眼发紧，咽不下去。脚在地上挪了挪，找了个能跑的角度。"
+❌ "His heart beat faster and he realized something was wrong" ✅ "He swallowed. His
+throat was tight and he couldn't swallow. He moved his feet on the ground and found an
+angle where he could run."
 
-## 写作要点
+## Writing points
 
-1. **灵异写日常细节** — 灯泡闪、窗帘动、门响，用日常物品承载恐怖
-2. **恐惧写身体** — 嗓子紧、手缩进袖子、找逃跑角度，不是"毛骨悚然"
-3. **等待比看见更恐怖** — 不写"看到了什么"，写"等着、不知道是什么"
-4. **声音比画面重要** — 灵异最怕的不是看见，是听见不知道哪来的声音
-5. **结尾留白** — 别解释是什么，留个画面让读者自己害怕
+1. **Supernatural writing about daily details** - light bulbs flashing, curtains moving,
+   doors ringing, using everyday objects to carry horror
+2. **Written on the body with fear** - Having a tight throat, retracting hands into
+   sleeves, and looking for an escape angle is not "creepy"
+3. **Waiting is scarier than seeing**, Instead of writing "what you saw", write "waiting
+   and not knowing what it is"
+4. **Sounds are more important than images**, What scares the most about supernatural
+   beings is not seeing them, but hearing sounds that come from nowhere.
+5. **Blank at the end**, Don’t explain what it is, leave a picture for readers to be
+   afraid of.

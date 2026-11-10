@@ -1,129 +1,129 @@
-# awesome-novel-agent 项目贡献说明
+# Contributing to awesome-novel-agent
 
-## 1. 项目简介
+## 1. Project overview
 
-awesome-novel-agent 是一款免费开源的 AI 小说创作助手工具，基于 DeepSeek TUI、Claude Code、Hermes、OpenClaw 等 AI 终端工具运行，遵循 AGPL-3.0 开源协议。项目旨在降低小说创作门槛，为创作者提供世界观搭建、角色塑造、章节大纲、正文撰写、文风优化、伏笔追踪等一站式小说创作能力，个人用户永久免费使用，商业使用需获得作者官方授权。
+awesome-novel-agent is a free, open source AI novel-writing assistant that runs on AI terminal tools such as DeepSeek TUI, Claude Code, Hermes, and OpenClaw, under the AGPL-3.0 open source license. The project aims to lower the barrier to novel writing, giving creators one-stop novel-writing ability: world building, character creation, chapter outlines, prose writing, style optimization, and foreshadowing tracking. It is permanently free for personal users; commercial use requires official authorization from the author.
 
-本项目依靠社区驱动维护，欢迎各类技术人员、网文创作者、爱好者参与贡献，无需高深编程能力，文案优化、素材补充、bug 反馈均为有效贡献方式。
+The project is maintained by the community. All kinds of contributors are welcome: technical people, web-novel writers, and enthusiasts. No advanced programming skill is needed; copy improvements, material contributions, and bug reports are all valid contributions.
 
-## 2. 贡献前置规范
+## 2. Rules before contributing
 
-### 2.1 开源协议要求
+### 2.1 Open source license requirements
 
-- 所有代码、文档、配置文件的提交均遵循 AGPL-3.0 协议，提交即代表同意开源协议条款；
-- 禁止提交闭源、侵权、违规的第三方资源，不得上传无版权的小说素材、商用文案；
-- 个人修改版本可自用，二次分发、衍生改版需遵守开源协议，保留项目原始版权声明。
+- All submitted code, documentation, and config files follow AGPL-3.0; submitting means you agree to the license terms.
+- Do not submit closed-source, infringing, or rule-breaking third-party resources, and do not upload copyrighted novel material or commercial copy.
+- You may use your own modified version privately; redistribution and derivative versions must follow the open source license and keep the project's original copyright notice.
 
-### 2.2 基础提交准则
+### 2.2 Basic submission rules
 
-- 所有提交内容需贴合项目定位：专注小说 AI 辅助创作，不新增无关功能、冗余插件；
-- 代码、文档命名规范，注释通俗易懂，适配国内用户使用习惯；
-- 提交前自行测试，保证功能无破坏性 bug，兼容 DeepSeek TUI 等主流适配终端。
+- All submissions must fit the project scope: AI-assisted novel writing only. Do not add unrelated features or redundant plugins.
+- Use clear code and document naming, with comments in plain, easy language, suited to users in China.
+- Test your submission yourself before submitting, make sure it has no breaking bugs, and keep it compatible with mainstream terminals such as DeepSeek TUI.
 
-## 3. 贡献方式（全人群适配）
+## 3. Ways to contribute (for everyone)
 
-### 3.1 非技术向贡献（无编程基础）
+### 3.1 Non-technical contributions (no programming needed)
 
-#### 3.1.1 问题反馈与 BUG 提交
+#### 3.1.1 Issue reports and bug submissions
 
-作为项目使用者，你是最容易发现问题的群体，可在 GitHub Issues 提交反馈，包含以下类型问题：
+As a user of the project, you are the most likely to spot problems. You can submit feedback in GitHub Issues, covering these types of problems:
 
-- **功能异常**：安装脚本报错、章节归档失败、角色状态记录异常；
-- **生成缺陷**：AI 文笔生硬、去 AI 味效果差、伏笔追踪失效、节奏检测失灵；
-- **适配问题**：终端版本兼容故障、不同系统（Windows/Linux）安装异常。
+- **Functional problems**: installer errors, chapter archiving failures, character status recording errors.
+- **Generation defects**: stiff AI prose, weak AI-flavor removal, broken foreshadowing tracking, broken pacing detection.
+- **Compatibility problems**: terminal version compatibility failures, installation errors on different systems (Windows/Linux).
 
-提交要求：清晰描述操作步骤、报错现象、使用的终端工具（DeepSeek TUI/Claude Code 等），附带截图、日志更佳，方便复现排查。
+Submission requirements: describe the steps, the error, and the terminal tool you used (DeepSeek TUI, Claude Code, etc.) clearly. Screenshots and logs help with reproduction and troubleshooting.
 
-#### 3.1.2 素材与模板扩充
+#### 3.1.2 Material and template contributions
 
-- **题材档案**：补充仙侠、都市、悬疑、科幻、奇幻等网文题材人设、叙事模板、章节框架；
-- **文风素材**：优化文风分析规则，补充主流网文作者文风特征库；
-- **提示词优化**：优化章节生成、人设塑造、剧情推演的内置提示词，降低 AI 机械感。
+- **Genre files**: add character archetypes, narrative templates, and chapter frameworks for web-novel genres such as xianxia (immortal cultivation), urban, mystery, sci-fi, and fantasy.
+- **Style material**: improve style-analysis rules and add to the mainstream web-novel author style feature library.
+- **Prompt optimization**: improve the built-in prompts for chapter generation, character creation, and plot roleplay to reduce the mechanical AI feel.
 
-#### 3.1.3 文档优化与翻译
+#### 3.1.3 Documentation improvements and translation
 
-- 优化官方文档：完善新手安装教程、操作指令说明、高阶使用玩法，简化零基础用户操作指引；
-- 补充使用案例：新增修仙、都市等小说实操案例，丰富 docs 文档内教学内容；
-- 文案润色：优化 README、SKILL.md 描述文案，通俗易懂，适配国内网文创作者。
+- Improve the official documentation: installation tutorials for beginners, command explanations, advanced usage, and simpler step-by-step guides for users with no background.
+- Add usage examples: new hands-on novel cases (xianxia (immortal cultivation), urban, etc.) to enrich the teaching content in docs.
+- Polish copy: improve the wording of the README and SKILL.md so it is plain and easy to follow, suited to web-novel writers in China.
 
-#### 3.1.4 资金贡献
+#### 3.1.4 Financial contributions
 
-本项目坚持非商业化运营，所有功能对个人用户永久免费。如您认可本项目的价值，可以通过以下方式支持项目持续发展：
+The project stays non-commercial: all features are permanently free for personal users. If you value the project, you can support its continued development:
 
-- **GitHub Sponsors**：通过 GitHub Sponsors 计划定期资助项目维护
-- **爱发电**：在爱发电平台为项目提供资金支持
-- **Ko-fi**：通过 Ko-fi 平台一次性赞助项目开发
+- **GitHub Sponsors**: fund project maintenance regularly through the GitHub Sponsors program
+- **Aifadian**: support the project financially on the Aifadian platform
+- **Ko-fi**: sponsor development once through Ko-fi
 
-资金将用于：服务器费用、AI API 调用补贴、开源许可证采购、开发者激励等。所有资金使用情况将在项目社区定期公开。
+Funds go to server costs, AI API call subsidies, open source license purchases, developer incentives, and similar costs. All fund usage is published regularly in the project community.
 
-#### 3.1.5 推广贡献
+#### 3.1.5 Promotion
 
-- 在社交平台、创作社群分享项目，帮助更多网文创作者免费使用 AI 写作工具；
-- 撰写项目评测、教程、使用心得，在博客、CSDN、知乎等平台发布；
-- 为新手用户解答安装、指令使用、项目迁移等基础问题，维护社区交流环境；
-- 制作视频教程、操作演示，发布至 B 站、YouTube 等视频平台；
-- 翻译项目文档至其他语言，帮助海外创作者了解和使用本工具。
+- Share the project on social platforms and writing communities to help more web-novel writers use AI writing tools for free.
+- Write project reviews, tutorials, and usage notes, and publish them on blogs, CSDN, Zhihu, and similar platforms.
+- Answer beginners' questions about installation, commands, and project migration, and help keep the community welcoming.
+- Make video tutorials and operation demos, and publish them on Bilibili, YouTube, and other video platforms.
+- Translate the project documentation into other languages to help overseas writers learn about and use this tool.
 
-### 3.2 技术向贡献（具备编程基础）
+### 3.2 Technical contributions (programming experience needed)
 
-#### 3.2.1 代码开发与优化
+#### 3.2.1 Code development and optimization
 
-- **脚本优化**：迭代 install.sh、install.ps1 安装脚本，修复安装报错、优化安装流程；
-- **功能迭代**：优化 9-agent 协作流程、SOLO 全自动模式，完善 agent 定义和 skill SOP；
-- **兼容性适配**：适配更多 AI 终端工具，优化 DeepSeek TUI 兼容性，移除冗余模型依赖；
-- **算法优化**：升级 AI 去机器腔检测、伏笔钩子追踪、剧情节奏检测算法。
+- **Script optimization**: iterate on the install.sh and install.ps1 installer scripts, fix installation errors, and improve the installation flow.
+- **Feature iteration**: optimize the 9-agent collaboration flow and the SOLO fully automatic mode, and improve agent definitions and skill SOPs.
+- **Compatibility work**: adapt the project to more AI terminal tools, improve DeepSeek TUI compatibility, and remove redundant model dependencies.
+- **Algorithm optimization**: upgrade the AI machine-tone detection, foreshadowing and hook tracking, and plot pacing detection algorithms.
 
-#### 3.2.2 代码审核与维护
+#### 3.2.2 Code review and maintenance
 
-- 审核社区提交的 Pull Request（PR），校验代码安全性、兼容性、逻辑性；
-- 清理冗余文件，优化项目目录结构，删减无用脚本、参考文件；
-- 维护 GitHub Actions 自动化部署，优化 GitHub Pages 部署流程。
+- Review Pull Requests (PRs) from the community, checking code safety, compatibility, and logic.
+- Clean up redundant files, optimize the project directory structure, and remove useless scripts and reference files.
+- Maintain GitHub Actions automated deployment and improve the GitHub Pages deployment flow.
 
-#### 3.2.3 周边生态开发
+#### 3.2.3 Ecosystem development
 
-- 拓展衍生工具：开发小说项目迁移工具、文风分析可视化工具；
-- 优化资源目录：完善 agents/（agent 定义）、knowledge/（格式规范、反 AI 规则、创作方法论），拓展辅助创作功能。
+- Build derived tools: novel project migration tools, style-analysis visualization tools.
+- Improve the resource directories: agents/ (agent definitions) and knowledge/ (format specs, anti-AI rules, writing methodology), and expand supporting writing features.
 
-## 4. 提交规范
+## 4. Submission rules
 
-### 4.1 Issues 提交规范
+### 4.1 Issue submission rules
 
-- **标签分类**：Bug 反馈、功能建议、素材补充、文档优化；
-- **标题简洁直白**，正文清晰描述需求、问题、优化方案，避免无意义灌水；
-- 重复问题请不要重复提交，可在原有 Issues 下追加评论补充信息。
+- **Label by category**: bug report, feature suggestion, material contribution, documentation improvement.
+- **Keep titles short and direct**, and describe the request, problem, or improvement clearly in the body. Avoid meaningless filler.
+- Do not submit the same problem twice; add a comment with extra information under the existing issue instead.
 
-### 4.2 Pull Request 提交规范
+### 4.2 Pull Request submission rules
 
-- **分支要求**：基于项目主分支新建开发分支，禁止直接修改 main 主分支；
-- **提交备注**：严格遵循项目提交注释格式，示例：`fix: 修复 Windows 安装路径报错`、`docs: 新增都市题材创作案例`；
-- **测试要求**：提交前在至少一种 AI 终端完成功能测试，保证无破坏性 bug；
-- **内容限制**：单次 PR 聚焦单一功能优化/修复，禁止批量杂乱修改。
+- **Branch requirement**: create a development branch from the project main branch. Never edit the main branch directly.
+- **Commit messages**: strictly follow the project commit message format, e.g. `fix: fix Windows install path error`, `docs: add urban genre writing case`.
+- **Testing requirement**: test in at least one AI terminal before submitting, and make sure there are no breaking bugs.
+- **Scope limit**: one PR focuses on one feature improvement or fix. No batched, unrelated changes.
 
-## 5. 项目分支与版本说明
+## 5. Branches and versions
 
-| 分支 | 说明 |
+| Branch | Description |
 |------|------|
-| main | 稳定发布分支，存放正式可用版本，仅合并审核通过的完善代码 |
-| 开发分支 | 用于迭代测试，新增功能、代码优化优先提交至开发分支，测试无误后合并至主分支 |
+| main | Stable release branch, holding officially usable versions; only reviewed, finished code is merged |
+| Development branch | For iteration and testing; new features and code optimization go to a development branch first, and merge to main after testing |
 
-- **版本迁移**：项目支持旧版一键迁移至 4.0 版本，贡献者需保证迁移逻辑兼容历史项目数据，保留用户创作备份。
+- **Version migration**: the project supports one-click migration of old versions to 4.0. Contributors must keep the migration logic compatible with historical project data and preserve user writing backups.
 
-## 6. 禁止行为
+## 6. Prohibited behavior
 
-- 禁止提交恶意代码、病毒脚本、违规侵权资源；
-- 禁止篡改项目开源协议、版权声明，禁止私自将项目改为闭源商用；
-- 禁止恶意刷提交、无意义修改文件、灌水 Issues 和 PR；
-- 禁止利用本项目制作违法、低俗、违规小说内容。
+- Do not submit malicious code, virus scripts, or infringing resources.
+- Do not alter the project open source license or copyright notice, and do not privately turn the project into closed-source commercial software.
+- Do not farm commits, make meaningless file changes, or flood Issues and PRs.
+- Do not use this project to create illegal, vulgar, or rule-breaking novel content.
 
-## 7. 联系方式与授权说明
+## 7. Contact and licensing
 
-| 类型 | 说明 |
+| Type | Description |
 |------|------|
-| 个人使用 | 所有功能永久免费，无订阅、无 API 费用 |
-| 商业使用 | 必须联系项目作者获取官方授权，严禁无授权商用 |
-| 贡献交流 | 可在 GitHub 仓库提交 Issues、PR 进行沟通，项目维护人员会定期审核回复 |
-| 版权声明 | 本项目基于 AGPL-3.0 开源，衍生作品需同等开源并标注原项目来源 |
+| Personal use | All features permanently free, no subscription, no API fees |
+| Commercial use | You must contact the project author for official authorization; commercial use without authorization is strictly prohibited |
+| Contribution discussion | Submit Issues and PRs in the GitHub repository; project maintainers review and reply regularly |
+| Copyright notice | This project is open source under AGPL-3.0; derivative works must be open sourced under the same terms and credit the original project |
 
-## 8. 致谢
+## 8. Acknowledgments
 
-感谢所有开源贡献者、网文创作者的无私付出；感谢 DeepSeek TUI 项目提供免费终端运行环境；项目部分设计灵感源自 InkOS，在此对相关开发者致以诚挚感谢。
+Thanks to all open source contributors and web-novel writers for their generous work; thanks to the DeepSeek TUI project for providing a free terminal environment; parts of this project's design were inspired by InkOS, and sincere thanks go to its developers.

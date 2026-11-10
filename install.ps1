@@ -54,35 +54,35 @@ switch ($Platform) {
 
 $SCRIPT_DIR = Split-Path -Parent $MyInvocation.MyCommand.Path
 
-# Python 版本门槛：在任何目录创建/删除前检查（fail-fast）。
+# Python version gate: check before creating/deleting any directory (fail-fast).
 $PY_BIN = "python"
 if (-not (Get-Command $PY_BIN -ErrorAction SilentlyContinue)) {
-    Write-Host "错误: 未找到 python。请先安装 Python 3.9+（https://www.python.org/downloads/）"
+    Write-Host "Error: python not found. Please install Python 3.9+ first (https://www.python.org/downloads/)"
     exit 1
 }
 & $PY_BIN (Join-Path $SCRIPT_DIR "tools/check-python.py")
 if ($LASTEXITCODE -ne 0) {
-    Write-Host "安装中止：请升级 Python 后重试。"
+    Write-Host "Installation aborted: please upgrade Python and try again."
     exit 1
 }
 
-# pyyaml 门槛：opencode / codex / zcode / dsh / grok 的 agent/skill 转换依赖 pyyaml（与
-# tools/platforms.py ensure_yaml 的运行时规则对齐）；claude-code 纯复制不转换，不需要。
+# pyyaml gate: agent/skill conversion for opencode / codex / zcode / dsh / grok depends on pyyaml (aligned
+# with the runtime rule in tools/platforms.py ensure_yaml); claude-code is a plain copy with no conversion, so it does not need it.
 if ($Platform -in @("opencode", "codex", "zcode", "dsh", "grok")) {
     & $PY_BIN (Join-Path $SCRIPT_DIR "tools/check-yaml.py") $Platform
     if ($LASTEXITCODE -ne 0) {
-        Write-Host "安装中止：缺少 pyyaml。请先执行 pip install pyyaml 后重试。"
+        Write-Host "Installation aborted: pyyaml is missing. Please run pip install pyyaml first, then try again."
         exit 1
     }
 }
 
-Write-Host "安装到: $DEST_DIR"
+Write-Host "Installing to: $DEST_DIR"
 
-# 创建目录，已存在则清空
+# Create the directory; empty it if it already exists
 Remove-Item -Recurse -Force $DEST_DIR -ErrorAction SilentlyContinue
 New-Item -ItemType Directory -Force -Path $DEST_DIR | Out-Null
 
-# 显式 include 列表，与 install.sh 保持一致
+# Explicit include list, kept in sync with install.sh
 $INCLUDES = @("SKILL.md", "agents", "skills", "knowledge", "templates", "tools")
 
 foreach ($item in $INCLUDES) {
@@ -92,10 +92,10 @@ foreach ($item in $INCLUDES) {
     }
 }
 
-# memory/ 已废弃（writer-style 已迁至 knowledge/format-specs/）；保留守卫兼容旧仓库
+# memory/ is deprecated (writer-style has moved to knowledge/format-specs/); keep the guard for compatibility with old repositories
 $memoryDir = Join-Path $SCRIPT_DIR "memory"
 if (Test-Path $memoryDir) {
     Copy-Item -Recurse $memoryDir $DEST_DIR
 }
 
-Write-Host "安装完成!"
+Write-Host "Installation complete!"

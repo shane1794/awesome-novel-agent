@@ -1,317 +1,336 @@
-# 反AI通用规则 — 三级分级禁用表
+# General Anti-AI Rules, Three-Level Banned Table
 
-> **职责声明：** 本文件是反 AI 规则的**唯一权威**——所有数量阈值、禁用词档位、句式规则以本文为准。其他文件（anti-ai-writing、chapter-quality-checklist）不得重复定义阈值，只能引用。
->
-> 所有题材共用。anti-ai 逐项清除阶段的核心参考。
+> **Responsibility Statement:** This document is the **sole authority** for anti-AI
+> rules - all quantitative thresholds, banned word levels, and sentence rules are
+> subject to this article. Other files (anti-ai-writing, chapter-quality-checklist)
+> must not repeatedly define thresholds and can only be quoted. Common to all themes.
+> Core reference for anti-ai's itemized cleanup phase.
 
-## 三档处理逻辑
+## Third-level processing logic
 
-| 档位 | 处理方式 | 对应原词 |
+| Gear | Processing method | Corresponding to the original word |
 |------|---------|---------|
-| **T1 出现即换** | 出现即标记、替换，0 容忍 | ★★★★★ 最毒句式 + 一级禁用词 |
-| **T2 同段聚集** | 同一段落内出现 2+ 次才标记，只保留最贴切的一个；单次出现不处理 | 现有二级词的聚集版 |
-| **T3 全文密度** | 全文密度过高才处理，不设逐词阈值，以段落/字数比例为准 | 基础词、结构骨架词 |
+| **T1 Replace when it appears** | Mark and replace when it appears, 0 tolerance | ★★★★★ The most poisonous sentence pattern + first-level banned words |
+| **T2 Same paragraph aggregation** | Mark the same paragraph if it appears 2+ times, and only keep the most appropriate one; a single occurrence will not be processed | Aggregated version of existing second-level words |
+| **T3 Full Text Density** | The full text density will only be processed if it is too high. There is no word-by-word threshold, and the ratio of paragraphs/words shall prevail | Basic words, structural skeleton words |
 
-判定优先级：T1 > T2 > T3。同一词出现在多个档位时按最高档处理。
+Determine priority: T1 > T2 > T3. When the same word appears in multiple levels, it is
+processed in the highest level.
 
 ---
 
-## 一、T1 出现即换（原 ★★★★★ + 一级禁用词）
+## 1. T1 will be replaced as soon as it appears (original ★★★★★ + first-level banned words)
 
-出现即替换，0容忍。
+Replace as soon as it appears, 0 tolerance.
 
-### 最毒句式（★★★★★）
+### The most poisonous sentence pattern (★★★★★)
 
-| 句式 | 示例 | 处理 |
+| Sentence pattern | Example | Processing |
 |------|------|------|
-| "不是A，（而）是B" | "他不是生气，而是失望" | 直接写 B |
-| "带着……" 万能状语 | "他看着窗外，带着一丝惆怅" | 拆短句或换动作 |
-| "仿佛/犹如/宛若……一般" | "声音仿佛从很远的地方传来" | 删除或白描 |
-| "让/令/使" 句式 | "这一幕让他想起了童年" | 删"让"，主语直接行动 |
-| "当……时/的时候" | "当他推开门的时候" | 拆成独立动作句 |
-| 认知动词前置 | "他意识到/他感到/他注意到" | 删掉，直接写事实 |
-| "与此同时" | "与此同时，在另一个地方" | 直接换场景开头 |
+| "It's not A, (but) B" | "He's not angry, but disappointed" | Just write B |
+| "With..." Universal adverbial | "He looked out the window with a trace of melancholy" | Split the sentence or change the action |
+| "As if/as if/as if..." | "The sound seems to come from a far away place" | Delete or outline |
+| "Let/order/make" sentence pattern | "This scene reminds him of his childhood" | Delete "let" and the subject acts directly |
+| "When..." | "When he opened the door" | Split into independent action sentences |
+| Cognitive verb preposition | "He realized/he felt/he noticed" | Delete and write the facts directly |
+| "At the same time" | "At the same time, in another place" | Directly change the scene to the beginning |
 
-#### 变形识别：禁的是修辞动作，不是字面
+#### Deformation recognition: What is prohibited is rhetorical action, not literal words
 
-把"不是A而是B"换一套字继续做同一个动作，仍按 T1 处理。常见外衣：
+Change the word "not A but B" and continue to perform the same action, still processing
+it as T1. Common outerwear:
 
-| 外衣 | 例子 |
+| Outerwear | Examples |
 |------|------|
-| 字面翻案 | 不是A，而是B。并非A，而是B。不在于A，而在于B |
-| 省字变形 | 不是A，是B。不是A，B才是 |
-| 跨句变形 | 不是A。而是B。表面上是A。其实是B |
-| 换字变形 | 与其说A，倒不如讲B。与其说A，毋宁说B |
-| 以为体 | 你以为A，其实B。我一直以为A，后来才发现B。回头才发现 |
-| 让转体 | 看似A，实则B。大家都说A，可真相是B。答案恰恰相反 |
-| 抬价体 | A不重要，重要的是B。真正值钱的从来都与A无关 |
+| Literal reversal | It's not A, but B. Not A, but B. Not in A, but in B |
+| Deformation of omitted characters | It’s not A, it’s B. It’s not A, it’s B |
+| Cross-sentence deformation | Not A. But B. On the surface it's A. Actually it’s B |
+| Word substitution | Instead of talking about A, it’s better to talk about B. Instead of saying A, let’s say B |
+| Thought body | You think A, but actually B. I always thought A, but then I discovered B. Only when I looked back did I realize |
+| Let the body turn | It looks like A, but it is actually B. Everyone says A, but the truth is B. The answer is just the opposite |
+| Price Raising Body | A is not important, what is important is B. The real value has nothing to do with A |
 
-拆法只有一种：找到这句话原本想下的判断，从正面说出来，依据放在旁边。正文确实用情节走过了"从误解到修正"的过程时，可保留一次自我修正，但不能穿上述任何一件外衣。
-
----
-
-### 一级禁用词（出现即替换）
-
-### 情态类
-
-| 词 | 替换策略 |
-|----|---------|
-| 仿佛、犹如、宛若、如同 | 删除或白描 |
-| 一丝、一抹、些许、几分 | 具体量词或删除 |
-| 不禁、不由得、不由自主 | 直接写动作，保留有节奏功能的 |
-| 突然、忽然、猛然 | 已移至语境敏感类（≤4次/章），红线段落从宽 |
-
-> **注意：** 上述规则的目的是降低AI腔调的均匀度，不是完全禁止正常表达。适度使用（≤2次/段，≤3次/章）不构成AI味——当某个词在段落中有节奏功能时可保留。
-
-### 动作类
-
-| 词 | 替换策略 |
-|----|---------|
-| 瞳孔一缩、身体一僵 | 用具体身体反应替代 |
-| 倒吸一口凉气、呼吸一滞 | 用呼吸变化细节替代 |
-| 露出（表情） | 用具体笑法/表情动作替代 |
-| 陷入（沉默） | 写沉默后的具体行为 |
-| 涌起、泛起（情绪） | 用身体反应替代 |
-
-### 表情类
-
-| 词 | 替换策略 |
-|----|---------|
-| 嘴角勾起一抹…… | 用具体动作（他笑了一下/嘴角动了一下） |
-| 眼中闪过一丝…… | 用动作替代（他低下头/他把目光移开） |
-| 脸上露出…… | 用具体的五官变化替代 |
-
-### 心理类
-
-| 词 | 替换策略 |
-|----|---------|
-| 感到、觉得、意识到（引导心理） | 优先用动作替代，关键心理节点允许≤2次/章 |
-| 心中涌起一股…… | 用动作替代 |
-| 他的内心…… | 用行为展示 |
-| 他这才意识到/明白 | 建议改为具体反应，但红线段落可保留 |
-| 他不禁/不由得 | 优先直接写动作，保留有节奏功能的 |
-
-### 判断类
-
-| 词 | 替换策略 |
-|----|---------|
-| 显然、显而易见 | 谁都知道 / 直接陈述事实 |
-| 毫无疑问 | 肯定 / 直接陈述 |
-| 不容置疑 | 就是 / 直接陈述 |
-| 似乎、也许、大概、或许（高频） | 删除或换具体状态 |
-| 竟然、居然（高频） | 让读者自己判断 |
-
-### 形容类
-
-| 词 | 替换策略 |
-|----|---------|
-| 坚定的、深邃的、冰冷的（万能形容词） | 删掉或换具体状态 |
-| 温暖的、柔和的（泛光感） | 用具体光影描述 |
-| 所谓 AABB 式形容词 | 仅保留生活化用法 |
-| 缓缓地、慢慢地（修饰动词） | 删掉，或换具体速度 |
-| 某种、一股、一阵（搭配抽象情绪） | 删掉或具体化 |
-
-### 过渡类
-
-| 词 | 替换策略 |
-|----|---------|
-| 然而、不过 | 已移至 T2 — 同段出现≥2次才标记，单次出现保留 |
-| 于是 | 已移至 T3 — 全文≤3次/章，保留叙事功能明显的 |
-| 与此同时 | 直接换场景开头 |
-| 总之、综上所述、总而言之 | 删掉 |
-| 本章、下一章、故事还在继续 | 删掉（元叙事禁止） |
+There is only one way to dismantle it: find the original judgment in this sentence, say
+it from the front, and put the evidence beside it. When the text does go through the
+process of "from misunderstanding to correction" with plot, it can retain a
+self-correction, but it cannot wear any of the above coats.
 
 ---
 
-## 二、T2 同段聚集 + T3 全文密度
+### Level 1 banned words (replace when they appear)
 
-### T2 同段聚集（标记条件：同段 ≥2 次）
+### Modal category
 
-同一段落中出现 ≥2 次才标记，只保留最贴切的一个。单次出现不处理。
-
-| 词 | 替换策略 |
+| Words | Replacement Strategies |
 |----|---------|
-| 然而、不过 | 同段出现 ≥2 次 → 保留一个，其余删除 |
-| 此外、另外、同时 | 同段出现 ≥2 次 → 合并或拆分 |
-| 虽然…但是…、尽管…却… | 同段出现 ≥2 组 → 只保留一组 |
-| "了"字聚集（同段 ≥4 个） | 标记该段供作者判断，标记后不自作主张修改 |
+| As if, as if, as if, like | Delete or outline |
+| A trace, a touch, a little, a few points | Specific quantifier or delete |
+| Can't help, can't help, involuntarily | Write the action directly and retain the rhythmic function |
+| Sudden, sudden, sudden | Has been moved to the context-sensitive category (≤4 times/chapter), redlined paragraphs should be given wider |
 
-### T3 全文密度（标记条件：全文范围比例超标）
+> **Note:** The purpose of the above rules is to reduce the uniformity of AI accent,
+> not to completely prohibit normal expression. Moderate use (≤2 times/paragraph, ≤3
+> times/chapter) does not constitute AI flavor - when a certain word has a rhythmic
+> function in the paragraph, it can be retained.
 
-不设逐词阈值，以全文段落/字数比例为准。比例超标才标记。
+### Action
 
-| 检测项 | 超标线 | 处理 |
+| Words | Replacement Strategies |
+|----|---------|
+| Pupils shrink and body stiffens | Replace with specific physical reactions |
+| Take a deep breath and hold your breath | Replace with details of breathing changes |
+| Show (expression) | Replace with specific smile/expression action |
+| Falling into (silence) | Write down the specific behavior after silence |
+| Surge, surge (emotion) | Replace with physical reaction |
+
+### Expressions
+
+| Words | Replacement Strategies |
+|----|---------|
+| The corner of his mouth curled up... | Use specific actions (he smiled/moved the corner of his mouth) |
+| There was a flash in the eye... | Replaced by action (he lowered his head/he looked away) |
+| The face shows... | Replace with specific changes in facial features |
+
+### Psychological
+
+| Words | Replacement Strategies |
+|----|---------|
+| Feel, feel, realize (guidance psychology) | Give priority to using actions instead, key psychological nodes are allowed ≤2 times/chapter |
+| There is a surge in my heart... | Replace with actions |
+| His heart... | Shown by behavior |
+| Only then did he realize/understand | It is recommended to change it to a specific response, but the redline paragraph can be retained |
+| He can't help/can't help | Give priority to writing actions directly and retain those with rhythmic functions |
+
+### Judgment class
+
+| Words | Replacement Strategies |
+|----|---------|
+| Obvious, obvious | Everyone knows / Directly state the facts |
+| Without a doubt | Affirmation / Direct statement |
+| beyond doubt | just / direct statement |
+| It seems, maybe, probably, maybe (high frequency) | Delete or change the specific status |
+| unexpectedly, unexpectedly (high frequency) | let readers judge for themselves |
+
+### Descriptive category
+
+| Words | Replacement Strategies |
+|----|---------|
+| Firm, profound, cold (universal adjective) | Delete or change the specific state |
+| Warm, soft (flooding feeling) | Describe with specific light and shadow |
+| So-called AABB adjectives | Only retain daily usage |
+| Slowly, slowly (modify verb) | Delete, or change the specific speed |
+| Something, a stream, a burst (matched with abstract emotions) | Delete or concretize |
+
+### Transitional class
+
+| Words | Replacement Strategies |
+|----|---------|
+| However, however | has been moved to T2 - it will be marked only if it appears ≥ 2 times in the same paragraph, and a single occurrence will be retained |
+| Therefore | has been moved to T3 - full text ≤ 3 times/chapter, retaining obvious narrative function |
+| At the same time | Change the scene directly to the beginning |
+| In summary, in summary, in summary | Delete |
+| This chapter, next chapter, the story continues | Deleted (meta-narrative prohibited) |
+
+---
+
+## 2. T2 same paragraph aggregation + T3 full text density
+
+### T2 same segment aggregation (marking condition: same segment ≥2 times)
+
+Mark only if it appears ≥2 times in the same paragraph, and only the most appropriate
+one will be retained. Single occurrences will not be processed.
+
+| Words | Replacement Strategies |
+|----|---------|
+| However, however | The same paragraph appears ≥2 times → keep one and delete the others |
+| In addition, in addition, at the same time | The same paragraph appears ≥2 times → merge or split |
+| Although... but..., although... but... | ≥2 groups appear in the same paragraph → only one group is retained |
+| The word "le" is clustered (≥4 in the same paragraph) | Mark this paragraph for the author's judgment, and do not make any modifications after marking |
+
+### T3 full-text density (marking condition: the full-text range ratio exceeds the standard)
+
+There is no word-by-word threshold, and the ratio of paragraphs/words in the full text
+shall prevail. Mark only if the proportion exceeds the standard.
+
+| Detection items | Exceeding the standard line | Processing |
 |--------|-------|------|
-| "了"字密度 | 平均每段 >2.5 个 | 标记超高密度段落，保留关键"了" |
-| 句号密度 | 连续 10 句以上句号结尾 | 部分句号改逗号/省略号打碎 |
-| 段长均匀度 | 连续 5 段句子数差值 ≤1 | 打散或合并制造长短变化 |
-| 基础词密度 | 重要/关键/核心 >3 次/章 | 替换为具体描述或删除 |
+| "LE" word density | average >2.5 words per paragraph | Mark ultra-high-density paragraphs and retain the key "LE" |
+| Period density | More than 10 consecutive sentences end with periods | Change some periods to commas/break ellipses |
+| Paragraph length uniformity | The difference in the number of sentences in 5 consecutive paragraphs is ≤1 | Scatter or merge to create length changes |
+| Basic word density | Important/key/core >3 times/chapter | Replace with specific description or delete |
 
-### 语境敏感类（跨档位，按语境判断）
+### Context-sensitive categories (across gears, judged by context)
 
-超阈值时触发替换，未超限可保留。**已出现在 T2/T3 的词优先按 T2/T3 处理。**
+Replacement is triggered when the threshold is exceeded, and can be retained if the
+threshold is not exceeded. **Words that already appear in T2/T3 will be processed as
+T2/T3 first. **
 
-| 词 | 阈值 | 替换策略 |
+| word | threshold | replacement strategy |
 |----|------|---------|
-| 突然/忽然/猛然 | ≤4次/章 | 红线段落从宽，保留节奏功能的 |
-| 竟然/居然 | ≤3次/章 | 降低处罚，允许适度保留 |
-| 渐渐/逐渐 | ≤2次/章 | 用变化细节替代 |
-| 依旧/仍然 | ≤2次/章 | 用状态描写替代 |
-| 似乎/也许/大概/或许 | ≤3次/500字 | 适度放宽，保留必要的模糊判断 |
-| 于是 | ≤3次/章 | 保留叙事功能明显的 |
+| Sudden/sudden/sudden | ≤4 times/chapter | The red line paragraphs should be wider and the rhythm function should be retained |
+| Unexpectedly/As expected | ≤3 times/chapter | Reduce penalties and allow moderate retention |
+| Gradually/Gradually | ≤2 times/chapter | Replace with changing details |
+| Still/Still | ≤2 times/chapter | Replace with status description |
+| It seems/maybe/probably/maybe | ≤3 times/500 words | Moderately relaxed, retaining necessary fuzzy judgments |
+| So | ≤3 times/chapter | Retain obvious narrative function |
 
-### 书面腔
+### Written Accent
 
-| 词 | 替换策略 |
+| Words | Replacement Strategies |
 |----|---------|
-| 瓦解 | 消失/散了/没了 |
-| 毋庸置疑 | 肯定/就是 |
-| 显而易见 | 谁都知道 |
-| 内心深处 | 删掉或直接写动作 |
-| 此时的他还不知道 | 删掉（上帝视角禁止） |
+| disintegrate | disappear/disperse/gone |
+| Without a doubt | Definitely/Yes |
+|Obvious |Everyone knows |
+| Deep inside | Delete or write actions directly |
+| He doesn’t know yet at this time | Delete (forbidden from God’s perspective) |
 
-### 总结句式
+### Summary sentence pattern
 
-| 句式 | 处理 |
+| Sentence pattern | Processing |
 |------|------|
-| "这就是……" | 删除，让场景自然结束 |
-| "他终于明白了……" | 删除，停在画面/动作上 |
-| "一切……都……" | 删掉或改为具体状态 |
-| "他不知道的是……" | 删除或换具体钩子 |
+| "This is..." | Delete and let the scene end naturally |
+| "He finally understood..." | Delete, stop on the scene/action |
+| "Everything...is..." | Delete or change to specific status |
+| "What he doesn't know is..." | Delete or change specific hooks |
 
-### 排比句式
+### Parallel sentence pattern
 
-| 模式 | 处理 |
+| Mode | Processing |
 |------|------|
-| "也许是……也许是……也许是……" | 保留最强一条，其余打散 |
-| "不是……不是……而是……" | 直接写"而是"部分 |
-| "既没有……也没有……更没有……" | 只保留最具体一条 |
-| "既X又Y" 对称填充（"既紧张又兴奋"） | 删一边，留主要的一侧 |
-| "不仅仅……更是……" 价值拔高骨架 | 删"不仅仅是"部分，留"更是"后的事实 |
-| "首先…其次…最后" 机械排列 | 打散为自然叙述，不要列举感 |
-| "从X到Y，从A到B" 排比遍历 | 选一到两个最具代表性的，其余删掉 |
-| "没有……没有……甚至没有……" 否定排比 | 只保留最具体一个，或打散为陈述 |
+| "Maybe... maybe... maybe..." | Keep the strongest one and scatter the rest |
+| "It's not... it's not... but..." | Write the "but" part directly |
+| "Neither... nor... nor..." | Keep only the most specific one |
+| "Both X and Y" fill symmetrically ("Both nervous and excited") | Delete one side and keep the main side |
+| "Not only... but also..." Value-raising framework | Delete the "not just" part and keep "but also the fact after" |
+| "First...Second...Finally" mechanical arrangement | Break it up into natural narratives, don't feel enumerated |
+| "From X to Y, from A to B" parallel traversal | Choose one or two of the most representative ones and delete the rest. |
+| "No... no... not even..." Negative parallelism | Only keep the most specific one, or break it into statements |
 
-### 升华句式
+### Sublimation sentence pattern
 
-| 模式 | 处理 |
+| Mode | Processing |
 |------|------|
-| "这一夜注定……" | 删除 |
-| "从这一刻起……" | 删除 |
-| "也许这就是……的意义" | 删除 |
-| "未来可期/拭目以待/来日方长" 正能量收尾 | 删除，停在具体画面上 |
-| 感叹号收尾（"……！"） | 改为句号或动作 |
+| "This night is destined..." | Delete |
+| "From this moment on..." | Delete |
+| "Maybe that's what..." | Delete |
+| "The future is promising/wait and see/the days are long" Positive ending | Delete, stop on the specific screen |
+| End with an exclamation mark ("...!") | Change to a period or action |
 
 ---
 
-## 三、禁用句式模板
+## 3. Disable sentence templates
 
-### 比喻类
+### Metaphor
 
-| 类型 | 处理 | 例外 |
+| Type | Processing | Exceptions |
 |------|------|------|
-| AI 模板比喻（"像一幅画卷"） | 删除 | — |
-| 通用比喻（"像……一样"） | 删除或白描 | — |
-| 生活化比喻（"像被蚊子咬"） | 保留 | 符合角色认知 |
-| 角色化比喻（"像他爸揍他那样"） | 保留 | 贴合角色背景 |
-| "仿佛/犹如/宛若" 引导 | 删除 | — |
+| AI template metaphor ("like a painting") | Delete |, |
+| Universal metaphor ("like...") | Delete or outline |, |
+| Life-like metaphor ("like being bitten by a mosquito") | Reserved | In line with character perception |
+| Characterization metaphor ("Like his dad beat him") | Keep | Fit the character's background |
+| "As if/like/like" guide | Delete |, |
 
-### 结构类
+### Structure class
 
-| 句式 | 处理 |
+| Sentence pattern | Processing |
 |------|------|
-| "连续4句相同主语" | 变换主语和句式 |
-| "连续3段相同开头" | 每段首句主语/场景不能重复 |
-| "连续5句相同句式" | 陈述/短句/对话交替 |
-| "连续2段描写同一物" | 景物/人物不重复描写 |
-| "相同比喻复用" | 用过的比喻/意象本章不再用 |
-| "同一情绪词重复" | 紧张/开心/难过等情绪词单章≤3次 |
+| "4 consecutive sentences with the same subject" | Change the subject and sentence pattern |
+| "3 consecutive paragraphs with the same beginning" | The subject/scene of the first sentence of each paragraph cannot be repeated |
+| "5 consecutive sentences with the same sentence pattern" | Alternate statement/short sentence/conversation |
+| "Describe the same thing in two consecutive paragraphs" | No repeated descriptions of scenery/characters |
+| "Reuse of the same metaphor" | The used metaphor/imagery is no longer used in this chapter |
+| "Repetition of the same emotional word" | Nervous/happy/sad and other emotional words in a single chapter ≤ 3 times |
 
-### 标点类
+### Punctuation class
 
-| 规则 | 说明 |
+| Rules | Description |
 |------|------|
-| 破折号（——） | 用法判定，不计数。允许停顿/节奏、对话被打断；删除间注式冗余。详见下方破折号判定 |
-| 对话中声音中断用"…"或直接断句 | 沉默用句号收尾 |
-| "了"字净化（警告） | 连续3句5个以上"了" → 标记段落供作者判断，不自作主张修改 |
+| Dash (, ) | Usage determination, not counting. Allow pauses/pacing, dialogue interruptions; remove punctual redundancy. See dash determination below for details |
+| Use "..." or a direct sentence break to interrupt the sound in a conversation | Use a period to end silence |
+| Purification of the word "LE" (warning) | More than 5 "LE" in 3 consecutive sentences → Mark the paragraph for the author's judgment and do not make any modifications on your own |
 
-#### 破折号判定（正反例，不靠数量线）
+#### Dash judgment (positive and negative examples, not relying on the quantity line)
 
-> 判定原则：删掉破折号及其两侧内容，意思是否变模糊？不变则删。
+> Judgment principle: If you delete the dash and the content on both sides, will the
+> meaning become blurred? If not, delete it.
 
-✅ **保留·停顿/节奏**（破折号后接的是动机/因果/状态补足，删掉后意思变模糊）
-「磨石声沙沙，磨两下，停一下——他怕磨偏。」
-「藤条勒得爪心发紧——他握了握，不松。」
+✅ **Retention / Pause/Rhythm** (The dash is followed by motivation/causation/status
+complement, and the meaning becomes blurred after deletion) "The sound of the grindstone
+rustles, grind it twice, and stop for a moment - he is afraid that the grinding will go
+astray." "The cane tightened the claws - he held it tightly and did not let go."
 
-✅ **保留·对话被打断**（话音没说完被外力掐断）
-「你——」话音被撞进来的声音打断。
+✅ **Reserved / Conversation interrupted** (The voice was cut off by an external force
+before finishing the sentence) "You, " The words were interrupted by a crashing sound.
 
-❌ **删除·间注式冗余**（破折号包裹的是可独立成句的同位语/解释）
-「他——一个在铁匠铺干了二十年的老师傅——拿起锤子。」
-→ 改：「他拿起锤子。」（"铁匠铺二十年"挪到别处交代）
+❌ **Delete / Individual redundancy** (The dashes are wrapped in appositives/explanations
+that can be formed into independent sentences) "He - a master who has worked in the
+blacksmith shop for twenty years - picked up the hammer." → Change: "He picked up the
+hammer." ("Twenty Years in the Blacksmith Shop" was moved to another place to explain)
 
-⚠️ **诊断信号·同段密集**（一段内出现三处及以上破折号，通常是间注冗余的聚集）
-→ 不是硬删除，逐处按上方用法判定核对：真正保留的通常只有一处，其余改句号或拆段。
+⚠️ **Diagnostic signal / Dense in the same paragraph** (three or more dashes appear in a
+paragraph, usually a redundant aggregation) → It is not a hard deletion, check it one by
+one according to the usage above: usually only one is really retained, and the rest are
+changed to periods or split into paragraphs.
 
-### 反问与假设骨架
+### Rhetorical Questions and Assumption Skeleton
 
-| 句式 | 处理 |
+| Sentence pattern | Processing |
 |------|------|
-| "如果我告诉你……" 反问式铺垫 | 直接陈述结论，不需要先反问再回答 |
-| "你有没有想过……" 引导式反问 | 删掉引导，直接写事实 |
-| "想象一下……" 假设导入 | 删掉，直接描写 |
-| "研究表明……" 无源引用 | 删掉"研究表明"或换为具体来源 |
+| "What if I told you..." rhetorical question preparation | State the conclusion directly without asking questions before answering |
+| "Have you ever thought about..." Guided rhetorical question | Delete the guide and write the facts directly |
+| "Imagine..." Hypothetical import | Delete, describe directly |
+| "Research shows..." Unsourced citation | Delete "Research shows" or replace with specific sources |
 
 ---
 
-## 四、替换策略速查
+## 4. Quick check on replacement strategy
 
-### 情绪外化
+### Externalization of Emotions
 
-| 情绪词 | 替换为 |
+| emotion word | replaced by |
 |--------|--------|
-| 紧张/焦虑 | 手抖、手心出汗、呼吸变快、坐立不安 |
-| 愤怒/气得发抖 | 手背上的青筋一根根暴起来，声音反而变轻 |
-| 害怕/恐惧 | 手指碰到门把手又缩回来，屏住呼吸 |
-| 伤心/难过 | 发呆，手停下来，动作变慢 |
-| 惊讶/震惊 | 手停在半空，愣住，忘记呼吸 |
-| 心痛/心碎 | 手指掐进肉里自己不知道疼 |
-| 委屈 | 咬着下嘴唇，咬出一道白印 |
-| 绝望 | 烟灰掉了一裤腿也没有弹 |
+| Nervous/anxiety | Shaking hands, sweaty palms, rapid breathing, restlessness |
+| Angry/trembling with anger | The veins on the back of the hands bulged one by one, and the voice became softer |
+| Fear/Fear | My finger touched the doorknob and then retracted, holding my breath |
+| sad/sad | in a daze, hands stopped, movements slowed down |
+| Surprise/Shock | Hand stopped in mid-air, stunned, forgetting to breathe |
+| Heartache/Heartbreak | My fingers dig into my flesh and I don’t know it hurts |
+| Grievance | Biting his lower lip, leaving a white mark |
+| Despair | The cigarette ashes fell down one leg of my trousers without flicking |
 
-### 对话标签替代
+### Conversation label replacement
 
-| 写法 | 替代 |
+| Writing | Substitution |
 |------|------|
-| "他愤怒地说" | 删副词，或换动作："他把杯子往桌上一顿。'……'" |
-| "她轻声说道" | '……' 她说完低下头 |
-| "他说""她说"高频 | 用动作/上下文承接 |
-| 全员同语气 | 按角色性格区分语气 |
+| "He said angrily" | Delete the adverb, or change the action: "He slammed the cup on the table. '...'" |
+| "She said softly" | '...' She lowered her head after speaking |
+| "He said" "She said" high frequency | Use action/context to undertake |
+| All members have the same tone | Divide the tone according to character's personality |
 
-### 视角控制
+### View control
 
-| ❌ 禁止 | ✅ 要求 |
+| ❌ BANNED | ✅ REQUEST |
 |--------|--------|
-| 上帝视角 | 聚焦主角视角 |
-| 视角在配角间跳来跳去 | 主角一定在场 |
-| 配角戏份超过主角 | 配角剧情一笔带过 |
-| 全知叙述（"他不知道更大的风暴正在酝酿"） | 删除 |
+| God's perspective | Focus on the protagonist's perspective |
+| The perspective jumps between supporting characters | The protagonist must be present |
+| The supporting characters play more roles than the protagonists | The plot of the supporting characters is brushed aside |
+| Omniscient narrative ("He had no idea a bigger storm was brewing") | Delete |
 
 ---
 
-## 五、疲劳词原阈值速查
+## 5. Quick check on fatigue word origin threshold
 
-保留原始阈值供快速扫描：
+Keep original thresholds for quick scanning:
 
-| 词 | 单章阈值 | 备注 |
+| Word | Single Chapter Threshold | Remarks |
 |----|---------|------|
-| 突然/忽然/猛然 | ≤4次 | 红线段落从宽 |
-| 竟然/居然 | ≤3次 | 适度保留 |
-| 渐渐/逐渐 | ≤2次 | 用变化细节替代 |
-| 依旧/仍然 | ≤2次 | 用状态描写替代 |
-| 然而/不过 | ≤4次 | T2同段≥2次才标记 |
-| 于是 | ≤3次 | 保留叙事功能明显的 |
-| 与此同时 | ≤1次 | 直接换场景开头 |
-| 瞳孔一缩/身体一僵 | ≤2次 | 继续零容忍 |
-| 倒吸一口凉气/呼吸一滞 | ≤1次 | 继续零容忍 |
-| 似乎/也许/大概/或许 | ≤3次/500字 | 保留必要的模糊判断 |
+| Sudden/sudden/suddenly | ≤4 times | Red line paragraphs should be given a wider range |
+| Unexpectedly/As expected | ≤3 times | Moderate reservation |
+| Gradually/Gradually | ≤2 times | Replace with changing details |
+| Still/Still | ≤2 times | Replace with status description |
+| However/Nevertheless | ≤4 times | T2 is only marked if the same segment is ≥2 times |
+| So | ≤3 times | Retain obvious narrative function |
+| At the same time | ≤1 times | Change the scene directly to the beginning |
+| Pupils shrink/body freezes | ≤2 times | Continue zero tolerance |
+| Gasps/stunted breathing | ≤1 time | Continue with zero tolerance |
+| It seems/maybe/probably/maybe | ≤3 times/500 words | Keep necessary fuzzy judgments |

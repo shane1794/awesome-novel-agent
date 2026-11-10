@@ -1,445 +1,545 @@
-# 主线拆纲指南
+# Mainline Unpacking Guide
 
-> Phase 2 第一步——定全书骨架再逐卷展开。拆完后写入 `story.md` 的 `story_arc` 段 + `volumes` 列表。
-> 共 3 步：总主线 → 从结局倒推找断点 → 定每卷冲突。首次进 Phase 2 走全流程，之后跳过。
+> Phase 2 The first step - determine the skeleton of the book and then unfold it
+> volume by volume. After splitting, write the `story_arc` segment + `volumes` list of
+> `story.md`. There are 3 steps in total: main line → work backwards from the ending
+> to find breaking points → determine conflicts in each volume. Go through the entire
+> process in Phase 2 for the first time, then skip it.
 
 ---
 
-## 先判断作者类型
+## Determine the author’s type first
 
-进入拆纲前，先判断作者属于哪种类型。问一句话：
+Before starting to break down the outline, first determine what type the author belongs
+to. Ask a question:
 
-> "你目前对全书的故事走向有完整概念吗——从开头到结局都想好了？还是只有第一卷的思路，后面边走边看？"
+> "Do you currently have a complete idea of the story direction of the book - from the
+> beginning to the end? Or do you only have the ideas of the first volume and read
+> them as you go?"
 
-根据回答走两条路：
+Take two paths based on the answer:
 
-| 作者说 | → 类型 | 走法 |
+| Author says | → Type | Move |
 |--------|--------|------|
-| "我都想好了""有完整概念""从开头到结局都知道" | **A：知道全书走向** | 按现有流程走：总主线→定终点→找断点→定每卷冲突 |
-| "只知道开头""只有第一卷""后面的还没想" | **B：只知道开头** | 总主线窄化为"第一卷方向"→终点/断点标"待定"→只定第一卷冲突 |
-| "介于之间——有大的方向但没有细节" | 走 A，但后卷冲突允许"待定" | 终点方向有即可，断点可能模糊，后卷冲突标"待定" |
+| "I have thought it all out" "I have a complete concept" "I know it from the beginning to the end" | **A: Know the direction of the book** | Follow the existing process: main line → determine the end point → find the breakpoint → determine the conflict in each volume |
+| "Only know the beginning", "Only the first volume", "I haven't thought about the rest yet" | **B: Only know the beginning** | The main line is narrowed to "the direction of the first volume" → the end point/breakpoint is marked "to be determined" → only the conflict in the first volume is determined |
+| "In between - there is a general direction but no details" | Go A, but the later-volume conflict is allowed "to be determined" | The end direction is OK, the breakpoint may be blurred, the later-volume conflict is marked "to be determined" |
 
-> **中介类型处理：** 作者说有方向但没细节——走类型 A 流程，但允许后卷 core_conflict 标"待定"（同类型 B）。区别在于：类型 A 要求总主线是全书级、终点有画面（哪怕模糊）；类型 B 总主线是卷一级、终点标"待定"。
+> **Mediation type processing:** The author said there is direction but no details -
+> follow the type A process, but allow post-volume core_conflict to be marked "pending"
+> (same as type B). The difference is: type A requires the main line to be at the book
+> level and the end point to have a picture (even if it is blurry); type B requires
+> the main line to be at the volume level and the end point to be marked "to be
+> determined".
 
 ---
 
-## 总主线
+## Main line
 
-**写什么：**
-- **类型 A：** 全书核心冲突——一句话说清全书核心冲突。标准是**不做完所有卷答不出来**。
-- **类型 B：** 第一卷的核心方向——这句话只覆盖第一卷，但必须有"谁 + 想做什么 + 被什么阻碍"。不是全书主线，是起步方向。
+**What to write:**
+- **Type A:** The core conflict of the whole book - describe the core conflict of the
+  whole book in one sentence. The standard is that you will not be able to answer all
+  the questions until you finish them.
+- **Type B:** The core direction of the first volume - this sentence only covers the
+  first volume, but there must be "who + what wants to do + what is hindered by what".
+  It's not the main line of the book, it's the starting point.
 
-### 判断标准
+### Judgment criteria
 
-**类型 A（全书级）：**
-- ✅ 包含"谁 + 追求什么 + 对抗什么/克服什么"
-- ✅ 做完一卷答不完，需要多卷才能讲完
-- ❌ "主角变强"——没有对抗，一卷就能写完
-- ❌ "陆征调查各种案件"——"各种案件"不是一根主线
+**Type A (full book level):**
+- ✅ Contains "who + what to pursue + what to fight/overcome"
+- ✅ I can’t finish the answer in one paper. I need multiple papers to finish it.
+- ❌ "The protagonist becomes stronger" - no confrontation, can be written in one volume
+- ❌ "Lu Zheng investigates various cases" - "Various cases" are not a main line
 
-**类型 B（卷一级）：**
-- ✅ 包含"谁 + 想做什么 + 被什么阻碍"
-- ✅ 是"第一卷范围内能推进或解决"的冲突
-- ✅ 作者能说出"第一卷大概讲什么事、主角要做什么"
-- ❌ "主角变强"——没有对抗，没有具体目标
-- ❌ "主角经历一些冒险"——没有具体事件
+**Type B (Volume One):**
+- ✅ Contains "who + what you want to do + what is hindered by"
+- ✅ It is a conflict that "can be advanced or resolved within the scope of the first
+  volume"
+- ✅ The author can tell "what the first volume is about and what the protagonist is
+  going to do"
+- ❌ "The protagonist becomes stronger" - no confrontation, no specific goals
+- ❌ "The protagonist goes through some adventures" - no specific events
 
-### Agent 处理步骤
+### Agent processing steps
 
-不要问"你的全书核心冲突是什么？"——作者说不出来。**先听故事，再提取结构。**
+Don't ask "What is the central conflict of your book?" - the author can't tell. **Listen
+to the story first, then extract the structure. **
 
-**Step 1：让作者说**
+**Step 1: Let the author speak**
 
-根据类型选择问法：
+Choose a question based on type:
 
-> **类型 A：** "设定都完成了，现在来规划整个故事的结构。用你的话说说，这个故事从头到尾讲的是什么？主角最想达成什么？"
->
-> **类型 B：** "好，你已经有了第一卷的想法。用你的话说说，第一卷大概讲什么？主角在这卷里要做什么、遇到什么？"
+> **Type A:** "The setting is complete, now let’s plan the structure of the entire
+> story. In your words, what is this story about from beginning to end? What does the
+> protagonist most want to achieve?" **Type B:** "Okay, you already have an idea for
+> the first volume. In your words, what is the first volume about? What will the
+> protagonist do and what will he encounter in this volume?"
 
-作者会给你一段话，可能很散。你的工作是**从中提取三个要素**：
+The author will give you a paragraph, which may be very loose. Your job is to extract
+three elements from it:
 
 ```
-收到的："陆征是个私家侦探，有天苏棠的姐姐来找他，说妹妹失踪了。他开始查，发现事情没那么简单，三年前有个案子被压了。他越查越深，发现背后有更大的东西，好像是警队内部有人搞鬼。"
+Received: "Lu Zheng is a private detective. One day, Su Tang's sister came to him and said that her sister was missing. He started to investigate and found that the matter was not that simple. There was a case that was suppressed three years ago. The deeper he investigated, the deeper he found out that there was something bigger behind it. It seemed that someone in the police force was up to something."
 
-提取：
-  谁 → 陆征（私家侦探）
-  追求什么 → 查清苏棠失踪真相
-  对抗什么 → 有人压案、警队内部势力阻止
+Extract:
+  Who → Lu Zheng (private detective)
+  What to pursue → Find out the truth about Su Tang’s disappearance
+  What to fight → Someone suppresses the case, and forces within the police force stop it
 ```
 
-**Step 2：浓缩为一句话**
+**Step 2: Condensed into one sentence**
 
-把三要素组合成一句话，展示给作者确认：
+Combine the three elements into a sentence and show it to the author for confirmation:
 
-> "我概括一下——陆征追查苏棠失踪案，发现三年前旧案被压，越查越深触及警队内部势力。大致对吗？"
+> "Let me summarize - Lu Zheng investigated the case of Su Tang's disappearance and
+> found that the old case three years ago was suppressed. The more he investigated,
+> the deeper he got into the internal forces of the police force. Is that roughly
+> correct?"
 
-**Step 3：迭代**
+**Step 3: Iteration**
 
-| 作者说 | 怎么接 |
+| The author says | How to pick up |
 |--------|--------|
-| "对，就是这个" | ✅ 确认。**类型 A**→进入定终点；**类型 B**→跳过定终点和找断点，直入定每卷冲突 |
-| "不太对，应该是我说的那个方向……" | 按作者修正重写，再确认一次 |
-| "不对，重点不是警队，是……" | 重新提取三要素，再展示 |
-| "还是有点宽" | "那再缩一下——主角最终要达成一个什么特定目标？不是'查明真相'这种泛的，是在哪件事上查明真相？" |
+| "Yes, that's it" | ✅ Confirm. **Type A** → Enter the fixed end point; ** Type B** → Skip the fixed end point and find breakpoints, and go straight to the fixed end point |
+| "That's not quite right, it should be in the direction I mentioned..." | Correct and rewrite according to the author's instructions, and confirm again |
+| "No, the point is not the police force, but..." | Re-extract the three elements and display them again |
+| "It's still a bit broad" | "Let's narrow it down again - what specific goal does the protagonist ultimately want to achieve? It's not something as general as 'finding out the truth', but on what matter is it about finding out the truth?" |
 
-### 特殊场景处理
+### Special scene handling
 
-| 作者说 | 分析 | Agent 怎么接 |
+| Author says | Analysis | How to connect to Agent |
 |--------|------|-------------|
-| "主角想变强" | 没有冲突对象，没有对抗 | "'变强'是指达到什么具体程度？变强了之后要做什么事？要和谁对抗？" |
-| "主角要复仇" | 有动机但没路径 | "复仇对象是谁？主角要经历几个阶段才能复仇成功？" |
-| "就一个案子，一卷搞定" | 不是多卷故事 | 类型 A 和 B 都跳过拆纲，直接进入 Phase 2.1 卷方向确定 |
-| "我想写很多，好几条线" | 主线不清晰 | "这几条线里，哪一条是贯穿始终的？其他的是作为支线穿插？" |
-| **类型 B 且作者只有零碎片段** | 连第一卷都说不清 | 退回 Phase 1 多聊设定激发灵感。告诉作者"主线拆纲需要大概知道第一卷的方向，现在还不够"。手动退出 Phase 2，作者准备好再回来 |
+| "The protagonist wants to become stronger" | No conflict object, no confrontation | "To what specific extent does 'becoming stronger' mean? What will you do after you become stronger? Who will you fight against?" |
+| "The protagonist wants revenge" | There is a motive but no path | "Who is the target of revenge? How many stages must the protagonist go through before revenge can be successful?" |
+| "Just one case, solved in one volume" | Not a multi-volume story | Types A and B both skip the outline and go directly to Phase 2.1 to determine the direction of the volume |
+| "I want to write a lot, several lines" | The main line is not clear | "Of these lines, which one runs through the whole thing? Are the others interspersed as branch lines?" |
+| **Type B and the author only has fragments** | Can’t even explain the first volume | Return to Phase 1 to chat more about settings to inspire inspiration. Tell the author, "The outline of the main plot requires a rough idea of the direction of the first volume, but it is not enough now." Manually exit Phase 2 and come back when the author is ready |
 
 ---
 
-## 从结局倒推
+## Working backwards from the ending
 
-核心方法：**不问"几卷"，先问"最后一幕"。**
+Core method: **Don't ask "how many volumes", first ask "the last scene". **
 
-> **类型 B 直接跳过此步。** 作者不知道结局，终点标"待定"，断点不找，直入"定每卷冲突"。
+> **Type B skips this step directly. ** The author doesn't know the ending. The end
+> point is marked "to be determined", and the breakpoint is not found. It goes
+> straight to "determine conflicts in each volume".
 
-### 第一步：定终点
+### Step one: Set the end point
 
-**写什么：** 最后一幕的画面、主角最终状态、结局基调（BE/HE/开放式）。三者至少写一个。
+**What to write:** The scene of the last scene, the final state of the protagonist, and
+the tone of the ending (BE/HE/open-ended). Write at least one of the three.
 
-#### Step 1：问终点
+#### Step 1: Ask for the end point
 
-> "你想象的故事最后一幕是什么画面？主角最终站在什么位置？"
+> "What is the final scene of the story you imagine? Where does the protagonist end
+> up?"
 
-**作者可能给你三种回答，处理方式不同：**
+**The author may give you three answers, with different handling methods:**
 
-**类型 A：有画面（最好）**
+**Type A: With picture (best)**
 
-| 作者说 | 提取什么 | 处理 |
+| What the author says | Extract what | Process |
 |--------|---------|------|
-| "主角揭开二十年前的真相，但选择不公开。他继续当他的私家侦探，心里有了一个永远不会说的答案。" | 最终状态（知道真相但不说）、最终场景（侦探所）、基调（苍凉但平静） | ✅ 很好，记录为终点描述 |
-| "主角回到仙界，坐上了当年被赶下来的位置，但发现这个位置意味着要承担不想要的代价。" | 最终状态（坐上位置但代价）、基调（悲剧性的胜利） | ✅ 很好 |
+| "The protagonist uncovers the truth from twenty years ago, but chooses not to make it public. He continues to be his private detective, with an answer in his heart that will never be told." | Final state (knowing the truth but not telling it), final scene (detective agency), tone (bleak but calm) | ✅ Very good, recorded as endpoint description |
+| "The protagonist returns to the fairy world and takes the position from which he was kicked out, but finds that this position means bearing an unwanted price." | Final state (taking the position but at a cost), tone (tragic victory) | ✅ Very good |
 
-**类型 B：有调性但没画面**
+**Type B: Tonal but no picture**
 
-| 作者说 | 怎么接 |
+| The author says | How to pick up |
 |--------|--------|
-| "be 结局" | "be 结局的话，主角最后怎么样了？死了？失败了？还是活着但失去了什么？" |
-| "主角赢了" | "赢了之后呢？世界变好了？主角得到了什么又失去了什么？最后一幕停在哪里？" |
-| "不想太套路，但说不上来" | "那先排除你不想要的——悲的喜的？主角活着还是死了？故事结束的时候世界是和平了还是留下了悬念？" |
+| "be ending" | "In the be ending, what happened to the protagonist in the end? Did he die? Failed? Still alive but what did he lose?" |
+| "The protagonist wins" | "What happens after winning? The world becomes better? What does the protagonist gain and lose? Where does the last scene stop?" |
+| "I don't want to be too cliche, but I can't tell." | "Let's eliminate what you don't want first - sad or happy? Is the protagonist alive or dead? Is the world peaceful at the end of the story or does it leave suspense?" |
 
-**类型 C：完全不知道**
+**Type C: Don’t know at all**
 
-> "没关系，那先不考虑结局。先聊第一卷的内容——边写边感知，第一卷写完自然知道第二卷该往哪走。"
+> "It doesn't matter, let's not consider the ending first. Let's talk about the
+> content of the first volume first - feel it while writing. After finishing the first
+> volume, you will naturally know where to go with the second volume."
 
-在 story.md 中将终点标记为"待定"。
+Mark the end point as "pending" in story.md.
 
-#### Step 2：核实终点和总主线一致
+#### Step 2: Verify that the end point is consistent with the main line
 
-拿到终点后，反问一句：
+After reaching the end point, ask:
 
-> "终点听起来和主线方向一致——主角最终{终点概括}，对吗？"
+> "The endpoint sounds the same as the main plot - the protagonist's final {endpoint
+> summary}, right?"
 
-| 终点和主线矛盾 | 怎么接 |
+| There is a conflict between the end point and the main line | How to pick up |
 |--------------|--------|
-| 主线说"揭露真相"但终点说"主角不公开真相" | "这就有了一个有意思的矛盾——主角追求真相但最终选择不说。这意味着中间有一段'为什么选择不说'的戏。这是你想要的吗？" |
-| 主线说"打败魔王"但终点说"世界没有变好" | "所以胜利是有代价的？打败魔王后世界没有变好，那主角的付出值不值得？这本小说要探讨的就是这个？" |
+| The main plot says "revealing the truth" but the end point says "the protagonist does not disclose the truth" | "There is an interesting contradiction - the protagonist pursues the truth but ultimately chooses not to tell it. This means that there is a scene in the middle of 'Why did you choose not to tell'. Is this what you want?" |
+| The main line says "defeat the devil" but the end point says "the world has not changed for the better" | "So victory comes at a price? After defeating the devil, the world has not changed for the better, so is the protagonist's effort worth it? Is this what this novel is going to explore?" |
 
 ---
 
-### 第二步：找自然断点
+### Step 2: Find natural breakpoints
 
-**写什么：** 起点到终点之间经过几个大的阶段——**不是凭空想象，是从"怎么从起点走到终点"推理。**
+**What to write:** Several major stages have passed between Qidian and the end point -
+**It is not based on imagination, but based on reasoning of "how to get from Qidian to
+the end point". **
 
-#### Step 1：问转折
+#### Step 1: Ask about the turning point
 
-> "从开头到结局，中间会经历几个大的转折？比如'主角第一次发现真相→遭遇重大失败→反击→最终对决'这样的阶段。"
+> "From the beginning to the ending, how many big turning points will it go through?
+> For example, the stage of 'the protagonist discovers the truth for the first time →
+> encounters a major failure → fights back → the final showdown'."
 
-**从作者的回答中提取断点。** 关键词是"转折"——每一卷的边界应该是**某个根本性的变化**：
+**Extracted breakpoints from author's answer. ** The key word is "turn" - the boundary
+of each volume should be ** some fundamental change **:
 
-- 主角知道了什么关键信息（信息变化）
-- 主角和某方的关系破裂/建立（关系变化）
-- 主角的实力/地位跃升（状态变化）
-- 发生了无法挽回的事件（事件变化）
+- What key information does the protagonist know (information changes)
+- The relationship between the protagonist and a certain party is broken/established
+  (relationship change)
+- The protagonist's strength/status rises (status changes)
+- An irreversible event has occurred (change of events)
 
-**怎么判断一个"阶段"是不是合格的断点：**
+**How to determine whether a "stage" is a qualified breakpoint:**
 
-| ✅ 合格断点 | ❌ 不合格断点 |
+| ✅ Qualified breakpoints | ❌ Unqualified breakpoints |
 |-----------|-------------|
-| "发现旧案被压"——信息变化，后续不一样了 | "主角继续调查"——没有变化，不是断点 |
-| "遭遇警告，有人要让他停手"——关系变化，对抗升级 | "主角成长"——太虚，什么算成长了？ |
-| "保护伞露出真面目"——信息变化，知道敌人是谁了 | "故事展开"——空词，没有具体变化 |
+| "It is discovered that the old case has been suppressed" - the information changes, and the follow-up is different | "The protagonist continues the investigation" - there is no change, not a breaking point |
+| "Encountered a warning, someone wants him to stop" - relationship changes, confrontation escalates | "Protagonist growth" - Taixu, what counts as growth? |
+| "The protective umbrella reveals its true face" - the information changes, and we know who the enemy is | "The story unfolds" - empty words, no specific changes |
 
-#### Step 2：处理作者的回答
+#### Step 2: Process the author’s answer
 
-| 作者说了 | 怎么办 |
+| The author said | What to do |
 |---------|--------|
-| 2-4 个明确阶段 | ✅ 每个阶段就是一卷的边界 |
-| "就是一路查到底，没什么阶段" | "那这个过程里，主角会遇到什么级别的人？从小喽啰到幕后黑手，一层一层揭开？每一个层级可能就是一卷" |
-| 列出了 6-8 个阶段 | 太多了，合并。"你说的这几个阶段，有几个是可以合并成一卷的？比如打听消息+初步调查可以是一卷的'调查阶段'" |
-| "说不出，你帮我看看" | 根据题材推理提案，给作者确认 |
+| 2-4 clear stages | ✅ Each stage is the boundary of a volume |
+| "It's just to find out all the way to the end, there are no stages" | "In this process, what level of people will the protagonist encounter? From the minions to the mastermind, uncovered layer by layer? Each level may be a volume" |
+| 6-8 stages listed | Too many, merge. "How many of the stages you mentioned can be combined into one volume? For example, inquiring about information + preliminary investigation can be the 'investigation stage' of one volume" |
+| "I can't tell, please help me take a look." | Reason the proposal based on the subject matter and confirm it with the author |
 
-**兜底（Agent 推理提案）：**
+**Getting to the bottom of things (Agent reasoning proposal):**
 
-如果作者没概念，你用总主线+题材推测最可能的断点：
+If the author has no idea, you can use the main line + theme to guess the most likely
+breakpoint:
 
-> "听起来你的故事从接案到揭开真相，中间会经历这几个阶段——发现旧案被压→深入调查遭遇警告→触及保护伞→最后对决。对吗？"
+> "It sounds like your story will go through these stages from taking the case to
+> uncovering the truth - discovering that the old case has been suppressed → in-depth
+> investigation and encountering a warning → touching the protective umbrella → final
+> confrontation. Right?"
 
-作者可能：
-- "对，就是这样" ✅
-- "还有一段……" → 追加断点
-- "没有警告这段" → 删除，重新看剩下几个
+The author may:
+- "Yes, that's it" ✅
+- "There is still a paragraph..." → Add breakpoint
+- "No warning" → delete and re-read the remaining ones
 
-#### Step 3：确定断点和卷数的对应
+#### Step 3: Determine the correspondence between breakpoints and volume numbers
 
-| 有效断点数 | 示例 | 卷数 |
+| Number of valid breakpoints | Example | Number of volumes |
 |-----------|------|------|
-| 0（一本做完） | 一个案子查到底，没有大的转折 | 1 卷 |
-| 1 | 前半收集线索，后半正面冲突 | 2 卷 |
-| 2 | 起→承→转合 或 引入→发展→高潮 | 3 卷 |
-| 3 | 起→承→转→合 | 4 卷 |
-| 4+ | 起→承1→承2→转→合 或 每卷自闭环+大主线 | 5+ 卷 |
+| 0 (one book completed) | A case is investigated to the end without any major turning points | 1 volume |
+| 1 | Collecting clues in the first half, confrontation in the second half | Volume 2 |
+| 2 | Start→Inherit→Convert or Introduce→Develop→Climax | 3 Volumes |
+| 3 | Starting→Inheriting→Transfer→Combining | 4 volumes |
+| 4+ | Introduction → Development 1 → Development 2 → Turn → Conclusion, or each volume self-closing + main line | 5+ volumes |
 
-**注意：这个表是给你确认断点数量是否合理的参考，不是给作者看的。** 不要展示这个表。
+**Note: This table is for your reference to confirm whether the number of breakpoints is
+reasonable, not for the author. ** Do not display this table.
 
 ---
 
-> **冲突升级设计：** 定每卷冲突时，参考 `.claude/knowledge/plot-craft/index.md` 中的四种冲突升级手法（价值错位/环境压力/目标置换/连锁反应），避免冲突停留在"反派搞事→主角反击"的单一模式。
+> **Conflict escalation design:** When determining the conflict in each volume, refer
+> to the four conflict escalation techniques in
+> `.claude/knowledge/plot-craft/index.md` (value misalignment/environmental
+> pressure/target displacement/chain reaction) to avoid the conflict remaining in a
+> single mode of "villain causing trouble→protagonist counterattack".
 
-### 第三步：定每卷冲突
+### Step 3: Determine the conflict for each volume
 
-**写什么：** 每卷的标题 + 核心冲突 + 预估章节。
+**What to write:** Title of each volume + core conflict + estimated chapters.
 
-#### 核心原则：每卷是总主线的子集
+#### Core Principle: Each volume is a subset of the overall thread
 
-**适用于类型 A。** 把总主线理解成"谁，去哪，干了啥，有啥冲突"——每卷应该是这个的子集，回答的是"**谁，在这个主线的哪一步，干啥了，碰到啥冲突**"。
+**Applies to Type A. ** Understand the general main line as "who, where, what, what, and
+what conflicts there are" - each volume should be a subset of this, and the answer is
+"**who, at which step in this main line, what, what, and what conflicts are
+encountered**".
 
-就像西游记：总主线是"唐僧师徒去西天取经"，81 难每一难才是单卷。每一难单独看是一个事件，但它的意义来自"这是取经路上的一步，合起来才能完成取经"。**指着总主线问：没有这卷，主线走得完吗？** ——能回答"走不完"才是合格的卷。
+Just like Journey to the West: the main plot is "Tang Monk and his disciples went to the
+West to learn Buddhist scriptures", and each of the 81 difficulties is a single volume.
+Each difficulty is an event when viewed individually, but its meaning comes from "This
+is a step on the way to learn the scriptures, and together they can complete the journey
+of learning the scriptures." ** pointed to the main plot and asked: Without this volume,
+could the main plot be completed? **, The test is qualified only if you can answer
+"never finish".
 
-**这意味着：**
-- 每卷核心冲突不是独立的子故事，是总主线在该阶段的**具体化**
-- 总主线是"谁+去哪+干啥+冲突"，每卷是同一组人**在这步**干**这步该干的事**遇到**这步的冲突**
-- 所有卷合起来恰好覆盖全程，不重复不遗漏
+**This means:**
+- The core conflict of each volume is not an independent sub-story, but the
+  **reification** of the main line at that stage.
+- The main line is "Who + Where + What + Conflict". Each volume is the same group of
+  people **doing** what should be done in this step** and encountering **conflicts in
+  this step**
+- All volumes together cover the entire process, no duplication or omission
 
-#### 每卷确认步骤
+#### Confirmation steps for each volume
 
-一卷一卷确认，不要一次列完：
+Confirm one volume at a time, do not list them all at once:
 
-> "第一卷《失踪》：从接案到发现旧案被压，核心是追查苏棠失踪案但遭遇阻力。这是主线第一步——发现问题，但背后的人还没浮出水面。大约 10 章。对吗？"
+> "Volume 1 "Disappearance": From taking the case to discovering that the old case was
+> suppressed, the core is to pursue the case of Su Tang's disappearance but
+> encountered resistance. This is the first step of the main plot - discovering the
+> problem, but the person behind it has not yet surfaced. About 10 chapters. Right?"
 
-**确认完第一卷，再聊第二卷**——顺序不可逆，因为前一卷的终点往往是后一卷的起点。
+**After confirming the first volume, let’s talk about the second volume** - The order is
+irreversible, because the end point of the previous volume is often Qidian of the later
+volume.
 
-#### 各字段填写标准
+#### Filling standards for each field
 
-| 字段 | 怎么填 | ✅ 合格 | ❌ 不合格 |
+| Field | How to fill in | ✅ Qualified | ❌ Unqualified |
 |------|--------|---------|---------|
-| 标题 | 2-4 字，能概括本卷核心事件 | "失踪""深水""破局" | "第一卷"（等于没起） |
-| 核心冲突 | **总主线在哪一步 +** 谁 + 做什么 + 被什么阻碍。必须是总主线在该阶段的**子集**，不是另起炉灶 | "追查苏棠失踪案，发现三年前旧案被压（主线第一步：发现问题，但幕后势力未现）" | "主角继续调查"（没有对抗）；"主角卷入国际阴谋"（主线是查失踪，国际阴谋是另一个故事） |
-| 预估章节 | 根据题材节奏估算，允许 ±30% | 10, 12, 8 | 0 或空（没想清楚体量） |
+| Title | 2-4 words, can summarize the core events of this volume | "Missing", "Deep Water", "Broken" | "Volume 1" (equal to not rising) |
+| Core Conflict | **Which step is the main plot +** Who + does + what is hindered by what. It must be a **subset** of the main plot at this stage, not a new start | "Tracing the case of Su Tang's disappearance, it was found that the old case three years ago was suppressed (the first step of the main plot: the problem was discovered, but the forces behind the scenes did not appear)" | "The protagonist continues the investigation" (no confrontation); "The protagonist is involved in an international conspiracy" (the main plot is to investigate the disappearance, the international conspiracy is another story) |
+| Estimated chapters | Estimated based on the rhythm of the subject matter, ±30% allowed | 10, 12, 8 | 0 or empty (didn’t think clearly about the size) |
 
-**弧线位置在最后归纳：** 所有卷定完后，回头看每卷在全篇中的位置，标注"起—引入谜团"、"转合—真相与代价"这种功能描述。不要求作者在定冲突的时候想这个。
+**Arc positions are summarized at the end:** After all the volumes have been determined,
+look back at the position of each volume in the entire story, and mark the functional
+descriptions such as "Inception - introduction of mystery" and "Transition - truth and
+price". Authors are not required to think about this when determining conflicts.
 
-#### 允许后卷模糊 / 待定
+#### Allow post-volume blur / TBD
 
-作者可能只知道第一卷细节，后面的只有一个方向。这是正常的。根据作者类型区别处理：
+The author may only know the details of the first volume, and only one direction for the
+rest. This is normal. Different processing according to author type:
 
-**类型 A（有全书概念但细节模糊）：**
-- 后卷至少写**一句话核心冲突 + 浮动章节数**
-- 写到那卷时再细化
-- 不要硬逼作者填充细节
+**Type A (concept of the whole book but vague details):**
+- In the second volume, write at least **one sentence of core conflict + number of
+  floating chapters**
+- I’ll refine it when I get to that volume.
+- Don’t force the author to fill in the details
 
-**类型 B（只知道开头）：**
-- **第一卷必填**——标题、核心冲突、预估章节全部写清
-- **后续卷全部标"待定"**——title 和 core_conflict 写"待定"，预估章节写"?"
-- story.md 中的分卷列表只列一卷，或列多卷但全部标"待定"
+**Type B (only the beginning is known):**
+- **Volume 1 is required** - write down the title, core conflict, and estimated chapters
+  in full
+- **All subsequent volumes will be marked "to be determined"** - title and core_conflict
+  will be marked as "to be determined", and estimated chapters will be marked as "?"
+- The volume list in story.md lists only one volume, or lists multiple volumes but all
+  are marked "pending"
 
-**回到 Phase 2 时：**
-- 读 story.md 找到下一卷
-- 如果下一卷 core_conflict = "待定" → 跳过主线拆纲，直入角色发声 / 卷方向确定
-- 角色发声写完，下一卷的方向自然浮现，写入 story.md 替换"待定"
+**Back to Phase 2:**
+- Read story.md to find the next volume
+- If the next volume core_conflict = "to be determined" → skip the main plot and
+  outline, go straight to the character's voice / volume direction determination
+- After the character's voice is written, the direction of the next volume will
+  naturally emerge, write it into story.md and replace "to be determined"
 
-#### 结构类型是最后贴的标签
+#### The structure type is the last label attached
 
-所有卷拆完后，回头看：
+After unpacking all the volumes, look back:
 
-> "你这三卷正好是三卷式——起（引入谜团）、承（深入对抗）、转合（真相与代价）。"
+> "Your three volumes happen to be in a three-volume format - beginning (introduction
+> of mystery), succession (in-depth confrontation), and transition (truth and price)."
 
-这是归纳标签，不是出发点。写进 story.md 的结构类型字段。
-
----
-
-### 四、完整对话示例
-
-**场景：都市悬疑，作者知道开头但不知道全貌**
-
-```
-Agent: "你想象的故事最后一幕是什么画面？主角最终站在什么位置？"
-
-作者: "我想让他在一个小办公室里，外面的灯亮着，他坐在那里看一份旧卷宗。案子破了，但他知道还有很多没挖出来的东西。"
-
-Agent: "了解了——结局是案子破了但有余韵，主角继续当侦探但心里装了更多东西。对吧？"
-
-作者: "对。"
-
-Agent: "从开头接案到结尾这幅画面，中间会经历几个大的阶段？比如第一次发现不对劲→遭遇阻力→最终对决这样的转折。"
-
-作者: "嗯……应该先是他发现案子有猫腻，然后有人警告他别查了，但他继续查下去，最后发现背后的人和事。"
-
-Agent: "听起来是三个阶段：发现旧案被压→深入调查遭遇警告→最后对决揭开真相。对吗？"
-
-作者: "对，差不多这样。"
-
-Agent: "好，那这三段就是三卷。先定第一卷：从接案到发现旧案被压，核心是追查苏棠失踪但遭遇阻力。大约几章？10 章左右？"
-
-作者: "差不多，10 章可以。"
-
-Agent: "第二卷：深入调查，有人阻止他。核心是陆征触及警队内部保护伞，每一步都有人抢先一步。大概 12 章？"
-```
-
-**最终 story.md 产出：**
-
-```markdown
-## 故事主线
-
-- **全书核心冲突：** 陆征追查失踪案发现背后横跨二十年的阴谋——每卷揭开一层，最后一卷才看到全貌
-- **结构类型：** 三卷式
-- **总卷数：** 3
-
-## 分卷规划
-
-### 卷1：失踪
-- **弧线位置：** 起—引入谜团
-- **核心冲突：** 追查苏棠失踪案，发现三年前旧案被压
-- **预估章节：** 10
-
-### 卷2：深水
-- **弧线位置：** 承—深入对抗
-- **核心冲突：** 陆征触及警队内部保护伞，每一步都有人抢先一步
-- **预估章节：** 12
-
-### 卷3：破局
-- **弧线位置：** 转合—真相与代价
-- **核心冲突：** 与幕后黑手正面交锋，所有线索汇聚到二十年前那件事
-- **预估章节：** 8
-```
+This is an inductive label, not a starting point. Written into the structure type field
+of story.md.
 
 ---
 
-## 产出模板
+### 4. Complete dialogue example
 
-拆纲完成后，按以下模板写入 `story.md`。**类型 A 和 B 产出格式相同，差异只在字段值。** Agent 直接按此模板写入，不自己发明格式。
+**Scene: Urban suspense, the author knows the beginning but not the whole story**
 
-### 类型 A 样式（知道全书走向）
+```
+Agent: "What is the final scene of the story in your imagination? Where does the protagonist end up?"
 
-```markdown
-## 故事主线
+Author: "I wanted him to be in a small office with the outside light on, and he was sitting there looking at an old file. The case was solved, but he knew there was a lot more that hadn't been unearthed."
 
-- **全书核心冲突：** 一句话说清全书冲突——谁 + 去哪 + 干啥 + 有啥冲突
-- **结构类型：** 三卷式 / 四卷式 等（事后归纳标签）
-- **总卷数：** 3
+Agent: "Understood - the ending is that the case is solved but there is a lingering effect, and the protagonist continues to be a detective but has more things in his heart. Right?"
 
-## 分卷规划
+Author: "Yes."
 
-### 卷1：失踪
-- **弧线位置：** 起—引入谜团
-- **核心冲突：** 总主线第一步——谁 + 在这步 + 做什么 + 被什么阻碍
-- **预估章节：** 10
+Agent: "From the scene of taking the case at the beginning to the end, how many major stages will it go through? For example, the first time you realize something is wrong → you encounter resistance → the final confrontation."
 
-### 卷2：深水
-- **弧线位置：** 承—深入对抗
-- **核心冲突：** 总主线第二步——同上结构
-- **预估章节：** 12
+Author: "Well... he should have discovered something fishy about the case first, and then someone warned him not to investigate, but he continued to investigate, and finally discovered the people and things behind it."
 
-### 卷3：破局
-- **弧线位置：** 转合—真相与代价
-- **核心冲突：** 总主线第三步——同上结构
-- **预估章节：** 8
+Agent: "It sounds like there are three stages: discovering that an old case has been suppressed → in-depth investigation and encountering a warning → the final confrontation to reveal the truth. Right?"
+
+Author: "Yes, almost like that."
+
+Agent: "Okay, then these three paragraphs are three volumes. Let's decide on the first volume first: from taking the case to discovering that the old case was suppressed. The core is to trace the disappearance of Su Tang but encounter resistance. How many chapters? About 10 chapters?"
+
+Author: "Almost, 10 chapters is fine."
+
+Agent: "Volume 2: In-depth investigation, someone stops him. The core is that Lu Zheng touches the protective umbrella within the police force, and someone takes the lead at every step. About 12 chapters?"
 ```
 
-### 类型 B 样式（只知道开头）
+**Final story.md output:**
 
 ```markdown
-## 故事主线
+## Main Story Line
 
-- **全书核心冲突：** 待定（仅定第一卷方向）
-- **结构类型：** 待定
-- **总卷数：** ?
+- **Core conflict of the book:** Lu Zheng traces the disappearance case and discovers a conspiracy spanning twenty years - each volume reveals a layer, and the whole picture is revealed in the last volume
+- **Structure type:** Three-volume type
+- **Total number of volumes:** 3
 
-## 分卷规划
+## Volume planning
 
-### 卷1：失踪
-- **弧线位置：** 第一卷（起点）
-- **核心冲突：** 第一卷方向——谁 + 想做什么 + 被什么阻碍
-- **预估章节：** 10
+### Volume 1: Missing
+- **Arc Location:** Starting - Introducing the mystery
+- **Core Conflict:** Investigate the case of Su Tang’s disappearance and discover that the old case three years ago was suppressed
+- **Estimated chapters:** 10
 
-### 卷2：待定
-- **弧线位置：** 待定
-- **核心冲突：** 待定
-- **预估章节：** ?
+### Volume 2: Deep Water
+- **Arc position:** Cheng-In-depth confrontation
+- **Core Conflict:** Lu Zheng touches the protective umbrella within the police force, and someone will take the lead at every step.
+- **Estimated chapters:** 12
+
+### Volume 3: Breaking the Game
+- **Arc Position:** Turnaround,Truth and Price
+- **Core Conflict:** Face to face with the mastermind behind the scenes, all clues converge to the incident twenty years ago
+- **Estimated chapters:** 8
 ```
 
-## 各字段怎么被下游使用
+---
 
-| 字段 | 谁用 | 怎么用 |
+## Output Template
+
+After the disassembly is completed, write `story.md` according to the following
+template. **Type A and B output formats are the same, differing only in field values. **
+Agent writes directly according to this template and does not invent the format by
+itself.
+
+### Type A style (knowing the direction of the book)
+
+```markdown
+## Main Story Line
+
+- **Core conflict of the whole book:** The conflict in the whole book can be explained in one sentence - who + where + what + what are the conflicts
+- **Structure type:** Three-volume type / Four-volume type, etc. (post-hoc summary label)
+- **Total number of volumes:** 3
+
+## Volume planning
+
+### Volume 1: Missing
+- **Arc Location:** Starting - Introducing the mystery
+- **Core Conflict:** The first step of the main plot - who + is doing + what is being done + what is being hindered at this step
+- **Estimated chapters:** 10
+
+### Volume 2: Deep Water
+- **Arc position:** Cheng-In-depth confrontation
+- **Core conflict:** The second step of the main plot - the same structure as above
+- **Estimated chapters:** 12
+
+### Volume 3: Breaking the Game
+- **Arc Position:** Turnaround,Truth and Price
+- **Core conflict:** The third step of the main line - the same structure as above
+- **Estimated chapters:** 8
+```
+
+### Type B style (only the beginning is known)
+
+```markdown
+## Main Story Line
+
+- **Core conflict of the book:** To be determined (only the direction of the first volume has been determined)
+- **Structure type:** To be determined
+- **Total number of volumes:**?
+
+## Volume planning
+
+### Volume 1: Missing
+- **Arc Location:** Volume 1 (Qidian)
+- **Core Conflict:** Volume 1 Direction - Who + What Wants to Do + What is Obstructed by
+- **Estimated chapters:** 10
+
+### Volume 2: TBD
+- **Arc position:** TBD
+- **Core Conflict:** TBD
+- **Estimated Chapter:**?
+```
+
+## How each field is used downstream
+
+| Field | Who uses it | How to use it |
 |------|------|--------|
-| 全书核心冲突（类型 A） | Phase 2.1 卷方向 + Phase 2.2 卷纲讨论 | 每卷规划时反问"这卷推进了总主线的哪一步？"——即总主线在"这一步"的子集 |
-| 第一卷方向（类型 B） | Phase 2.1 角色发声 | 回到 Phase 2 时，角色发声推导下一卷后替换"待定" |
-| 弧线位置 | Phase 2.1 模板选择/角色发声 | "起"阶段以引入为主；"转"卷节奏应加快 |
-| 核心冲突 | Phase 2.2 卷纲讨论 | 直接写入本卷 volume.md。应能在验收三向核对中通过"总主线→逐卷"和"卷→反向推断" |
-| 预估章节 | Phase 2.2 章节数分配 | 各阶段分配章节数的总量参考 |
-| 结构类型 | 跨卷节奏感知（仅参考） | 事后归纳的标签，不是规划依据 |
+| Core conflict of the book (Type A) | Phase 2.1 volume direction + Phase 2.2 volume outline discussion | When planning each volume, ask "Which step of the main line does this volume advance?" - that is, the subset of the main line at "this step" |
+| First Volume Direction (Type B) | Phase 2.1 Character Voice | When returning to Phase 2, the character voice will be deduced and replaced with "to be determined" after the next volume |
+| Arc Position | Phase 2.1 Template Selection/Character Voicing | The "start" stage is mainly about introduction; the "turn" rhythm should be accelerated |
+| Core Conflict | Phase 2.2 Volume Outline Discussion | Write directly to this volume volume.md. It should be able to pass "general main line → volume by volume" and "volume → reverse inference" in the three-way acceptance check |
+| Estimated chapters | Phase 2.2 chapter number allocation | Total reference for the number of chapters allocated in each stage |
+| Structure type | Cross-volume rhythm perception (reference only) | A label for post hoc induction, not a basis for planning |
 
 ---
 
-## 验收：三向核对
+## Acceptance: three-way verification
 
-验收核心不是字段填没填——是**指着一个问另一个能不能对上**。类型 A/B 共用同一套方法，有差异处标注。
+The core of acceptance is not whether the fields are filled in or not - it is pointing
+to one and asking if the other can match. Type A/B share the same set of methods, and
+differences are noted.
 
-### 核对一：总主线 → 逐卷（上下关系）
+### Check 1: Main line → Volume by volume (top-bottom relationship)
 
-指着总主线（类型 B：第一卷方向），对每一卷问：
+Point to the main line (Type B: Volume 1 direction) and ask for each volume:
 
-> **"这卷的标题、故事、核心冲突，放在总主线的哪一步？"**
+> **"Where should the title, story, and core conflict of this volume be placed in the
+> main plot?"**
 
-- ✅ 能答出来（"这卷对应查案阶段，是主线第一步"）
-- ❌ 答不出来或牵强 → 这卷和主线脱节
+- ✅ Able to answer ("This volume corresponds to the investigation stage and is the first
+  step of the main line")
+- ❌ The answer is unclear or far-fetched → This volume is out of touch with the main
+  plot
 
-**类型 B：** 只验第一卷。问"这是起点吗？故事从这里开始合理吗？"
+**Type B:** Only the first volume will be tested. Ask "Is this Qidian? Does it make
+sense for the story to start here?"
 
-### 核对二：卷序列 → 完整路径（前后关系）
+### Check 2: Volume sequence → complete path (context)
 
-把所有卷的核心冲突排成一排，不看总主线，问：
+Line up the core conflicts of all volumes, without looking at the main plot, and ask:
 
-> **"这些冲突合起来，是一条完整的故事线吗？有没有跳步或断裂？"**
+> **"Are these conflicts combined into a complete story line? Are there any skips or
+> breaks?"**
 
-- ✅ 合起来就是自然的故事进程，下一卷是上一卷的自然结果
-- ❌ 合起来不是一条线 → 某卷不是主线子集，或漏了关键过渡
+- ✅ Taken together, it is a natural story progression, and the next volume is the
+  natural result of the previous volume.
+- ❌ Not a line together → A certain volume is not a subset of the main line, or a key
+  transition is missing
 
-例：卷 1 "发现旧案被压" → 卷 2 "深入调查遭遇阻力" → 卷 3 "与幕后黑手交锋" → 合起来是完整的查案过程 ✅。卷 1 "接案" → 卷 2 "主角回老家探亲" → 卷 3 "对决" → 中间断裂 ❌。
+Example: Volume 1 "Discovered that an old case was suppressed" → Volume 2 "Encountered
+resistance in in-depth investigation" → Volume 3 "Confrontation with the mastermind
+behind the scenes" → Taken together, it is a complete investigation process ✅. Volume 1
+"Receiving the Case" → Volume 2 "The Protagonist Returns to His Hometown to Visit
+Relatives" → Volume 3 "Confrontation" → Break in the Middle ❌.
 
-**类型 B：** 只有一卷，此核对自动通过。
+**Type B:** With only one volume, this check is automatically passed.
 
-### 核对三：卷 → 反向推断总主线（汇聚关系）
+### Check 3: Volume → Reverse inference of the main line (aggregation relationship)
 
-只看所有卷的核心冲突（不看总主线），问：
+Just look at the core conflicts of all volumes (not the overall main line), and ask:
 
-> **"读完这些卷的冲突，能猜出全书核心冲突大概是什么吗？"**
+> **"After reading the conflicts in these volumes, can you guess what the core
+> conflict in the whole book is?"**
 
-- ✅ 能推断出来（每卷是大故事的一小块，合起来指向同一个大目标）
-- ❌ 推断不出来（卷冲突各自独立，没有汇聚到同一条主线）
+- ✅ Can be inferred (each volume is a small piece of a big story, together pointing to
+  the same big goal)
+- ❌ It cannot be inferred (volume conflicts are independent and not converged to the
+  same main line)
 
-说白了：如果每卷冲突串起来指向完全不同的方向（一卷查案、一卷恋爱、一卷商战），它们就不是同一条主线。
+To put it bluntly: If the conflicts in each volume are strung together and point in
+completely different directions (one volume is about investigation, one is about love,
+and one is about business war), they are not the same main line.
 
-**类型 B：** 只有一卷，跳过此核对。
+**Type B:** Only one volume, skip this check.
 
 ---
 
-### 字段完整性检查（辅助）
+### Field integrity check (auxiliary)
 
-做完三向核对后，快速过字段完整性。三向核对全部通过但字段有缺 → 补齐。三向核对不通过 → **先修主线关系再补字段**，顺序不可逆。
+After completing the three-way check, quickly check the field integrity. All three-way
+verification passed but there are missing fields → Complete them. The three-way check
+fails → **Fix the main relationship first and then fill in the fields**, the order is
+irreversible.
 
-| 检查项 | 类型 A | 类型 B |
+| Check Item | Type A | Type B |
 |--------|--------|--------|
-| 全书核心冲突 / 第一卷方向 | 含"谁+追求+对抗"，做完一卷答不完 | 含"谁+想做什么+被什么阻碍"，标注"仅第一卷方向" |
-| 终点方向 | 记录（画面/基调/状态，至少一个） | 允许"待定" |
-| 分卷字段 | 每卷有标题/核心冲突/预估章节 | 第一卷必填，后续卷允许"待定"|
-| 冲突格式 | "总主线第几步 + 谁+做什么+被什么阻碍" | "谁+想做什么+被什么阻碍" |
+| The core conflict of the whole book / The direction of the first volume | Contains "who + pursuit + confrontation", and you can't finish the answer in one volume | Contains "who + what you want to do + what is hindered by what", marked "Only the direction of the first volume" |
+| end direction | record (screen/tone/status, at least one) | allow "pending" |
+| Volume field | Each volume has title/core conflict/estimated chapters | The first volume is required, and subsequent volumes allow "pending" |
+| Conflict format | "What are the steps of the main line + who + does + what is hindered by what" | "Who + wants to do + what is hindered by what" |
 
-**总检：** 指着总主线问"没有这卷，主线走得完吗？"——走不完 ✅
+**General Inspector:** Pointing to the main line and asking "Without this volume, can
+the main line be completed?" - Can't finish it ✅

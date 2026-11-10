@@ -1,41 +1,51 @@
-# 抗战谍战反AI规则
+# Anti-War Spy War Anti-AI Rules
 
-> 适用题材：anti-japanese-war
+> Applicable themes: anti-japanese-war
 
-## 高频AI病句正反例
+## High-Frequency AI-Style Bad Sentences: Incorrect vs. Correct Examples
 
-### 1. 战场氛围
+### 1. Battlefield atmosphere
 
-❌ "枪林弹雨中，战士们浴血奋战"
-✅ "他趴在地上。耳边嗡嗡响，不知道是炮还是自己的血在流。土进了嘴里，牙碜得慌。"
+❌ "Amidst the hail of bullets, the soldiers fought bloody battles" ✅ "He was lying on
+the ground. There was a buzzing in his ears, and he didn't know if it was the cannon or
+his own blood flowing. The soil entered his mouth, and his teeth became frightened."
 
-### 2. 情报传递
+### 2. Information transmission
 
-❌ "他将情报藏在一本书中，成功传递给了组织"
-✅ "他把纸叠成豆腐块大小，塞进鞋垫底下。走路硌得慌，但习惯了。"
+❌ "He hid the information in a book and successfully passed it on to the organization" ✅
+"He folded the paper into the size of a tofu block and stuffed it under the insole of
+his shoe. He was very nervous when he walked, but he got used to it."
 
-### 3. 情绪直述
+### 3. Direct emotional statements
 
-❌ "他心中燃烧着仇恨的火焰"
-✅ "他攥着那张照片看了很久。照片上有血，他用袖子擦了擦，袖子也红了。"
+❌ "The flame of hatred burned in his heart" ✅ "He held the photo and looked at it for a
+long time. There was blood on the photo, and he wiped it with his sleeve, which also
+turned red."
 
-❌ "她感到紧张"
-✅ "她的手指一直在抖。攥着衣角，攥了半天，衣角都皱了。后来她干脆把手背到身后去。"
+❌ "She felt nervous" ✅ "Her fingers kept shaking. She clutched the corner of her clothes
+for a long time, and the corners of her clothes were wrinkled. Later, she simply put her
+hands behind her back."
 
-### 4. 排比式分析
+### 4. Comparative analysis
 
-❌ "也许敌人已经发现了，也许情报有误，也许这是个陷阱"
-✅ "他站在街角抽烟。一根抽完，又点了一根。第三根的时候，有人拍了拍他的肩。"
+❌ "Maybe the enemy has discovered it, maybe the intelligence is wrong, maybe it's a
+trap" ✅ "He stood on the street corner smoking. After smoking one, he lit another. On
+the third one, someone tapped him on the shoulder."
 
-### 5. 对话紧张化
+### 5. Intensify dialogue
 
-❌ ""情况紧急，我们必须立即行动！""
-✅ ""走了。"他站起来，把烟头踩灭。没看那人的脸。"
+❌ ""The situation is urgent, we must act immediately! "" ✅ ""Gone. "He stood up and
+stamped out the cigarette butt. He didn't look at the man's face."
 
-## 写作要点
+## Writing points
 
-1. **战场写身体感受** — 耳鸣、土腥味、腿麻，不是"枪林弹雨"
-2. **情报写小动作** — 藏鞋垫、夹书页、塞墙缝，具体的位置和触感
-3. **紧张写重复** — 抽烟、擦枪、摆弄东西，重复动作比"紧张"更真实
-4. **对话要短** — 地下工作者的对话都是暗语，能省则省
-5. **代价要具体** — 牺牲不是光荣的口号，是一张照片、一封没寄出的信
+1. **Writing about physical feelings on the battlefield** - Tinnitus, earthy smell, leg
+   numbness, not "a hail of bullets"
+2. **Small tricks for information writing**, hiding insoles, inserting book pages,
+   stuffing cracks in walls, the specific location and touch
+3. **Nervous writing and repetition** - smoking, cleaning guns, playing with things,
+   repeated actions are more real than "nervous"
+4. **Keep conversations short**, Underground workers’ conversations are all code words,
+   save them if you can.
+5. **The price must be specific**, Sacrifice is not a glorious slogan, it is a photo or
+   an unsent letter

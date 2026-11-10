@@ -1,41 +1,53 @@
-# 都市种田反AI规则
+# Urban Farming Anti-AI Rules
 
-> 适用题材：urban-farming
+> Applicable themes: urban-farming
 
-## 高频AI病句正反例
+## High-Frequency AI-Style Bad Sentences: Incorrect vs. Correct Examples
 
-### 1. 丰收描写
+### 1. Description of harvest
 
-❌ "金色的麦浪随风起伏，一片丰收的景象"
-✅ "他把麦子捆好，码在田埂上。麦芒扎手，他把手缩进袖子里。太阳快落山了，还剩两趟。"
+❌ "The golden waves of wheat undulated with the wind, a scene of abundant harvest" ✅ "He
+bundled the wheat and piled it on the field ridge. The wheat awns pricked his hands, so
+he retracted his hands into his sleeves. The sun was about to set, and there were still
+two trips left."
 
-### 2. 情绪直述
+### 2. Direct emotional statements
 
-❌ "他感到生活充满了希望"
-✅ "他把日历翻了一页。还有三个月。三个月够再种一茬。他把日历挂回去，钉歪了，歪着吧。"
+❌ "He felt that life was full of hope" ✅ "He turned over the calendar page. There were
+still three months. Three months is enough to plant another crop. He hung the calendar
+back up and it was nailed crookedly, crookedly."
 
-❌ "她心里美滋滋的"
-✅ "她把菜洗了三遍。水凉了，手指头有点红。她哼起歌来，调找不着，凑合唱。"
+❌ "She felt very happy" ✅ "She washed the dishes three times. The water was cold and her
+fingers were a little red. She hummed a song, but couldn't find the tune, so she sang
+along."
 
-### 3. 排比式期待
+### 3. Parallel expectations
 
-❌ "也许是明天，也许是后天，也许很快就能收获"
-✅ "他蹲在棚里看瓜。瓜还没熟，拳头那么大。他用指甲掐了一下，没掐动。再等等。"
+❌ "Maybe tomorrow, maybe the day after tomorrow, maybe it will be harvested soon" ✅ "He
+squatted in the shed and looked at the melons. The melons were not yet ripe, and were as
+big as a fist. He pinched them with his nails, but they didn't move. Wait a moment."
 
-### 4. 描写过度美化
+### 4. Excessive description and beautification
 
-❌ "鸟语花香、世外桃源般的田园生活"
-✅ "鸡叫得吵，粪味飘过来了。他捂着鼻子去看了圈，回来洗了三遍手。"
+❌ "Birds chirping and flowers fragrant, a paradise-like pastoral life" ✅ "The chickens
+crowed noisily, and the smell of manure wafted over. He covered his nose and looked
+around, and washed his hands three times when he came back."
 
-### 5. 成就直述
+### 5. Direct statement of achievements
 
-❌ "他终于靠勤劳的双手走上了致富之路"
-✅ "他数了数钱。又数了一遍。数完拿皮筋扎好，塞进铁盒里。铁盒有点生锈，盖子不好开。"
+❌ "He finally embarked on the road to wealth with his hard-working hands" ✅ "He counted
+the money. He counted it again. After counting, he tied it with a rubber band and
+stuffed it into the iron box. The iron box was a little rusty and the lid was difficult
+to open."
 
-## 写作要点
+## Writing points
 
-1. **种田写累** — 腰酸、手起茧、太阳晒，不是"丰收的喜悦"
-2. **希望写小动作** — 日历、种子袋、铁盒，具体的积累物比"希望"更真实
-3. **日常写琐碎** — 洗菜三遍、浇地几瓢、除草弯腰，不是"勤劳耕作"
-4. **成就写数钱/存钱** — 钱是农村人成就最具体的体现
-5. **节奏偏慢** — 种田文不是快节奏，让细节慢慢积累
+1. **Farming is tiring** - backache, hand calluses, and sun exposure are not the "joy of
+   a good harvest"
+2. **Small actions of hope**, Calendars, seed bags, iron boxes, concrete accumulations
+   are more real than "hope"
+3. **Daily writing about trivial matters** - Washing vegetables three times, watering
+   the ground a few times, weeding and bending over are not "hard-working farming"
+4. **Achievements are written by counting money/saving money**, Money is the most
+   concrete manifestation of rural people’s achievements.
+5. **Slow pace**, Farming articles are not fast-paced, let the details accumulate slowly

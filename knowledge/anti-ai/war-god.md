@@ -1,41 +1,54 @@
-# 战神赘婿反AI规则
+# War God Live-In Son-in-Law Anti-AI Rules
 
-> 适用题材：war-god、urban-high-martial
+> Applicable themes: war-god, urban-high-martial
 
-## 高频AI病句正反例
+## High-Frequency AI-Style Bad Sentences: Incorrect vs. Correct Examples
 
-### 1. 身份反差描写
+### 1. Description of identity contrast
 
-❌ "他隐藏身份入赘三年，所有人都不知道他的真实身份"
-✅ "他把围裙系上。系反了，拆掉重来。丈母娘又在催，他加快了脚步。"
+❌ "He hid his identity for three years, and no one knew his true identity." ✅ "He tied
+the apron on. He tied it backwards, took it off and started again. His mother-in-law was
+urging him again, so he quickened his pace."
 
-### 2. 打脸准备
+### 2. face-slapping Preparation
 
-❌ "他嘴角勾起一抹冷笑，心中已有计划"
-✅ "他把烟掐了。掐灭的时候没看火，手指烫了一下。他甩了甩手，把烟头弹进垃圾桶。"
+❌ "A sneer curled up at the corner of his mouth, and he had a plan in mind" ✅ "He put
+out the cigarette. He didn't look at the fire when he put it out, and his fingers were
+burned. He shook his hand and flicked the cigarette butt into the trash can."
 
-❌ "是时候让他们知道真相了"
-✅ "他站在门口没进去。里面挺热闹的。他把手在裤子上擦了擦，还没想好怎么开口。"
+❌ "It's time to let them know the truth" ✅ "He stood at the door and didn't go in. It
+was quite lively inside. He wiped his hands on his pants and hadn't figured out how to
+speak."
 
-### 3. 排比式嘲讽
+### 3. Parallel taunting
 
-❌ "也许他真的只是个废物，也许当年真是看走眼了，也许一切都是假象"
-✅ "他站在那儿，没人理他。他也不急，把袖子挽了挽。袖子线头出来了，他拽了拽，没拽掉。"
+❌ "Maybe he was really just a loser, maybe he really saw things wrong back then, maybe
+everything was an illusion" ✅ "He stood there, no one paid attention to him. He was not
+in a hurry, and rolled up his sleeves. The threads on the sleeves came out, but he
+pulled them but didn't pull them off."
 
-### 4. 情绪直述
+### 4. Direct emotional statements
 
-❌ "他心中平静如水"
-✅ "他端起酒杯，喝了一口。酒是凉的。他又喝了一口。没人看他，他随便喝。"
+❌ "His heart was as calm as water" ✅ "He picked up the wine glass and took a sip. The
+wine was cold. He took another sip. No one was looking at him, so he drank casually."
 
-### 5. 身份揭露
+### 5. Identity Revealed
 
-❌ "他缓缓抬起头，眼中闪过一道精光"
-✅ "他把墨镜摘了。摘得慢，眼皮耷拉着。刚睡醒的样子。旁边有人叫了一声，他没听见。"
+❌ "He slowly raised his head, a flash of light flashed in his eyes" ✅ "He took off his
+sunglasses. He took them off slowly, and his eyelids drooped. He looked like he had just
+woken up. Someone yelled next to him, but he didn't hear it."
 
-## 写作要点
+## Writing points
 
-1. **入赘写日常细节** — 围裙、催、系反了，比"隐藏身份"更真实
-2. **打脸写准备动作** — 掐烟、挽袖子、擦手，不是"嘴角勾起冷笑"
-3. **平静写慢动作** — 端杯、喝酒、没人看，平静是用行动节奏表达的
-4. **身份揭露写反差** — 不是"眼中精光"，是刚睡醒的样子、慢吞吞摘墨镜
-5. **废物流写憋屈** — 不是"忍辱负重"，是随便喝、没人理、自己找事做
+1. **Written daily details** - apron, reminder, tied backwards, more real than "hiding
+   identity"
+2. **face-slapping is a preparatory action**, cigarette smoking, rolling up sleeves,
+   wiping hands, not "a sneer at the corner of the mouth"
+3. **Calm writing in slow motion**, holding a glass, drinking wine, no one is watching,
+   calmness is expressed by the rhythm of action
+4. **Identity revealed and written in contrast** - It’s not that “the eyes are
+   gleaming”, it’s that of someone who has just woken up and slowly took off his
+   sunglasses
+5. **The waste stream is written with frustration** - It’s not about “bearing the
+   humiliation”, it’s about drinking casually, no one cares about you, and finding
+   things to do by yourself

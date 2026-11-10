@@ -1,41 +1,50 @@
-# 动漫/游戏衍生反AI规则
+# Anti-AI Rules Derived From Animation and Games
 
-> 适用题材：anime-derivative、game-sports
+> Applicable themes: anime-derivative, game-sports
 
-## 高频AI病句正反例
+## High-Frequency AI-Style Bad Sentences: Incorrect vs. Correct Examples
 
-### 1. 技能释放描写
+### 1. Description of skill release
 
-❌ "他使出必杀技，光芒万丈，威力惊人"
-✅ "他把手柄往前推。屏幕闪了一下，角色动了。他盯着血条，心跳得厉害。"
+❌ "He used his special move, which was brilliant and powerful." ✅ "He pushed the
+controller forward. The screen flashed and the character moved. He stared at the health
+bar and his heart beat violently."
 
-❌ "一道剑光闪过，敌人灰飞烟灭"
-✅ "他挥了一下鼠标。角色跳起来，砍下去。音效响了一声，怪倒下了。他呼出一口气。"
+❌ "A sword light flashed, and the enemy was wiped out." ✅ "He waved the mouse. The
+character jumped up and slashed. The sound effect rang, and the monster fell. He
+exhaled."
 
-### 2. 游戏状态描写
+### 2. Game status description
 
-❌ "他的角色血量见底，形势危急"
-✅ "血条剩一丝了。他把鼠标挪到左边，又挪到右边，犹豫了两秒。换了个技能。"
+❌ "His character's health has bottomed out and the situation is critical" ✅ "There is
+only a trace of health left. He moved the mouse to the left, then to the right, and
+hesitated for two seconds. He changed the skill."
 
-### 3. 排比式分析
+### 3. Comparative analysis
 
-❌ "也许是网络卡了，也许是键盘坏了，也许是今天运气不好"
-✅ "他敲了一下键盘。没反应。又敲了一下。屏幕卡在那儿，转圈。他把键盘翻过来磕了磕。"
+❌ "Maybe the network is stuck, maybe the keyboard is broken, maybe I have bad luck
+today" ✅ "He tapped the keyboard. No response. He tapped again. The screen was stuck
+there, spinning around. He turned the keyboard over and knocked it."
 
-### 4. 情绪直述
+### 4. Direct emotional statements
 
-❌ "他感到胜利在望"
-✅ "他往前探了探身子。嘴角往上翘了一点，又压下去了。还有一波兵。"
+❌ "He felt victory was in sight" ✅ "He leaned forward. The corners of his mouth turned
+up a little, then lowered them again. There was another wave of soldiers."
 
-### 5. 角色反应过度
+### 5. Characters overreact
 
-❌ "他大惊失色，不知如何是好"
-✅ "他愣了两秒。然后把耳机摘下来，挠了挠头。"这啥情况？""
+❌ "He was shocked and didn't know what to do" ✅ "He was stunned for two seconds. Then he
+took off the headphones and scratched his head. "What's going on? ""
 
-## 写作要点
+## Writing points
 
-1. **游戏写屏幕外** — 手柄震动、键盘手感、屏幕反光，比写游戏里更真实
-2. **操作写犹豫** — 换不换技能？打不打？犹豫比决断更有戏
-3. **胜利写克制** — 不能跳起来欢呼，是嘴角动一下、叹口气、松口气
-4. **失败写小动作** — 砸键盘、喝水、揉眼睛，不是"很沮丧"
-5. **对话要玩梗** — 游戏/动漫玩家说话有梗，不是正经书面语
+1. **The game is written outside the screen** - handle vibration, keyboard feel, and
+   screen reflection are more realistic than writing in the game
+2. **Hesitation in writing operations**, Should I change my skills? Fight or not?
+   Hesitation is more fun than decision
+3. **Victory is written with restraint**, You can’t jump up and cheer, you can move your
+   lips, sigh, and breathe a sigh of relief
+4. **Small actions for failure**, smashing the keyboard, drinking water, rubbing your
+   eyes, are not "very depressed"
+5. **Dialogue should be funny**, game/anime players have funny words, not serious
+   written language

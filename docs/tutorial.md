@@ -1,712 +1,713 @@
-# awesome-novel-agent 操作手册
+# awesome-novel-agent User Manual
 
-以修仙小说《青云志》为案例，完整演示从零开始写小说的全流程。
-
----
-
-## 目录
-
-1. [安装与配置](#1-安装与配置)
-2. [启动 Skill](#2-启动-skill)
-3. [Phase 1：设定](#3-phase-1设定)
-4. [Phase 2：主线拆纲 + 卷纲](#4-phase-2主线拆纲--卷纲)
-5. [Phase 3：逐章写作](#5-phase-3逐章写作)
-6. [继续写第二章](#6-继续写第二章)
-7. [常见问题](#7-常见问题)
+Using the xianxia (immortal cultivation) novel *Qingyun Chronicles* as the worked example, this manual walks through the full process of writing a novel from scratch.
 
 ---
 
-## 1. 安装与配置
+## Table of Contents
 
-### 1.1 前提条件
-
-- 能打开命令行终端（Windows 用 PowerShell 或 CMD，Mac/Linux 用终端）
-- 有网络连接（下载安装包）
-
-### 1.2 安装步骤
-
-把下面这段话复制给 AI：
-
-> "帮我安装 awesome-novel-agent，仓库在 https://github.com/modoojunko/awesome-novel-agent"
+1. [Installation and Setup](#1-installation-and-setup)
+2. [Start Writing](#2-start-writing)
+3. [Phase 1: Setup](#3-phase-1-setup)
+4. [Phase 2: Main Arc Breakdown and Volume Outlines](#4-phase-2-main-arc-breakdown-and-volume-outlines)
+5. [Phase 3: Chapter-by-Chapter Writing](#5-phase-3-chapter-by-chapter-writing)
+6. [Continuing with Chapter 2](#6-continuing-with-chapter-2)
+7. [Frequently Asked Questions](#7-frequently-asked-questions)
 
 ---
 
-> **关于多 Agent 协作架构：** 本系统由 8 个 Agent 协作驱动。`@novel-agent` 是顶层入口，由主 AI 加载后扮演总指挥角色。它不直接写内容，而是通过 Agent 工具调度子 agent（volume-planner / chapter-planner / prompt-crafter / writer / reader / anti-ai / updater）各司其职。子 agent 完成后清理任务标记，novel-agent 检测到后自动推进下一阶段。
+## 1. Installation and Setup
+
+### 1.1 Prerequisites
+
+- You can open a command-line terminal (Windows: PowerShell or CMD; Mac/Linux: Terminal)
+- You have a network connection (to download the installer)
+
+### 1.2 Installation Steps
+
+Copy the following message to your AI:
+
+> "Help me install awesome-novel-agent. The repository is at https://github.com/modoojunko/awesome-novel-agent"
 
 ---
 
-**AI 会帮你：**
-
-1. 下载最新版本
-2. 运行对应平台的安装脚本（`./install.sh <平台>`）安装 skill 本体
-3. 配置到你的 AI 工具中
+> **About the multi-agent collaboration architecture:** This system is driven by 8 collaborating agents. `@novel-agent` is the top-level entry point, loaded by the main AI to play the commander role. It does not write content directly; instead, it dispatches sub-agents through the Agent tool (volume-planner / chapter-planner / prompt-crafter / writer / reader / anti-ai / updater), each doing its own job. When a sub-agent finishes, it clears its task marker, and novel-agent detects this and automatically advances to the next phase.
 
 ---
 
-**安装脚本支持的平台：**
+**The AI will help you:**
 
-| 平台 | 命令 |
+1. Download the latest version
+2. Run the install script for your platform (`./install.sh <platform>`) to install the skill itself
+3. Configure it into your AI tool
+
+---
+
+**Platforms supported by the install script:**
+
+| Platform | Command |
 |------|------|
 | Claude Code | `./install.sh claude-code` |
 | OpenCode | `./install.sh opencode` |
 | Codex | `./install.sh codex` |
-| Reasonix | 项目级部署：`python tools/init.py <项目路径> --platform reasonix`（不走 install.sh） |
+| Reasonix | Project-level deployment: `python tools/init.py <project path> --platform reasonix` (does not go through install.sh) |
 
-> `install.sh` 同时兼容 deepseek-tui / hermes / openclaw；Windows 用 PowerShell 时运行 `install.ps1 <平台>`。
-
----
-
-**如果 AI 说不知道这个项目，再试试：**
-
-> "去 https://github.com/modoojunko/awesome-novel-agent/releases 下载最新的 release，然后按 README 安装"
-
-（Reasonix 不走 install.sh：克隆后用 `python tools/init.py <项目路径> --platform reasonix` 初始化。）
+> `install.sh` is also compatible with deepseek-tui / hermes / openclaw; on Windows PowerShell, run `install.ps1 <platform>`.
 
 ---
 
-### 1.3 验证安装
+**If the AI says it does not know this project, try this instead:**
 
-安装完成后，在你想放小说项目的目录打开你的 AI 工具，输入：
+> "Go to https://github.com/modoojunko/awesome-novel-agent/releases, download the latest release, then install it following the README"
+
+(Reasonix does not go through install.sh: after cloning, initialize with `python tools/init.py <project path> --platform reasonix`.)
+
+---
+
+### 1.3 Verify the Installation
+
+After installation, open your AI tool in the directory where you want to put your novel project and type:
 
 ```
 /awesome-novel
 ```
 
-skill 会先确认并初始化小说工作空间；如果出现小说写作相关的引导，说明安装成功。
+The skill will first confirm and initialize the novel workspace; if novel-writing guidance appears, the installation succeeded.
 
 ---
 
-## 2. 启动写作
+## 2. Start Writing
 
-### 2.1 触发
+### 2.1 Trigger
 
-在你的 AI 工具中输入：
+Type in your AI tool:
 
 ```
 /awesome-novel
 ```
 
-或直接说：
+Or just say:
 
-> 帮我写一本小说
+> Help me write a novel
 
-Codex 中输入 `/use awesome-novel`。
+In Codex, type `/use awesome-novel`.
 
-### 2.2 系统自动检测
+### 2.2 Automatic System Detection
 
-AI 检测到是新项目，开始初始化：
+The AI detects a new project and starts initialization:
 
 ```
-检测到：无 story.md → 新项目
-正在运行 init.py 初始化骨架...
+Detected: no story.md → new project
+Running init.py to initialize the skeleton...
 ```
 
 ---
 
-## 3. Phase 1：设定
+## 3. Phase 1: Setup
 
-设定阶段一次性完成，包含：题材选择、写作风格、世界观、角色设定。
+The setup phase is completed in one go, covering: genre selection, writing style, worldview, and character setup.
 
 ---
 
-### 3.1 创建项目
+### 3.1 Create the Project
 
-**【AI】** 宣布：
+**[AI]** announces:
 
-> "我来引导你完成小说设定。先确认项目基本信息。"
+> "I will guide you through the novel setup. First, let us confirm the project's basic information."
 
-**【AI】** 执行 init.py（本 skill 安装目录下的 `tools/init.py`，AI 会自动定位）：
+**[AI]** runs init.py (the `tools/init.py` under this skill's install directory; the AI locates it automatically):
 
 ```bash
-python <本 skill 安装目录>/tools/init.py
+python <this skill's install directory>/tools/init.py
 ```
 
-`init.py` 会自动创建项目骨架，无需额外参数。
+`init.py` automatically creates the project skeleton; no extra parameters are needed.
 
 ---
 
-**【作者】** 回答：
+**[Author]** answers:
 
-> 书名《青云志》，作者名张三。
-
----
-
-### 3.2 题材选择
-
-**【AI】** 用对话引导法：
-
-> "你心里想写的大概是个什么故事？不用管类型分类，说说主角是谁、在什么世界、做什么事就好。"
+> The book is called *Qingyun Chronicles*, and the author's name is Zhang San.
 
 ---
 
-**【作者】** 回答：
+### 3.2 Genre Selection
 
-> "我想写一个修仙题材的，主角从凡人开始，一步步修炼，最后飞升成仙的故事。"
+**[AI]** uses the conversation-guided method:
+
+> "What kind of story do you have in mind? Do not worry about genre labels; just tell me who the protagonist is, what world they are in, and what they do."
 
 ---
 
-**【AI】** 从描述中提取关键信号：
+**[Author]** answers:
 
-| 关键信号 | 匹配类型 |
+> "I want to write a xianxia (immortal cultivation) story, where the protagonist starts as a mortal, cultivates step by step, and finally ascends to become an immortal."
+
+---
+
+**[AI]** extracts the key signals from the description:
+
+| Key Signal | Matching Type |
 |---------|---------|
-| 东方世界 + 修仙/修道/修真 | 东方仙侠 |
+| Eastern world + immortal cultivation / Dao cultivation / true cultivation | Eastern xianxia |
 
-> "听起来你写的是**东方仙侠**——主角在修仙世界修炼飞升。对吗？"
-
----
-
-**【作者】** 确认：
-
-> "对，就是仙侠。"
+> "It sounds like you are writing **Eastern xianxia (immortal cultivation)**: the protagonist cultivates in an immortal cultivation world and ascends. Is that right?"
 
 ---
 
-### 3.3 写作风格确认
+**[Author]** confirms:
 
-**【AI】** 告知默认设定：
-
-> "writing-style.md 已预填'低 AI 味优化版'——自然松弛、句式强制、禁止堆技法、禁用诗词腔。"
-
-**【AI】** AskUserQuestion：
-
-> A. 使用默认
-> B. 调整
-> C. 用自己的风格
+> "Yes, exactly xianxia."
 
 ---
 
-**【作者】** 回答：
+### 3.3 Writing Style Confirmation
 
-> "A. 使用默认"
+**[AI]** states the default setting:
 
----
+> "writing-style.md is pre-filled with the 'low-AI-flavor optimized edition': natural and relaxed, enforced sentence patterns, no technique stacking, no poetic register."
 
-**【AI】** 诊断：
+**[AI]** AskUserQuestion:
 
-> "你最喜欢的三本小说或三部电影是什么？它们哪里最吸引你？"
-
----
-
-**【作者】** 回答：
-
-> "《斗破苍穹》《凡人修仙传》《仙逆》，喜欢主角从弱到强、一步步成长的感觉。"
+> A. Use the default
+> B. Adjust it
+> C. Use my own style
 
 ---
 
-### 3.4 类型档案选择（可选）
+**[Author]** answers:
 
-**【AI】** 展示24种类型档案：
+> "A. Use the default"
+
+---
+
+**[AI]** diagnoses:
+
+> "What are your three favorite novels or films? What draws you to them most?"
+
+---
+
+**[Author]** answers:
+
+> "*Battle Through the Heavens*, *A Record of a Mortal's Journey to Immortality*, *Renegade Immortal*. I like the feeling of the protagonist growing from weak to strong, step by step."
+
+---
+
+### 3.4 Genre Profile Selection (Optional)
+
+**[AI]** shows the 24 genre profiles:
 
 ```
-1. 东方仙侠 — 修仙/修道/修真
-2. 传统玄幻 — 异世大陆+高武+废柴逆袭
-3. 都市大类 — 现代都市基类（子分类变体覆盖差异化字段）
-4. 都市言情 — 现代都市+情感/恋爱
-5. 都市日常 — 现代都市+日常情感+现实生活
-6. 都市种田 — 现代都市+种田建设+商战职场
-7. 都市脑洞 — 现代都市+金手指+脑洞奇想
-8. 都市修真 — 现代都市+修仙/修真体系
-9. 都市高武 — 现代都市+全民修炼+灵气复苏
-10. 战神赘婿 — 现代都市+战神归来+赘婿翻身
-11. 西方奇幻 — 西方世界+魔法/斗气/奇幻
-12. 古风权谋 — 古代朝堂+权谋/争霸
-13. 历史大类 — 古代背景基类（子分类变体覆盖差异化字段）
-14. 历史古代 — 古代背景+种田/朝堂/争霸
-15. 历史脑洞 — 古代背景+金手指+脑洞
-16. 抗战谍战 — 抗战时期+军事/谍战
-17. 科幻末世 — 末世/丧尸/星际/机甲/未来科技
-18. 悬疑刑侦 — 现代+探案/推理/刑侦
-19. 悬疑灵异 — 现代+灵异/风水/恐怖
-20. 悬疑脑洞 — 诡异复苏+规则怪谈+惊悚游戏
-21. 游戏体育 — 网游/竞技/体育/世界游戏化
-22. 动漫衍生 — 游戏/动漫/二次元同人
-23. 衍生类 — 衍生基类（corpus 共用）
-24. 男频衍生 — 影视剧同人改编
+1. Eastern xianxia - immortal cultivation / Dao cultivation / true cultivation
+2. Traditional xuanhuan - otherworld continent + high martial arts + trash-to-power comeback
+3. Urban (major category) - modern urban base category (sub-category variants cover the differentiating fields)
+4. Urban romance - modern urban + romance / love
+5. Urban slice-of-life - modern urban + everyday emotion + real life
+6. Urban farming - modern urban + farming and construction + business-war workplace
+7. Urban brainstorm - modern urban + cheat power + wild ideas
+8. Urban cultivation - modern urban + immortal cultivation / true cultivation system
+9. Urban high-martial - modern urban + universal cultivation + spiritual energy revival
+10. God-of-war son-in-law - modern urban + war god returns + son-in-law comeback
+11. Western fantasy - Western world + magic / battle aura / fantasy
+12. Ancient court intrigue - ancient court + power schemes / vying for supremacy
+13. Historical (major category) - ancient background base category (sub-category variants cover the differentiating fields)
+14. Historical ancient - ancient background + farming / court / vying for supremacy
+15. Historical brainstorm - ancient background + cheat power + wild ideas
+16. War of Resistance espionage - War of Resistance era + military / espionage
+17. Sci-fi apocalypse - apocalypse / zombies / interstellar / mecha / future tech
+18. Suspense crime - modern + case-solving / deduction / criminal investigation
+19. Suspense supernatural - modern + supernatural / feng shui / horror
+20. Suspense brainstorm - eerie revival + rules-based horror tales + horror games
+21. Gaming and sports - online games / competitive / sports / gamified world
+22. Anime derivative - games / anime / 2D fan fiction
+23. Derivative (category) - derivative base category (shared corpus)
+24. Male-oriented derivative - film and TV fan-fiction adaptations
 ```
 
-> 编号与 `init.py --genre <编号>` 一一对应；也可以不选编号，直接描述想写的故事，由 AI 匹配题材。
+> The number maps one-to-one to `init.py --genre <number>`; you can also skip the number, just describe the story you want to write, and let the AI match the genre.
 
 ---
 
-**【作者】** 回答：
+**[Author]** answers:
 
-> "1. 东方仙侠"
-
----
-
-**【AI】** 展示档案摘要：
-
-> **类型档案：东方仙侠**
-> - 文风文笔：半文半白，诗意与写实并存
-> - 核心氛围：飘逸出尘又不失烟火气
-> - 专属要素：灵根体系、丹药功法、宗门门派
-> - 叙事视角：第三人称有限视角
-> - 类型禁忌：跳崖必得奇遇、系统流
+> "1. Eastern xianxia"
 
 ---
 
-**【作者】** 确认
+**[AI]** shows the profile summary:
+
+> **Genre profile: Eastern xianxia**
+> - Style and prose: half-classical, half-vernacular, poetic yet grounded in real life
+> - Core atmosphere: airy and otherworldly, without losing the smoke of everyday life
+> - Exclusive elements: spirit-root system, elixirs and cultivation techniques, sects and schools
+> - Narrative point of view: third-person limited
+> - Genre taboos: jumping off a cliff always yields a lucky encounter, system-driven stories
 
 ---
 
-### 3.5 题材配置（5字段）
-
-**【AI】** 已选择类型档案，展示已合并的配置问"需要调整吗？"
-
-> 如果作者选"暂不选择"，则按5个字段逐项讨论：
-> - 满足类型（压抑→获得→释放→再压抑）
-> - 节奏规则（行动偏多/铺垫偏多/张弛交替/全程紧绷）
-> - 避免套路（跳崖必得奇遇/女主倒贴等）
-> - 类型禁忌（血腥暴力/无故杀戮等）
+**[Author]** confirms
 
 ---
 
-**【作者】** 回答：
+### 3.5 Genre Configuration (5 Fields)
 
-> "可以，不用调整。"
+**[AI]** has a genre profile selected, so it shows the merged configuration and asks "Anything to adjust?"
+
+> If the author picks "Not choosing for now", discuss each of the 5 fields one by one:
+> - Payoff type (oppression → gain → release → oppression again)
+> - Pacing rules (more action / more setup / alternating tension and release / tense throughout)
+> - Clichés to avoid (jumping off a cliff always yields a lucky encounter / the heroine throwing herself at the hero, and so on)
+> - Genre taboos (gore / killing without cause, and so on)
 
 ---
 
-### 3.6 世界观（3项）
+**[Author]** answers:
 
-**【AI】** 逐项讨论地理：
+> "Fine, no adjustments needed."
 
-> **【地理】**
+---
+
+### 3.6 Worldview (3 Items)
+
+**[AI]** discusses geography item by item:
+
+> **[Geography]**
 >
-> 你的主角在哪活动？从哪到哪？
+> Where does your protagonist act? From where to where?
 >
-> - 起点：凡间小门派（主角家族）
-> - 中期：修仙界大宗门（青云宗）
-> - 终点：仙界（飞升之后可选）
+> - Starting point: a small sect in the mortal world (the protagonist's family)
+> - Middle: a great immortal cultivation sect (Qingyun Sect)
+> - End point: the immortal realm (optional after ascension)
 
 ---
 
-**【作者】** 回答：
+**[Author]** answers:
 
-> "起点是凡间小门派，后来去青云宗修炼。仙界可以加上，但我加一个设定：仙界其实是傀儡牢笼。"
+> "The starting point is a small sect in the mortal world, then he goes to Qingyun Sect to cultivate. The immortal realm can be added, but I will add one setting: the immortal realm is actually a puppet cage."
 
 ---
 
-**【AI】** 继续问政治：
+**[AI]** continues with politics:
 
-> **【政治】**
+> **[Politics]**
 >
-> 谁说了算？谁限制他？不服会怎样？（至少2个势力）
+> Who calls the shots? Who holds him back? What happens if he refuses? (At least 2 factions)
 
 ---
 
-**【作者】** 回答：
+**[Author]** answers:
 
-> "青云宗是正道领袖，但内部有陈风这个叛徒，和天魔教暗中勾结。"
+> "Qingyun Sect is the leader of the righteous path, but inside it there is a traitor, Chen Feng, who is secretly colluding with the Heavenly Demon Sect."
 
 ---
 
-**【AI】** 继续问规则：
+**[AI]** continues with the rules:
 
-> **【规则】**
+> **[Rules]**
 >
-> 这个世界的修炼规则是什么？灵根体系、修炼等级、核心规则是什么？
+> What are this world's cultivation rules? What are the spirit-root system, the cultivation levels, and the core rules?
 
 ---
 
-**【作者】** 回答：
+**[Author]** answers:
 
-> "炼气→筑基→金丹→元婴→化神→渡劫→仙人。主角有天灵根但被陈风封印了，表面看起来是废物灵根。"
-
----
-
-**【AI】** 确认地理/政治/规则，写入 `settings/world-setting.md`
+> "Qi Refining → Foundation Establishment → Golden Core → Nascent Soul → Soul Transformation → Tribulation Transcendence → Immortal. The protagonist has a heavenly spirit root, but Chen Feng sealed it, so on the surface it looks like a trash spirit root."
 
 ---
 
-#### 3.6.1 自检（世界观）
-
-**【AI】** 检查写入的设定：
-
-1. **地理完整性检查**：有起点/中期/终点三个层级吗？
-2. **政治合理性检查**：势力关系明确，无逻辑漏洞吗？
-3. **规则可执行性检查**：读者能理解，写作时可操作吗？
-4. **冲突空间检查**：有正邪对立、内部矛盾吗？
+**[AI]** confirms the geography / politics / rules and writes them into `settings/world-setting.md`
 
 ---
 
-### 3.7 角色设定
+#### 3.6.1 Self-Check (Worldview)
 
-**【AI】** 收集角色：
+**[AI]** checks the written settings:
 
-> "你的故事有哪些角色？主角、反派、女主/挚友、导师？"
-
----
-
-**【作者】** 回答：
-
-> "主角林逸，反派陈风，女主苏晴，导师云霄子。"
+1. **Geography completeness check**: Are there three levels, starting point / middle / end point?
+2. **Politics plausibility check**: Are the faction relationships clear, with no logical holes?
+3. **Rules executability check**: Can readers understand them, and can they be applied while writing?
+4. **Conflict space check**: Is there righteous-versus-evil opposition and internal contradiction?
 
 ---
 
-#### 3.7.1 主角设定
+### 3.7 Character Setup
 
-**【AI】** 讨论林逸的基本信息：
+**[AI]** collects the characters:
 
-> **【林逸 — 基本信息】**
+> "Which characters does your story have? Protagonist, villain, heroine / close friend, mentor?"
+
+---
+
+**[Author]** answers:
+
+> "The protagonist is Lin Yi, the villain is Chen Feng, the heroine is Su Qing, and the mentor is Yunxiaozi."
+
+---
+
+#### 3.7.1 Protagonist Setup
+
+**[AI]** discusses Lin Yi's basic information:
+
+> **[Lin Yi: Basic Information]**
 >
-> - 名字：林逸
-> - 出身：青云宗外门弟子，父亲曾是内门长老
-> - 外貌：清秀少年，眉宇间有郁结之气
+> - Name: Lin Yi
+> - Background: outer disciple of Qingyun Sect; his father was once an inner elder
+> - Appearance: a handsome youth, with a knot of gloom between his brows
 
 ---
 
-**【AI】** 按认知6层模型展开：
+**[AI]** expands it with the six-layer cognition model:
 
-| 层次 | 内容 |
+| Layer | Content |
 |------|------|
-| 世界观 | "这世道不公平，但我会找到真相" |
-| 我的定位 | 青云宗外门弟子，不被认可的林家长子 |
-| 价值观 | 有仇必报，但复仇要有正当理由 |
-| 能力 | 被封印的天灵根，父亲留下的功法 |
-| 技能 | 基础剑法，心性坚韧 |
-| 环境 | 青云宗外门，被打压的处境 |
+| Worldview | "This world is unfair, but I will find the truth" |
+| My position | Outer disciple of Qingyun Sect, the unrecognized eldest son of the Lin family |
+| Values | A debt must be repaid, but revenge needs a just cause |
+| Abilities | A sealed heavenly spirit root, the cultivation technique his father left behind |
+| Skills | Basic swordsmanship, a resilient mind |
+| Environment | The outer sect of Qingyun Sect, a pressured situation |
 
 ---
 
-**【AI】** 写入 `settings/character-setting/林逸.md`
+**[AI]** writes it into `settings/character-setting/林逸.md`
 
 ---
 
-#### 3.7.2 反派设定
+#### 3.7.2 Villain Setup
 
-**【AI】** 讨论陈风：
+**[AI]** discusses Chen Feng:
 
-> **【陈风】**
+> **[Chen Feng]**
 >
-> - 名字：陈风
-> - 身份：青云宗内门长老
-> - 外貌：中年男子，儒雅外表
+> - Name: Chen Feng
+> - Identity: inner elder of Qingyun Sect
+> - Appearance: a middle-aged man with a refined, scholarly look
 >
-> | 层次 | 内容 |
+> | Layer | Content |
 > |------|------|
-> | 世界观 | "实力为尊，弱者就该被踩在脚下" |
-> | 我的定位 | 青云宗内门长老，德高望重的前辈 |
-> | 价值观 | "成功就是正义，手段不重要" |
-> | 能力 | 元婴期修为，高超心机 |
-> | 技能 | 青云剑法，与天魔教暗中勾结 |
-> | 环境 | 青云宗高层，有势力有资源 |
+> | Worldview | "Might is right; the weak deserve to be trampled" |
+> | My position | Inner elder of Qingyun Sect, a respected senior |
+> | Values | "Success is justice; the means do not matter" |
+> | Abilities | Nascent Soul stage cultivation, superb scheming |
+> | Skills | Qingyun swordsmanship, secretly colluding with the Heavenly Demon Sect |
+> | Environment | The upper levels of Qingyun Sect, with power and resources |
 
 ---
 
-**【AI】** 写入 `settings/character-setting/陈风.md`
+**[AI]** writes it into `settings/character-setting/陈风.md`
 
 ---
 
-#### 3.7.3 女主设定
+#### 3.7.3 Heroine Setup
 
-**【AI】** 讨论苏晴：
+**[AI]** discusses Su Qing:
 
-> **【苏晴】**
+> **[Su Qing]**
 >
-> - 名字：苏晴
-> - 身份：青云宗外门弟子，小师妹
-> - 外貌：少女，明眸皓齿，笑起来有两个酒窝
+> - Name: Su Qing
+> - Identity: outer disciple of Qingyun Sect, junior sister
+> - Appearance: a young girl with bright eyes and white teeth, with two dimples when she smiles
 >
-> | 层次 | 内容 |
+> | Layer | Content |
 > |------|------|
-> | 世界观 | "世界很美好，但也有阴暗面" |
-> | 我的定位 | 青云宗外门弟子，天真可爱的小师妹 |
-> | 价值观 | "守护重要的人" |
-> | 能力 | 隐藏的九阴体质（未被发掘） |
-> | 技能 | 活泼开朗，能感知危险 |
-> | 环境 | 青云宗外门 |
+> | Worldview | "The world is beautiful, but it has a dark side too" |
+> | My position | Outer disciple of Qingyun Sect, an innocent and cute junior sister |
+> | Values | "Protect the people who matter" |
+> | Abilities | A hidden nine-yin constitution (not yet discovered) |
+> | Skills | Lively and cheerful, able to sense danger |
+> | Environment | The outer sect of Qingyun Sect |
 
 ---
 
-**【AI】** 写入 `settings/character-setting/苏晴.md`
+**[AI]** writes it into `settings/character-setting/苏晴.md`
 
 ---
 
-#### 3.7.4 导师设定
+#### 3.7.4 Mentor Setup
 
-**【AI】** 讨论云霄子：
+**[AI]** discusses Yunxiaozi:
 
-> **【云霄子】**
+> **[Yunxiaozi]**
 >
-> - 名字：云霄子
-> - 身份：青云宗太上长老
-> - 外貌：白发老者，道骨仙风
+> - Name: Yunxiaozi
+> - Identity: supreme elder of Qingyun Sect
+> - Appearance: a white-haired old man, with the bearing of a Daoist immortal
 >
-> | 层次 | 内容 |
+> | Layer | Content |
 > |------|------|
-> | 世界观 | "大道无形，顺其自然" |
-> | 我的定位 | 青云宗守护者，不问世事 |
-> | 价值观 | "只看心性，不论资质" |
-> | 能力 | 化神期巅峰，实力深不可测 |
-> | 技能 | 洞察人心，神秘传承 |
-> | 环境 | 青云宗禁地，偶尔出现 |
+> | Worldview | "The great Dao is formless; follow nature" |
+> | My position | Guardian of Qingyun Sect, uninvolved in worldly affairs |
+> | Values | "Look only at character, not at talent" |
+> | Abilities | Peak Soul Transformation stage, unfathomably strong |
+> | Skills | Sees into people's hearts, a mysterious inheritance |
+> | Environment | The forbidden grounds of Qingyun Sect, appearing only occasionally |
 
 ---
 
-**【AI】** 写入 `settings/character-setting/云霄子.md`
+**[AI]** writes it into `settings/character-setting/云霄子.md`
 
 ---
 
-#### 3.7.5 持有物与经历
+#### 3.7.5 Possessions and Experiences
 
-每个角色还可以记录持有的物品和重大经历，归档时由 updater 自动更新。
+Each character can also record items they hold and major experiences; these are updated automatically by updater during archiving.
 
 ```markdown
-### 持有物
-| 名称 | 类型 | 来源 | 状态 | 备注 |
+### Possessions
+| Name | Type | Source | Status | Notes |
 |------|------|------|------|------|
 
-### 经历
-| 事件/地点 | 类型 | 结果 | 状态 |
+### Experiences
+| Event / Location | Type | Outcome | Status |
 |-----------|------|------|------|
 ```
 
-#### 3.7.6 自检（角色）
+#### 3.7.6 Self-Check (Characters)
 
-**【AI】** 检查每个角色：
+**[AI]** checks each character:
 
-1. **认知6层完整检查**：世界观/定位/价值观/能力/技能/环境都有吗？
-2. **动机明确检查**：每个角色的初始动机是什么？清晰吗？
-3. **弱点存在检查**：每个角色有弱点吗？（反派可不必须有）
-4. **能力边界清晰检查**：角色能做什么、不能做什么？
+1. **Six-layer cognition completeness check**: Are worldview / position / values / abilities / skills / environment all present?
+2. **Motivation clarity check**: What is each character's initial motivation? Is it clear?
+3. **Weakness presence check**: Does each character have a weakness? (A villain does not necessarily need one)
+4. **Ability boundary clarity check**: What can a character do, and what can they not do?
 
 ---
 
-### 3.8 完成报告
+### 3.8 Completion Report
 
-**【AI】** 展示：
+**[AI]** shows:
 
 ```
-设定完成。
+Setup complete.
 ──────────────────────────────
-✅ 已写入：
-  - story.md（青云志/张三/创建时间）
-  - settings/writing-style.md（低AI味风格）
-  - settings/genre-setting.md（东方仙侠）
-  - settings/world-setting.md（地理/政治/规则）
-  - settings/character-setting/（4个角色）
-📌 待补充字段：
-  - character-setting/*.md → 语言特征（写作中追加）
+✅ Written:
+  - story.md (Qingyun Chronicles / Zhang San / creation time)
+  - settings/writing-style.md (low-AI-flavor style)
+  - settings/genre-setting.md (Eastern xianxia)
+  - settings/world-setting.md (geography / politics / rules)
+  - settings/character-setting/ (4 characters)
+📌 Fields to fill in later:
+  - character-setting/*.md → speech traits (added during writing)
 ──────────────────────────────
 ```
 
 ---
 
-**【作者】** 确认：
+**[Author]** confirms:
 
-> "确认，开始规划主线和卷纲。"
-
----
-
-## 4. Phase 2：主线拆纲 + 卷纲
-
-### 4.1 宣布开始
-
-**【AI】** 宣布：
-
-> "我来引导你规划故事主线。先定全书框架，再展开到每一卷。"
+> "Confirmed. Let us start planning the main arc and volume outlines."
 
 ---
 
-### 4.2 判断作者类型
+## 4. Phase 2: Main Arc Breakdown and Volume Outlines
 
-**【AI】** 问：
+### 4.1 Announce the Start
 
-> "你目前对全书的故事走向有完整概念吗——从开头到结局都想好了？还是只有第一卷的思路，后面边走边看？"
+**[AI]** announces:
 
----
-
-**【作者】** 回答：
-
-> "有大概的思路，主角复仇成功，但我不知道要写多少卷。"
+> "I will guide you in planning the story's main arc. First we set the whole-book framework, then expand it into each volume."
 
 ---
 
-**【AI】** 判断：类型 A（知道全书走向）→ 走完整流程
+### 4.2 Determine the Author Type
+
+**[AI]** asks:
+
+> "Do you currently have a complete picture of the whole book's story direction, from opening to ending? Or do you only have ideas for the first volume and will figure out the rest as you go?"
 
 ---
 
-### 4.3 主线拆纲
+**[Author]** answers:
 
-#### 4.3.1 总主线
+> "I have a rough idea: the protagonist succeeds in his revenge, but I do not know how many volumes it will take."
 
-**【AI】** 从作者描述提取三要素：
+---
 
-> "听你描述，主线是：**林逸从被宗门抛弃的少年，成长为揭露父亲死亡真相、复仇成功的仙人**"
+**[AI]** judges: Type A (knows the whole-book direction) → follow the complete flow
+
+---
+
+### 4.3 Main Arc Breakdown
+
+#### 4.3.1 Overall Main Arc
+
+**[AI]** extracts the three elements from the author's description:
+
+> "From what you describe, the main arc is: **Lin Yi grows from a youth abandoned by his sect into an immortal who exposes the truth behind his father's death and succeeds in his revenge**"
 >
-> 对吗？
+> Is that right?
 
 ---
 
-**【作者】** 确认：
+**[Author]** confirms:
 
-> "对，就是这个。"
-
----
-
-#### 4.3.2 定终点
-
-**【AI】** 问：
-
-> "故事的最后一幕是什么？你能描述那个画面吗？"
+> "Yes, that is it."
 
 ---
 
-**【作者】** 回答：
+#### 4.3.2 Set the Ending
 
-> "林逸飞升仙界，发现仙界是傀儡牢笼，打败幕后黑手，与苏晴在一起。"
+**[AI]** asks:
+
+> "What is the last scene of the story? Can you describe that picture?"
 
 ---
 
-#### 4.3.3 找自然断点
+**[Author]** answers:
 
-**【AI】** 推理：
+> "Lin Yi ascends to the immortal realm, discovers the immortal realm is a puppet cage, defeats the mastermind behind it, and ends up together with Su Qing."
 
-> "从起点到终点，最根本的变化是：
-> 1. 林逸从'被动隐忍'到'主动出击'
-> 2. 林逸从'信任宗门'到'看透真相'
+---
+
+#### 4.3.3 Find the Natural Breakpoints
+
+**[AI]** reasons:
+
+> "From the starting point to the ending, the most fundamental changes are:
+> 1. Lin Yi goes from 'passively enduring' to 'actively striking'
+> 2. Lin Yi goes from 'trusting the sect' to 'seeing through the truth'
 >
-> 对吗？"
+> Is that right?"
 
 ---
 
-**【作者】** 确认
+**[Author]** confirms
 
 ---
 
-#### 4.3.4 定每卷冲突
+#### 4.3.4 Set Each Volume's Conflict
 
-**【AI】** 一卷一卷确认：
+**[AI]** confirms volume by volume:
 
-| 卷 | 标题 | 核心冲突 | 预估章节 |
+| Volume | Title | Core Conflict | Estimated Chapters |
 |----|------|----------|----------|
-| 1 | 凡尘 | 林逸家族灭门后流浪，最终进入青云宗，发现线索 | 10 |
-| 2 | 宗门 | 宗门内部阴谋，崭露头角，发现陈风阴谋 | 10 |
-| 3 | 风云 | 全面冲突，与陈风正面冲突 | 10 |
-| 4 | 逆袭 | 复仇高潮，揭露真相，决战陈风 | 10 |
-| 5 | 仙途 | 飞升仙界，发现骗局，最终决战 | 10 |
+| 1 | Mortal World | After his family is wiped out, Lin Yi wanders, finally enters Qingyun Sect, and discovers clues | 10 |
+| 2 | The Sect | Intrigue inside the sect; he starts to stand out and discovers Chen Feng's plot | 10 |
+| 3 | Rising Storm | All-out conflict, a direct confrontation with Chen Feng | 10 |
+| 4 | Comeback | The revenge climax: exposing the truth and the decisive battle with Chen Feng | 10 |
+| 5 | The Immortal Path | Ascending to the immortal realm, discovering the deception, and the final decisive battle | 10 |
 
 ---
 
-**【作者】** 确认或调整
+**[Author]** confirms or adjusts
 
 ---
 
-#### 4.3.5 写入 story.md
+#### 4.3.5 Write into story.md
 
-**【AI】** 写入 `story.md#story_arc`
-
----
-
-#### 4.3.6 验收：三向核对
-
-**【AI】** 核对三项：
-
-1. **总主线→逐卷检查**：指着总主线，每卷问"这卷是主线的哪一步？"能答出来吗？
-2. **卷序列检查**：所有卷核心冲突串起来，是一条完整的故事线吗？有没有断裂跳步？
-3. **反向推断检查**：只看卷冲突，能猜出全书核心冲突吗？还是各自指向不同方向？
+**[AI]** writes into `story.md#story_arc`
 
 ---
 
-### 4.4 卷方向确定
+#### 4.3.6 Acceptance: Three-Way Cross-Check
 
-#### 4.4.1 首卷用故事结构模板
+**[AI]** checks three items:
 
-**【AI】** 判断：这是首卷，用结构模板。
+1. **Overall main arc → per-volume check**: Point at the overall main arc and ask for each volume, "Which step of the main arc is this volume?" Can you answer?
+2. **Volume sequence check**: Do all the volumes' core conflicts string together into one complete story line? Are there any breaks or jumps?
+3. **Reverse inference check**: Looking only at the volume conflicts, can you guess the whole book's core conflict? Or do they each point in different directions?
 
-**【AI】** 直接提案（不询问）：
+---
+
+### 4.4 Volume Direction
+
+#### 4.4.1 Use a Story Structure Template for the First Volume
+
+**[AI]** judges: this is the first volume, so use a structure template.
+
+**[AI]** proposes directly (without asking):
 
 > ```
 > ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
->   卷 1 结构建议：三幕式
+>   Volume 1 structure suggestion: three-act structure
 > ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 >
-> 建议章节数：10章
+> Suggested chapter count: 10 chapters
 >
-> 各阶段概览：
-> 1. setup（第1-3章）→ 建立主角处境和核心悬念
-> 2. confrontation（第4-8章）→ 冲突升级，主角开始修炼
-> 3. resolution（第9-10章）→ 小高潮收束，埋下陈风伏笔
+> Overview of each stage:
+> 1. setup (chapters 1-3) → establish the protagonist's situation and the core suspense
+> 2. confrontation (chapters 4-8) → conflicts escalate, the protagonist starts cultivating
+> 3. resolution (chapters 9-10) → a small climax wraps up, planting Chen Feng foreshadowing
 >
 > ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 > ```
 
 ---
 
-**【作者】** 确认：
+**[Author]** confirms:
 
-> "就这个结构。"
+> "This structure works."
 
 ---
 
-### 4.5 卷纲讨论
+### 4.5 Volume Outline Discussion
 
-#### 4.5.1 定核心冲突
+#### 4.5.1 Set the Core Conflict
 
-**【AI】** 从 story.md 继承：
+**[AI]** inherits it from story.md:
 
-> "核心冲突：**林逸在家族灭门后流浪，最终进入青云宗，发现线索**"
+> "Core conflict: **After his family is wiped out, Lin Yi wanders, finally enters Qingyun Sect, and discovers clues**"
 >
-> 有要调整的吗？
+> Anything to adjust?
 
 ---
 
-**【作者】** 确认
+**[Author]** confirms
 
 ---
 
-#### 4.5.2 拆章节
+#### 4.5.2 Break Down the Chapters
 
-**【AI】** 按模板各阶段逐章填充：
 
-| id | title | 冲突事件（谁做什么+冲突+变化） |
+**[AI]** fills in the chapters stage by stage following the template:
+
+| id | title | Conflict event (who does what + conflict + change) |
 |----|-------|-----------------------------|
-| 1-1 | 灭门之夜 | 林逸9岁生辰，家族遭遇突袭，父亲为保护他而死 |
-| 1-2 | 废墟余生 | 一年流浪生活，发现父亲遗物，燃起复仇决心 |
-| 1-3 | 父亲的遗物 | 玉佩藏有功法线索，开始修炼 |
-| 1-4 | 青云宗收徒 | 参加宗门选拔，以外门弟子身份入门 |
-| 1-5 | 外门弟子 | 杂役生活，第一次修炼，发现灵根异常 |
-| 1-6 | 灵根觉醒 | 云霄子发现真相，秘密给予指引 |
-| 1-7 | 师兄之死 | 师兄被害，激发矛盾，发现被监视 |
-| 1-8 | 线索浮现 | 找到陈风关联证据，被陈风注意到 |
-| 1-9 | 暗流涌动 | 陈风开始打压，被陷害受罚 |
-| 1-10 | 父亲的真相 | 发现更多线索，下定复仇决心 |
+| 1-1 | Night of the Massacre | On Lin Yi's 9th birthday, the family is ambushed, and his father dies protecting him |
+| 1-2 | Life Among the Ruins | A year of wandering life; he discovers his father's keepsake and his resolve for revenge ignites |
+| 1-3 | Father's Keepsake | The jade pendant hides a cultivation-technique clue; he starts cultivating |
+| 1-4 | Qingyun Sect Takes Disciples | He takes part in the sect selection and enters as an outer disciple |
+| 1-5 | Outer Disciple | A life of chores; his first cultivation, discovering his spirit root is abnormal |
+| 1-6 | Spirit Root Awakening | Yunxiaozi discovers the truth and secretly gives him guidance |
+| 1-7 | Death of a Senior Brother | A senior brother is killed, sparking conflict; he discovers he is being watched |
+| 1-8 | Clues Surface | He finds evidence linked to Chen Feng and is noticed by Chen Feng |
+| 1-9 | Undercurrents Stir | Chen Feng starts suppressing him; he is framed and punished |
+| 1-10 | The Truth About Father | He discovers more clues and resolves to take revenge |
 
 ---
 
-**【作者】** 确认章节列表
+**[Author]** confirms the chapter list
 
 ---
 
-#### 4.5.3 写入 volume-1.md
+#### 4.5.3 Write into volume-1.md
 
-**【AI】** 写入 `volumes/volume-1.md`
-
----
-
-#### 4.5.4 验收：卷级检查
-
-**【AI】** 执行4项检查：
-
-1. **完整性检查**：所有章读一遍，合起来是完整故事吗？少一章或多一章行不行？
-2. **追溯性检查**：指着核心冲突，每章问"这章推进了冲突的哪一步？"
-3. **前进性检查**：每章结束后，故事前进了吗？（发现线索但没影响后续=等于没发现）
-4. **标题检查**：只看标题，能猜到这章发生什么吗？
+**[AI]** writes into `volumes/volume-1.md`
 
 ---
 
-**【AI】** 15秒快速嗅探：
+#### 4.5.4 Acceptance: Volume-Level Checks
 
-1. 能不说文件说出核心冲突一句话吗？
-2. 随便指一章，能说出"这章结束后什么东西变了"吗？
-3. 随便指两章，能说出"为什么第一章之后是第二章、不是直接跳到第三章"吗？
+**[AI]** runs 4 checks:
+
+1. **Completeness check**: Read all the chapters together; do they form a complete story? Would removing or adding one chapter still work?
+2. **Traceability check**: Point at the core conflict and ask for each chapter, "Which step of the conflict does this chapter advance?"
+3. **Progress check**: After each chapter ends, has the story moved forward? (Discovering a clue that affects nothing later is the same as not discovering it)
+4. **Title check**: Looking only at the titles, can you guess what happens in each chapter?
 
 ---
 
-### 4.6 状态更新
+**[AI]** 15-second quick sniff test:
 
-**【AI】** 更新 `.agent/status.md`：
+1. Can you state the core conflict in one sentence without naming any file?
+2. Point at any chapter: can you say "what changed after this chapter ends"?
+3. Point at any two chapters: can you say "why does chapter 1 come before chapter 2, instead of jumping straight to chapter 3"?
+
+---
+
+### 4.6 Status Update
+
+**[AI]** updates `.agent/status.md`:
 
 ```
 phase: outline
@@ -716,932 +717,931 @@ current_chapter: 1
 
 ---
 
-**【AI】** 汇报：
+**[AI]** reports:
 
-> ✅ 卷纲完成
+> ✅ Volume outline complete
 >
-> → 分发到章纲设定
+> → Dispatch to chapter outline setup
 
 ---
 
-**【作者】** 回答：
+**[Author]** answers:
 
-> "开始第一章章纲。"
-
----
-
-## 5. Phase 3：逐章写作
-
-### 5.1 第1章：灭门之夜
-
-#### 5.1.1 宣布开始
-
-**【AI】** 宣布：
-
-> "我来引导你规划第1卷第1章的章纲。"
+> "Start the chapter 1 outline."
 
 ---
 
-#### 5.1.2 方向输入
+## 5. Phase 3: Chapter-by-Chapter Writing
 
-**【AI】** 读取卷纲：
+### 5.1 Chapter 1: Night of the Massacre
 
-> 读取 `volumes/volume-1.md` 的 chapters_summary：
-> → 第1章：灭门之夜（回忆），父亲牺牲
+#### 5.1.1 Announce the Start
 
-**【AI】** 生成角色发声：
+**[AI]** announces:
 
-> **【林逸的处境】** 9岁，天真活泼，生辰之夜
+> "I will guide you in planning the chapter outline for volume 1, chapter 1."
+
+---
+
+#### 5.1.2 Direction Input
+
+**[AI]** reads the volume outline:
+
+> Read `volumes/volume-1.md`'s chapters_summary:
+> → Chapter 1: Night of the Massacre (flashback), father sacrifices himself
+
+**[AI]** generates the character's voice:
+
+> **[Lin Yi's situation]** 9 years old, innocent and lively, on the night of his birthday
 >
-> **【林逸未完成的事】** 无（第一章，初始状态）
+> **[Lin Yi's unfinished business]** None (chapter 1, initial state)
 >
-> **【林逸现在想做的事】** 过9岁生辰（还不知道即将发生什么）
+> **[What Lin Yi wants to do now]** Celebrate his 9th birthday (not yet knowing what is about to happen)
 
 ---
 
-**【AI】** 收集四组输入：
+**[AI]** collects the four input groups:
 
-| 输入 | 内容 |
+| Input | Content |
 |------|------|
-| 读者缺口 | 无（上章章末无悬念遗留） |
-| 角色状态 | 林逸9岁，天真 |
-| 钩子盘点 | 无（旧钩子） |
-| 卷纲定位 | setup第1章，建立悬念 |
+| Reader gap | None (no suspense left over from the previous chapter's ending) |
+| Character state | Lin Yi, 9 years old, innocent |
+| Hook inventory | None (old hooks) |
+| Volume outline position | setup chapter 1, establishing suspense |
 
 ---
 
-**【AI】** 合成方向提案：
+**[AI]** synthesizes a direction proposal:
 
-> **方向提案：** 灭门之夜——林逸9岁生辰，家族遭遇突袭，父亲为保护他而死。
+> **Direction proposal:** Night of the Massacre: on Lin Yi's 9th birthday, the family is ambushed, and his father dies protecting him.
 >
-> 这个方向可以吗？
+> Does this direction work?
 
 ---
 
-**【作者】** 确认：
+**[Author]** confirms:
 
-> "可以。"
+> "Yes."
 
 ---
 
-#### 5.1.3 展开纲要点
+#### 5.1.3 Expand the Outline Points
 
-**【AI】** 展开关键点（每条含2-3句锚点描述 + 功能类型）：
+**[AI]** expands the key points (each with a 2-3 sentence anchor description + function type):
 
-| # | 关键点 | 功能 |
+| # | Key Point | Function |
 |---|--------|------|
-| 1 | 林家大厅，生辰夜宴，一家人吃长寿面。林父心事重重 | [推进剧情·环境] |
-| 2 | 屋顶瓦片碎裂，黑衣人从天而降 | [造悬念] |
-| 3 | 林父挡在林逸面前，喝令快走 | [推进剧情·动作] |
-| 4 | 黑衣人出剑，林父中剑倒地（使用青云剑法） | [推进剧情·高潮] |
-| 5 | 父亲把玉佩塞进林逸手里，说"快走，不要回头" | [造悬念·线索] |
-| 6 | 林逸从后窗爬出，回头望见燃烧的宅邸，消失在夜色中 | [过渡·情绪] |
+| 1 | The Lin family hall, a birthday feast at night, the family eating longevity noodles. Father Lin is weighed down by worries | [Advance plot · setting] |
+| 2 | Roof tiles shatter; men in black drop from the sky | [Build suspense] |
+| 3 | Father Lin stands in front of Lin Yi and orders him to run | [Advance plot · action] |
+| 4 | A man in black draws his sword; Father Lin is struck down (using Qingyun swordsmanship) | [Advance plot · climax] |
+| 5 | Father presses the jade pendant into Lin Yi's hand and says "Run, do not look back" | [Build suspense · clue] |
+| 6 | Lin Yi climbs out the back window, looks back at the burning house, and disappears into the night | [Transition · emotion] |
 
 ---
 
-**【AI】** 确认字数目标：
+**[AI]** confirms the word-count target:
 
-> 字数目标：4000字
-
----
-
-#### 5.1.4 禁止清单
-
-**【AI】** 询问：
-
-> "本章有没有明确禁止出现的场景、元素或情节？"
+> Word-count target: 4,000 words
 
 ---
 
-**【作者】** 回答：
+#### 5.1.4 Prohibition List
 
-> "不能让凶手露出真面目，不能有AI味描写。"
+**[AI]** asks:
+
+> "Are there any scenes, elements, or plot points that must definitely not appear in this chapter?"
 
 ---
 
-#### 5.1.5 Memo（8段）
+**[Author]** answers:
 
-**【AI】** 填充：
+> "The killer must not show his true face, and there must be no AI-flavored description."
 
-| 字段 | 内容 |
+---
+
+#### 5.1.5 Memo (8 Sections)
+
+**[AI]** fills in:
+
+| Field | Content |
 |------|------|
-| current_task | 林逸9岁生辰之夜，家族遭遇突袭，父亲为保护他而死 |
-| reader_expectation | 惨烈的灭门场景，父亲的牺牲，主角的创伤记忆 |
-| payoff_plan | 本章是伏笔，读者会好奇谁灭了林家 |
-| downtime_functions | 灭门前一家三口温馨场景 |
-| key_choices | 林逸选择逃跑而非留下 |
-| knowledge_state | 林逸不知道凶手是谁，只记得青云剑法 |
-| required_changes | 从天真少年变为创伤儿童 |
-| prohibitions | 凶手不能露出真面目 |
+| current_task | On the night of Lin Yi's 9th birthday, the family is ambushed, and his father dies protecting him |
+| reader_expectation | The brutal massacre scene, the father's sacrifice, the protagonist's traumatic memory |
+| payoff_plan | This chapter is a setup; readers will wonder who wiped out the Lin family |
+| downtime_functions | A warm scene of the family of three before the massacre |
+| key_choices | Lin Yi chooses to run instead of staying |
+| knowledge_state | Lin Yi does not know who the killer is; he only remembers Qingyun swordsmanship |
+| required_changes | From an innocent youth to a traumatized child |
+| prohibitions | The killer must not show his true face |
 
 ---
 
-#### 5.1.6 情绪设计（6字段）
+#### 5.1.6 Emotion Design (6 Fields)
 
-| 字段 | 内容 |
+| Field | Content |
 |------|------|
-| primary_mood | 悲伤、紧张 |
-| mood_progression | 温馨→紧张→恐惧→悲伤 |
-| intensity_level | 高 |
-| intensity_peak | 父亲死亡的那一刻 |
-| emotional_hook | 父亲临死前的嘱托 |
-| micro_payoffs | 温馨的家庭场景、父亲的牺牲、小林逸的眼泪 |
+| primary_mood | Sadness, tension |
+| mood_progression | Warmth → tension → fear → sadness |
+| intensity_level | High |
+| intensity_peak | The moment the father dies |
+| emotional_hook | The father's dying instructions |
+| micro_payoffs | The warm family scene, the father's sacrifice, little Lin Yi's tears |
 
 ---
 
-#### 5.1.7 Hooks 操作
+#### 5.1.7 Hook Operations
 
-| 类型 | 内容 | 回收时机 |
+| Type | Content | Payoff Timing |
 |------|------|----------|
-| 伏笔 | 凶手使用青云剑法 | 卷2陈风出场时 |
-| 线索 | 父亲把玉佩塞进林逸手里 | 第2章 |
-| 伏笔 | 父亲喊"陈师弟" | 卷4揭露真相时 |
+| Foreshadowing | The killer uses Qingyun swordsmanship | When Chen Feng appears in volume 2 |
+| Clue | Father presses the jade pendant into Lin Yi's hand | Chapter 2 |
+| Foreshadowing | Father calls out "Junior Brother Chen" | When the truth is exposed in volume 4 |
 
 ---
 
-#### 5.1.8 验收
+#### 5.1.8 Acceptance
 
-**第1步：展示 structured 反馈**
+**Step 1: Show the structured feedback**
 
-**【AI】** 展示：
+**[AI]** shows:
 
 ```
-📋 第1章 章纲反馈
+📋 Chapter 1 outline feedback
 
-本章定位：楔子，回忆性质
-主要内容：
-- 林逸9岁生辰之夜
-- 家族遭遇突袭
-- 父亲为保护他而死
+This chapter's position: prologue, flashback in nature
+Main content:
+- The night of Lin Yi's 9th birthday
+- The family is ambushed
+- The father dies protecting him
 
-关键场景：
-- 生辰夜宴（角色：林逸、林父、林母）
-- 突袭降临（角色：黑衣人）
-- 父亲牺牲（高潮）
-- 林逸逃亡
+Key scenes:
+- Birthday feast (characters: Lin Yi, Father Lin, Mother Lin)
+- The ambush arrives (characters: men in black)
+- The father's sacrifice (climax)
+- Lin Yi flees
 
-冲突进展：建立悬念（谁灭了林家？）
-字数目标：4000字
+Conflict progress: suspense established (who wiped out the Lin family?)
+Word-count target: 4,000 words
 ```
 
 ---
 
-**第2步：自检清单**
+**Step 2: Self-check list**
 
-**【AI】** 检查：
+**[AI]** checks:
 
-- [x] 字数目标已确认（4000+）
-- [x] 段落分布已确认（推进/过渡/埋伏笔各几段）
-- [x] 每条关键点对应一个可写场景，含冲突事件
-- [x] 新钩子已记录（青云剑法、玉佩、"陈师弟"）
-- [x] 禁止项已列出（凶手真面目、AI味）
-- [x] 情绪走向有三个节点（温馨→紧张→悲伤）
-
----
-
-**第3步：快速嗅探**
-
-**【AI】** 自检：
-
-- 能说出分多少条、每条写什么场景吗？→ ✅
-- 能说出每个角色知道什么、不知道什么吗？→ ✅
-- 能说出兑现了哪些旧钩子、新埋了什么钩子吗？→ ✅
+- [x] Word-count target confirmed (4,000+)
+- [x] Paragraph distribution confirmed (how many paragraphs advance / transition / plant foreshadowing)
+- [x] Each key point maps to a writable scene with a conflict event
+- [x] New hooks recorded (Qingyun swordsmanship, jade pendant, "Junior Brother Chen")
+- [x] Prohibitions listed (killer's true face, AI flavor)
+- [x] The emotion line has three nodes (warmth → tension → sadness)
 
 ---
 
-**第4步：AI味自检**
+**Step 3: Quick sniff test**
 
-**【AI】** 检查：
+**[AI]** self-checks:
 
-- [x] 无上帝视角概述（"本章讲述了"）
-- [x] 无抽象心理总结（"他感到""他意识到"）
-- [x] 无分析性结论（"这表明""这意味着"）
-- [x] 无文学评论腔（"通过X展现了Y"）
-- [x] 无"不是而是"句式
-- [x] 无抽象标签（"关系递进""冲突升级"）
+- Can you say how many points there are and what scene each one writes? → ✅
+- Can you say what each character knows and does not know? → ✅
+- Can you say which old hooks were paid off and which new hooks were planted? → ✅
 
 ---
 
-**【作者】** 明确说"对"：
+**Step 4: AI-flavor self-check**
 
-> "对，确认章纲。"
+**[AI]** checks:
+
+- [x] No omniscient overview ("This chapter tells the story of")
+- [x] No abstract psychological summaries ("he felt" / "he realized")
+- [x] No analytical conclusions ("this shows" / "this means")
+- [x] No literary-commentary tone ("through X, Y is shown")
+- [x] No "not X but Y" sentence pattern
+- [x] No abstract labels ("relationship progression" / "conflict escalation")
 
 ---
 
-#### 5.1.9 写入 chapter.md
+**[Author]** explicitly says "yes":
 
-**【AI】** 写入 `chapters/vol-1-ch-1.md`，status → `outline`
+> "Yes, I confirm the chapter outline."
 
 ---
 
-#### 5.1.10 状态汇报
+#### 5.1.9 Write chapter.md
 
-> ✅ 章纲：`chapters/vol-1-ch-1.md` → `status: outline`
+**[AI]** writes `chapters/vol-1-ch-1.md`, status → `outline`
+
+---
+
+#### 5.1.10 Status Report
+
+> ✅ Chapter outline: `chapters/vol-1-ch-1.md` → `status: outline`
 >
-> → 分发到提示词生成
+> → Dispatch to prompt generation
 
 ---
 
-### 5.2 提示词生成
+### 5.2 Prompt Generation
 
-**【AI】** 生成6模块提示词，写入 `prompts/vol-1-ch-1-prompt.md`：
+**[AI]** generates a 6-module prompt and writes it into `prompts/vol-1-ch-1-prompt.md`:
 
-**模块1：基础定位**
-- 题材：仙侠
-- 基调：沉重、悲伤
-- 本章定位：楔子，回忆性质
-- 字数目标：4000字
-- 爽点/情绪：悲伤中有一丝希望
+**Module 1: Basic Positioning**
+- Genre: xianxia (immortal cultivation)
+- Tone: heavy, sad
+- This chapter's position: prologue, flashback in nature
+- Word-count target: 4,000 words
+- Payoff beats / emotion: a trace of hope within the sadness
 
-**模块2：前置承接**
-- 前情摘要：无（第一章）
-- 核心场景：灭门之夜
-- 情绪线：温馨→紧张→恐惧→悲伤
+**Module 2: Prior Context**
+- Recap: none (chapter 1)
+- Core scene: night of the massacre
+- Emotion line: warmth → tension → fear → sadness
 
-**模块3：人物即时状态**
-- 林逸（9岁）：天真活泼，能感知危险
-- 林父：保护儿子，临死嘱托
-- 黑衣人：蒙面，使用青云剑法
+**Module 3: Characters' Immediate States**
+- Lin Yi (9 years old): innocent and lively, able to sense danger
+- Father Lin: protecting his son, giving dying instructions
+- Men in black: masked, using Qingyun swordsmanship
 
-**模块4：本章叙事任务**
-- 场景分解：
-  1. [推进剧情·环境] 林家大厅，生辰夜宴
-  2. [造悬念] 屋顶瓦片碎裂，黑衣人降临
-  3. [推进剧情·动作] 林父挡在前面
-  4. [推进剧情·高潮] 黑衣人出剑，林父中剑
-  5. [造悬念] 父亲把玉佩塞进林逸手里
-  6. [过渡] 林逸逃亡
+**Module 4: This Chapter's Narrative Tasks**
+- Scene breakdown:
+  1. [Advance plot · setting] The Lin family hall, birthday feast at night
+  2. [Build suspense] Roof tiles shatter, men in black arrive
+  3. [Advance plot · action] Father Lin stands in front
+  4. [Advance plot · climax] A man in black draws his sword; Father Lin is struck
+  5. [Build suspense] Father presses the jade pendant into Lin Yi's hand
+  6. [Transition] Lin Yi flees
 
-**模块5：文字与细节要求**
-- 叙事视角：第三人称有限视角，聚焦林逸
-- 描写要求：动作描写为主，心理通过表情暗示
-- 禁止项：AI味描写、凶手真面目
+**Module 5: Prose and Detail Requirements**
+- Narrative point of view: third-person limited, focused on Lin Yi
+- Description requirements: action description first, psychology hinted through expressions
+- Prohibitions: AI-flavored description, killer's true face
 
-**模块6：真人感补充**
-- 情绪要真实，林逸的害怕是孩子的害怕
-- 半文半白，仙侠风格
-
----
-
-### 5.3 提示词验收
-
-**【AI】** 检查6项：
-
-1. **模块完整性检查**：6个模块（定位/承接/人物/叙事任务/文字要求/真人感）都有吗？
-2. **字段填充检查**：每个模块的字段都填满了吗？有没有"______"占位符残留？
-3. **writing-style注入检查**：core_principles/possible_mistakes/depiction_techniques 都写了吗？
-4. **字数目标检查**：字数目标明确吗？
-5. **叙事视角检查**：叙事视角锁定了吗？（第三人称有限视角）
-6. **场景分解检查**：场景分解清晰吗？（每场景含边界信号）
+**Module 6: Human-Touch Supplement**
+- Emotions must feel real: Lin Yi's fear is a child's fear
+- Half-classical, half-vernacular, xianxia (immortal cultivation) style
 
 ---
 
-**【AI】** 展示验收报告：
+### 5.3 Prompt Acceptance
+
+**[AI]** checks 6 items:
+
+1. **Module completeness check**: Are all 6 modules present (positioning / context / characters / narrative tasks / prose requirements / human touch)?
+2. **Field fill check**: Are every module's fields filled in? Are there any "______" placeholders left?
+3. **writing-style injection check**: Are core_principles / possible_mistakes / depiction_techniques all written in?
+4. **Word-count target check**: Is the word-count target clear?
+5. **Narrative point-of-view check**: Is the narrative point of view locked in? (Third-person limited)
+6. **Scene breakdown check**: Is the scene breakdown clear? (Each scene carries boundary signals)
+
+---
+
+**[AI]** shows the acceptance report:
 
 ```
-## 提示词验收报告：第1章
-✅ 通过
+## Prompt acceptance report: Chapter 1
+✅ Passed
 
-| 检查项 | 结果 |
+| Check Item | Result |
 |--------|------|
-| 6模块完整 | ✅ |
-| 字段填充完整 | ✅ |
-| writing-style注入 | ✅ |
-| 字数目标明确 | ✅ |
-| 叙事视角锁定 | ✅ |
+| 6 modules complete | ✅ |
+| Fields fully filled | ✅ |
+| writing-style injected | ✅ |
+| Word-count target clear | ✅ |
+| Narrative point of view locked | ✅ |
 ```
 
 ---
 
-**【作者】** 确认通过
+**[Author]** confirms it passed
+
+---
+**[AI]** updates `chapters/vol-1-ch-1.md` status → `draft`
 
 ---
 
-**【AI】** 更新 `chapters/vol-1-ch-1.md` status → `draft`
+### 5.4 Main Text Writing
+
+**[AI]** writes the main text following the prompt, into `archives/vol-1-ch-1-灭门之夜.draft.md`
 
 ---
 
-### 5.4 正文写作
+### 5.5 Main Text Acceptance
 
-**【AI】** 按提示词写正文，写入 `archives/vol-1-ch-1-灭门之夜.draft.md`
-
----
-
-### 5.5 正文验收
-
-**【AI】** 执行10维分层检查：
+**[AI]** runs the 10-dimension layered check:
 
 ---
 
-**L1 表层文本检查：**
+**L1 Surface Text Check:**
 
-| 检查项 | 具体内容 |
+| Check Item | Details |
 |--------|----------|
-| 疲劳词 | 忽然、突然、竟然、默默、渐渐 等6大类 |
-| 句式违规 | 8种结构癖好、6种句式规则 |
-| 对话规则 | 标签/间隔/意图/感叹号 |
+| Tired words | suddenly, abruptly, unexpectedly, silently, gradually, and 6 other major categories |
+| Sentence-pattern violations | 8 structural habits, 6 sentence-pattern rules |
+| Dialogue rules | Tags / spacing / intent / exclamation marks |
 
 ---
 
-**L2 内容合规检查：**
+**L2 Content Compliance Check:**
 
-| 检查项 | 具体内容 |
+| Check Item | Details |
 |--------|----------|
-| 设定合规 | 世界观/OOC/禁忌/连续性 |
-| 章纲兑现 | required_changes（从天真少年变创伤儿童） |
-| 钩子兑现 | 新埋青云剑法伏笔、玉佩线索、"陈师弟" |
+| Setting compliance | Worldview / OOC / taboos / continuity |
+| Outline fulfillment | required_changes (from innocent youth to traumatized child) |
+| Hook fulfillment | Newly planted Qingyun swordsmanship foreshadowing, jade pendant clue, "Junior Brother Chen" |
 
 ---
 
-**L3+ 基础质量检查：**
+**L3+ Basic Quality Check:**
 
-| 检查项 | 具体内容 |
+| Check Item | Details |
 |--------|----------|
-| 字数 | ≥3200字（目标4000的80%） |
-| 视角/时态 | 第三人称有限视角，过去时态 |
-| 风格 | 低AI味，无疲劳词，无堆砌 |
-| 章末牵引力 | 有钩子，引导读下一章 |
+| Word count | ≥3,200 words (80% of the 4,000 target) |
+| Point of view / tense | Third-person limited, past tense |
+| Style | Low AI flavor, no tired words, no stacking |
+| End-of-chapter pull | Has a hook, leading the reader to the next chapter |
 
 ---
 
-**【AI】** 展示验收报告：
+**[AI]** shows the acceptance report:
 
 ```
-## 正文验收报告：第1章
-✅ 通过
+## Main text acceptance report: Chapter 1
+✅ Passed
 
-L1 表层文本：✅✅✅
-  - 疲劳词：无
-  - 句式违规：无
-  - 对话规则：通过
+L1 Surface text: ✅✅✅
+  - Tired words: none
+  - Sentence-pattern violations: none
+  - Dialogue rules: passed
 
-L2 内容合规：✅✅✅
-  - 设定合规：通过
-  - 章纲兑现：通过（required_changes已完成）
-  - 钩子兑现：通过（青云剑法/玉佩/陈师弟已埋）
+L2 Content compliance: ✅✅✅
+  - Setting compliance: passed
+  - Outline fulfillment: passed (required_changes completed)
+  - Hook fulfillment: passed (Qingyun swordsmanship / jade pendant / Junior Brother Chen planted)
 
-L3+ 基础质量：✅✅✅✅
-  - 字数：4150字 ✓
-  - 视角/时态：通过 ✓
-  - 风格：通过 ✓
+L3+ Basic quality: ✅✅✅✅
+  - Word count: 4,150 words ✓
+  - Point of view / tense: passed ✓
+  - Style: passed ✓
 
-字数：4150字
-验收结论：10项通过 / 0项不合格
-```
-
----
-
-**【AI】** 询问：
-
-> "正文验收通过。**进入归档还是先做深度评审？**"
-
----
-
-**【作者】** 回答：
-
-> "归档。"
-
----
-
-### 5.6 归档
-
-novel-agent 写 archive-order.md，通过 Agent 工具调度 updater 执行归档。
-
-**updater 执行归档操作：**
-
-1. 草稿 → 定稿：`vol-1-ch-1-灭门之夜.draft.md` → `vol-1-ch-1-灭门之夜.md`
-2. 更新 chapter.md status → `archived`
-3. 追加角色状态历史（林逸）：
-   - 状态变化：从"9岁天真少年"变为"10岁沉默孤儿"
-   - 情绪弧线：+悲伤（强度：高）
-4. 追加 **持有物**/**经历**（如有）
-5. 更新 hooks 记录：
-   - "青云剑法"：待回收
-   - "玉佩"：待回收
-   - "陈师弟"：待回收
-6. 检测卷边界：第1卷共10章，第1章归档
-7. 清理 order 文件
-
----
-
-**【AI】** 汇报：
-
-```
-第一章：灭门之夜 — 已归档
-
-下一步：第二章章纲
+Word count: 4,150 words
+Acceptance conclusion: 10 items passed / 0 items failed
 ```
 
 ---
 
-**【作者】** 回答：
+**[AI]** asks:
 
-> "开始第二章。"
-
----
-
-## 6. 继续写第二章
-
-**状态检测：** `vol-1-ch-1` status = `archived`
+> "The main text passed acceptance. **Archive it now, or do an in-depth review first?**"
 
 ---
 
-### 6.1 AI 帮助作者规划章纲
+**[Author]** answers:
 
-#### 6.1.1 读取上下文
+> "Archive it."
 
-**【AI】** 检测到第1章已归档，开始读取上下文：
+---
+
+### 5.6 Archiving
+
+novel-agent writes archive-order.md and dispatches updater through the Agent tool to perform the archiving.
+
+**updater performs the archiving operations:**
+
+1. Draft → final: `vol-1-ch-1-灭门之夜.draft.md` → `vol-1-ch-1-灭门之夜.md`
+2. Update chapter.md status → `archived`
+3. Append character state history (Lin Yi):
+   - State change: from "9-year-old innocent youth" to "10-year-old silent orphan"
+   - Emotion arc: +sadness (intensity: high)
+4. Append **possessions** / **experiences** (if any)
+5. Update the hooks record:
+   - "Qingyun swordsmanship": pending payoff
+   - "Jade pendant": pending payoff
+   - "Junior Brother Chen": pending payoff
+6. Detect the volume boundary: volume 1 has 10 chapters; chapter 1 archived
+7. Clean up the order file
+
+---
+
+**[AI]** reports:
 
 ```
-✅ 读取 vol-1-ch-1.md（已归档）
-✅ 读取 settings/character-setting/林逸.md（状态历史：1条）
-✅ 读取 hooks 记录（青云剑法/玉佩/陈师弟）
-✅ 读取 volumes/volume-1.md（chapters_summary）
+Chapter 1: Night of the Massacre: archived
+
+Next step: chapter 2 outline
 ```
 
 ---
 
-#### 6.1.2 生成角色发声（基于状态历史）
+**[Author]** answers:
 
-**【AI】** 读取林逸的状态历史后生成：
+> "Start chapter 2."
 
-> **【林逸的处境】** 10岁，流浪一年，被村民收养，白天干活，晚上练父亲教的呼吸法
+---
+
+## 6. Continuing with Chapter 2
+
+**State detection:** `vol-1-ch-1` status = `archived`
+
+---
+
+### 6.1 The AI Helps the Author Plan the Chapter Outline
+
+#### 6.1.1 Read the Context
+
+**[AI]** detects that chapter 1 is archived and starts reading the context:
+
+```
+✅ Read vol-1-ch-1.md (archived)
+✅ Read settings/character-setting/林逸.md (state history: 1 entry)
+✅ Read the hooks record (Qingyun swordsmanship / jade pendant / Junior Brother Chen)
+✅ Read volumes/volume-1.md (chapters_summary)
+```
+
+---
+
+#### 6.1.2 Generate the Character's Voice (Based on State History)
+
+**[AI]** generates the following after reading Lin Yi's state history:
+
+> **[Lin Yi's situation]** 10 years old, a year of wandering, taken in by villagers, working during the day and practicing the breathing method his father taught him at night
 >
-> **【林逸未完成的事】** 父亲之仇未报，凶手是谁还不知道
+> **[Lin Yi's unfinished business]** His father's revenge is unavenged; he still does not know who the killer is
 >
-> **【林逸现在想做的事】** 查明父亲死因，离开村庄寻找真相
+> **[What Lin Yi wants to do now]** Find out the cause of his father's death and leave the village to seek the truth
 
 ---
 
-#### 6.1.3 钩子盘点
+#### 6.1.3 Hook Inventory
 
-**【AI】** 检查第1章埋下的钩子：
+**[AI]** checks the hooks planted in chapter 1:
 
-| 钩子 | 来源 | 本章应处理 |
+| Hook | Source | How This Chapter Should Handle It |
 |------|------|-----------|
-| 青云剑法 | 第1章 | ❌ 本章不回收（卷2陈风出场时回收） |
-| 玉佩 | 第1章 | ✅ 本章回收：玉佩发光，显示功法 |
-| "陈师弟" | 第1章 | ❌ 本章不回收（卷4揭露真相时回收） |
+| Qingyun swordsmanship | Chapter 1 | ❌ Not paid off in this chapter (paid off when Chen Feng appears in volume 2) |
+| Jade pendant | Chapter 1 | ✅ Paid off in this chapter: the jade pendant glows, revealing a cultivation technique |
+| "Junior Brother Chen" | Chapter 1 | ❌ Not paid off in this chapter (paid off when the truth is exposed in volume 4) |
 
 ---
 
-#### 6.1.4 收集四组输入
+#### 6.1.4 Collect the Four Input Groups
 
-**【AI】** 合成方向输入：
+**[AI]** synthesizes the direction inputs:
 
-| 输入 | 内容 | 来源 |
+| Input | Content | Source |
 |------|------|------|
-| 读者缺口 | 第1章留下的悬念：谁灭了林家？玉佩有什么用？ | 自动生成 |
-| 角色状态 | 林逸从天真变为沉默，内心有火但不外露 | 状态历史 |
-| 钩子盘点 | 玉佩线索（第1章埋），青云剑法伏笔 | hooks记录 |
-| 卷纲定位 | setup第2章，承上启下，从压抑到燃起希望 | volume-1.md |
+| Reader gap | The suspense left by chapter 1: who wiped out the Lin family? What is the jade pendant for? | Auto-generated |
+| Character state | Lin Yi changed from innocent to silent, with fire inside but not showing it | State history |
+| Hook inventory | Jade pendant clue (planted in chapter 1), Qingyun swordsmanship foreshadowing | Hooks record |
+| Volume outline position | setup chapter 2, linking past and future, from oppression to kindled hope | volume-1.md |
 
 ---
 
-#### 6.1.5 展开纲要点（AI智能展开）
+#### 6.1.5 Expand the Outline Points (AI Smart Expansion)
 
-**【AI】** 结合卷纲定位 + 角色状态 + 钩子走向，生成7个关键点：
+**[AI]** combines the volume outline position + character state + hook direction to generate 7 key points:
 
-| # | 关键点 | 功能 | 钩子关联 |
+| # | Key Point | Function | Hook Link |
 |---|--------|------|----------|
-| 1 | 村民家，早晨，林逸干完农活，独自发呆想着父亲 | [推进剧情·环境] | — |
-| 2 | 今天是灭门一周年，林逸决定回废墟看看 | [推进剧情·转折] | — |
-| 3 | 废墟景象，焦黑的墙壁，林逸挖出父亲埋的盒子 | [造悬念·发现] | — |
-| 4 | 盒中有玉佩，玉佩发光，显示青云宗入门心法 | [推进剧情·高潮] | ✅ 玉佩回收 |
-| 5 | 功法是残缺的，只有基础部分 | [造悬念·限制] | — |
-| 6 | 玉佩中还有一段神识留言，父亲说"吾儿..."被截断 | [造悬念·线索] | — |
-| 7 | 林逸决定离开村庄，去青云宗寻找真相 | [过渡·结尾] | — |
+| 1 | At the villagers' home, in the morning, Lin Yi finishes the farm work and sits alone in a daze, thinking of his father | [Advance plot · setting] | None |
+| 2 | Today is the first anniversary of the massacre; Lin Yi decides to go back to the ruins to look | [Advance plot · turning point] | None |
+| 3 | The scene at the ruins: charred walls; Lin Yi digs out the box his father buried | [Build suspense · discovery] | None |
+| 4 | Inside the box is the jade pendant; it glows, revealing the Qingyun Sect entry-level mind technique | [Advance plot · climax] | ✅ Jade pendant paid off |
+| 5 | The technique is incomplete, only the basic part | [Build suspense · limitation] | None |
+| 6 | The jade pendant also holds a divine-sense message; his father's words "My son..." are cut off | [Build suspense · clue] | None |
+| 7 | Lin Yi decides to leave the village and go to Qingyun Sect to seek the truth | [Transition · ending] | None |
 
 ---
 
-**【AI】** 确认字数目标：
+**[AI]** confirms the word-count target:
 
-> 字数目标：4000字
-
----
-
-#### 6.1.6 禁止清单
-
-**【AI】** 询问：
-
-> "本章有没有明确禁止出现的场景、元素或情节？"
+> Word-count target: 4,000 words
 
 ---
 
-**【作者】** 回答：
+#### 6.1.6 Prohibition List
 
-> "不能让林逸突然变强，功法是残缺的，不能有系统或金手指。"
+**[AI]** asks:
+
+> "Are there any scenes, elements, or plot points that must definitely not appear in this chapter?"
 
 ---
 
-#### 6.1.7 Memo + 情绪设计（AI生成）
+**[Author]** answers:
 
-**【AI】** 填充（基于角色状态和故事走向）：
+> "Lin Yi must not suddenly become strong; the technique is incomplete, and there must be no system or cheat power."
 
-| 字段 | 内容 |
+---
+
+#### 6.1.7 Memo + Emotion Design (AI-Generated)
+
+**[AI]** fills in (based on character state and story direction):
+
+| Field | Content |
 |------|------|
-| current_task | 灭门一年后，林逸回到废墟，发现玉佩中的功法和父亲留言，决定离开村庄 |
-| reader_expectation | 想知道林逸这一年怎么过的，以及玉佩有什么用 |
-| payoff_plan | 玉佩是父亲留给他的传承，里面有功法线索；"陈师弟"伏笔待回收 |
-| downtime_functions | 林逸在村民家的日常生活，简单但温馨 |
-| key_choices | 林逸选择离开村庄去青云宗，而非继续留在安全的地方 |
-| knowledge_state | 林逸不知道玉佩的秘密，不知道谁灭门 |
-| required_changes | 从"被动活着"变为"主动寻找方向"，燃起复仇决心 |
-| prohibitions | 不能让林逸突然变强，不能有系统/金手指 |
+| current_task | One year after the massacre, Lin Yi returns to the ruins, discovers the technique and his father's message inside the jade pendant, and decides to leave the village |
+| reader_expectation | Want to know how Lin Yi spent this year, and what the jade pendant is for |
+| payoff_plan | The jade pendant is the inheritance his father left him, with technique clues inside; the "Junior Brother Chen" foreshadowing is still pending |
+| downtime_functions | Lin Yi's everyday life at the villagers' home, simple but warm |
+| key_choices | Lin Yi chooses to leave the village for Qingyun Sect instead of staying somewhere safe |
+| knowledge_state | Lin Yi does not know the jade pendant's secret, or who wiped out his family |
+| required_changes | From "passively staying alive" to "actively seeking direction", with his resolve for revenge ignited |
+| prohibitions | Lin Yi must not suddenly become strong; no system / cheat power |
 
 ---
 
-| 字段 | 内容 |
+| Field | Content |
 |------|------|
-| primary_mood | 压抑、希望 |
-| mood_progression | 压抑（日常）→ 发现玉佩（转折）→ 燃起希望（结尾） |
-| intensity_level | 低→中 |
-| intensity_peak | 发现玉佩秘密的那一刻 |
-| emotional_hook | 父亲留言被截断，留下悬念 |
-| micro_payoffs | 村民照顾的温馨、玉佩发光、父亲留言、决心离开 |
+| primary_mood | Oppression, hope |
+| mood_progression | Oppression (everyday life) → discovering the jade pendant (turning point) → hope ignited (ending) |
+| intensity_level | Low → medium |
+| intensity_peak | The moment he discovers the jade pendant's secret |
+| emotional_hook | His father's message is cut off, leaving suspense |
+| micro_payoffs | The villagers' warm care, the glowing jade pendant, his father's message, the resolve to leave |
 
 ---
 
-#### 6.1.8 验收
+#### 6.1.8 Acceptance
 
-**第1步：展示 structured 反馈**
+**Step 1: Show the structured feedback**
 
-**【AI】** 展示：
+**[AI]** shows:
 
 ```
-📋 第2章 章纲反馈
+📋 Chapter 2 outline feedback
 
-本章定位：承上启下，从压抑到燃起希望
-主要内容：
-- 林逸一年的流浪生活
-- 回到废墟发现玉佩
-- 玉佩中的功法和父亲留言
-- 决定离开去青云宗
+This chapter's position: linking past and future, from oppression to kindled hope
+Main content:
+- Lin Yi's year of wandering life
+- Returning to the ruins and discovering the jade pendant
+- The technique and his father's message inside the jade pendant
+- Deciding to leave for Qingyun Sect
 
-关键场景：
-- 村民家日常生活（角色：林逸、村民夫妇）
-- 回到废墟（角色：林逸）
-- 发现玉佩（角色：林逸）
-- 父亲的留言（角色：林逸）
+Key scenes:
+- Everyday life at the villagers' home (characters: Lin Yi, the villager couple)
+- Returning to the ruins (character: Lin Yi)
+- Discovering the jade pendant (character: Lin Yi)
+- His father's message (character: Lin Yi)
 
-冲突进展：玉佩秘密揭露，复仇决心燃起
-字数目标：4000字
+Conflict progress: the jade pendant's secret is revealed; resolve for revenge ignites
+Word-count target: 4,000 words
 ```
 
 ---
 
-**第2步：自检清单**
+**Step 2: Self-check list**
 
-**【AI】** 检查：
+**[AI]** checks:
 
-- [x] 字数目标已确认（4000+）
-- [x] 段落分布已确认（推进/过渡/埋伏笔各几段）
-- [x] 每条关键点对应一个可写场景，含冲突事件
-- [x] 旧钩子兑现已记录（玉佩）
-- [x] 新钩子已记录（墙上刻字）
-- [x] 禁止项已列出（突然变强、系统）
-- [x] 情绪走向有三个节点（压抑→转折→希望）
-
----
-
-**第3步：快速嗅探**
-
-**【AI】** 自检：
-
-- 能说出分多少条、每条写什么场景吗？→ ✅
-- 能说出每个角色知道什么、不知道什么吗？→ ✅
-- 能说出兑现了哪些旧钩子、新埋了什么钩子吗？→ ✅
+- [x] Word-count target confirmed (4,000+)
+- [x] Paragraph distribution confirmed (how many paragraphs advance / transition / plant foreshadowing)
+- [x] Each key point maps to a writable scene with a conflict event
+- [x] Old hook payoff recorded (jade pendant)
+- [x] New hook recorded (carved words on the wall)
+- [x] Prohibitions listed (suddenly becoming strong, system)
+- [x] The emotion line has three nodes (oppression → turning point → hope)
 
 ---
 
-**第4步：AI味自检**
+**Step 3: Quick sniff test**
 
-**【AI】** 检查：
+**[AI]** self-checks:
 
-- [x] 无上帝视角概述（"本章讲述了"）
-- [x] 无抽象心理总结（"他感到""他意识到"）
-- [x] 无分析性结论（"这表明""这意味着"）
-- [x] 无文学评论腔（"通过X展现了Y"）
-- [x] 无"不是而是"句式
-- [x] 无抽象标签（"关系递进""冲突升级"）
+- Can you say how many points there are and what scene each one writes? → ✅
+- Can you say what each character knows and does not know? → ✅
+- Can you say which old hooks were paid off and which new hooks were planted? → ✅
 
 ---
 
-**【作者】** 明确说"对"：
+**Step 4: AI-flavor self-check**
 
-> "对，确认章纲。"
+**[AI]** checks:
+
+- [x] No omniscient overview ("This chapter tells the story of")
+- [x] No abstract psychological summaries ("he felt" / "he realized")
+- [x] No analytical conclusions ("this shows" / "this means")
+- [x] No literary-commentary tone ("through X, Y is shown")
+- [x] No "not X but Y" sentence pattern
+- [x] No abstract labels ("relationship progression" / "conflict escalation")
 
 ---
 
-#### 6.1.9 写入 chapter.md
+**[Author]** explicitly says "yes":
 
-**【AI】** 写入 `chapters/vol-1-ch-2.md`，status → `outline`
+> "Yes, I confirm the chapter outline."
 
 ---
 
-#### 6.1.10 状态汇报
+#### 6.1.9 Write chapter.md
 
-> ✅ 章纲：`chapters/vol-1-ch-2.md` → `status: outline`
+**[AI]** writes `chapters/vol-1-ch-2.md`, status → `outline`
+
+---
+
+#### 6.1.10 Status Report
+
+> ✅ Chapter outline: `chapters/vol-1-ch-2.md` → `status: outline`
 >
-> → 分发到提示词生成
+> → Dispatch to prompt generation
 
 ---
 
-### 6.2 提示词生成
+### 6.2 Prompt Generation
 
-**【AI】** 生成6模块提示词，写入 `prompts/vol-1-ch-2-prompt.md`：
+**[AI]** generates a 6-module prompt and writes it into `prompts/vol-1-ch-2-prompt.md`:
 
-**模块1：基础定位**
-- 题材：仙侠
-- 基调：压抑→希望
-- 本章定位：承上启下
-- 字数目标：4000字
-- 爽点/情绪：希望燃起
+**Module 1: Basic Positioning**
+- Genre: xianxia (immortal cultivation)
+- Tone: oppression → hope
+- This chapter's position: linking past and future
+- Word-count target: 4,000 words
+- Payoff beats / emotion: hope ignites
 
-**模块2：前置承接**
-- 前情摘要：第1章灭门，林逸带着玉佩逃走
-- 核心场景：废墟生活、发现玉佩秘密
-- 情绪线：压抑→发现→希望
+**Module 2: Prior Context**
+- Recap: chapter 1's massacre; Lin Yi fled with the jade pendant
+- Core scenes: life in the ruins, discovering the jade pendant's secret
+- Emotion line: oppression → discovery → hope
 
-**模块3：人物即时状态**
-- 林逸（10岁）：沉默、警觉、内心有火
-- 村民夫妇：善良但不知林逸身世
-- 玉佩：发光，藏有传承
+**Module 3: Characters' Immediate States**
+- Lin Yi (10 years old): silent, alert, with fire inside
+- The villager couple: kind, but unaware of Lin Yi's background
+- Jade pendant: glowing, hiding an inheritance
 
-**模块4：本章叙事任务**
-- 场景分解：
-  1. [推进剧情·环境] 村民家，早晨，林逸发呆
-  2. [推进剧情·转折] 决定回废墟
-  3. [造悬念·发现] 废墟景象，挖出盒子
-  4. [推进剧情·高潮] 玉佩发光，显示功法
-  5. [造悬念·线索] 功法残缺，父亲留言被截断
-  6. [过渡·结尾] 决定离开，去青云宗
+**Module 4: This Chapter's Narrative Tasks**
+- Scene breakdown:
+  1. [Advance plot · setting] At the villagers' home, morning, Lin Yi in a daze
+  2. [Advance plot · turning point] Deciding to return to the ruins
+  3. [Build suspense · discovery] The ruins scene, digging out the box
+  4. [Advance plot · climax] The jade pendant glows, revealing the technique
+  5. [Build suspense · clue] The technique is incomplete; his father's message is cut off
+  6. [Transition · ending] Deciding to leave for Qingyun Sect
 
-**模块5：文字与细节要求**
-- 叙事视角：第三人称有限视角，聚焦林逸
-- 描写要求：动作描写为主，心理通过表情暗示
-- 禁止项：突然变强、系统/金手指
+**Module 5: Prose and Detail Requirements**
+- Narrative point of view: third-person limited, focused on Lin Yi
+- Description requirements: action description first, psychology hinted through expressions
+- Prohibitions: suddenly becoming strong, system / cheat power
 
-**模块6：真人感补充**
-- 情绪要真实，林逸压抑但不失希望
-- 半文半白，仙侠风格
-
----
-
-### 6.3 提示词验收
-
-**【AI】** 检查6项：
-
-1. **模块完整性检查**：6个模块（定位/承接/人物/叙事任务/文字要求/真人感）都有吗？
-2. **字段填充检查**：每个模块的字段都填满了吗？有没有"______"占位符残留？
-3. **writing-style注入检查**：core_principles/possible_mistakes/depiction_techniques 都写了吗？
-4. **字数目标检查**：字数目标明确吗？
-5. **叙事视角检查**：叙事视角锁定了吗？（第三人称有限视角）
-6. **场景分解检查**：场景分解清晰吗？（每场景含边界信号）
+**Module 6: Human-Touch Supplement**
+- Emotions must feel real: Lin Yi is oppressed but does not lose hope
+- Half-classical, half-vernacular, xianxia (immortal cultivation) style
 
 ---
 
-**【AI】** 展示验收报告：
+### 6.3 Prompt Acceptance
+
+**[AI]** checks 6 items:
+
+1. **Module completeness check**: Are all 6 modules present (positioning / context / characters / narrative tasks / prose requirements / human touch)?
+2. **Field fill check**: Are every module's fields filled in? Are there any "______" placeholders left?
+3. **writing-style injection check**: Are core_principles / possible_mistakes / depiction_techniques all written in?
+4. **Word-count target check**: Is the word-count target clear?
+5. **Narrative point-of-view check**: Is the narrative point of view locked in? (Third-person limited)
+6. **Scene breakdown check**: Is the scene breakdown clear? (Each scene carries boundary signals)
+
+---
+
+**[AI]** shows the acceptance report:
 
 ```
-## 提示词验收报告：第2章
-✅ 通过
+## Prompt acceptance report: Chapter 2
+✅ Passed
 
-| 检查项 | 结果 |
+| Check Item | Result |
 |--------|------|
-| 6模块完整 | ✅ |
-| 字段填充完整 | ✅ |
-| writing-style注入 | ✅ |
-| 字数目标明确 | ✅ |
-| 叙事视角锁定 | ✅ |
-| 场景分解清晰 | ✅ |
+| 6 modules complete | ✅ |
+| Fields fully filled | ✅ |
+| writing-style injected | ✅ |
+| Word-count target clear | ✅ |
+| Narrative point of view locked | ✅ |
+| Scene breakdown clear | ✅ |
 ```
 
 ---
 
-**【作者】** 确认通过
+**[Author]** confirms it passed
 
 ---
 
-**【AI】** 更新 `chapters/vol-1-ch-2.md` status → `draft`
+**[AI]** updates `chapters/vol-1-ch-2.md` status → `draft`
 
 ---
 
-### 6.4 正文写作
+### 6.4 Main Text Writing
 
-**【AI】** 按提示词写正文，写入 `archives/vol-1-ch-2-废墟余生.draft.md`
-
----
-
-### 6.5 正文验收
-
-**【AI】** 执行10维分层检查：
+**[AI]** writes the main text following the prompt, into `archives/vol-1-ch-2-废墟余生.draft.md`
 
 ---
 
-**L1 表层文本检查：**
+### 6.5 Main Text Acceptance
 
-| 检查项 | 具体内容 |
+**[AI]** runs the 10-dimension layered check:
+
+---
+
+**L1 Surface Text Check:**
+
+| Check Item | Details |
 |--------|----------|
-| 疲劳词 | 忽然、突然、竟然、默默、渐渐 等6大类 |
-| 句式违规 | 8种结构癖好、6种句式规则 |
-| 对话规则 | 标签/间隔/意图/感叹号 |
+| Tired words | suddenly, abruptly, unexpectedly, silently, gradually, and 6 other major categories |
+| Sentence-pattern violations | 8 structural habits, 6 sentence-pattern rules |
+| Dialogue rules | Tags / spacing / intent / exclamation marks |
 
 ---
 
-**L2 内容合规检查：**
+**L2 Content Compliance Check:**
 
-| 检查项 | 具体内容 |
+| Check Item | Details |
 |--------|----------|
-| 设定合规 | 世界观/OOC/禁忌/连续性 |
-| 章纲兑现 | required_changes（从被动活着变为主动寻找方向） |
-| 钩子兑现 | 玉佩推进、墙上刻字新埋 |
+| Setting compliance | Worldview / OOC / taboos / continuity |
+| Outline fulfillment | required_changes (from passively staying alive to actively seeking direction) |
+| Hook fulfillment | Jade pendant advanced, carved words on the wall newly planted |
 
 ---
 
-**L3+ 基础质量检查：**
+**L3+ Basic Quality Check:**
 
-| 检查项 | 具体内容 |
+| Check Item | Details |
 |--------|----------|
-| 字数 | ≥3200字（目标4000的80%） |
-| 视角/时态 | 第三人称有限视角，过去时态 |
-| 风格 | 低AI味，无疲劳词，无堆砌 |
-| 章末牵引力 | 有钩子，引导读下一章 |
+| Word count | ≥3,200 words (80% of the 4,000 target) |
+| Point of view / tense | Third-person limited, past tense |
+| Style | Low AI flavor, no tired words, no stacking |
+| End-of-chapter pull | Has a hook, leading the reader to the next chapter |
 
 ---
 
-**【AI】** 展示验收报告：
+**[AI]** shows the acceptance report:
 
 ```
-## 正文验收报告：第2章
-✅ 通过
+## Main text acceptance report: Chapter 2
+✅ Passed
 
-L1 表层文本：✅✅✅
-  - 疲劳词：无
-  - 句式违规：无
-  - 对话规则：通过
+L1 Surface text: ✅✅✅
+  - Tired words: none
+  - Sentence-pattern violations: none
+  - Dialogue rules: passed
 
-L2 内容合规：✅✅✅
-  - 设定合规：通过
-  - 章纲兑现：通过（required_changes已完成）
-  - 钩子兑现：通过（玉佩推进/墙上刻字新埋）
+L2 Content compliance: ✅✅✅
+  - Setting compliance: passed
+  - Outline fulfillment: passed (required_changes completed)
+  - Hook fulfillment: passed (jade pendant advanced / carved words on the wall newly planted)
 
-L3+ 基础质量：✅✅✅✅
-  - 字数：3980字 ✓
-  - 视角/时态：通过 ✓
-  - 风格：通过 ✓
+L3+ Basic quality: ✅✅✅✅
+  - Word count: 3,980 words ✓
+  - Point of view / tense: passed ✓
+  - Style: passed ✓
 
-字数：3980字
-验收结论：10项通过 / 0项不合格
-```
-
----
-
-**【AI】** 询问：
-
-> "正文验收通过。**进入归档还是先做深度评审？**"
-
----
-
-**【作者】** 回答：
-
-> "归档。"
-
----
-
-### 6.6 归档
-
-**【AI】** 执行归档操作：
-
-1. 草稿 → 定稿：`vol-1-ch-2-废墟余生.draft.md` → `vol-1-ch-2-废墟余生.md`
-2. 更新 chapter.md status → `archived`
-3. 追加角色状态历史（林逸）：
-   - 状态变化：从"10岁沉默孤儿"变为"10岁决心复仇"
-   - 情绪弧线：+希望（强度：中）
-4. 更新 hooks 记录：
-   - "青云剑法"：待回收（卷2陈风出场时）
-   - "玉佩"：已收束（功法出现，传承开启）
-   - "陈师弟"：待回收（卷4揭露真相时）
-   - "墙上刻字"：新埋，待回收
-5. 检测卷边界：第1卷共10章，第2章归档
-
----
-
-**【AI】** 汇报：
-
-```
-第二章：废墟余生 — 已归档
-
-角色状态更新：
-- 林逸：10岁沉默孤儿 → 10岁决心复仇
-- 情绪弧线：+希望（强度：中）
-
-下一步：第三章章纲
+Word count: 3,980 words
+Acceptance conclusion: 10 items passed / 0 items failed
 ```
 
 ---
 
-**【作者】** 回答：
+**[AI]** asks:
 
-> "继续第三章。"
+> "The main text passed acceptance. **Archive it now, or do an in-depth review first?**"
 
 ---
 
-### 6.7 AI 帮助规划的核心价值
+**[Author]** answers:
 
-| 场景 | AI 自动做什么 | 作者做什么 |
+> "Archive it."
+
+---
+
+### 6.6 Archiving
+
+**[AI]** performs the archiving operations:
+
+1. Draft → final: `vol-1-ch-2-废墟余生.draft.md` → `vol-1-ch-2-废墟余生.md`
+2. Update chapter.md status → `archived`
+3. Append character state history (Lin Yi):
+   - State change: from "10-year-old silent orphan" to "10-year-old resolved on revenge"
+   - Emotion arc: +hope (intensity: medium)
+4. Update the hooks record:
+   - "Qingyun swordsmanship": pending payoff (when Chen Feng appears in volume 2)
+   - "Jade pendant": closed (technique appeared, inheritance begun)
+   - "Junior Brother Chen": pending payoff (when the truth is exposed in volume 4)
+   - "Carved words on the wall": newly planted, pending payoff
+5. Detect the volume boundary: volume 1 has 10 chapters; chapter 2 archived
+
+---
+
+**[AI]** reports:
+
+```
+Chapter 2: Life Among the Ruins: archived
+
+Character state updates:
+- Lin Yi: 10-year-old silent orphan → 10-year-old resolved on revenge
+- Emotion arc: +hope (intensity: medium)
+
+Next step: chapter 3 outline
+```
+
+---
+
+**[Author]** answers:
+
+> "Continue with chapter 3."
+
+---
+
+### 6.7 The Core Value of AI-Assisted Outline Planning
+
+| Scenario | What the AI Does Automatically | What the Author Does |
 |------|-------------|-----------|
-| 读取上下文 | 检测已归档章节，读取状态历史、hooks记录、卷纲 | 无 |
-| 方向输入 | 基于状态历史生成角色发声 | 确认/调整 |
-| 钩子盘点 | 检查上章埋的钩子，标记哪些回收、哪些保留 | 确认方向正确 |
-| 展开纲要点 | 结合定位+状态+钩子智能展开7个关键点 | 确认场景选择 |
-| 禁止清单 | 询问本章禁忌 | 回答明确要求 |
-| Memo填充 | 基于角色状态和故事走向自动生成 | 确认/补充 |
-| 情绪设计 | 基于角色情绪弧线自动生成 | 确认/调整 |
-| 归档 | 追加状态历史、更新hooks记录 | 确认归档 |
+| Reading context | Detects archived chapters, reads state history, hooks records, and volume outlines | None |
+| Direction input | Generates the character's voice based on state history | Confirm / adjust |
+| Hook inventory | Checks the hooks planted in the previous chapter, marking which to pay off and which to keep | Confirm the direction is right |
+| Expanding outline points | Smartly expands 7 key points combining position + state + hooks | Confirm the scene choices |
+| Prohibition list | Asks about this chapter's taboos | Gives clear requirements |
+| Memo filling | Auto-generates based on character state and story direction | Confirm / add to |
+| Emotion design | Auto-generates based on the character's emotion arc | Confirm / adjust |
+| Archiving | Appends state history, updates the hooks record | Confirm archiving |
 
-## 7. 常见问题
+## 7. Frequently Asked Questions
 
-### Q1: 如何暂停/继续写作？
+### Q1: How do I pause / resume writing?
 
-**暂停**：直接说"今天先到这里"。
+**Pause**: just say "That is enough for today".
 
-**继续**：下次输入 `@novel-agent` 或说"继续写小说"。
-
----
-
-### Q2: 发现前面的章节有问题？
-
-输入"修改第X章"，AI 会处理。
+**Resume**: next time, type `@novel-agent` or say "Continue writing the novel".
 
 ---
 
-### Q3: 想增加新角色？
+### Q2: I found a problem in an earlier chapter?
 
-输入"增加一个新角色"，告诉 AI 角色设定。
-
----
-
-### Q4: 提示词验收不通过？
-
-AI 会指出具体问题，修改后重新验收。
+Type "Revise chapter X" and the AI will handle it.
 
 ---
 
-### Q5: 正文中 AI 味太重？
+### Q3: I want to add a new character?
 
-正文验收会检测疲劳词、句式违规，不合格项会标出。
-
----
-
-### Q6: SOLO 模式是什么？
-
-说"你全权写"、"solo"、"单机"，AI 会进入 SOLO 模式，不停下来等确认。
+Type "Add a new character" and tell the AI the character's setup.
 
 ---
 
-## 附录：验收方式总览
+### Q4: The prompt failed acceptance?
 
-| 产出 | 验收方式 | 具体检查内容 |
+The AI will point out the specific problems; fix them and re-run acceptance.
+
+---
+
+### Q5: The main text has too much AI flavor?
+
+Main-text acceptance checks tired words and sentence-pattern violations, and failing items are flagged.
+
+---
+
+### Q6: What is SOLO mode?
+
+Say "You write everything", "solo", or "standalone", and the AI enters SOLO mode, writing without stopping to wait for confirmation.
+
+---
+
+## Appendix: Acceptance Methods Overview
+
+| Output | Acceptance Method | What Is Checked |
 |------|----------|--------------|
-| 世界观 | 自检 | 地理完整性、政治合理性、规则可执行性、冲突空间 |
-| 角色 | 自检 | 认知6层完整、动机明确、弱点存在、能力边界清晰 |
-| 主线拆纲 | 三向核对 | 总主线→逐卷、卷序列完整路径、反向推断总主线 |
-| 卷纲 | 4项检查 | 完整性、追溯性、前进性、标题匹配 |
-| 章纲 | 4步验收 | structured反馈、自检清单、快速嗅探、AI味自检 |
-| 提示词 | 6项检查 | 模块完整、字段填充、style注入、字数、视角、场景分解 |
-| 正文 | 10维检查 | 疲劳词、句式、对话、设定合规、章纲兑现、钩子兑现、字数、风格等 |
+| Worldview | Self-check | Geography completeness, politics plausibility, rules executability, conflict space |
+| Characters | Self-check | Six-layer cognition completeness, motivation clarity, weakness presence, ability boundary clarity |
+| Main arc breakdown | Three-way cross-check | Overall main arc → per-volume, volume sequence complete path, reverse inference of the overall main arc |
+| Volume outline | 4 checks | Completeness, traceability, progress, title match |
+| Chapter outline | 4-step acceptance | Structured feedback, self-check list, quick sniff test, AI-flavor self-check |
+| Prompt | 6 checks | Module completeness, field filling, style injection, word count, point of view, scene breakdown |
+| Main text | 10-dimension check | Tired words, sentence patterns, dialogue, setting compliance, outline fulfillment, hook fulfillment, word count, style, and more |
 
 ---
 
-## 附录：文件结构示例
+## Appendix: File Structure Example
 
 ```
 青云志/
-├── story.md              # 项目索引
+├── story.md              # Project index
 ├── settings/
-│   ├── world-setting.md  # 世界观设定
-│   ├── writing-style.md  # 写作风格
-│   ├── genre-setting.md  # 题材设定
+│   ├── world-setting.md  # Worldview settings
+│   ├── writing-style.md  # Writing style
+│   ├── genre-setting.md  # Genre settings
 │   └── character-setting/
-│       ├── 林逸.md       # 主角
-│       ├── 陈风.md       # 反派
-│       ├── 苏晴.md       # 女主
-│       └── 云霄子.md     # 导师
+│       ├── 林逸.md       # Protagonist
+│       ├── 陈风.md       # Villain
+│       ├── 苏晴.md       # Heroine
+│       └── 云霄子.md     # Mentor
 ├── volumes/
-│   └── volume-1.md      # 第一卷卷纲
+│   └── volume-1.md      # Volume 1 outline
 ├── chapters/
-│   ├── vol-1-ch-1.md    # 第一章章纲（archived）
-│   └── vol-1-ch-2.md    # 第二章章纲
+│   ├── vol-1-ch-1.md    # Chapter 1 outline (archived)
+│   └── vol-1-ch-2.md    # Chapter 2 outline
 ├── prompts/
-│   ├── vol-1-ch-1-prompt.md   # 第一章提示词
-│   └── vol-1-ch-2-prompt.md   # 第二章提示词
+│   ├── vol-1-ch-1-prompt.md   # Chapter 1 prompt
+│   └── vol-1-ch-2-prompt.md   # Chapter 2 prompt
 └── archives/
-    ├── vol-1-ch-1-灭门之夜.md       # 第一章定稿
-    └── vol-1-ch-2-废墟余生.draft.md # 第二章草稿
+    ├── vol-1-ch-1-灭门之夜.md       # Chapter 1 final draft
+    └── vol-1-ch-2-废墟余生.draft.md # Chapter 2 draft
 ```
 
 ---
 
-**手册版本：** v4.12.0
-**适用版本：** awesome-novel-agent v4.12.0+
+**Manual version:** v4.12.0
+**Applies to:** awesome-novel-agent v4.12.0+

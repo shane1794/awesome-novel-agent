@@ -1,43 +1,50 @@
-# 都市日常反AI规则
+# Urban Daily Anti-AI Rules
 
-> 适用题材：urban-daily
+> Applicable themes: urban-daily
 
-## 高频AI病句正反例
+## High-Frequency AI-Style Bad Sentences: Incorrect vs. Correct Examples
 
-### 1. 场景堆砌
+### 1. Scene stacking
 
-❌ "清晨的阳光透过窗帘洒进来，新的一天开始了"
-✅ "闹钟响了。他翻了个身，把被子拽过头顶。再睡五分钟。"
+❌ "The early morning sunlight shines through the curtains, and a new day begins." ✅ "The
+alarm clock rang. He turned over and pulled the quilt over his head. He would sleep for
+another five minutes."
 
-### 2. 心理活动直述
+### 2. Direct description of psychological activities
 
-❌ "她感到今天格外紧张"
-✅ "她把手机攥在手里。屏幕亮了又灭了，没点开。"
+❌ "She felt extra nervous today" ✅ "She held the phone in her hand. The screen turned on
+and off, but she didn't click on it."
 
-❌ "他心里有些期待"
-✅ "他把那件衬衫从衣柜里翻出来，抖了抖，又挂回去了。"
+❌ "He had some expectations in his heart" ✅ "He took the shirt out of the closet, shook
+it, and hung it back up."
 
-### 3. 无意图对话
+### 3. Conversation without intention
 
-❌ "早安""早上好""最近怎么样""一切都好吗"
-✅ 有意图的对话才能写：试探、拒绝、套话、掩饰
+❌ "Good morning" "Good morning" "How are you doing?" "Is everything okay?" ✅ Only
+intentional conversations can be written: testing, rejection, clichés, cover-ups
 
-### 4. 情绪描写公式化
+### 4. Emotional description formula
 
-❌ "她的眼眶湿润了，泪水夺眶而出"
-✅ "她低着头，使劲眨了眨。睫毛湿了，黏在一起。"
+❌ "Her eyes were moist and tears burst out of them" ✅ "She lowered her head and blinked
+hard. Her eyelashes were wet and stuck together."
 
-❌ "他愣在原地，心中五味杂陈"
-✅ "他张了张嘴，又闭上了。脚底像灌了铅，一动不动。"
+❌ "He froze on the spot, with mixed emotions in his heart" ✅ "He opened his mouth and
+closed it again. The soles of his feet seemed to be filled with lead and they were
+motionless."
 
-### 5. 环境描写与人物脱节
+### 5. The description of the environment is out of touch with the characters
 
-❌ "咖啡厅里弥漫着淡淡的咖啡香，轻柔的音乐在空气中流淌"
-✅ "咖啡厅放的是老歌。他不知道歌名。她搅了搅杯子里的冰块，碰出细碎的声响。"
+❌ "The coffee shop was filled with the faint aroma of coffee, and soft music flowed in
+the air" ✅ "The cafe played old songs. He didn't know the title of the song. She stirred
+the ice cubes in the cup, and they made a tiny crunching sound."
 
-## 写作要点
+## Writing points
 
-1. **日常要碎** — 写真实的琐碎：闹钟、堵车、外卖、等电梯
-2. **情绪用动作** — 紧张=攥手机、抖腿、咬指甲；开心=笑出声、话变多
-3. **对话有潜台词** — 表面说的和心里想的不一样
-4. **场景要具体** — 奶茶店招牌什么颜色？地铁哪一站？路名？
+1. **Daily Trivial Things**, Write about real trivial things: alarm clock, traffic jam,
+   takeout, waiting for the elevator
+2. **Movements for emotions**, Nervous = clutching the phone, shaking legs, biting
+   nails; happy = laughing out loud, talking more
+3. **Conversation has subtext**, What you say on the surface is different from what you
+   think in your heart
+4. **The scene should be specific**, What color is the sign of the milk tea shop? Which
+   subway stop? Road name?

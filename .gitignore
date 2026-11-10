@@ -1,4 +1,4 @@
-# .claude/ 只跟踪 agent 定义；settings（含本机权限/凭据）和 scratchpad（一次性草稿）保持忽略
+# .claude/ tracks only agent definitions; settings (local permissions/credentials) and scratchpad (one-off drafts) stay ignored
 .claude/settings*.json
 .claude/scratchpad.md
 .vscode/
@@ -9,5 +9,5 @@ video-script-input.md
 .superpowers/
 .mimosa/
 .zcode/
-# 工作交接文档（跨会话手记，不入库）
+# Work handoff document (cross-session notes, not committed)
 handoff.md

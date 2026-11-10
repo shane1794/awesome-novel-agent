@@ -1,103 +1,178 @@
-# 结构热源定律 — 从源头规避 AI 检测的结构知识
+# Structural Heat: Avoiding AI Detection at the Source
 
-> **适用范围与证据来源：** 本文件的经验来自现实题材单书的外部 AI 检测实测攻防（连续多章达成检测器全部片段"人工特征"判定，单章最长 44 轮迭代）。定律与数字是**默认值**，按文风与题材校准；证据分数为该单书实测值，用于说明方向，不是通用常数。
->
-> **冲突裁决顺序：** 作者设定与章纲 > 题材知识 > 本文件结构默认值 > 检测优化。与作者侧冲突时，作者侧优先，检测优化不得覆盖锁定台词、章纲落点等作者核心表达。
->
-> **与 common-rules.md 的分工：** common-rules 管词句级（禁用词、句式、标点），本文件管段落/场景/位置级结构。同一现象不重复定义数值口径；词句命中见 common-rules，结构命中见本文件。
-
----
-
-## 一、七条实测定律
-
-### 定律 1：问答链密度定律
-
-**对话不是人味信号，一问一答的乒乓链才是 AI 信号。** 单窗口 300 字内问答超过约 8 拍即高风险（实测：8-13 拍窗口 0.68-0.74，动作叙述窗口 0.22-0.49）。
-
-修法唯一：砍拍数、裸台词改动作前置归属、问答之间插动作拍。给窗口加拍必反升。
-
-### 定律 2：对话密度定律（正向）
-
-**对话占比高是冷信号，纯叙述密度是 AI 信号。** 实测：约 85% 对话密度的章节逐片 0.09-0.11；纯叙述段反复改词仍在 0.63-0.86。
-
-修法：把叙述压到只剩事实句，信息拆进对话。转述连排（"他问我怎么样。我说没问。"）在孤立窗口内同样热，改成两行带归属的对话立即降。
-
-### 定律 3：位置热值定律
-
-检测按比例切片，**章首约 9-17% 与章尾约 10% 的切片对措辞手术免疫**——分数由"位置 × 内容类型"决定，不由用词决定。实测：同一章首位置三种完全不同的内容连续三轮 0.59→0.68→0.69。
-
-- 章首默认冷开场：对话或动作顶第一行，禁"时间标记 + 场景状态"式开头。
-- 章尾禁内心排比、三连状态罗列、对称双人反应、静物清单收束；停在动作、物件、完整台词或未解决后果上。
-
-### 定律 4：切片边界稳定定律
-
-检测切片按语义边界走（实测约 250-540 字/片），**任何修改都可能重划边界、让热点横跳**。修窗时：窗口首句末句逐字保持原样，改幅等长优先；其余窗口字符级不动，禁止顺手润色。
-
-### 定律 5：补字铁律
-
-新句、新段、新信息必然加热其所在位置或重划切片。字数缺口唯一安全的补法是**同位置行内拉长**：台词补语气词、叙述加同义复述——行数、段数、句号数不变，切片边界纹丝不动（实测：逐行拉长补足字数后分数不升反降 0.04；同量字数用现成句子回补则重划出 3 个热窗）。
-
-### 定律 6：内容类型切换定律
-
-同一窗口连续两轮改善不足 0.05 或分数反升，**禁止第三轮同类改法**（继续换词、换物件、换动作顺序都是同类）。先写出现有内容类型（争议场、证明场、流程场、悬念场、生活岔话），下一轮必须换类型；换类型仍反升的固定位置块，压缩极简化让切片边界落进已知冷区。
-
-### 定律 7：整章重写边界
-
-压缩、搬运、并场**不算**整章重写（实测均无效）；换内容类型 + 换归属方式 + 重排场景顺序才算。重写前先存快照、列"已修复问题清单"逐条对照——历史修掉的结构（并拍、夹层、转述连排）凭手感写回来是重写失败的主因。
+> **Scope of application and source of evidence:** The experience of this document
+> comes from the actual measured attack and defense of external AI detection in a
+> single book with realistic themes (the "artificial feature" determination of all
+> detector fragments has been achieved in multiple consecutive chapters, with a
+> maximum of 44 rounds of iterations in a single chapter). The laws and numbers are
+> the **default values**, calibrated according to the writing style and subject
+> matter; the evidence score is the actual measured value of the single book, which is
+> used to illustrate the direction and is not a universal constant. **Conflict
+> resolution order:** Author settings and outline > Subject matter knowledge > Default
+> value of this file structure > Detection optimization. When conflicting with the
+> author's side, the author's side takes priority, and detection optimization must not
+> cover the author's core expressions such as locked lines and chapter outlines.
+> **Division of labor with common-rules.md:** common-rules manages the word and
+> sentence level (banned words, sentence patterns, punctuation), and this file manages
+> the paragraph/scene/position level structure. The numerical definitions for the same
+> phenomenon are not repeated; see common-rules for word and sentence hits, and this
+> document for structure hits.
 
 ---
 
-## 二、十三种高风险结构
+## 1. Seven Laws of Actual Measurement
 
-热源在结构形状，不在用词。以下任一形状出现，先改结构再清句子（对应四里的自查卡）。拆法共同原则：**让人物只办眼前这一步，结果不满分、回执不齐全、证据不排齐。**
+### Law 1: Question Chain Density Law
 
-| # | 结构 | 热源形状 | 拆法 |
+**Conversation is not a human signal, the ping-pong chain of questions and answers is an
+AI signal. ** Questions and answers exceeding about 8 beats within 300 words in a single
+window are high risks (actual measurement: 8-13 beat window 0.68-0.74, action narrative
+window 0.22-0.49).
+
+The only way to fix it is to cut the number of beats, change the pre-positioning of
+naked lines to actions, and insert action shots between questions and answers. If you
+add more shots to the window, it will rise.
+
+### Law 2: Law of Conversation Density (Forward)
+
+**A high proportion of dialogue is a cold signal, and pure narrative density is an AI
+signal. ** Actual measurement: Chapters with about 85% dialogue density are 0.09-0.11
+piece by piece; pure narrative sections are still 0.63-0.86 after repeated word changes.
+
+Correction: Reduce the narrative to only factual sentences, and break the information
+into dialogue. The paraphrase sequence ("He asked me how I was doing. I said I didn't
+ask.") is equally hot within the isolation window, and immediately drops into two lines
+of attributable dialogue.
+
+### Law 3: Positional Heating Value Law
+
+Testing proportional slices, **about 9-17% of slices at the beginning of the chapter and
+about 10% at the end of the chapter are immune to wording surgery** - the score is
+determined by "position × content type", not by wording. Actual measurement: Three
+completely different contents at the beginning of the same chapter for three consecutive
+rounds: 0.59→0.68→0.69.
+
+- The default cold opening at the beginning of the chapter: dialogue or action is the
+  first line, and the "time mark + scene state" type opening is prohibited.
+- At the end of the chapter, inner comparisons, lists of three consecutive states,
+  symmetrical reactions of two people, and still life lists are prohibited; the chapter
+  stops at actions, objects, complete lines, or unresolved consequences.
+
+### Law 4: Slice Boundary Stability Law
+
+The detection slices follow semantic boundaries (actually measured about 250-540
+words/slice). **Any modification may redraw the boundaries and cause hot spots to
+jump**. When repairing the window: the first and last sentences of the window should be
+kept as they are word by word, and changes of equal length will be given priority; the
+character levels of other windows should remain unchanged, and modifications are
+prohibited.
+
+### Law 5: The Iron Law of Complementing Words
+
+New sentences, new paragraphs, and new information will inevitably heat up their
+location or redraw the slice. The only safe way to make up for the word count gap is
+**inline stretching at the same position**: lines complement modal particles, narratives
+and synonymous retellings - the number of lines, paragraphs, and periods remain
+unchanged, and the slice boundaries remain unchanged (actual measurement: after
+stretching line by line to make up for the number of words, the score does not rise but
+decreases by 0.04; if the same number of words is filled in with ready-made sentences, 3
+hot windows will be re-drawn).
+
+### Law 6: The Law of Content Type Switching
+
+If the improvement is less than 0.05 in two consecutive rounds in the same window or the
+score increases instead, **the third round of similar modifications is prohibited**
+(continuing to change words, objects, and action sequences are all the same). First
+write down the existing content types (controversy field, proof field, process field,
+suspense field, life chatter), and the type must be changed in the next round; the fixed
+position block that still rises after changing the type, and the compression is
+extremely simplified so that the slice boundary falls into the known cold area.
+
+### Law 7: Rewrite boundaries throughout the chapter
+
+Compressing, moving, and merging **does not count** rewriting the entire chapter (the
+actual test is invalid); only changing the content type + changing the attribution
+method + rearranging the order of the scenes will count. Before rewriting, save
+snapshots and make a "list of fixed issues" to compare them one by one - the structures
+that have been repaired in history (parallel shooting, interlayering, and paraphrasing)
+are written back by hand. This is the main reason for the failure of rewriting.
+
+---
+
+## 2. Thirteen high-risk structures
+
+The heat source lies in the structure and shape, not the words. If any of the following
+shapes appears, first change the structure and then clarify the sentence (corresponding
+to the self-check card in Sili). The common principle of demolition methods: ** Let the
+characters only do the current step. The results will be unsatisfactory, the receipts
+will be incomplete, and the evidence will not be arranged. **
+
+| # | Structure | Heat source shape | Disassembly method |
 |---|------|---------|------|
-| 1 | 工作汇报体 | 派任务→逐项执行→报齐→确认→安排下一步 | 让人物对着界面/现场只发现当前缺口，不写"都完成了" |
-| 2 | 取证结案体 | 发现线索→记录→核对→补来源→判断意义→锁定 | 只写当下看见的痕迹，证据不足明确停在"不知道" |
-| 3 | 经营验收体 | 报价→核算→分账→规则→合同状态→总结学会 | 让钱卡住一个具体选择，一次只处理一笔钱 |
-| 4 | 协作示范体 | 教方法→失败→纠正→熟练→总结默契 | 保留一次误读和当场修正，删"后来配合得很好" |
-| 5 | 前置准备体 | 接电话→复盘→备材料→分工→出发→准时抵达 | 直接进主场景，材料在现场需要时才回补 |
-| 6 | 数字讲解体 | 这个数什么概念→换算→配角评价→旁白再总结 | 同一数字只结算一次：落到一个动作或决定上 |
-| 7 | 微闭环递归体 | 小窗口独立完成"出现→确认→执行→反馈" | 按 300/200/150 字递归扫描，任一窗口四项齐全砍到最多三项 |
-| 8 | 连续验收叠加体 | 同场多套回执：签字生效+到账+授权+核查全兑现 | 同场最多一个结果获得明确回执（爽点兑现场的单回执豁免） |
-| 9 | 固定位置换皮体 | 章首/章尾同位置连续换内容仍热（位置在收税） | 停止发明第四种小戏，极简化把切片边界推进冷区 |
-| 10 | 标准悬念搭台体 | 异常物件→来源→眼熟→回忆→否认→指图→末句提问，所有句子都服务钩子 | 插入不服务钩子、会跑偏的私人岔话打断搭台（默认深度项，钩子强度让位于章纲时才用） |
-| 11 | 过桥链前缀体 | 旧信息到场→确认不知→指出谁能知→立即获准（许可即回执，执行未发生已热） | 从新信息节点扫到第一个许可/决定/转场，撤掉一层明确因果，许可在无关岔事后独立出现 |
-| 12 | 私人回忆证明链 | 物件触发→连续多个证据→段尾确认"某人其实爱我" | 同一回忆窗口只留一条完整情绪链，其余改记忆误差、争执、被打断；补字数时禁新增温情证明段 |
-| 13 | 固定章首完整小戏 | 章首独立承担有起承转合的完整小戏，切出来自成一块 | 章首极简（默认百字上下过门），低分主体字符级锁定 |
+| 1 | Work report body | Assign tasks → execute them one by one → report all → confirm → arrange the next step | Let the characters face the interface/site and only find the current gap, do not write "all completed" |
+| 2 | Evidence collection and case closure | Discover clues → Record → Verify → Supplement sources → Judge significance → Lock | Only write the traces you see at the moment, if there is insufficient evidence, clearly stop at "don't know" |
+| 3 | Business Acceptance Body | Quotation → Accounting → Accounting → Rules → Contract Status → Summary Learning | Let money get stuck in a specific choice and only deal with one amount of money at a time |
+| 4 | Collaboration demonstration | Teaching method → Failure → Correction → Proficiency → Summary of tacit understanding | Keep a misreading and correct it on the spot, delete "The cooperation was very good later" |
+| 5 | Preparation body | Answer the phone → Review → Prepare materials → Division of work → Departure → Arrive on time | Directly enter the main scene, and materials will be replenished when needed on site |
+| 6 | Number explanation | What is the concept of this number → Conversion → Supporting role evaluation → Narration and summary | The same number is only settled once: it falls on an action or decision |
+| 7 | Micro-closed loop recursion | The small window independently completes "appear → confirm → execute → feedback" | Scan recursively according to 300/200/150 words, and any window can reduce all four items to a maximum of three items |
+| 8 | Continuous acceptance superposition | Multiple sets of receipts at the same site: signature to take effect + arrival of account + authorization + verification of full cashing | At most one result in the same site will receive a clear receipt (single receipt exemption at the satisfying payoff site) |
+| 9 | Changing the skin body at a fixed position | Continuously changing the content at the same position at the beginning/end of the chapter is still hot (the position is collecting taxes) | Stop inventing the fourth trick, simplify and push the slice boundary into the cold area |
+| 10 | Standard suspense setting body | Abnormal objects → Source → Familiarity → Memories → Denial → Pointing to pictures → Questions in the last sentence, all sentences serve as hooks | Insert personal digressions that do not serve hooks and will go astray to interrupt the setting (default depth item, used only when hook strength gives way to chapter outline) |
+| 11 | Bridge chain prefix | Old information arrives → Confirm unknown → Point out who knows → Immediate approval (permission is a receipt, execution has not happened yet) | Scan the first permission/decision/transition from the new information node, remove a layer of clear cause and effect, and the permission appears independently after irrelevant events |
+| 12 | Private memory proof chain | Object trigger→Multiple evidences in a row→Confirm "Someone actually loves me" at the end of the paragraph | Only one complete emotional chain is left in the same memory window, and the rest will be modified by memory errors, disputes, and interruptions; when filling the number of words, it is forbidden to add a warm proof paragraph |
+| 13 | A complete short play at the beginning of the fixed chapter | The beginning of the chapter is independently responsible for the complete play with inheritance and transition, cut out into a piece | The beginning of the chapter is minimalist (default is 100 words, up and down), and the main character level of the low score is locked |
 
 ---
 
-## 三、修复纪律（检测反馈后）
+## 3. Repair discipline (after testing feedback)
 
-1. 每轮只修一个最高分窗口，其余窗口字符级不动（哈希验证）。
-2. 窗口首末句逐字保持，改幅等长优先；先还原窗口内自己改过的段，再动唯一非锁定段。
-3. 同窗口连续两轮改善不足 0.05 或反升 → 按定律 6 换类型或回滚，不做第三轮同类改法。
-4. 全部片段低于阈值即锁版（快照 + 哈希），一字不磨。
-5. 每轮的轮次、改动、逐片结果记入项目 `sandbox/detect-battles.md`；翻车原句经作者确认后加入 `sandbox/prose-regressions.txt`——这是本文件所有定律的产生机制。
+1. Only one window with the highest score is modified in each round, and the character
+   level of the other windows is unchanged (hash verification).
+2. The first and last sentences of the window are kept verbatim, and changes of equal
+   length are given priority; first restore the modified paragraphs in the window, and
+   then move the only non-locked paragraph.
+3. If the improvement in the same window is less than 0.05 in two consecutive rounds or
+   rises instead → change the type or roll back according to Law 6, and do not make the
+   third round of similar improvements.
+4. All fragments below the threshold are locked (snapshot + hash) and are not edited
+   word for word.
+5. The rounds, changes, and piece-by-piece results of each round are recorded in the
+   project `sandbox/detect-battles.md`; the original sentence of the rollover is added
+   to `sandbox/prose-regressions.txt` after confirmation by the author - this is the
+   generation mechanism of all laws in this document.
 
 ---
 
-## 四、写前自查卡
+## 4. Self-check card before writing
 
-**每场五行反闭环卡**（答不出第 3-5 项不开写）：
+**Five Elements Anti-Closed Loop Card for each game** (if you can’t answer items 3-5,
+don’t start writing):
 
-1. 人物此刻只想办成什么？
-2. 阻力从谁的即时反应产生？
-3. 本场只演到哪一步就停？
-4. 哪些结果不解释，让读者自己看？
-5. 哪条信息留到下一场，不在本场验收？
+1. What does the character just want to accomplish at this moment?
+2. From whose immediate response does resistance arise?
+3. At what point does this performance stop?
+4. Which results are not explained and are left to the readers to see for themselves?
+5. Which piece of information is left to the next session and not accepted here?
 
-**落盘后结构八问**（任一"是"先改结构，再跑词句检查）：
+**Eight questions about the structure after placement** (for any "yes", change the
+structure first, and then check the words):
 
-1. 是否有一段可概括为"完成 A、记录 B、核对 C、确认 D"？
-2. 是否有一场把来源、动作、结果、意义全部讲完？
-3. 是否动作后又补一句解释效果或态度？
-4. 是否同一数字被算了两次以上？
-5. 是否把尚未确认的事写成了成果？
-6. 是否只是用新物件替换旧解释，结构没变？
-7. 章尾是否在总结人物学会了什么？
-8. 小窗口内是否仍有独立的"出现→确认→执行→反馈"微闭环？
+1. Is there a paragraph that can be summarized as "Complete A, record B, verify C,
+   confirm D"?
+2. Is there a scene that explains all the origin, action, result, and meaning?
+3. Is there a sentence explaining the effect or attitude after the action?
+4. Is the same number counted more than twice?
+5. Have unconfirmed things been written down as results?
+6. Is it just replacing the old interpretation with new objects, leaving the structure
+   unchanged?
+7. Does the end of the chapter summarize what the character has learned?
+8. Is there still an independent micro-closed loop of "appear → confirm → execute →
+   feedback" in the small window?
 
-> 闲笔细节警告：AI 最会写"树荫挪了位置""红灯滑进队尾"式的闲笔与场景编排（实测往热窗加闲笔细节 0.71 反升 0.86）。细节必须挂在动作、摩擦、关系上，不挂在时间流逝与环境铺陈上。
+> Idle stroke details warning: AI is best at writing idle strokes and scene
+> arrangements such as "the shade of the tree moved its position" and "the red light
+> slid into the end of the queue" (actually measured when adding idle stroke details
+> to the hot window, it increased from 0.71 to 0.86). The details must be focused on
+> action, friction, and relationships, not on the passage of time and the setting up
+> of the environment.

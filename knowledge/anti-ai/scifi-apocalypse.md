@@ -1,41 +1,52 @@
-# 科幻末世反AI规则
+# Sci-Fi Apocalypse Anti-AI Rules
 
-> 适用题材：scifi-apocalypse、war-god
+> Applicable themes: scifi-apocalypse, war-god
 
-## 高频AI病句正反例
+## High-Frequency AI-Style Bad Sentences: Incorrect vs. Correct Examples
 
-### 1. 末世氛围堆砌
+### 1. Building a doomsday atmosphere
 
-❌ "天空灰蒙蒙的，空气中弥漫着死亡的气息"
-✅ "他掀开帐篷。雾霾把太阳包住了，黄不黄灰不灰的。嗓子眼发紧，又干又痒。"
+❌ "The sky was gray and the air was filled with the smell of death" ✅ "He opened the
+tent. The haze enveloped the sun, and it was neither yellow nor gray. His throat was
+tight, dry and itchy."
 
-### 2. 资源匮乏描写
+### 2. Description of resource scarcity
 
-❌ "物资极度匮乏，人们生活在水深火热之中"
-✅ "压缩饼干还剩三块。他把它塞回铁盒里，盖好，藏在床底下的角落。"
+❌ "Supplies are extremely scarce and people are living in dire straits" ✅ "There are
+three compressed biscuits left. He stuffed it back into the iron box, covered it, and
+hid it in the corner under the bed."
 
-### 3. 情绪直述
+### 3. Direct emotional statements
 
-❌ "他感到恐惧和绝望"
-✅ "他把手缩进袖子里。手指冰的，攥着也没用。远处有动静，他没动，屏住呼吸听。"
+❌ "He felt fear and despair" ✅ "He retracted his hands into his sleeves. His fingers
+were cold and it was useless to hold them. There was movement in the distance, but he
+did not move and held his breath to listen."
 
-❌ "她心中燃起希望"
-✅ "她把种子袋上的灰擦了擦。纸袋是旧的，但字还看得清。她把袋子塞进怀里，贴着肉。"
+❌ "Hope arose in her heart" ✅ "She wiped the dust off the seed bag. The paper bag was
+old, but the words were still legible. She stuffed the bag into her arms and pressed it
+against her flesh."
 
-### 4. 排比式分析
+### 4. Comparative analysis
 
-❌ "也许是丧尸潮提前了，也许是信号塔被毁了，也许是出了什么意外"
-✅ "他看了一眼表。表针不走。昨晚换的电池，下午就停了。他把表摘下来，塞进口袋。"
+❌ "Maybe the zombie wave has advanced, maybe the signal tower was destroyed, maybe there
+was an accident" ✅ "He glanced at the watch. The hands didn't move. The battery was
+changed last night and stopped in the afternoon. He took off the watch and stuffed it
+into his pocket."
 
-### 5. 科技描写
+### 5. Description of technology
 
-❌ "他打开了高科技终端，全息投影浮现"
-✅ "屏幕裂了一道口子。他用手背按了按，能亮，但字看不清。他凑近了点。"
+❌ "He opened the high-tech terminal, and a holographic projection appeared" ✅ "The
+screen had a crack. He pressed it with the back of his hand. It lit up, but the words
+were unclear. He moved closer."
 
-## 写作要点
+## Writing points
 
-1. **末世写具体匮乏** — 不是"物资匮乏"，是"还剩三块饼干""水壶见底了"
-2. **希望/绝望写动作** — 藏东西、掖衣服、屏住呼吸
-3. **科技写损耗** — 装备是旧的、坏的、要修的，不是新的
-4. **声音写危险** — 末世里声音比画面更重要
-5. **节奏要压** — 可以慢，慢到让人喘不过气
+1. **In the last days, write about specific scarcity**, not "shortage of materials", but
+   "three biscuits left" and "the kettle is bottomed out"
+2. **Hope/Despair writing action**, hiding things, tucking clothes, holding breath
+3. **Technology Write Attrition**, Equipment is old, broken, and in need of repair, not
+   new
+4. **Sound writing is dangerous**, In the apocalypse, sound is more important than
+   picture
+5. **The pace should be controlled** - it can be slow, so slow that it makes you
+   breathless

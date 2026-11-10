@@ -1,35 +1,35 @@
-# v4.27.0 版本说明
+# v4.27.0 Release Notes
 
-> **关键词：** 短篇扫榜 + 拆文独立工具 —— 「选题 → 对标 → 写作」链路闭环
+> **Keywords:** Short-story list-scanning + text-teardown standalone tools: closing the "pick a topic, benchmark, write" loop
 
 ---
 
-## 一句话
+## In One Sentence
 
-短篇作者不再凭感觉选题、凭印象模仿：说「扫个榜」拿到带时效标注的市场报告与可写方向，说「拆这篇」把爆款拆成可召回的结构资产——短篇链路闭环为「选题 → 对标 → 写作」。
+Short-story authors no longer pick topics by feel or imitate from impression: say "scan a list" and get a market report with freshness labels and writable directions; say "tear this story apart" and a hit story is broken down into recallable structural assets. The short-story loop closes as "pick a topic, benchmark, write".
 
-## 这版做了什么
+## What Changed in This Release
 
-| 改动 | 说明 |
+| Change | Description |
 |------|------|
-| **short-scan（扫榜）** | 独立工具：平台方向确认三形态（深度扫描/全榜概览/平台对比）→ 三级数据来源（运行环境实时采集 / 作者提供 / 内置知识，逐级降级且降级必须标注「未实时校验，只作候选假设」）→ 七维分析（情绪分布/题材热点/篇幅/开头模式/结尾类型/标题模式/人设模型）→ 报告含样本日期、可信度、下次复扫时间与风口预警三级 → 选题匹配（复杂度分级 + 传播风险兜底：无反转方向必须以强共鸣/强话题/强余韵补足）。市场知识内联附录，平台无关 |
-| **short-analyze（拆文）** | 独立工具：字数路由（灰区询问）→ 题材标尺（按 short-genres 注册表 slug 加载风格包对照）→ 续跑检查与原文备份先行 → 五阶段串行管道（结构/情感线/反转/人物/综合，逐阶段完成标志）→ 崩溃安全写盘（阶段前置标记+非空校验，半成品不被信任）→ `analysis/{书名}/` 五件产出（报告/情节节点/写作手法/原文备份/`_meta.json` 结构计数）→ 三道验收闸门（报告自身 AI 腔自检、结构计数校验、强阻断扫描） |
-| **部署形态** | `SHORT_STANDALONE_SKILLS` + 全平台统一 `deploy_standalone_skills` 助手：两工具部署为各平台 skills 目录下的 SKILL.md（claude/opencode 首建 skills 目录、codex/grok 落独立工具目录、reasonix/zcode/dsh 内联目录 6→8）。不进 short-agent 调度链、不占 phase——作者主动触发 |
-| **sync 接线** | 短篇 sync 幂等再部署独立工具；`find_changes` 按部署转换算期望内容逐字比对（项目侧误删/误改可检出、sync 恢复） |
+| **short-scan (list scanning)** | Standalone tool: confirm the platform direction in three forms (deep scan / full-list overview / platform comparison), then three tiers of data sources (live collection from the runtime environment / author-provided / built-in knowledge, degrading tier by tier, with every degradation labeled "not verified live, candidate hypothesis only"), then seven dimensions of analysis (emotion distribution / genre hotspots / length / opening patterns / ending types / title patterns / character models), then a report with sample dates, confidence, next re-scan time, and a three-tier trend warning, then topic matching (complexity tiers plus a spread-risk fallback: a direction with no reversal must be backed by strong resonance, strong topicality, or strong aftertaste). Market knowledge is inlined as an appendix; platform-independent |
+| **short-analyze (text teardown)** | Standalone tool: word-count routing (ask in the gray zone), then a genre yardstick (load the style pack by the short-genres registry slug for comparison), then continuation checks and original-text backup first, then a five-stage serial pipeline (structure / emotional line / reversal / characters / synthesis, with a completion marker per stage), then crash-safe writes (pre-stage markers plus non-empty checks, so half-finished work is never trusted), then five outputs under `analysis/{book title}/` (report / plot nodes / writing techniques / original-text backup / `_meta.json` structure counts), then three acceptance gates (the report's own AI-tone self-check, structure-count verification, strong-blocking scan) |
+| **Deployment form** | `SHORT_STANDALONE_SKILLS` plus a shared `deploy_standalone_skills` helper across all platforms: both tools deploy as SKILL.md files under each platform's skills directory (claude/opencode create the skills directory first; codex/grok land in the standalone-tool directory; reasonix/zcode/dsh go from 6 to 8 inlined directories). They do not enter the short-agent dispatch chain and take no phase; the author triggers them directly |
+| **Sync wiring** | Short-story sync idempotently re-deploys the standalone tools; `find_changes` compares expected content word by word after deployment conversion (project-side deletion or tampering is detected and sync restores it) |
 
-## 设计要点
+## Design Points
 
-- 拆文方法论压缩内联进 SOP（约 300 行），不新增知识目录——工具是自包含单元
-- `_meta.json.genre` 与题材注册表 slug 对齐（zhuiqi/shiqing/...），为写作阶段自动加载同包风格预留
-- 拆解对合法持有作品做只读的转化性文学批评；通俗题材常规虚构元素照常结构化拆解
+- The teardown methodology is compressed and inlined into the SOP (about 300 lines) with no new knowledge directory; the tool is a self-contained unit
+- `_meta.json.genre` aligns with the genre-registry slug (zhuiqi/shiqing/...), reserving automatic same-pack style loading for the writing stage
+- Teardown performs read-only, transformative literary criticism on works the user legitimately holds; conventional fictional elements of popular genres are structured and broken down as usual
 
-## 兼容性
+## Compatibility
 
-- 纯增量：长篇路径零变化（长篇项目不含两工具，有负向断言兜住）；短篇既有产物布局不变
-- 扫榜实时采集依赖运行环境能力，不可用时走降级并标注，不引入任何仓库依赖
+- Purely incremental: zero changes to the long-form path (long-form projects do not contain the two tools, guarded by negative assertions); short-story product layout is unchanged
+- Live list-scanning collection depends on runtime-environment capability; when unavailable it degrades with a label and introduces no repo dependencies
 
-## 测试
+## Tests
 
-- check-agents / check-conflicts / check-version / py_compile 全绿；test_platforms **535/535**（新增：7 平台独立工具部署断言、inline 数量 6→8、短篇 sync E2E——sync 恢复被删工具/--check exit 0、长篇负向断言）
-- review-agent 评审 11 条 findings（1×P0：短篇 sync 缺 import 崩溃；2×P2：独立工具内容比对/slug 路由；8×P3）全部修复；「篡改 → 检出 → 恢复」闭环实测通过
-- **待办**：真机走一遍扫榜与拆文（选题决策与拆解质量属运行时行为）
+- check-agents / check-conflicts / check-version / py_compile all green; test_platforms **535/535** (new: seven-platform standalone-tool deployment assertions, inline count 6 to 8, short-story sync E2E: sync restores a deleted tool, --check exit 0, long-form negative assertions)
+- review-agent review: all 11 findings fixed (1xP0: short-story sync missing import crash; 2xP2: standalone-tool content comparison and slug routing; 8xP3); the "tamper, detect, restore" loop is verified live
+- **To-do**: run one list scan and one teardown on a real machine (topic decisions and teardown quality are runtime behavior)

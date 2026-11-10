@@ -1,80 +1,106 @@
-# 反派设定方法论
+# Villain Setting Methodology
 
-> 三类高智商反派模板。适用于设定阶段的反派角色设计，与 `format-specs/character-setting-style.md` 配合使用。
-
----
-
-## 模板 1：棋手·全局布局型反派
-
-**核心：** 反派拥有全局视野、多层连环计划，主角全程沦为棋子。极少亲自正面厮杀，善用主角的性格、信念、亲友设局。
-
-### 执行细则
-
-- 长线布局，开篇预埋伏笔，中后期才揭露全盘算计
-- 每一步行动绑定两层以上目标，计划受损不暴怒，一切皆在预判
-- 利用主角坚守的正义、软肋、执念编织陷阱，靠信息差制造主角无力感
-- 翻盘仅允许依靠反派完全没预判到的微小变量，不能靠反派降智
-
-```
-❌ 反派设下单一陷阱，被主角破坏后气急败坏亲自厮杀，破绽百出。
-
-✅ 主角破掉反派围剿计划，对方淡淡告知，这场失败本就是引诱
-   主角踏入主城陷阱的前置步骤；他从未亲自出手，只是借主角的
-   正义感、身边亲友不断收紧包围圈。
-```
-
-**禁用：** 只有单层简单计划；计划崩盘后情绪失控、出现低级逻辑漏洞；为给主角送优势强行降智。
+> Three types of highly intelligent villain templates. Villain design for setting
+> stage, for use with `format-specs/character-setting-style.md`.
 
 ---
 
-## 模板 2：殉道者·自洽理想型反派
+## Template 1: Chess Player / Global Villain
 
-**核心：** 反派拥有完整、自洽、可说服读者的崇高理想，手段残酷但动机纯粹。与主角形成价值观对冲，让主角产生自我怀疑。
+**Core:** The villain has a global vision and a multi-layered chain plan, and the
+protagonist is reduced to a pawn throughout the whole process. He rarely fights head-on
+in person, and makes good use of the protagonist's character, beliefs, relatives and
+friends to set up situations.
 
-### 执行细则
+### Implementation details
 
-- 搭建一套完整对立价值体系，抛出两难伦理拷问
-- 摒弃脸谱化贪欲弱点，一切行为服务于心中宏大目标
-- 对峙重点写思想博弈，主角武力取胜容易但难以辩驳对方理念
-- 允许读者产生"他的理念好像没错"的矛盾心理
+- Long-term layout, foreshadowing is laid out at the beginning, and the full plan is
+  revealed in the middle and later stages.
+- Each step of action is bound to more than two levels of targets. If the plan is
+  damaged, you will not get angry. Everything is predicted.
+- Make use of the protagonist's insistence on justice, weakness, and obsession to weave
+  traps, and rely on information gaps to create the protagonist's sense of
+  powerlessness.
+- The comeback is only allowed to rely on tiny variables that the villain did not
+  predict at all, and cannot rely on the villain to outwit him.
 
 ```
-❌ 反派单纯贪图力量，嘴上空谈大义，私下作恶只为私欲。
+❌ The villain set up a single trap, but after it was destroyed by the protagonist, he became so angry that he went to kill it himself, which was full of flaws.
 
-✅ 反派坚信牺牲少数无辜者可保全百万生灵，为此不惜双手染血，
-   不惧身死；面对主角质问，层层推演自身逻辑，
-   让主角动摇坚守多年的善恶标准。
+✅ The protagonist defeated the villain’s encirclement and suppression plan, and the other party told him lightly that this failure was a temptation.
+   The protagonist steps into the trap of the main city; he never takes action himself, he just borrows the protagonist's
+   The sense of justice and the surrounding relatives and friends continue to tighten the encirclement.
 ```
 
-**禁用：** 理想只是借口，内核依旧贪权好色；价值观逻辑破碎，言行前后矛盾。
+**Disabled:** Only a single-layer simple plan; losing control of emotions and low-level
+logic loopholes after the plan collapsed; forcibly reducing intelligence to give the
+protagonist an advantage.
 
 ---
 
-## 模板 3：拟态者·身边阴影潜伏反派
+## Template 2: Martyr / Self-consistent ideal villain
 
-**核心：** 反派伪装成主角挚友、恩师、亲信，精通心理，精准拿捏主角软肋与心软时刻。前期所有善意、帮扶全是铺垫，最终背后背刺。
+**Core:** The villain has lofty ideals that are complete, self-consistent, and
+convincing to readers, and his methods are cruel but his motives are pure. It forms a
+value conflict with the protagonist, causing the protagonist to have self-doubt.
 
-### 执行细则
+### Implementation details
 
-- 全程佩戴无害温柔面具，危难时刻主动给予陪伴与帮助
-- 精准洞悉主角最珍视的人与物，以此作为致命筹码
-- 前文所有善意行为，事后回看全部服务于最终背叛布局
-- 真相揭露后，叠加主角信仰、人际关系双重崩塌的痛苦
+- Build a complete set of opposing value systems and raise ethical dilemmas
+- Abandon the weakness of greed and greed, and all actions serve the grand goal in mind
+- Confrontation focuses on writing ideological games. It is easy for the protagonist to
+  win by force, but it is difficult to refute the opponent's ideas.
+- Allow readers to have the ambivalence that "his ideas seem to be correct"
 
 ```
-❌ 配角中途突兀黑化，前文无任何铺垫，反转生硬。
+❌ The villain is simply greedy for power, talks about righteousness, and does evil in private just for selfish desires.
 
-✅ 一路陪伴主角闯关、多次舍身掩护的师弟，处处体谅主角心软。
-   直到最终决战才暴露——过往每一次出手相助，都是摸清主角底线、
-   埋下陷阱的铺垫。
+✅ The villain firmly believes that sacrificing a few innocent people can save millions of lives, so he does not hesitate to stain his hands with blood.
+   Not afraid of death; facing the protagonist’s questioning, deducing one’s own logic layer by layer,
+   Let the protagonist shake the standards of good and evil that he has adhered to for many years.
 ```
 
-**禁用：** 无前期伏笔，临时强行背叛；伪装破绽过多，一眼就能看穿。
+**Disabled:** Ideals are just excuses, and the core is still greedy for power and lust;
+the logic of values is broken, and words and deeds are inconsistent.
 
 ---
 
-## 通用核心准则
+## Template 3: Mimic / Villain lurking in the shadows around you
 
-- 禁止刻意降智、强行制造低级失误给主角送胜利
-- 主角取胜必须依靠独特微小变数、惨烈牺牲，而非反派主动拉胯
-- 反派综合能力、格局、智商层级越高，主角最终胜利的含金量越强
+**Core:** The villain disguises himself as the protagonist's best friend, mentor, and
+confidant. He is proficient in psychology and can accurately identify the protagonist's
+weaknesses and soft-hearted moments. All the goodwill and help in the early stage were
+all foreshadowing, but in the end they were stabbed in the back.
+
+### Implementation details
+
+- Wear a harmless and gentle mask throughout the process, and actively provide
+  companionship and help in times of crisis.
+- Accurately understand the people and things the protagonist cherishes most, and use
+  this as a fatal bargaining chip
+- All the good intentions mentioned above, looking back afterwards, all serve the
+  ultimate betrayal plan.
+- After the truth is revealed, the protagonist’s pain of double collapse of faith and
+  interpersonal relationships is superimposed.
+
+```
+❌ The supporting character suddenly turns dark in the middle, without any foreshadowing, and the twist is abrupt.
+
+✅ The junior brother who accompanies the protagonist all the way and sacrifices his life to protect him many times is always considerate of the protagonist's soft heart.
+   It wasn’t until the final battle that it was revealed,every time he helped out in the past, it was to find out the protagonist’s bottom line,
+   Laying the groundwork for a trap.
+```
+
+**Disabled:** No foreshadowing, temporary forced betrayal; there are too many holes in
+the disguise, which can be seen through at a glance.
+
+---
+
+## Common Core Principles
+
+- It is forbidden to deliberately reduce intelligence or forcefully make low-level
+  mistakes to give the protagonist victory.
+- The protagonist must rely on unique small variables and tragic sacrifices to win,
+  rather than the villain actively pulling his hips.
+- The higher the villain's comprehensive ability, structure, and IQ level, the greater
+  the gold content of the protagonist's final victory.

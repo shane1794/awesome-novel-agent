@@ -1,46 +1,46 @@
-# v4.17.0 版本说明
+# v4.17.0 Release Notes
 
-> **关键词：** 架构评审全量落地 + 正文质量治理
-
----
-
-## 一句话
-
-基于架构师评审（P1/P2/P3）与正文提示词链路审查，完成了「引用断链与打包清单修复、版本号单源化、平台适配去重、调度契约单源、规则层级分层裁定、蒸馏态严格匹配、视角单一来源、对话密度验收对齐」等一轮系统化治理——消除多副本漂移病灶，让同一约定只维护一处；并让「文风学出来后严格匹配、视角设定后全书一致」成为正文一致性的硬保证。
+> **Keywords:** Full rollout of the architecture review + main-text quality governance
 
 ---
 
-## 这版做了什么
+## In One Sentence
 
-| 改动 | 说明 |
+Based on the architecture review (P1/P2/P3) and a review of the main-text prompt chain, this release completes a round of systematic governance: "fixing broken references and the packaging manifest, single-sourcing the version number, deduplicating platform adapters, single-sourcing the dispatch contract, layered adjudication of rule tiers, strict matching of distilled style, single-source point of view, and aligning dialogue-density acceptance", eliminating the drift of multiple copies so that each convention is maintained in exactly one place, and making "strictly match the style once it has been learned, and keep the point of view consistent across the whole book once it has been set" a hard guarantee of main-text consistency.
+
+---
+
+## What Changed in This Release
+
+| Change | Description |
 |------|------|
-| **部署引用断链修复** | 14 处裸 `knowledge/...` 引用（roleplay-sandbox、7 个格式规范文件、2 个 agent 正文）改为 `.claude/knowledge/` 部署基座；check-agents 新增部署后布局引用校验 + 孤儿知识检测 + skill.json 完整性断言（产物清单从 init.deploy_knowledge 实跑，防模型漂移） |
-| **版本号单源化** | VERSION 为唯一权威，ARCHITECTURE/status 模板/init 种子/skill.json 四处对齐；新增 `check-version.py` 挂 CI；skill.json 补 knowledge/ 打包清单、平台列表补全 6 个 |
-| **平台适配去重** | reasonix/zcode/dsh 三份转换器与 deploy 合一（`convert_agent_to_platform` 单源），exec_agents/子 agent 名单收敛模块级常量；init/sync/find_changes 三处共用，HEAD 基线逐字节验证零行为变更 |
-| **题材空壳显式化** | 选题列表标注「档案/反 AI 规则待补」+ 部署警告；urban-cultivation/high-martial 按复用声明真正合并反 AI 规则；孤儿 knowledge 接线（3 个设定指南进 updater） |
-| **调度契约单源** | novel-dispatch.md 立为唯一权威（order 类型清单/卷完成判定/断点语义），novel-agent THINK 树为执行细则，ARCHITECTURE/SKILL/README 摘要标注权威源；AGENTS.md 路径口径改为部署后路径 |
-| **规则层级分层裁定（B7）** | 合规层（红线/字数/T1/认知/感官，提示词第 1-5 层）不让步；质量层（写作规范级内）按「文风 > 作者记忆偏好 > 基底铁律 > 题材基线」取舍；压缩顺序由质量层决定（先砍环境/路人/过渡，保情绪段落） |
-| **正文发飘治理** | 蒸馏态（文风卡已学出）删除「风格建议（可偏离）」，严格匹配偏差≤20%；「网文风格基线」重名拆分；认知动词/因果/温度去双注入；视角类型设定阶段定义全链路传递（章纲只定 POV 角色）；anti-ai 验收补对话密度 12 句例外 + 已蒸馏按提示词渲染占比评估 |
-| **术语防回潮（C5）** | check-conflicts 新增禁现断言：7 个遗留术语（4 层/9 层/Goals/hooks.md/genre_profile 等）+ 反模式句在注入侧禁现；情绪外化速查合并（D4） |
-| **check 脚本自测** | check-version 11 项断言（迷你仓库注入）；install.ps1 pwsh 冒烟测试（CI ubuntu 实跑，暴露并修复了 Linux pwsh 路径拼接问题） |
-| **面向作者大白话** | author-communication 规范：作者可见内容全用大白话，堵三处内部词泄漏（并行贡献） |
-| **文档收敛与清理** | P3 文档漂移八项（README 双语、CONTRIBUTING、install.ps1 平台对齐等）；审计复核表 15/18 已修复标注；删除已实现的 landing-page 设计稿与 superpowers 计划文档（11 文件） |
+| **Fixed broken deployment references** | 14 bare `knowledge/...` references (roleplay-sandbox, 7 format-spec files, 2 agent main texts) changed to the `.claude/knowledge/` deployment base; check-agents adds post-deployment layout reference checks, orphaned-knowledge detection, and skill.json completeness assertions (the product manifest is produced by actually running init.deploy_knowledge, guarding against model drift) |
+| **Single-sourced the version number** | VERSION is the single authority; ARCHITECTURE, status templates, init seeds, and skill.json are aligned in four places; added `check-version.py` to CI; skill.json gains the knowledge/ packaging manifest, and the platform list is completed to 6 |
+| **Deduplicated platform adapters** | The three reasonix/zcode/dsh converters are merged with deploy (single-sourced as `convert_agent_to_platform`); the exec_agents and sub-agent rosters converge on module-level constants; init/sync/find_changes share them in three places, with byte-for-byte verification against the HEAD baseline showing zero behavior change |
+| **Made empty genre shells explicit** | The genre selection list marks "archive/anti-AI rules to be added" plus a deployment warning; urban-cultivation/high-martial genuinely merge their anti-AI rules per their reuse declarations; orphaned knowledge is wired in (3 setting guides into the updater) |
+| **Single-sourced the dispatch contract** | novel-dispatch.md stands as the single authority (order type list, volume-completion decision, breakpoint semantics); the novel-agent THINK tree holds the execution details; ARCHITECTURE/SKILL/README summaries mark the authority source; AGENTS.md path conventions switch to post-deployment paths |
+| **Layered adjudication of rule tiers (B7)** | The compliance tier (red lines, word counts, T1, cognition, senses, prompt layers 1-5) never yields; the quality tier (within writing-spec level) is traded off as "style > author memory preferences > base iron rules > genre baseline"; compression order is decided by the quality tier (cut environment, passersby, and transitions first; keep emotional passages) |
+| **Governed drifting main text** | In the distilled state (a style card has been learned), the "style suggestions (may deviate)" wording is removed and strict matching keeps deviation at 20% or less; the duplicated "webnovel style baseline" name is split apart; cognitive verbs, causality, and temperature are no longer double-injected; the point-of-view type is defined at the setting stage and passed through the whole chain (chapter outlines only set the POV character); anti-ai acceptance adds a 12-sentence dialogue-density exception and evaluates distilled text by its share of prompt rendering |
+| **Prevented terminology regression (C5)** | check-conflicts adds must-not-appear assertions: 7 legacy terms (4-layer/9-layer/Goals/hooks.md/genre_profile and others) plus anti-pattern sentences banned at the injection side; the emotion-externalization quick reference is merged (D4) |
+| **Self-tested the check scripts** | check-version gains 11 assertions (mini-repo injection); install.ps1 gets a pwsh smoke test (actually run by CI on Ubuntu, exposing and fixing a Linux pwsh path-joining problem) |
+| **Plain language for the author** | The author-communication spec: all author-visible content uses plain language, plugging three leaks of internal terms (parallel contributions) |
+| **Converged and cleaned up docs** | Eight P3 doc-drift items (README bilingual, CONTRIBUTING, install.ps1 platform alignment, etc.); the audit recheck table marks 15/18 fixed; deleted the implemented landing-page design draft and the superpowers plan doc (11 files) |
 
 ---
 
-## 兼容性
+## Compatibility
 
-- 纯指令文本 + 工具脚本改动。init/sync 行为零变更（六平台 E2E 逐字节验证）；新项目直接生效。
-- 已初始化项目跑 `python tools/sync-project.py <项目路径>` 同步 agent/知识/脚手架后生效（skill_version 将更新为 4.17.0）。
-- `check-version.py` / `check-agents.py` 为新增/扩展校验，CI 必跑；本地可手动运行。
-- 新增知识文件 `author-communication.md`，随部署进入项目 knowledge。
+- Pure prompt-text and tool-script changes. init/sync behavior is unchanged (six-platform E2E byte-for-byte verification); new projects take effect directly.
+- Existing initialized projects take effect after running `python tools/sync-project.py <project path>` to sync agents, knowledge, and scaffolding (skill_version will update to 4.17.0).
+- `check-version.py` / `check-agents.py` are new or extended checks that must run in CI; they can also be run manually locally.
+- New knowledge file `author-communication.md` enters project knowledge with deployment.
 
 ---
 
-## 验证方法
+## How It Was Verified
 
-- `check-agents.py` / `check-conflicts.py`（含 C5 禁现）/ `check-version.py` / `py_compile` 全绿
-- `test_platforms.py` 198 通过 0 失败（六平台 init/sync E2E + install.ps1 pwsh 冒烟 + check-version 11 断言）
-- `test_style_rules.py` 125 / `test_style_distill.py` 84 全绿
-- 三平台（reasonix/zcode/dsh）skills 产物与基线逐字节 diff 仅含预期差异
-- Mimosa 深度安全扫描 0 发现（seal 已生成）；review-agent 两轮评审发现全部修复
+- `check-agents.py` / `check-conflicts.py` (including C5 must-not-appear) / `check-version.py` / `py_compile` all green
+- `test_platforms.py` 198 passed, 0 failed (six-platform init/sync E2E + install.ps1 pwsh smoke test + check-version 11 assertions)
+- `test_style_rules.py` 125 / `test_style_distill.py` 84 all green
+- Three-platform (reasonix/zcode/dsh) skills products differ from baseline by byte-for-byte diff only in expected differences
+- Mimosa deep security scan: 0 findings (seal generated); all findings from two rounds of review-agent review fixed

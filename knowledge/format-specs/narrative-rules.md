@@ -1,55 +1,76 @@
-# 叙事规则（规则 1-7 + 通用基线）
+# Narrative Rules (Rules 1-7 + Universal Baseline)
 
-> **职责声明：** 本文件是叙事规则 1-7 的**唯一权威定义**。注入侧（skills/prompt-crafting.md：场景类型映射、角色关联推导、产出示例）与自查侧（skills/writing-execution.md Step 5）引用本文件，各自保留操作细节，**不重复定义规则本身**。
+> **Responsibility Statement:** This document is the **sole authoritative definition**
+> of Narrative Rules 1-7. The injection side (skills/prompt-crafting.md: scene type
+> mapping, role association derivation, output examples) and the self-examination side
+> (skills/writing-execution.md Step 5) refer to this document, each retaining the
+> operation details, and **do not repeat the definition of the rules themselves**.
 
-## 规则总览
+## Rules Overview
 
-| 规则 | 名称 | 一句话定义 |
+| Rules | Name | One-sentence definition |
 |------|------|-----------|
-| 规则 1 | 先出感知信号 | 段首先扔感知事实，不用"主角+感知动词"结构引出 |
-| 规则 2 | 认知动词节制 | 认知动词优先用动作或直接感知替代，关键情绪节点可简要使用（≤2次/章） |
-| 规则 3 | 按感知强度排序 | 叙事顺序按角色心中什么最重要/感知强度排，避免连续"先→然后→接着→最后"流水账 |
-| 规则 4 | 用具体体验 | 细节和例子从角色亲身经历取，不用"各种/纷纷/一系列"类标签和角色没接触过的比喻 |
-| 规则 5 | 因果关系自然呈现 | 删掉多余的解释性连接词（因为/所以/因此），必要因果保留 |
-| 规则 6 | 对话符合角色 | 对话像"这个人在说话"：有口语味、人称、语气词、口癖，不写书面腔 |
-| 规则 7 | 叙事自然有温度 | 允许适度的叙述存在感（氛围铺垫/心理概括/感官描述不堆砌即可），禁止为"不演"而极端白描 |
+| Rule 1 | Perception signals come out first | The paragraph throws the perception facts first, without using the "protagonist + perception verb" structure |
+| Rule 2 | Cognitive verb moderation | Cognitive verbs should be replaced with actions or direct perceptions first, and key emotional nodes can be used briefly (≤2 times/chapter) |
+| Rule 3 | Sort by perceived intensity | The narrative sequence is arranged according to what is most important in the character's mind/perceived intensity, and avoid the continuous "first → then → then → last" sequence |
+| Rule 4 | Use specific experience | Details and examples should be taken from the character's personal experience, without using "various/serial/series" labels and metaphors that the character has not been exposed to |
+| Rule 5 | Cause and effect relationships appear naturally | Delete redundant explanatory connectives (because/so/therefore) and retain necessary cause and effect |
+| Rule 6 | Dialogue fits the character | Dialogue is like "this person is talking": colloquial flavor, pronouns, modal particles, idioms, no written accent |
+| Rule 7 | Narratives naturally have warmth | Allow a moderate sense of narrative presence (atmospheric foreshadowing/psychological summary/sensory description is not overloaded), and extreme white descriptions for the sake of "not acting" are prohibited |
 
-## 规则定义明细
+## Rule definition details
 
-### 规则 1 — 先出感知信号
+### Rule 1 - Sent first
 
-段首先扔感知事实，不用"主角+感知动词"结构（他看到/他听到/他发现）引出。
+The paragraph first throws in the perceptual facts, without using the "protagonist +
+perceptual verb" structure (he saw/he heard/he discovered) to elicit.
 
-> "他看到门开了" → "门开了"
+> "He saw the door open" → "The door opened"
 
-### 规则 2 — 认知动词节制
+### Rule 2 - Cognitive Verb Moderation
 
-"他发现/他感到/他注意到"等认知动词，优先用动作或直接感知替代（"他感到害怕" → "他的手指用力扣进掌心"）；但在关键情绪节点可简要使用（≤2次/章）。
+Cognitive verbs such as "He found/He felt/He noticed" should be replaced with actions or
+direct perceptions first ("He felt scared" → "His fingers dug hard into his palms");
+however, they can be used briefly at key emotional nodes (≤2 times/chapter).
 
-### 规则 3 — 按感知强度排序
+### Rule 3 - Sort by perceived intensity
 
-避免连续"先→然后→接着→最后"结构；叙事顺序按感知强度/角色心中优先级重排。
+Avoid the continuous "first → then → then → last" structure; the narrative order is
+rearranged according to perceived intensity/priority in the character's mind.
 
-### 规则 4 — 用具体体验
+### Rule 4 - Use concrete experience
 
-"各种/纷纷/一系列"类标签词换成具体感官细节；例子从角色亲身经历取，不用角色没接触过的比喻。
+"Various/one after another/series" tag words are replaced with specific sensory details;
+examples are taken from the character's personal experience, and metaphors that the
+character has not been exposed to are not used.
 
-### 规则 5 — 因果关系自然呈现
+### Rule 5,Causation emerges naturally
 
-删掉多余的解释性连接词（因为/所以/因此连篇），保留必要的因果承接——当因果关系需要明确给读者时才写。
+Delete redundant explanatory connectives (because/so/therefore) and retain the necessary
+causal connection - only write when the causal relationship needs to be clear to the
+reader.
 
-### 规则 6 — 对话符合角色
+### Rule 6, Dialogue fits the character
 
-对话是"这个人在说话"不是"标准人话"：加人称、语气词、口癖、半截话；不写主谓宾齐全的书面腔。
+The dialogue is "this person is talking" and not "standard human speech": adding
+personal pronouns, modal particles, accents, and half-words; not writing a written
+accent with complete subjects, predicates, and objects.
 
-### 规则 7 — 叙事自然有温度
+### Rule 7, Narrative has a natural warmth
 
-允许适度的叙述存在感——自然的氛围铺垫、心理概括、感官描述只要不堆砌即可。禁止为"不演"而极端白描到丢失阅读温度。
+Allow a moderate sense of narrative presence - natural atmospheric foreshadowing,
+psychological summary, sensory description as long as it is not overstuffed. It is
+forbidden to draw in extreme white to the point of losing reading temperature just to
+"not act".
 
-## 通用基线（网文风格基线，任何章节必注）
+## Universal baseline (website style baseline, required for any chapter)
 
-以下 3 条规则为网文通用基线，适用于所有题材。题材示例文件（genre-example）的特殊文风要求在此基线上叠加，不取代基线——即题材注入段可增加视角/节奏/氛围要求，但不覆盖基线的「有温度」定位。
+The following 3 rules are general baselines for web writing and apply to all genres. The
+special style requirements of the theme example file (genre-example) are superimposed on
+this baseline and do not replace the baseline - that is, the theme injection section can
+increase the perspective/rhythm/atmosphere requirements, but does not cover the "warm"
+positioning of the baseline.
 
-- 规则 2 — 认知动词节制使用（≤2次/章）
-- 规则 5 — 因果关系自然呈现
-- 规则 7 — 叙事自然有温度
+- Rule 2 - Use cognitive verbs sparingly (≤2 times/chapter)
+- Rule 5,Causation emerges naturally
+- Rule 7, Narrative has a natural warmth

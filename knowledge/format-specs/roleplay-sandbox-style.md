@@ -1,188 +1,208 @@
-# 角色推演记录 格式规范
+# Role play record format specification
 
-> 推演记录是角色推演沙盘的产物，记录每轮次各角色的行为/台词/神态及场景状态变化。作为可选参考素材供 prompt-crafter 读取。
+> The deduction record is the product of the character deduction sandbox, which
+> records the behavior/lines/expression and scene state changes of each character in
+> each round. As optional reference material for prompt-crafter to read.
 
-## 文件路径
+## File Path
 
-`sandbox/vol-{N}-ch-{M}/推演{序号}.md`
+`sandbox/vol-{N}-ch-{M}/deduction-{n}.md`
 
-## 整体结构
+## Overall Structure
 
 ```
-# 角色推演记录
+# Role play record
 
-## 元数据
+## Metadata
 ...
 
-## 初始场景状态
+## Initial scene state
 ...
 
-## 推演过程
-### 第 1 轮
-#### 轮次 1 · 角色: {角色名}
+## Deduction Process
+### Round 1
+#### Round 1 / Character: {Character Name}
 ...
-### 第 2 轮
+### Round 2
 ...
 
-## 推演结果
+## Deduction results
 ...
 ```
 
-## 字段规范
+## Field specification
 
-### 元数据
+### Metadata
 
 ```markdown
-## 元数据
-- **卷号**: 1
-- **章号**: 3
-- **触发场景**: {一句话描述推演的起点场景，提取自卷纲 chapters_summary 或作者在 Step 2 提供}
-- **出场角色**: {角色1, 角色2, 角色3}
-- **推演轮次**: {N}
-- **推演目标**: {作者在 Step 2 设定的推演目标}
+## Metadata
+- **Volume Number**: 1
+- **Chapter Number**: 3
+- **Trigger scenario**: {One sentence describing the deduced Qidian scenario, extracted from chapters_summary or provided by the author in Step 2}
+- **Characters**: {Character 1, Character 2, Character 3}
+- **Deduction round**: {N}
+- **Deduction Goal**: {The deduction goal set by the author in Step 2}
 ```
 
-- `触发场景`引用自 `volumes/vol-{N}.md` 的 `chapters_summary`，或在 Step 2 搭台时由作者提供
-- `推演目标`由作者在 Step 2 搭台时设定，作为推演达成的判断依据
+- `trigger-scene` is quoted from `chapters_summary` of `volumes/vol-{N}.md`, or provided by the
+  author when setting up the stage in Step 2
+- `deduction-goal` is set by the author when setting up the stage in Step 2 as a basis for judging
+  the conclusion of the deduction.
 
-### 初始场景状态
+### Initial scene state
 
 ```markdown
-## 初始场景状态
+## Initial scene state
 
-### 场景设定
-- **地点**: {具体场所}
-- **时间**: {具体时间}
-- **氛围**: {气氛描述}
+### Scene setting
+- **Location**: {Specific location}
+- **Time**: {specific time}
+- **Ambience**: {Ambience description}
 
-### 角色初始状态
-#### {角色名}
-- **位置**: {物理位置}
-- **情绪**: {当前情绪}
-- **知晓**: {角色已知的信息}
-- **不知道**: {角色不知道的信息}
-- **当前目标**: {角色在此场景想达成的目标}
-- **微行为模式**: {紧张/放松时的习惯性小动作}
+### Character initial state
+#### {Character name}
+- **Location**: {physical location}
+- **Mood**: {Current Mood}
+- **Known**: {Information known to the character}
+- **Don't know**: {Information that the character does not know}
+- **Current Goal**: {What the character wants to achieve in this scene}
+- **Microbehavioral Patterns**: {Habitual small actions when tense/relaxed}
 
-### 活跃钩子/伏笔
-- {钩子1}
-- {钩子2}
+### Active Hook/Foreshadowing
+- {Hook 1}
+- {Hook 2}
 ```
 
-- `角色初始状态`必须从 `settings/character-setting/{id}.md` 的以下字段提取：
-  - 认知6层模型 → 推导角色可能的反应模式
-  - 状态历史 → 当前情绪和位置
-  - 情绪弧线 → 最近的触发事件和强度
-- `微行为模式`从角色设定中的语言特征、习惯描述中提取（非硬性字段，不存在则写"暂无资料"）
-- `活跃钩子`从 `settings/foreshadowing.md` 中提取
+- `character-initial-state` must be extracted from the following fields of
+  `settings/character-setting/{id}.md`:
+  - Cognitive 6-layer model → Derivation of possible response patterns of characters
+  - Status history → Current mood and location
+  - Emotional arc → recent triggering event and intensity
+- `micro-behavior-pattern` is extracted from the language characteristics and habit descriptions in the
+  character settings (not a hard field, if it does not exist, write "No information")
+- `active-hooks` is extracted from `settings/foreshadowing.md`
 
-### 轮次输出（核心）
+### Round Output (Core)
 
-每轮输出包含**「AI 推演输出」**和**「作者干预记录」**两部分：
+Each round of output includes two parts: **"AI deduction output"** and **"author
+intervention record"**:
 
 ```markdown
-### 第 {N} 轮
+### Round {N}
 
-#### 轮次 {N} · 角色: {角色名}
+#### Round {N} / Role: {Character name}
 
-**台词/动作/神态:**
-> {角色说了什么话，做了什么动作，什么表情神态}
+**Line/Action/Appearance:**
+> {What words did the character say, what actions did it take, and what expressions did it have}
 
-**场景状态变化:**
-- {变化维度}: {具体变化}
+**Scene status changes:**
+- {Dimension of change}: {Specific changes}
 ```
 
-#### 输出要求
+#### Output requirements
 
-只输出三项，不附加推理过程：
-1. **台词/动作/神态** — 一段话说完角色说了什么、做了什么、什么表情
-2. **场景状态变化** — 角色行为改变了什么
-3. 去掉认知层分析、行为推导、结论等内部推理内容
+Only three items are output, without additional reasoning process:
+1. **Lines/Actions/Appearance**, What the character said, did, and expressed after a
+   paragraph
+2. **Scene State Change**, What changes the character's behavior
+3. Remove internal reasoning content such as cognitive layer analysis, behavioral
+   derivation, and conclusions.
 
-- 文字内容**严格基于角色的信息边界**——角色不知道的信息不出现在其行为中
-- 不写内心独白、不写角色未表达的隐藏动机
+- Text content **Strictly character-based information boundaries** - information unknown
+  to the character does not appear in its behavior
+- No inner monologue, no character’s unexpressed hidden motivations
 
-#### 场景状态变化规则
+#### Scene state change rules
 
-每个角色的行为必须改变场景状态的至少一个维度：
+Each character's behavior must change at least one dimension of the scene state:
 
-| 变化维度 | 说明 | 示例 |
+| Dimensions of change | Description | Example |
 |---------|------|------|
-| **氛围** | 整体气氛变化 | "从寒暄变为互相试探" |
-| **关系** | 角色间的权力/亲近关系变化 | "方岩主动划清界限" |
-| **信息** | 信息差变化 | "陆征确认了方岩知道内幕" |
-| **位置** | 角色物理位置变化 | "王五把凳子往门口挪了挪" |
-| **物品** | 场景物件状态变化 | "茶水杯被反复摩挲，杯沿水渍" |
-| **冲突** | 冲突升级/降级 | "双方对峙态势形成" |
+| **Atmosphere** | Overall atmosphere change | "From small talk to mutual testing" |
+| **Relationship** | Changes in the power/closeness relationship between characters | "Fang Yan takes the initiative to draw clear boundaries" |
+| **Information** | Changes in information gap | "Lu Zheng confirmed that Fang Yan knew the inside story" |
+| **Position** | Changes in character's physical position | "Wang Wu moved his stool toward the door" |
+| **Item** | Scene object state changes | "The tea cup was rubbed repeatedly, and the rim of the cup was stained" |
+| **Conflict** | Conflict escalation/de-escalation | "The confrontation between the two sides has formed" |
 
-#### 认知层引用规则
+#### Cognitive layer reference rules
 
-每次输出附带认知层引用，格式为 `{角色名}层{n}({层名}): {推导}`：
+Each output comes with a cognitive layer reference in the format `{character-name} layer {n} ({layer-name}): {derivation}`:
 
 ```markdown
-**涉及认知层:**
-- 陆征层4(能力): 观察到方岩的扫视动作，判断他有防备
-- 陆征层2(自我定位): "我是有耐心的人"——选择不直接追问，先让对方放松
+**Involving the cognitive layer:**
+- Lu Zheng Layer 4 (Ability): Observed Fang Yan’s scanning movements and judged that he was on guard.
+- Lu Zheng Level 2 (self-positioning): "I am a patient person" - choose not to ask directly, let the other person relax first
 ```
 
-- 层级编号（层1-层6）和层名（世界观/自我定位/价值观/能力/技能/环境）必须与 `character-setting-style.md` 的认知6层模型一致
-- 可以引用多个层
-- 如果某层在角色设定中为空，不引用
+- The level number (layer 1-layer 6) and layer name (world
+  view/self-positioning/values/ability/skills/environment) must be consistent with the
+  cognitive 6-layer model of `character-setting-style.md`
+- Multiple layers can be referenced
+- If a layer is empty in the character settings, it will not be referenced.
 
-#### 作者干预记录
+#### Record of author intervention
 
-每次作者干预后，在轮次输出下方追加干预记录：
+After each author's intervention, the intervention record is appended below the round
+output:
 
 ```markdown
 ---
 
-**作者干预:** 修改 / 重来 / 插队 / 加信息 / 终止
+**Author intervention:** Modify/Restart/Jump in line/Add information/Terminate
 
-{干预内容描述}
+{Description of intervention content}
 
-**干预影响:**
-- {修改后场景状态的变化}
+**Intervention impact:**
+- {Changes in scene status after modification}
 ```
 
-- `修改`：作者改动了当前角色的某些输出 → 影响本轮后续角色的推演
-- `重来`：作者推翻当前角色的输出重新生成 → 保持之前状态不变
-- `插队`：作者要求某个角色先出场 → 调整顺序后继续
-- `加信息`：作者补充当前角色不知道但应该知道的信息 → 更新角色知晓状态
-- `终止`：推演结束，进入结果整理
+- `modify`: The author has changed some of the output of the current character → affecting
+  the deduction of subsequent characters in this round
+- `redo`: The author overturns the output regeneration of the current character → keeps
+  the previous state unchanged
+- `jump-queue`: The author requires a certain character to appear first → adjust the order and
+  continue
+- `add-info`: The author adds information that the current character does not know but should
+  know → Updates the character’s knowledge status
+- `stop`: The deduction is over and the results are sorted.
 
-### 推演结果
+### Deduction results
 
 ```markdown
-## 推演结果
+## Deduction results
 
-### 场景最终状态
-- **地点**: {同上或变化}
-- **时间**: {推演推进后的时间}
-- **氛围**: {最终氛围}
+### Scene Final State
+- **Location**: {Same as above or changes}
+- **Time**: {time after the deduction is advanced}
+- **Ambience**: {Final Ambience}
 
-### 角色最终状态
-#### {角色名}
-- **情绪**: {结束时的情绪}
-- **新知晓**: {推演中新获得的信息}
-- **下一步**: {角色在当前目标下的后续行动倾向}
-- **行为一致性**: {符合人设 / 偏离人设 + 说明}
+### Character Final State
+#### {Character name}
+- **Emotion**: {Emotion at the end}
+- **New knowledge**: {New information obtained during the deduction}
+- **Next step**: {The character’s subsequent action tendency under the current goal}
+- **Behavioral Consistency**: {Conform to character / deviate from character + explanation}
 
-### 可提炼的写作素材
-1. **{素材类型}** — {具体说明}
-2. **{素材类型}** — {具体说明}
+### Writing materials that can be refined
+1. **{Material type}**, {Specific description}
+2. **{Material type}**, {Specific description}
 
-### 与推演目标对照
-- **目标完成度**: {部分/全部/超额}
-- **偏差说明**: {推演结果与预期目标之间的差异}
+### Compare with deduction goal
+- **Goal Completion**: {Part/Full/Excess}
+- **Deviation Description**: {The difference between the deduction results and the expected goal}
 ```
 
-- `角色最终状态`从推演过程中最后一次场景状态中提取
-- `可提炼的写作素材`是供 prompt-crafter 使用的：对话片段、微行为模式、场景氛围词、角色关系变化节点
-- `与推演目标对照`验证推演是否达成了 Step 2 中设定的目标
+- `character-final-state` is extracted from the last scene state during the deduction process
+- `extractable-writing-material` is for prompt-crafter to use: dialogue fragments, micro-behavior patterns,
+  scene atmosphere words, character relationship change nodes
+- `compare-with-deduction-goal` Verifies whether the deduction has achieved the goals set in Step 2
 
-## 验证规则
+## Validation rules
 
-- 不包含内心独白或隐藏动机（推演只录可见行为）
-- 每轮输出包含：台词/动作/神态 + 场景状态变化
-- 输出中不出现认知层分析、行为推导等内部推理过程
-- 首次推演前，初始场景状态必须经过作者确认
+- Does not contain inner monologue or hidden motives (only visible behaviors are
+  recorded in the deduction)
+- The output of each round includes: lines/actions/expression + scene state changes
+- Internal reasoning processes such as cognitive layer analysis and behavioral
+  derivation do not appear in the output.
+- Before the first deduction, the initial scene status must be confirmed by the author

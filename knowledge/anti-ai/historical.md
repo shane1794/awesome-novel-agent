@@ -1,41 +1,53 @@
-# 历史古代反AI规则
+# Historical Anti-AI Rules
 
-> 适用题材：historical、historical-brained、ancient-politics
+> Applicable themes: historical, historical-brained, ancient-politics
 
-## 高频AI病句正反例
+## High-Frequency AI-Style Bad Sentences: Incorrect vs. Correct Examples
 
-### 1. 环境堆砌
+### 1. Environment stacking
 
-❌ "雕梁画栋、金碧辉煌的大殿内，气氛庄严肃穆"
-✅ "大殿里柱子粗，得两个人才能抱住。地是青砖，踩得发亮。他数了数，地上有六块砖颜色浅一点，是补过的。"
+❌ "The atmosphere in the magnificent hall is solemn and solemn." ✅ "The pillars in the
+hall are so thick that it takes two people to hold them. The floor is made of blue
+bricks, which shine when stepped on. He counted and found that there were six bricks on
+the floor that were lighter in color and had been repaired."
 
-### 2. 情绪直述
+### 2. Direct emotional statements
 
-❌ "他心中涌起一股复杂的情绪"
-✅ "他低着头，手指在袖子里攥紧，指甲掐进掌心。脸上还挂着笑，眼皮都没抬。"
+❌ "A complex emotion surged in his heart" ✅ "He lowered his head, clenched his fingers
+in his sleeves, and dug his nails into his palms. There was a smile on his face, without
+even raising his eyelids."
 
-❌ "她心中一惊"
-✅ "她的手顿了一下。针扎在布上，没动。停了两息，才继续缝。"
+❌ "She was shocked" ✅ "Her hand paused. The needle stuck on the cloth and did not move.
+She paused for two breaths before continuing to sew."
 
-### 3. 排比式心理
+### 3. Parallel psychology
 
-❌ "也许是他看错了，也许是大惊小怪，也许是这几天太累了"
-✅ "他盯着那行字，看了三遍。第四遍的时候，窗外有鸟叫了一声，他抬头看了一眼，再低头，字还站在那里。"
+❌ "Maybe he saw it wrong, maybe he was making a fuss, maybe he was too tired these days"
+✅ "He stared at the line of words and read it three times. On the fourth time, a bird
+chirped outside the window. He looked up and looked down again, and the words were still
+standing there."
 
-### 4. 动作描写教科书化
+### 4. Action description becomes textbook
 
-❌ "他拱手作揖，恭敬地退了出去"
-✅ "他弯了弯腰，幅度不大不小，刚好够礼数。退着走了三步，转身。门槛有点高，他迈过去的时候袖子扫了一下。"
+❌ "He bowed his hands and stepped out respectfully" ✅ "He bent down, not too much, not
+too little, just polite enough. He took three steps back and turned around. The
+threshold was a bit high, and he swept his sleeves as he stepped over."
 
-### 5. 对话文绉绉
+### 5. The dialogue is well-written
 
-❌ "大人所言极是，微臣茅塞顿开"
-✅ "他点头。嘴笨，说不出什么好听的。"是。"就一个字。低着头，脚尖在地上蹭了蹭。"
+❌ "What the Lord said is absolutely true, and the humble minister suddenly understood."
+✅ "He nodded. He was stupid and couldn't say anything nice." Yes. "Just one word. Lower
+your head and rub your toes on the ground."
 
-## 写作要点
+## Writing points
 
-1. **建筑写细节** — 柱子多粗？地砖几块补过？门槛多高？
-2. **礼数写动作** — 拱手、作揖、跪，用具体动作带过，不展开描写
-3. **情绪用面部和手** — 古代人压抑情绪，全靠小动作泄露
-4. **对话半文不白** — 别说太文绉绉的口头语，也别说太现代的大白话
-5. **等级写细节** — 吃什么、穿什么、坐什么位置，这些细节比直接说"身份尊贵"更有用
+1. **Architectural writing details**, How thick are the pillars? How many floor tiles
+   have been patched? How high is the threshold?
+2. **Etiquette writing actions** - cupping hands, bowing, kneeling, using specific
+   actions to guide them without describing them.
+3. **Use your face and hands to express your emotions**, Ancient people suppressed their
+   emotions and relied on small movements to reveal them.
+4. **The dialogue is half-literate**, Don’t speak too literately in spoken language, and
+   don’t speak in too modern vernacular.
+5. **Write down the details of the level**, What to eat, what to wear, and where to sit.
+   These details are more useful than directly saying "high status"

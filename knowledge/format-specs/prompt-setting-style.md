@@ -1,361 +1,411 @@
-# Prompt 生产 SOP
+# Prompt Production SOP
 
-**定位：** 将章纲 + writing-style + genre-profile 生产为 subagent 可执行的 prompt.md（`prompts/vol-{N}-ch-{M}-prompt.md`），并对产物做合格判定。只对 prompt 负责，不涉及正文写作。
+**Positioning:** Produce chapter outline + writing-style + genre-profile into subagent
+executable prompt.md (`prompts/vol-{N}-ch-{M}-prompt.md`), and make a qualification
+judgment on the product. Only responsible for prompts and not involved in text writing.
 
-**全局约束：**
-- writing-style 四字段必须全部注入 prompt——叙事身份定叙事距离和态度，硬约束定不可违背的写作信条，AI 易犯错误定具体反模式列表，描写层次和手法定可操作的描写做法。缺任何一个 subagent 都会在最关键的地方放飞。
-- 正文字数目标、情绪目标等执行参数从 `settings/writing-style.md` 和 `chapters/vol-{N}-ch-{M}.md` 读取，不在 prompts/ 中重复定义——一处修改全局生效。
+**Global constraints:**
+- All four writing-style fields must be injected into prompt - narrative identity
+  determines narrative distance and attitude, rigidly determines unbreakable writing
+  creeds, AI is prone to mistakes and determines a specific anti-pattern list, and
+  description levels and techniques determine operable description practices. If any
+  subagent is missing, it will be let go at the most critical place.
+- Execution parameters such as word count target and emotion target are read from
+  `settings/writing-style.md` and `chapters/vol-{N}-ch-{M}.md` and are not repeatedly
+  defined in prompts/ - modifications in one place take effect globally.
 
-**设计原则：每语义单一定义**
-- "情绪"只在输入·场景原材料定义，角色初始状态和质感不重复定义情绪
-- "场景"只在输入·场景原材料定义，前情上下文仅引用场景名
-- "爽点"只在任务指示·叙事目标定义，不重复出现
+**Design principle: Single definition per semantic**
+- "Emotion" is only defined in the input scene raw materials, and the character's
+  initial state and texture do not repeatedly define emotions.
+- "Scene" is only defined in the input scene raw material, and the previous context only
+  refers to the scene name.
+- "satisfying payoff" is only defined in mission instructions and narrative objectives,
+  and does not appear repeatedly.
 
 
-## 一、Prompt 工程结构
+## 1. Prompt project structure
 
-按 prompt engineering 规范组织：先定义身份和任务，再提供背景和案例，最后给出输入和输出定义。
+Organize according to prompt engineering standards: first define identity and tasks,
+then provide background and cases, and finally give input and output definitions.
 
 ```
-## 角色
+## Role
 
-你是一个 {作者小说题材}题材小说作家。
-
-
-## 任务指示
-
-创作第 ______ 章正文（在全卷中的角色：______）。
-
-## 字数与压缩策略
-- **目标字数**：建议 ______ 字（±10% 可接受，叙事完整性优先于字数精确）
-- **压缩策略**：超字数时优先压缩低权重场景（场景1/2过渡/中权重段落），推荐压缩至100字以内——保留1句环境切换 + 1句人物动作 + 1句情绪/氛围留白；不得因压缩删改红线内容或破坏情绪主线
-
-本章驱动力：______
-信息释放节奏：______
-
-叙事目标：
-1. 核心悬念：______ → 本章结束时：______（解决/加深/转移）
-2. 读者情绪：______
-3. 爽点设计：______，铺垫于场景______，释放于场景______
-
-写作方法论：
-1. 焦点锁定：对每一场景，识别其唯一的"核心冲突"或"人物情绪"或"信息差"（三选一，不叠加）。将70%以上笔墨集中于此焦点对象，次要元素简笔带过。高权重场景细化到动作与感知层级，且必须同时应用"感官分层取舍"规则；低权重场景允许快速转场，但不得违反焦点锁定或感官分层取舍规则
-2. 感官分层取舍：以 2 种感官为主进行细化，氛围允许时增至 3 种（如听觉+触觉），其余一笔略写。禁止全维度均匀堆砌。声音例外：声音线索属于本章情节红线的关键信息、且以简短白描（1-2 句）呈现时，可不计入感官名额（如枪声=战斗关键信号、脚步声逼近=危险标志）；环境装饰音（鸟鸣、叫卖等）不属于例外
-3. 叙事节奏交替：一段密集动作/对话 + 一段短心理留白 + 一句轻环境过渡循环。禁止连续长描写、连续对话、通篇等长段落
-4. 信息释放控制：关键伏笔、人物秘密拆分碎片化带出，不一次性完整交代。允许留白
+You are a {author novel subject} subject novel writer.
 
 
-## 背景信息
+## Task instructions
 
-### 前情上下文
+Create the text of chapter ______ (role in the overall volume: ______).
 
-上章结尾画面：______
+## Word Count and Compression Strategy
+- **Target word count**: Suggested ______ words (±10% acceptable, narrative integrity takes precedence over precise word count)
+- **Compression strategy**: When the word count exceeds, priority is given to compressing low-weight scenes (scene 1/2 transitions/medium-weight paragraphs). It is recommended to compress to less than 100 words - retain 1 sentence of environment switching + 1 sentence of character action + 1 sentence of emotion/atmosphere blank; red line content shall not be deleted or the main emotional line destroyed due to compression.
 
-读者情绪残留：______
+Driving force for this chapter: ______
+Information release rhythm: ______
 
-上章留下的缺口：______
+Narrative goals:
+1. Core suspense: ______ → End of chapter: ______ (resolved/deepened/transferred)
+2. Reader sentiment: ______
+3. Satisfying payoff design: ______, paved in the scene______, released in the scene______
 
-### 角色初始状态
+Writing methodology:
+1. Focus locking: For each scene, identify its unique "core conflict" or "character emotion" or "information gap" (choose one of the three, no superposition). Concentrate more than 70% of the text on this focus object, and briefly mention the secondary elements. High-weight scenes are refined to the level of action and perception, and the "sensory layering and trade-off" rules must be applied at the same time; low-weight scenes are allowed to transition quickly, but must not violate focus locking or sensory layering and trade-off rules.
+2. Sensory layering selection: Focus on 2 senses for refinement, increase to 3 if the atmosphere allows (such as hearing + touch), and sketch the rest. Uniform stacking in all dimensions is prohibited. Sound exceptions: When sound clues are key information of the red line of the plot of this chapter and are presented in short white descriptions (1-2 sentences), they may not be counted in the sensory quota (such as gunshots = key signals of battle, approaching footsteps = danger signs); environmental decorative sounds (birdsong, hawking, etc.) are not exceptions
+3. The narrative rhythm alternates: a dense action/dialogue + a short psychological blank + a light environment transition cycle. Long paragraphs such as continuous long descriptions, continuous dialogues, and entire articles are prohibited.
+4. Information release control: Key foreshadowing and character secrets are brought out in fragments, rather than being fully explained at once. Allow blank space
+
+
+## Background information
+
+### Previous Context
+
+Ending scene of the previous chapter: ______
+
+Reader’s emotional residue: ______
+
+The gap left by the previous chapter: ______
+
+### Character initial state
 
 ______：
-  起点：______
-  → 经历：______
-  → 终点：______
-  本章微习惯/小动作：______
+  Qidian: ______
+  → Experience:______
+  → End point: ______
+  Mini habits/little actions in this chapter: ______
 
 ______：
   ...
 
 
-## 案例
+## Case
 
-【场景写作参考示例，从场景方法论经四步转化后填入】
-
-
-## 输入
-
-### 场景原材料
-
-场景 N｜______｜______基调｜权重：______
-  核心事件：______
-  情绪意义：______
-  信息差：______
-  情绪拐点：______（情绪从 X 变 Y 的转折）
-  → 衔接：______
-  本场景焦点：核心冲突 / 人物情绪 / 信息差（三选一）
-  本场景权重：______
+[Reference examples for scenario writing, filled in after four steps of transformation from the scenario methodology]
 
 
-## 不可违反规则
+## Input
 
-### 优先级（从高到低）
-1. **约束红线** — 情节红线、角色禁区、边界禁止
-2. **字数** — 目标字数硬性约束（超限启用压缩策略）
-3. **T1词 / 认知动词 / 感官** — 修饰阈值、认知动词节制、感官分层
-4. **叙事规则**（高于同层·写作规范其他规则）
-5. **写作规范同级其他规则**
+### Scene raw materials
 
-### 红线约束
+Scene N｜______｜______Tone｜Weight: ______
+  Core event: ______
+  Emotional meaning: ______
+  Information gap: ______
+  Emotional turning point: ______ (the transition from X to Y)
+  → Connection: ______
+  Focus of this scene: core conflict/character emotions/information gap (choose one from three)
+  Weight of this scene: ______
 
-冲突阶梯：______
 
-情节红线（不可删减）：
+## Don't break the rules
+
+### Priority (high to low)
+1. **Restraint Red Line**, plot red line, character restricted area, boundary prohibition
+2. **Number of words**, Hard constraint on the target number of words (compression strategy is enabled if the limit is exceeded)
+3. **T1 words/cognitive verbs/sensory**, Modification threshold, cognitive verb moderation, sensory stratification
+4. **Narrative rules** (higher than other rules of the same level and writing standards)
+5. **Other rules for writing standards at the same level**
+
+### Red Line Constraint
+
+Conflict Ladder: ______
+
+Plot red line (cannot be deleted):
 1. ______
 2. ______
 
-边界禁止（不涉及）：
+Border prohibitions (not covered):
 1. ______
 2. ______
 
-角色禁区：
-______ 不会 ______
-______ 不会 ______
+Character restricted areas:
+______ No ______
+______ No ______
 
-### 网文风格基线（任何章节适用）
-1. 全程线性叙事
-2. 拒绝完美叙事——允许留白和思绪跳跃
-3. 禁止刻意堆砌技法
-4. 禁止诗词腔
-（认知动词节制、因果自然、叙事有温度由「具体叙事规则」段注入，本基线不重复）
+### Web writing style baseline (applicable to any chapter)
+1. Full linear narrative
+2. Reject perfect narrative - allow for blank spaces and jumping thoughts
+3. Deliberate accumulation of techniques is prohibited
+4. Prohibition of poetry
+(Cognitive verb restraint, natural cause and effect, and narrative warmth are injected from the "Specific Narrative Rules" paragraph, and this baseline will not be repeated)
 
-### 风格建议（可偏离）（仅未蒸馏态注入；已蒸馏态本节删除——风格以案例 2 渲染节为准，严格匹配偏差≤20%，不设可偏离条款）
-- **视角**：按 `settings/writing-style.md` 定义（未蒸馏=正文「叙事身份」字段；已蒸馏=渲染【视角】节，设定阶段定义、全书一致）。本章 POV 角色按章纲 `outline.pov`。**禁止在提示词中重新定义视角类型**（如模板写死第三人称）。
-- **描写**：用动作感知推动叙事，感官服务于氛围。
-- **节奏**：段落自然起伏，句式长短交替。以上若服务情绪或剧情可适度偏离。
+### Style suggestions (can be deviated) (only the undistilled state is injected; the distilled state is deleted in this section - the style is subject to the rendering section of Case 2, the strict matching deviation is ≤20%, and there is no deviating clause)
+- **Perspective**: Defined according to `settings/writing-style.md` (undistilled = text "Narrative Identity" field; distilled = rendering [Perspective] section, setting stage definition, consistent throughout the book). This chapter's POV characters are by chapter outline `outline.pov`. **It is forbidden to redefine the perspective type in the prompt word** (such as third person written in the template).
+- **Description**: Use motion perception to promote the narrative, and the senses serve the atmosphere.
+- **Rhythm**: Paragraphs rise and fall naturally, and sentences alternate between long and short sentences. The above can be appropriately deviated if the mood or plot is served.
 
-### 场景写作指引（从场景方法论四步转化后注入）
-本章涉及 {N} 种场景类型（{类型列表}。可选值：dialogue / fight / environment / inner-mono / transition / group-scene），每类型注入 1-2 条具体指引。
+### Guidelines for scenario writing (injected after transformation from the four steps of scenario methodology)
+This chapter involves {N} scene types ({type list}. Optional values: dialogue / fight / environment / inner-mono / transition / group-scene), each type injects 1-2 specific guidelines.
 
-### 质感要求
+### Texture requirements
 
-无用细节（不服务主线的细碎生活化细节）：
+Useless details (trivial life-oriented details that do not serve the main line):
   1. ______
   2. ______
 
-对话节奏：允许半截话、语气词、无意义停顿、重复口头禅，贴合人设习惯
+Dialogue rhythm: allow half-sentences, modal particles, meaningless pauses, and repeated mantras to fit the character's habits
 
-段落精度分层（按权重分配笔墨）：
-  - 高权重场景：细节饱满，至少3处动作/感知层级细节用于核心冲突/情绪/信息差展开
-  - 中权重场景：正常叙事节奏，角色互动推动剧情
-  - 低权重场景：可选转场模板参考——注：以下为参考结构，可根据上下文微调。1句环境切换 + 1句人物动作 + 1句情绪/氛围留白，字数控制在100字以内
+Paragraph precision stratification (distribution of pen and ink according to weight):
+  - High-weight scenes: full of details, at least 3 action/perception level details used to develop core conflicts/emotions/information gaps
+  - Medium weight scene: normal narrative rhythm, character interaction drives the plot
+  - Low-weight scenes: Optional transition template reference - Note: The following is a reference structure and can be fine-tuned according to the context. 1 sentence for environment switching + 1 sentence for character action + 1 sentence for emotion/atmosphere blank, the number of words should be controlled within 100 words
 
-额外约束（本章特有）：
+Additional constraints (specific to this chapter):
   1. ______
 
-### 附录：示范段落（非约束参考）
+### Appendix: Demonstration Paragraph (Non-Binding Reference)
 
-**声明：** 以下示范仅为风格参考，writer 可选择是否遵循，不得替代上方任何指令。每个案例末尾标注演示的方法论名称。
+**Disclaimer:** The following examples are for style reference only. The writer can choose whether to follow them or not and should not replace any instructions above. The name of the demonstrated methodology is noted at the end of each case.
   2. ______
 ```
 
-**第一章特殊规则（自动检测 vol-x-ch-1 时启用）：**
-1. 前情上下文固定填写"无前置章节，开篇直接切入角色当下行动"，禁用大段世界背景介绍
-2. 场景原材料第一个场景强制标记高权重，优先刻画主角外貌、下意识微习惯、当下困境
-3. 写作规范追加："前三段以人物动作作为开篇第一句，不堆砌多层环境描写"
+**Chapter 1 Special Rules (enabled when automatically detecting vol-x-ch-1):**
+1. The pre-situation context is fixedly filled in with "no pre-chapter, the opening
+   chapter directly cuts into the character's current actions", and large sections of
+   world background introduction are disabled.
+2. The first scene of the scene raw material must be marked with a high weight, and
+   priority should be given to describing the protagonist's appearance, subconscious
+   habits, and current predicament.
+3. The writing specification is added: "The first three paragraphs start with the
+   character's actions as the first sentence, and do not pile up multiple layers of
+   description of the environment."
 
 
-## 二、核心填充方法
+## 2. Core filling method
 
-每个元素有独立的填充方法，定义输入源、填充原则、产出要求。
+Each element has an independent filling method that defines the input source, filling
+principle, and output requirements.
 
-**全局原则：** 全部字段填完后全局通读一次，掩住字段名看每条读起来是叙事画面（✅）还是写作指令（❌）。
+**Global Principle:** After filling in all the fields, read through them once. Mask the
+field names to see if each item reads as a narrative screen (✅) or a writing instruction
+(❌).
 
 
-### 角色
+### Role
 
-| 字段 | 输入源 | 填充原则 |
+| Fields | Input Sources | Filling Principles |
 |------|--------|---------|
-| 作者小说题材 | genre-setting.md | 照抄，每章不变 |
+| Theme of the author's novel | genre-setting.md | Copied, each chapter unchanged |
 
 
-### 任务指示
+### Task instructions
 
-| 字段 | 输入源 | 填充原则 |
+| Fields | Input Sources | Filling Principles |
 |------|--------|---------|
-| 章号 | 卷号+章号 | 第 {M} 章 |
-| 在全卷中的角色 | 章纲 memo | 铺垫/推进/高潮/收束 |
-| 目标字数 | 章纲 memo | 直接取，附加弹性说明（建议值 ±10% 可接受，叙事完整性优先）。若章纲缺字数（异常），按默认 2500 兜底（见 .claude/knowledge/chapter-setting-style.md 字数倒推法），并在完成报告标注 |
-| 本章驱动力 | 卷纲 主导驱动力 + 章纲信息差关系 | 与卷纲一致 |
-| 信息释放节奏 | 章纲信息差关系 + 驱动力类型 | 悬疑→每章末留钩子；威胁→安全期缩短；目标→阶段性推进 |
-| 核心悬念 | 章纲 memo | 是问题形式，不是情节概述 |
-| 悬念状态 | 章纲 memo | 三选一：解决了/加深了/转移了 |
-| 读者离场感受 | 章纲 情绪曲线落点 | 一个情绪词或画面描述 |
-| 爽点类型 | 章纲 memo | 打脸/成长/暧昧/反转/解谜/绝境翻盘 |
-| 铺垫位置/释放位置 | 章纲 memo | 场景编号，与输入·场景原材料一致 |
+| Chapter number | Volume number + Chapter number | Chapter {M} |
+| Role in the whole volume | Chapter outline memo | Foreshadowing/advancement/climax/conclusion |
+| Target word count | Chapter outline memo | Take it directly and add flexible explanations (recommended value ±10% is acceptable, narrative integrity is priority). If the number of words in the chapter outline is missing (abnormal), use the default 2500 (see.claude/knowledge/chapter-setting-style.md for the word count backward method), and mark it in the completed report |
+| Driving force of this chapter | Outline Dominant driving force + information gap relationship of chapter outline | Consistent with the outline |
+| Information release rhythm | Chapter outline information gap relationship + driving force type | Suspense → leave a hook at the end of each chapter; threat → shorten the safety period; goal → phased advancement |
+| Core suspense | Chapter synopsis memo | It is in the form of a question, not a plot summary |
+| Suspense state | Chapter outline memo | Choose one of three: resolved/deepened/transferred |
+| Reader’s feelings when leaving the scene | Chapter outline Point of emotional curve | An emotional word or picture description |
+| satisfying payoff type | chapter outline memo | face-slapping/growth/ambiguity/reversal/puzzle/desperate comeback |
+| Padding position/release position | Chapter outline memo | Scene number, consistent with the input scene raw material |
 
-**写作方法论：** 四步执行流程直接照抄模板，不做调整。
+**Writing Methodology:** The four-step execution process directly copies the template
+without making adjustments.
 
 
-### 背景信息
+### Background information
 
-#### 前情上下文
+#### Previous Context
 
-| 字段 | 输入源 | 填充原则 |
+| Fields | Input Sources | Filling Principles |
 |------|--------|---------|
-| 上章结尾画面 | 上一章章纲 `chapters/vol-{N}-ch-{M-1}.md` 的 emotional_design（情绪钩子 emotional_hook + 章末落点，取 mood_progression 末段）+ required_changes 提取 | 感官细节（看到/听到/感受到什么），30-50 字 |
-| 上章读者情绪残留 | 上章情绪曲线落点 | 一个情绪词（不是分析） |
-| 上章留下的缺口 | 章纲 memo | 读者期待但还没发生的事，1 句 |
+| The ending screen of the previous chapter | The emotional_design of the previous chapter outline `chapters/vol-{N}-ch-{M-1}.md` (emotional hook emotional_hook + end point of the chapter, take the last paragraph of mood_progression) + required_changes extraction | Sensory details (what you see/hear/feel), 30-50 words |
+| The residual emotion of the reader from the previous chapter | The point of the emotional curve of the previous chapter | An emotional word (not analysis) |
+| The gap left by the previous chapter | Chapter outline memo | Something the reader is looking forward to but has not yet happened, 1 sentence |
 
-上章为 ch-1 时：固定填写"无前置章节，开篇直接切入角色当下行动"，禁用大段世界背景介绍
+When the previous chapter is ch-1: Fixed filling in "No pre-chapter, the beginning of
+the chapter directly cuts into the character's current actions", and large sections of
+world background introduction are disabled.
 
-#### 角色初始状态
+#### Character initial state
 
-| 字段 | 输入源 | 填充原则 |
+| Fields | Input Sources | Filling Principles |
 |------|--------|---------|
-| 起点 | 角色设定 + 上章归档 | 具体状态（含微动作），不只是情绪词 |
-| → 经历 | 章纲 人物状态 | 1-2 个关键转折点 |
-| 终点 | 章纲 人物状态 | 可感知的状态变化 |
-| 微习惯/小动作 | 章纲 memo + 角色设定 | 本章特有的，与情节相关的 |
+| Qidian | Character setting + previous chapter archive | Specific status (including micro-actions), not just emotional words |
+| → Experience | Chapter Outline Character Status | 1-2 Key Turning Points |
+| End point | Chapter outline Character status | Perceptible status changes |
+| Mini habits/small actions | Chapter outline memo + character setting | Something unique to this chapter and related to the plot |
 
-关键配角（如出场）额外填印象和必须完成的一件事。
-
-
-### 案例
-
-从场景方法论经四步转化后填入本章场景的写作参考示例。每个场景类型（可选值：dialogue / fight / environment / inner-mono / transition / group-scene）选 1-2 条方法论，经四步转化后作为案例注入。
-
-**填充来源：** scene-craft 方法论 → 四步转化（锚定角色→锚定信息差→锚定情绪节奏→融合输出）
-
-**原则：** 每条案例是"具体角色在具体场景下怎么写"的示范，不是通用方法论复制。
-
-**案例标注要求：** 每个案例末尾用括号标注其演示的方法论名称，如（演示：感官分层取舍·触觉+听觉）。标注帮助 writer 理解案例与写作方法论的对应关系。同一条方法论有多个案例时，只标注第一个。
+A key supporting role (such as an appearance) fills in an additional impression and one
+thing that must be completed.
 
 
-### 输入
+### Case
 
-#### 场景原材料
+After four steps of transformation from the scenario methodology, fill in the writing
+reference examples of the scenarios in this chapter. Select 1-2 methodologies for each
+scene type (optional values: dialogue / fight / environment / inner-mono / transition /
+group-scene), and inject them as cases after four steps of transformation.
 
-场景是叙事基本单元。场景切分依据情绪线拐点：
+**Fill source:** scene-craft methodology → four-step transformation (anchor role →
+anchor information difference → anchor emotional rhythm → fusion output)
 
-**边界信号（满足任意一个即切分）：**
+**Principle:** Each case is a demonstration of "how to write a specific character in a
+specific scenario", not a copy of the general methodology.
 
-| 信号 | 判定 | 例 |
+**Case marking requirements:** At the end of each case, mark the methodological name of
+the demonstration in parentheses, such as (Demonstration: Sensory Layered Choice /
+Tactile + Hearing). Annotations help writers understand the correspondence between cases
+and writing methodology. When there are multiple cases for the same methodology, only
+the first one is marked.
+
+
+### Input
+
+#### Scene raw materials
+
+Scene is the basic unit of narrative. Scene segmentation is based on the inflection
+point of the emotional line:
+
+**Boundary signal (segmentation if any one is met):**
+
+| Signal | Decision | Example |
 |------|------|----|
-| 换地点 | 角色走到另一个地方 | 早餐铺 → 书店 |
-| 跳时间 | 有不可见的时间流逝 | 上午 → 黄昏 |
-| 情绪转折 | 基调变了 | 尴尬 → 自然 |
+| Change location | Character walks to another place | Breakfast shop → Bookstore |
+| Jump time | There is an invisible passage of time | Morning → Dusk |
+| Emotional transition | Tone changed | Awkward → Natural |
 
-**种子字段结构：**
+**Seed field structure:**
 
-| 字段 | 写什么 | 控制力 |
+| Fields | What to write | Control |
 |------|--------|--------|
-| 入口情绪 | 读者进入时的感受 | 一个词 |
-| 核心事件 | 摄像机拍到的外部事件链。用箭头串联（"A → B → C"）。禁止角色内心活动/认知动词/情绪结论 | 保剧情不跑偏 |
-| 核心事件的情绪意义 | 这个事件对读者意味着什么 | 不是分析，是感受 |
-| **信息差** | **{谁知道什么} ↦ {谁不知道什么}** | **注入本场景的信息不对称——紧张/期待来源** |
-| 情绪拐点 | 情绪从 X 变 Y 的瞬间 | 转折点 |
-| 出口情绪 | 离开时的感受 | 一个词 |
-| → 下一场景的衔接 | 情绪过渡方式 | 不生跳 |
-| 本场景权重 | 根据核心事件重要性标注 | 高=细化动作/心理占70%笔墨；中=正常叙事；低=快速转场 |
+| Entrance emotion | How the reader feels when entering | One word |
+| Core event | External event chain captured by camera. Use arrows to connect them in series ("A → B → C"). Prohibit character inner activities/cognitive verbs/emotional conclusions | Keep the plot from going astray |
+| The emotional significance of the core event | What this event means to the reader | Not analysis, but feeling |
+| **Information Gap** | **{Who knows what} ↦ {Who doesn’t know what}** | **Information asymmetry injected into this scenario - source of tension/expectation** |
+| Emotional turning point | The moment when the emotion changes from X to Y | Turning point |
+| Exporting emotions | How you feel when you leave | One word |
+| → Connection to the next scene | Emotional transition method | No jumping |
+| Weight of this scene | Marked based on the importance of core events | High = detailed action/psychology accounts for 70% of the text; medium = normal narrative; low = quick transition |
 
-**第一章特殊规则：** 第一个场景强制标记高权重，优先刻画主角外貌、下意识微习惯、当下困境
+**Chapter 1 Special Rules:** The first scene must be marked with high weight, giving
+priority to the protagonist's appearance, subconscious habits, and current dilemma.
 
 
-### 输出
+### Output
 
-#### 约束红线
+#### Constraint red line
 
-| 字段 | 输入源 | 填充原则 |
+| Fields | Input Sources | Filling Principles |
 |------|--------|---------|
-| **冲突阶梯** | **章纲 memo** | **第1-4层，与卷纲冲突阶梯一致。决定了压迫感强度** |
-| 情节红线（不可删减） | 章纲 memo | 2-4 个关键事件/台词/动作，subagent 的铁轨 |
-| 边界禁止（不涉及） | 章纲 memo | 写"不做什么"，不写"做什么" |
-| 角色禁区 | 章纲 memo + 作者补充 | 每个角色本章不会做的事 |
+| **Conflict ladder** | **Chapter outline memo** | **Levels 1-4, consistent with the outline conflict ladder. Determines the intensity of the pressure** |
+| Plot red line (cannot be deleted) | Chapter synopsis memo | 2-4 key events/lines/actions, subagent's rails |
+| Boundary prohibition (not involved) | Chapter outline memo | Write "what not to do" and not write "what to do" |
+| Character restricted area | Chapter outline memo + author's supplement | Things each character will not do in this chapter |
 
-**禁止配替代：**
+**No substitutions allowed:**
 
-| ❌ 禁止 | ✅ 替代 |
+| ❌ BANNED | ✅ ALTERNATIVE |
 |---------|--------|
-| 直述情绪结论 | 用动作/神态/环境外化 |
-| 章末升华总结 | 停在画面/动作上 |
-| 副词修饰对话 | 去掉副词，用动作暗示 |
+| State emotional conclusions directly | Externalize with actions/expression/environment |
+| Sublimation summary at the end of the chapter | Stop on the scene/action |
+| Adverbs modify dialogue | Remove adverbs and use actions to suggest |
 
-#### 写作规范
+#### Writing standards
 
-| 来源 | 文件 | 填入字段 |
+| Source | File | Fill in fields |
 |------|------|---------|
-| 基础约束 | genre-example/{genre}.md#prompt_segment | 视角/描写/节奏 |
-| 通用反AI | .claude/knowledge/anti-ai.md（合并文件） | 活人感正向要点（living-voice）+ T1 最毒句式简表 + 元叙事禁止；疲劳词阈值 / T2 / T3 不注入（清创归 anti-ai agent） |
-| 题材反AI | anti-ai/{genre}.md（如存在） | 题材正反例 |
+| Basic constraints | genre-example/{genre}.md#prompt_segment | Perspective/Description/Rhythm |
+| Universal anti-AI |.claude/knowledge/anti-ai.md (merged file) | Positive points of living voice (living-voice) + T1 summary of the most poisonous sentence patterns + meta-narrative prohibition; fatigue word threshold / T2 / T3 no injection (return to anti-ai agent) |
+| Theme anti-AI | anti-ai/{genre}.md (if it exists) | Theme positive and negative examples |
 
-**场景写作方法论注入：** 根据场景原材料识别的场景类型（可选值：dialogue / fight / environment / inner-mono / transition / group-scene），从 `.claude/knowledge/scene-craft/` 读取对应文件。**必须经过上下文过滤**——结合本章的角色状态、信息差、情绪走向改写方法论，不能生搬硬套。**每个场景类型只抽取 1-2 条，不要求全部覆盖。**
+**Scene writing methodology injection:** According to the scene type identified by the
+scene raw material (optional value: dialogue / fight / environment / inner-mono /
+transition / group-scene), read the corresponding file from
+`.claude/knowledge/scene-craft/`. **Must be contextually filtered** - Rewrite the
+methodology based on the character status, information gaps, and emotional trends of
+this chapter, and cannot apply it mechanically. **Only 1-2 items are extracted from each
+scene type, and it is not required to cover them all. **
 
-**第一章特殊处理：** 视角/描写追加"前三段以人物动作作为开篇第一句，不堆砌多层环境描写"；第一个场景强制高权重。
+**Special treatment for Chapter 1:** Perspective/description added "The first three
+paragraphs should start with the character's actions as the first sentence, and do not
+pile up multiple layers of environment description"; the first scene is forced to have a
+high weight.
 
-#### 质感要求
+#### Texture requirements
 
-| 字段 | 输入源 | 填充原则 |
+| Fields | Input Sources | Filling Principles |
 |------|--------|---------|
-| 无用细节 | 章纲 memo + 作者脑补 | 允许不服务主线的细碎生活化细节（若有，捏衣角、指尖蹭桌面、走神发呆），须属于当前场景与人物视角，不按配额插入 |
-| 对话节奏 | writing-style.md | 允许半截话、语气词、无意义停顿、重复口头禅，贴合人设习惯 |
-| 段落精度分层 | 场景权重映射 | 高权重场景至少3处动作/感知层级细节；低权重场景按转场模板（1句环境 + 1句动作 + 1句氛围，≤100字）；杜绝全文精致统一 |
+| Useless details | Chapter outline memo + author's brainstorming | Trivial life-like details that do not serve the main line are allowed (if any, pinching the corners of clothes, rubbing fingertips on the table, wandering in a daze), they must belong to the current scene and character's perspective, and are not inserted according to quotas |
+| Dialogue rhythm | writing-style.md | Allow half-sentences, modal particles, meaningless pauses, and repeated mantras to fit the character's habits |
+| Paragraph precision stratification | Scene weight mapping | High-weighted scenes must have at least 3 action/perception level details; low-weighted scenes must be based on the transition template (1 sentence of environment + 1 sentence of action + 1 sentence of atmosphere, ≤100 words); to prevent the full text from being refined and unified |
 
 
-## 输入源映射表
+## Input source mapping table
 
-| 元素 | 主要来源 | 辅助来源 |
+| Elements | Primary Sources | Secondary Sources |
 |-----|---------|---------|
-| 角色 | genre-setting | — |
-| 任务指示 | writing-style, 章纲 memo, 卷纲 主导驱动力 | — |
-| 背景信息·前情上下文 | 上一章章纲 emotional_design/required_changes（archives/ 禁读） | 卷纲前章摘要 |
-| 背景信息·角色初始状态 | 章纲 人物状态, 角色设定 | — |
-| 案例 | scene-craft 方法论（四步转化） | 角色设定, 信息差关系 |
-| 输入·场景原材料 | 章纲 场景卡（场景三要素+信息差关系） | — |
-| 输出·约束红线 | 章纲 memo, 作者补充, 章纲 冲突阶梯 | — |
-| 输出·写作规范 | genre-example.md, anti-ai.md, .claude/knowledge/scene-craft/ | 场景类型识别结果 |
-| 输出·质感要求 | 章纲 memo, 作者补充 | writing-style.md |
+| role | genre-setting |, |
+| Task instructions | writing-style, chapter outline memo, volume outline dominant driving force |, |
+| Background information / Previous chapter context | Previous chapter outline emotional_design/required_changes (archives/ forbidden to read) | Volume outline previous chapter summary |
+| Background information / Character initial state | Chapter outline Character state, character settings |, |
+| Case | scene-craft methodology (four-step transformation) | role setting, information gap relationship |
+| Input / Scene raw materials | Chapter outline Scenario card (three elements of the scene + information gap relationship) |, |
+| Output / Constraint Red Line | Chapter Outline Memo, Author's Supplement, Chapter Outline Conflict Ladder |, |
+| output and writing specs | genre-example.md, anti-ai.md,.claude/knowledge/scene-craft/ | scene type identification results |
+| Output / Texture requirements | Chapter outline memo, author's supplement | writing-style.md |
 
 
 
-## 三、检查（prompt-crafter 质量门禁）
+## 3. Inspection (prompt-crafter quality access control)
 
-> 注：以下检查流程是 prompt-crafter 的操作性检查，**不注入 prompt 文件**。
+> Note: The following check process is an operational check of prompt-crafter, **no
+> prompt file is injected**.
 
-### 快速嗅探
+### Quick Sniff
 
-读场景原材料场景 1 的**核心事件**——掩住字段名，读起来是"发生了什么"（✅）还是"去写什么"（❌）？前者合格，后者是写作指令，重填。
+Read the **core event** of scene raw material Scene 1 - mask the field name. Does it
+read "what happened" (✅) or "what to write" (❌)? The former is qualified, the latter is
+a writing instruction and needs to be refilled.
 
-### 完整性校验
+### Integrity Check
 
-通过以下各项 = prompt 合格：
+Pass = prompt Pass:
 
-| # | 元素 | 校验项 | 通过标准 |
+| # | Element | Check item | Passing criteria |
 |---|-----|-------|---------|
-| 1 | 角色 | 身份明确 | 题材填入，writer 读完知道"我是谁" |
-| 2 | 任务指示 | 参数完整 | 章号/字数/驱动力/节奏 4 字段均有值 |
-| 3 | 背景信息·前情上下文 | 画面感 | 上章结尾画面是感官细节（ch-1 标注无前文） |
-| 4 | 背景信息·角色初始状态 | 有变化 | 每角色有起点→经历→终点，可感知的变化 |
-| 5 | 案例 | 有参考示例 | 至少 1 条四步转化后的场景写法示例 |
-| 6 | 输入·场景原材料 | 权重+字段 | 每场景有权重标注，有入口情绪/核心事件/信息差/出口情绪 |
-| 7 | 输出·约束红线 | 硬性约束 | 有冲突阶梯层位 + 红线 + 禁区 |
-| 8 | 输出·写作规范 | 反AI+技法 | 含反 AI 规则 + 每类型 1-2 条技法指引 |
-| 9 | 输出·质感要求 | 不完美约束 | 含半截话/生活化细节/段落精度分层 |
+| 1 | Role | Clear identity | Fill in the subject matter, and the writer will know "who I am" after reading |
+| 2 | Task instructions | Complete parameters | Chapter number/number of words/driving force/rhythm 4 fields all have values |
+| 3 | Background information / previous context | Picture sense | The picture at the end of the previous chapter is sensory details (ch-1 marked without previous text) |
+| 4 | Background information / Character initial state | There are changes | Each character has Qidian → Experience → End point, perceptible changes |
+| 5 | Cases | Reference examples | At least 1 example of scenario writing after four-step conversion |
+| 6 | Input / Scene raw materials | Weight + field | Each scene has a weight annotation, including entry emotion/core event/information difference/exit emotion |
+| 7 | Output / Constrain red line | Hard constraint | Conflicting ladder layer + red line + restricted area |
+| 8 | output and writing specs | Anti-AI + techniques | Contains anti-AI rules + 1-2 technique guidelines for each type |
+| 9 | Output / Texture Requirements | Imperfect Constraints | Containing half-sentences/life-oriented details/paragraph accuracy layering |
 
-**判定：** 9 项全部 ✅ → 合格。1-2 项 ❌ → 针对性修改。3 项及以上 ❌ → 整份重填。
+**Judgment:** All 9 items ✅ → Passed. Item 1-2 ❌ → Targeted modifications. 3 items or
+more ❌ → Refill in entirety.
 
-### 冲突检测
+### Conflict Detection
 
-填完后通读，检查各元素引用一致性：
+After filling in, read through and check the reference consistency of each element:
 
-| 检查项 | 一致则 ✅ |
+| Check items | Consistency ✅ |
 |--------|---------|
-| 背景信息·前情上下文的情绪残留 = 背景信息·角色初始状态第一角色的起点 | — |
-| 角色状态转折落点 = 输入·场景原材料某场景的情绪拐点 | — |
-| 任务指示·叙事目标悬念状态 = 输入·场景原材料最后一场景的出口情绪 | — |
-| 爽点释放位置在输入·场景原材料中存在 | — |
+| Background information / Emotional residue of the previous context = Background information / Character initial state Qidian of the first character |, |
+| Character state turning point = Input / Scene raw material Emotional turning point of a certain scene |, |
+| Task instructions / narrative goal suspense state = input / scene raw materials exit emotion of the last scene |, |
+| The satisfying payoff release position exists in the input scene raw material |, |
 
-### 逐节检查
+### Check section by section
 
-| 元素 | 合格标准 | 不合格信号 |
+| Element | Qualification Criteria | Failure Signal |
 |-----|---------|-----------|
-| 角色 | 一读就知道作家身份和调性 | 模板级空话 |
-| 任务指示 | 参数清晰，知道要写什么章、多少字 | 缺字数或驱动力 |
-| 背景信息·前情上下文 | 像正常回忆，有画面感（ch-1 标注无前文） | 写成了剧情梗概 |
-| 背景信息·角色初始状态 | 写的是"这章TA经历了什么变化" | 复制了角色百科，或只有状态没有变化 |
-| 案例 | 有具体的场景写法参考示例，非通用方法论 | 空着或复制通用方法论 |
-| 输入·场景原材料 | 每场景有权重标注，种子是叙事画面 | 种子是"这场景写…"写作指令 |
-| 输出·约束红线 | 红线+禁区齐全 | 约束空泛（"禁止跑偏"） |
-| 输出·写作规范 | 含反AI + 稀疏技法 | 无反AI规则或技法全覆盖 |
-| 输出·质感要求 | 含"不完美"约束（半截话/生活化/精度分层） | 空着或只写"无" |
+| Character | You can know the author's identity and tone from the first reading | Template-level empty words |
+| Task instructions | Clear parameters, know what chapter to write and how many words | Missing number of words or driving force |
+| Background information / Previous context | Like normal memories, with a sense of picture (ch-1 marked without previous text) | Written as a plot summary |
+| Background information / Character initial state | It says "What changes has TA experienced in this chapter?" | The character encyclopedia has been copied, or only the state has not changed |
+| Case | There are specific reference examples of scenario writing, non-universal methodology | Leave blank or copy the general methodology |
+| Input / Scene raw materials | Each scene has a weight annotation, and the seed is the narrative picture | The seed is the "write this scene..." writing instruction |
+| Output / Constraint red line | Red line + restricted area complete | Constraint is empty ("no deviation") |
+| output and writing specs | Contains anti-AI + sparse techniques | Full coverage without anti-AI rules or techniques |
+| Output / Texture requirements | Contains "imperfect" constraints (half-cut/life-oriented/accuracy layered) | Leave empty or just write "none" |
 
-全部通过 → 进入正文生成。任一不合格 → 先修再写。
+All passed → Enter text generation. If any of them fails → take the exam first and then
+write.

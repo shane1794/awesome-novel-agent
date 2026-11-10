@@ -1,40 +1,40 @@
-# v4.18.0 版本说明
+# v4.18.0 Release Notes
 
-> **关键词：** 活人感移植 —— 正向方法论 + 去表演化 + 生成清创分离 + 确定性检测
-
----
-
-## 一句话
-
-把 human-writing skill 解决「活人感」的成套思路移植进反 AI 管线：**先讲写成什么样（正向方法），拆掉制造公式化活人感的配额规定，生成期不再塞负面清单，并配一个可脚本检测的检查器**——四个改动分别落地（#112-#115，跟踪 issue #111），让"像人写的"从概率碰运气变成有方法、有验收、有工具。
+> **Keywords:** Transplanting the human feel: positive methodology + de-performancing + separating generation from cleanup + deterministic detection
 
 ---
 
-## 这版做了什么
+## In One Sentence
 
-| 改动 | 说明 |
+This release ports the human-writing skill's complete approach to "human feel" into the anti-AI pipeline: **first describe what the writing should look like (positive method), remove the quota rules that manufacture formulaic human feel, stop stuffing negative lists into the generation stage, and add a script-checkable checker**. The four changes land separately (#112-#115, tracking issue #111), turning "reads like a human wrote it" from a matter of luck into something with a method, acceptance criteria, and a tool.
+
+---
+
+## What Changed in This Release
+
+| Change | Description |
 |------|------|
-| **确定性检测工具**（#112） | 新增 `tools/check-prose.py`（移植自 human-writing，MIT，已署名）：翻案句硬禁（含"不是A而是B"七类换皮变形的疑似警告）、句长变异系数、短段连击、段落开场重复、八百字内比喻场聚集、连词密度、同构排比、名词化、洞察路标等——跑一下出报告，退出码 0/1/2；配 10 个单测挂 CI（`test_check_prose.py`）。独立工具，非流水线环节 |
-| **活人感正向方法论**（#113） | 新增 `knowledge/anti-ai/living-voice.md` 并入 anti-ai 合并链**置顶**：活人感三层次（人物有眼下要办的事 > 细节跟着人物视角走 > 句式节奏）、对白在做事、设定等人物碰到再讲、场景与概述交替、闲笔/错位必须有来路；common-rules T1 节新增**变形外衣识别表**（字面翻案/省字/跨句/换字/以为体/让转体/抬价体七类）——禁的是修辞动作不是字面 |
-| **去表演化**（#114） | 把 7 处「至少 1 处闲笔」「情绪错位 ≥1 处」式配额验收全部改为「允许有（若有），须出自人物性格/场景压力/当前场景与人物视角，公式化凑数视为不通过」；Pass 3 的「加闲笔/加错位」改为「视情况补」——仅诊断出通篇均匀/全程最合理时才动笔。配额会逼模型每章定点表演，恰是活人感反义词 |
-| **生成与清创分离**（#115） | writer 提示词不再注入疲劳词阈值、T2/T3 分级、二级禁用词，只给活人感正向要点 + T1 最毒句式简表 + 元叙事禁止 + 题材反AI正反例（新增验收行「反AI注入范围」可检查）；负面清单清创归 anti-ai agent 完稿后执行，Phase 3 新增前置「先救人再清句子」——优先处理"换一个模型也能原样写出"的段落，已活着的地方只清硬违规不重写 |
-| **工程修缮** | `test_util.load_module` 先注册 sys.modules 再 exec（修 Python 3.9 下 importlib 加载 @dataclass 模块崩溃）；AGENTS.md 工具清单补列新文件 |
+| **Deterministic detection tool** (#112) | Added `tools/check-prose.py` (ported from human-writing, MIT, credited): hard bans on reversal sentences (including seven disguised variants of "not A but B" flagged as suspected), sentence-length coefficient of variation, short-paragraph bursts, repeated paragraph openings, metaphor clustering within 800 words, conjunction density, isomorphic parallelism, nominalization, insight signposts, and more. One run produces a report with exit codes 0/1/2; 10 unit tests run in CI (`test_check_prose.py`). Standalone tool, not a pipeline stage |
+| **Positive methodology for human feel** (#113) | Added `knowledge/anti-ai/living-voice.md` and put it **first** in the anti-ai merge chain: three layers of human feel (characters have something to do right now > details follow the character's point of view > sentence rhythm), dialogue while doing things, settings explained only when characters run into them, scenes alternating with summaries, and idle brushstrokes and misalignments that must have a source. common-rules gains a **disguise-recognition table** in section T1 (seven types: literal reversal, word-saving, cross-sentence, word-swapping, "thought" style, "let/turn" style, "price-raising" style). What is banned is the rhetorical move, not the literal words |
+| **De-performancing** (#114) | All 7 quota-style acceptance rules such as "at least 1 idle brushstroke" and "emotional misalignment >= 1" are changed to "allowed if present; must come from the character's personality, scene pressure, or the current scene and character point of view; formulaic padding counts as a failure". Pass 3's "add idle brushstrokes/add misalignments" becomes "add only if the situation calls for it", only when diagnosis finds the whole text uniform or reasonable throughout. Quotas force the model to perform on cue in every chapter, which is the opposite of human feel |
+| **Separating generation from cleanup** (#115) | Writer prompts no longer inject fatigue-word thresholds, T2/T3 tiers, or second-tier banned words; they only get the positive human-feel points, a short table of the most toxic T1 sentence patterns, the meta-narration ban, and positive and negative genre anti-AI examples (with a new acceptance line, "anti-AI injection scope", to check). The negative lists are cleaned up by the anti-ai agent after the draft is done. Phase 3 adds a front-loaded "save the person before cleaning the sentences" step: prioritize passages that "any other model could have written verbatim"; passages that already feel alive only get hard violations cleaned, not rewritten |
+| **Engineering fixes** | `test_util.load_module` registers sys.modules before exec (fixing an importlib crash loading @dataclass modules on Python 3.9); the AGENTS.md tool list adds the new files |
 
 ---
 
-## 兼容性
+## Compatibility
 
-- 纯指令文本 + 工具脚本改动，无 schema/流程结构变更；新项目初始化直接生效。
-- 已初始化项目跑 `python tools/sync-project.py <项目路径>` 同步后生效（skill_version 将更新为 4.18.0）；已初始化项目的 anti-ai.md 合并文件会补入 living-voice 节。
-- `check-prose.py` 为可选工具（仅标准库），作者与 agent 均可手动运行，未接入流水线门禁。
-- 移植内容按 GPLv3 兼容方式引入并保留 MIT 署名（living-voice.md 头部 + check-prose.py docstring）。
+- Pure prompt-text and tool-script changes, with no schema or workflow-structure changes; new projects take effect on initialization.
+- Existing initialized projects take effect after running `python tools/sync-project.py <project path>` to sync (skill_version will update to 4.18.0); existing projects' merged anti-ai.md file gains the living-voice section.
+- `check-prose.py` is an optional tool (standard library only) that the author and agents can run manually; it is not wired into a pipeline gate.
+- Ported content is brought in under GPLv3-compatible terms with MIT attribution kept (living-voice.md header + check-prose.py docstring).
 
 ---
 
-## 验证方法
+## How It Was Verified
 
-- `check-agents.py` / `check-conflicts.py` / `check-version.py` / `check-python.py` / `check-yaml.py` 全绿
-- `test_platforms.py` 198 通过 0 失败；`test_check_prose.py` 10 用例通过（含"陈放借条"干净文本零误报）
-- init E2E 实跑确认部署产物 `.claude/knowledge/anti-ai.md` 合并顺序：活人感正向方法 → 通用分级禁用表 → 方法论 → 误杀防护 → 题材
-- review-agent 评审闭环：唯一 P3（AGENTS.md 清单漏列）合并前修复（ae41c04）；合并模拟（merge-tree）main × 各分支两两干净
-- 待作者侧：任一 AI 终端生成一章实测（验证提示词不含阈值表、闲笔/错位有来路）
+- `check-agents.py` / `check-conflicts.py` / `check-version.py` / `check-python.py` / `check-yaml.py` all green
+- `test_platforms.py` 198 passed, 0 failed; `test_check_prose.py` 10 cases passed (including zero false positives on the clean "Chen Fang's IOU" text)
+- Init E2E run confirms the deployed `.claude/knowledge/anti-ai.md` merge order: positive human-feel method, then the general tiered ban table, methodology, false-positive protection, then genre
+- review-agent review closed: the only P3 (AGENTS.md list omission) fixed before merging (ae41c04); merge-tree simulation of main against each branch is clean pairwise
+- Still for the author: run one chapter on any AI terminal to verify in practice (confirm the prompt contains no threshold table, and idle brushstrokes and misalignments have a source)

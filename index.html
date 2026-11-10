@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Awesome Novel — 人铸灵魂，AI行笔墨</title>
+  <title>Awesome Novel: Humans Cast the Soul, AI Wields the Brush</title>
   <style>
-    /* ===== 设计令牌 ===== */
+    /* ===== Design tokens ===== */
     :root {
       --bg-page: #0a0a0a;
       --bg-surface-1: rgba(255,255,255,.06);
@@ -30,7 +30,7 @@
     a:hover { text-decoration:underline; }
     section[id] { scroll-margin-top:80px; }
 
-    /* ===== 导航 ===== */
+    /* ===== Navigation ===== */
     .nav { position:fixed; inset:0 0 auto 0; z-index:100; background:rgba(10,10,10,.7);
       backdrop-filter:blur(24px); -webkit-backdrop-filter:blur(24px);
       border-bottom:1px solid var(--border-default); }
@@ -40,7 +40,7 @@
     .nav-links a { color:var(--text-description); }
     .nav-links a:hover { color:var(--text-primary); }
 
-    /* ===== 按钮 ===== */
+    /* ===== Buttons ===== */
     .btn { position:relative; display:inline-flex; align-items:center; justify-content:center; gap:6px;
       padding:10px 22px; border-radius:var(--radius-pill); font-size:15px; font-weight:500;
       border:1px solid transparent; cursor:pointer; text-decoration:none;
@@ -87,7 +87,7 @@
     .tag-brand { color:var(--brand); border-color:rgba(77,107,254,.4); }
     .panel-meta { margin-top:auto; display:flex; flex-direction:column; gap:6px; font-size:13px; color:var(--text-description); }
     .panel-meta .warn { color:var(--brand); }
-    /* 亮点卡轮播 */
+    /* Highlight card carousel */
     .spotlight-viewport { position:relative; flex:1; }
     .spotlight-card { position:absolute; inset:0; display:flex; flex-direction:column;
       opacity:0; transform:translateY(12px); visibility:hidden;
@@ -105,7 +105,7 @@
       background:transparent; cursor:pointer; padding:0; transition:background .3s ease; }
     .dot.active { background:var(--brand); border-color:var(--brand); }
 
-    /* 入场动画 */
+    /* Entrance animation */
     @keyframes enter { from { opacity:0; transform:translateY(24px); filter:blur(10px); }
       to { opacity:1; transform:none; filter:none; } }
     .hero-enter { animation:enter .9s ease both; }
@@ -115,19 +115,19 @@
     .hero-left > .hero-enter:nth-child(5) { animation-delay:.5s; }
     .hero-panel { animation:enter .9s ease both .25s; }
 
-    /* ===== 概念条 ===== */
+    /* ===== Concept strip ===== */
     .concept { padding:88px 0; text-align:center; }
     .concept-formula { font-size:clamp(1.4rem,3vw,2rem); font-weight:700; letter-spacing:.2px; }
     .concept-formula b { color:var(--brand); }
     .concept-sub { margin-top:10px; color:var(--text-description); font-size:15px; }
     .concept-desc { margin-top:18px; max-width:640px; margin-inline:auto; color:var(--text-description); font-size:15px; }
 
-    /* ===== 区块通用 ===== */
+    /* ===== Shared section styles ===== */
     .section { padding:88px 0; }
     .section-title { font-size:clamp(1.6rem,3vw,2.2rem); text-align:center; }
     .section-sub { text-align:center; color:var(--text-description); margin-top:10px; }
 
-    /* ===== 三大痛点支柱 ===== */
+    /* ===== Three pain-point pillars ===== */
     .pillars { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:48px; }
     .pillar { position:relative; background:var(--bg-surface-1); border:1px solid var(--border-default);
       border-radius:var(--radius-card); padding:28px; }
@@ -142,10 +142,10 @@
     .pillar-card h4 { font-size:14px; }
     .pillar-card p { font-size:13px; color:var(--text-description); margin-top:2px; }
 
-    /* ===== 平台支持行 ===== */
+    /* ===== Platform support row ===== */
     .platforms { text-align:center; margin-top:56px; }
     .platform-badges { display:flex; flex-wrap:wrap; justify-content:center; gap:10px; margin-top:16px; }
-    /* 流水线流程图：节点卡 + 箭头 */
+    /* Pipeline flowchart: node cards + arrows */
     .pipeline { display:flex; align-items:stretch; justify-content:center; flex-wrap:wrap; margin-top:28px; }
     .pipeline-node { flex:1; min-width:120px; max-width:170px; background:var(--bg-surface-1);
       border:1px solid var(--border-default); border-radius:var(--radius-card);
@@ -158,7 +158,7 @@
     .pipeline-desc { font-size:12px; color:var(--text-description); margin-top:4px; }
     .pipeline-arrow { display:flex; align-items:center; color:var(--brand); font-size:18px; padding:0 6px; }
 
-    /* ===== 开始创作三步 ===== */
+    /* ===== Three start-creating steps ===== */
     .steps { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:48px; }
     .step { background:var(--bg-surface-1); border:1px solid var(--border-default); border-radius:var(--radius-card); padding:24px; }
     .step-num { font-size:14px; color:var(--brand); font-weight:600; }
@@ -172,7 +172,7 @@
     .faq summary { cursor:pointer; font-weight:500; font-size:15px; }
     .faq details p { margin-top:8px; color:var(--text-description); font-size:14px; }
 
-    /* ===== 生态 CTA / 页脚 ===== */
+    /* ===== Community CTA / footer ===== */
     .cta-box { text-align:center; background:var(--bg-surface-1); border:1px solid var(--border-default);
       border-radius:var(--radius-card); padding:56px 32px; }
     .cta-box p { color:var(--text-description); max-width:560px; margin:14px auto 0; }
@@ -180,11 +180,11 @@
     footer { text-align:center; padding:40px 0 48px; color:var(--text-description); font-size:13px;
       border-top:1px solid var(--border-default); margin-top:88px; }
 
-    /* ===== 滚动入场 ===== */
+    /* ===== Scroll entrance ===== */
     .reveal { opacity:0; transform:translateY(20px); transition:opacity .6s ease, transform .6s ease; }
     .reveal.in { opacity:1; transform:none; }
 
-    /* ===== 响应式 ===== */
+    /* ===== Responsive ===== */
     @media (max-width:900px) {
       .hero-inner { grid-template-columns:1fr; gap:40px; padding:110px 0 64px; }
       .hero-panel { display:none; }
@@ -200,17 +200,17 @@
   </style>
 </head>
 <body>
-  <!-- 导航 -->
+  <!-- Navigation -->
   <nav class="nav"><div class="container nav-inner">
     <a class="nav-brand" href="#">Awesome Novel</a>
     <div class="nav-links">
-      <a href="https://github.com/modoojunko/awesome-novel-agent/blob/main/README.md">文档</a>
+      <a href="https://github.com/modoojunko/awesome-novel-agent/blob/main/README.md">Docs</a>
       <a href="https://github.com/modoojunko/awesome-novel-agent">GitHub</a>
-      <a href="#start">快速开始</a>
+      <a href="#start">Quick Start</a>
     </div>
   </div></nav>
 
-  <!-- Hero：左文案右示例面板 -->
+  <!-- Hero: copy on the left, example panel on the right -->
   <header class="hero">
     <div class="hero-grid"></div>
     <div class="hero-glow"></div>
@@ -219,141 +219,141 @@
         <div class="hero-enter">
           <div class="hero-brand-line">
             <span class="hero-brand">Awesome Novel</span>
-            <span class="hero-badge">开源 · 支持 6 平台</span>
+            <span class="hero-badge">Open source · 6 platforms supported</span>
           </div>
         </div>
-        <div class="hero-enter"><h1>人铸灵魂，AI行笔墨</h1></div>
+        <div class="hero-enter"><h1>Humans Cast the Soul, AI Wields the Brush</h1></div>
         <div class="hero-enter">
-          <p class="hero-sub1">AI 是笔，你才是作者。构想由你铸就，文字交给智能体，成稿由你拍板。</p>
-          <p class="hero-sub2">Awesome Novel 是开源的 AI 小说创作工作流——9 个写作智能体从世界观到正文自动推进，适配 Claude Code / OpenCode / Reasonix / Codex / ZCode / DSH。</p>
+          <p class="hero-sub1">AI is the brush; you are the author. The vision is yours to cast, the words belong to the agents, and the final draft is yours to approve.</p>
+          <p class="hero-sub2">Awesome Novel is an open-source AI novel-writing workflow: 9 writing agents advance automatically from worldview to body text, supporting Claude Code / OpenCode / Reasonix / Codex / ZCode / DSH.</p>
         </div>
         <div class="hero-enter hero-cta">
-          <a class="btn btn-primary" href="#start">开始写作</a>
-          <a class="btn btn-secondary" href="https://github.com/modoojunko/awesome-novel-agent/blob/main/README.md">查看文档</a>
+          <a class="btn btn-primary" href="#start">Start Writing</a>
+          <a class="btn btn-secondary" href="https://github.com/modoojunko/awesome-novel-agent/blob/main/README.md">View Docs</a>
         </div>
         <div class="hero-enter hero-code">
-          <div class="code-block">$ ./install.sh &lt;你的平台&gt;</div>
-          <p class="code-note">不想输命令？对 AI 说"帮我安装 awesome-novel-agent"即可，1 分钟装好。</p>
+          <div class="code-block">$ ./install.sh &lt;your platform&gt;</div>
+          <p class="code-note">Do not want to type commands? Just tell your AI "help me install awesome-novel-agent" and it is done in 1 minute.</p>
         </div>
       </div>
       <div class="hero-panel" id="spotlight">
         <div class="spotlight-viewport">
           <div class="spotlight-card active">
             <div class="panel-head">
-              <span class="tag tag-brand">亮点 01</span>
-              <span class="tag">文风蒸馏</span>
+              <span class="tag tag-brand">Highlight 01</span>
+              <span class="tag">Style Distillation</span>
             </div>
-            <h4 class="spotlight-title">越写越像你</h4>
+            <h4 class="spotlight-title">The More You Write, the More It Sounds Like You</h4>
             <div class="spotlight-stats">
-              <div class="stat"><b>14.2</b><span>句长 / 字</span></div>
-              <div class="stat"><b>38%</b><span>对话占比</span></div>
-              <div class="stat"><b>6.1</b><span>形容词 / 百字</span></div>
+              <div class="stat"><b>14.2</b><span>sentence length / chars</span></div>
+              <div class="stat"><b>38%</b><span>dialogue share</span></div>
+              <div class="stat"><b>6.1</b><span>adjectives / 100 chars</span></div>
             </div>
-            <div class="panel-meta"><span>✓ 导入 3 本样本，风格自动校准</span></div>
+            <div class="panel-meta"><span>✓ Import 3 samples and the style calibrates itself</span></div>
           </div>
           <div class="spotlight-card">
             <div class="panel-head">
-              <span class="tag tag-brand">亮点 02</span>
-              <span class="tag">剧情推演</span>
+              <span class="tag tag-brand">Highlight 02</span>
+              <span class="tag">Plot Simulation</span>
             </div>
-            <h4 class="spotlight-title">卡住了？角色先演一遍</h4>
+            <h4 class="spotlight-title">Stuck? Let the Characters Act It Out First</h4>
             <div class="spotlight-stats">
-              <div class="stat"><b>集市</b><span>推演场景</span></div>
-              <div class="stat"><b>2 人</b><span>叶秋 · 王虎</span></div>
-              <div class="stat"><b>告密</b><span>推演走向</span></div>
+              <div class="stat"><b>Market</b><span>simulation scene</span></div>
+              <div class="stat"><b>2 people</b><span>Ye Qiu · Wang Hu</span></div>
+              <div class="stat"><b>Tipping off</b><span>simulated direction</span></div>
             </div>
-            <div class="panel-meta"><span>✓ 合理走向自然浮现</span></div>
+            <div class="panel-meta"><span>✓ A plausible direction emerges naturally</span></div>
           </div>
           <div class="spotlight-card">
             <div class="panel-head">
-              <span class="tag tag-brand">亮点 03</span>
-              <span class="tag">伏笔跟踪</span>
+              <span class="tag tag-brand">Highlight 03</span>
+              <span class="tag">Foreshadowing Tracker</span>
             </div>
-            <h4 class="spotlight-title">埋的坑，不会忘</h4>
+            <h4 class="spotlight-title">Buried Hooks Are Never Forgotten</h4>
             <div class="spotlight-stats">
-              <div class="stat"><b>2 处</b><span>未兑现伏笔</span></div>
-              <div class="stat"><b>9 章</b><span>最陈旧 ·「玉佩」</span></div>
-              <div class="stat"><b>高</b><span>收束风险</span></div>
+              <div class="stat"><b>2 open</b><span>unpaid foreshadowing</span></div>
+              <div class="stat"><b>9 chapters</b><span>oldest · "jade pendant"</span></div>
+              <div class="stat"><b>High</b><span>closure risk</span></div>
             </div>
-            <div class="panel-meta"><span class="warn">⚠ 建议第 21 章前收束</span></div>
+            <div class="panel-meta"><span class="warn">⚠ Close before chapter 21</span></div>
           </div>
           <div class="spotlight-card">
             <div class="panel-head">
-              <span class="tag tag-brand">亮点 04</span>
-              <span class="tag">角色状态更新</span>
+              <span class="tag tag-brand">Highlight 04</span>
+              <span class="tag">Character Status Updates</span>
             </div>
-            <h4 class="spotlight-title">人设不崩，每章同步</h4>
+            <h4 class="spotlight-title">Personas Stay Intact, Synced Every Chapter</h4>
             <div class="spotlight-stats">
-              <div class="stat"><b>四层</b><span>叶秋修为</span></div>
-              <div class="stat"><b>结怨</b><span>与王虎</span></div>
-              <div class="stat"><b>爆发</b><span>情绪峰值</span></div>
+              <div class="stat"><b>Layer 4</b><span>Ye Qiu's cultivation level</span></div>
+              <div class="stat"><b>Feud formed</b><span>with Wang Hu</span></div>
+              <div class="stat"><b>Outburst</b><span>emotional peak</span></div>
             </div>
-            <div class="panel-meta"><span>✓ 第 12 章状态已同步</span></div>
+            <div class="panel-meta"><span>✓ Chapter 12 status synced</span></div>
           </div>
           <div class="spotlight-card">
             <div class="panel-head">
-              <span class="tag tag-brand">亮点 05</span>
-              <span class="tag">本地数据安全</span>
+              <span class="tag tag-brand">Highlight 05</span>
+              <span class="tag">Local Data Safety</span>
             </div>
-            <h4 class="spotlight-title">稿子就是文件</h4>
+            <h4 class="spotlight-title">Your Draft Is Just Files</h4>
             <div class="spotlight-stats">
-              <div class="stat"><b>本地</b><span>纯文本存储</span></div>
-              <div class="stat"><b>0</b><span>云端上传</span></div>
-              <div class="stat"><b>即走</b><span>拷贝目录迁移</span></div>
+              <div class="stat"><b>Local</b><span>plain-text storage</span></div>
+              <div class="stat"><b>0</b><span>cloud uploads</span></div>
+              <div class="stat"><b>Take it</b><span>migrate by copying the folder</span></div>
             </div>
-            <div class="panel-meta"><span>✓ 编辑器随时直接改</span></div>
+            <div class="panel-meta"><span>✓ Edit directly in any editor, any time</span></div>
           </div>
         </div>
         <div class="spotlight-dots">
-          <button class="dot active" aria-label="亮点 1"></button>
-          <button class="dot" aria-label="亮点 2"></button>
-          <button class="dot" aria-label="亮点 3"></button>
-          <button class="dot" aria-label="亮点 4"></button>
-          <button class="dot" aria-label="亮点 5"></button>
+          <button class="dot active" aria-label="Highlight 1"></button>
+          <button class="dot" aria-label="Highlight 2"></button>
+          <button class="dot" aria-label="Highlight 3"></button>
+          <button class="dot" aria-label="Highlight 4"></button>
+          <button class="dot" aria-label="Highlight 5"></button>
         </div>
       </div>
     </div>
   </header>
 
-  <!-- 概念条 -->
+  <!-- Concept strip -->
   <section class="concept reveal">
     <div class="container">
-      <p class="concept-formula">小说创作 = <b>人的构想</b> + <b>AI 的笔力</b></p>
-      <p class="concept-sub">人铸灵魂，AI 行笔墨</p>
-      <p class="concept-desc">构想归你：世界观、角色、大纲。笔力归模型：行文、节奏、净化——Awesome Novel 把两者编排成可复现的工作流。</p>
+      <p class="concept-formula">Novel writing = <b>human vision</b> + <b>AI brushwork</b></p>
+      <p class="concept-sub">Humans cast the soul, AI wields the brush</p>
+      <p class="concept-desc">The vision is yours: worldview, characters, outline. The brushwork belongs to the model: prose, rhythm, cleanup. Awesome Novel arranges both into a reproducible workflow.</p>
     </div>
   </section>
 
-  <!-- 三大痛点支柱 -->
+  <!-- Three pain-point pillars -->
   <section class="section reveal">
     <div class="container">
-      <h2 class="section-title">设计思路</h2>
-      <p class="section-sub">三个最常见的写作困境，一次解决</p>
+      <h2 class="section-title">Design Thinking</h2>
+      <p class="section-sub">The three most common writing struggles, solved at once</p>
       <div class="pillars">
         <div class="pillar">
           <div class="pillar-num">01</div>
-          <h3>怕烂尾？</h3>
-          <p class="promise">开写前有蓝图，过程中有人盯</p>
-          <div class="pillar-card"><h4>四维卷纲</h4><p>情绪走向、冲突阶梯、信息差、场景卡先规划再动笔，长篇连载不跑偏。</p></div>
-          <div class="pillar-card"><h4>9 智能体自动推进</h4><p>卷纲、章纲、正文、评审、归档自动流转，你只审阅与决策，不用记流程。</p></div>
-          <div class="pillar-card"><h4>剧情推演沙盘</h4><p>卡剧情时让角色在沙盘里演一遍，合情合理的走向自然浮现。</p></div>
+          <h3>Afraid of a bad ending?</h3>
+          <p class="promise">A blueprint before you start, and someone watching along the way</p>
+          <div class="pillar-card"><h4>Four-Dimension Volume Outlines</h4><p>Plan the emotional arc, conflict ladder, information gaps, and scene cards before writing, so a long serial never drifts.</p></div>
+          <div class="pillar-card"><h4>9 Agents Advance Automatically</h4><p>Volume outlines, chapter outlines, body text, reviews, and archiving flow automatically; you only review and decide, never memorize the process.</p></div>
+          <div class="pillar-card"><h4>Plot Simulation Sandbox</h4><p>When the plot stalls, let the characters act it out in the sandbox and a plausible direction emerges.</p></div>
         </div>
         <div class="pillar">
           <div class="pillar-num">02</div>
-          <h3>不像你？</h3>
-          <p class="promise">导入即学会，越写越像你</p>
-          <div class="pillar-card"><h4>文风蒸馏</h4><p>把你喜欢的小说丢进样本库，自动提炼句长、对话占比等量化参数。</p></div>
-          <div class="pillar-card"><h4>动态记忆</h4><p>每次修改反馈自动沉淀为记忆，高频规则晋升永久规则，纠正过一次就不再犯。</p></div>
-          <div class="pillar-card"><h4>24 套题材画像</h4><p>仙侠、都市、悬疑、历史等预置档案，人设倾向与叙事语气直接可用。</p></div>
+          <h3>Doesn't sound like you?</h3>
+          <p class="promise">It learns on import and sounds more like you with every chapter</p>
+          <div class="pillar-card"><h4>Style Distillation</h4><p>Drop novels you love into the sample library and it automatically distills quantitative parameters like sentence length and dialogue share.</p></div>
+          <div class="pillar-card"><h4>Dynamic Memory</h4><p>Every revision's feedback settles into memory automatically; high-frequency rules are promoted to permanent rules, so a mistake corrected once is never repeated.</p></div>
+          <div class="pillar-card"><h4>24 Genre Profiles</h4><p>Preset profiles for xianxia (immortal-hero fantasy), urban, suspense, historical, and more, with character tendencies and narrative tone ready to use.</p></div>
         </div>
         <div class="pillar">
           <div class="pillar-num">03</div>
-          <h3>有 AI 味？</h3>
-          <p class="promise">机器腔与逻辑漏洞，归档前拦下</p>
-          <div class="pillar-card"><h4>去 AI 味</h4><p>提示词组装注入反 AI 规则，成稿后六道闸管线检测并量化评分。</p></div>
-          <div class="pillar-card"><h4>伏笔跟踪</h4><p>自动扫描未兑现与新埋的钩子，提醒收束——埋的坑不会忘。</p></div>
-          <div class="pillar-card"><h4>角色状态</h4><p>每章归档自动更新角色状态与情绪弧线，下一章 AI 记得他经历了什么。</p></div>
-          <div class="pillar-card"><h4>节奏检查</h4><p>连续高压 3 章或平淡 2 章自动提醒，避免读者弃书。</p></div>
+          <h3>Smells like AI?</h3>
+          <p class="promise">Machine tone and logic holes get stopped before archiving</p>
+          <div class="pillar-card"><h4>De-AI Flavor</h4><p>Prompt assembly injects anti-AI rules, and a six-gate pipeline checks and scores the draft after writing.</p></div>
+          <div class="pillar-card"><h4>Foreshadowing Tracker</h4><p>Automatically scans for unpaid and newly planted hooks and reminds you to close them, so buried hooks are never forgotten.</p></div>
+          <div class="pillar-card"><h4>Character Status</h4><p>Each chapter's archiving automatically updates character status and emotional arcs, so the AI remembers what happened to them next chapter.</p></div>
+          <div class="pillar-card"><h4>Pacing Check</h4><p>Automatic alerts after 3 straight high-tension chapters or 2 flat ones, so readers never drop the book.</p></div>
         </div>
       </div>
       <div class="platforms">
@@ -361,43 +361,43 @@
           <span class="tag">Claude Code</span><span class="tag">OpenCode</span><span class="tag">Reasonix</span><span class="tag">Codex</span><span class="tag">ZCode</span><span class="tag">DeepSeek Harness</span>
         </div>
         <div class="pipeline">
-          <div class="pipeline-node"><span class="pipeline-step">01</span><span class="pipeline-name">设定</span><p class="pipeline-desc">题材 · 世界观 · 角色</p></div>
+          <div class="pipeline-node"><span class="pipeline-step">01</span><span class="pipeline-name">Setup</span><p class="pipeline-desc">Genre · Worldview · Characters</p></div>
           <span class="pipeline-arrow">→</span>
-          <div class="pipeline-node"><span class="pipeline-step">02</span><span class="pipeline-name">卷纲</span><p class="pipeline-desc">情绪走向 · 冲突阶梯</p></div>
+          <div class="pipeline-node"><span class="pipeline-step">02</span><span class="pipeline-name">Volume Outline</span><p class="pipeline-desc">Emotional arc · Conflict ladder</p></div>
           <span class="pipeline-arrow">→</span>
-          <div class="pipeline-node"><span class="pipeline-step">03</span><span class="pipeline-name">章纲</span><p class="pipeline-desc">场景卡 · 微弧线</p></div>
+          <div class="pipeline-node"><span class="pipeline-step">03</span><span class="pipeline-name">Chapter Outline</span><p class="pipeline-desc">Scene cards · Micro-arcs</p></div>
           <span class="pipeline-arrow">→</span>
-          <div class="pipeline-node"><span class="pipeline-step">04</span><span class="pipeline-name">正文</span><p class="pipeline-desc">提示词驱动成稿</p></div>
+          <div class="pipeline-node"><span class="pipeline-step">04</span><span class="pipeline-name">Body Text</span><p class="pipeline-desc">Prompt-driven drafts</p></div>
           <span class="pipeline-arrow">→</span>
-          <div class="pipeline-node"><span class="pipeline-step">05</span><span class="pipeline-name">净化</span><p class="pipeline-desc">去 AI 味 · 六道闸</p></div>
+          <div class="pipeline-node"><span class="pipeline-step">05</span><span class="pipeline-name">Cleanup</span><p class="pipeline-desc">De-AI flavor · Six gates</p></div>
           <span class="pipeline-arrow">→</span>
-          <div class="pipeline-node"><span class="pipeline-step">06</span><span class="pipeline-name">归档</span><p class="pipeline-desc">角色状态 · 伏笔更新</p></div>
+          <div class="pipeline-node"><span class="pipeline-step">06</span><span class="pipeline-name">Archiving</span><p class="pipeline-desc">Character status · Foreshadowing updates</p></div>
         </div>
-        <p style="color:var(--text-description); margin-top:18px;">六个平台，跑同一条流水线。换工具，创作状态无缝续写。</p>
+        <p style="color:var(--text-description); margin-top:18px;">Six platforms, one pipeline. Switch tools and your writing state carries over seamlessly.</p>
       </div>
     </div>
   </section>
 
-  <!-- 开始创作 -->
+  <!-- Start creating -->
   <section class="section reveal" id="start">
     <div class="container">
-      <h2 class="section-title">开始创作</h2>
-      <p class="section-sub">三步，从零到第一章</p>
+      <h2 class="section-title">Start Creating</h2>
+      <p class="section-sub">Three steps, from zero to chapter one</p>
       <div class="steps">
         <div class="step">
-          <div class="step-num">步骤 1 · 安装</div>
-          <h4>对 AI 说一句话</h4>
-          <p>打开任一支持的 AI 终端，说 <code>帮我安装 awesome-novel-agent，仓库在 https://github.com/modoojunko/awesome-novel-agent</code>，AI 自动运行安装脚本，不用复制粘贴命令。</p>
+          <div class="step-num">Step 1 · Install</div>
+          <h4>Say One Sentence to Your AI</h4>
+          <p>Open any supported AI terminal and say <code>help me install awesome-novel-agent, the repo is at https://github.com/modoojunko/awesome-novel-agent</code>. The AI runs the install script itself, no copy-pasting commands.</p>
         </div>
         <div class="step">
-          <div class="step-num">步骤 2 · 初始化</div>
-          <h4>生成项目骨架</h4>
-          <p>在放小说的目录输入 <code>/awesome-novel</code>（或"帮我写本小说"），自动生成世界观、角色、大纲的项目结构并进入设定讨论。</p>
+          <div class="step-num">Step 2 · Initialize</div>
+          <h4>Generate the Project Skeleton</h4>
+          <p>In your novel's folder, enter <code>/awesome-novel</code> (or "help me write a novel") to generate the project structure for worldview, characters, and outline, then start the setup discussion.</p>
         </div>
         <div class="step">
-          <div class="step-num">步骤 3 · 写作</div>
-          <h4>进入写作循环</h4>
-          <p><code>@novel-agent</code> 或"帮我继续写"进入循环；常用指令：<code>写下一章</code> / <code>跑一下推演</code> / <code>全自动模式</code>。</p>
+          <div class="step-num">Step 3 · Write</div>
+          <h4>Enter the Writing Loop</h4>
+          <p><code>@novel-agent</code> or "help me keep writing" enters the loop. Common commands: <code>write the next chapter</code> / <code>run a simulation</code> / <code>full auto mode</code>.</p>
         </div>
       </div>
     </div>
@@ -406,41 +406,41 @@
   <!-- FAQ -->
   <section class="section reveal">
     <div class="container">
-      <h2 class="section-title">常见问题</h2>
+      <h2 class="section-title">FAQ</h2>
       <div class="faq">
-        <details><summary>我不会编程，能装吗？</summary><p>能。对 AI 说一句话即可完成安装，全程不用复制粘贴命令。</p></details>
-        <details><summary>生成的文字有 AI 味怎么办？</summary><p>默认即"低 AI 味"配置：禁用常见机器腔句式 + 成稿自动检测；你的修改还会被记录为专属规则。</p></details>
-        <details><summary>可以用自己的写作风格吗？</summary><p>可以。导入参考样本自动蒸馏，或直接写进风格文件，后续章节都按此风格。</p></details>
-        <details><summary>写到一半可以改设定吗？</summary><p>随时说"改一下世界观里的 XXX"，智能体会同步更新后续章节。</p></details>
-        <details><summary>旧项目能迁移吗？</summary><p>升级后自动检测旧版格式并引导迁移，原文件保留备份。</p></details>
+        <details><summary>I can't code. Can I install it?</summary><p>Yes. One sentence to your AI completes the install, with no copy-pasting commands at any point.</p></details>
+        <details><summary>What if the generated text smells like AI?</summary><p>The default is a "low AI flavor" setup: common machine-tone patterns are banned, and drafts are auto-checked. Your edits are also recorded as your own rules.</p></details>
+        <details><summary>Can I use my own writing style?</summary><p>Yes. Import reference samples for automatic distillation, or write it straight into the style file; later chapters all follow it.</p></details>
+        <details><summary>Can I change the setup halfway through?</summary><p>Just say "change XXX in the worldview" at any time, and the agents sync the later chapters.</p></details>
+        <details><summary>Can old projects migrate?</summary><p>After upgrading, the old format is auto-detected and migration is guided, with the original files kept as backup.</p></details>
       </div>
     </div>
   </section>
 
-  <!-- 生态 CTA -->
+  <!-- Community CTA -->
   <section class="section reveal">
     <div class="container">
       <div class="cta-box">
-        <h2>加入创作社区</h2>
-        <p>项目仍处于活跃迭代阶段，题材档案与反 AI 规则库持续扩充。期待与创作者一起，在开源、可复用、可组合的创作基础设施上，探索 AI 写作的上限。</p>
+        <h2>Join the Creator Community</h2>
+        <p>The project is still iterating actively, with genre profiles and the anti-AI rule library growing. We look forward to exploring the ceiling of AI writing together with creators, on open, reusable, composable creative infrastructure.</p>
         <div class="hero-cta" style="justify-content:center">
           <a class="btn btn-primary" href="https://github.com/modoojunko/awesome-novel-agent">GitHub</a>
-          <a class="btn btn-secondary" href="https://github.com/modoojunko/awesome-novel-agent/blob/main/README.md">文档</a>
+          <a class="btn btn-secondary" href="https://github.com/modoojunko/awesome-novel-agent/blob/main/README.md">Docs</a>
         </div>
-        <p class="trust">个人使用免费 · AGPLv3 开源 · QQ 交流群 1006050538</p>
+        <p class="trust">Free for personal use · AGPLv3 open source · QQ group 1006050538</p>
       </div>
     </div>
   </section>
 
   <footer>
     <div class="container">
-      <p>AGPLv3 开源 · 个人使用免费 · © 2026 Awesome Novel</p>
-      <p style="margin-top:6px"><a href="https://github.com/modoojunko/awesome-novel-agent">GitHub</a> · <a href="https://github.com/modoojunko/awesome-novel-agent/blob/main/README.md">文档</a></p>
+      <p>AGPLv3 open source · Free for personal use · © 2026 Awesome Novel</p>
+      <p style="margin-top:6px"><a href="https://github.com/modoojunko/awesome-novel-agent">GitHub</a> · <a href="https://github.com/modoojunko/awesome-novel-agent/blob/main/README.md">Docs</a></p>
     </div>
   </footer>
 
   <script>
-    // 滚动入场：优先尊重系统减弱动效设置，否则 IntersectionObserver 逐块浮现
+    // Scroll entrance: respect the system's reduced-motion setting first, otherwise reveal blocks one by one with IntersectionObserver
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
     } else {
@@ -450,7 +450,7 @@
       document.querySelectorAll('.reveal').forEach(el => io.observe(el));
     }
 
-    // 亮点卡轮播：4s 自动切换 + 指示点点击 + 悬停暂停；减弱动效时静态显示第一张
+    // Highlight card carousel: auto-switch every 4s + dot clicks + pause on hover; with reduced motion, statically show the first card
     (function () {
       const panel = document.getElementById('spotlight');
       if (!panel || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;

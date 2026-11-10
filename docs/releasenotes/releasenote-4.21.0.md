@@ -1,40 +1,40 @@
-# v4.21.0 版本说明
+# v4.21.0 Release Notes
 
-> **关键词：** 作者确认关卡 —— 卷纲、章纲规划完成后停等作者确认，不再自动开写正文
-
----
-
-## 一句话
-
-贯彻「人铸灵魂，AI 行笔墨」：设定、卷纲、章纲三处灵魂层产出完成后，novel-agent 必须停下向作者展示摘要、等作者点头才继续（PR #121）；作者说「继续/推进」只推进到下一个确认点即停，正文流水线（提示词→正文→去AI味→验收→归档）仍属 AI 笔墨连续推进，归档后照旧询问重写或下一章。
+> **Keywords:** Author confirmation gates: after volume and chapter outlines are planned, stop and wait for author confirmation instead of automatically writing the main text
 
 ---
 
-## 这版做了什么
+## In One Sentence
 
-| 改动 | 说明 |
+Carrying out "humans forge the soul, AI does the brushwork": after the three soul-layer outputs (settings, volume outline, chapter outline) are done, novel-agent must stop, show the author a summary, and wait for the author's nod before continuing (PR #121). When the author says "continue" or "proceed", it advances only to the next confirmation point and stops. The main-text pipeline (prompt, main text, de-AI pass, acceptance, archive) still runs continuously as AI brushwork, and after archiving it asks as before about rewriting or the next chapter.
+
+---
+
+## What Changed in This Release
+
+| Change | Description |
 |------|------|
-| **作者确认关卡（调度契约）** | `skills/novel-dispatch.md` 新增权威节：设定/卷纲/章纲 order DONE 必停等作者确认，未确认不写下一个 order、不推进 step；「继续/推进」= 到下一个确认点即停；「你全权写/别等确认」单次放行，下一关卡仍停；模糊回复（"差不多""你看着办"）一律视为未确认并追问 |
-| **novel-agent 调度树** | THINK 树 volume-planning / chapter-planning 分支插入与 setup 同构的确认关卡（摘要展示话术 + 确认/全自动/模糊/要改四分支）；「以实际文件为准推进」不再允许绕过关卡——卷纲已存在但未经作者确认时进确认关卡而非直接派章纲 |
-| **断点续跑语义** | 卷纲/章纲两阶段补「等值且 order DONE → 产出已写完待作者确认，重新展示摘要等确认，不重派」——中断重启后不重跑子 agent 也不跳过确认（不新增状态字段，确认后 step 推进、章节状态不动） |
-| **项目级指令** | SKILL.md 调度规则与 templates 三份项目指令（CLAUDE.md / AGENTS.md / AGENTS.codex.md）：写作流程链插入「（作者确认）」标记，附灵魂与笔墨一句说明，作者与入口主 agent 第一眼可见 |
+| **Author confirmation gates (dispatch contract)** | `skills/novel-dispatch.md` adds an authoritative section: once a settings, volume-outline, or chapter-outline order is DONE, it must stop and wait for author confirmation; without confirmation it writes no further order and advances no step. "Continue/proceed" means stop at the next confirmation point; "write it all yourself / don't wait for confirmation" grants a single pass, and the next gate still stops. Vague replies ("more or less", "do as you see fit") always count as unconfirmed, and the agent asks again |
+| **novel-agent dispatch tree** | The THINK tree's volume-planning and chapter-planning branches gain confirmation gates isomorphic with setup (summary-presentation wording plus four branches: confirm, fully automatic, vague, wants changes). "Proceed based on the actual files" no longer bypasses a gate: when a volume outline already exists but was never confirmed by the author, it enters the confirmation gate instead of dispatching a chapter outline directly |
+| **Breakpoint resume semantics** | The volume-outline and chapter-outline stages gain "equal value and order DONE means the output is written and waiting for author confirmation, so show the summary again and wait for confirmation; do not re-dispatch". After an interrupted restart, it neither re-runs a sub-agent nor skips confirmation (no new status fields; after confirmation the step advances and the chapter status stays put) |
+| **Project-level instructions** | The SKILL.md dispatch rules and the three project instruction files in templates (CLAUDE.md / AGENTS.md / AGENTS.codex.md): the writing-flow chain gains "(author confirms)" markers, with a one-line soul-and-brushwork explanation visible at first glance to the author and the entry-point main agent |
 
 ---
 
-## 背景
+## Background
 
-用户真实使用反馈（dsh session 实录，v4.19.0）：设定确认后作者说「推进」，agent 写完卷纲不展示不停顿直接派章纲；再说「继续」，章纲→提示词→正文→去AI味一口气跑完。根因是旧调度契约只在 setup 阶段设确认关卡，卷纲/章纲的断点语义是「order DONE 即推进」，整条流水线要到归档后才第一次询问作者——AI 替作者做了灵魂层决策。
+Real user feedback (dsh session transcript, v4.19.0): after settings were confirmed, the author said "proceed", and the agent wrote the volume outline without showing it or pausing, then dispatched the chapter outline directly. Saying "continue" again ran chapter outline, prompt, main text, de-AI pass, and archiving in one breath. The root cause was that the old dispatch contract only set a confirmation gate at the setup stage; the volume-outline and chapter-outline breakpoint semantics were "order DONE means advance", so the whole pipeline did not ask the author anything until after archiving. The AI was making soul-layer decisions for the author.
 
-## 兼容性
+## Compatibility
 
-- 行为变更但状态文件格式不变：`status.md` 无新字段（待确认态由「章节状态等值 + order DONE」表达），存量项目升级后无需任何操作。
-- 已初始化项目运行 `python tools/sync-project.py <项目路径>` 即可获得新的调度契约（skill_version 更新为 4.21.0）。
-- 从未说过「你全权写」的作者会多两次确认点（每卷一次卷纲确认 + 每章一次章纲确认）；明确说「你全权写」可单次跳过当前关卡。
+- Behavior change, but the status-file format is unchanged: `status.md` gains no new fields (the waiting-for-confirmation state is expressed by "chapter status equal value + order DONE"); existing projects need no action after upgrading.
+- Existing initialized projects get the new dispatch contract by running `python tools/sync-project.py <project path>` (skill_version updates to 4.21.0).
+- Authors who never said "write it all yourself" get two extra confirmation points (one volume-outline confirmation per volume + one chapter-outline confirmation per chapter); saying "write it all yourself" skips the current gate once.
 
-## 验证方法
+## How It Was Verified
 
-- 静态检查全绿：check-agents / check-conflicts / check-version / py_compile。
-- `test_platforms.py` 253 通过 0 失败（七平台 init/sync E2E）。
-- dsh 平台 init 抽查：确认关卡全文随 novel-agent SKILL.md（SOP 内联部署）与项目级 CLAUDE.md/AGENTS.md 到达用户项目。
-- review-agent 评审 No findings；CI lint 绿。
-- 待作者侧：任一平台真机跑一章，确认卷纲/章纲 DONE 后确实停下展示摘要等作者点头（低遵循度模型档尤其关注「继续只走一步」语义）。
+- Static checks all green: check-agents / check-conflicts / check-version / py_compile.
+- `test_platforms.py` 253 passed, 0 failed (seven-platform init/sync E2E).
+- dsh platform init spot check: the confirmation-gate text reaches the user project with the novel-agent SKILL.md (inlined SOP deployment) and the project-level CLAUDE.md/AGENTS.md.
+- review-agent review: No findings; CI lint green.
+- Still for the author: run one chapter on any platform and confirm that after volume-outline and chapter-outline DONE, it really stops, shows the summary, and waits for the author's nod (pay special attention to the "continue advances only one step" semantics on low-compliance model tiers).

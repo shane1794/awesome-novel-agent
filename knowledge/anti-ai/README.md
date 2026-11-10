@@ -1,192 +1,204 @@
-# 反 AI 写作规则库
+# Anti-AI Writing Rule Library
 
-> anti-ai 管线核心参考。包含活人感正向方法、分级禁用表、去 AI 方法论、题材正反例。
+> Anti-ai pipeline core reference. It includes the positive method of living human
+> beings, hierarchical prohibition table, AI removal methodology, and positive and
+> negative examples of themes.
 
-## 目录
+## Directory
 
-| 文件 | 用途 |
+| Documentation | Purpose |
 |------|------|
-| `living-voice.md` | 活人感正向方法论（活人感三层次/人物场景工艺/防表演化，移植自 human-writing，所有题材共用） |
-| `common-rules.md` | 分级禁用词表、句式模板、替换策略（所有题材共用） |
-| `anti-ai-writing.md` | 去 AI 味完整指南（指纹识别/系统性修改/范例库） |
-| `urban.md` | 都市通用 |
-| `urban-romance.md` | 都市言情 |
-| `urban-daily.md` | 都市日常 |
-| `urban-farming.md` | 都市种田 |
-| `urban-brained.md` | 都市脑洞/高武/修真 |
-| `war-god.md` | 战神赘婿 |
-| `xianxia.md` | 东方仙侠 |
-| `xuanhuan.md` | 玄幻 |
-| `suspense-crime.md` | 悬疑刑侦 |
-| `suspense-paranormal.md` | 悬疑灵异 |
-| `historical.md` | 历史古代 |
-| `ancient-politics.md` | 历史政治/古风权谋 |
-| `western-fantasy.md` | 西方奇幻 |
-| `scifi-apocalypse.md` | 科幻末世 |
-| `anti-japanese-war.md` | 抗战谍战 |
-| `anime-derivative.md` | 动漫/游戏衍生 |
-| `derivative.md` | 男频衍生 |
-| `fanqie.md` | 番茄风 |
+| `living-voice.md` | Positive methodology of human feeling (three levels of human feeling/character and scene crafts/anti-performance, transplanted from human-writing, common to all themes) |
+| `common-rules.md` | Graded banned word list, sentence templates, replacement strategies (common to all themes) |
+| `anti-ai-writing.md` | A complete guide to removing the AI flavor (fingerprinting/systematic modification/example library) |
+| `urban.md` | Urban general |
+| `urban-romance.md` | Urban Romance |
+| `urban-daily.md` | Urban Daily |
+| `urban-farming.md` | Urban Farming |
+| `urban-brained.md` | Urban wild idea/gaowu/cultivation |
+| `war-god.md` | The God of War live-in son-in-law |
+| `xianxia.md` | oriental xianxia (immortal cultivation) |
+| `xuanhuan.md` | xuanhuan (Eastern fantasy) |
+| `suspense-crime.md` | Suspense criminal investigation |
+| `suspense-paranormal.md` | Suspense and Supernatural |
+| `historical.md` | History and Antiquity |
+| `ancient-politics.md` | Historical politics/ancient style tactics |
+| `western-fantasy.md` | Western Fantasy |
+| `scifi-apocalypse.md` | Science fiction apocalypse |
+| `anti-japanese-war.md` | Anti-war spy war |
+| `anime-derivative.md` | Animation/game derivatives |
+| `derivative.md` | male-oriented derivative |
+| `fanqie.md` | Fanqie wind |
 
-## 使用场景
+## Usage scenarios
 
 ```
-anti-ai agent 执行去 AI 味时：
+When anti-ai agent is executed to remove AI flavor:
     ↓
-读取 living-voice.md（活人感正向方法论：先讲写成什么样）
+Read living-voice.md (positive methodology of living voice: first let’s talk about how to write it)
     ↓
-读取 common-rules.md（分级禁用表）
+Read common-rules.md (hierarchical ban table)
     ↓
-读取 anti-ai-writing.md（方法论指南）
+Read anti-ai-writing.md (methodology guide)
     ↓
-读取 {genre}.md（题材正反例）
+Read {genre}.md (positive and negative examples of the theme)
     ↓
-按 Phase 1-4 管线执行替换
+Perform replacement by Phase 1-4 pipeline
 ```
 
 ### anti-ai Phase 3
-按题材查对应正反例做精确替换
+Check the corresponding positive and negative examples according to the topic and make
+accurate replacements
 
 ### prompt-crafter
-生成提示词时按需注入题材规则
+Inject theme rules on demand when generating prompt words
 
-## 格式
+## Format
 
-### common-rules.md — 通用规则
+### common-rules.md, Common rules
 
-所有题材共用。包含：
-- **分级禁用词表** — ★★★★★ 最毒句式 / 一级 / 二级
-- **句式模板** — 比喻/结构/标点规则
-- **替换策略速查** — 情绪外化/对话标签/视角控制
-- **疲劳词阈值** — 原始阈值速查
+Common to all themes. Contains:
+- **Graded banned word list**, ★★★★★ The most poisonous sentence patterns / Level 1 /
+  Level 2
+- **Sentence Template**, Metaphor/Structure/Punctuation Rules
+- **Quick Replacement Strategy**, Emotional Externalization/Dialogue Tags/Perspective
+  Control
+- **Fatigue Word Threshold**, Original Threshold Quick Look
 
-### anti-ai-writing.md — 方法论指南
+### anti-ai-writing.md, Methodology Guide
 
-anti-ai 各 Phase 的方法论基础。包含：
-- **AI 写作指纹** — 高频词/章末总结/叠加描写/均匀分布
-- **Show Don't Tell** — 核心公式 + 五感检查
-- **7 种 AI 写作模式检测** — 每种的信号/特征/修复
-- **系统性去 AI 三遍法** — 去泛化/去书面化/回自然感
-- **改写范例库** — 情绪外化/场景/打斗/结尾/节奏
+The methodological basis of each phase of anti-ai. Contains:
+- **AI writing fingerprint**, high-frequency words/end-of-chapter summary/superimposed
+  description/even distribution
+- **Show Don't Tell**, Core Formula + Five Senses Check
+- **7 AI Writing Pattern Detections**, Signals/Characteristics/Fixes for Each
+- **Systematic AI three-pass method**, De-generalize/de-literate/return to a sense of
+  nature
+- **Rewrite Example Library**, Emotional Externalization/Scene/Fight/Ending/Rhythm
 
-### {genre}.md — 题材正反例
+### {genre}.md, Positive and Negative Examples of the Theme
 
-每个题材独立文件。包含：
-- **高频AI病句正反例** — ❌ AI味 vs ✅ 真人感对照
-- **写作要点** — 该题材的特殊注意事项
+Each theme is a separate file. Contains:
+- **Incorrect vs. correct examples of high-frequency AI-style bad sentences**, ❌ AI flavor vs. ✅ human voice
+  feeling comparison
+- **Writing Points**, Special considerations for this subject matter
 
-## 格式规范
+## Format specifications
 
-所有题材文件遵循统一格式：
+All theme files follow a unified format:
 
 ```markdown
-# {题材名}反AI规则
+# {Subject Name} Anti-AI Rules
 
-> 适用题材：{genre-id-1}、{genre-id-2}
+> Applicable themes: {genre-id-1}, {genre-id-2}
 
-## 高频AI病句正反例
+## High-Frequency AI-Style Bad Sentences: Incorrect vs. Correct Examples
 
-### 1. {问题类型}
+### 1. {Question Type}
 
-❌ "AI味的写法"
-✅ "真人感的写法"
+❌ "AI flavor writing"
+✅ "Realistic writing style"
 
-### 2. {问题类型}
+### 2. {Question Type}
 
 ...
 
-## 写作要点
+## Writing points
 
-1. **{要点标题}** — 具体说明
+1. **{Point Title}**, Specific instructions
 2. ...
 ```
 
-## 如何贡献新题材
+## How to contribute new topics
 
-### 方式1：新建题材文件
+### Method 1: Create a new theme file
 
-1. 在 `knowledge/anti-ai/` 下新建 `{genre-id}.md`
-2. 复制以下模板并填写：
+1. Create new `{genre-id}.md` under `knowledge/anti-ai/`
+2. Copy the following template and fill it out:
 
 ```markdown
-# {题材名}反AI规则
+# {Subject Name} Anti-AI Rules
 
-> 适用题材：{genre-id}
+> Applicable themes: {genre-id}
 
-## 高频AI病句正反例
+## High-Frequency AI-Style Bad Sentences: Incorrect vs. Correct Examples
 
-### 1. {问题类型}
+### 1. {Question Type}
 
-❌ "AI味的写法"
-✅ "真人感的写法"
+❌ "AI flavor writing"
+✅ "Realistic writing style"
 
-### 2. {问题类型}
+### 2. {Question Type}
 
 ❌ "..."
 ✅ "..."
 
-## 写作要点
+## Writing points
 
-1. **{要点}** — 说明
-2. **{要点}** — 说明
+1. **{Key Points}**, Description
+2. **{Key Points}**, Description
 ```
 
-### 方式2：扩展现有题材
+### Method 2: Expand existing themes
 
-已有文件的写作要点不够用时：
-1. 找到对应文件
-2. 在"高频AI病句正反例"下增加新的问题类型
-3. 每个问题类型包含一对 ❌/✅ 对照
+When the writing points in existing documents are not enough:
+1. Find the corresponding file
+2. Add new question types under "High Frequency AI Ill Sentences Positive and Negative
+   Examples"
+3. Each question type contains a pair of ❌/✅ controls
 
-## 贡献指南
+## Contribution Guide
 
-### 正反例原则
+### Principle of Positive and Negative Examples
 
-1. **❌ 要具体** — 给真实的AI味句子，不是抽象描述
-2. **✅ 要可执行** — 给可复制的真人感写法，不是"要自然"
-3. **对照要明显** — 同一场景、同一情绪，❌→✅ 转化清晰
+1. **❌ Be specific**, Give real AI-flavored sentences, not abstract descriptions
+2. **✅ It needs to be executable**, Give a replicable real-life writing method, not "be
+   natural"
+3. **Contrast should be obvious**, same scene, same emotion, ❌→✅ clear transformation
 
-### 写作要点原则
+### Writing Points and Principles
 
-1. **具体不抽象** — "写手抖"不是"写紧张"
-2. **可执行** — "手抖=握不住杯子"不是"要有细节"
-3. **题材特色** — 每个题材的要点要反映该题材的特殊性
+1. **Concrete, not abstract**, "Writing about shaking hands" is not "writing about
+   nervousness"
+2. **Executable**, "Shaking hands = unable to hold the cup" is not "must have details"
+3. **Theme Features**, The key points of each theme should reflect the particularity of
+   the theme
 
-### 提交前自检
+### Self-check before submission
 
-- [ ] 每个正反例的 ❌ 是真实的AI味句子？
-- [ ] 每个正反例的 ✅ 可直接复制到正文中？
-- [ ] 写作要点是否针对该题材的特殊问题？
-- [ ] 是否避开了其他文件已有的重复内容？
+- [ ] Is ❌ of each positive and negative example a real AI-flavored sentence?
+- [ ] Can the ✅ of each positive and negative example be copied directly into the text?
+- [ ] Do the writing points address specific issues in the subject matter?
+- [ ] Have you avoided duplicate content already in other files?
 
-## 示例
+## Example
 
-假设要为"游戏体育"题材新增文件：
+Suppose you want to add a new file for the "Game Sports" theme:
 
 ```markdown
-# 游戏体育反AI规则
+# Game Sports Anti-AI Rules
 
-> 适用题材：game-sports
+> Applicable themes: game-sports
 
-## 高频AI病句正反例
+## High-Frequency AI-Style Bad Sentences: Incorrect vs. Correct Examples
 
-### 1. 比赛胜利描写
+### 1. Description of game victory
 
-❌ "他赢得了比赛，全场观众欢呼雀跃"
-✅ "终场哨响了。他愣在原地，队友冲过来把他抱起来。他的腿软了，没站稳。"
+❌ "He won the game and the audience cheered"
+✅ "The final whistle sounded. He froze in place, and his teammates rushed over to pick him up. His legs were weak and he could not stand firmly."
 
-### 2. 排比式心理
+### 2. Parallel psychology
 
-❌ "也许是压力太大，也许是对手太强，也许是自己还没准备好"
-✅ "他深吸一口气。裁判在低头看表。他活动了一下脚踝，鞋带有点松。"
+❌ "Maybe the pressure is too much, maybe the opponent is too strong, maybe I am not ready yet"
+✅ "He took a deep breath. The referee looked down at his watch. He moved his ankle and the shoelaces were a little loose."
 
-## 写作要点
+## Writing points
 
-1. **比赛写身体** — 喘、抖、腿软、口渴，不是"紧张"
-2. **训练写重复** — 每天练什么？第几次失误？第几瓶水？
-3. **胜利写反差** — 赢了之后干什么？不是欢呼，是愣住、腿软、找水喝
+1. **Write about the body during the competition**, Panting, shaking, weak legs, and thirst are not "nervous"
+2. **Training Write and Repeat**, What do you practice every day? How many times did you make a mistake? Which bottle of water?
+3. **Writing Contrast in Victory**, What do you do after you win? Not cheering, but stunned, weak legs, looking for water
 ```
 
 ---
 
-*如有疑问或建议，请提交 Issue 或 PR。*
+*If you have any questions or suggestions, please submit an Issue or PR. *

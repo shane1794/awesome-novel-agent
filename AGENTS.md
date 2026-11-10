@@ -1,103 +1,103 @@
 # Repository Guidelines
 
-## 工作原则
+## Working Principles
 
-减少常见 LLM 编码错误的行为准则。权衡：这些准则倾向于谨慎而非速度。对于简单任务，请自行判断。
+Behavioral guidelines to reduce common LLM coding mistakes. Tradeoff: these guidelines lean toward caution over speed. For simple tasks, use your own judgment.
 
-### 1. 编码前先思考
-不要假设。不要隐藏困惑。显化权衡。
+### 1. Think before coding
+Do not assume. Do not hide confusion. Make tradeoffs explicit.
 
-在实现之前：
-- 明确陈述你的假设。如果不确定，请提问。
-- 如果存在多种解读，请全部呈现——不要默默选择。
-- 如果存在更简单的方案，请说出来。必要时坚持己见。
-- 如果有不清楚的地方，停下来。指出哪里令人困惑。提问。
+Before implementing:
+- State your assumptions clearly. If unsure, ask.
+- If there are multiple interpretations, present all of them, do not silently pick one.
+- If there is a simpler solution, say so. Push back when needed.
+- If something is unclear, stop. Point out what is confusing. Ask.
 
-### 2. 简洁优先
-用最少的代码解决问题。不做任何推测性的设计。
+### 2. Simplicity first
+Solve the problem with the least code. No speculative design.
 
-- 不添加超出需求的功能。
-- 不为只用一次的代码做抽象。
-- 不引入未被要求的"灵活性"或"可配置性"。
-- 不处理不可能发生的场景的错误。
-- 如果你写了 200 行但 50 行就能搞定，重写它。
-- 问自己："资深工程师会说这过度设计了吗？"如果答案是肯定的，简化它。
+- Do not add features beyond what is required.
+- Do not abstract code that is only used once.
+- Do not introduce "flexibility" or "configurability" that was not requested.
+- Do not handle errors for scenarios that cannot happen.
+- If you wrote 200 lines but 50 lines would do it, rewrite it.
+- Ask yourself: "Would a senior engineer call this over-engineered?" If the answer is yes, simplify it.
 
-### 3. 精准修改
-只碰你必须碰的。只清理你自己留下的混乱。
+### 3. Precise edits
+Touch only what you must touch. Clean up only the mess you made yourself.
 
-编辑现有代码时：
-- 不要"改进"相邻的代码、注释或格式。
-- 不要重构没坏的东西。
-- 匹配现有风格，即使你自己不会那样写。
-- 如果你注意到无关的废弃代码，提出来——不要删除它。
+When editing existing code:
+- Do not "improve" adjacent code, comments, or formatting.
+- Do not refactor things that are not broken.
+- Match the existing style, even if you would not write it that way yourself.
+- If you notice unrelated dead code, raise it, do not delete it.
 
-当你的变更产生孤儿代码时：
-- 删除你的变更导致不再使用的 import/变量/函数。
-- 不要删除既有的废弃代码，除非被要求。
-- 检验标准：每一行变更都应能直接追溯到用户的请求。
+When your change leaves orphaned code behind:
+- Delete imports/variables/functions your change made unused.
+- Do not delete pre-existing dead code unless asked.
+- Test: every changed line should trace directly back to the user's request.
 
-### 4. 目标驱动执行
-定义成功标准。循环验证直到通过。
+### 4. Goal-driven execution
+Define success criteria. Loop and verify until they pass.
 
-将任务转化为可验证的目标：
-- "添加校验" → "为无效输入编写测试，然后让它们通过"
-- "修复 Bug" → "编写一个能复现它的测试，然后让它通过"
-- "重构 X" → "确保重构前后测试都通过"
+Turn a task into verifiable goals:
+- "Add validation" becomes "Write tests for invalid input, then make them pass"
+- "Fix a bug" becomes "Write a test that reproduces it, then make it pass"
+- "Refactor X" becomes "Make sure tests pass before and after the refactor"
 
-对于多步骤任务，简要列出计划：
-1. [步骤] → 验证：[检查点]
-2. [步骤] → 验证：[检查点]
-3. [步骤] → 验证：[检查点]
+For multi-step tasks, briefly list the plan:
+1. [Step] → verify: [checkpoint]
+2. [Step] → verify: [checkpoint]
+3. [Step] → verify: [checkpoint]
 
-强有力的成功标准让你能独立循环。弱标准（"让它跑起来"）需要不断澄清。
+Strong success criteria let you loop independently. Weak criteria ("make it run") need constant clarification.
 
-## 面向作者沟通
+## Communicating with the author
 
-agent 与作家对话、提问、展示、确认一律用日常大白话。铁律与"内部名词 → 作者用语"对照表见 `knowledge/format-specs/author-communication.md`（部署后为 `.claude/knowledge/author-communication.md`，与作者对话的 agent 均已挂引用）：内部字段名、自创术语、流程词不得出现在作者可见文本；给作者看结构用摘要模板，不展示原文结构；网文通用词（爽点/打脸/钩子/金手指/卷纲/章纲等）保留不翻译。修改 agent 话术时先查对照表；新增内部名词同步补表。
+Agents talk to, question, present to, and confirm with the writer always in plain everyday language. The hard rules and the "internal term → author-facing wording" mapping table live in `knowledge/format-specs/author-communication.md` (after deployment: `.claude/knowledge/author-communication.md`, referenced by every agent that talks to the author): internal field names, invented terms, and process words must not appear in author-visible text; use the summary template when showing structure to the author, never the raw structure; common web-novel terms (爽点, 打脸, 钩子, 金手指, 卷纲, 章纲, etc.) stay as-is and are not translated. When changing agent wording, check the mapping table first; when adding a new internal term, add it to the table at the same time.
 
-## 项目结构与模块组织
+## Project structure and module organization
 
-- `agents/` — 9 个写作 agent 定义（novel-agent 总指挥 + 8 个子 agent），Markdown + frontmatter。
-- `skills/` — 各 agent 的 SOP 指令，按 `{环节}-{动作}.md` 命名。
-- `knowledge/` — 知识库：`genre-example/` 题材档案、`anti-ai/` 反 AI 规则、`format-specs/` 格式规范、`{plot|scene|character|title}-craft/` 创作方法论、`style-distill/` 文风蒸馏提示词模板。
-- `templates/` — 项目初始化模板：`settings/` 设定、`chapters|volumes|archives|prompts|sandbox/` 与 `story.md` 项目骨架、`CLAUDE.md`/`AGENTS.md`/`AGENTS.codex.md` 项目级指令、`migration/` 旧项目迁移。
-- `tools/` — Python 工具：`init.py`（初始化）、`sync-project.py`（同步）、`platforms.py`（平台适配）、`check-agents.py` / `check-conflicts.py` / `check-version.py` / `check-python.py` / `check-yaml.py`（静态检查）、`check-prose.py`（正文 AI 味机器检测，anti-ai Phase 2 初筛/Phase 4 复跑用，init/sync 部署到 `<平台根>/tools/`）、`check-chapter.py`（章节交付硬伤检查：夹层/嵌套引号/半角引号/字数对账为硬性，项目级回归库与白名单外置 `sandbox/`，init/sync 同样部署）、`style_render.py` / `style_verify.py` / `style_common.py`（style-distill 渲染/验收/共享）、`test_platforms.py` / `test_style_rules.py` / `test_style_distill.py` / `test_check_prose.py` / `test_check_chapter.py`（测试）、`test_util.py`（测试共享）。
-- 根目录：`README.md` / `README-en.md`、`SKILL.md`、`skill.json`、`ARCHITECTURE.md`、`CONTRIBUTING.md`、`install.sh` / `install.ps1`、`index.html`（GitHub Pages 落地页）；图片素材在 `reference/images/`、视频在 `reference/video/`。
+- `agents/`, 9 writing agent definitions (novel-agent as director + 8 sub-agents), Markdown + frontmatter.
+- `skills/`, SOP instructions for each agent, named `{phase}-{action}.md`.
+- `knowledge/`, Knowledge base: `genre-example/` genre files, `anti-ai/` anti-AI rules, `format-specs/` format specs, `{plot|scene|character|title}-craft/` writing methodology, `style-distill/` style-distillation prompt templates.
+- `templates/`, Project init templates: `settings/` settings, `chapters|volumes|archives|prompts|sandbox/` and the `story.md` project skeleton, `CLAUDE.md`/`AGENTS.md`/`AGENTS.codex.md` project-level instructions, `migration/` legacy project migration.
+- `tools/`, Python tools: `init.py` (init), `sync-project.py` (sync), `platforms.py` (platform adapters), `check-agents.py` / `check-conflicts.py` / `check-version.py` / `check-python.py` / `check-yaml.py` (static checks), `check-prose.py` (prose AI-flavor machine detection, used for anti-ai Phase 2 first pass / Phase 4 re-run, deployed by init/sync to `<platform root>/tools/`), `check-chapter.py` (chapter delivery hard-defect check: sandwiching / nested quotes / half-width quotes / word-count reconciliation are hard requirements, project-level regression library and whitelist live outside in `sandbox/`, also deployed by init/sync), `style_render.py` / `style_verify.py` / `style_common.py` (style-distill rendering / acceptance / shared code), `test_platforms.py` / `test_style_rules.py` / `test_style_distill.py` / `test_check_prose.py` / `test_check_chapter.py` (tests), `test_util.py` (shared test helpers).
+- Root directory: `README.md`, `SKILL.md`, `skill.json`, `ARCHITECTURE.md`, `CONTRIBUTING.md`, `install.sh` / `install.ps1`, `index.html` (GitHub Pages landing page); images in `reference/images/`, videos in `reference/video/`.
 
-## 构建、测试与开发命令
+## Build, test, and development commands
 
-无构建步骤。Python 主体仅用标准库；pyyaml 例外：`--platform opencode|reasonix|codex|zcode|dsh|grok` 的 agent 转换（platforms.py）与 style-distill 卡 frontmatter 解析/校验（style_common.py / style_render.py / check-agents.py）（见 `tools/requirements.txt`，CI 自动安装）：
-- `python tools/init.py <项目路径> [--genre N] [--platform claude|opencode|reasonix|codex|zcode|dsh|grok]` — 初始化小说项目骨架
-- `python tools/sync-project.py <项目路径> --check` — 检查项目是否需要同步（0=最新，1=有更新，2=无效）
-- `python tools/test_platforms.py` — 运行测试（退出码 0=通过）
-- `python tools/check-agents.py` — 校验 agent frontmatter 引用路径
-- `python tools/check-conflicts.py` — 检查反 AI 规则阈值冲突
-- `python -m py_compile tools/*.py` — 语法检查
+No build step. The Python code uses only the standard library, except for pyyaml: agent conversion for `--platform opencode|reasonix|codex|zcode|dsh|grok` (platforms.py) and style-distill card frontmatter parsing/validation (style_common.py / style_render.py / check-agents.py) (see `tools/requirements.txt`, installed automatically by CI):
+- `python tools/init.py <project path> [--genre N] [--platform claude|opencode|reasonix|codex|zcode|dsh|grok]`, initialize a novel project skeleton
+- `python tools/sync-project.py <project path> --check`, check whether a project needs syncing (0 = up to date, 1 = updates available, 2 = invalid)
+- `python tools/test_platforms.py`, run tests (exit code 0 = pass)
+- `python tools/check-agents.py`, validate agent frontmatter reference paths
+- `python tools/check-conflicts.py`, check anti-AI rule threshold conflicts
+- `python -m py_compile tools/*.py`, syntax check
 
-CI：`.github/workflows/static.yml`，push main 时运行语法/agent/规则检查 + 平台测试套件，并部署 GitHub Pages。
+CI: `.github/workflows/static.yml`, runs syntax / agent / rule checks + the platform test suite on push to main, and deploys GitHub Pages.
 
-## 编码风格与命名约定
+## Coding style and naming conventions
 
-- Python：snake_case 文件名；仅标准库；入口脚本顶部用 `reconfigure(encoding="utf-8")` 防 Windows 中文乱码；docstring 写明用法与退出码。
-- Markdown：中文正文、UTF-8；frontmatter 与正文中引用的项目内文件一律写**部署后路径**——knowledge 用 `.claude/knowledge/...` 基座（format-specs 拍平/合并后仓库相对路径会断链，check-agents.py 按部署布局校验），skills/ 引用用 `skills/xxx.md`（仓库内路径，必存在），settings/ 等项目生成文件用相对项目根的路径。部署后路径由 init.py 的 rewrite_refs 按平台改写前缀。
-- 命名：agent 定义 `{role}-agent.md`；章节 `vol-{N}-ch-{M}.md`、卷纲 `volume-{N}.md`；知识文件按 `knowledge/<分类>/<题材或主题>.md` 组织。
-- 改动贴合项目定位（AI 辅助小说创作），不引入无关功能或依赖。
+- Python: snake_case file names; standard library only; entry scripts call `reconfigure(encoding="utf-8")` at the top to prevent garbled Chinese on Windows; docstrings state usage and exit codes.
+- Markdown: Chinese body text, UTF-8; project-internal files referenced in frontmatter and body text always use **post-deployment paths**: knowledge uses the `.claude/knowledge/...` base (format-specs are flattened/merged, so repository-relative paths would break, and check-agents.py validates against the deployed layout), skills/ references use `skills/xxx.md` (repository paths, must exist), settings/ and other project-generated files use paths relative to the project root. Post-deployment paths are rewritten per platform by init.py's rewrite_refs.
+- Naming: agent definitions `{role}-agent.md`; chapters `vol-{N}-ch-{M}.md`, volume outlines `volume-{N}.md`; knowledge files organized as `knowledge/<category>/<genre or topic>.md`.
+- Changes fit the project scope (AI-assisted novel writing); do not introduce unrelated features or dependencies.
 
-## 测试指南
+## Test guidelines
 
-- 无第三方测试框架；`tools/test_platforms.py` 自写断言，stdout 打印 `ok/FAIL`，非 0 退出码表示失败。
-- 测试函数以 `test_` 开头；E2E 用临时目录验证 init/sync 在 claude/opencode/reasonix/codex/zcode/dsh/grok 七平台的输出。
-- 涉及 agent 定义跑 `check-agents.py`，涉及反 AI 规则跑 `check-conflicts.py`。
-- 行为变更遵循先红后绿：先加失败用例，再实现。
+- No third-party test framework; `tools/test_platforms.py` uses hand-written assertions, prints `ok/FAIL` to stdout, and a non-zero exit code means failure.
+- Test functions start with `test_`; E2E tests use temp directories to verify init/sync output on all seven platforms (claude/opencode/reasonix/codex/zcode/dsh/grok).
+- Run `check-agents.py` for changes touching agent definitions, `check-conflicts.py` for changes touching anti-AI rules.
+- For behavior changes, follow red-then-green: add a failing test case first, then implement.
 
-## 提交与 PR 指南
+## Commit and PR guidelines
 
-- 提交信息遵循 Conventional Commits + 中文描述：`feat:` / `fix:` / `docs:` / `test:` / `refactor:` / `chore:`，如 `fix: sync-project --platform 值守卫防吞 --check`。
-- 发版时 `chore: bump version to vX.Y.Z`，同步更新 `VERSION` 与 `docs/releasenotes/releasenote-X.Y.Z.md`。
-- PR：从 main 新建分支，禁止直接改 main；单个 PR 聚焦一项改动并关联 issue；提交前至少在一种 AI 终端实测（claude/opencode/reasonix/codex/zcode/dsh/grok）。
+- Commit messages follow Conventional Commits + a Chinese description: `feat:` / `fix:` / `docs:` / `test:` / `refactor:` / `chore:`, e.g. `fix: sync-project --platform guard against swallowing --check`.
+- On release, `chore: bump version to vX.Y.Z`, updating `VERSION` and `docs/releasenotes/releasenote-X.Y.Z.md` in the same step.
+- PRs: create a branch from main, never edit main directly; one PR focuses on one change and links its issue; test in at least one real AI terminal (claude/opencode/reasonix/codex/zcode/dsh/grok) before submitting.
 
-## 安全与配置提示
+## Security and configuration notes
 
-- 平台适配逻辑集中在 `tools/platforms.py`，新增平台或修改目录约定时先改这里，再同步 init/sync。
-- 遵守 AGPL-3.0，不提交无版权素材、侵权文案或用户小说内容。
+- Platform adapter logic lives in `tools/platforms.py`; when adding a platform or changing a directory convention, change it there first, then sync init/sync.
+- Follow AGPL-3.0: do not commit unlicensed material, infringing copy, or user novel content.

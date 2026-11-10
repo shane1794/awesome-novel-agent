@@ -1,41 +1,54 @@
-# 东方仙侠反AI规则
+# Eastern Xianxia (Immortal Cultivation) Anti-AI Rules
 
-> 适用题材：xianxia
+> Applicable themes: xianxia
 
-## 高频AI病句正反例
+## High-Frequency AI-Style Bad Sentences: Incorrect vs. Correct Examples
 
-### 1. 境界突破描写
+### 1. Description of realm breakthrough
 
-❌ "他感到灵力涌入经脉，丹田发热，境界开始松动"
-✅ "他攥紧拳头。指甲掐进肉里。疼得眼前发白，但好像有什么东西在骨头缝里松动。"
+❌ "He felt spiritual energy pouring into his meridians, his dantian was heating up, and
+his realm began to loosen." ✅ "He clenched his fists. His nails dug into his flesh. His
+eyes turned white with pain, but it seemed like something was loosening in the seams of
+his bones."
 
-❌ "灵气灌顶，突破就在眼前"
-✅ "他盘腿坐了一夜。膝盖麻得没知觉了。快天亮时，肚子突然叫了一声。"
+❌ "Spiritual energy infusion, breakthrough just around the corner" ✅ "He sat cross-legged all
+night. His knees were so numb that he couldn't feel anything. When it was almost dawn,
+his stomach suddenly growled."
 
-### 2. 战斗一招一式
+### 2. Blow-by-Blow Fight Descriptions
 
-❌ "他瞄准敌人要害，一剑刺出，直取咽喉"
-✅ "剑尖抖了一下。他咬牙往前送，手腕酸得厉害——对方侧身躲开了。"
+❌ "He aimed at the enemy's vital point, stabbed it out with a sword, and took it
+straight to the throat" ✅ "The tip of the sword shook. He gritted his teeth and pushed
+forward, his wrist was sore - the opponent sidestepped and dodged."
 
-### 3. 法宝描写过度
+### 3. Excessive description of the magic weapon
 
-❌ "灵剑散发着蓝色光芒，剑身上刻着古老的符文"
-✅ "剑柄硌手。他低头一看，木头都磨出了印子，像是用了很多年。"
+❌ "The spirit sword was emitting blue light, and ancient runes were engraved on the
+sword." ✅ "The hilt of the sword hurt his hand. When he looked down, he saw that the
+wood was worn away, as if it had been used for many years."
 
-### 4. 情绪直述
+### 4. Direct emotional statements
 
-❌ "他心中一凛，顿感压力"
-✅ "他的脚往后退了半步。脚跟碰到石头，没地方再退了。"
+❌ "He felt a chill in his heart and suddenly felt pressure" ✅ "His feet took half a step
+back. His heels hit the stone and there was no place to retreat."
 
-### 5. 排比式感知
+### 5. Parallel Perception Lists
 
-❌ "也许是灵气不足，也许是伤势未愈，也许是天劫太猛"
-✅ "他咳了两声。嗓子里有血腥味。手也在抖——不知道是累的还是怕的。"
+❌ "Maybe it's because of lack of spiritual energy, maybe because the injury has not
+healed, maybe because the disaster is too severe" ✅ "He coughed twice. There was the
+smell of blood in his throat. His hands were shaking too - I don't know if it was
+because of tiredness or fear."
 
-## 写作要点
+## Writing points
 
-1. **修炼要苦** — 别写灵气自动涌入，写具体的累、酸、疼
-2. **战斗要糙** — 别写招式名称，写手抖、喘气、失误
-3. **情绪用身体** — 紧张=往后退、攥拳、咬嘴唇，不是"心中一凛"
-4. **环境贴角色** — 山门冷不冷写具体感受，别写"仙气缭绕"
-5. **对话有门派味** — 修仙者说话也别太端着，用"咱""俺"或者"贫道""在下"区别身份
+1. **Cultivation requires hardship**, Don’t write about the automatic influx of
+   spiritual energy, write about specific tiredness, soreness, and pain
+2. **Fighting needs to be rough**, Don’t write the name of the move, write trembling
+   hands, gasping, mistakes
+3. **Emotions use the body** - Nervous = stepping back, clenching fists, biting lips,
+   not "a shiver in the heart"
+4. **Environment post character** - Shanmen Lengbu Leng Write down specific feelings,
+   don't write "fairy spirit lingering"
+5. **The dialogue has a sectarian feel** - Immortal cultivators should not be too
+   pretentious when speaking, use "we", "we" or "pindao" and "I'm here" to distinguish
+   their identities

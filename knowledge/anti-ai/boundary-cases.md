@@ -1,97 +1,116 @@
-# 误杀防护 — 不改清单
+# Manslaughter Protection - No changes to the list
 
-> anti-ai 管线执行时，以下场景**跳过检测**。防止去 AI 味过度导致角色同质化。
+> When the anti-ai pipeline is executed, the following scenarios **skip detection**.
+> Prevent excessive AI deodorization from leading to role homogeneity.
 
-## 一、角色化表达不改
+## 1. Role-based expression remains unchanged
 
-### 口头禅 / 口癖
+### catchphrase/mantra
 
-- 角色固定的口头禅、语气词、停顿习惯不改
-- 例：角色A说话爱带"就是说"，角色B爱带"你懂吧"，角色C紧张时会结巴
-- 无论是否命中禁用词表，**角色口头禅不触发 Gate A/B/C**
+- The characters’ fixed mantras, modalities, and pause habits remain unchanged.
+- Example: Character A likes to say "just say" when speaking, character B likes to say
+  "you know" when speaking, character C will stutter when nervous.
+- Regardless of whether the forbidden word list is hit or not, **character mantras do
+  not trigger Gate A/B/C**
 
-### 性格化语法错误
+### Personalized grammar errors
 
-- 角色因文化水平/性格导致的语法错误不改
-- 例：文盲角色说"俺不知道"，大大咧咧角色说"不是我说你啊"
-- 判定标准：错误是否贴合角色设定中的层6（出身）+ 层2（自我定位）
+- Grammatical errors caused by the character's cultural level/personality will not be
+  corrected.
+- Example: The illiterate character says "I don't know", the carefree character says
+  "I'm not talking about you"
+- Judgment criteria: Whether the error fits Layer 6 (originality) + Layer 2
+  (self-positioning) in the character setting
 
-### 特定叙事腔调
+### Specific Narrative Tone
 
-- 第一人称吐槽风格不改（心理活动有大量口语/偏激/不准确表达）
-- 角色在情绪极端时的反常表达不改（怒极反笑、悲极沉默、焦虑时话多）
-- 叙述者年龄/气质带来的特殊句式不改（儿童视角/老人回忆/老兵口述）
+- The first-person complaining style remains unchanged (psychological activities include
+  a lot of colloquial/extreme/inaccurate expressions)
+- The character’s abnormal expressions when facing extreme emotions remain unchanged
+  (laughing when angry, silent when sad, talking too much when anxious)
+- The special sentence patterns brought about by the narrator's age/temperament remain
+  unchanged (children's perspective/old man's memories/veteran's oral narration)
 
-## 二、对话特例不改
+## 2. Dialogue exceptions remain unchanged
 
-### 完整句式豁免
+### Complete sentence exemption
 
-- 对话中出现的书面语/完整句式，属于角色性格故意为之的不改
-- 例：学者角色在对话中也用完整句式——这不是 AI 味，是角色设定
-- 判定标准：对照角色设定层5（技能）和基本信息·语言特征
+- The written language/complete sentences that appear in the dialogue are intentional
+  changes to the character's personality.
+- Example: The scholar character also uses complete sentences in the dialogue - this is
+  not an AI flavor, but a character setting.
+- Judgment criteria: Compare character setting layer 5 (skills) and basic information
+  and language characteristics
 
-### 对话情绪词豁免
+### Conversational mood word exemption
 
-- 对话中直接出现情绪词不改——人在对话中会说"我很生气""我很难过"
-- 改为标记"对话内情绪词"，仅用于量化统计，**不触发替换**
+- Do not change the emotional words that appear directly in the conversation - people
+  will say "I am angry" or "I am sad" in the conversation.
+- Change to mark "emotional words in dialogue", which is only used for quantitative
+  statistics and **does not trigger replacement**
 
-### 对话标签豁免
+### Conversation tag exemption
 
-- "他说""她问"等基本对话标签不改，因为这是叙事基础设施
-- 只处理**过度修饰**的标签（"他愤怒地说""她轻声说道"中的副词部分）
+- Basic dialogue tags such as "He Said" and "She Asked" remain unchanged because they
+  are narrative infrastructure.
+- Only handle **overmodified** tags (the adverbial parts of "he said angrily" and "she
+  whispered")
 
-## 三、特定的叙事功能不改
+## 3. Specific narrative functions remain unchanged
 
-### 标点功能豁免
+### Punctuation function exemption
 
-| 场景 | 示例 | 处理 |
+| Scenario | Example | Processing |
 |------|------|------|
-| 对话被打断 | "你——"他的话没说完就被打断了 | 保留破折号 |
-| 角色声音拉长 | "等——一——下——" | 保留 |
-| 内心活动的省略 | "她记得……不，也许记错了" | 保留省略号 |
-| 顿号列举 | "桌上摆着笔、纸、手机、钥匙" | 保留（生活化列举） |
-| 顿号列举（AI 模板） | "这里象征着勇气、坚韧、希望、未来" | 标记（抽象概念列举） |
+| The conversation was interrupted | "You, " He was interrupted before he could finish his sentence | Keep the dash |
+| The character's voice is elongated | "Wait - one - next -" | Reserved |
+| Omission of inner activities | "She remembered... no, maybe she remembered it wrongly" | Keep the ellipses |
+| List of commas | "There are pens, paper, mobile phones, and keys on the table" | Reserved (enumerated in daily life) |
+| List of comma (AI template) | "This symbolizes courage, tenacity, hope, and future" | Tag (list of abstract concepts) |
 
-### "了"字功能豁免
+### Function exemption of the word "了"
 
-| 场景 | 不改 | 改 |
+| Scene | Do not change | Change |
 |------|------|----|
-| 对话完成态 | "我知道了""好了""走了啊" | 不改（口语完成态） |
-| 动作完成 | "他站了起来" | 可改 → "他站起来" |
-| 连续完成时态 | "他站了起来，走了出去，关上了门" | 保留一个"了" |
-| 状态变化 | "他开始懂了" | 不改（习惯用法） |
+| Dialogue perfect state | "I understand" "Okay" "Let's go" | No change (spoken perfect state) |
+| Action completed | "He stood up" | Can be changed → "He stood up" |
+| Continuous perfect tense | "He stood up, walked out, and closed the door" | Keep one "了" |
+| Status change | "He begins to understand" | Do not change (idiom) |
 
-### 排比句式功能豁免
+### Parallel sentence function exemption
 
-| 场景 | 不改 | 改 |
+| Scene | Do not change | Change |
 |------|------|----|
-| 角色刻意排比 | 角色有演讲/辩论/煽情需求 | 保留，不触发自动替换 |
-| 意识流 | 角色在情绪高点使用排比增强语气 | 保留，仅标记 |
-| AI 模板排比 | "也许是……也许是……也许是……" | 改 |
-| 机械列举 | "首先…其次…最后" | 改 |
+| Roles are deliberately matched | Characters have speech/debate/sensational needs | Reserved, automatic replacement will not be triggered |
+| Stream of consciousness | Characters use parallelism to enhance tone at emotional high points | Reserved, marked only |
+| AI template ranking | "Maybe...maybe...maybe..." | Change |
+| Mechanical enumeration | "First...Secondly...Last" | Change |
 
-## 四、Gate G·风格偏差豁免
+## 4. Gate G / Style deviation exemption
 
-| 类别 | 说明 |
+| Category | Description |
 |------|------|
-| 场景类型刻意偏离 | 战斗场景刻意用短句、对话场景刻意长对话/低对话占比——若与场景卡标注的该场景 override 一致，不算偏差 |
-| 人物口癖 | 角色化重复用词/句式（已在前组豁免） |
-| 不确定 | 判定结果不确定（疑似误杀，无现档位可套——现为 T1/T2/T3 档位 + 轻/中/重定级 + Gate G PASS/FAIL）→ 标 `[疑: 疑似误杀]` 不改，报作者确认 |
+| Deliberate deviations in scene types | Short sentences are used in battle scenes, long dialogues/low dialogue proportions are deliberately used in dialogue scenes - if it is consistent with the override of the scene marked on the scene card, it is not a deviation |
+| Character's oral habits | Repeated words/sentence patterns in character (already exempted in the previous group) |
+| Uncertain | The judgment result is uncertain (suspected of manslaughter, no current gear can be applied - currently T1/T2/T3 gear + light/medium/heavy grade + Gate G PASS/FAIL) → mark `[疑: 疑似误杀]` and do not change, report to the author for confirmation |
 
-## 五、写作实操指引
+## 5. Practical Guide to Writing
 
-### anti-ai agent 执行规则
+### anti-ai Agent Execution Rules
 
 ```
-检查命中 → 是否在 boundary-cases 列表中？ → 是 → 跳过（标注 SKIP）
-                                           → 否 → 按 common-rules 处理
+Check if hit → is in boundary-cases list? → Yes → Skip (mark SKIP)
+                                           → No → Processed by common-rules
 ```
 
-- 每次 Phase 3 执行前，先读 boundary-cases.md
-- 每个 Gate 命中先做"是否豁免"判断，再决定改不改
-- 标记为 SKIP 的命中统计入量化指标**但不修改**
+- Before each Phase 3 execution, read boundary-cases.md first
+- For each Gate hit, first make a judgment on whether to save or not, and then decide
+  whether to change it or not.
+- Hit statistics marked as SKIP are included in quantitative indicators** but are not
+  modified**
 
-### 不确定时
+### Uncertain
 
-- 有歧义的命中 → 保留原文，在 Phase 4 报告中标注 `[疑: 疑似误杀]`
-- 需要作者判断的 → 打在报告中，不做修改
+- Ambiguous hits → keep original text, mark `[疑: 疑似误杀]` in Phase 4 report
+- Those that require the author’s judgment → enter them in the report without
+  modification.

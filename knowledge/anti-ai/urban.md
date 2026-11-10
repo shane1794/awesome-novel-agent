@@ -1,38 +1,50 @@
-# 都市通用反AI规则
+# Urban Anti-AI Rules
 
-> 适用题材：urban
+> Applicable themes: urban
 
-## 高频AI病句正反例
+## High-Frequency AI-Style Bad Sentences: Incorrect vs. Correct Examples
 
-### 1. 时间描写
+### 1. Time description
 
-❌ "新的一天开始了，阳光透过窗户洒进来"
-✅ "闹钟响了。六点半。他按掉，又躺了三分钟，手机又响了。"
+❌ "A new day has begun, the sun shines in through the window" ✅ "The alarm clock rang.
+It was half past six. He pressed it and lay there for another three minutes, and the
+phone rang again."
 
-### 2. 场景堆砌
+### 2. Scene stacking
 
-❌ "高楼林立，车水马龙，现代化的都市一片繁华"
-✅ "路口堵了。红灯九十秒，他数完了一轮。前面有个人在刷手机，后视镜里能看到司机的脸，他也在刷。"
+❌ "There are many high-rise buildings, busy traffic, and the modern city is bustling" ✅
+"The intersection is blocked. The red light has been red for ninety seconds, and he has
+finished counting one round. There is a person in front of him checking his mobile
+phone, and the driver's face can be seen in the rearview mirror, and he is also
+checking."
 
-### 3. 情绪直述
+### 3. Direct emotional statements
 
-❌ "他感到生活不易"
-✅ "他把外卖送上楼。客人让他帮忙带垃圾，他说行。电梯里他看了眼手机，还剩三十分钟送下一单。"
+❌ "He felt life was not easy" ✅ "He delivered the takeout upstairs. The customer asked
+him to help take away the garbage, and he said yes. In the elevator, he looked at his
+phone and saw that there were thirty minutes left to deliver the next order."
 
-### 4. 排比式分析
+### 4. Comparative analysis
 
-❌ "也许是工作太累，也许是睡眠不足，也许是需要休息"
-✅ "他靠在墙上。墙皮有点凉。他摸了摸口袋，有根皱巴巴的烟，捏了捏，没舍得点。"
+❌ "Maybe he was too tired from work, maybe he didn't have enough sleep, maybe he needed
+a rest" ✅ "He leaned against the wall. The wall was a little cold. He touched his pocket
+and found a crumpled cigarette. He pinched it and refused to light it."
 
-### 5. 心理描写过度
+### 5. Excessive psychological description
 
-❌ "他陷入沉思，回忆着过去的种种"
-✅ "他坐在车里没动。发动机熄了，还有点烫。手机响了一声，他没看。"
+❌ "He was lost in thought, recalling the past" ✅ "He sat in the car and didn't move. The
+engine was turned off and it was still a little hot. The phone rang, but he didn't look
+at it."
 
-## 写作要点
+## Writing points
 
-1. **都市写堵车/排队/等电梯** — 现代人最熟悉的日常，比"高楼林立"更真实
-2. **情绪写手机** — 现代人情绪靠手机泄露：刷朋友圈、没看完的视频、没回的消息
-3. **时间写倒计时** — 外卖有倒计时，会议有倒计时，生活被精确到秒
-4. **疲惫写不想动** — 不是"很累"，是"靠在墙上""懒得动""烟都舍不得点"
-5. **对话要碎** — 都市人说话碎，没头没尾，微信比当面说得多
+1. **Urban writing about traffic jams/queuing/waiting for elevators** - the most
+   familiar daily routines for modern people, more real than "high-rise buildings"
+2. **Emotions written on mobile phones**, Modern people’s emotions are revealed through
+   mobile phones: checking Moments, unfinished videos, unanswered messages
+3. **Time writing countdown**, There is a countdown for takeaways, a countdown for
+   meetings, and life is accurate to the second
+4. **I feel tired and don’t want to move**, It’s not “very tired”, it’s “leaning against
+   the wall”, “too lazy to move”, “can’t bear to light a cigarette”
+5. **Conversations should be broken down**, Urban people talk in broken words, without
+   beginning or end, and WeChat talks more than talking in person.

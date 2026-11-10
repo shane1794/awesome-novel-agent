@@ -1,324 +1,324 @@
 ---
-name: 反AI体系升级 v2 - 从规则清单到底层认知
-about: 基于 salt-story 项目的深度研究，系统升级 awesome-novel 的反AI写作体系
-title: "[RFC] 反AI体系升级 v2 — 从检查清单到底层认知"
+name: Anti-AI System Upgrade v2 - From Rule List to Root Causes
+about: Based on deep research into the salt-story project, systematically upgrade awesome-novel's anti-AI writing system
+title: "[RFC] Anti-AI System Upgrade v2: From Checklist to Root Causes"
 labels: enhancement, anti-ai, rfc
 assignees: ""
 ---
 
-## 背景
+## Background
 
-当前 awesome-novel 的反AI体系（`memory/anti-ai/`）已经建立了一套规则系统：疲劳词阈值、句式禁止、元叙事过滤、情绪外化规则等。这套系统有效，但存在一个根本问题：
+awesome-novel's current anti-AI system (`memory/anti-ai/`) already has a rule system: fatigue-word thresholds, banned sentence patterns, meta-narrative filtering, externalized-emotion rules, and more. The system works, but it has a fundamental problem:
 
-**它是"症状清单"式的——告诉 AI 什么不能做，但没有告诉 AI 为什么不能做。**
+**It is a "symptom checklist": it tells the AI what not to do, but never tells the AI why not.**
 
-通过深度研究 [salt-story](https://github.com/your/salt-story) 项目的反AI方法论，我们发现它从 `第零层：底层根因 → 第一层：句子级 → 第二层：段落级 → 第三层：全文级 → 第四层：气质级` 构建了一套完整的认知体系。这不仅让它写了 20+ 篇通过盐选编辑审核的故事，更让它的输出在贴吧/豆瓣测试中几乎无法被识别为 AI。
+Through deep research into the [salt-story](https://github.com/your/salt-story) project's anti-AI methodology, we found it builds a complete cognitive system from `Layer 0: root causes → Layer 1: sentence level → Layer 2: paragraph level → Layer 3: full-text level → Layer 4: temperament level`. It not only wrote 20+ stories that passed Yanxuan editorial review, its output is also nearly unrecognizable as AI in Tieba/Douban tests.
 
-本 RFC 提出将 salt-story 的反AI认知框架系统性地集成到 awesome-novel 中。
-
----
-
-## 一、AI味的五层根因（salt-story 的核心理论）
-
-> **AI味的本质不是某几个词或句式。它是一种过度的秩序感——AI的文字像一个穿着打扮完美但眼神空洞的人。**
-
-### 根因1：均值回归
-AI 倾向于生成"最可能的下一个词"，导致所有输出朝平均值靠拢。人类写作有极端值——特别好或特别烂的句子共存。
-
-**对生成的影响**：AI 不会写出"神句"，也不会写出"烂句"。去掉了低分区域，也就去掉了高分区域。
-
-### 根因2：对称性
-AI 喜欢对称结构（"不是A而是B""既有A也有B"）。人类写作是不对称的——偏向某一边，忽略另一边。
-
-**对生成的影响**：对称结构本身不是错，但全文反复出现就暴露了"这是 AI 生成的概率最大序列"。
-
-### 根因3：情感正确性
-AI 的情感反应总是"合理"的。人类的情感反应经常是错位的、矛盾的、不成比例的。
-
-**对生成的影响**：合理的情绪不会错，但也不会让读者觉得"这是真人在说话"。错位的情绪才是人味。
-
-### 根因4：无损信息传递
-AI 的每句话都携带信息，没有真正的"废话"。人类写作充满真正的废话——而这些废话正是"人味"的核心。
-
-**对生成的影响**：AI 文本"信息密度均匀"——每个段落都在推情节。人类的写作会停顿、会走神、会写看似无关的东西。
-
-### 根因5：视角稳定性
-AI 的第一人称叙述像上帝视角——观察力完美、描述精准。人类的第一人称有盲区、偏见、自我欺骗。
-
-**对生成的影响**：AI 第一人称永远可靠，人类的第一人称不可靠才是常态。
-
-**理解了这五个根因，就能自己发明无数种去AI味的技法，而不只是依赖一个静态的禁止列表。**
+This RFC proposes integrating salt-story's anti-AI cognitive framework into awesome-novel systematically.
 
 ---
 
-## 二、当前体系的差距分析
+## 1. The Five Root Causes of AI Flavor (salt-story's Core Theory)
 
-### ❌ 缺少的层面
+> **The essence of AI flavor is not a few words or patterns. It is an excess of order: AI prose reads like a person dressed perfectly but with hollow eyes.**
 
-| 层面 | 当前状态 | salt-story 的做法 |
+### Root Cause 1: Regression to the Mean
+AI tends to generate "the most likely next word", so all output converges toward the average. Human writing has extreme values: especially good and especially bad sentences coexist.
+
+**Effect on generation**: AI writes neither "killer lines" nor "bad lines". Removing the low-scoring region also removes the high-scoring region.
+
+### Root Cause 2: Symmetry
+AI loves symmetric structures ("not A but B", "both A and B"). Human writing is asymmetric: it leans to one side and ignores the other.
+
+**Effect on generation**: Symmetric structures are not wrong by themselves, but when they repeat throughout a text they expose it as "the most probable sequence AI would generate".
+
+### Root Cause 3: Emotional Correctness
+AI's emotional reactions are always "reasonable". Human emotional reactions are often misplaced, contradictory, and out of proportion.
+
+**Effect on generation**: Reasonable emotions are never wrong, but they never make the reader feel "a real person is talking". Misplaced emotions are what feel human.
+
+### Root Cause 4: Lossless Information Transfer
+Every AI sentence carries information; there is no genuine "filler". Human writing is full of genuine filler, and that filler is the core of what feels human.
+
+**Effect on generation**: AI text has "uniform information density": every paragraph advances the plot. Human writing pauses, drifts off, and writes things that seem irrelevant.
+
+### Root Cause 5: Perspective Stability
+AI first-person narration reads like an omniscient view: perfect observation, precise description. Human first-person narration has blind spots, biases, and self-deception.
+
+**Effect on generation**: AI first-person narration is always reliable; unreliable human first-person narration is the norm.
+
+**Once you understand these five root causes, you can invent countless de-AI-flavor techniques yourself instead of relying on a static ban list.**
+
+---
+
+## 2. Gap Analysis of the Current System
+
+### ❌ Missing Layers
+
+| Layer | Current State | salt-story's Approach |
 |------|---------|-----------------|
-| **第零层：根因理论** | 无 | 5 个底层根因解释（均值回归、对称性、情感正确性等） |
-| **第一层：句子级** | ✅ 有疲劳词阈值 + 句式禁止 | 同等级别，但多了一个"为什么会有AI味"的解释 |
-| **第二层：段落级** | ⚠️ 有段落长度规则（25%-45%单句段） | 更精细：段落节奏分布（不均匀才是人）、情感弧度（心电图形状）、因果链断裂 |
-| **第三层：全文级** | ❌ 部分有 | 信息密度分布（鼓点不是白噪音）、角色语言DNA表、叙述者有限视角 |
-| **第四层：气质级** | ❌ 完全缺失 | 不完美的美感、偏执/执念、幽默/自嘲、沉默/留白 |
+| **Layer 0: Root-Cause Theory** | None | 5 root-cause explanations (regression to the mean, symmetry, emotional correctness, etc.) |
+| **Layer 1: Sentence Level** | ✅ Fatigue-word thresholds + banned sentence patterns | Same level, plus an explanation of "why this has AI flavor" |
+| **Layer 2: Paragraph Level** | ⚠️ Paragraph-length rules (25%-45% single-sentence paragraphs) | More granular: paragraph rhythm distribution (uneven is human), emotional arc (ECG shape), broken causal chains |
+| **Layer 3: Full-Text Level** | ❌ Partially present | Information-density distribution (a drumbeat, not white noise), character language DNA tables, limited narrator perspective |
+| **Layer 4: Temperament Level** | ❌ Completely missing | Imperfect beauty, obsession/fixation, humor/self-mockery, silence/negative space |
 
-### ❌ 缺少的流程
+### ❌ Missing Processes
 
-| 流程 | 当前 | salt-story |
+| Process | Current | salt-story |
 |------|------|-----------|
-| **角色语言DNA表** | 有角色设定但无语言特征维度 | 写前必填：句子平均长度、用词档次、口头禅、说话习惯等 6 个维度 |
-| **段落节奏分布检测** | 无 | 独句段占比 20-30%、2句段 15-20%、3句段 20-25% 的不均匀分布 |
-| **信息密度不均匀** | 无 | 刻意制造信息密度的疏密——有的段落密度极高，有的段落几乎没有新信息 |
-| **叙述者有限视角** | 视角规则要求"聚焦主角"但未要求"有限性" | 叙述者会漏掉明显的事、误解别人、过度关注无关事、事后重构记忆 |
-| **多模型交叉校对** | 无 | 3轮：Opus（时间线+波折）→ GPT（逻辑+AI味）→ Opus（提速） |
-| **贴吧测试** | 无 | 终检：匿名发贴吧，3段随机抽，有人会说AI写的吗？ |
+| **Character Language DNA Table** | Character settings exist, but no language-feature dimensions | Required before writing: average sentence length, word register, catchphrases, speech habits, and 6 other dimensions |
+| **Paragraph Rhythm Distribution Check** | None | Uneven distribution: 20-30% single-sentence paragraphs, 15-20% two-sentence, 20-25% three-sentence |
+| **Uneven Information Density** | None | Deliberately vary information density: some paragraphs extremely dense, others with almost no new information |
+| **Limited Narrator Perspective** | Perspective rules ask to "focus on the protagonist" but do not require "limitedness" | The narrator misses obvious things, misunderstands others, over-focuses on irrelevancies, and reconstructs memories after the fact |
+| **Multi-Model Cross-Review** | None | 3 rounds: Opus (timeline + twists) → GPT (logic + AI flavor) → Opus (speed-up) |
+| **Tieba Test** | None | Final check: post anonymously to Tieba, 3 randomly drawn passages; would anyone say AI wrote this? |
 
-### ✅ 已有的但需增强的
+### ✅ Present but Needs Strengthening
 
-| 已有 | 增强方向 |
+| Present | Strengthening Direction |
 |------|---------|
-| `memory/anti-ai/common-rules.md` | 加入根因解释 + 段落节奏分布要求 + 信息密度不均匀要求 |
-| 各题材反AI文件（❌/✅模式） | 增加更多"为什么这个句式有AI味"的解释 |
-| `chapter-quality-checklist.md` | 增加第零层 + 第四层检查项 |
-| `writing-execution.md` | 增加"防AI味"规则到 sub-agent 执行指令 |
-| `writing-style.md` 四字段 | 叙事身份加入"有限视角"的明确要求 |
+| `memory/anti-ai/common-rules.md` | Add root-cause explanations + paragraph-rhythm distribution requirements + uneven information-density requirements |
+| Genre anti-AI files (❌/✅ mode) | Add more explanations of "why this pattern has AI flavor" |
+| `chapter-quality-checklist.md` | Add Layer 0 + Layer 4 check items |
+| `writing-execution.md` | Add "anti-AI-flavor" rules to the sub-agent execution instructions |
+| `writing-style.md` four fields | Add an explicit "limited perspective" requirement to the narrative identity |
 
 ---
 
-## 三、实施方案
+## 3. Implementation Plan
 
-### Phase 1：知识库升级（`memory/anti-ai/`）
+### Phase 1: Knowledge Base Upgrade (`memory/anti-ai/`)
 
-#### 1.1 升级 `common-rules.md` — 加入根因理论 + 段落节奏 + 信息密度
+#### 1.1 Upgrade `common-rules.md`: Add Root-Cause Theory + Paragraph Rhythm + Information Density
 
-在 `common-rules.md` 顶部增加 **"AI味的五层根因"** 说明。增加章节：
+Add a **"Five Root Causes of AI Flavor"** section at the top of `common-rules.md`. Add chapters:
 
-- **段落节奏分布规则**：独句段 20-30%、2句段 15-20%、3句段 20-25%、4句段 ~10%、5句段 5-8%
-- **信息密度不均匀规则**：制造疏密节奏，不是均匀分配信息
-- **情感弧度规则**：不平滑的心电图式起伏
-- **因果链断裂规则**：允许跑题、允许无关细节并置、允许"死线索"
+- **Paragraph rhythm distribution rules**: 20-30% single-sentence paragraphs, 15-20% two-sentence, 20-25% three-sentence, ~10% four-sentence, 5-8% five-sentence
+- **Uneven information-density rules**: create sparse/dense rhythm instead of distributing information evenly
+- **Emotional arc rules**: a jagged ECG-style rise and fall, not smooth
+- **Broken causal-chain rules**: going off-topic allowed, unrelated details placed side by side allowed, "dead threads" allowed
 
-#### 1.2 升级各题材反AI文件
+#### 1.2 Upgrade Each Genre's Anti-AI File
 
-在每个 `memory/anti-ai/{genre}.md` 中增加：
+Add to every `memory/anti-ai/{genre}.md`:
 
-- 每个 ❌ 模式加一句"为什么这是AI味"的根因解释
-- **叙事者有限视角**的正反例对照（针对该题材）
-- **气质级**的正反例对照：不完美表达、偏执/执念、幽默/自嘲、沉默/留白
+- One root-cause explanation per ❌ pattern ("why this is AI flavor")
+- **Limited narrator perspective** positive/negative examples (for that genre)
+- **Temperament-level** positive/negative examples: imperfect expression, obsession/fixation, humor/self-mockery, silence/negative space
 
-#### 1.3 新增知识文件
+#### 1.3 New Knowledge Files
 
-| 文件 | 内容 | 优先级 |
+| File | Content | Priority |
 |------|------|--------|
-| `memory/anti-ai/root-causes.md` | 五层根因理论全文 + 实战对照表（同一段落的AI版/改良版/爆款版） | P0 |
-| `knowledge/character-craft/character-dna-table.md` | 角色语言DNA表模板（6维度：句长、用词、口头禅、说话习惯、信息泄露方式、情绪表达） | P0 |
-| `knowledge/plot-craft/information-density.md` | 信息密度控制方法论（鼓点模型、疏密节奏、蓄力与释放） | P1 |
-| `knowledge/narrative/flawed-narrator.md` | 有限叙述者技法（盲区、偏见、自我欺骗、事后重构） | P1 |
+| `memory/anti-ai/root-causes.md` | Full five-root-cause theory + hands-on comparison table (AI version / improved version / viral-hit version of the same passage) | P0 |
+| `knowledge/character-craft/character-dna-table.md` | Character language DNA table template (6 dimensions: sentence length, word choice, catchphrases, speech habits, information-leak style, emotional expression) | P0 |
+| `knowledge/plot-craft/information-density.md` | Information-density control methodology (drumbeat model, sparse/dense rhythm, buildup and release) | P1 |
+| `knowledge/narrative/flawed-narrator.md` | Limited-narrator techniques (blind spots, bias, self-deception, retrospective reconstruction) | P1 |
 
-### Phase 2：流程升级（写作工作流）
+### Phase 2: Process Upgrade (Writing Workflow)
 
-#### 2.1 writer agent 升级
+#### 2.1 writer agent Upgrade
 
-在 `writing-execution.md` 中加入：
+Add to `writing-execution.md`:
 
 ```
-## 防AI味规则（增强版）
+## Anti-AI-Flavor Rules (Enhanced)
 
-### 段落节奏 —— 写完后逐段检查句子数
-- 每段 1-3 句，超过 3 句必须打散
-- 独句段落占比不低于 25%
-- 连续 3 段长度相似的必须打散
+### Paragraph Rhythm: Check Sentence Counts Paragraph by Paragraph After Writing
+- 1-3 sentences per paragraph; anything over 3 sentences must be broken up
+- Single-sentence paragraphs at least 25%
+- 3 consecutive paragraphs of similar length must be broken up
 
-### 情绪弧度 —— 不平滑
-- 每章至少 1 处"错位情绪"（该哭的时候笑、该愤怒的时候发呆）
-- 情绪爆发要突然，不是"慢慢积累到终于忍不住"
+### Emotional Arc: Not Smooth
+- At least 1 "misplaced emotion" per chapter (laughing when one should cry, spacing out when one should be furious)
+- Emotional outbursts must be sudden, not "slowly building until finally unable to hold back"
 
-### 信息密度 —— 不均匀
-- 至少 1 段是"疏"段——几乎没有新信息，纯状态描写或闲笔
-- 情节推进段和非推进段交替出现
-- 全文至少有 1 处"废话"（生活化闲笔，与主线无关）
+### Information Density: Uneven
+- At least 1 "sparse" paragraph with almost no new information: pure state description or idle brushstrokes
+- Plot-advancing and non-advancing paragraphs alternate
+- At least 1 "filler" passage in the whole text (everyday idle brushstrokes, unrelated to the main line)
 
-### 叙述者不完美
-- 叙述者可以漏掉明显的事（"具体那天穿的什么？不记得了"）
-- 叙述者可以判断错误（"我当时觉得他是在帮我。后来才知道不是。")
-- 叙述者可以过度关注无关细节（因为焦躁/偏见）
+### Imperfect Narrator
+- The narrator may miss obvious things ("What exactly was I wearing that day? I don't remember.")
+- The narrator may judge wrong ("I thought he was helping me at the time. Only later did I learn he wasn't.")
+- The narrator may over-focus on irrelevant details (out of anxiety/bias)
 
-### 气质要求
-- 至少 1 处"粗粝表达"（语序不标准、用词不精确但意思到了）
-- 至少 1 处自嘲或黑色幽默
-- 同一个关键细节至少出现 2 次（偏执/执念感）
-- 至少 1 处"留白"——用动作/沉默代替情绪解释
+### Temperament Requirements
+- At least 1 "rough-edged expression" (non-standard word order, imprecise wording that still lands)
+- At least 1 self-mockery or dark humor moment
+- The same key detail appears at least 2 times (a sense of obsession/fixation)
+- At least 1 "negative space": action/silence instead of an emotional explanation
 ```
 
-#### 2.2 reader agent 升级
+#### 2.2 reader agent Upgrade
 
-在 reader 的评审维度中新增 **"人味指数"** 评审维度：
+Add a **"Human-Feel Index"** review dimension to the reader's review dimensions:
 
-7. **人味指数（新）**
-   - 段落节奏是否均匀（均匀=AI特征）？
-   - 情感变化是否平滑（平滑=AI特征）？
-   - 信息密度是否太均匀（太均匀=AI特征）？
-   - 叙述者是否有盲区（全知=AI特征）？
-   - 是否有粗粝感（太光滑=AI特征）？
+7. **Human-Feel Index (new)**
+   - Is the paragraph rhythm uniform (uniform = AI trait)?
+   - Are emotional changes smooth (smooth = AI trait)?
+   - Is information density too uniform (too uniform = AI trait)?
+   - Does the narrator have blind spots (omniscient = AI trait)?
+   - Is there any roughness (too polished = AI trait)?
 
-#### 2.3 prompt-crafter 升级
+#### 2.3 prompt-crafter Upgrade
 
-在 `prompt-setting-style.md` 的 `输出·写作规范` 中增加：
+Add to the `Output · Writing Standards` section of `prompt-setting-style.md`:
 
-- 增加 **段落节奏要求**（不均匀分布）
-- 增加 **情绪弧度要求**（心电图式，非正弦波）
-- 增加 **信息密度控制**（疏密交替）
-- 增加 **叙述者有限视角** 的硬约束
-- 增加 **粗粝感** 要求（不完美表达）
+- Add **paragraph rhythm requirements** (uneven distribution)
+- Add **emotional arc requirements** (ECG-style, not a sine wave)
+- Add **information-density control** (sparse/dense alternation)
+- Add a hard constraint for the **limited narrator perspective**
+- Add a **roughness** requirement (imperfect expression)
 
-### Phase 3：质量管理升级
+### Phase 3: Quality Management Upgrade
 
-#### 3.1 正文验收清单升级
+#### 3.1 Body-Text Acceptance Checklist Upgrade
 
-在 `chapter-quality-checklist.md` 增加新的检查维度：
+Add new check dimensions to `chapter-quality-checklist.md`:
 
 ```markdown
-## AI味深度检测（新增 6 大维度）
+## AI-Flavor Deep Check (6 New Dimensions)
 
-### 1. 段落节奏分布（最重要的AI指纹）
-- [ ] 独句段占比 ≥ 25%？（低于 25% 大概率是AI）
-- [ ] 没有连续 3 段长度相似的段落？
-- [ ] 最长段落 ≤ 5 句？（超过 5 句即打散）
+### 1. Paragraph Rhythm Distribution (the Most Important AI Fingerprint)
+- [ ] Single-sentence paragraphs ≥ 25%? (Below 25% is probably AI)
+- [ ] No 3 consecutive paragraphs of similar length?
+- [ ] Longest paragraph ≤ 5 sentences? (Break up anything over 5 sentences)
 
-### 2. 情感弧度
-- [ ] 至少 1 处错位情绪？（不是全程合理的情感反应）
-- [ ] 爆发点是否突兀？（不是"慢慢积累到忍不住"模式）
+### 2. Emotional Arc
+- [ ] At least 1 misplaced emotion? (Not reasonable emotional reactions throughout)
+- [ ] Is the outburst abrupt? (Not the "slowly building until it can't be held back" pattern)
 
-### 3. 信息密度
-- [ ] 至少有 1 段信息密度极低（纯状态/闲笔）？
-- [ ] 没有明显的"每段推情节"的均匀感？
+### 3. Information Density
+- [ ] At least 1 paragraph with extremely low information density (pure state/idle brushstrokes)?
+- [ ] No obvious "every paragraph advances the plot" uniformity?
 
-### 4. 角色语言差异化
-- [ ] 遮住角色名，能否分辨谁在说话？（随机抽 3 段对话）
-- [ ] 是否有角色说话长度/词汇/习惯有明显差异？
+### 4. Character Language Differentiation
+- [ ] With character names covered, can you tell who is speaking? (Randomly draw 3 dialogue passages)
+- [ ] Do characters differ clearly in speech length / vocabulary / habits?
 
-### 5. 叙述者有限性
-- [ ] 叙述者是否观察到所有细节？（太完美=AI）
-- [ ] 叙述者是否有明显的主观偏见？
+### 5. Narrator Limitations
+- [ ] Does the narrator observe every detail? (Too perfect = AI)
+- [ ] Does the narrator have clear subjective biases?
 
-### 6. 人味总评
-- [ ] 贴吧测试：匿名发 3 段，是否会被识别为AI？
-- [ ] 粗粝感：是否有至少 1 处"不那么完美"的表达？
-- [ ] 留白：是否有用动作/沉默替代情绪解释的地方？
+### 6. Human-Feel Overall Score
+- [ ] Tieba test: post 3 passages anonymously; would they be recognized as AI?
+- [ ] Roughness: at least 1 "not quite perfect" expression?
+- [ ] Negative space: any place where action/silence replaces an emotional explanation?
 ```
 
-#### 3.2 多模型交叉校对（新增 Step）
+#### 3.2 Multi-Model Cross-Review (New Step)
 
-在写作流程中增加一个可选的 **交叉校对阶段**：
+Add an optional **cross-review phase** to the writing flow:
 
 ```markdown
-## 交叉校对过程（可选，在 reader review 之前）
+## Cross-Review Process (Optional, Before reader review)
 
-### 场景定义
-- 当需要"最接近人写"的效果时启用
-- 由作者通过 status.md 的 cross_review: true/false 控制
+### When to Use
+- Enable when the closest-to-human-written effect is needed
+- Controlled by the author through status.md's cross_review: true/false
 
-### 流程
-1. **第一轮：反AI检测**（当前模型或 fast 模型）
-   - 检查疲劳词超限、句式违规、段落节奏分布
-   - 保存为 {chapter}.draft.ai-checked.md
+### Process
+1. **Round 1: Anti-AI Check** (current model or a fast model)
+   - Check fatigue-word overruns, pattern violations, paragraph rhythm distribution
+   - Save as {chapter}.draft.ai-checked.md
 
-2. **第二轮：人味增强**（完整模型）
-   - 增加粗粝感、错位情绪、有限视角、留白
-   - 保存为 {chapter}.draft.humanized.md
+2. **Round 2: Human-Feel Enhancement** (full model)
+   - Add roughness, misplaced emotions, limited perspective, negative space
+   - Save as {chapter}.draft.humanized.md
 
-3. **第三轮：通读**（作者或其指定模型）
-   - 确认不损失剧情完整性的前提下，人味增强没有破坏叙事
+3. **Round 3: Full Read-Through** (author or their designated model)
+   - Confirm the human-feel enhancement did not break the narrative, without losing plot integrity
 ```
 
-### Phase 4：配置文件与模板升级
+### Phase 4: Config and Template Upgrades
 
-#### 4.1 `writing-style.md` 升级
+#### 4.1 `writing-style.md` Upgrade
 
-在四字段中增加：
+Add to the four fields:
 
-**叙事身份** 增加有限视角约束：
+**Narrative identity** gains a limited-perspective constraint:
 ```yaml
-叙事身份: 
-  # 现有内容 + 新增：
-  不完美限制: 叙事者有盲区、偏见、记忆模糊
-  人味约束: 允许废话、允许走神、允许错位情绪
+narrative_identity:
+  # existing content + new:
+  imperfection_limits: the narrator has blind spots, biases, fuzzy memory
+  human_feel_constraints: filler allowed, zoning out allowed, misplaced emotions allowed
 ```
 
-**常见错误** 增加：
+**Common mistakes** gains:
 ```yaml
-常见错误:
-  # 现有条目 +
-  - 段落长度均匀（连续3段以上句子数相同或接近）
-  - 情感变化平滑（没有突兀的情绪转折）
-  - 信息密度均匀（所有段落都在推情节）
-  - 叙述者"全知"（注意到每一个细节）
-  - 缺乏粗粝感（文字太光滑太完美）
+common_mistakes:
+  # existing entries +
+  - uniform paragraph lengths (3+ consecutive paragraphs with the same or similar sentence counts)
+  - smooth emotional change (no abrupt emotional turns)
+  - uniform information density (every paragraph advances the plot)
+  - an "omniscient" narrator (noticing every detail)
+  - no rough edges (prose too smooth, too perfect)
 ```
 
-#### 4.2 项目初始化时新增文件
+#### 4.2 New Files Deployed at Project Init
 
-`init.py` 需要为每个新项目部署：
-- `.claude/knowledge/anti-ai/root-causes.md`（根因理论）
-- `.claude/knowledge/character-craft/character-dna-table.md`（角色DNA表模板）
-- `.claude/knowledge/plot-craft/information-density.md`（信息密度控制）
+`init.py` needs to deploy these for every new project:
+- `.claude/knowledge/anti-ai/root-causes.md` (root-cause theory)
+- `.claude/knowledge/character-craft/character-dna-table.md` (character DNA table template)
+- `.claude/knowledge/plot-craft/information-density.md` (information-density control)
 
 ---
 
-## 四、与现有体系的关系
+## 4. Relationship to the Existing System
 
-本升级是**增强不是替代**：
+This upgrade is an **enhancement, not a replacement**:
 
-| 现有体系 | 关系 |
+| Existing System | Relationship |
 |---------|------|
-| `memory/anti-ai/common-rules.md` | 保留，在前面加入根因理论 |
-| `memory/anti-ai/{genre}.md` | 保留，每条加"为什么有AI味"解释 |
-| `chapter-quality-checklist.md` | 保留，新增 6 大深度检测维度 |
-| `writing-execution.md` | 保留，增强防AI味规则 |
-| `writing-style.md` 四字段 | 保留，新增有限视角和粗粝感约束 |
+| `memory/anti-ai/common-rules.md` | Keep; add root-cause theory at the front |
+| `memory/anti-ai/{genre}.md` | Keep; add a "why this has AI flavor" explanation to every rule |
+| `chapter-quality-checklist.md` | Keep; add 6 new deep-check dimensions |
+| `writing-execution.md` | Keep; strengthen the anti-AI-flavor rules |
+| `writing-style.md` four fields | Keep; add limited-perspective and roughness constraints |
 
 ---
 
-## 五、实施优先级
+## 5. Implementation Priority
 
-| 优先级 | 内容 | 工作量 | 依赖 |
+| Priority | Content | Effort | Depends On |
 |--------|------|--------|------|
-| **P0** | 根因理论加入 `common-rules.md` | 低 | 无 |
-| **P0** | 段落节奏分布规则补充 | 低 | 无 |
-| **P0** | writer 执行指令增强（段落节奏+错位情绪+有限视角+粗粝感） | 中 | 无 |
-| **P0** | `chapter-quality-checklist.md` 新增 6 大维度 | 中 | 无 |
-| **P1** | 角色语言 DNA 表（`knowledge/character-craft/`） | 中 | 无 |
-| **P1** | 各题材反AI文件增加根因解释 | 高 | P0 |
-| **P1** | prompt-crafter 注入升级 | 中 | P0 writer 升级 |
-| **P2** | 信息密度控制方法论 | 中 | P0 |
-| **P2** | 有限叙述者技法文档 | 中 | P0 |
-| **P2** | 交叉校对流程 | 高 | P0 |
-| **P3** | `writing-style.md` 四字段增强 | 低 | P0 |
+| **P0** | Root-cause theory into `common-rules.md` | Low | None |
+| **P0** | Paragraph rhythm distribution rules | Low | None |
+| **P0** | writer execution instruction enhancement (paragraph rhythm + misplaced emotion + limited perspective + roughness) | Medium | None |
+| **P0** | `chapter-quality-checklist.md` adds 6 new dimensions | Medium | None |
+| **P1** | Character language DNA table (`knowledge/character-craft/`) | Medium | None |
+| **P1** | Root-cause explanations in each genre's anti-AI file | High | P0 |
+| **P1** | prompt-crafter injection upgrade | Medium | P0 writer upgrade |
+| **P2** | Information-density control methodology | Medium | P0 |
+| **P2** | Limited-narrator technique document | Medium | P0 |
+| **P2** | Cross-review process | High | P0 |
+| **P3** | `writing-style.md` four-field enhancement | Low | P0 |
 
 ---
 
-## 六、验收标准
+## 6. Acceptance Criteria
 
-- [ ] 每个 writer sub-agent 都执行增强版防AI味规则
-- [ ] `common-rules.md` 包含五层根因理论
-- [ ] 每个题材反AI文件的每条规则都标注了根因
-- [ ] 正文验收清单包含段落节奏分布检测
-- [ ] prompt 的输出模块包含有限视角约束
-- [ ] 至少 1 个实际项目跑通全流程并产出低于 10% AI 检测率的正文
-- [ ] 角色DNA表在新项目中可用
-
----
-
-## 七、参考
-
-本升级方案基于 [salt-story](https://github.com/your/salt-story) 项目的反AI方法论深度研究。关键参考文件：
-
-- `references/anti-ai.md` — 从句子级到气质级的完整检查体系 + 实战对照表
-- `references/principles.md` — 底层原理（信息不对称经济学、读者心理学、平台算法）
-- `references/case-studies.md` — 爆款拆解实录（叶小白 3.5 万赞等）
-- `SKILL.md` — 盐选故事完整写作流程（去AI味、多模型交叉校对）
+- [ ] Every writer sub-agent runs the enhanced anti-AI-flavor rules
+- [ ] `common-rules.md` contains the five-root-cause theory
+- [ ] Every rule in each genre's anti-AI file is labeled with its root cause
+- [ ] The body-text acceptance checklist includes paragraph rhythm distribution checks
+- [ ] The prompt output module includes limited-perspective constraints
+- [ ] At least 1 real project runs the full flow and produces body text with under 10% AI detection rate
+- [ ] The character DNA table works in new projects
 
 ---
 
-请社区讨论本方案后再实施。欢迎在评论中提出补充和改进意见。
+## 7. References
+
+This upgrade is based on deep research into the [salt-story](https://github.com/your/salt-story) project's anti-AI methodology. Key reference files:
+
+- `references/anti-ai.md`: complete check system from sentence level to temperament level + hands-on comparison tables
+- `references/principles.md`: root principles (information-asymmetry economics, reader psychology, platform algorithms)
+- `references/case-studies.md`: viral-hit teardowns (Ye Xiaobai's 35,000 likes and more)
+- `SKILL.md`: complete Yanxuan story writing flow (de-AI flavor, multi-model cross-review)
+
+---
+
+Please discuss this proposal in the community before implementing. Supplements and improvements are welcome in the comments.

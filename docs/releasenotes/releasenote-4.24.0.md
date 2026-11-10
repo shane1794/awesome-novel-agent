@@ -1,28 +1,28 @@
-# v4.24.0 版本说明
+# v4.24.0 Release Notes
 
-> **关键词：** 外部检测校准闭环 —— 作者触发的可选送检环节，最小干预修复 + 达标锁版 + 经验沉淀
+> **Keywords:** External-detection calibration loop: an author-triggered optional submission step with minimal-intervention fixes + pass-and-lock + lessons learned
 
 ---
 
-## 一句话
+## In One Sentence
 
-作者说"送检/过一遍外部检测"时，agent 按最小干预原则定向修复：只动最像机器写的一段、其余一字不磨、达标即锁版备份，并把每轮记录沉淀进书的检测战役档案。平台无关——仓库不含任何检测平台的自动化脚本与密钥，送检方式完全由作者自备（本地工具或手动网页送检）。
+When the author says "submit it" or "run it through an external detector", the agent fixes with minimal intervention: only the most machine-like passage is touched, everything else is left word-for-word untouched, the draft is locked and backed up as soon as it passes, and every round is recorded in the book's detection-battle archive. Platform-independent: the repo contains no automation scripts or keys for any detection platform; the submission method is entirely the author's own (a local tool or manual web submission).
 
-## 这版做了什么
+## What Changed in This Release
 
-| 改动 | 说明 |
+| Change | Description |
 |------|------|
-| **detect-loop skill** | `skills/detect-loop.md`：触发条件、送检适配器约定（结果文件字段：逐片起止/分数/原文）、修复纪律（每轮只修最高分片段、首末句锁定、等长微调、两轮无改善即止损、作者设定永远优先）、锁版（SHA256）与沉淀（战役记录 + 经确认的翻车句入回归库） |
-| **调度接线** | `novel-dispatch.md` 调度表新增 detect 可选 phase（作者触发，不推进章节状态、不进断点表）；`novel-agent.md` THINK 树加全局触发分支 |
-| **默认离线** | 不进默认管线；本地无送检方式时优雅终止并告知，不阻塞主流程 |
-| **合规边界** | 仓库零检测平台代码/协议/密钥；适配器只约定输入稿件、输出结果文件的格式契约 |
+| **detect-loop skill** | `skills/detect-loop.md`: trigger conditions, submission-adapter conventions (result-file fields: per-segment start/end, scores, original text), fix discipline (each round fixes only the highest-scoring segment, first and last sentences locked, equal-length fine-tuning, stop-loss after two rounds without improvement, author settings always win), locking (SHA256), and lessons learned (battle log + confirmed failure sentences into the regression library) |
+| **Dispatch wiring** | `novel-dispatch.md` dispatch table adds an optional detect phase (author-triggered; does not advance chapter status or enter the breakpoint table); `novel-agent.md` THINK tree gains a global trigger branch |
+| **Offline by default** | Not part of the default pipeline; when no local submission method exists, it ends gracefully with a notice and does not block the main flow |
+| **Compliance boundary** | The repo holds zero detection-platform code, protocols, or keys; the adapter only defines the format contract for the input manuscript and the output result file |
 
-## 兼容性
+## Compatibility
 
-- 纯增量：默认管线（draft→anti-ai→review→archive）行为不变；不触发送检就完全无感。
-- 与 v4.22.0/v4.23.0 的结构热源知识、check-chapter 工具、sandbox 三文件天然衔接（修复判结构类型、每轮复跑、经验入库）。
+- Purely incremental: the default pipeline (draft, anti-ai, review, archive) behaves unchanged; if submission is never triggered, it is completely invisible.
+- It connects naturally with the v4.22.0/v4.23.0 structural-heat-source knowledge, the check-chapter tool, and the three sandbox files (fixes are judged by structure type, re-run every round, and lessons go into the library).
 
-## 测试
+## Tests
 
-- check-agents / check-conflicts / check-version / py_compile / 两个测试脚本全绿（本版无 Python 工具改动）。
-- 真机送检演练待作者自备检测途径后执行（change tasks 3.2 留待办）。
+- check-agents / check-conflicts / check-version / py_compile / both test scripts all green (this release has no Python tool changes).
+- A live submission walkthrough waits for the author to provide a detection route (change tasks 3.2 left as a to-do).

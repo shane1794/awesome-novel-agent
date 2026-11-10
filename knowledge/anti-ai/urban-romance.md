@@ -1,44 +1,51 @@
-# 都市言情反AI规则
+# Urban Romance Anti-AI Rules
 
-> 适用题材：urban-romance、modern-romance
+> Applicable themes: urban-romance, modern-romance
 
-## 高频AI病句正反例
+## High-Frequency AI-Style Bad Sentences: Incorrect vs. Correct Examples
 
-### 1. 暧昧动作过度设计
+### 1. Over-designed ambiguous actions
 
-❌ "他缓缓靠近，呼吸交织，心跳加速"
-✅ "他往前挪了挪，手肘撑在椅背上。她低头玩手机，余光瞥见他的影子。空调嗡嗡响。"
+❌ "He slowly approached, his breathing intertwined, and his heartbeat quickening." ✅ "He
+moved forward and rested his elbows on the back of the chair. She lowered her head to
+play with her mobile phone and caught a glimpse of his shadow from the corner of her
+eye. The air conditioner was buzzing."
 
-### 2. 情绪直述
+### 2. Direct emotional statements
 
-❌ "她感到心动，脸颊微微发烫"
-✅ "她把奶茶推过去，指尖碰到他的手背，缩了一下。"
+❌ "She felt her heartbeat, and her cheeks were slightly hot" ✅ "She pushed the milk tea
+over, her fingertips touched the back of his hand, and she shrank."
 
-❌ "他心动了"
-✅ "他弯腰给她系鞋带，手顿了一下。"
+❌ "His heart was moved" ✅ "He bent down to tie her shoelaces and paused for a moment."
 
-### 3. 排比式心理自问
+### 3. Parallel psychological self-questioning
 
-❌ "也许是光线太暗，也许是她太紧张，也许是他太直接"
-✅ "她皱眉，手心攥了攥——刚才她是不是太冲了？"
+❌ "Maybe the light was too dark, maybe she was too nervous, maybe he was too direct" ✅
+"She frowned and clenched her palms - was she too aggressive just now?"
 
-### 4. 套话氛围
+### 4. Rhetoric atmosphere
 
-❌ "清晨的阳光洒在窗台，一切都那么美好"
-✅ "窗帘缝里透进来一道光，落在她的手背上，有点暖。"
+❌ "The morning sun shines on the window sill, everything is so beautiful" ✅ "A ray of
+light came through the cracks in the curtains and fell on the back of her hand, which
+was a little warm."
 
-### 5. 对话无意图
+### 5. Conversation without intention
 
-❌ "早啊""吃了吗""今天怎么样"
-✅ 删掉问候式对话，改用动作/沉默推进
+❌ "Morning" "Have you eaten?" "How are you today?" ✅ Delete the greeting dialogue and
+use actions/silence to advance
 
-## 写作要点
+## Writing points
 
-1. **暧昧要克制** — 别设计完整的暧昧流程，让细节自己说话
-2. **情绪用动作外化** — 心动=筷子顿了一下、手指缩回去、转身时不稳
-3. **场景接地气** — 具体到奶茶店招牌、地铁站名、路边摊
-4. **对话有张力** — 每句台词必须有一个意图（试探/隐藏/拒绝/获取）
+1. **Ambiguity must be restrained**, Don’t design a complete ambiguous process, let the
+   details speak for themselves
+2. **Emotions are externalized through movements**, Heartbeat = Chopsticks paused,
+   fingers retracted, and unsteadiness when turning around
+3. **The scene is grounded**, specifically the milk tea shop sign, subway station name,
+   and roadside stall
+4. **Dialogue has tension**, Each line must have an intention
+   (probe/hide/reject/acquire)
 
 ---
 
-*其他题材（xianxia、suspense等）按需扩展，格式同上。*
+*Other themes (xianxia (immortal cultivation), suspense, etc.) can be expanded as needed, and the format is the
+same as above. *

@@ -1,38 +1,47 @@
-# 玄幻反AI规则
+# Xuanhuan (Eastern Fantasy) Anti-AI Rules
 
-> 适用题材：xuanhuan、xuanhuan-brained
+> Applicable themes: xuanhuan, xuanhuan-brained
 
-## 高频AI病句正反例
+## High-Frequency AI-Style Bad Sentences: Incorrect vs. Correct Examples
 
-### 1. 血脉/天赋觉醒
+### 1. Bloodline/Talent Awakening
 
-❌ "血脉之力觉醒，金光笼罩全身"
-✅ "他盯着自己的手。手背上的青筋比平时粗了一圈，指尖有点发烫。"
+❌ "The power of bloodline awakened, golden light enveloped the whole body" ✅ "He stared
+at his hands. The veins on the back of his hands were thicker than usual, and the
+fingertips were a little hot."
 
-### 2. 废柴逆袭
+### 2. The useless counterattack
 
-❌ "所有人都没想到，这个被视为废物的少年竟然隐藏着惊人的天赋"
-✅ "三年了，天天被人叫废物。他已经把骂他的话当耳旁风了。今天测完，还是老样子。"
+❌ "No one expected that this boy who was regarded as a waste actually had an amazing
+hidden talent" ✅ "For three years, he has been called a waste every day. He has turned a
+deaf ear to the scolding. After today's test, he is still the same."
 
-### 3. 丹药/宝物获取
+### 3. Obtaining elixirs/treasures
 
-❌ "他获得了一枚上古丹药，蕴含着惊人的能量"
-✅ "那颗丹药有点黑。他犹豫了一下，还是一口吞了。苦得眼泪都出来了。"
+❌ "He obtained an ancient elixir, which contained amazing energy" ✅ "The elixir was a
+bit dark. He hesitated, but swallowed it in one gulp. It was so painful that tears came
+out."
 
-### 4. 排比式嘲讽
+### 4. Parallel taunting
 
-❌ "也许他真的废了，也许这就是命，也许他本就不该踏入修炼界"
-✅ "他低着头听。骂完了，拍了拍裤子上的土，站起来走了。"
+❌ "Maybe he is really useless, maybe this is his fate, maybe he should never have
+entered the world of cultivation" ✅ "He listened with his head lowered. After he
+finished cursing, he patted the dirt on his pants, stood up and left."
 
-### 5. 情绪直述
+### 5. Direct emotional statements
 
-❌ "他心中燃起滔天怒火"
-✅ "他的牙咬得太紧，太阳穴突突跳。手指捏着袖口，指节发白。"
+❌ "Burning with rage in his heart" ✅ "His teeth were clenched so tightly that his
+temples were throbbing. His fingers were pinching the cuffs of his sleeves, and his
+knuckles were white."
 
-## 写作要点
+## Writing points
 
-1. **天赋写身体变化** — 不是"觉醒了"，是手烫、青筋鼓起来、眼睛酸
-2. **废物写日常细节** — 受欺负后干什么？不是愤怒爆发，是麻木、习惯、或者一个小动作
-3. **逆袭写代价** — 别写"获得神兵"，写"硌手""沉得举不动""先适应几天"
-4. **战斗写心理** — 犹豫、后悔、害怕比胜利更重要
-5. **宝物写缺点** — 什么都有代价，写出来才真实
+1. **Taken to write about body changes**, It’s not about “awakening”, it’s about burning
+   hands, bulging veins, and sore eyes
+2. **Writing daily details from waste**, What do you do after being bullied? It's not an
+   outburst of anger, it's numbness, habit, or a small action
+3. **Write the cost of counterattack**, Don't write "get a magic weapon", write
+   "hands-on", "too heavy to lift", "get used to it for a few days"
+4. **Combat Psychology**, Hesitation, regret, and fear are more important than victory
+5. **Disadvantages of writing about treasures**, Everything has a price, it is only true
+   if it is written down

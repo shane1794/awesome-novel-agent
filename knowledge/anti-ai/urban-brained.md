@@ -1,38 +1,46 @@
-# 都市脑洞反AI规则
+# Urban Wild Idea Anti-AI Rules
 
-> 适用题材：urban-brained、urban-cultivation、urban-high-martial
+> Applicable themes: urban-brained, urban-cultivation, urban-high-martial
 
-## 高频AI病句正反例
+## High-Frequency AI-Style Bad Sentences: Incorrect vs. Correct Examples
 
-### 1. 系统提示音
+### 1. System prompt tone
 
-❌ "叮，系统检测到宿主完成任务，获得奖励"
-✅ "他愣了一下。眼前飘过一个框，字还在闪。他眨眨眼，框还在。"
+❌ "Ding, the system detected that the host completed the task and received a reward" ✅
+"He was stunned for a moment. A frame floated in front of his eyes, and the words were
+still flashing. He blinked, and the frame was still there."
 
-### 2. 能力觉醒描写
+### 2. Description of ability awakening
 
-❌ "一股神秘的力量涌入他的身体，他的眼睛闪烁着奇异的光芒"
-✅ "他低头看自己的手。能看见血管里血流的速度。他把手攥紧，又松开。"
+❌ "A mysterious power poured into his body, and his eyes shone with a strange light" ✅
+"He looked down at his hands. He could see the speed of blood flowing in his veins. He
+clenched his hands tightly and then loosened them."
 
-### 3. 排比式震惊
+### 3. Parallel shock
 
-❌ "也许是他看错了，也许是系统出错了，也许这一切都不是真的"
-✅ "他掐了自己一下。疼。扇了自己一巴掌。更疼了。"
+❌ "Maybe he saw it wrong, maybe there was an error in the system, maybe none of this is
+true" ✅ "He pinched himself. It hurt. He slapped himself. It hurt even more."
 
-### 4. 能力使用描写
+### 4. Description of ability usage
 
-❌ "他催动体内的真气，一掌拍出，威力惊人"
-✅ "他把手伸出去。指尖有点麻，像过电。他收回手，手心还烫着。"
+❌ "He activated the zhenqi in his body and struck out with a palm, which was
+astonishingly powerful" ✅ "He stretched out his hand. The fingertips were a little numb,
+like an electric shock. He took his hand back and his palms were still hot."
 
-### 5. 情绪直述
+### 5. Direct emotional statements
 
-❌ "他感到又惊又喜"
-✅ "他咧了咧嘴，想笑，又觉得不对劲。嘴角僵在半空中。"
+❌ "He felt surprised and happy" ✅ "He grinned and wanted to smile, but felt something
+was wrong. The corners of his mouth were frozen in mid-air."
 
-## 写作要点
+## Writing points
 
-1. **系统/能力写具体体验** — 不是"获得了能力"，是"看见血流速度""手心发烫""耳鸣"
-2. **能力有代价** — 金手指不是白给的，写清楚副作用
-3. **震惊写行为** — 掐自己、扇自己、反复确认，不是"又惊又喜"
-4. **日常接地气** — 能力者也要挤地铁、点外卖、被老板骂
-5. **解说要克制** — 设定不用一口气讲完，让读者慢慢发现
+1. **Write specific experience with system/ability**, It’s not “gaining the ability”,
+   it’s “seeing the blood flow speed”, “hot palms”, “tinnitus”
+2. **Ability has a price**, golden finger is not given for free, please write down the
+   side effects clearly
+3. **Shock writing behavior**, pinch yourself, slap yourself, and repeatedly confirm
+   that you are not "surprised and happy"
+4. **Daily grounding**, Even capable people have to squeeze into the subway, order
+   takeout, and be scolded by their bosses
+5. **Explanation should be restrained**, Don’t tell the setting in one breath, let
+   readers discover it slowly

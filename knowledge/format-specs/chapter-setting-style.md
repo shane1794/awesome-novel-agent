@@ -1,1073 +1,1376 @@
-# 章纲设定指南
+# Chapter Setting Guide
 
-> 第三阶段第二步——给选定的一章填充内容。章纲要让作者看清：本章发生什么事、哪些角色参与、段落怎么拆分、每段写什么、兑现/埋下哪些钩子、总字数多少。产出写入 `chapters/vol-{N}-ch-{M}.md`。
+> The second step of the third stage - fill in the content of the selected chapter.
+> The chapter outline allows the author to see clearly: what happens in this chapter,
+> which characters are involved, how the paragraphs are divided, what is written in
+> each paragraph, which hooks are fulfilled/buried, and the total word count. The
+> output is written to `chapters/vol-{N}-ch-{M}.md`.
 
-**前置条件：** 方向输入已确认（3.1 硬节点通过）。volume-N.md 的 chapters_summary 已有本章的定位。
-
----
-
-**目录**
-1. [最高原则](#最高原则章纲让作者觉得符合预期)
-2. [形式层——"这章写什么"](#形式层这章写什么)
-   - 一、方向输入
-   - 二、从方向到纲要点
-   - 三、章纲内容清单
-   - 四、情绪设计
-3. [风骨层——"什么不能写进章纲"](#风骨层什么不能写进章纲)
-4. [不做什么——硬约束红线](#不做什么硬约束红线)
-5. [做完之后——验收流程](#做完之后验收流程)
-6. [完整章纲示例](#五完整章纲示例)
+**Precondition:** Direction input confirmed (3.1 hard node passed). The chapters_summary
+of volume-N.md already has this chapter positioned.
 
 ---
 
-## 最高原则：章纲让作者觉得符合预期
-
-> 作者看完章纲能说"对，这就是我想写的那章"。不是"我看懂了但感觉不是我要的"，不是"你写吧我没意见"——是"对，就是这样"。
-
-章纲给作者看的。他点头说"对"之后，再作为提示词生成的输入。作者看完觉得"方向差不多但不是我要的"，退回调整，不进提示词生成。
-
-**判断标准：**
-- **预期检测：** 作者看完能说"对，就是这样"。没说"对"就不算通过
-- **清晰度检测：** 作者能指着关键点说出"这段写这个场景""那个钩子这章该收了"。指不出来就是没到位
-- **完整度检测：** 作者看完能回答——这章总字数多少、分几段各写什么、出场角色有哪些、主线推进哪一步、兑现什么旧钩子、埋了什么新钩子、结束时什么变了
-
-**两条底线**（任一不过，禁止进入提示词生成）：
-1. **章纲必须让作者看得懂**——不是数据结构，不是写作指令。作者看不懂就是不合格。
-2. **章纲不含上帝视角解构**——不得出现"本章讲述了""主角经历了""通过 X 展现了 Y"。这些一旦混入章纲，会原样抄进提示词再抄进正文，整章报废。
+**Table of Contents**
+1. [The highest principle](#the-highest-principle-the-chapter-outline-makes-the-author-feel-that-it-meets-expectations)
+2. [Formal layer - "What to write in this chapter"](#formal-layer-what-to-write-in-this-chapter)
+   - 1. Direction input
+   - 2. From direction to outline
+   - 3. List of chapter contents
+   - 4. Emotional design
+3. [Feng Gu Layer, "What cannot be written into the outline of the
+   chapter"](#feng-gu-layer-what-cannot-be-written-into-the-outline-of-the-chapter)
+4. [What not to do,hard constraint red line](#what-not-to-do-hard-red-line)
+5. [After completion - acceptance process](#after-completion-acceptance-process)
+6. [Complete chapter outline example](#5-example-of-complete-chapter-outline)
 
 ---
 
-## 形式层——"这章写什么"
+## The highest principle: the chapter outline makes the author feel that it meets expectations
 
-形式层决定章纲的内容：方向怎么定、每段内容怎么写、情绪怎么设计。三步走完：方向输入 → 展开纲要点 → 填内容清单。
+> After reading the chapter outline, the author can say, "Yes, this is the chapter I
+> want to write." It's not "I understand it but I don't think it's what I want", it's
+> not "I don't mind if you write it" - it's "Yes, that's it".
 
-### 一、方向输入（第 N+1 章）
+The chapter outline is given to the author. After he nodded and said "right", it was
+used as input for prompt word generation. After reading it, the author felt that "the
+direction was similar but not what I wanted", so he returned to the adjustment and did
+not proceed with prompt word generation.
 
-首章直接从 chapters_summary 展开。第 N+1 章（非首章）需要先分析"上一章结束时读者和角色在什么位置"，才能推本章方向。
+**Judgment Criteria:**
+- **Expected Test:** The author can say "Yes, that's it" after reading it. If you don't
+  say "right", it doesn't count as passing.
+- **Clarity Test:** The author can point to key points and say "this paragraph is about
+  this scene" and "that hook should be closed in this chapter". If you can't point it
+  out, it means it's not in place.
+- **Completeness Test:** The author can answer after reading it - what is the total
+  number of words in this chapter, what is written in each paragraph, who are the
+  characters, which step of the main plot is advanced, what old hooks are fulfilled,
+  what new hooks are buried, and what changes at the end
 
-**原则：不是 Agent 猜方向，是把上下文摊开让作者判断。**
+**Two bottom lines** (if either one fails, prompt word generation is prohibited):
+1. **The chapter outline must be understandable to the author** - not the data
+   structure, not the writing instructions. If the author cannot understand it, then he
+   is not qualified.
+2. **Chapter synopsis does not include God's perspective deconstruction** - "This
+   chapter tells", "The protagonist experiences", "Y is shown through X" are not
+   allowed. Once these are mixed into the chapter outline, the prompt words will be
+   copied into the text as they are, and the entire chapter will be scrapped.
 
-#### 1. 收集四组输入
+---
 
-| 输入 | 来源 | 用途 |
+## Formal layer - "What to write in this chapter"
+
+The formal layer determines the content of the chapter outline: how to set the
+direction, how to write each paragraph, and how to design the mood. Three steps to
+complete: input direction → expand outline points → fill in the content list.
+
+### 1. Direction input (Chapter N+1)
+
+The first chapter starts directly from chapters_summary. Chapter N+1 (not the first
+chapter) needs to first analyze "where the reader and the characters were at the end of
+the previous chapter" in order to push the direction of this chapter.
+
+**Principle: Instead of the agent guessing the direction, the context is spread out and
+let the author judge. **
+
+#### 1. Collect four sets of inputs
+
+| Input | Source | Purpose |
 |------|------|------|
-| 读者缺口 | 上章 `emotional_design.emotional_hook` + `reader_expectation` | 读者在等什么——这章要给回应还是继续吊 |
-| 角色状态 | 上章归档时追加的状态历史 + 活跃角色当前动机 | 角色现在想做什么、知道什么、被什么驱动 |
-| 钩子盘点 | 各角色设定文件中 hooks 字段——pending / partial_advance | 哪些钩子该收了，哪些还得压着，哪些可以推一把 |
-| 卷纲定位 | `volumes/volume-{N}.md#chapters_summary` 本章 summary | 这章在卷里的定位——推进冲突的哪一步 |
+| Reader Gap | Previous Chapter `emotional_design.emotional_hook` + `reader_expectation` | What are the readers waiting for - do you want to respond to this chapter or continue to read |
+| Character status | The status history added when the previous chapter was archived + the current motivation of the active character | What the character wants to do now, what he knows, and what he is driven by |
+| Hook inventory | The hooks field in each role setting file - pending / partial_advance | Which hooks should be closed, which ones still have to be suppressed, and which ones can be pushed |
+| Volume positioning | `volumes/volume-{N}.md#chapters_summary` Chapter summary | This chapter's positioning in the volume - which step to advance the conflict |
 
-#### 2. 合成方向
+#### 2. Composite direction
 
-把四组输入交叉，推 1-3 个方向选项，按可信度排序：
+Cross the four groups of inputs, push 1-3 direction options, and sort them by
+credibility:
 
 ```
-读者在等 {X} → 角色 {Y} 想推动 {Z} → 卷纲说这章要 {W}
+Reader is waiting for {X} → Character {Y} wants to push {Z} → The outline says this chapter wants {W}
 ↓
-方向 A：{具体事件} —— 回应读者期待、推进角色动机、匹配卷纲定位
-方向 B：{不同走向} —— 偏移读者期待、给意外、但仍在卷纲范围内
+Direction A: {Specific events} - Respond to readers’ expectations, advance character motivations, and match the syllabus positioning
+Direction B: {Different directions} - Deflect readers' expectations and give surprises, but still within the scope of the volume.
 ```
 
-#### 3. 展示给作者
+#### 3. Show to author
 
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  第{N}卷第{M}章 — 方向输入
+  Volume {N} Chapter {M}, Directional Input
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-卷纲定位：{chapters_summary 一句话}
+Outline positioning: {chapters_summary one sentence}
 
-读者缺口：上章以 {emotional_hook} 结束 —— 读者在等 {具体期待}
+Reader Gap: The previous chapter ended with {emotional_hook} - the reader is waiting for {specific expectations}
 
-角色在动：
-  · {角色A}：{ta 现在想做什么 / 知道什么}
-  · {角色B}：{ta 的立场 / 动机}
+Character movements:
+  / {Character A}: {What does he want to do now/what does he know}
+  / {Character B}: {their position/motive}
 
-活跃钩子：
-  · pending：{哪些悬着没碰}
-  · 可以推的：{这章能推进的}
+Active hook:
+  / pending: {which are pending and untouched}
+  / What can be pushed: {What can be pushed forward in this chapter}
 
-方向建议：{1-2 个具体走向，每个附一句话推理}
+Direction suggestions: {1-2 specific directions, each with a sentence of reasoning}
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-选一个方向，或说"我自己来"
+Choose a direction, or say "I'll do it myself"
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
 
-**作者确认方向后，进入"从方向到纲要点"将其展开为具体段落。**
+**After the author confirms the direction, go to "From Direction to Outline Points" to
+expand it into specific paragraphs. **
 
 ---
 
-### 二、从方向到纲要点
+### 2. From direction to outline
 
-**怎么聊：** 读 volume-N.md 中本章的 chapters_summary，问作者：
+**How to chat:** Read the chapters_summary of this chapter in volume-N.md and ask the
+author:
 
-> "这章目标 2500 字，我们拆成 5 条故事条，每条 ~500 字。从概要出发，比如'敲门开门→进门第一印象→勘查床铺→检查冰箱→发现便利贴→锁门出来→被盯'。你看这么拆行不行？每条用两句话说清写什么。"
+> "The goal of this chapter is 2,500 words. We have divided it into 5 stories, each of
+> ~500 words. Starting from the summary, for example, 'knocked on the door and opened
+> the door → first impression after entering the door → inspected the bed → checked
+> the refrigerator → found sticky notes → locked the door and came out → was stared
+> at'. Do you think this will work? Use two sentences for each story to explain
+> clearly what to write."
 
-把作者说出的段落写入大纲关键点（outline.key_points）。每条 key_point 对应一个段落。**关键点必须写 2-3 句，不是一句话。**
+Write the passages spoken by the author into the key points of the outline
+(outline.key_points). Each key_point corresponds to a paragraph. **The key points must
+be written in 2-3 sentences, not one sentence. **
 
-原因：一条关键点 1 句话 → agent 要自己扩写 800-900 字，几乎全凭脑补。2-3 句给出场景锚点、动作锚点和判断锚点，agent 的扩写空间被约束到合理的补充范围内。
+Reason: One key point 1 sentence → The agent needs to expand 800-900 words by himself,
+almost all based on his brain. 2-3 sentences give the scene anchor point, action anchor
+point and judgment anchor point, and the expansion space of agent is constrained to a
+reasonable supplementary range.
 
-**写法——三段锚点法：**
+**Writing method - three-paragraph anchor point method:**
 
-每条 key_point 覆盖三个锚点，不一定三句，但三块信息必须都有：
+Each key_point covers three anchor points, not necessarily three sentences, but three
+pieces of information must be present:
 
-> 1. **感官锚点** —— 镜头从哪里切入。光线、声音、气味、空间感。不是"这是什么房间"，是"推开门第一时间感觉到什么"。
-> 2. **动作锚点** —— 角色具体做了什么。不是"检查了房间"，是"拉开抽屉、掀开被子、手指划过桌面"。动作链越具体，agent 的节奏越稳。
-> 3. **判断锚点** —— 角色由此得出什么。不是"他觉得不对劲"（抽象心理），是"他直起身，重新扫了一圈房间"（行为反应）。
+> 1. **Sensory Anchor** - where the camera cuts. Light, sound, smell, sense of space.
+> It's not "what kind of room is this", but "what do you feel as soon as you open the
+> door". 2. **Action Anchor** - What exactly the character did. It's not "checking the
+> room", it's "opening the drawers, lifting the quilt, and running fingers across the
+> table". The more specific the action chain, the more stable the agent's rhythm. 3.
+> **Judgment Anchor** - What the character draws from this. It's not "he felt
+> something was wrong" (abstract psychology), but "he straightened up and scanned the
+> room again" (behavioral response).
 
-**关键：key_point 是笔记体，不是叙事体。** 它是作者写给自己的段落规划笔记，不是 mini 版正文。不要写成"下午两点，陆征推开门，阳光在地板上切出一块亮区"——这是正文第一稿。应写成"陆征到门口→敲门无人→拿钥匙→门没反锁。注意阳光从窗户切入的空间感"——这是规划笔记。区别：叙事体替 writer 做了感官填充，笔记体把感官填充留给 writer。
+**Key: key_point is a note style, not a narrative style. ** It is a paragraph planning
+note written by the author to himself, not a mini version of the text. Don't write "At
+two o'clock in the afternoon, Lu Zheng opened the door, and the sunlight cut a bright
+area on the floor" - this is the first draft of the text. It should be written as "Lu
+Zheng comes to the door→No one knocks on the door→Gets the key→The door is not locked.
+Pay attention to the sense of space when the sunlight cuts through the window" - this is
+the planning notes. Difference: Narrative style fills the senses for the writer, while
+notebook style leaves the sensory filling to the writer.
 
-**与卷纲场景卡三要素的对应关系：**
+**Correspondence to the three elements of the outline scene card:**
 
-三段锚点法的底层逻辑与卷纲场景卡（主角想干啥+有什么拦着他+有什么悬念让读者想看下去）一致，只是粒度更细：
+The underlying logic of the three-paragraph anchor point method is consistent with the
+outline scene card (what the protagonist wants to do + what is stopping him + what
+suspense makes the reader want to read more), but the granularity is finer:
 
 ```
-卷纲场景卡（章级）           章纲关键点（段落级）
-  主角想干啥                 → 动作锚点（角色在做什么，推进什么）
-  有什么拦着他               → 判断锚点（遇到什么阻碍、发现什么矛盾）
-  有什么悬念让读者想看下去    → 全文情绪钩子+信息差（每段贡献悬念的一部分）
+Outline Scene Card (Chapter Level) Chapter Outline Key Points (Paragraph Level)
+  What the protagonist wants to do → Action anchor (what the character is doing, what to advance)
+  What is blocking him → Judgment anchor point (what obstacles are encountered, what contradictions are found)
+  Is there any suspense that makes readers want to read on → Full text emotional hook + information gap (each paragraph contributes part of the suspense)
 ```
 
-三段锚点法把场景卡的每一条"拦着他"拆成了具体的"动作→发现→判断"节拍序列。反过来，每条关键点都应该能回答：**"主角这段在干什么？遇到什么阻碍？读者为什么想知道后面？"**
+The three-section anchor point method breaks down each "stop him" line in the scene card
+into a specific beat sequence of "action → discovery → judgment". In turn, each key
+point should be able to answer: **"What is the protagonist doing in this paragraph? What
+obstacles are encountered? Why does the reader want to know what happens next?"**
 
-**对话关键点——三段锚点法的变体：**
+**Conversation key points - a variation of the three-paragraph anchor method:**
 
-有对话的关键点，三段锚点的重心从"感官→动作→判断"转为"场景→对话→权力"：
+There are key points in dialogue, and the focus of the three anchor points changes from
+"sensory → action → judgment" to "scene → dialogue → power":
 
-> 1. **场景锚点** —— 谁在什么环境、什么位置、什么姿势对话。不是"他们在茶馆谈话"，是"方岩选了角落位置，等陆征坐下才开口"。
-> 2. **对话锚点** —— 对话的核心内容和语气意图。不是"方岩问他在查什么案"，是"方岩没直接问案子，先聊了几句近况，语气听着随意但眼神在观察"。
-> 3. **权力锚点** —— 对话结束时谁占上风、谁在防守、关系有什么微妙变化。不是"他们谈完了"，是"方岩放下茶杯，声音压低了半度：'这个案子你别碰'——不是建议，是警告"。
+> 1. **Scene Anchor** - Who is talking in what environment, in what position, and in
+> what posture. It wasn't "They were talking in the teahouse", it was "Fang Yan chose
+> a corner seat and waited for Lu Zheng to sit down before speaking." 2.
+> **Conversation anchor** - the core content and tone intention of the conversation.
+> It wasn't "Fang Yan asked him what case he was investigating", it was "Fang Yan
+> didn't ask about the case directly, but chatted a few words about the current
+> situation. His tone sounded casual but his eyes were observing." 3. **Power Anchor**
+> - Who has the upper hand at the end of the conversation, who is on the defensive,
+> and any subtle changes in the relationship. It's not "they're done talking", it's
+> "Fang Yan put down the teacup and lowered his voice by half a degree: 'Don't touch
+> this case' - it's not a suggestion, it's a warning."
 
-有对话的关键点必须在标注 `[对话]`。
+Key points in the dialogue must be marked `[dialogue]`.
 
-正反示例见 §六·Few-Shot 示例（对话关键点）。
+For positive and negative examples, see §6 / Few-Shot examples (key points in dialogue).
 
-**字数倒推法——拆几条由字数决定：**
+**The number of words is calculated backwards - the number of pieces to be divided is
+determined by the number of words:**
 
-关键点拆多少条不是拍脑袋，是从目标字数倒推的。
+The number of key points to split is not a pat on the head, but a backward calculation
+based on the target word count.
 
-> **默认字数：** 作者未指定单章字数时按 **2500 字** 算——这是全书默认单章字数，需整体调整时改这里并同步下文示例数字；每章仍可与作者确认实际目标（见"最后补两个问题"）。
->
-> **目标字数 ÷ 每条期望字数 = 应拆条数**
->
-> 2500 字目标（默认）：2500 ÷ 500 = 5 条  （每条 agent 扩 ~500 字）
-> 4000 字目标：4000 ÷ 500 = 8 条
-> 6000 字目标：6000 ÷ 500 = 12 条
+> **Default word count:** If the author does not specify the word count for a single
+> chapter, it will be calculated as **2500 words** - this is the default word count
+> for a single chapter in the book. If overall adjustment is required, change it here
+> and synchronize the example numbers below; you can still confirm the actual goal for
+> each chapter with the author (see "Two final questions"). **Target number of words ÷
+> Expected number of words per article = Number of articles that should be split**
+> 2500 word goal (default): 2500 ÷ 500 = 5 articles (each agent expands ~500 words)
+> 4000 word goal: 4000 ÷ 500 = 8 articles 6000 word goal: 6000 ÷ 500 = 12 articles
 
-为什么是 500 字/条？一条关键点 2-3 句锚点 ≈ 80-120 字，agent 扩到 500 字需要补充场景细节和过渡——这个比例刚好。如果每条期望超 800 字（比如 3 条写 2500 字），agent 就只能编内心独白和环境渲染来填字数。
+Why 500 words/article? A key point 2-3 sentence anchor point ≈ 80-120 words, and the
+agent needs to be expanded to 500 words to add scene details and transitions - this
+ratio is just right. If each entry is expected to exceed 800 words (for example, 3
+entries total 2,500 words), the agent can only write inner monologues and environment
+renderings to fill the word count.
 
-**拿到字数目标后，先算条数，再拆场景：**
+**After getting the word count target, count the number of articles first, and then
+split the scenes:**
 
-> 作者说"4000 字" → 4000 ÷ 500 ≈ 8 条
-> 作者说"6000 字" → 6000 ÷ 500 = 12 条
-> 作者说"你看着写" → 按默认 2500 算，5 条
+> The author said "4000 words" → 4000 ÷ 500 ≈ 8 items. The author said "6000 words" →
+> 6000 ÷ 500 = 12 items. The author said "you watch and write" → 5 items based on the
+> default value of 2500.
 
-**具体怎么拆——场景分解法：**
+**How to dismantle it specifically-scene decomposition method:**
 
-作者说的"一个场景"往往包含多个叙事节拍。每个节拍是一条关键点。找节拍的方法：**顺着角色的动作链走一遍，每出现一次"动作→发现→判断"的完整循环，就切一刀。**
+What the author calls "a scene" often contains multiple narrative beats. Each beat is a
+key point. How to find the beat: **Follow the character's action chain, and make a cut
+every time a complete cycle of "action→discovery→judgment" occurs. **
 
-> 勘查现场 → 敲门(动作)没人应→用钥匙开(动作)→门没反锁(发现)→推门先扫一眼整体(判断) → **第1条**
->              → 掀被子(动作)→床单皱+充电器(发现)→摸充电头有余温(判断) → **第2条**
->              → 开冰箱(动作)→剩饭没倒+碗边干了(发现)→卫生间牙膏盖开着+毛巾湿(发现)→不像离开(判断) → **第3条**
->              → 床头柜便利贴(动作)→只有电话(发现)→拍照(判断) → **第4条**
->              → 锁门离开(动作)→楼道阴影、车棚人影(发现)→出小区灰短袖男人(发现)→没回头继续走(判断) → **第5条**
+> Survey the scene → Knock on the door (action) and no one answers → Use the key to
+> open the door (action) → The door is not locked (discovery) → Push the door and take
+> a quick look at the whole place (judgment) → **Article 1** → Lift the quilt (action)
+> → Wrinkle the sheets + charger (discovery) → Touch the charger and there is residual
+> heat (judgment) → **Article 2** → Open the refrigerator (action) → Leftovers are not
+> poured + the sides of the bowl are dry (discovery) → The toilet toothpaste lid is
+> open + the towel is wet (discovery) → It does not look like leaving (judgment) →
+> **Article 3** → Post-it notes on the bedside table (action) → Phone only (discovery)
+> → Taking photos (judgment) → **Article 4** → Lock the door and leave (action) →
+> Shadows in the corridor, silhouettes in the carport (discovery) → A man in gray
+> short-sleeves left the community (discovery) → Keep walking without looking back
+> (judgment) → **Article 5**
 
-**验证条数够不够：**
+**Verify whether the number of entries is enough:**
 
-把拆好的条数 × 500 字，看能不能达到字数目标：
+Divide the number of articles into 500 words and see if you can reach the word count
+target:
 
-> 5 条 × 500 = 2500 ✅
-> 3 条 × 500 = 1500 ✗ → 差 1000 字，agent 必须注水
+> 5 items × 500 = 2500 ✅ 3 items × 500 = 1500 ✗ → The difference is 1000 words, the
+> agent must add water
 
-如果条数不够 → 回看哪些场景还能继续拆。每个"动作→发现→判断"循环就是一条，不遗漏。
+If the number of items is not enough → Look back to see which scenes can be continued.
+Each "action→discovery→judgment" cycle is one, and there is no omission.
 
-**正反案例：**
+**Pros and cons cases:**
 
-✅ **正面：作者说"勘查现场"，字数 2500**
+✅ **Positive: The author said "survey site", word count 2500**
 
-> 拆前：作者说"就勘查一个出租屋"
-> 
-> 拆后：顺着"动作→发现→判断"链走了 5 步 → 5 条
-> 
-> 验证：5 × 500 = 2500 ✅ 刚刚好
-> 
-> 每条 2-3 句锚点，agent 扩 ~500 字，不会缺信息也不会被迫注水
+> Before demolition: The author said "just survey a rental house" After disassembly: 5
+> steps along the chain of "Action → Discovery → Judgment" → 5 items Verification: 5 ×
+> 500 = 2500 ✅ Just right Each article has 2-3 sentence anchor points, and the agent
+> should be expanded to ~500 words. There will be no shortage of information or forced
+> filling of water.
 
-❌ **反面①：作者说"勘查现场"，不管字数直接拆**
+❌ **Converse①: The author said "survey the site", so I will break it down regardless of
+the word count**
 
-> agent 闭眼拆 3 条：床铺/卫生间/被跟踪
->
-> 3 × 500 = 1500 ✗ 距 2500 差 1000 字
->
-> 写到一半 agent 会发现字数不够，开始加环境渲染大段和角色内心独白来凑——正文里全是"他看着窗外想了很久"这种注水段落。
->
-> 根因：少了"敲门进门→冰箱检查→便利贴→锁门下楼"这几个节拍
+> Agent closes his eyes and reveals 3 items: bed/bathroom/being followed 3 × 500 =
+> 1500 ✗ 1000 words away from 2500 Halfway through the writing, the agent will realize
+> that the number of words is not enough, and start adding large paragraphs of
+> environmental renderings and inner monologues of the characters to make it up - the
+> text is full of water-filled paragraphs such as "He looked out the window and
+> thought for a long time." Root cause: missing the beats of "knock on the door and
+> enter → check the refrigerator → sticky notes → lock the door and go downstairs"
 
-❌ **反面②：场景没拆开，一条扛一整段**
+❌ **Reverse side ②: The scene is not dismantled, one piece carries the entire section**
 
-> "勘查现场"只写了 1 条关键点："陆征进出租屋，发现床没铺、充电器在、冰箱有剩饭"
->
-> 1 条要写 2500 字 → agent 只能编
->
-> 根因：作者说的"一个场景"没拆成节拍，直接把场景标题当关键点
+> The "Inspection Site" only wrote one key point: "Lu Zheng entered the rental house
+> and found that the bed was unmade, the charger was there, and there were leftovers
+> in the refrigerator." 1 article requires 2500 words → agent can only edit Root
+> cause: The author did not break down the "scene" into beats and directly used the
+> scene title as the key point.
 
-❌ **反面③：缺过渡节拍，剧情断档**
+❌ **Converse ③: Lack of transitional beats, plot interruption**
 
-> 作者说"先写勘查再写被跟踪"，拆了 2 条：勘查房间 / 小区门口被拍
->
-> 中间跳过"锁门→楼道→下楼→出小区"4 个过渡节拍
->
-> 正文写出来：陆征还在屋里翻抽屉，下一段已经在小区门口被拍了。读者跳戏。
->
-> 根因：过渡场景也有"动作→发现→判断"循环，不是"没什么好写的"
+> The author said, "Write about investigation first, then write about being followed."
+> He broke down 2 items: being photographed at the entrance of the investigation
+> room/community. Skip the 4 transition beats of "lock the door→corridor→go
+> downstairs→exit the community" Write the main text: Lu Zheng was still looking
+> through the drawers in the house, and the next part was filmed at the entrance of
+> the community. Readers dance. Root cause: Transition scenes also have a cycle of
+> "action→discovery→judgment", not "nothing to write about"
 
-**怎么聊：** 作者说了一个分段后，当场转化成 2-3 句，给作者看。
+**How to talk:** After the author talks about a paragraph, convert it into 2-3 sentences
+on the spot and show it to the author.
 
-> "你说的'勘查房间'这段，我写出来大概是这样——你听听对不对：
-> '午后阳光从窗户切进来，灰尘在光柱里浮动。陆征拉开抽屉、掀开被子、手指划过桌面——每一件东西都在说她会回来，但人不见了。'
-> 你看哪句需要调？"
+> "The section about 'surveying the room' you mentioned, I wrote it roughly like this
+> - listen to it, right? 'The afternoon sun shines in through the window, and dust
+> floats in the beam of light. Lu Zheng opened the drawer, lifted the quilt, and ran
+> his fingers across the table - everything said that she would come back, but she was
+> gone.' Which sentence do you think needs to be adjusted?"
 
-**如果作者说：**
-- "我一两句就够了，不用那么细" → 解释原因："我知道一句话就能说清剧情，但 agent 写正文的时候，一句话的信息量不够它会自己编场景细节。我们不替 agent 决定房间长什么样——提前定好，正文才能符合作者预期"
-- "那你直接帮我写成 2-3 句吧" → 先写一版，让作者改："我给个初版，你看着调。这个是锚点，不是最终文案"
-- 只给了剧情要点，说不出场景细节 → 追问："第一个场景在室内还是室外？白天还是晚上？主角走进来第一眼看到什么？"
+**If the author says:**
+- "One or two sentences are enough for me, no need to be so detailed" → Explain the
+  reason: "I know that one sentence can tell the plot clearly, but when the agent writes
+  the text, the information in one sentence is not enough and it will make up the
+  details of the scene by itself. We don't decide for the agent what the room looks like
+  - decide it in advance so that the text can meet the author's expectations."
+- "Then just write it into 2-3 sentences for me." → Write a version first and let the
+  author change it: "I will give you a first version, and you can look at the tone. This
+  is the anchor point, not the final copy."
+- Only the main points of the plot are given, but the details of the scene cannot be
+  told → Follow-up question: "Is the first scene indoors or outdoors? Day or night? What
+  does the protagonist see first when he walks in?"
 
-**聊完分段后，追问段落分布：**
+**After talking about segmentation, ask about paragraph distribution:**
 
-> "这几段按什么分布？——哪几段是推进剧情的、哪几段是过渡缓冲、哪几段埋伏笔/造悬念？"
+> "How are these paragraphs distributed? - Which paragraphs advance the plot, which
+> paragraphs are transitional buffers, and which paragraphs are foreshadowing/creating
+> suspense?"
 
-记录每段的功能类型。分布清楚了，段落的节奏和功能就定了。
+Record the function type of each segment. The distribution is clear, and the rhythm and
+function of the paragraph are determined.
 
-**再问读者获得：**
+**Ask readers again to get:**
 
-> "这章读者看完能带走什么？——一个新信息、一段关系推进、还是一个情绪释放？放在哪段？"
+> "What will the reader take away from this chapter?,a new piece of information, a
+> relationship advancement, or an emotional release? Which paragraph should I put it
+> in?"
 
-读者获得是章纲的"给读者什么"维度。每章至少一个，过渡章也必须有一个。
+Reader acquisition is the "what to give the reader" dimension of the chapter outline. At
+least one for each chapter, and one for transitional chapters.
 
-**最后补两个问题：**
+**Two final questions:**
 
-> "这章总字数多少？默认 2500，你觉得够不够？需要调整吗？"
+> "What is the total number of words in this chapter? The default is 2500. Do you
+> think it is enough? Does it need to be adjusted?"
 
-> "这章有哪些新钩子要埋的？除了兑现旧钩子，有没有新线索/新悬念要放进去？放在哪段？"
+> "What new hooks are there to bury in this chapter? In addition to fulfilling the old
+> hooks, are there any new clues/suspense to be put in? In which paragraph?"
 
-**常见问题与处理：**
+**Frequently asked questions and solutions:**
 
-| 作者说 | 问题 | 接法 |
+| What the author says | Questions | How to connect |
 |--------|------|------|
-| "就一个场景，勘查现场" | 太粗，一个大场景包含多个叙事节拍 | "勘查现场本身有几个节拍？进门第一眼→床铺→冰箱→卫生间→便利贴，每个节拍拆成一条故事条，大概 5 条" |
-| "先写勘查再写被盯上" | 只有两步，中间缺过渡 | "勘查完了怎么离开的？离开时有没有异常？" |
-| "大概 3-4 段吧" | 偏少，一段对应 3-5 分钟 | "这章默认 2500 字，3-4 段每段要写六七百字太粗了。我们拆细一点——比如你说的'勘查现场'这一段，就能拆成敲门→进门→床铺→冰箱→卫生间→便利贴，5-6 条故事条" |
-| "字数不重要" | 没有目标写起来没边 | "不求精确，2500 左右大概的量，太长或太短下次调整" |
-| "你就帮我规划吧" | 全甩给AI，失去作者意图 | "我先给个建议版本，然后你调整——这是你的章纲，不是我的" |
+| "Just one scene, survey site" | Too rough, a big scene contains multiple narrative beats | "How many beats are there in the survey site itself? First glance after entering the door → bed → refrigerator → bathroom → sticky notes, each beat is divided into a story strip, about 5 strips" |
+| "Write about the survey first and then get targeted" | There are only two steps, and there is no transition in the middle | "How did you leave after the survey? Was there anything unusual when you left?" |
+| "About 3-4 paragraphs" | Too short, one paragraph corresponds to 3-5 minutes | "The default limit for this chapter is 2,500 words. Each paragraph of 3-4 paragraphs requires six to seven hundred words, which is too thick. Let's break it down a little more - for example, the 'inspection site' paragraph you mentioned can be broken down into knocking → entering the door → bed → refrigerator → bathroom → sticky notes, 5-6 story strips" |
+| "The number of words is not important" | Without a goal, writing is boundless | "I don't want to be precise, the approximate amount is about 2500, if it is too long or too short, I will adjust it next time" |
+| "Just help me plan it" | Leave it all to AI and lose the author's intention | "I will give you a suggested version first, and then you adjust it - this is your outline, not mine" |
 
-**产出：** 大纲概要（outline.summary，1 句概括）+ 大纲关键点（outline.key_points，条数按字数倒推法——默认 2500 字 ≈ 5 条，每条覆盖 2-3 分钟故事时间 + 功能类型）+ 大纲出场角色（outline.characters）+ 大纲场景地点（outline.location）+ 大纲时间（outline.time）+ 大纲视角（outline.pov，本章 POV 角色——在设定视角类型 settings/writing-style.md narrative.perspective 内选择，默认第一主角有限 POV）+ 读者获得（micro_payoffs，每章至少1个）+ 字数目标 + 角色信息状态（knowledge_state）。
+**Output:** Outline summary (outline.summary, 1 sentence summary) + outline key points
+(outline.key_points, the number of items is calculated backwards by word count - default
+2500 words ≈ 5 items, each covering 2-3 minutes of story time + function type) + outline
+appearance characters (outline.characters) + outline scene location (outline.location) +
+outline time (outline.time) + Outline perspective (outline.pov, POV character of this
+chapter - select within the perspective type settings/writing-style.md
+narrative.perspective, the default first protagonist is limited POV) + reader
+acquisition (micro_payoffs, at least 1 per chapter) + word count target + character
+information status (knowledge_state).
 
-> 关键点用 `[功能类型]` 标注功能（推进剧情/造悬念/过渡），有对话的加 `[对话]`：`[推进剧情·对话]`、`[造悬念]`、`[过渡]`。
+> Key points are marked with `[function-type]` (promoting the plot/creating
+> suspense/transition), and if there is dialogue, add `[dialogue]`: `[advance-plot / dialogue]`, `[build-suspense]`,
+> `[transition]`.
 
-正反示例见 §六·Few-Shot 示例（勘查关键点、对话嵌入）。
-
----
-
-### 三、章纲内容清单
-
-章纲内容是第二步的核心——分 8 段记录本章不同维度的信息。合起来就是提示词生成的完整输入。每段回答不同的"这章有什么"。
-
-**通用判断：** 每段写完后反问——"这段信息是完整的吗？提示词生成能直接用吗？"
-
----
-
-#### 1. 当前任务（current_task）
-
-记录"这一章的目标"——不是主题感受，是该完成的推进动作。
-
-**写什么：** 一句话：本章要推进的具体动作 + 与哪条故事线的什么关系。
-
-**怎么聊：** 从大纲提炼。大纲拆出了段落，当前任务是这些段落的共同目标。
-
-> "这章几个段落下来，核心在推进什么事？用一句话说。"
-
-如果作者说"建立悬念"或"推进主线"，追一句：
-
-> "具体通过什么事来建立悬念/推进主线？把事写进当前任务（current_task），把感受留给读者期待（reader_expectation）。"
-
-```
-✅ 合格：
-"建立陆征的人物形象和日常工作状态，通过苏沫的委托引入主线案件"
-→ 主线起点：日常 + 委托 + 案件引入
-
-"通过现场勘查推进案件调查，线索逐渐指向苏棠不是主动离开的"
-→ 剧情方向：勘查 → 推翻警方结论
-
-❌ 不合格：
-"本章建立悬念"
-→ 建立什么悬念？通过什么事？信息不完整
-
-"主角继续调查案件"
-→ "继续"是什么意思？调查什么？发现了什么？等于没写
-```
+For positive and negative examples, see §6 / Few-Shot examples (exploring key points,
+dialogue embedding).
 
 ---
 
-#### 2. 读者期待（reader_expectation）
+### 3. List of chapter contents
 
-记录读者当前的情绪状态和本章怎么回应这个状态。这是章纲的核心——决定了本章的情绪走向。
+The content of the chapter outline is the core of the second step - record the
+information of different dimensions of this chapter in 8 paragraphs. Together they are
+the complete input for prompt word generation. Each paragraph answers a different
+"What's in this chapter?"
 
-**写什么：** 三个子字段——情绪状态（state，读者当前情绪）、策略（strategy，本章的处理策略）、具体说明（detail，读者在等什么）。
+**General Judgment:** After writing each paragraph, ask questions - "Is this information
+complete? Can the prompt word generation be used directly?"
 
-**怎么聊：** 读上一章章纲文件的情绪设计（emotional_design）。看上一章落的是什么情绪钩子，读者带着什么情绪缺口进入本章。
+---
 
-> "上一章结尾，读者处在什么情绪？比如'好奇苏棠去哪了'、'紧张陆征被盯上了'。"
+#### 1. Current task (current_task)
 
-> "那这章怎么对待这个情绪？——给点进展满足一下，还是压着不给，还是先给一点再制造更大的疑问？"
+Record the "goal of this chapter" - not the theme feelings, but the advancement actions
+that should be completed.
 
-> "具体来说，读者在等什么？等谁出场、等某个真相、等一场对决？说具体的人/事/物。"
+**What to write:** One sentence: The specific actions to be promoted in this chapter +
+what relationship it has to which story line.
 
-**如果作者说：**
-- "读者期待下一章的内容" → 太虚，追："哪个读者的哪个具体期待？具体到人/事/物"
-- "随便，你来定" → 不能代定："我先建议一个版本，你看对不对——不对我们就调"
+**How to talk:** Extract from the outline. The outline breaks down the paragraphs, and
+the current task is the common goal of these paragraphs.
+
+> "After a few paragraphs of this chapter, what is the core pushing forward? Say it in
+> one sentence."
+
+If the author says "build suspense" or "advance the main plot", follow up with:
+
+> "What specific things are used to build suspense/advance the main line? Write the
+> things into the current task (current_task), and leave the feelings to the reader's
+> expectation (reader_expectation)."
 
 ```
-✅ 合格：
-state: "好奇——上一章结尾留下悬念，读者想知道苏棠到底去哪了"
-strategy: "制造新缺口"
-detail: "读者期待调查有进展——前半章给进展（房间矛盾细节），后半章制造新疑问（楼下的男人是谁？）"
-→ 情绪节奏：前段满足期待，后段制造新悬念
+✅ Qualified:
+"Establish Lu Zheng's character image and daily work status, and introduce the main case through Su Mo's entrustment"
+→ Main line Qidian: daily + commission + case introduction
 
-❌ 不合格：
-state: "期待"
-strategy: "维持悬念"
-detail: "读者期待下一章的内容"
-→ 三行全空——什么期待？维持什么悬念？等于没写
+"Through on-site investigation, we are advancing the investigation of the case, and clues gradually point to the fact that Su Tang did not leave on his own initiative."
+→ Plot direction: Investigation → Overturning the police conclusion
+
+❌ Unsatisfactory:
+"This chapter builds suspense"
+→ What suspense is built? Through what? Incomplete information
+
+"The protagonist continues to investigate the case"
+→ What does "continue" mean? Investigate what? What was found? It’s as if I didn’t write it
 ```
 
 ---
 
-#### 3. 兑现计划（payoff_plan，旧事/钩子管理）
+#### 2. Reader expectations (reader_expectation)
 
-记录本章对钩子的处理——兑现哪些旧钩子、埋下哪些新钩子、哪些悬念必须压着不能碰、哪些线索推一把但不收束。
+Record the reader's current emotional state and how this chapter responds to that state.
+This is the core of the chapter outline - it determines the emotional direction of the
+chapter.
 
-**写什么：** 三个列表——必须了结（must_resolve，本章兑现的旧钩子）、必须压住（must_hold，绝对不能碰的悬念）、推进不收束（partial_advance，推进的旧线索+新埋下的钩子）。不用编号，用大白话描述。
+**What to write:** Three sub-fields - emotional state (state, the reader's current
+mood), strategy (strategy, the processing strategy for this chapter), and detail
+(detail, what the reader is waiting for).
 
-**怎么聊：** 从前面几章的章纲读过来——哪些旧钩子还悬着、哪些该收了、哪些底牌还太早不能掀。再问本章的新钩子。
+**How to chat:** Read the previous chapter of the chapter outline document on emotional
+design (emotional_design). Look at the emotional hook of the previous chapter and the
+emotional gap that readers enter this chapter with.
 
-> "前面埋了哪些还没收的线？这章有没有到了该收的？——这些写进 must_resolve。"
+> "What mood did the reader feel at the end of the previous chapter? For example,
+> 'curious where Su Tang went', 'nervous that Lu Zheng was being targeted'."
 
-> "哪些事现在绝对不能碰——掀了就收不回来的？——这些写进 must_hold。"
+> "Then how should we deal with this emotion in this chapter? - Give some progress and
+> be satisfied, should we suppress it and not give it, or should we give it a little
+> first and then create bigger doubts?"
 
-> "哪些旧线索可以推一把但不能全亮？推多少？——是'让读者知道有联系'还是'让主角隐约感觉不对'？"
+> "Specifically, what are readers waiting for? Who is waiting for, waiting for a
+> certain truth, waiting for a confrontation? Name specific people/things/things."
 
-> "这章有没有新钩子要埋的？——新线索、新悬念、新人物登场暗示？这些写进 partial_advance（推进但不收束）。"
-
-**如果作者说：**
-- "你安排就行" → 不能代埋钩子："我先列几个候选，你看哪些符合你的预期"
-- "没什么旧钩子，这章全新的" → verify："确定没有任何旧线索要推进？那先空着"
-- must_resolve 和 must_hold 写了同一件事 → 矛盾："这两个冲突了——到底是要收还是要压？"
+**If the author says:**
+- "Readers are looking forward to the content of the next chapter" → Taixu, Zhui: "Which
+  reader has which specific expectations? Specific to people/things/things"
+- "Whatever, you decide" → Unable to decide on your behalf: "I'll suggest a version
+  first, you see if it's right - if not, we'll adjust it"
 
 ```
-✅ 合格：
-must_resolve: []  # 第 1 章，没有要收的旧事
-must_hold: ["不能揭示陆征离开警队的原因"]
+✅ Qualified:
+state: "Curiosity - the end of the previous chapter left a suspense, the reader wants to know where Su Tang went"
+strategy: "Create a new gap"
+detail: "Readers expect progress in the investigation - the first half of the chapter gives progress (details of conflicts in the room), and the second half creates new questions (who is the man downstairs?)"
+→ Emotional rhythm: the first part satisfies expectations and the second part creates new suspense
+
+❌ Unsatisfactory:
+state: "Looking forward to"
+strategy: "Maintain suspense"
+detail: "Readers are looking forward to the content of the next chapter"
+→ Three rows are all empty - what to expect? What suspense is maintained? It’s as if I didn’t write it
+```
+
+---
+
+#### 3. Payoff plan (payoff_plan, news/hook management)
+
+Record the treatment of hooks in this chapter - which old hooks are fulfilled, which new
+hooks are buried, which suspense must be suppressed and cannot be touched, and which
+clues are pushed but not closed.
+
+**What to write:** Three lists - must be resolved (must_resolve, the old hook that is
+fulfilled in this chapter), must be suppressed (must_hold, the suspense that must not be
+touched), advance without closure (partial_advance, the old clue that is advanced + the
+new hook that is laid). No need to number, just describe it in plain English.
+
+**How to talk:** Read the outlines of the previous chapters - which old hooks are still
+hanging, which ones should be closed, and which trump cards are too early to be
+revealed. Let’s ask about the new hook of this chapter.
+
+> "What threads have been buried in the past that have not yet been confiscated? Is
+> there anything that should be collected in this chapter? - Write these into
+> must_resolve."
+
+> "What things must not be touched now,things that can't be taken back once they're
+> revealed?,Write these into must_hold."
+
+> "Which old clues can be pushed but not fully illuminated? How much? - 'Let the
+> reader know there is a connection' or 'Let the protagonist feel vaguely wrong'?"
+
+> "Are there any new hooks to bury in this chapter?,New clues, new suspense, hints of
+> new characters' appearances? These are written in partial_advance (advance but not
+> end)."
+
+**If the author says:**
+- "Just make your arrangements" → Don't lay the hook: "I'll list a few candidates first
+  and see which ones meet your expectations."
+- "No old hooks, this chapter is brand new" → verify: "Are you sure there aren't any old
+  clues to advance? Leave it blank for now."
+- must_resolve and must_hold write about the same thing → Contradiction: "These two
+  conflict - should we accept or hold?"
+
+```
+✅ Qualified:
+must_resolve: [] # Chapter 1, no old things to collect
+must_hold: ["Cannot reveal the reason why Lu Zheng left the police force"]
 partial_advance:
-  - "种下主线悬念——苏棠失踪，警方判定主动离开，但细节有矛盾"
-→ 钩子状态清晰：该压的压住，该种的种下
+  - "Planting the suspense of the main plot - Su Tang disappeared, the police determined that he left voluntarily, but the details are contradictory"
+→ The status of the hook is clear: press what should be pressed, and plant what should be planted.
 
-❌ 不合格：
+❌ Unsatisfactory:
 partial_advance:
-  - "推进主线"
-→ "推进"太模糊——推一毫米也是推进，直接收束也是推进
+  - "Advance the main line"
+→ "Push" is too vague - pushing by a millimeter is also pushing, and directly closing is also pushing.
 
-must_resolve: ["揭示真相"]
-must_hold: ["揭示真相"]
-→ 同一件事既要收又要压——逻辑矛盾
+must_resolve: ["Reveal the truth"]
+must_hold: ["Reveal the truth"]
+→ The same thing needs to be both collected and suppressed - logical contradiction
 ```
 
 ---
 
-#### 4. 过渡功能（downtime_functions）
+#### 4. Transition functions (downtime_functions)
 
-非冲突段落不是"休息"——每段过渡场景必须有明确的叙事功能。没功能的段落不该存在。
+Non-conflict passages are not "rests" - each transitional scene must have a clear
+narrative function. Paragraphs that do not function should not exist.
 
-**写什么：** 每条 `[段落位置/场景] → [承担功能]`。功能必须是具体动作。
+**What to write:** Each `[paragraph-position / scene] → [function]`. Functions must be specific actions.
 
-**怎么聊：** 从大纲中拎出非冲突段落，逐段反问：
+**How to talk:** Pick out the non-conflicting paragraphs from the outline and ask
+questions paragraph by paragraph:
 
-> "这段去掉会影响什么？"
+> "What will be the impact of removing this section?"
 
-不影响就删掉。如果作者说"调节奏""过渡一下"，追一句：
+Delete it if it doesn't affect it. If the author says "adjust the rhythm" or "make a
+transition", follow up with:
 
-> "调节奏的同时这段能不能做点别的事——比如埋伏笔、展示角色性格、补充信息？"
+> "While adjusting the pacing, can we do other things in this paragraph - such as
+> foreshadowing, showing the character's personality, and supplementing information?"
 
-**如果作者说：**
-- "没什么功能，就是调节奏" → 打回："纯调节奏的段落超过 1 段就是注水。给它加个功能——哪怕只是让读者看到角色的一个侧面"
-- "这段就是展现日常" → 追："日常的哪一面？——工作状态、性格底色、还是关系氛围？"
-
-```
-✅ 合格：
-- "开头办公室场景 → 建立陆征的日常状态和性格底色"
-- "路上环境描写 → 南岸新区与老城区的对比，暗示城市的两面性"
-
-❌ 不合格：
-- "过渡段落" → 没有功能映射，这段没有存在的理由
-- "日常描写" → 太模糊，日常可以写一页吃饭也可以推进剧情
-```
-
----
-
-#### 5. 关键抉择（key_choices）
-
-本章中角色的重要选择必须经过检验——为什么做、符合人设吗、读者会觉得突兀吗。
-
-**写什么：** 每条包含角色做了什么选择 + 为什么 + 为什么符合人设 + 读者感受验证。
-
-**怎么聊：** 读角色文件（世界观/自我定位/价值观），判断选择是否从设定自然生长出来。
-
-> "这章 xxx 要做 YYY 这个决定。为什么？是利益驱动还是情感驱动？"
-
-> "这符合 ta 之前的人设吗？——如果作者说'符合'，追问'具体哪条设定支撑这个选择？'"
-
-> "读者看到这个选择会怎么想？会觉得'他当然会这么做'还是'他怎么突然变了'？"
-
-**如果作者说：**
-- "剧情需要" → 打回："剧情需要不是理由。角色为什么要做这个决定？找他内心的动机，不是情节的动机"
-- "他性格就是这样" → 追："具体哪条性格？给我引用角色文件里的描述"
-- "读者不会觉得突兀" → 验证："是因为前面的铺垫够，还是因为这章本身就解释了？"
+**If the author says:**
+- "It has no function, it just adjusts the rhythm." → Reply: "Paragraphs that purely
+  adjust the rhythm for more than one paragraph are just watering down. Add a function
+  to it - even if it just allows readers to see one side of the character."
+- "This paragraph is about showing daily life" → Chasing: "Which aspect of daily life? -
+  work status, character background, or relationship atmosphere?"
 
 ```
-✅ 合格：
-- "陆征为什么接下案子？——一半是需要收入维持事务所运转，一半是苏沫说的地址查无此址让他觉得警方草率了。符合他人设：不急于下判断，相信细节。"
-→ 不是热血也不是同情，是专业警觉+现实需要
+✅ Qualified:
+- "The opening office scene → establish Lu Zheng's daily status and character background"
+- "Description of the environment on the road → The contrast between Nan'an New District and the old city hints at the two sides of the city"
 
-- "方岩为什么私下警告陆征？——他对陆征有愧疚，但也不希望陆征捅出篓子连累自己。矛盾的选择符合人设。"
-→ 有愧疚也有自保，不是单纯的"好人帮忙"
-
-❌ 不合格：
-- "主角选择了调查"
-→ 为什么调查？什么驱动？符合人设吗？全没答——等于没写
+❌ Unsatisfactory:
+- "Transition Paragraph" → No functional mapping, this paragraph has no reason to exist
+- "Daily description" → too vague, you can write a page about daily life and also advance the plot
 ```
 
 ---
 
-#### 6. 角色信息状态（knowledge_state）
+#### 5. Key choices (key_choices)
 
-记录本章出场角色知道什么、不知道什么。信息差是悬疑和冲突的燃料——谁掌握的信息多、谁被蒙在鼓里，直接决定本章的权力格局。
+The character's important choices in this chapter must be examined,why they were made,
+do they fit the character, and will they feel jarring to the reader.
 
-**写什么：** 每个出场角色的"知道/不知道"清单 + **信息差关系**（角色之间/角色与读者之间的信息不对称）+ **信息差变化**（本章内信息差从什么变成什么）。
+**What to write:** Each entry includes what choice the character made + why + why it
+fits the character + verification of readers’ feelings.
 
-**怎么聊：**
+**How to chat:** Read the character file (world view/self-positioning/values) and
+determine whether the choice grows naturally from the setting.
 
-> "这章出场角色有谁？——陆征现在知道什么、不知道什么？灰短袖男人知道什么？"
+> "This chapter xxx has to make the decision YYY. Why? Is it profit-driven or
+> emotion-driven?"
 
-> "读者和陆征的信息是对等的吗？——读者知道的事陆征不知道？还是反过来？"
+> "Does this fit with his previous character design? - If the author says 'in line
+> with', ask 'Which specific setting supports this choice?'"
 
-> "这章信息差怎么变化？——开场时什么信息差最大？结束时有什么新信息差出现了？"
+> "What will readers think when they see this choice? Do they think 'of course he
+> would do that' or 'why did he suddenly change'?"
 
-> "这章有没有对话？哪几段有？对话双方是谁？对话推进了什么信息？"
-
-**如果作者说：**
-- "大家都知道" → 危险信号。全知道 = 信息差为零 = 这章没冲突燃料。追问："再想想，至少有什么是某个角色不知道的？"
-- "读者和主角知道的一样多" → OK。但要确认读者被带入了主角的视角
-
-**产出：** 角色知道/不知道清单 + 信息差关系 + **信息差变化**（开场→结尾）+ 对话标记（在关键点中用 `[·对话]` 标注）
+**If the author says:**
+- "Plot necessity" → Reply: "Plot necessity is not a reason. Why does the character make
+  this decision? Look for his inner motivation, not the plot's motivation."
+- "This is his personality" → Chase: "Which specific personality? Please quote me the
+  description in the character file."
+- "The reader will not find it abrupt" → Verification: "Is it because the previous
+  foreshadowing is enough, or is it because the chapter itself explains it?"
 
 ```
-✅ 合格：
-清单：
-  陆征：知道苏棠失踪且不是主动离开 / 不知道便利贴电话是谁的、不知道灰短袖男人的身份
-  灰短袖男人：知道陆征在查案 / 不知道陆征查到了什么
+✅ Qualified:
+- "Why did Lu Zheng take the case? - Partly because he needed income to keep the office running, and partly because the address Su Mo said was not found, which made him feel that the police were sloppy. In line with his character: not rush to judge, trust the details."
+→ It’s not passion or sympathy, it’s professional vigilance + practical needs
 
-信息差关系：
-  · 灰短袖男人知道陆征在查苏棠的案子 ↦ 陆征不知道对方身份 ⬅ 本章悬念来源
-  · 读者看到灰短袖男人在跟踪 ↦ 陆征没注意到 ⬅ 制造紧张
+- "Why did Fang Yan warn Lu Zheng privately? - He feels guilty for Lu Zheng, but he doesn't want Lu Zheng to cause trouble and harm himself. The contradictory choice is in line with the character."
+→ There is guilt and self-protection, not just "good people helping"
 
-信息差变化：
-  开场：主角不知道苏棠去哪了 ↦ 读者和主角一样
-  中段：主角发现矛盾细节 ↦ 信息差在缩小
-  结尾：反派知道主角在查 ↦ 主角不知道对方身份 ⬅ 新信息差，驱动下一章
-
-对话：无（独角戏勘查章）
-
-❌ 不合格：
-"角色都知道该做什么"
-→ 不是信息状态，是剧情判断
+❌ Unsatisfactory:
+- "The protagonist chose to investigate"
+→ Why investigate? What driver? Does it fit the personality? No answer at all - it means no writing
 ```
 
 ---
 
-#### 7. 章尾改变（required_changes）
+#### 6. Role information status (knowledge_state)
 
-本章结束时什么东西必须变了。章末什么都没变 → 这章不该存在。
+Record what the characters in this chapter know and what they don’t know. The
+information gap is the fuel for suspense and conflict - who has more information and who
+is kept in the dark directly determines the power structure of this chapter.
 
-**写什么：** 1-3 条具体改变，每条标注改变类型（信息/关系/物理/权力）+ 从什么变成什么。
+**What to write:** List of "know/don't know" for each character who appears +
+**Information Gap Relationship** (information asymmetry between characters/character and
+reader) + **Information Gap Change** (what the information gap changes to in this
+chapter).
 
-**怎么聊：** 从当前任务（current_task）推。
+**How to chat:**
 
-> "这章要完成 XXX 这个任务。那结束时，什么东西和开头不一样了？——谁知道了什么？谁和谁的关系变了？主角在哪方面不同了？"
+> "Who are the characters in this chapter? - What does Lu Zheng know now and what
+> doesn't he know? What does the man in gray short sleeves know?"
 
-如果作者说"调查推进了"或"关系变化了"，追一句：
+> "Is the information between the reader and Lu Zheng equal? What the reader knows but
+> Lu Zheng doesn't know? Or is it the other way around?"
 
-> "'推进了'具体指什么？从'不知道'变成'知道'了什么？关系从'信任'变成'怀疑'还是从'陌生'变成'合作'？说清'从什么变成什么'。"
+> "How do the information gaps change in this chapter?,What information gaps are
+> largest at the beginning? What new information gaps appear at the end?"
+
+> "Is there any dialogue in this chapter? Which paragraphs are there? Who are the two
+> parties involved in the dialogue? What information is advanced by the dialogue?"
+
+**If the author says:**
+- "Everyone knows" → red flag. Full knowledge = zero information gap = no conflict fuel
+  in this chapter. Follow-up: "Think again, is there something that at least one of the
+  characters doesn't know?"
+- "The reader knows as much as the protagonist does" → OK. But make sure the reader is
+  brought into the protagonist’s perspective
+
+**Output:** List of what the characters know/don't know + information gap relationship +
+**Information gap change** (opening→end) + dialogue markers (marked with `[dialogue]` in key
+points)
 
 ```
-✅ 合格：
-- "信息改变：陆征（和读者）知道了苏棠失踪的基本事实和几个疑点"
-- "威胁引入：楼下的男人盯着陆征——调查被人盯上了"
+✅ Qualified:
+Checklist:
+  Lu Zheng: I know that Su Tang is missing and did not leave voluntarily / I don’t know whose phone number the sticky note belongs to, and I don’t know the identity of the man in gray short sleeves
+  Man with gray short sleeves: I know Lu Zheng is investigating the case/I don’t know what Lu Zheng found out
 
-❌ 不合格：
-- "调查有进展" → 什么进展？知道了什么？没有新信息 = 没有改变
-- "关系变化" → 谁和谁？从什么变成什么？全空
+Information gap relationship:
+  / The man in gray short sleeves knows that Lu Zheng is investigating Su Tang’s case ↦ Lu Zheng does not know the identity of the other party ⬅ The source of suspense in this chapter
+  / The reader saw the man in gray short-sleeves following him ↦ Lu Zheng didn’t notice ⬅ Create tension
+
+Information gap changes:
+  Opening: The protagonist doesn’t know where Su Tang has gone ↦ The reader is the same as the protagonist
+  Middle section: The protagonist discovers contradictory details ↦ The information gap is narrowing
+  Ending: The villain knows that the protagonist is investigating ↦ The protagonist does not know the identity of the opponent ⬅ The new information is poor, driving the next chapter
+
+Dialogue: None (One-man Show Exploration Chapter)
+
+❌ Unsatisfactory:
+"The characters all know what to do"
+→ It’s not information status, it’s plot judgment
 ```
 
 ---
 
-#### 8. 场景卡（scene_cards）
+#### 7. Chapter end changes (required_changes)
 
-本章的场景分解——每章由 **2-5 个场景卡**组成（卷纲拆场景卡的章级落地），每个场景卡三个信息（三要素）：
+Something must change by the end of this chapter. Nothing changes at the end of the
+chapter → This chapter shouldn't exist.
 
-| 字段 | 含义 | 说明 |
+**What to write:** 1-3 specific changes, each marked with the type of change
+(information/relationship/physical/power) + what it changed from.
+
+**How to chat:** Push from the current task (current_task).
+
+> "This chapter is to complete the task of XXX. At the end, what is different from the
+> beginning? - Who knows what? Who's relationship with whom has changed? In what ways
+> is the protagonist different?"
+
+If the author says "the investigation progressed" or "the relationship changed", follow
+up with:
+
+> "What does 'advance' specifically mean? From 'not knowing' to 'knowing' something?
+> From 'trust' to 'suspiciousness' or from 'strangeness' to 'cooperation'? Explain
+> 'what becomes what'."
+
+```
+✅ Qualified:
+- "Information changed: Lu Zheng (and the reader) knew the basic facts and several doubts about Su Tang's disappearance"
+- "Threat introduction: The man downstairs is staring at Lu Zheng - the investigation is being targeted."
+
+❌ Unsatisfactory:
+- "There is progress in the investigation" → What progress? What do you know? No new information = no changes
+- "Relationship changes" → Who and whom? From what to what? All empty
+```
+
+---
+
+#### 8. Scene cards (scene_cards)
+
+Scene breakdown of this chapter - each chapter is composed of **2-5 scene cards** (the
+chapter level of the scene cards is separated from the volume outline), and each scene
+card has three pieces of information (three elements):
+
+| Field | Meaning | Description |
 |------|------|------|
-| **主角想干啥** | Goal——主角在这场景要达成什么 | 哪怕被动场景也有目的（"活下来""搞清楚"） |
-| **有什么拦着他** | Obstacle——阻碍是什么 | 人对人、事对事、内心对内心 |
-| **有什么悬念让读者想看下去** | Hook——读者为什么关心这段 | 来自情绪锚点+信息差 |
+| **What the protagonist wants to do** | Goal - what the protagonist wants to achieve in this scene | Even passive scenes have a purpose ("survive", "figure it out") |
+| **What's blocking him** | Obstacle - what is the obstacle | People to people, things to things, heart to heart |
+| **Is there any suspense that makes readers want to keep reading** | Hook - why readers care about this paragraph | From emotional anchor point + information gap |
 
-**怎么聊：** 从拆好的关键点（outline.key_points）归并场景，逐场景确认三要素。
+**How to talk:** Merge the scenes from the key points (outline.key_points) and confirm
+the three elements scene by scene.
 
-> "这章拆了 N 个场景？——每个场景里，主角想干什么、什么拦着他、读者为什么想看下去？"
+> "This chapter has N scenes? - In each scene, what does the protagonist want to do,
+> what stops him, and why does the reader want to read on?"
 
-**与 outline.key_points 的对应关系（口径与 skills/chapter-outline.md 拆场景卡一致）：** 每条关键点对应一个场景卡，底层逻辑与卷纲一致——场景卡三要素映射到关键点的三段锚点：
-
-```
-场景卡三要素 → 关键点中的体现
-  主角想干啥 → 动作锚点（角色具体做什么）
-  有什么拦着他 → 判断锚点（角色遇到什么阻碍/发现什么矛盾）
-  有什么悬念让读者想看下去 → 全文的情绪钩子+信息差
-```
-
-**消费方：** prompt-crafter 组装「输入·场景原材料」时，以场景卡三要素提取核心事件（外部事件链），不从 outline.key_points 直接提取。
-
-**如果作者说：**
-- "就一个场景" → 追问拆解："这个场景里有没有换地点/跳时间/情绪转折？有就拆开，一章 2-5 个场景卡"
-- "不用分场景，直接写" → 打回："场景卡决定提示词的场景原材料切分，不拆 prompt-crafter 无法按场景注入权重和技法"
+**The corresponding relationship with outline.key_points (the caliber is the same as the
+scene card in skills/chapter-outline.md): ** Each key point corresponds to a scene card,
+and the underlying logic is consistent with the outline - the three elements of the
+scene card are mapped to the three anchor points of the key point:
 
 ```
-✅ 合格：
-场景一（勘查·屋内）：主角想干啥——查清苏棠离开的疑点；
-  拦着他——门没反锁、房间不像主动离开（矛盾细节）；
-  悬念——这房间到底藏着什么线索
-场景二（离开·被盯上）：主角想干啥——正常离开不被察觉；
-  拦着他——车棚人影、灰短袖男人；悬念——盯上陆征的人是谁派来的
+Three elements of scene card → reflected in key points
+  What does the protagonist want to do → Action anchor (what exactly does the character do)
+  What's blocking him → Judgment anchor point (what obstacles the character encounters/what contradictions he finds)
+  Is there any suspense that makes readers want to read on → Emotional hook + information gap in the full text
+```
 
-❌ 不合格：
-场景一：勘查现场 → 只有事件没有三要素
+**Consumer:** When prompt-crafter assembles "Input / Scene Raw Materials", the core
+events (external event chain) are extracted using the three elements of the scene card,
+and are not extracted directly from outline.key_points.
+
+**If the author says:**
+- "Just one scene" → Ask and break it down: "Are there any changes of location/time
+  jump/emotional transition in this scene? If so, just break it up. There are 2-5 scene
+  cards in one chapter."
+- "No need to separate scenes, just write directly" → Reply: "The scene card determines
+  the scene raw materials of the prompt words. Without splitting the prompt-crafter, it
+  is impossible to inject weights and techniques according to the scene."
+
+```
+✅ Qualified:
+Scene 1 (Inspection / Inside the House): What does the protagonist want to do - find out the doubts about Su Tang’s departure;
+  Stop him - the door is not locked, the room does not look like he left the room voluntarily (conflicting details);
+  Suspense - what clues are hidden in this room?
+Scenario 2 (Leaving / Being Targeted): What does the protagonist want to do - leave normally without being noticed;
+  Stopping him - the figure in the carport, the man in gray short sleeves; the suspense - who sent the person targeting Lu Zheng
+
+❌ Unsatisfactory:
+Scene 1: Investigation site → only the event without the three elements
 ```
 
 ---
 
-### 四、情绪设计（emotional_design）
+### 4. Emotional design (emotional_design)
 
-记录本章的情绪参数。情绪设计分两层：**本章在卷情绪走向中的位置** + **本章内部的情绪走向**。
+Record the emotional parameters of this chapter. The emotional design is divided into
+two levels: **The position of this chapter in the emotional trend of the volume** +
+**The internal emotional trend of this chapter**.
 
-**怎么聊：** 分两步聊——先定位置，再定内容。
+**How to chat:** Chat in two steps - first decide the location, then decide the content.
 
-**Step 1：继承卷的情绪走向**
+**Step 1: The emotional trend of the inheritance volume**
 
-卷纲定了全卷的情绪走向（如"压抑→压抑→提升→打脸→装逼"）。先确认本章处于弧线的哪一步：
+The outline of the volume determines the emotional direction of the entire volume (such
+as "depression → suppression → promotion → face-slapping → pretentiousness"). First
+confirm which step of the arc this chapter is in:
 
-> "卷的情绪走向现在走到哪了？——这章是在压抑阶段的中段，还是到了打脸的释放阶段？"
+> "Where is Juan's emotional direction now? - Is this chapter in the middle of the
+> repression stage, or is it in the face-slapping release stage?"
 
-本章的情绪基调由卷的弧线位置决定：
-- 压抑阶段的前段 → 基调是"建立困境"，情绪落在压抑/不安
-- 压抑阶段的后段 → 基调是"压迫升级"，情绪落在更压抑/愤怒
-- 转折点 → 基调是"发现转机"，情绪落在期待/震惊
-- 释放阶段 → 基调是"反杀/展示"，情绪落在爽/满足
+The emotional tone of the chapter is determined by the arc position of the volume:
+- The first part of the depressive stage → the tone is "building a dilemma" and the mood
+  falls into depression/uneasiness
+- The second stage of the repression stage → the tone is "escalation of oppression", and
+  the mood falls into more depression/angry
+- Turning point → The tone is "discovering a turning point", and the mood falls on
+  expectation/shock
+- Release stage → The tone is "anti-kill/show", and the mood falls on
+  refreshment/satisfaction
 
-> "这章的情绪主色调就叫 {primary_mood}，顺着这个基调走，对吗？"
+> "The main emotional color of this chapter is called {primary_mood}. Follow this
+> tone, right?"
 
-**Step 2：设计章内情绪走向**
+**Step 2: Design the emotional trend within the chapter**
 
-位置定了之后，本章内部不能是一个情绪走到底——章节内部也要有一条微弧线：
+After the position is determined, the chapter cannot have one emotion going to the end -
+there must also be a slight arc within the chapter:
 
-> "这章从头到尾，读者情绪怎么变化？——从什么情绪开始、中间因为什么事转折、以什么情绪结束？至少三步。"
+> "How does the reader's emotion change from beginning to end of this chapter? - What
+> emotion does it start with, what happens in the middle, and what emotion does it end
+> with? At least three steps."
 
-章内走向 = 卷走向的一个缩影。压抑阶段不代表整章都压抑——压抑章内部可以有"平静→不安→确认困境"的微弧线。
+Chapter direction = a microcosm of volume direction. The depressive stage does not mean
+that the entire chapter is depressed - there can be a micro-arc of "calm → uneasiness →
+confirmation of dilemma" within the depressive chapter.
 
 ```
-卷走向：压抑 → 压抑 → 提升 → 打脸 → 装逼
+Curl direction: Depressed → Depressed → Enhanced → Face-slapping → Pretentious
                ↑
-本章位置：第2个"压抑"
+Position in this chapter: The second "depression"
 
-本章内部微弧线：
-  平静（开头日常）→ 不安（发现异常）→ 压抑（确认困境）
-  → 愤怒（压迫升级）→ 无力（章末落点）
+Internal micro-arcs in this chapter:
+  Calm (beginning with daily life) → uneasy (finding an abnormality) → depressed (confirming the dilemma)
+  → Anger (escalation of oppression) → Powerlessness (end of chapter)
 ```
 
-**Step 3：验证一致性**
+**Step 3: Verify consistency**
 
-检查两层走向是否自洽：
+Check whether the directions of the two layers are self-consistent:
 
-> "这章内部的微弧线的终点，是否支撑了卷走向的下一步？"
-> — 压抑章结束时读者应该是"更压抑了/愤怒了"，才有动力跟着进入下一章的提升阶段。
-> — 如果压抑章结束时读者是"开心了"，那卷的走向就断了。
+> "Does the end of the micro-arc inside this chapter support the next step in the
+> direction of the volume?" - At the end of the depressive chapter, the reader should
+> be "more depressed/angry", and then have the motivation to follow and enter the
+> improvement stage of the next chapter., If the reader is "happy" at the end of the
+> depressive chapter, the direction of the volume is broken.
 
-#### 字段填写指南
+#### Field filling guide
 
-| 字段 | 怎么聊 | 填写标准 | 常见错误 |
+| Fields | How to Chat | Filling Standards | Common Errors |
 |------|--------|---------|---------|
-| 主情绪（primary_mood） | "这章的主色调是什么情绪？——选一个最精准的词" | 一个精确情绪词（好奇/紧张/压抑/爽快/温情/悲伤/愤怒/释然） | "复杂""混合"——等于没选 |
-| 情绪走向（mood_progression） | "这章内部的微弧线怎么走？——从什么情绪开始、中间因为什么事转折、以什么情绪结束？至少三步，每步跟一个具体事件" | 卷走向的当前段 → 章内微弧线（A → 事件 → B → 事件 → C），章末落点支撑卷的下一步 | "先抑后扬"——只有两个节点没有中间过渡；或者章末落点和卷走向的下一步冲突（如压抑章结束时读者不压抑了） |
-| 强度峰值（intensity_peak） | "哪一段情绪最强烈？——不是'结尾'，是哪一段里的哪个瞬间" | 具体到关键点或场景 | "结尾"——没写具体哪段 |
-| 强度等级（intensity_level） | "和上一章比，这章强度高还是低？相邻章差不超过 2" | 1-10 数字，与相邻章差 ≤ 2 | 每章都填 7 或者每章都填 3——没有变化 |
-| 情绪钩子（emotional_hook） | "章末留在读者心里的情绪是什么？——不是类型词，是具体谁/什么事让读者睡不着" | 情绪类型+具体内容 | "悬念"——什么悬念？读者对什么产生悬念？ |
+| Main mood (primary_mood) | "What is the main mood of this chapter? - Choose the most precise word" | A precise mood word (curious/nervous/depressed/refreshing/warmth/sad/angry/relieved) | "Complex" or "mixed" - means no choice |
+| Emotional trend (mood_progression) | "How does the micro-arc in this chapter go? - What emotion does it start with, why does it turn in the middle, and what emotion does it end with? At least three steps, each step is followed by a specific event" | The current section of the volume trend → Micro-arc within the chapter (A → Event → B → Event → C), the ending point of the chapter supports the next step of the volume | "Suppress first and then advance" - there are only two nodes with no intermediate transition; or there is a conflict between the ending point at the end of the chapter and the next step in the direction of the volume (for example, the reader is no longer depressed at the end of the depressing chapter) |
+| Intensity peak (intensity_peak) | "Which paragraph has the strongest emotion? - Not the 'end', but which moment in which paragraph" | Specific to the key point or scene | "End" - no specific paragraph |
+| Intensity level (intensity_level) | "Compared with the previous chapter, is the intensity of this chapter higher or lower? The difference between adjacent chapters does not exceed 2" | 1-10 number, the difference from adjacent chapters is ≤ 2 | Fill in 7 for each chapter or 3 for each chapter - no change |
+| Emotional hook (emotional_hook) | "What is the emotion left in the reader's heart at the end of the chapter? - Not the type word, but the specific person/what kept the reader awake" | Emotional type + specific content | "Suspense" - what kind of suspense? What creates suspense for readers? |
 
-**如果作者说：**
-- "情绪走向就是先抑后扬" → 只有两步，不够："中间缺少过渡。从压抑到扬之间发生了什么转折？具体哪个事件让情绪转向？"
-- "强度等级填 5 吧" → 每次都填 5 就是没思考："和上一章比呢？比上一章强还是弱？差多少？"
+**If the author says:**
+- "The trend of emotion is to first suppress and then to increase." → There are only two
+  steps, which is not enough: "There is a lack of transition in the middle. What
+  transition happened from depression to elevation? Which specific event caused the
+  emotion to turn?"
+- "Let's fill in 5 for the strength level" → I fill in 5 every time because I don't
+  think about it: "Compared with the previous chapter? Is it stronger or weaker than the
+  previous chapter? How much worse?"
 
-#### 读者获得（micro_payoffs，原"微兑现"）
+#### Readers get (micro_payoffs, formerly "micro payoffs")
 
-每章至少 1 个读者获得——读者看完这章能带走什么。过渡章也必须至少 1 个。
+At least 1 reader gain per chapter - what readers take away from reading the chapter.
+There must also be at least 1 transition chapter.
 
-**怎么聊：**（方向确认已问过，这里确认记录即可）
+**How to chat:** (Direction confirmation has been asked, just confirm the record here)
 
-> "刚才说的读者获得，确认一下类型和位置——放在前段、中段还是后段？"
+> "The reader just mentioned, please confirm the type and position - should it be
+> placed in the front, middle or back paragraph?"
 
-**如果作者说：**
-- "这章主要是过渡，没什么好给的" → 打回："过渡章更要有读者获得——不然读者看完觉得'什么都没发生'。哪怕只是'确认了主角的某个性格特征'也算信息型获得"
+**If the author says:**
+- "This chapter is mainly a transition, there is nothing to give." → Reply: "The
+  transition chapter must be gained by the reader - otherwise the reader will feel that
+  'nothing happened' after reading it. Even if it is just 'confirmation of a certain
+  character trait of the protagonist', it is considered information gain."
 
-| 字段 | 填写标准 |
+| Field | Filling criteria |
 |------|---------|
-| 类型（type） | 信息（info，新线索/新信息）/ 关系（relationship，关系推进）/ 情绪（emotion，情绪释放）/ 线索（clue，伏笔回收）/ 能力（ability，能力展现）/ 资源（resource，获得物品）/ 认可（recognition，获得认可） |
-| 描述（description） | 具体事件：读者获得了什么，不是"获得了信息" |
-| 位置（location） | 前段/中段/后段——不要放在章末，别跟情绪钩子（emotional_hook）抢位置 |
+| Type (type) | Information (info, new clues/new information)/Relationship (relationship, relationship promotion)/Emotion (emotional release)/Clue (clue, foreshadowing recovery)/Ability (ability, ability display)/Resource (resource, obtain items)/Recognition (recognition, obtain recognition) |
+| Description | Specific event: what the reader obtained, not "obtaining information" |
+| Location (location) | Front/middle/back paragraph - don’t put it at the end of the chapter, don’t compete with the emotional hook (emotional_hook) for position |
 
 ---
 
-### 五、章内冲突阶梯
+### 5. Intra-Chapter Conflict Ladder
 
-冲突阶梯与情绪走向是同一模式——**卷定总阶梯，章继承层位，章内也有小阶梯**。
+The conflict ladder and the emotional trend are in the same pattern - the first volume
+determines the overall ladder, the chapters inherit the levels, and there are also small
+ladders within the chapters**.
 
-#### 设计方法
+#### Design Method
 
-**Step 1：继承卷的层位**
+**Step 1: Inherit the volume level**
 
-确认本章在卷冲突阶梯中的位置：
-- 第1层·入门 → 本章障碍以信息获取/探索为主，不涉及生死对决
-- 第2层·升级 → 本章障碍以外部阻力为主，主角开始承受代价
-- 第3层·转折 → 本章障碍以损失/挫折为主，局面发生根本性变化
-- 第4层·终极 → 本章障碍以正面对决为主，所有矛盾集中爆发
+Confirm this chapter's place in the volume conflict ladder:
+- Level 1 / Introduction → The obstacles in this chapter are mainly about information
+  acquisition/exploration, and do not involve life and death duels.
+- Level 2 / Upgrade → The obstacles in this chapter are mainly external resistance, and
+  the protagonist begins to bear the price
+- Level 3 / Turning → The obstacles in this chapter are mainly losses/setbacks, and the
+  situation has fundamentally changed.
+- Level 4 / Ultimate → The obstacles in this chapter are mainly head-on confrontations,
+  and all conflicts break out together.
 
-**Step 2：设计章内小阶梯**
+**Step 2: Design small steps within the chapter**
 
-卷的某一层不能一个障碍走到底——章内也要有递进。把一章拆成 2-3 个逐级升高的障碍：
-
-```
-卷阶梯→本章在第2层·升级
-章内小阶梯：
-  试探（场景1）→ 主角尝试接触，发现对方有防备          ← 入门
-  遭遇（场景2）→ 主角被警告/阻拦，确认阻力存在          ← 升级
-  冲突升级（场景3）→ 主角坚持调查，对方加大施压        ← 章内高潮
-  章末落点：主角处境更危险了 → 支撑卷的下一步（第3层 转折）
-```
-
-**Step 3：验证章末落点**
-
-> "本章结束时主角的处境，是否让下一章有了更高的起点？"
-> — 如果本章结束时和开始时主角处境差不多 → 章内阶梯没有推进，障碍不够。
-
-#### 章内阶梯与关键点的对应
-
-章内小阶梯的每一步对应一个或多个关键点（outline.key_points）。每个关键点的"判断锚点"就是本步障碍带来的信息/局面变化：
+A certain level of the volume cannot be completed with one obstacle - there must also be
+progression within the chapter. Break a chapter into 2-3 ascending obstacles:
 
 ```
-卷冲突阶梯：    第1层 入门 → 第2层 升级 → 第3层 转折 → 第4层 终极
+Volume Ladder→This chapter is on level 2 / Upgrade
+Small steps within the chapter:
+  Testing (Scene 1) → The protagonist tries to make contact and finds that the other party is defensive ← Getting Started
+  Encounter (Scene 2) → Protagonist is warned/blocked, confirmation of resistance ← Upgrade
+  Conflict escalates (scene 3) → The protagonist persists in the investigation, and the other party increases pressure ← Climax in the chapter
+  Point at the end of the chapter: The protagonist's situation becomes more dangerous → The next step of the support volume (Level 3 Turning)
+```
+
+**Step 3: Verify the landing point at the end of the chapter**
+
+> "Does the situation of the protagonist at the end of this chapter lead to a higher
+> Qidian in the next chapter?", If the situation of the protagonist at the end of this
+> chapter is similar to that at the beginning → There is no advancement in the ladder
+> within the chapter, and there are not enough obstacles.
+
+#### Correspondence between the ladder and key points in the chapter
+
+Each step of the small ladder within the chapter corresponds to one or more key points
+(outline.key_points). The "judgment anchor point" of each key point is the
+information/situation changes brought about by the obstacles in this step:
+
+```
+Volume Conflict Ladder: Level 1 Getting Started → Level 2 Upgrading → Level 3 Transition → Level 4 Ultimate
                               ↑
-本章层位：     第2层·升级
+Level of this chapter: Level 2 / Upgrade
                               ↓
-章内小阶梯：   试探 → 遭遇 → 冲突升级
+Small ladder within the chapter: temptation → encounter → conflict escalation
                               ↓
-关键点映射：   1-2条 → 3-4条 → 5-6条 （每步2条关键点）
-              试探场景      遭遇场景      升级场景
+Key point mapping: 1-2 → 3-4 → 5-6 (2 key points per step)
+              Test scene, encounter scene, upgrade scene
 ```
 
-#### 验收
+#### Acceptance
 
-- [ ] **章内小阶梯有 2-3 步**——不是只有一个障碍，也不是为了凑数分成 5 步
-- [ ] **每步比前一步更难**——场景2比场景1的对抗更强，场景3比场景2更严峻
-- [ ] **章末落点支撑卷的下一步**——障碍升级后，主角处境变了，下一章有更高的起点
-- [ ] **关键点的判断锚点对应阶梯步**——每步障碍在关键点中有具体的"动作→发现→判断"节拍
+- [ ] **The small staircase in the chapter has 2-3 steps** - not just one obstacle, nor
+      is it divided into 5 steps to make up the number
+- [ ] **Each step is more difficult than the previous step** - Scenario 2 is more
+      confrontational than Scenario 1, and Scenario 3 is more severe than Scenario 2
+- [ ] **The next step of the landing point support volume at the end of the chapter** -
+      After the obstacle is upgraded, the protagonist's situation has changed, and there
+      will be a higher Qidian in the next chapter
+- [ ] **The judgment anchor point of the key point corresponds to the ladder step** -
+      each obstacle has a specific "action → discovery → judgment" beat in the key point
 
 ---
 
-## 风骨层——"什么不能写进章纲"
+## Feng Gu Layer - "What cannot be written into the outline of the chapter"
 
-风骨层决定章纲没有 AI 味。章纲里出现"本章讲述了""主角经历了""通过 X 展现了 Y"，会原样抄进提示词再抄进正文，变成上帝视角解构。以下是要命模式和空洞词速查。
+The character level decided that the chapter has no AI flavor. In the chapter outline,
+if "this chapter is about", "the protagonist experienced", "Y is revealed through Here's
+a quick look at deadly patterns and empty words.
 
-### 6 种要命模式
+### 6 Deadly Modes
 
-| # | 模式 | 扫描位置 | 命中例句 | 修正后 |
+| # | Pattern | Scan position | Hit examples | After correction |
 |---|------|---------|---------|--------|
-| 1 | 上帝视角概述 | 大纲、内容清单·当前任务 | "本章讲述了陆征进入出租屋勘查" | "陆征进入出租屋勘查。推开门的瞬间闻到一股剩饭味" |
-| 2 | 抽象心理总结 | 内容清单·读者期待、关键抉择 | "他感到不安" | "他合上笔记本，推门出去" |
-| 3 | 分析性结论 | 内容清单·读者期待、章尾改变 | "这表明案件比想象中复杂" | 只写"什么变了"，不写"这意味着什么" |
-| 4 | 文学评论腔 | 内容清单·当前任务、过渡功能 | "通过细致入微的观察展现了主角专业能力" | "陆征注意到床没铺、充电器还在墙上、冰箱有剩饭" |
-| 5 | "不是而是"句式 | 内容清单所有字段 | "他不是愤怒，而是失望" | 直接写"他失望了"。必须用对比就拆两句 |
-| 6 | 抽象标签 | 内容清单·当前任务、章尾改变 | "关系递进""冲突升级""性格成长" | "陆征和方岩的关系从互不信任变成交换信息" |
+| 1 | God's Perspective Overview | Outline, Content List / Current Tasks | "This chapter tells the story of Lu Zheng entering the rental house to inspect" | "Lu Zheng entered the rental house to inspect. The moment he opened the door, he smelled the smell of leftover food" |
+| 2 | Abstract psychological summary | Content list / Reader's expectations, key choices | "He felt uneasy" | "He closed his notebook and pushed the door open" |
+| 3 | Analytical conclusion | Content list / Reader expectations, chapter end changes | "This shows that the case is more complicated than imagined" | Only write "what has changed", not "what does this mean" |
+| 4 | Literary criticism | Content list / Current tasks, transitional functions | "The professional ability of the protagonist is demonstrated through meticulous observation" | "Lu Zheng noticed that the bed was unmade, the charger was still on the wall, and there were leftovers in the refrigerator" |
+| 5 | "Not but" sentence pattern | Content list all fields | "He is not angry, but disappointed" | Just write "He is disappointed". If you must use contrast, break it into two sentences |
+| 6 | Abstract tags | Content list / Current tasks, chapter end changes | "Relationship progression" "Conflict escalation" "Character growth" | "The relationship between Lu Zheng and Fang Yan changed from mutual distrust to exchange of information" |
 
-### 空洞形容词速查
+### Empty adjective quick check
 
-| 类别 | 命中词 | 改法 |
+| Category | Hit word | Modification |
 |------|--------|------|
-| 空洞形容词 | 精彩、紧张、有趣、不错、震撼、感人、深刻 | 删掉，改可验证描述——"紧张"→"他在后视镜里看那人的手在口袋里" |
-| 抽象副词 | 深刻地、充分地、淋漓尽致地、完美地 | 全部删除 |
-| 程度词 | 充分、足够、适当、一定程度 | 改具体数量或范围 |
+| Empty adjectives | Wonderful, tense, interesting, good, shocking, touching, profound | Delete and change to a verifiable description - "nervous" → "He saw the man's hand in his pocket in the rearview mirror" |
+| Abstract adverb | profoundly, fully, vividly, perfectly | Delete all |
+| Words of degree | Sufficient, sufficient, appropriate, to a certain extent | Change the specific quantity or range |
 
 ---
 
-## 不做什么——硬约束红线
+## What not to do - hard red line
 
-记录本章绝对不能触碰的东西。不是"最好不要"，是"做了就报废"。
+Record the things you absolutely cannot touch in this chapter. It's not "it's best not
+to", it's "scrap it if you do it".
 
-**写什么：** 具体的禁止场景或行为，格式："不要在 X 场景中做 Y 事"或"不要让 X 角色做 Y 事"。必须可验证。
+**What to write:** Specific prohibited scenes or actions, format: "Don't do Y thing in X
+scene" or "Don't have X character do Y thing." Must be verifiable.
 
-**怎么聊：** 从卷纲到本章的渐进式约束积累。
+**How to talk:** Progressive accumulation of constraints from the outline to this
+chapter.
 
-> "这章有什么绝对不能碰的东西？——哪些设定还不能揭示、哪些角色还不能出场、哪些关系还不能挑明？"
+> "What are the things that absolutely cannot be touched in this chapter? - Which
+> settings cannot be revealed yet, which characters cannot appear yet, and which
+> relationships cannot be revealed yet?"
 
-**如果作者说：** "不要太拖沓"或"保持紧张感"，打回：
+**If the author says:** "Don't procrastinate" or "Keep it tight", type back:
 
-> "硬约束（prohibitions）是'不要做什么'，不是'要做什么'。说具体——不让谁出场？不揭示什么信息？不让发生什么场景？"
+> "Hard constraints (prohibitions) are 'not to do', not 'to do'. Be specific - who is
+> not allowed to appear? What information is not revealed? What scenes are not allowed
+> to happen?"
 
 ```
-✅ 合格：
-- "不要揭示陆征三年前离开警队的详细原因——只通过细节暗示他以前是刑警"
-→ 可验证：扫描"三年前""离开警队"等关键词
+✅ Qualified:
+- "Don't reveal the detailed reasons why Lu Zheng left the police force three years ago - just hint through the details that he was a criminal police officer before."
+→ Verifiable: Scan keywords such as "three years ago" and "left the police force"
 
-- "不要让楼下的男人和陆征对话——只通过眼神和氛围制造压力"
-→ 肢体可写、氛围可写，但对话是红线
+- "Don't let the man downstairs talk to Lu Zheng - just create pressure through your eyes and atmosphere."
+→ The body can be written and the atmosphere can be written, but the dialogue is the red line
 
-❌ 不合格：
-- "不要太拖沓" → 怎么算拖沓？没有判断标准
-- "保持紧张感" → 这不是禁止，是期望
+❌ Unsatisfactory:
+- "Don't be too procrastinating" → How is procrastination considered? no judgment criteria
+- "Keep the tension" → This is not a prohibition, it is an expectation
 ```
 
 ---
 
-## 做完之后——验收流程
+## After completion - acceptance process
 
-章纲写完后，按以下步骤验收。全部通过后才进提示词生成。
+After writing the chapter outline, follow the following steps for acceptance. Prompt
+words will be generated only after all are passed.
 
-### 第 1 步：给作者看
+### Step 1: Show it to the author
 
-按以下格式整理章纲要点，给作者过目。不要丢原文，要 readable 摘要：
+Arrange the main points of the chapter outline in the following format and give it to
+the author. Don’t lose the original text, make the summary readable:
 
-> 📋 **第 N 章 章纲反馈**
->
-> **本书位置：** 卷 N / 共 ? 卷 · 第 M 章 / 共 ? 章
->
-> **本章定位：** 本章在本卷的角色（一句话）
->
-> **衔接上一章：** 上一章结尾停在什么状态 → 本章从哪里切入
->
-> **主要内容：** 本章发生什么事（2-3 句）
->
-> **关键场景：**
-> - 场景一（角色：出场角色列表）
-> - 场景二（角色：出场角色列表）
-> - ...
->
-> **关键对话：** 有 / 无。有则注明谁和谁、关于什么
->
-> **冲突进展：** 本章推进了解读什么冲突，完成了什么进展
->
-> **字数目标：** NNNN 字
+> 📋 **Chapter N Outline Feedback** **Book Location:** Volume N / Total? Volume /
+> Chapter M / Total? Chapters **Positioning of this chapter:** The role of this
+> chapter in this volume (one sentence) **Connection to the previous chapter:** Where
+> did the last chapter end? → Where does this chapter start? **Main content:** What
+> happened in this chapter (2-3 sentences) **Key Scenes:** - Scene One (Character:
+> List of Appearing Characters) - Scene Two (Character: List of Appearing Characters)
+> -... **Key Dialogue:** Yes/No. Others indicate who and whom and about what
+> **Conflict Progress:** This chapter advances what conflicts are interpreted and what
+> progress is accomplished **Word Count Goal:** NNNN words
 
-作者看完反馈后，他要能说出"对，就是这样"才算合格。
+After the author reads the feedback, he must be able to say "Yes, that's it" to be
+considered qualified.
 
-**如果作者说：**
-- "差不多"、"你看着写"、"还行" → 不算通过。追问具体："哪个点你觉得还行？哪个点你不太确定？"
-- "这段我要调一下" → 让他调，调完再次确认
-- "整体可以" → 过。进入下一步
+**If the author says:**
+- "Almost", "Write as you see", "OK" → do not count as passing. Ask specific questions:
+  "Which point do you think is OK? Which point are you not sure about?"
+- "I want to adjust this section" → Let him adjust it, and confirm again after adjusting
+  it.
+- "Overall OK" → passed. Go to next step
 
-**通过条件：** 作者明确说"对"或"可以"或点头确认。
+**Passing conditions:** The author clearly says "yes" or "yes" or nods to confirm.
 
-### 第 2 步：自己过一遍检查清单
+### Step 2: Go through the checklist yourself
 
-逐项核实以下清单。有任一项不合格 → 退回修改，不改不进下一步。
+Check the following list item by item. If any item is unqualified → return for
+modification, otherwise you will not be able to proceed to the next step.
 
-- [ ] **字数目标** 已确认（默认 2500，作者可调整），作者知情并同意
-- [ ] **段落分布** 已确认：哪几段推进剧情、哪几段过渡、哪几段埋伏笔/造悬念
-- [ ] **读者获得（micro_payoffs）** 至少 1 个，作者知道读者看完能带走什么
-- [ ] **大纲关键点（outline.key_points）** 每条对应一个段落，作者能说出"这段写什么场景"
-- [ ] **场景卡（scene_cards）** 每章 2-5 个，每卡三要素（主角想干啥/有什么拦着他/有什么悬念）完整，与关键点的三段锚点对应
-- [ ] **旧钩子兑现** 已记录（must_resolve 写了哪些旧钩子在本章了结）
-- [ ] **新钩子埋下** 已记录（partial_advance 包含了本章新埋的悬念/线索）
-- [ ] **当前任务（current_task）** 不含抽象标签，不含上帝视角概述，可执行
-- [ ] **读者期待（reader_expectation）** 的情绪状态/策略/具体说明都有值，具体说明具体到人/事/物
-- [ ] **兑现计划（payoff_plan）** 三个列表完整（空列表显式 `[]`），推进不收束写了具体推进方式
-- [ ] **过渡功能（downtime_functions）** 每条有 `[场景] → [功能]` 映射
-- [ ] **关键抉择（key_choices）** 每条回答了"为什么做 + 符合人设吗 + 读者觉得突兀吗"
-- [ ] **角色信息状态（knowledge_state）** 每个出场角色知道什么/不知道什么已记录
-- [ ] **信息差关系** 已用"{}知道什么 ↦ {}不知道什么"格式标记——至少一对关系
-- [ ] **信息差变化** 已标注——开场什么信息差、结尾什么新信息差，中间有动态过程
-- [ ] **信息差变化服务于卷弧线**——本章结束时的新信息差是卷起点→终点弧线的一步推进
-- [ ] **对话标记** 有关键点标了 `[对话]`，无对话的已注明"无对话"
-- [ ] **章尾改变（required_changes）** 1-3 条，每条有改变类型 + "从什么变成什么"
-- [ ] **硬约束（prohibitions）** 每条可验证（正文写完后能对照检查），不含抽象禁忌
-- [ ] **本章情绪继承卷走向位置**——压抑阶段的章基调是压抑/不安，释放阶段的章基调是爽/满足，不矛盾
-- [ ] **章内微弧线（mood_progression）** 至少三个节点（A→B→C），节点间有因果锚点
-- [ ] **章末落点支撑卷走向的下一步**——压抑章结束时读者应该是"更压抑了/愤怒了"才有动力进入下一章
-- [ ] **本章层位继承卷冲突阶梯**——入门级不写生死对决，终极级不写轻松过渡
-- [ ] **章内小阶梯 2-3 步**——不是单个障碍，也不是为凑数分成太多步
-- [ ] **章内每步比前一步更难**——场景间的障碍强度有递进，不是重复同一对抗
-- [ ] **强度峰值（intensity_peak）** 具体到场景，不是"结尾"
-- [ ] **强度等级（intensity_level）** 与相邻章差不超过 2
-- [ ] **情绪钩子（emotional_hook）** 有具体内容（谁/什么事/什么悬念）
-- [ ] **微兑现（micro_payoffs）** 至少 1 个，类型/描述/位置都有值
-- [ ] **章纲全文无上帝视角概述、无分析性结论、无文学评论腔、无"不是而是"句式、无空洞形容词**
+- [ ] **Word Count Target** Confirmed (default 2500, author can adjust), author’s
+      informed consent
+- [ ] **Paragraph distribution** Confirmed: which paragraphs advance the plot, which
+      paragraphs are transitions, and which paragraphs are foreshadowing/creating
+      suspense
+- [ ] **Reader Earns (micro_payoffs)** At least 1, the author knows what the reader will
+      take away after reading
+- [ ] **Outline key points (outline.key_points)** Each item corresponds to a paragraph,
+      and the author can say "what scene is written in this paragraph"
+- [ ] **Scene cards (scene_cards)** 2-5 per chapter, each card has three elements (what
+      the protagonist wants to do/what’s blocking him/what suspense) are complete,
+      corresponding to the three anchor points of the key points
+- [ ] **Old hooks cashed out** Recorded (must_resolve wrote which old hooks are resolved
+      in this chapter)
+- [ ] **New hook buried** Recorded (partial_advance contains newly buried suspense/clues
+      in this chapter)
+- [ ] **Current task (current_task)** Does not contain abstract labels, does not contain
+      God's perspective overview, and is executable
+- [ ] **Reader Expectation (reader_expectation)**’s emotional state/strategy/specific
+      instructions are all valuable, and the specific instructions are specific to
+      people/things/things
+- [ ] **Cash-out plan (payoff_plan)** The three lists are complete (the empty list is
+      explicit `[]`), and the specific advancement method is written if the advancement
+      is not closed.
+- [ ] **Transition functions (downtime_functions)** Each item has `[scene] → [function]` mapping
+- [ ] **Key_choices** Each answer answers "Why do you do it + Does it fit the character
+      + Does the reader find it awkward?"
+- [ ] **Character information status (knowledge_state)** What each character
+      knows/doesn’t know has been recorded
+- [ ] **Information gap relationships** have been marked with the format "What {} knows
+      ↦ {} doesn't know" - at least one pair of relationships
+- [ ] **Changes in Information Difference** Marked - What information is different at
+      the beginning, what new information is different at the end, and there is a
+      dynamic process in the middle
+- [ ] **Information gap changes serve the volume arc** - The new information gap at the
+      end of this chapter is a step forward in the volume Qidian→end arc
+- [ ] **Dialogue mark** Key points are marked `[dialogue]`, and those without dialogue are
+      marked "No dialogue"
+- [ ] **End of chapter changes (required_changes)** 1-3 items, each item has a change
+      type + "from what to what"
+- [ ] **Hard constraints (prohibitions)** Each item can be verified (can be checked
+      after the text is written), and does not contain abstract taboos
+- [ ] **The direction of the emotional inheritance volume in this chapter** - The tone
+      of the chapter in the repression stage is depression/uneasiness, and the tone of
+      the chapter in the release stage is excitement/satisfaction, which is not
+      contradictory.
+- [ ] **Intra-chapter micro-arc (mood_progression)** At least three nodes (A→B→C), with
+      causal anchors between nodes
+- [ ] **The landing point at the end of the chapter supports the next step in the
+      direction of the volume** - At the end of the depressive chapter, the reader
+      should be "more depressed/angry" so that he or she has the motivation to enter the
+      next chapter.
+- [ ] **This chapter’s level inheritance volume conflict ladder**, No life-and-death
+      showdown at the entry level, no easy transition at the ultimate level
+- [ ] **Intra-chapter 2-3 steps** - Not a single obstacle, nor too many steps to make up
+      the number
+- [ ] **Each step in the chapter is more difficult than the previous step** - The
+      intensity of obstacles between scenes is progressive, not repeating the same
+      confrontation
+- [ ] **Intensity peak (intensity_peak)** Specific to the scene, not the "end"
+- [ ] **Intensity level (intensity_level)** The difference from the adjacent chapter is
+      no more than 2
+- [ ] **Emotional_hook** has specific content (who/what/what suspense)
+- [ ] **Micro_payoffs** At least 1, type/description/location all have values
+- [ ] **The full text of the chapter outline contains no summary from God's perspective,
+      no analytical conclusion, no literary criticism, no "not but" sentence structure,
+      and no empty adjectives**
 
-### 第 3 步：快速嗅探
+### Step 3: A quick sniff
 
-遮住章纲，看能不能靠回忆说出：
-- 分多少条故事条、每条写什么场景
-- 每个角色知道什么、不知道什么
-- 兑现了哪些旧钩子、埋下了哪些新钩子
+Cover up the outline and see if you can tell from memory:
+- How many stories are divided into and what scenes are written in each story?
+- What each character knows and doesn’t know
+- Which old hooks have been cashed in and which new hooks have been laid?
 
-说不出来 → 章纲密度不够，补细节。
+Can't tell → The outline of the chapter is not dense enough, please fill in the details.
 
-### 第 4 步：AI 味自检
+### Step 4: AI flavor self-test
 
-用风骨层的"6种要命模式"和"空洞形容词速查"扫描全文。命中任何一条 → 修改后再进提示词生成。
+Use Feng Gu Layer's "Six Fatal Modes" and "Empty Adjective Quick Check" to scan the full
+text. Hit any one → modify it before generating prompt words.
 
 ---
 
-## 四、fanqie 决策引导
+## 4. Fanqie decision-making Guidance
 
-章纲填充时，主动问作者这些问题。**不是让作者自己去看 fanqie.md，是 AI 主动问。**
+When filling in the chapter outline, take the initiative to ask the author these
+questions. **The author is not asked to go to fanqie.md himself, but the AI actively
+asks. **
 
-### 问题清单
+### Question list
 
-| 问题 | 触发时机 | 产出字段 |
+| Question | Trigger Timing | Output Field |
 |------|---------|---------|
-| "本章用哪种代入感方式？（熟悉感/标签/冲突紧迫/接地气）" | 方向确认后 | memo.immersion_type |
-| "本章情绪曲线：压→X→Y→爆发？" | emotional_design 前 | mood_progression |
-| "本章爽点类型？（打脸/成长/反转/暧昧/绝境翻盘）铺垫/释放在哪？" | memo 填充时 | payoff_plan + micro_payoffs |
-| "有副本吗？什么类型、核心事件是什么？" | outline 拆分时 | outline.scene_type |
-| "双主角/CP 本章冲突点是什么？" | 角色状态时 | key_choices |
-| "本章金手指展示什么能力？" | memo 填充时 | memo.gold_finger |
-| "本章主角的'不能退让的理由'是什么？" | 冲突设计时 | key_choices.conflict_motivation |
+| "What kind of immersion method is used in this chapter? (Familiarity/label/conflict urgency/grounding)" | After the direction is confirmed | memo.immersion_type |
+| "The emotional curve of this chapter: pressure→X→Y→explosion?" | emotional_design ago | mood_progression |
+| "What type of satisfying payoff is this chapter? (face-slapping/growth/reversal/ambiguity/desperate comeback) where is the foreshadowing/release?" | memo filling | payoff_plan + micro_payoffs |
+| "Is there a copy? What type and what are the core events?" | outline when split | outline.scene_type |
+| "What is the conflict point between the two protagonists/CP in this chapter?" | Character status | key_choices |
+| "What abilities does golden finger show in this chapter?" | When memo is filled | memo.gold_finger |
+| "What is the 'reason why' the protagonist of this chapter cannot give in?" | Conflict design | key_choices.conflict_motivation |
 
-### 引导原则
+### Guiding Principles
 
-- **不能代为决定**："你先说，我说"——最终决定权在作者
-- **必须具体**："哪段最慢"而非"注意节奏"，"哪个场景"而非"注意人设"
-- **空答案打回**：作者说"你看着写"→"我列候选你看，你选一个"
+- **Cannot make decisions on your behalf**: "You say it first, I will say it" - the
+  final decision rests with the author
+- **Must be specific**: "Which paragraph is the slowest" rather than "Pay attention to
+  the rhythm", "Which scene" rather than "Pay attention to the character"
+- **Blank answer to return**: The author said "you watch and write" → "I list the
+  candidates for you to see and you choose one"
 
-### 代入感方式说明（供作者参考）
+### Description of the sense of substitution method (for the author’s reference)
 
-| 方式 | 适用场景 |
+| Method | Applicable scenarios |
 |------|---------|
-| 熟悉感 | 读者经历过的场景（考试/毕业/职场）→ 天然代入 |
-| 标签 | 人设标签+小缺点+记忆点（胎记/口头禅/习惯） |
-| 冲突紧迫 | 危机感拉满，读者被推着走 |
-| 接地气 | 人物缺点+白话描述，不完美更平易近人 |
+| Sense of familiarity | Scenes that readers have experienced (examination/graduation/workplace) → natural substitution |
+| Tags | Personal tags + small flaws + memory points (birthmarks/mantras/habits) |
+| The conflict is urgent | The sense of crisis is full, and the readers are pushed away |
+| Down-to-earth | Character shortcomings + vernacular description, imperfections are more approachable |
 
 ---
 
-## 五、完整章纲示例
+## 5. Example of complete chapter outline
 
-以下是以卷 1「失踪」第 2 章为例的完整章纲，覆盖所有字段：
-
-```
-卷号：1
-章节：2
-标题：出租屋
-
-── 大纲 ──
-
-概要：陆征进入苏棠的出租屋勘查，发现多处与"主动离开"
-矛盾的细节，离开时被人跟踪拍照。
-
-关键点：
-1. [推进剧情] 陆征到出租屋门口→敲门无人→拿备用钥匙→
-   钥匙插进去没反锁→推门先扫一眼整体。阳光从窗户切入、
-   空气闷带剩饭味。感官侧重：视觉+嗅觉。
-2. [推进剧情·勘查] 掀被子→床单皱、枕头有压痕；
-   充电器插墙上线垂到床边→摸充电头有余温。
-   动作链：掀→看→摸。不写"不确定"这类心理。
-3. [推进剧情·勘查] 冰箱门留缝→剩饭没倒、碗边干了一圈；
-   微波炉有杯没拿出来的水。卫生间→牙膏盖敞开、毛巾湿的挂着；
-   衣柜门没关、行李箱落灰。对比线索：不像主动离开的人。
-   只列事实，不写结论。
-4. [造悬念] 床头柜便利贴→只有一个电话、背面空白。
-   陆征翻过来看→拍照。注意便利贴边缘卷起的细节。
-5. [过渡→造悬念] 锁门→钥匙在手里停一下。楼道声控灯亮一盏→
-   拐角阴影。下楼不快不慢→车棚人影动了一下又停住。
-   出小区→灰短袖男人靠电线杆、手机举着；陆征停步系鞋带→
-   男人已转身走。陆征没回头。镜头提示：陆征不知道被盯，
-   两人无直接互动。
-
-出场角色：陆征、灰短袖男人（新登场）
-场景地点：南岸新区廉租房小区·苏棠的出租屋
-时间：下午两点
-
-── 章纲内容 ──
-
-当前任务：通过现场勘查推进案件调查，线索逐渐指向苏棠
-不是主动离开的
-
-读者期待：
-- 情绪状态：好奇——读者想知道苏棠到底去哪了
-- 策略：制造新缺口
-- 具体说明：读者期待调查有进展——前半章给证据
-  （房间矛盾细节），后半章制造新疑问（楼下男人是谁？）
-
-兑现计划：
-- 必须了结：无（首案第 2 章，没有旧事要收）
-- 必须压住：不能揭示陆征离开警队的原因
-- 推进不收束：
-  · 种下主线悬念——苏棠失踪，警方判定主动离开但细节
-    有矛盾
-  · 新钩子：便利贴上的电话号码指向谁？灰短袖男人是谁
-    派来的？
-
-过渡功能：
-- "楼道停顿 → 角色状态的转换线：勘查时的专注切换到被盯上的警觉"
-- "下楼时车棚人影 → 在进入直接冲突前制造一层中间压力"
-
-关键抉择：
-- "陆征为什么注意到细节矛盾？——他以前是刑警，习惯性
-  观察细节。符合人设"
-
-角色信息状态：
-- 陆征：知道苏棠失踪、发现不是主动离开 / 不知道便利贴
-  电话是谁的、不知道灰短袖男人的身份
-- 灰短袖男人：知道陆征在查苏棠的案子 / 不知道陆征查到
-  了什么程度
-- 信息差关系：
-  · 灰短袖男人知道陆征在查案 ↦ 陆征不知道对方身份
-  · 读者看到灰短袖男人在跟踪 ↦ 陆征没意识到被盯上了
-- 对话：无（独角戏勘查章）
-
-章尾改变：
-- 信息改变：陆征（和读者）知道苏棠不是主动离开
-- 威胁引入：灰短袖男人盯上陆征——调查被人注意到了
-
-硬约束：
-- 不要让灰短袖男人和陆征对话——只通过眼神和氛围制造
-  压力
-- 不要揭示便利贴上电话号码的归属
-
-场景卡：
-- 场景一（勘查·屋内）：主角想干啥——查清苏棠离开的疑点；
-  拦着他——门没反锁、房间不像主动离开（矛盾细节）；
-  悬念——这房间到底藏着什么线索
-- 场景二（离开·被盯上）：主角想干啥——正常离开不被察觉；
-  拦着他——车棚人影、灰短袖男人；
-  悬念——盯上陆征的人是谁派来的
-
-── 冲突阶梯 ──
-
-卷阶梯层位：第1层·入门
-  → 本章以信息获取和建立认知为主，不涉及正面对抗
-
-章内小阶梯：
-  探查（第1条）→ 进入现场，发现环境异常           ← 入门·信息获取
-  发现矛盾（第2-4条）→ 勘查到多处矛盾细节         ← 升级·确认疑点
-  被盯上（第5条）→ 离开时察觉被跟踪              ← 转折·局势变化
-  → 章末落点：主角从"不确定"到"确定有事"，支撑卷的下一步（升级：外部阻力出现）
-
-── 情绪设计 ──
-
-卷走向位置：第1层（入门）—— 压抑阶段前段
-  → 本章基调是"建立困境"，主情绪落在好奇/不安
-
-章内微弧线：平静勘查 → 发现矛盾细节 → 警觉 → 被盯上的
-压迫感
-  → 从平静到不安，终点落在"被盯上的压迫感"——支撑卷走向的下一步（压抑升级）
-
-强度峰值：第 5 条（发现被跟踪时）
-强度等级：5
-情绪钩子：悬念——灰短袖男人是谁？便利贴电话是谁的？
-
-读者获得：
-- 类型：信息（info）——确认苏棠不是主动离开
-- 位置：前段—中段（第 2、3 关键点）
-
-字数目标：2500 字
-```
-
-> 本章是勘查独角戏，无对话。对话版关键点写法见 §六·Few-Shot 示例（示例 4）。
-
-
-## 六、Few-Shot 示例
-
-以下正反例用于指导 key_point 的笔记体写法。**❌ 叙事体** = 替 writer 做了感官填充的 mini 正文；**✅ 笔记体** = 只写规划锚点，感官填充留给 writer。
-
-### 1. 对话关键点：方岩约谈
-
-❌ 叙事体：
+The following is a complete chapter outline, covering all fields, taking Volume 1
+"Missing" Chapter 2 as an example:
 
 ```
-[推进剧情·对话] 方岩约陆征在茶馆见面，选了个靠角落的位置。他先聊了几句近况，语气随意但眼神一直在观察。等陆征说到苏棠的案子，方岩放下茶杯，声音压低了半度："这个案子你别碰。"——不是商量，是警告。
+Volume number: 1
+Chapter: 2
+Title: Rental House
+
+── Outline ──
+
+Summary: Lu Zheng entered Su Tang's rental house to investigate and found many things related to "voluntary departure"
+Conflicting details: I was followed and photographed when I left.
+
+Key points:
+1. [Advance the plot] Lu Zheng went to the door of the rental house → No one knocked on the door → Get the spare key →
+   The key is inserted but not locked → open the door and take a quick look at the whole thing. Sunlight cuts through the window,
+   The air smells of leftover rice. Sensory emphasis: sight + smell.
+2. [Advance plot / investigation] Lifting the quilt → wrinkled sheets and indentations on the pillow;
+   The charger is plugged into the wall and the cable hangs down to the bedside → there is residual warmth in the charging head when touched.
+   Action chain: lift → look → touch. Don't write about "uncertain" mentality.
+3. [Advancing the plot / Investigation] There is a crack in the refrigerator door→The leftover rice is not poured out, and the edge of the bowl is dry;
+   There is a cup of water in the microwave that has not been taken out. Bathroom → The toothpaste cap is open and the towel is hanging wet;
+   The wardrobe door was open and the suitcase was dusty. Comparative clues: Unlike someone who leaves voluntarily.
+   List only the facts, not conclusions.
+4. [Creating suspense] The sticky note on the bedside table → only has a phone number and the back is blank.
+   Lu Zheng turned over and looked → took pictures. Note the rolled edge of the sticky note.
+5. [Transition → Create suspense] Lock the door → Hold the key in your hand for a moment. A voice-activated light in the corridor turns on →
+   Corner shadow. Going downstairs neither quickly nor slowly→The figure in the carport moved for a moment and then stopped.
+   Exiting the community → A man in gray short-sleeved shirts leaned on a telephone pole and held up his mobile phone; Lu Zheng stopped to tie his shoelaces →
+   The man has turned away. Lu Zheng did not look back. Camera tip: Lu Zheng didn’t know he was being watched.
+   The two have no direct interaction.
+
+Appearing characters: Lu Zheng, gray short-sleeved man (new appearance)
+Scene location: Su Tang’s rental house in a low-rent housing community in Nan’an New District
+Time: 2pm
+
+── Chapter outline ──
+
+Current task: Promote case investigation through on-site investigation, clues gradually point to Su Tang
+Didn't leave voluntarily
+
+Readers can expect:
+- Emotional state: Curiosity - the reader wants to know where Su Tang went.
+- Strategy: Create new gaps
+- Specific instructions: Readers expect progress in the investigation,the first half of the chapter gives evidence
+  (Conflict details in the room), the second half of the chapter creates new questions (Who is the man downstairs?)
+
+Redemption plan:
+- Must be resolved: None (Chapter 2 of the first case, no old business to settle)
+- Must be suppressed: The reason why Lu Zheng left the police force cannot be revealed
+- Pushing forward without closing:
+  / Planting the suspense of the main plot - Su Tang disappeared, the police determined that he left voluntarily, but the details
+    There is a contradiction
+  / New hook: Who does the phone number on the sticky note refer to? Who is the man with gray short sleeves?
+    Sent?
+
+Transition functions:
+- "Pause in the corridor → Transition line of character state: switch from concentration during investigation to alertness of being targeted"
+- "The figure in the carport going downstairs → creates an intermediate layer of pressure before entering direct conflict"
+
+Key decisions:
+- "Why did Lu Zheng notice the contradictions in details? - He used to be a criminal policeman, and he is used to
+  Observe details. "In line with the personality"
+
+Role information status:
+- Lu Zheng: I knew Su Tang was missing and found out that he didn’t leave voluntarily / I didn’t know about the sticky note
+  Whose phone is it? I don’t know the identity of the man in gray short sleeves.
+- Man with gray short sleeves: I knew Lu Zheng was investigating Su Tang’s case / I didn’t know Lu Zheng was investigating
+  to what extent
+- Information gap relationship:
+  / The man in gray short sleeves knows that Lu Zheng is investigating the case ↦ Lu Zheng does not know the other party’s identity
+  / Readers saw the man in gray short-sleeves following him ↦ Lu Zheng didn’t realize he was being followed
+- Dialogue: None (One-man Show Exploration Chapter)
+
+Chapter end changes:
+- Information change: Lu Zheng (and the reader) knows that Su Tang did not leave on his own initiative
+- Threat introduction: The man in gray short-sleeves targeted Lu Zheng,the investigation was noticed
+
+Hard constraints:
+- Don’t let the man in gray short sleeves talk to Lu Zheng,just create it through his eyes and atmosphere
+  pressure
+- Do not reveal the ownership of phone numbers on post-it notes
+
+Scene card:
+- Scene 1 (Inspection / Inside the House): What does the protagonist want to do - find out the doubts about Su Tang’s departure;
+  Stop him - the door is not locked, the room does not look like he left the room voluntarily (conflicting details);
+  Suspense - what clues are hidden in this room?
+- Scenario 2 (Leaving / Being Targeted): What does the protagonist want to do - leave normally without being noticed;
+  Stopping him - the figure in the carport, the man in gray short sleeves;
+  Suspense - Who sent the person targeting Lu Zheng?
+
+── Ladder of Conflict ──
+
+Volume ladder level: Level 1 / Entry
+  → This chapter focuses on obtaining information and building awareness, and does not involve direct confrontation
+
+Small steps within the chapter:
+  Exploration (Article 1) → Enter the site and find anomalies in the environment ← Getting started / Acquisition of information
+  Contradictions found (Article 2-4) → Many contradictory details were investigated ← Upgrade and confirm doubts
+  Being targeted (Article 5) → Found being followed when leaving ← Turning point / Change of situation
+  → The ending point of the chapter: the protagonist goes from "uncertain" to "sure that something is going on", supporting the next step of the volume (upgrade: external resistance appears)
+
+── Emotional design ──
+
+Volume direction position: Level 1 (entry level) - the first stage of the repression stage
+  →The tone of this chapter is "establishing a dilemma", and the main mood is curiosity/uneasiness
+
+Micro-arc in the chapter: Calm investigation → Discovering contradictory details → Alert → Being targeted
+sense of oppression
+  → From calm to uneasy, the end point is "the sense of oppression of being targeted" - the next step in the direction of the support volume (escalation of depression)
+
+Intensity Peak: Article 5 (when tracked is detected)
+Strength level: 5
+Emotional Hook: Suspense - Who is the man in gray short sleeves? Whose post-it phone number is it?
+
+Readers get:
+- Type: information (info) - Confirm that Su Tang did not leave on his own initiative
+- Position: front section - middle section (2nd and 3rd key points)
+
+Word count goal: 2500 words
 ```
 
-✅ 笔记体：
+> This chapter is a one-man show with no dialogue. For how to write key points in the
+> dialogue version, see §6 / Few-Shot example (Example 4).
+
+
+## 6. Few-Shot Example
+
+The following positive and negative examples are used to guide the note writing of
+key_point. **❌ Narrative style** = Mini text that is sensory filled for the writer; **✅
+Note style** = Only the planning anchors are written, and the sensory filling is left to
+the writer.
+
+### 1. Key points in the dialogue: Fang Yan’s interview
+
+❌ Narrative:
 
 ```
-[推进剧情·对话] 方岩约陆征在茶馆角落见面。先聊近况试探语气，等陆征说到案子→方岩语气转低→"这个案子你别碰"。注意方岩全程眼神观察，对话权力在方岩这边。
+[Advance the plot and dialogue] Fang Yan asked Lu Zheng to meet at the teahouse and chose a corner seat. He first chatted a few words about the current situation, his tone was casual but his eyes were always observing. When Lu Zheng talked about Su Tang's case, Fang Yan put down his tea cup and lowered his voice by half a degree: "Don't touch this case." - It was not a discussion, but a warning.
 ```
 
-→ 笔记体省掉了时间、环境渲染、放茶杯等填充，只写场景位置 + 对话意图 + 权力关系。
-
-### 2. 对话关键点：苏沫面谈
-
-❌ 叙事体：
+✅ Note style:
 
 ```
-[推进剧情·对话] 苏沫坐在接待室里，手指绞着背包带。陆征递了杯水过去，她没接，说了句"我姐不会自己走的"。声音不大，但很坚定——不是来求帮忙，是来确认有人相信她。
+[Advance plot / dialogue] Fang Yan asked Lu Zheng to meet in the corner of the teahouse. First talk about the current situation to test the tone. When Lu Zheng talks about the case → Fang Yan's tone turns lower → "Don't touch this case." Pay attention to Fang Yan's eye observation throughout the whole process. The power of dialogue lies with Fang Yan.
 ```
 
-✅ 笔记体：
+→ The note type saves time, environment rendering, placing teacups, etc., and only
+writes the scene location + conversation intention + power relationship.
+
+### 2. Key points in the dialogue: Su Mo’s interview
+
+❌ Narrative:
 
 ```
-[推进剧情·对话] 苏沫在接待室绞着背包带，陆征递水她没接→"我姐不会自己走的"。声音不大但坚定，不是求助是寻求认同。注意苏沫的手指动作（紧张但克制）。
+[Advance the plot and dialogue] Su Mo sat in the reception room, twisting his backpack strap with his fingers. Lu Zheng handed him a glass of water, but she didn't take it and said, "My sister won't leave on her own." The voice was quiet, but firm,not to ask for help, but to make sure someone believed her.
 ```
 
-### 3. 勘查关键点：出租屋 5 条（勘查独角戏）
-
-❌ 叙事体（截取前 3 条）：
+✅ Note style:
 
 ```
-1. [推进剧情] 下午两点，陆征站在苏棠的出租屋门口。敲门没人应，他从苏沫那拿了备用钥匙，金属碰撞声在楼道里格外响。钥匙插进锁孔转了一圈——没反锁。他推开门，阳光在地板上切出一块亮区，空气有点闷，带着剩饭和灰尘混合的气味。他站在门口没急着进，先扫了一眼整体。
-2. [推进剧情·勘查] 陆征掀开被子，床单皱得厉害，枕头上还有压痕。充电器插在墙上，线垂到床边。他伸手摸了一下充电头——有余温。
-3. [推进剧情·勘查] 陆征拉开冰箱门，剩饭没倒，碗边干了一圈。他走进卫生间，牙膏盖开着，毛巾湿的挂着。衣柜门没关，行李箱落灰。
+[Advance the plot / Dialogue] Su Mo was twisting her backpack strap in the reception room, and Lu Zheng handed her water but she didn't take it → "My sister won't leave on her own." The voice is not loud but firm, not asking for help but seeking recognition. Pay attention to Su Mo's finger movements (nervous but restrained).
 ```
 
-✅ 笔记体：
+### 3. Key points in surveying: 5 items for renting a house (a one-man show for surveying)
+
+❌ Narrative (extract the first 3 items):
 
 ```
-1. [推进剧情] 陆征到出租屋门口→敲门无人→拿备用钥匙→钥匙插进去没反锁→推门先扫一眼整体。注意楼道里金属碰撞声的空旷感；阳光从窗户切入、空气闷带剩饭味。感官侧重：视觉+嗅觉。
-2. [推进剧情·勘查] 掀被子→床单皱、枕头有压痕；充电器插墙上线垂到床边→摸充电头有余温。动作链：掀→看→摸。不写"不确定"这类心理。
-3. [推进剧情·勘查] 冰箱门留缝→剩饭没倒、碗边干了一圈；微波炉有杯没拿出来的水。卫生间→牙膏盖敞开、毛巾湿的挂着。对比线索：不像主动离开的人。只列事实，不写结论。
+1. [Advance the plot] At two o'clock in the afternoon, Lu Zheng stood at the door of Su Tang's rental house. No one answered the knock on the door, so he took the spare key from Su Mo. The sound of metal clashing was particularly loud in the corridor. The key was inserted into the keyhole and turned around - it didn't lock. He opened the door, and the sunlight cut a bright area on the floor. The air was a bit stuffy, with the smell of leftover food and dust. He stood at the door and did not rush in. He glanced at the whole place first.
+2. [Advance plot / investigation] Lu Zheng lifted the quilt, the sheets were wrinkled badly, and there were indentations on the pillow. The charger is plugged into the wall and the cord hangs down to the bedside. He reached out and touched the charging head - it was still warm.
+3. [Advancing the Plot / Investigation] Lu Zheng opened the refrigerator door. He did not pour out the leftover rice, but worked around the edge of the bowl. He walked into the bathroom, with the toothpaste cap open and the towel hanging wet. The wardrobe door was open and the suitcase was dusty.
 ```
 
-→ 笔记体用 `→` 串联动作链，只标注感官侧重不替 writer 做感官填充，判断锚点用行为反应代替抽象心理。
-
-### 4. 对话嵌入（勘查章中插入对话节拍）
-
-> 完整章纲示例中第 1 条换成对话节拍，其他勘查节拍不变：
-
-❌ 叙事体：
+✅ Note style:
 
 ```
-1. [推进剧情·对话] 下午两点，苏沫坐在陆征的事务所接待室里，手指绞着背包带。陆征递了杯水过去，她没接，说了句"我姐不会自己走的"。声音不大，但很坚定——不是来求帮忙，是来确认有人相信她。
-2. [推进剧情] 陆征把水杯放在她面前，翻开笔记本。他没说"我理解"之类的话，直接问："最后一次联系是什么时候？"苏沫愣了一下，开始说。
+1. [Advance the plot] Lu Zheng arrived at the door of the rental house → No one knocked on the door → Take the spare key → Insert the key without locking it → Open the door and take a quick look at the whole room. Pay attention to the emptiness of the sound of metal clashing in the corridor; the sunlight cuts through the windows and the air smells of leftover food. Sensory emphasis: sight + smell.
+2. [Advance plot / investigation] Lift the quilt → wrinkled sheets and indentations on the pillow; plug the charger into the wall and hang down to the bedside → there is residual warmth when touching the charging head. Action chain: lift → look → touch. Don't write about "uncertain" mentality.
+3. [Advancing the plot and investigation] There is a crack in the refrigerator door → The leftover rice is not poured out, the edge of the bowl is dry; there is a cup of water in the microwave oven that has not been taken out. Bathroom → The toothpaste cap is open and the towel is hanging wet. Comparative clues: Unlike someone who leaves voluntarily. List only the facts, not conclusions.
 ```
 
-✅ 笔记体：
+→ The note type uses `→` to connect the action chain. It only marks the sensory focus
+and does not provide sensory filling for the writer. The judgment anchor point uses
+behavioral responses instead of abstract psychology.
+
+### 4. Dialogue embedding (dialogue beats inserted into the exploration chapter)
+
+> In the complete chapter outline example, item 1 is replaced by a dialogue beat, and
+> other exploration beats remain unchanged:
+
+❌ Narrative:
 
 ```
-1. [推进剧情·对话] 苏沫在接待室，手指绞背包带。陆征递水她没接→"我姐不会自己走的"。声音不大但坚定，不是求助是寻求认同。注意苏沫的手指动作（紧张但克制）。
-2. [推进剧情] 陆征放水杯在桌上翻开笔记本。不寒暄直接问"最后一次联系什么时候"。苏沫愣了一下→开始说。
+1. [Advance plot / dialogue] At two o'clock in the afternoon, Su Mo was sitting in the reception room of Lu Zheng's office, twisting his backpack strap with his fingers. Lu Zheng handed him a glass of water, but she didn't take it and said, "My sister won't leave on her own." The voice was quiet, but firm,not to ask for help, but to make sure someone believed her.
+2. [Advance the plot] Lu Zheng placed the water glass in front of her and opened the notebook. He didn't say "I understand" or anything like that, but directly asked: "When was the last contact?" Su Mo was stunned for a moment and started to speak.
 ```
 
-→ 完整勘查 key_points + 对话嵌入的混合示例见 §五·完整章纲示例。
+✅ Note style:
+
+```
+1. [Advance the plot and dialogue] Su Mo was in the reception room, twisting his backpack strap with his fingers. Lu Zheng handed her water but she didn't take it → "My sister won't leave on her own." The voice is not loud but firm, not asking for help but seeking recognition. Pay attention to Su Mo's finger movements (nervous but restrained).
+2. [Advance the plot] Lu Zheng put the water glass on the table and opened his notebook. Without greetings, ask directly, "When was the last time we contacted you?" Su Mo was stunned for a moment and started to speak.
+```
+
+→ For a complete survey of key_points + dialogue embedding hybrid examples, see §5.
+Complete chapter outline example.

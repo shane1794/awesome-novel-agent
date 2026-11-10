@@ -1,40 +1,40 @@
-# v4.25.0 版本说明
+# v4.25.0 Release Notes
 
-> **关键词：** 短篇写作流水线（第一波）—— 独立项目类型 + 七阶段流程 + 篇级写作契约 + 短篇专属去 AI 口径
+> **Keywords:** Short-story writing pipeline (first wave): standalone project type + seven-stage flow + per-story writing contract + short-story-specific de-AI criteria
 
 ---
 
-## 一句话
+## In One Sentence
 
-作者说一句「帮我写个短篇」，即可在独立于长篇的短篇项目里走完「定情绪 → 构思排纲 → 写作契约组装 → 契约独立审计 → 分批写作 → 去AI味精修 → 兑现度核对 → 验收交付（可改稿/下一篇）」全流程，产出可投稿的成品正文。懂短篇的作者一句话直通，不懂的按引导逐项走。
+When the author says "write me a short story", they can now walk the full flow inside a short-story project independent of long-form novels: "set the emotion, concept and outline, assemble the writing contract, independent contract audit, write in batches, de-AI polish, payoff check, acceptance and delivery (revise or write the next story)", producing a finished main text ready for submission. Authors who know short stories go straight through in one sentence; those who do not are guided item by item.
 
-## 这版做了什么
+## What Changed in This Release
 
-| 改动 | 说明 |
+| Change | Description |
 |------|------|
-| **短篇项目类型** | `init.py --length short`：生成 `stories/{slug}/` 篇目制骨架（设定/大纲/契约/正文一篇一目录），与长篇的卷章体系完全互斥；缺省仍为长篇，长篇产物零变化。10 个短篇题材注册表（拼音标识），长短混用时 init 拒绝并提示 |
-| **短篇 agent 组（5+1）** | short-agent 总指挥 / short-planner 构思与契约组装 / short-writer 写手 / short-editor 编辑 / short-verifier 契约审计+兑现度核对，复用 reader 做体验验收。职责互斥：审计者不组装、核对者不写作不清创、组装者不自审 |
-| **篇级写作契约** | `stories/{slug}/prompt.md`：六元素结构、扁平化「不可违反规则」列表 + 优先级降序；组装必须完成通用招式→本篇写法的四步转化、组装后去重、内联冲突裁定表（数值五项 + **逻辑自洽优先于爽点**）。契约同时是验收基线——定稿后逐项核对兑现度，未兑现项附原文证据回退 |
-| **结构硬验证** | 大纲阶段两道机器可验：反转揭穿位置 >60% 才通过（<50% 判无效）；伏笔回查（结尾元素必有前置铺垫、贯穿道具三次出现且语义递进：无害→引注意→揭真相）。另要求催化性失常（60-75% 位置的矛盾体）、招式落点表、无无功能节 |
-| **写作硬底线** | 每节 ≥800 字（高信息密度题材 ≥500）、整篇 ≥8000 字、节数守恒——全部机器实测（跨平台 Python 字符统计），禁模型估算；每批写作前重注入契约硬规则区，防规则随批次衰减 |
-| **短篇专属去 AI 口径** | 与长篇分轨：留直接情绪词、第一人称审判句、火葬场预告、心死章尾（判据「带不带主角此刻的主观情绪」）；删空泛情绪总结句与中立作者讲解。新增第一人称所有格清除（我的心→心）、角色命名禁用清单（跨次稳定，改稿不换名）、程度副词强弱两端每千字上限、古风题材现代词表、段落形态上下限（防电报体） |
-| **检查工具链** | init 长度开关与部署分支、check-agents 双长度产物模拟（短篇知识不再误判孤儿）、sync-project 按项目长度同步 + 项目侧篡改检测兜底、SKILL.md 入口短篇分支 |
+| **Short-story project type** | `init.py --length short`: generates a `stories/{slug}/` per-story skeleton (setting, outline, contract, and main text, one directory per story), fully mutually exclusive with the long-form volume-and-chapter system; the default is still long-form, with zero changes to long-form output. 10 short-story genres in the registry (pinyin identifiers); mixing long and short in one init is rejected with a prompt |
+| **Short-story agent group (5+1)** | short-agent as commander-in-chief / short-planner for concept and contract assembly / short-writer as the writer / short-editor as the editor / short-verifier for contract audit plus payoff checks, reusing reader for experience acceptance. Mutually exclusive duties: the auditor does not assemble, the checker neither writes nor cleans, the assembler does not audit itself |
+| **Per-story writing contract** | `stories/{slug}/prompt.md`: six-element structure, a flat "rules that must not be violated" list in descending priority; assembly must complete the four-step transformation from general techniques to this story's writing, deduplicate after assembly, and inline a conflict-adjudication table (five numeric items + **logical consistency takes priority over payoffs**). The contract is also the acceptance baseline: after the final draft, each item is checked for payoff one by one, and unfulfilled items roll back with quoted source evidence |
+| **Structural hard validation** | Two machine-checkable gates at the outline stage: the reversal reveal must sit past 60% to pass (below 50% counts as invalid); foreshadowing re-check (every ending element must have an earlier setup, and a throughline prop must appear three times with semantic progression: harmless, draws attention, reveals the truth). Also requires a catalytic breakdown (a contradictory body at the 60-75% position), a technique landing table, and no functionless sections |
+| **Writing hard floor** | Each section >= 800 words (high-information-density genres >= 500), the whole story >= 8000 words, and a fixed section count, all measured by machine (cross-platform Python character counting), with model estimation banned; before each writing batch, the contract's hard-rules zone is re-injected to prevent rules from decaying across batches |
+| **Short-story-specific de-AI criteria** | A separate track from long-form: keep direct emotion words, first-person judgment sentences, "crematorium" previews, and heart-death chapter endings (criterion: "does it carry the protagonist's subjective emotion right now"); delete vague emotional summary sentences and neutral author explanations. New: first-person possessive cleanup ("my heart" becomes "heart"), a character-naming ban list (stable across drafts, names do not change on revision), per-thousand-word caps on both extremes of degree adverbs, a modern-word list for historical-style genres, and paragraph-shape upper and lower bounds (guarding against telegram style) |
+| **Check toolchain** | init length switch and deployment branches, check-agents dual-length product simulation (short-story knowledge no longer false-positives as orphaned), sync-project syncing by project length plus a fallback that detects project-side tampering, and a SKILL.md entry-point short-story branch |
 
-## 第一波范围（后续 build 补齐）
+## First-Wave Scope (Completed in Later Builds)
 
-- 平台：**claude** 全链路可用；其余 6 平台 init 会明确提示暂不支持（骨架仍生成）
-- 题材：**zhuiqi 追妻火葬场**风格包完整交付（含 3 条情绪链、7 个公式化招式、时代变体、流派分支）；注册表其余 9 个题材选中时警告「风格包待补」
-- 扫榜、拆文、跨文体检查工具移植不在本版，各自另行提案
+- Platforms: **claude** fully usable end to end; the other 6 platforms show an explicit "not yet supported" prompt at init (the skeleton is still generated)
+- Genres: the **zhuiqi (wife-chasing crematorium)** style pack is fully delivered (including 3 emotion chains, 7 formulaic techniques, era variants, and school branches); selecting any of the other 9 genres in the registry warns "style pack to be added"
+- Porting the list-scanning, text-teardown, and cross-genre check tools is not in this release; each gets its own proposal
 
-## 兼容性
+## Compatibility
 
-- 长篇路径零影响：不传 `--length` 时全部产物与 v4.24.1 一致（有 E2E 回归断言兜住）
-- 短篇资产（agents/skills/knowledge/templates）与长篇互斥部署，互相不污染
-- 来源：短篇方法论为获赠资产，文件头已标注出处，公开/商用前需原作者确认
+- Zero impact on the long-form path: without `--length`, all output matches v4.24.1 (guarded by E2E regression assertions)
+- Short-story assets (agents/skills/knowledge/templates) deploy mutually exclusively with long-form and do not contaminate each other
+- Source: the short-story methodology is a gifted asset; its files carry a provenance header, and the original author must confirm before public or commercial use
 
-## 测试
+## Tests
 
-- check-agents / check-conflicts / check-version / py_compile 全绿；test_platforms **331/331**（新增 40+ 条短篇 E2E：布局、长短互斥、编号越界、非法值、sync 后 --check 回归）
-- review-agent 评审 11 条 findings（3×P1、4×P2、4×P3）全部修复，评审指出的「--check 断言全是 exit 1 场景」测试缺口已补
-- 链路走查：模拟完整会话验证七阶段产物结构与闸门行为（节长门槛可真实拦截未达标小节）
-- **待办**：真实 AI 终端完整写一篇的实测留待作者执行（tasks 19.4）
+- check-agents / check-conflicts / check-version / py_compile all green; test_platforms **331/331** (40+ new short-story E2E assertions: layout, long-short mutual exclusion, numbering overflow, illegal values, sync followed by --check regression)
+- review-agent review: all 11 findings (3xP1, 4xP2, 4xP3) fixed; the test gap the review flagged ("--check assertions are all exit-1 scenarios") has been filled
+- Walkthrough: a simulated full session verifies the seven-stage product structure and gate behavior (the section-length threshold genuinely blocks under-length sections)
+- **To-do**: a real AI terminal writing one complete story end to end is left for the author to run (tasks 19.4)

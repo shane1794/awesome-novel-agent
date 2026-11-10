@@ -1,41 +1,52 @@
-# 历史政治/古风权谋反AI规则
+# Ancient Politics Anti-AI Rules
 
-> 适用题材：ancient-politics、historical-brained
+> Applicable themes: ancient-politics, historical-brained
 
-## 高频AI病句正反例
+## High-Frequency AI-Style Bad Sentences: Incorrect vs. Correct Examples
 
-### 1. 朝堂描写堆砌
+### 1. Stacking descriptions of the court
 
-❌ "金銮殿内，文武百官分列两侧，气氛庄严肃穆"
-✅ "大殿里闷。窗户开着，但风进不来。他背后全是汗，黏在衣服上。旁边那个老头咳了一声，他跟着抖了一下。"
+❌ "In the Jinluan Hall, hundreds of civil and military officials lined up on both sides,
+and the atmosphere was solemn and solemn" ✅ "The hall was stuffy. The windows were open,
+but the wind couldn't come in. His back was covered in sweat, which stuck to his
+clothes. The old man next to him coughed, and he shook a little."
 
-### 2. 权谋描写公式化
+### 2. Formulaic description of tactics
 
-❌ "他眼中闪过一丝精光，心中已有计策"
-✅ "他放下茶盏。手指在桌面上划了一下。半天没说话。旁边人催了两遍，他才开口。"
+❌ "There was a glint in his eyes, and he had a plan in mind" ✅ "He put down the tea cup.
+He scratched the table with his fingers. He didn't speak for a long time. The person
+next to him urged him twice before he spoke."
 
-❌ "一切尽在掌控之中"
-✅ "他把信封烧了。火不大，冒的黑烟呛人。他蹲在那儿看，烧完了才站起来。"
+❌ "Everything is under control" ✅ "He burned the envelope. The fire was not strong, and
+the black smoke was choking. He squatted there and watched, and only stood up after the
+burning was done."
 
-### 3. 排比式分析
+### 3. Comparative analysis
 
-❌ "也许是文官掣肘，也许是武将掣肘，也许是皇帝不信任"
-✅ "他看了看名单。划掉三个，加了两个。纸揉皱了，又展开，重新写。"
+❌ "Maybe it was the constraints of the civil officials, maybe it was the constraints of
+the generals, maybe it was the emperor's distrust" ✅ "He looked at the list. He crossed
+out three and added two. The paper was crumpled, unfolded it again, and wrote again."
 
-### 4. 情绪直述
+### 4. Direct emotional statements
 
-❌ "他心中暗喜，却不露声色"
-✅ "他端起酒，送到嘴边，没喝。嘴角动了一下，很快收住。眼睛还盯着殿门。"
+❌ "He was secretly happy in his heart, but didn't show it" ✅ "He picked up the wine and
+brought it to his mouth, but didn't drink it. The corners of his mouth moved, but he
+quickly stopped. His eyes were still staring at the palace door."
 
-### 5. 对话文绉绉
+### 5. The dialogue is well-written
 
-❌ "爱卿所言甚是，朕心甚慰"
-✅ "他点了点头。"知道了。"就三个字。底下没人敢抬头。"
+❌ "What Aiqing said is true, I am very relieved." ✅ "He nodded." Got it. "Just three
+words. No one dares to raise their head."
 
-## 写作要点
+## Writing points
 
-1. **朝堂写闷热/潮湿** — 权谋中人紧张，身上不舒服比心里紧张更真实
-2. **计策写动作** — 不是"心中已有计策"，是划纸、揉纸、烧纸
-3. **情绪用克制** — 高兴/愤怒都不能露，用嘴角、手指、眼神
-4. **对话要短** — 权谋中人说话都留三分，点到即止
-5. **信息用物品传递** — 信、印、折子，比直接说出来更有分量
+1. **Writing about the muggy/humid environment in the court**, People in power schemes
+   are nervous, and discomfort in the body is more real than nervousness in the heart.
+2. **Strategy Writing Actions**, It’s not about “having a plan in mind”, it’s about
+   drawing paper, kneading paper, and burning paper
+3. **Restrain emotions** - Do not show happiness/anger, use the corners of your mouth,
+   fingers, or eyes
+4. **Keep the conversation short**, People in the Machiavellian world should save three
+   points of their words and stop talking.
+5. **Information is conveyed by objects**, letters, seals, and folding documents are
+   more important than speaking them directly.

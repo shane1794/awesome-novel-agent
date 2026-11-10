@@ -1,35 +1,35 @@
-# v4.23.0 版本说明
+# v4.23.0 Release Notes
 
-> **关键词：** 源头约束挂进管线 —— 结构热源知识接入写作/提示词/去AI味三环节，项目沙盒新增进化机制文件
+> **Keywords:** Source constraints wired into the pipeline: structural-heat-source knowledge enters the writing, prompt, and de-AI stages; the project sandbox gains evolution-mechanism files
 
 ---
 
-## 一句话
+## In One Sentence
 
-v4.22.0 入库的结构热源定律与章节检查工具，本版接进写作管线：writer 写前过「五行反闭环卡」、提示词注入结构红线（带冲突裁决声明）、anti-ai 先扫结构再清句子并双脚本初筛；项目 `sandbox/` 新增检测战役记录、回归模式库、锁定台词白名单三个文件，每本书从第一章开始攒自己的"翻车串库"。
+The structural-heat-source laws and chapter check tool added in v4.22.0 are now wired into the writing pipeline: the writer answers a "five-line anti-closed-loop card" before writing, prompts inject structural red lines (with a conflict-adjudication statement), anti-ai scans structure before cleaning sentences and runs the dual-script pre-screen; the project `sandbox/` gains three new files, the detection-battle log, the regression pattern library, and the locked-lines whitelist, so each book starts accumulating its own "failure-string library" from chapter one.
 
-## 这版做了什么
+## What Changed in This Release
 
-| 改动 | 说明 |
+| Change | Description |
 |------|------|
-| **writer 五行反闭环卡** | `writing-execution.md` 写作规则新增：每场动笔前回答五问（人物要办什么/阻力来自谁/演到哪步停/什么不解释/什么留到下场），第 3-5 项答不出不开写 |
-| **提示词结构红线** | `prompt-crafting.md` 写作方法论新增第 5 条并注入任务指示：问答乒乓链拍数上限（与既有"6-8 句插动作"句数刻度并行互不替代）、章首冷开场、同场单回执（爽点兑现豁免）、禁过桥链/证明链、章尾禁总结升华预告（章末落点优先）；整段带裁决顺序声明：作者设定与章纲 > 题材知识 > 结构默认值 > 检测优化 |
-| **anti-ai 结构扫描前置** | Phase 1 在 Gate A-F 之前先做结构热源扫描，命中标 `[S]` 报告单列、只计一次；Phase 3 先改结构后清句子。Gate A-F 编号与既有阈值不变 |
-| **双脚本初筛** | Phase 2 机器初筛在 check-prose.py 之外并列调用 check-chapter.py，硬性命中并入 Gate A/B 清单优先清零；降级语义沿用既有约定 |
-| **沙盒进化机制文件** | `templates/sandbox/` 新增 `detect-battles.md`（检测战役逐轮记录+规律沉淀）、`prose-regressions.txt`（翻车原句库，# 注释惰性）、`locked-lines.txt`（作者拍板保留的原句豁免清单）；init 自动生成、sync 自动补发存量项目 |
-| **check-chapter 注释支持** | 回归库/白名单文件 `#` 开头行不参与匹配，模板自带说明行保持惰性 |
+| **Writer five-line anti-closed-loop card** | `writing-execution.md` writing rules add: before each writing session, answer five questions (what does the character need to do / who does the resistance come from / at what point in the performance do we stop / what is not explained / what is left for the next scene). If questions 3-5 cannot be answered, do not start writing |
+| **Prompt structural red lines** | `prompt-crafting.md` writing methodology adds item 5 and injects it into the task instructions: a cap on question-answer ping-pong beats (running alongside the existing "insert action every 6-8 sentences" sentence-count scale without replacing it), cold chapter openings, one receipt per scene (with a payoff-delivery exemption), bans on bridge chains and proof chains, and no summary, elevation, or preview at chapter end (the chapter-end landing takes priority). The whole passage carries an adjudication-order statement: author settings and chapter outline > genre knowledge > structural defaults > detection optimization |
+| **Anti-AI structural scan first** | Phase 1 performs a structural-heat-source scan before Gates A-F; hits are marked `[S]`, listed separately in the report, and counted once. Phase 3 fixes structure before cleaning sentences. Gate A-F numbering and existing thresholds are unchanged |
+| **Dual-script pre-screen** | The Phase 2 machine pre-screen calls check-chapter.py alongside check-prose.py; hard hits merge into the Gate A/B list to be cleared first. Degradation semantics follow the existing conventions |
+| **Sandbox evolution-mechanism files** | `templates/sandbox/` adds `detect-battles.md` (round-by-round detection-battle log plus distilled patterns), `prose-regressions.txt` (failure-string library, with `#` comments inert), and `locked-lines.txt` (whitelist of lines the author approved to keep); init generates them automatically and sync backfills them into existing projects |
+| **check-chapter comment support** | Lines starting with `#` in the regression library and whitelist files do not take part in matching, so the templates' own explanation lines stay inert |
 
-## 防冲突设计
+## Anti-Conflict Design
 
-结构定律来自单书实测，直接注入会与既有规则产生双重口径。本版遵循三条纪律：①单一权威源——细则在知识文件，管线只引用不复制；②新刻度不重复定义——只新增"问答回合拍数"，既有句数/标点/章尾口径一律引用；③裁决顺序显式声明，冲突时 writer 不需要猜优先级。
+The structural laws come from live tests on a single book, and injecting them directly would create dual wordings against existing rules. This release follows three disciplines: (1) a single authoritative source, the details live in the knowledge files and the pipeline only references them without copying; (2) new scales are not redefined, only "question-answer round beats" is added, while existing sentence-count, punctuation, and chapter-end wordings are all referenced; (3) the adjudication order is stated explicitly, so the writer never has to guess priorities in a conflict.
 
-## 兼容性
+## Compatibility
 
-- 纯增量：Gate A-F、量化指标、定级规则不变；`status.md` 无新字段。
-- 存量项目跑 `sync-project` 后自动补齐 `sandbox/` 三个新文件并更新脚本与知识，无需手动操作。
+- Purely incremental: Gates A-F, quantitative metrics, and grading rules are unchanged; `status.md` gains no new fields.
+- Existing projects automatically gain the three new `sandbox/` files plus updated scripts and knowledge after running `sync-project`, with no manual action needed.
 
-## 测试
+## Tests
 
-- `tools/test_check_chapter.py` 新增注释行断言（20 项）。
-- `tools/test_platforms.py` 290 项断言全绿（新增七平台 sandbox 骨架断言）。
-- check-agents / check-conflicts / check-version / py_compile 全绿。
+- `tools/test_check_chapter.py` adds comment-line assertions (20 items).
+- `tools/test_platforms.py` 290 assertions all green (adding seven-platform sandbox-skeleton assertions).
+- check-agents / check-conflicts / check-version / py_compile all green.

@@ -1,36 +1,36 @@
-# 许可证声明
+# License Declaration
 
-> 为节省 AI 阅读时的 token 消耗，本仓库采用集中声明模式。版权信息集中于此文件，**不**在每个文件中重复标注。
-
----
-
-## 版权信息
-
-**项目**: awesome-novel-agent — AI-assisted novel writing workflow system
-
-**版权人**: Copyright (C) 2026  modoojunko
-
-**许可证**: [GNU Affero General Public License v3.0](LICENSE)
+> To reduce token consumption when AI reads the repository, this project uses a centralized declaration model. Copyright information is consolidated in this file and **not** repeated in each individual file.
 
 ---
 
-## 覆盖文件清单
+## Copyright Information
 
-以下文件受 AGPL-3.0 许可证约束：
+**Project**: awesome-novel-agent: AI-assisted novel writing workflow system
 
-| 类别 | 文件 |
-|------|------|
-| **核心文件** | `SKILL.md` |
-| **文档** | `README.md`, `PRODUCTION.md`, `docs/*.md` |
-| **知识库及记忆** | `knowledge/*.md + memory/*.md` |
-| **Agent 定义** | `agents/*.md`, `skills/*.md` |
-| **模板** | `templates/*`, `templates/migration/*` |
-| **工具** | `tools/*.py`, `install.sh`, `install.ps1` |
+**Copyright Holder**: Copyright (C) 2026  modoojunko
+
+**License**: [GNU Affero General Public License v3.0](LICENSE)
 
 ---
 
-## 使用说明
+## Covered Files
 
-- 复制、分发、修改本项目均需遵守 AGPL-3.0 条款
-- 完整许可证文本见 [LICENSE](LICENSE) 文件
-- 修改版本必须明确标注为修改版
+The following files are subject to AGPL-3.0 license:
+
+| Category | Files |
+|----------|-------|
+| **Core** | `SKILL.md` |
+| **Documentation** | `README.md`, `PRODUCTION.md`, `docs/*.md` |
+| **Knowledge Base and Memory** | `knowledge/*.md + memory/*.md` |
+| **Agent Definitions** | `agents/*.md`, `skills/*.md` |
+| **Templates** | `templates/*`, `templates/migration/*` |
+| **Tools** | `tools/*.py`, `install.sh`, `install.ps1` |
+
+---
+
+## Usage Terms
+
+- Copying, distributing, and modifying this project must comply with AGPL-3.0 terms
+- Full license text available in [LICENSE](LICENSE)
+- Modified versions must be clearly marked as such

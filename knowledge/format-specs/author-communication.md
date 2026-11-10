@@ -1,69 +1,100 @@
-# 作者沟通用语规范（author-communication）
+# Author-communication
 
-> 所有与作者对话的 agent 的统一语言规则。内部字段名、自创术语只出现在文件和 agent 间交接里；面向作者的一切对话、提问、展示、确认，一律大白话。
+> Unified language rules for all agents that talk to the author. Internal field names
+> and self-created terms only appear in the exchange between files and agents; all
+> dialogues, questions, presentations, and confirmations facing the author are all in
+> plain language.
 
-## 一、铁律（全 agent 通用，优先级最高）
+## 1. Iron law (common to all agents, with the highest priority)
 
-1. **面向作者的对话、提问、展示、确认文案，一律用日常大白话。** 作者不是写作系统用户，不需要懂任何内部机制。
-2. **不得出现英文内部字段名**：mood_progression、current_task、reader_expectation、payoff_plan、micro_payoffs、downtime_functions、key_choices、knowledge_state、required_changes、scene_cards、intensity_peak、intensity_level、emotional_hook、prohibitions、must_resolve、must_hold、partial_advance、outline.key_points、immersion_type、gold_finger、confidence、override、locked、inherits、use_count、skip_count 等。
-3. **不得出现内部流程词**：order、phase、step、DONE、派单、归档、蒸馏、重蒸馏、卡/主卡/场景卡、模板基线、lore-keeping、设定变更通知、断路器、重派、幂等、快照、升降级（记忆）、sweep。
-4. **给作者看结构时，用 readable 摘要模板（见 §二），完整结构只写文件，不展示原文结构。** "展示完整 xxx 文件"一律改为"按摘要格式展示要点"。
-5. 网文圈通用词保留不翻译（见 §三），不要过度翻译导致话术生硬。
+1. **Dialogue, questions, presentations, and confirmation of copywriting for the author
+   should all be done in everyday vernacular. ** The author is not a user of the writing
+   system and does not need to understand any internal mechanisms.
+2. **English internal field names are not allowed**: mood_progression, current_task,
+   reader_expectation, payoff_plan, micro_payoffs, downtime_functions, key_choices,
+   knowledge_state, required_changes, scene_cards, intensity_peak, i ntensity_level,
+   emotional_hook, prohibitions, must_resolve, must_hold, partial_advance,
+   outline.key_points, immersion_type, gold_finger, confidence, override, locked,
+   inherits, use_count, skip_count Wait.
+3. **Internal process words are not allowed**: order, phase, step, DONE, dispatch,
+   archive, distillation, re-distillation, card/main card/scene card, template baseline,
+   lore-keeping, setting change notification, circuit breaker, reassignment, idempotent,
+   snapshot, upgrade and downgrade (memory), sweep.
+4. **When showing the structure to the author, use the readable summary template (see
+   §2). For the complete structure, only the file will be written and the original
+   structure will not be displayed. ** "Show the complete xxx file" will always be
+   changed to "Show the key points in summary format".
+5. Common words in the Internet literary circle should be reserved without translation
+   (see § 3). Do not over-translate and make your speech stilted.
 
-## 二、展示模板要求——"摘要给作者、完整结构进文件"
+## 2. Display template requirements - "Abstract to the author, complete structure into the document"
 
-每个需要作者确认的产出，都有对应的作者友好展示格式；**完整文件（含英文字段名）只落盘，不贴给作者**：
+Each output that requires author confirmation has a corresponding author-friendly
+display format; **The complete file (including English field names) is only placed on
+the disk and not posted to the author**:
 
-| 场景 | 展示方式 |
+| Scene | Display method |
 |------|---------|
-| 章纲确认 | `.claude/knowledge/chapter-setting-style.md` §验收第 1 步的 📋 摘要格式（本章定位/衔接/主要内容/关键场景/关键对话/冲突进展/字数目标） |
-| 卷纲方案确认 | volume-planner STEP 3 的作者友好模板（中文小标题：本卷讲什么 / 读者情绪怎么走 / 冲突怎么升级 / 谁知道什么不知道什么 / 章节列表） |
-| 文风学习结果确认 | style-distill 的作者画像（「你的写作特点」「你定的规矩」「AI 学到的量化感觉」「你的典型句子」） |
-| 参考材料校准 | chapter-reference 的参考材料格式（角色期望/现在知道/不知道的/动机/底线） |
-| 记忆/反馈确认 | 用作者原话或一句话摘要展示条目内容，不展示条目字段 |
+| Chapter Outline Confirmation | `.claude/knowledge/chapter-setting-style.md` §Acceptance of step 1’s 📋 Summary format (Chapter Positioning/Connection/Main Content/Key Scenes/Key Dialogue/Conflict Progress/Word Count Target) |
+| Volume plan confirmation | Author-friendly template for volume-planner STEP 3 (Chinese subtitle: What is this volume about / How readers’ emotions go / How conflicts escalate / Who knows what and what they don’t know / Chapter list) |
+| Confirmation of writing style learning results | Style-distill's author portrait ("Your writing characteristics" "Your rules" "The quantitative feeling learned by AI" "Your typical sentences") |
+| Reference material calibration | Chapter-reference reference material format (character expectations/now known/unknown/motivation/bottom line) |
+| Memory/Feedback Confirmation | Use the author's original words or a one-sentence summary to display the entry content, and do not display the entry fields |
 
-其余确认场景通用规则：**中文小标题 + 具体内容**，不用英文标识符当小标题；字段名只出现在括号注释里给 agent 自己看，且以「（内部字段名）」形式与话术隔离。
+General rules for the rest of the confirmation scenarios: **Chinese subtitle + specific
+content**, no English identifiers are used as subtitles; field names only appear in
+parentheses for the agent to see, and are separated from the speech in the form of
+"(internal field name)".
 
-## 三、术语对照表——内部名词 → 作者用语
+## 3. Terminology comparison list,internal nouns → author’s terms
 
-拿不准时查这张表。作者看不懂的都不用，用右列的说法：
+Check this table when in doubt. Don’t use anything the author doesn’t understand. Use
+the words listed on the right:
 
-| 内部名词 | 作者用语 |
+| Internal nouns | Author's terms |
 |---------|---------|
-| 信息差 / 信息差关系 / 信息差变化 | 谁知道什么、谁不知道什么（"开场谁不知道什么、中间揭露什么、结尾留下什么新疑问"） |
-| 情绪锚点 / 情绪走向 / 情绪弧线 / 微弧线 / mood_progression | 读者这章（这卷）的心情怎么走 |
-| 冲突阶梯 / 层位 / 章内小阶梯 | 冲突怎么一层层升级、这章卡在哪一层 |
-| 场景卡 | 这场戏（主角想干啥 / 什么拦着他 / 读者为啥想看下去——三要素本身就是人话） |
-| 读者获得 / micro_payoffs | 读者看完能带走什么 |
-| 兑现计划 / payoff_plan / 钩子操作 | 旧坑怎么填、新坑埋不埋（收线/埋线） |
-| 过渡功能 / downtime_functions | 这段除了调节奏还干什么 |
-| 关键抉择 / key_choices | 角色这个决定为什么做、符合人设吗、读者会不会觉得突兀 |
-| 当前任务 / current_task | 这章要推进什么事（一句话） |
-| 读者期待 / reader_expectation | 读者现在在等什么、这章怎么回应 |
-| 章尾改变 / required_changes | 这章结束时什么变了（从什么变成什么） |
-| 硬约束 / prohibitions | 这章绝对不能碰什么 |
-| 强度峰值 / intensity_peak | 哪一段情绪最顶（具体到哪段，不是"结尾"） |
-| 强度等级 / intensity_level | 比上一章强还是弱 |
-| 情绪钩子 / emotional_hook | 章末留在读者心里的悬念（具体到谁/什么事） |
-| 主导驱动力 | 读者想看下去的理由（想知道真相 / 担心主角 / 想看结果 / 想看关系怎么发展） |
-| AI 味 / 疲劳词 / 元叙事 / 禁用词 | 机器写的腔调 / 用滥了的词 / 总结式说教 |
-| 反 AI（修改/规则/验收） | 要避免的套路（需说明时：让文字不像机器写的） |
-| 归档 / lore-keeping / 卷完成判定 | 存档、更新设定和记忆 |
-| 蒸馏 / 主卡 / 场景卡（风格）/ confidence / 模板基线 | 学习你的文风 / 你的风格档案 |
-| 版本快照 / .style-versions | 备份（旧版风格档案） |
-| 推演沙盘 | 剧情推演（"让角色把核心故事演一遍"） |
-| 记忆晋升 / 降级 / use_count / sweep | 记下的规矩：用得多的转长期记忆、一直没用就问作者要不要删 |
-| 结构热源 / 高风险结构 / 反闭环卡 / 回执 | 一眼像机器写的段落结构（如工作汇报式段落、问答连珠）/ 写这场戏前先想清楚的五件事 / 这件事在书里拿到明确结果 |
-| 回归模式库 / 锁定台词白名单 | 这本书翻过车的原句清单（自动拦复发）/ 你拍板保留的原句豁免清单 |
+| Information gap / Information gap relationship / Information gap changes | Who knows what, who doesn't know what ("Who doesn't know what at the beginning, what is revealed in the middle, and what new questions are left at the end") |
+| Emotional anchor point / Emotional trend / Emotional arc / Micro-arc / mood_progression | How does the reader feel in this chapter (this volume) |
+| Conflict Ladder/Level/Small Staircase within the Chapter | How does the conflict escalate level by level and which level is this chapter stuck on |
+| Scene card | This scene (what the protagonist wants to do / what is stopping him / why the reader wants to continue reading - the three elements themselves are human words) |
+| Reader gains / micro_payoffs | What readers can take away after reading |
+| Cash-out plan / payoff_plan / Hook operation | How to fill in old pits and whether to bury new pits (retracting/burying wires) |
+| Transition functions / downtime_functions | What else does this paragraph do besides adjusting the rhythm |
+| Key choices / key_choices | Why did the character make this decision? Does it fit the character? Will the reader find it abrupt |
+| Current task / current_task | What should be promoted in this chapter (one sentence) |
+| Reader Expectation / reader_expectation | What are readers waiting for now and how to respond to this chapter |
+| End-of-Chapter Changes / required_changes | What changed at the end of this chapter (from what to what) |
+| Hard constraints / prohibitions | What must not be touched in this chapter |
+| Intensity peak / intensity_peak | Which paragraph has the highest emotion (specifically which paragraph, not the "end") |
+| Intensity level / intensity_level | Is it stronger or weaker than the previous chapter |
+| Emotional hook / emotional_hook | The suspense left in the reader's mind at the end of the chapter (specifically who/what) |
+| Dominant driving force | Reasons why readers want to continue reading (want to know the truth/worry about the protagonist/want to see the outcome/want to see how the relationship develops) |
+| AI flavor / tired words / meta-narrative / forbidden words | machine-written tone / overused words / summary preaching |
+| Anti-AI (modification/rules/acceptance) | Routines to avoid (when clarification is needed: make the text not like written by a machine) |
+| Archive / lore-keeping / Volume completion determination | Archive, update settings and memory |
+| Distillation / Master Card / Scene Card (Style) / Confidence / Template Baseline | Learn Your Writing Style / Your Style Profile |
+| Version snapshot /.style-versions | Backup (old style files) |
+| Deduction Sandbox | Plot Deduction ("Let the characters act out the core story again") |
+| Memory promotion / downgrade / use_count / sweep | Rules for writing down: transfer to long-term memory if you use it too much, if it is no longer useful, ask the author if you want to delete it |
+| Structural heat source / high-risk structure / anti-closed-loop card / receipt | At first glance, the paragraph structure looks like machine writing (such as work report-style paragraphs, question-and-answer paragraphs) / Five things to think clearly before writing this scene / This matter has a clear result in the book |
+| Regression pattern library / Locked line whitelist | List of original sentences that have been turned over in this book (automatically prevent recurrence) / Exemption list of original sentences that you decided to keep |
 
-## 四、保留不翻译——网文圈通用词
+## 4. Retain without translation - a common word in the Internet literary circle
 
-这些词网文作者都懂，直接使用，**不要**翻译成更绕的说法：
+The authors of these online articles all know these words and use them directly. Don’t
+translate them into more convoluted terms:
 
-爽点、打脸、钩子（埋钩子/收线）、伏笔、悬念、金手指、CP、副本、代入感、期待感、节奏、人设、卷、卷纲、章纲、起承转合。
+Satisfying payoff, face-slapping, hook (burying the hook/retracting the thread),
+foreshadowing, suspense, golden finger, CP, copy, sense of substitution, sense of
+expectation, rhythm, character design, volume, volume outline, chapter outline, starting
+point and ending.
 
-## 五、维护约定
+## 5. Maintenance Agreement
 
-- 新增内部名词 → 同步补进 §三 对照表，别让作者成为第一个看到它的人。
-- 修改作者可见话术 → 先查 §三；拿不准就用"具体事件 + 人话描述"代替术语。
-- 本规范自身是对作者可见文本的权威约束；agent 定义、skills、知识库中的展示格式均以此为准，冲突时以本规范为准。
+- Add internal nouns → Synchronous addition § 3. Comparison table, don’t let the author
+  be the first person to see it.
+- Modify the author's visible words → Check § 3 first; if you are not sure, use
+  "specific events + human descriptions" instead of terms.
+- This specification itself is an authoritative constraint on the visible text of the
+  author; the agent definition, skills, and display format in the knowledge base shall
+  prevail. In case of conflict, this specification shall prevail.

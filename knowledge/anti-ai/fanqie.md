@@ -1,1209 +1,1302 @@
-# 番茄小说写作规则（学习参考库）
+# Fanqie Novel Writing Rules (Learning Reference Library)
 
-> **定位：** AI 不主动读取此文件。内容已提取关键规则到 `common-rules.md` 和 `chapter-setting-style.md`。此文件保留完整内容供作者学习参考。
->
-> **来源：** 番茄小说网作家公开课程（17位讲师/编辑）
->
-> **已提取规则：**
-> - 文风规则 → `common-rules.md` 一至五
-> - 视角规则 → `common-rules.md` 六
-> - 剧情转折 → `common-rules.md` 七
-> - 节奏铺垫 → `common-rules.md` 八
-> - 对话节奏 → `common-rules.md` 九
-> - 决策引导 → `chapter-setting-style.md` 四
+> **Positioning:** AI does not actively read this file. Content has extracted key
+> rules to `common-rules.md` and `chapter-setting-style.md`. The complete content of
+> this document is retained for the author's study and reference. **Source:** Fanqie
+> Novel Open Course for Writers (17 Lecturers/Editors) **Extracted rules:** - Style
+> rules → `common-rules.md` One to five - Perspective rules → `common-rules.md` Six -
+> Plot twist → `common-rules.md` Seven - Rhythm preparation → `common-rules.md` Eight
+> - Dialogue rhythm → `common-rules.md` Nine - Decision guidance →
+> `chapter-setting-style.md` Four
 
 ---
 
-## 一、章节自检
+## 1. Chapter self-examination
 
-### 朗读流畅度
-- 写完后朗读，嘴巴读出来
-- **卡顿的地方 = 语句太长或形容词不合适**，修改到自然流畅
+### Reading fluency
+- After writing, read it aloud and read it with your mouth.
+- **stuck place = the sentence is too long or the adjective is inappropriate**, modify
+  it to make it natural and smooth
 
-### 三问题测试
-每章自问三个问题，答案不明晰 = 章节有问题：
-1. **主角叫什么？**
-2. **他想干什么？**
-3. **他在做什么？**
+### Three Question Test
+Ask yourself three questions in each chapter, the answers are unclear = there is a
+problem with the chapter:
+1. **What is the protagonist’s name? **
+2. **What does he want to do? **
+3. **What is he doing? **
 
-### 章节完整性
-把这章作为独立内容看：
-- 有没有看点？
-- 有没有继续阅读下去的欲望？
-
----
-
-## 二、人设一致性
-
-### 核心原则
-- 角色说话方式、思考方式、行为必须符合当前阶段的人设
-- **禁止**：后期人设代入前期言行，造成言行矛盾
-
-### 检测方式
-写完后把主角名换成陌生名字再读一遍——如果不是自己写的，还觉得好看吗？
+### Chapter completeness
+Read this chapter as a standalone:
+- Is there anything to watch?
+- Do you have the desire to continue reading?
 
 ---
 
-## 三、过渡章规则
+## 2. Consistency of personality
 
-### 核心原则
-**不存在过渡章**。过渡章 = 制造下一个期待感的铺垫过程。
+### Core Principles
+- The way the character speaks, thinks, and behaves must conform to the personality of
+  the current stage.
+- **Prohibited**: Later characters are substituted into earlier words and deeds, causing
+  conflicts between words and deeds.
 
-### 必须包含
-- 期待感：读者想知道后续发展
-- 危机感/信息差：制造紧张感或认知差距
-- 铺垫：对手/配角的谋略布局，主角是否有防范
-
-### 禁止
-- 纯移动章（主角从A到B，读者已知要去哪）
-- 无新信息摄入的章节
+### Detection method
+After you finish writing, change the name of the protagonist to an unfamiliar name and
+read it again - if you didn't write it yourself, do you still think it looks good?
 
 ---
 
-## 四、剧情转折与冲突
+## 3. Transition Chapter Rules
 
-### 转折生硬
-**根因**：缺"心理过渡"
+### Core Principles
+**There is no transitional chapter**. Transition chapter = the paving process that
+creates the next sense of expectation.
 
-**修复方法**：在认为生硬的地方加内心独白，为主角行为做预期解释
+### Must Contain
+- Sense of anticipation: readers want to know the follow-up development
+- Sense of crisis/poor information: creating a sense of tension or cognitive gap
+- Foreshadowing: The strategy and layout of the opponent/supporting character, whether
+  the protagonist is on guard against it
 
-### 冲突不够
-**根因**：双方没有"不能退让的理由"
+### Prohibited
+- Pure movement chapter (the protagonist goes from A to B, the reader knows where he is
+  going)
+- Chapters with no new information
 
-**修复方法**：
-- 给冲突双方各加一个"我必须这么做"的强烈动机
-- 失败的代价越具象（死/失去什么），读者越能理解
+---
 
-### 示例
+## 4. Plot twists and conflicts
+
+### The turning point is abrupt
+**Root cause**: Lack of "psychological transition"
+
+**Repair method**: Add inner monologue in places that are considered blunt to provide
+expected explanations for the protagonist’s behavior.
+
+### Not enough conflict
+**Root cause**: Both parties have no "reason not to give in"
+
+**Fix Method**:
+- Add a strong "I have to do this" motivation to both parties in the conflict
+- The more concrete the cost of failure (death/losing something), the more
+  understandable it is to the reader.
+
+### Example
 ```
-双方争夺灵植：
-- 主角：寻找数十年，只差这一味丹药突破桎梏
-- 反派：救妹妹，同样付出一切
-→ 双方都有"必须得到"的强烈信念，冲突尖锐
+Both sides compete for the spiritual plant:
+- Protagonist: After decades of searching, only this elixir is needed to break through the shackles
+- Villain: To save my sister, I will sacrifice everything
+→ Both sides have strong beliefs about "must get", and the conflict is sharp
 ```
 
 ---
 
-## 五、节奏与铺垫
+## 5. Rhythm and foreshadowing
 
-### 铺垫的重要性
-- 铺垫 = 前期打压引申出的期待感
-- **铺垫不够 = 故事没劲**
-- 可以多加配角支线，但必须服务主角
+### The importance of foreshadowing
+- Foreshadowing = a sense of expectation arising from early suppression
+- **Not enough foreshadowing = The story is boring**
+- You can add more supporting characters and branches, but they must serve the
+  protagonist
 
-### 详略得当
-- 配角支线必须跟着剧情走
-- 完全跟主角没关系的剧情 = 无效剧情，删
+### Detailed and brief appropriately
+- Supporting characters’ subplots must follow the plot
+- Plot that has nothing to do with the protagonist = invalid plot, delete it
 
-### 例：感情线铺垫
-- 核心高潮：镜子怎么圆
-- 铺垫：误会根源 + 双方信息差 + 配角的好看/助攻/破坏
-- 全部围绕主线解开，自然推向大高潮
-
----
-
-## 六、毒点处理
-
-### 数据差章节排查
-1. 小毒点 → 直接删
-2. 大毒点 → 精修争议处或替换剧情
-
-### 跳章处理
-- 跳章 = 衔接过渡或配角剧情写得不好
-- **减少过渡和配角比重**，占比过多会弃书
-- 但不能完全没有，要控制比例
+### Example: Foreshadowing of emotional lines
+- Core climax: How the mirror is round
+- Foreshadowing: source of misunderstanding + information gap between the two parties +
+  good looks/assist/sabotage of supporting characters
+- Everything revolves around the main line and naturally leads to a climax.
 
 ---
 
-## 七、文风规则（防AI味）
+## 6. Poison spot treatment
 
-### 禁止
-| 禁止项 | 原因 |
+### Data difference chapter troubleshooting
+1. Small poisonous points → delete directly
+2. Big poisonous point → Refine the controversial part or replace the plot
+
+### Chapter skipping
+- Chapter skipping = poorly written transitions or supporting character plots
+- **Reduce the proportion of transitions and supporting roles**. If the proportion is
+  too large, the book will be abandoned.
+- But it can’t be completely absent, and the proportion must be controlled.
+
+---
+
+## 7. Rules of writing style (anti-AI flavor)
+
+### Prohibited
+| Prohibited items | Reason |
 |--------|------|
-| 多余内心戏 | 读者要看故事内容，不是作者臆想 |
-| 直述内心 | 用动作/对话/行为外化情绪 |
-| 无期待感收尾 | 每章都要有信息摄入或期待铺垫 |
+| Superfluous inner drama | Readers should read the content of the story, not the author’s imagination |
+| Speak directly from the heart | Use actions/conversations/behaviors to externalize emotions |
+| Ending without any sense of expectation | Each chapter should have information intake or anticipation foreshadowing |
 
-### 写作原则
-- **用行为和语言推剧情**，不用内心独白堆
-- 读者是为看故事来的
-- 即使过渡章也要做到"有内容可看，有信息可摄入"
-
----
-
-## 八、改文原则
-
-### 小改（单章/2-3章）
-- 直接删改毒点
-- 朗读检查流畅度
-
-### 大改（10章以上）
-- 改前梳理核心走向（大纲骨架）
-- 提炼所有重要信息、伏笔、设定
-- **重写时必须把信息填回去**，否则逻辑割裂
-- 人设必须符合当前阶段，不是后期
-
-### 核心
-如果驾驭不了后续剧情衔接，**不要改**，继续写完写好后面。
+### Writing principles
+- **Use actions and words to promote the plot**, no need for inner monologues
+- Readers come for the story
+- Even in transitional chapters, there must be "content to read and information to
+  absorb."
 
 ---
 
-## 九、节奏判断
+## 8. Principles of revision
 
-### 节奏快
-**判断**：读者看完总结要用十几句话，甚至消化不了 → 节奏太快
+### Minor changes (single chapter/2-3 chapters)
+- Directly delete the poison points
+- Read aloud to check fluency
 
-**症状**：
-- 没有喘息消化信息的时间
-- 情绪铺垫不到位
-- 读者没看到伏笔内容就跳过了
+### Major changes (more than 10 chapters)
+- Sort out the core direction before the change (outline skeleton)
+- Distill all important information, foreshadowing, and settings
+- **Information must be filled in when rewriting**, otherwise the logic will be
+  fragmented
+- The character design must match the current stage, not the later stage
 
-### 节奏慢
-**判断**：读者一句话就能概括全章 → 节奏太慢
-
-**症状**：
-- "主角在XX家族面前装逼出场，种种环境变化，路人震惊，心理描写"
-- 没有实际性的故事剧情推进
-- 读者一句话概括全章核心
-
-### 量化方式
-看同类型火书横向对比：
-- 火书 1 章 = 几个剧情？
-- 10+ 章写一个无关主线的非主角剧情 = 冗杂累赘
+### Core
+If you can't control the connection of the subsequent plot, **don't change**, just
+continue writing and write the rest.
 
 ---
 
-## 十、节奏调整
+## 9. Rhythm Judgment
 
-### 节奏太快 → 加情绪
-- 快节奏伴随扣人心弦的剧情（打斗/危机/救人）
-- 想办法调动读者情绪
-- **情绪铺垫 + 爆发 = 故事慢下来**
+### Fast pace
+**Judgment**: The reader needs more than a dozen sentences to read the summary, and
+cannot even digest it → The pace is too fast
 
-### 节奏太慢 → 加钩子
-- 末尾钩子留得漂亮，读者不觉得是水文
-- 会认为是在铺垫接下来的剧情
+**Symptoms**:
+- No time to gasp and digest information
+- Insufficient emotional preparation
+- Readers skipped the foreshadowing without seeing it
 
-### 节奏太慢 → 砍剧情
-砍三类：
-1. 无关男女主发展的剧情
-2. 跟主线离得太远的剧情
-3. 不推动故事发展的剧情
+### Slow Pace
+**Judgment**: The reader can summarize the entire chapter in one sentence → The pace is
+too slow
 
-**详略得当**：为达到目的舍弃一部分剧情，事后能直线提升故事美感
+**Symptoms**:
+- "The protagonist pretends to be in front of the XX family, various environmental
+  changes, passers-by are shocked, psychological description"
+- Story progression without practicality
+- Readers summarize the core of the chapter in one sentence
 
----
-
-## 十一、章节修改判断
-
-### 只改章节
-- 节奏问题（太快/太慢）
-- 对话生硬
-- 描写过多或过少
-- 情绪不到位
-
-### 需要动整体结构
-- 主线逻辑断裂
-- 人物设定前后矛盾
-- 重大剧情走向改变
-
-### 判断方式
-1. 看数据：章节读完率下降的节点 → 从前1章开始改
-2. 自我分析：人设崩塌？还是剧情本身没吸引力？
-
-### 修改原则
-- 保留原文核心内容信息不变
-- 只解决造成读者流失的具体内容
-- **不要过分追求完美**，解决自查问题 + 文章通顺即可
+### Quantitative method
+Look at the horizontal comparison of fire books of the same type:
+- Book of Fire Chapter 1 = How many plots?
+- 10+ chapters to write a non-protagonist plot that has nothing to do with the main plot
+  = cumbersome and cumbersome
 
 ---
 
-## 十二、情节丰富
+## 10. Rhythm adjustment
 
-### 单薄 vs 丰富
-| 类型 | 特征 |
+### The pace is too fast → add emotion
+- Fast pace with exciting plot (fight/crisis/rescue)
+- Find ways to arouse readers’ emotions
+- **Emotional foreshadowing + explosion = story slows down**
+
+### The tempo is too slow → add a hook
+- The hook at the end is beautifully left, so readers don’t think it’s hydrographic.
+- I think it's foreshadowing the next plot.
+
+### The pace is too slow → cut the plot
+Cut three categories:
+1. Plots that have nothing to do with the development of the male and female
+   protagonists
+2. A plot that is too far away from the main plot
+3. A plot that does not advance the story
+
+**Appropriate details**: Abandoning part of the plot to achieve the goal can directly
+improve the beauty of the story afterwards.
+
+---
+
+## 11. Judgment of Chapter Modifications
+
+### Only change chapters
+- Pacing issues (too fast/too slow)
+- The dialogue is stilted
+- Too much or too little description
+- The mood is not in place
+
+### Need to change the overall structure
+- Main line logic break
+- Character settings are inconsistent
+- Major plot changes
+
+### Judgment method
+1. Look at the data: the node where the chapter reading rate drops → start from the
+   previous chapter
+2. Self-analysis: Personality collapse? Or is the plot itself unattractive?
+
+### Modification principle
+- Keep the core content of the original text unchanged
+- Only address specific content causing reader loss
+- **Don’t pursue perfection**, just solve the self-examination questions + the article
+  is fluent
+
+---
+
+## 12. Rich plot
+
+### Thin vs Rich
+| Type | Characteristics |
 |------|------|
-| 单薄 | 情节跳跃（A→B，冲突→解决），缺过渡 |
-| 丰富 | 连贯式，每核心情节有铺垫/过程/余波 |
+| Thin | Plot jumps (A → B, conflict → resolution), lack of transition |
+| Rich | Consecutive, each core plot has foreshadowing/process/aftermath |
 
-### 铺垫
-- 用细节暗示、人物伏笔、环境烘托
-- 让读者"恍然大悟"
-- 避免无用细节，防止信息杂乱
+### Foreshadowing
+- Use detailed hints, character foreshadowing, and environment to set off
+- Let readers "suddenly realize"
+- Avoid useless details and prevent information clutter
 
-### 过程
-- 不直接描述事情已完成
-- 细化步骤：尝试→失败→挣扎→成长
-- 层层递进推向高潮
-- 过多细节会拖沓
+### Process
+- Not directly describing what has been done
+- Refined steps: try → fail → struggle → grow
+- Progressing step by step towards the climax
+- Too many details will drag things out
 
-### 余波
-每个事件要有后续影响：
-- 人物情绪变化
-- 关系改变
-- 后续隐患
-- 新矛盾
+### Aftermath
+Every event must have subsequent effects:
+- Character's emotional changes
+- relationship changes
+- Follow-up risks
+- new contradictions
 
 ---
 
-## 十三、氛围丰富
+## 13. Rich atmosphere
 
-### 环境描写作用
-- 烘托人物情绪
-- 渲染氛围
-- 让场景有画面感
-- 丰富故事质感
+### Environmental Description
+- Enhance character's emotions
+- Rendering atmosphere
+- Make the scene look like a picture
+- Rich story texture
 
-### 题材侧重
-| 题材 | 环境描写侧重 |
+### Theme focuses on
+| Theme | Focus on environmental description |
 |------|-------------|
-| 玄幻 | 天地异象、宗门景象 |
-| 悬疑 | 阴暗、压抑 |
-| 言情 | 细腻、有氛围感 |
-| 现实 | 贴近生活、烟火气 |
+| xuanhuan (Eastern fantasy) | Visions of heaven and earth, scenes of sects |
+| Suspense | Dark, depressing |
+| Romance | Delicate and atmospheric |
+| Reality | Close to life, fireworks |
 
-### 避坑
-- 超100字的环境描写要检查是否水文
-- 环境描写要贴合人物情绪和情节
-
----
-
-## 十四、节奏丰富
-
-### 核心：张弛有度
-- 一直快 → 读者疲惫
-- 一直慢 → 读者乏味
-- 有紧（冲突/高潮）也有松（日常/回忆/独处）
-
-### 五大技巧
-1. **细化高潮**：场面细致，突出重点
-2. **穿插日常**：轻量温馨，松紧交替（但不能是流水账）
-3. **适度反转**：增加层次，但不宜频繁
-4. **适当延伸**：不围绕几点反复写
-5. **深挖伏笔**：人设/身世可有多面性
-
-### 温馨日常创作
-- **对话贴人设**：活泼→直白跳脱，沉稳→温和内敛
-- **结合场景**：吃饭/做饭/下班/逛街，自然发生
-- **小互动**：吐槽/调侃/小傲娇/小动作
-- **藏温情**：通过细节流露，不用直白说
-
-### 避坑
-- 日常对话短平快，篇幅过长易成水文
-- 不在紧张冲突中强行加日常
+### Avoid pitfalls
+- Environmental descriptions exceeding 100 words should be checked for hydrology
+- The description of the environment should fit the characters’ emotions and plot
 
 ---
 
-## 十五、人物塑造
+## 14. Rich rhythm
 
-### 核心原则
-- 人物不是情节服务的"道具"
-- 避免脸谱化、简单化
-- 增加复杂多面的"活人感"
+### Core: Relaxation and relaxation
+- Always fast → reader fatigue
+- Always slow → boring reader
+- There is tension (conflict/climax) and relaxation (daily life/memories/solitude)
 
-### 填过往
-用回忆/伏笔解释人物动机，多次穿插在情节中，不一次性全盘托出：
+### Five tips
+1. **Refined climax**: The scene is detailed and the key points are highlighted.
+2. **Interspersed with daily life**: Lightweight and warm, alternating between tight and
+   loose (but not a running account)
+3. **Moderate reversal**: Increase levels, but not frequently
+4. **Appropriate extension**: Do not write repeatedly around several points
+5. **Deep dig for foreshadowing**: Personality/life experience can have many sides
 
-| ❌ 单薄 | ✅ 丰富 |
+### Warm daily creations
+- **Dialogue post character**: lively → straightforward and out-of-the-box, calm →
+  gentle and restrained
+- **Combined scenes**: eating/cooking/getting off work/shopping, it happens naturally
+- **Small interaction**: complaining/ridicule/little tsundere/little actions
+- **Hidden warmth**: Show it through details, without saying it directly
+
+### Avoid pitfalls
+- Daily conversations are short and quick, and if they are too long, they can easily
+  become clichés.
+- Don’t force daily routines into tense conflicts
+
+---
+
+## 15. Character creation
+
+### Core Principles
+- Characters are not "props" serving the plot
+- Avoid simplification and simplification
+- Adding a complex and multi-faceted "feeling of life"
+
+### Fill in the past
+Use memories/foreshadowing to explain character motivations, intersperse them into the
+plot multiple times, and don’t tell them all at once:
+
+| ❌ Thin | ✅ Rich |
 |--------|--------|
-| 女主拒绝牛奶 | 女主看到牛奶→想起继母灌馊奶的画面→手指颤抖→拒绝 |
+| The heroine refuses the milk | The heroine sees the milk → remembers the scene of her stepmother filling her with sour milk → her fingers tremble → refuses |
 
-### 加细节
-用动作/神态/心理刻画情绪，不用直述情绪：
+### Add details
+Use actions/expression/psychology to describe emotions instead of directly describing
+them:
 
-| ❌ 直述 | ✅ 画面 |
+| ❌ Direct Narration | ✅ Screen |
 |--------|--------|
-| 他问："你不会骗我的，对吗？" | 看见她袖口里攥紧的手指→眼底温度降了几分→语气如常 |
+| He asked: "You won't lie to me, right?" | Seeing the clenched fingers in her sleeves → the temperature in her eyes dropped a bit → her tone was as usual |
 
-### 添成长
-成长逻辑：困境→挣扎/反思→改变/突破→沉淀/蜕变
+### Add growth
+Growth logic: Dilemma → Struggle/Reflection → Change/Breakthrough →
+Precipitation/Transformation
 
-三类成长：
-- **主角**：核心成长线（懦弱→勇敢，自私→担当）
-- **配角**：辅助成长线（衬托主角、推动主线）
-- **反派**：反向成长线（不是洗白，是让行为更有逻辑）
+Three types of growth:
+- **Protagonist**: Core growth line (cowardly → brave, selfish → responsible)
+- **Supporting role**: Auxiliary growth line (to set off the protagonist and promote the
+  main line)
+- **Villain**: Reverse growth line (not to whitewash, but to make the behavior more
+  logical)
 
-### 赋灵魂（配角）
-1. **立人设**：核心标签+1-2辅助细节，有辨识度
-2. **赋欲望**：有独立于主角的目标
-3. **联动主线**：推动/补充/衬托主线
-4. **留白**：不写满，留余地让读者回味
+### Give Soul (Supporting Role)
+1. **Personal design**: core tag + 1-2 auxiliary details, recognizable
+2. **Give Desire**: Have a goal independent of the protagonist
+3. **Linked main line**: Promote/supplement/set off the main line
+4. **Blank**: Do not write completely, leave room for readers to recall
 
-### 避坑
-- 成长不能"脱节"：懦弱的人不会突然无所畏惧
-- 配角不抢主角风头
-- 不强行洗白/黑化，改变要符合逻辑
+### Avoid pitfalls
+- Growth cannot be "out of touch": weak people will not suddenly become fearless
+- Supporting characters do not steal the spotlight from the protagonist
+- Don’t forcefully whiten/blacken things. Changes must be logical.
 
 ---
 
-## 十六、开篇规则
+## 16. Opening Rules
 
-### 第一页比前三章更重要
-读者第一页看不到精彩内容，直接划走，后面的读完数据就差。
+### The first page is more important than the first three chapters
+Readers can't see the exciting content on the first page, so they just swipe it away,
+and the data on the following pages will be poor.
 
-### 首页见山
-| ❌ 背景介绍开头 | ✅ 冲突/痛点开头 |
+### Home page straight to the point
+| ❌ The beginning of the background introduction | ✅ The beginning of the conflict/pain point |
 |----------------|-----------------|
-| "我是XX人，获得了系统..." | 直接抛出冲突/悬念/痛点 |
-| 读者不知道要干嘛 | 读者立刻有期待 |
+| "I am XX person, and I have obtained the system..." | Directly throw out conflicts/suspense/pain points |
+| The reader doesn’t know what to do | The reader immediately has expectations |
 
-### 开篇技巧
-1. **反差/戏剧性**：第一句话就吸引住
-2. **痛点/共鸣**：让读者有代入感
-3. **期待感**：第一页末尾要让读者想翻下一页
+### Opening Tips
+1. **Contrast/Drama**: Captivated by the first sentence
+2. **Pain Point/Resonance**: Make readers feel involved
+3. **A sense of anticipation**: The end of the first page makes the reader want to turn
+   to the next page.
 
-### 章末留钩
-- 每章结尾留遐想空间
-- 不是等读者翻页，是让读者**想翻页**
-- 钩子示例：用有趣交谈/冲突作为结尾，引发对下一章的期待
+### Hook at End of Chapter
+- Leave room for reverie at the end of each chapter
+- Instead of waiting for the reader to turn the page, make the reader **want to turn the
+  page**
+- Hook Example: End with an interesting conversation/conflict to build anticipation for
+  the next chapter
 
 ---
 
-## 十七、金手指设计
+## 17. Golden Finger Design
 
-### 创新性
-| ❌ 传统金手指 | ✅ 创新金手指 |
+### Innovativeness
+| ❌ Traditional golden finger | ✅ Innovative golden finger |
 |--------------|--------------|
-| 戒指小老头/神秘空间/面板直接绑 | 无形之中提供帮助的东西 |
-| 读者索然无味 | 推动剧情但不水字数 |
+| The little old man with the ring/mysterious space/directly tied to the panel | Something that helps invisibly |
+| Readers are uninterested | Promotes the plot but does not count the number of words |
 
-### 好金手指特征
-1. 不一定要是系统，可以是任何形态
-2. **逐步推动**主角实力提升，不是一步到位
-3. 每次升级都营造期待感
-4. 参与剧情推进，不是当工具出现
+### Good golden finger features
+1. It doesn’t have to be a system, it can be in any form
+2. **Gradually promote** the protagonist's strength improvement, not just one step.
+3. Create a sense of anticipation with every upgrade
+4. Participate in the advancement of the plot, not appear as a tool
 
-### 避坑
-- 系统频繁出现 = 水字数 = 读者流失
-- 金手指不参与剧情 = 苍白无力
-
----
-
-## 十八、中期剧情突破
-
-### 伏笔埋入
-- 开篇几万字内埋伏笔
-- 几十万字后揭开，小高潮
-- 伏笔可以是：旁白/背景介绍/角色的一句话
-
-### 伏笔类型
-1. **语言伏笔**：角色的一句话（后续才懂）
-2. **环境伏笔**：细节描写（后续用于推理）
-3. 几万到十万字埋一个，揭开后循环
-
-### 合理利用配角
-- 配角死去 = 产生新冲突 = 新剧情
-- 人只有出现/消失，才有剧情涌现
-- 不舍得角色死 = 读者忘记配角 + 逻辑漏洞
-
-### 避坑
-- 不能换地图（都市类无法换国家）
-- 强行换地图 = 割裂感 = 读者流失
+### Avoid pitfalls
+- Frequent occurrences in the system = low number of words = loss of readers
+- golden finger does not participate in the plot = pale and powerless
 
 ---
 
-## 十九、题材选择
+## 18. Mid-term plot breakthrough
 
-### 老作者：深耕擅长题材
-- 在熟悉分类内微创新设定
-- 读者群体不同，三观不同
-- 例：年代文→年代替嫁/年代姐妹同嫁/年代重生复仇
+### Foreshadowing buried
+- There are foreshadowings within tens of thousands of words in the opening chapter
+- Uncovered after hundreds of thousands of words, a small climax
+- Foreshadowing can be: narration/background introduction/a sentence from the character
 
-### 新作者：从爱好入手
-- 选看得最多的类型
-- 了解这个类型的写法/人设/剧情
-- **读者转作者最容易成功**
+### Foreshadowing Type
+1. **Language foreshadowing**: a sentence of the character (will be understood later)
+2. **Environmental Foreshadowing**: Detailed description (used for reasoning later)
+3. Bury one with tens of thousands to one hundred thousand words, then recycle after
+   uncovering it
 
-### 避坑
-- 换分类=换读者群体=成神率降低
-- 不熟悉的类型容易卡文
+### Proper use of supporting roles
+- Supporting character dies = new conflict = new plot
+- Only when people appear/disappear can the plot emerge
+- Not willing to let the character die = readers forget the supporting characters +
+  logical loopholes
+
+### Avoid pitfalls
+- The map cannot be changed (the country cannot be changed for urban types)
+- Forcibly changing the map = sense of fragmentation = loss of readers
 
 ---
 
-## 二十、第二本不如第一本
+## 19. Theme selection
 
-### 核心误区
-**过于追求"精品感"，忽略了前台故事**
+### Old author: deep in the subject matter
+- Micro-innovative settings within familiar categories
+- Different reader groups have different perspectives
+- Example: Chronicles → Marriage on behalf of another generation/Sisters marrying
+  together in the era/Rebirth and revenge in the era
 
-### 前台故事 vs 后台故事
-| 类型 | 内容 |
+### New Author: Start with a Hobby
+- Select the most viewed genre
+- Understand the writing style/character design/plot of this genre
+- **It is easiest for readers to become authors**
+
+### Avoid pitfalls
+- Change the category = change the reader group = decrease the rate of becoming a god
+- Unfamiliar types are prone to glitches
+
+---
+
+## 20. The second book is not as good as the first one
+
+### Core misunderstanding
+**Too much pursuit of "high-quality products" and ignoring the front-end story**
+
+### Front story vs back story
+| Type | Content |
 |------|------|
-| 前台故事 | 开篇吸引读者的点（冲突/对抗/攻略目标） |
-| 后台故事 | 庞大世界观、深层次人设挖掘 |
+| Front stage story | Points to attract readers at the beginning (conflict/confrontation/goal capture) |
+| Backstage story | Huge world view, deep character exploration |
 
-### 关键
-- 先把前台故事写好看
-- 后台故事高大上没用，读者进不去
-- **在火文基础上精益求精，不是抛弃成功经验**
+### Key
+- First write the front desk story well
+- The backstage story is too high-level and useless, and readers can’t get into it.
+- **Striving for excellence based on Huowen does not mean abandoning successful
+  experience**
 
 ---
 
-## 二十一、创新比例
+## 21. Innovation ratio
 
-### 市场现实
-- 新读者不断涌入，"老套路"对他们仍是新设定
-- 没人永远十八，但永远有人十八
-- 纯套路竞争激烈，笔力不够难出头
+### Market Reality
+- New readers are constantly coming in, and the "old routine" is still a new setting for
+  them
+- No one is always eighteen, but some people are always eighteen
+- The competition for pure routines is fierce, and it’s difficult to get ahead if you
+  don’t have enough writing skills.
 
-### 安全创新
-**新瓶装旧酒**：套路基础上微创新
+### Security innovation
+**Old wine in new bottles**: micro-innovation based on routines
 
-### 创新比例建议
-| 阶段 | 创新比例 |
+### Innovation ratio suggestions
+| Stage | Innovation Ratio |
 |------|---------|
-| 新手期 | 10%创新 + 90%套路 |
-| 大神期 | 20%创新 + 80%套路 |
-| 先写爆火的书 | 再逐步提高创新比例 |
+| Novice stage | 10% innovation + 90% routine |
+| Great God Stage | 20% Innovation + 80% Routine |
+| Write a popular book first | Then gradually increase the proportion of innovation |
 
-### 避坑
-- 创新太狠 = 差成绩 = 影响写作道心
-- 步子别迈太大，稳扎稳打
-
----
-
-## 二十二、学习火文
-
-### 避免模仿
-- 不要只看一本书
-- 找2-3本同类型书，对比共同点
-- 共同点 = 套路，可以写
-- 整个故事线相似 = 连环撞梗 = 抄袭
-
-### 学习本质
-学习火文**最本质的特质**：
-- 人设为什么讨喜
-- 选材是拉仇恨还是温馨升级
-- 怎么制造期待感
-
-**不是学剧情，是学写作方法**
-
-### 完整阅读
-- 精髓不在只有开篇
-- 看完整百万字长篇，比只看十个开篇更有用
-- 完整阅读 = 增强长篇把控能力 = 降低崩文率
+### Avoid pitfalls
+- Too much innovation = poor grades = affects writing morale
+- Don't take too big a step, take it slow and steady
 
 ---
 
-## 二十三、崩文预防
+## 22. Learn fire culture
 
-### 崩文常见原因
-1. **悬念揭晓后没有新悬念跟上**
-2. **换地图不够丝滑，割裂感严重**
+### Avoid Imitation
+- Don't just read one book
+- Find 2-3 books of the same type and compare what they have in common
+- Common points = routines, can be written
+- The entire story line is similar = serial collision = plagiarism
 
-### 预防方法
-**悬念提前交替铺垫**：
-- 第1个悬念揭晓前，就要铺垫第2个悬念
-- 不是"快结束时才铺"，而是"写第1个时就穿插第2个"
-- 每章保持1.75个以上钩子
+### The essence of learning
+The most essential qualities of learning Huo Wen:
+- Why is the character lovable?
+- Is the choice of materials to attract hatred or to warm up?
+- How to create a sense of anticipation
 
-**换地图应聚焦故事**：
-- 写"主角拿东西"，不写"路上的心理历程和环境描写"
-- 弱化换地图，读者不知不觉跟主角完成事件
+**It’s not about learning plot, it’s about learning writing methods**
 
-**新人暂不换地图**：
-- 校园文全本在学校
-- 宅斗文全本在宅院
-- 实在要换，尽量往后拖
+### Read in full
+- The essence is not there, only the beginning
+- Reading the entire million-word novel is more useful than just reading the first ten
+  chapters
+- Complete reading = Enhance the ability to control long articles = Reduce the collapse
+  rate
 
 ---
 
-## 二十四、处理差评
+## 23. Prevention of text collapse
 
-### 核心心态
-- 批评是成长方式
-- 但读者的诉求≠你要做的改动
+### Common causes of text collapse
+1. **No new suspense follows after the suspense is revealed**
+2. **The map change is not smooth enough and the fragmentation is severe**
 
-### 判断标准
-| 可参考 | 不参考 |
+### Prevention methods
+**suspense alternately foreshadowing in advance**:
+- Before the first suspense is revealed, the second suspense must be prepared
+- It's not "lay it out near the end", it's "write the first one and then insert the
+  second one"
+- Maintain more than 1.75 hooks per chapter
+
+**Changing maps should focus on the story**:
+- Write "the protagonist takes things", don't write "description of the psychological
+  process and environment on the road"
+- By weakening the map and changing the map, the reader will unknowingly complete the
+  event with the protagonist.
+
+**Newcomers will not change maps for the time being**:
+- The full text of the campus text is at school
+- The full text of inner-court intrigue is in the house
+- If you really need to change it, try to delay it as long as possible.
+
+---
+
+## 24. Handling negative reviews
+
+### Core Mentality
+- Criticism is the way to grow
+- But readers’ demands ≠ the changes you want to make
+
+### Judgment criteria
+| Can be referenced | Not referenced |
 |--------|--------|
-| 常识性错误 | 干涉主线剧情逻辑 |
-| 数据下跌时的建议 | 情绪化差评 |
+| Common sense errors | Interfering with the main plot logic |
+| Advice when data drops | Emotional negative reviews |
 
-### 避坑
-- 不要被读者"花言巧语"骗了
-- 他们爽完就跑，哭的只有作者
-- 把30万字的剧情10万字写完 = 节奏全乱 = 崩文
-
----
-
-## 二十五、视角规则
-
-### 上帝视角问题
-- 读者代入感差
-- 视角在配角间跳来跳去 = 割裂感
-- 降低小说的代入感
-
-### 视角聚焦
-**前期聚焦主角视角**：
-- 开篇几万字围绕主角一人
-- 其他人发生的事情一笔带过或听别人提
-- 主角一定在场
-
-**后期可少量添加**：
-- 读者代入感建立后
-- 控制在几百字篇幅
-- 不宜大篇幅讲配角
-
-### 避坑
-- 配角设定没有主角出彩时，讲配角 = 弃文风险
-- 上帝视角难深度代入
+### Avoid pitfalls
+- Don't be fooled by readers' "sweet words"
+- They ran away after they were happy, and the only one who cried was the author
+- Finishing 100,000 words of a 300,000-word plot = completely messed up pacing = broken
+  text
 
 ---
 
-## 二十六、时间线设定
+## 25. Perspective rules
 
-### 五种时间线类型
-| 类型 | 特征 | 适用题材 |
+### God's perspective question
+- Readers’ sense of immersion is poor
+- The perspective jumps between supporting characters = a sense of fragmentation
+- Reduce the sense of immersion in the novel
+
+### Focus on perspective
+**Focus on the protagonist’s perspective in the early stage**:
+- The opening chapter, tens of thousands of words, revolves around the protagonist
+- Briefly mention what happened to other people or listen to others mention it
+- The protagonist must be present
+
+**A small amount can be added later**:
+- After the reader’s sense of immersion is established
+- Keep it to a few hundred words
+- It is not appropriate to talk about supporting roles in a large space
+
+### Avoid pitfalls
+- When the supporting characters are not as good as the protagonist, talking about
+  supporting characters = risk of abandoning the article.
+- It is difficult to penetrate God’s perspective in depth
+
+---
+
+## 26. Timeline setting
+
+### Five timeline types
+| Type | Characteristics | Applicable themes |
 |------|------|---------|
-| 顺叙 | 箭头式，因果清晰 | 大部分题材 |
-| 圆环 | 从中间切入，前面留白大 | 副本/悬疑/古言 |
-| 读档制 | 节点选择→分岔结局 | 末日/游戏/言情救赎 |
-| 纯循环 | 整体循环，无出口 | 悬疑/科幻 |
-| 多线并行 | 以上组合 | 庞大世界观 |
+| Sequential narrative | Arrow style, clear cause and effect | Most themes |
+| Circle | Cut from the middle, leave a large space in front | Copy/Suspense/Ancient Proverbs |
+| Load file system | Node selection → bifurcated ending | Doomsday/Game/Romance Redemption |
+| Pure cycle | Overall cycle, no exit | Suspense/science fiction |
+| Multi-line parallelism | Combination of the above | Huge worldview |
 
-### 顺叙时间线
-- 按起因→经过→结果推进
-- 条理清晰，易于上手
-- 新人首选
+### Follow the timeline
+- Advance by cause → process → result
+- Clear and easy to use
+- First choice for newcomers
 
-### 圆环时间线
-**从中间切入**：前面已有无数次循环，压下不表
+### Circle Timeline
+**Cut from the middle**: There have been countless cycles before, so I can’t stress them
+out.
 
-**优点**：
-- 留白空间大，可埋无数伏笔
-- 草蛇灰线、伏线千里
-- 三条时间线：过去（伏笔）+现在（推进）+未来（悬念）
+**Advantages**:
+- There is a lot of blank space, and you can bury countless foreshadowings.
+- The gray line of grass snake, the hidden line of thousands of miles
+- Three timelines: past (foreshadowing) + present (advancement) + future (suspense)
 
-**适用**：推理悬疑、赛博、科幻、古言言情
+**Applicable**: suspense, cyberspace, science fiction, ancient romance
 
-**古言应用示例**：
-- 恩爱夫妻闹离婚开篇
-- 前面的故事（暗线）+现在的状态（明线）+后续分合（悬念）
+**Examples of application of ancient sayings**:
+- The beginning of a loving couple's divorce
+- The previous story (hidden line) + the current state (broad line) + the subsequent
+  breakup (suspense)
 
-### 读档制时间线
-**节点选择→不同结局**：错误选择→回档→重新选择
+### Reading archive timeline
+**Node selection→Different endings**: Wrong choice→Rewind→Reselect
 
-**优点**：
-- 失败不再是毒点
-- 回档=预知金手指
-- 十个情节点可延伸很多故事
+**Advantages**:
+- Failure is no longer a poisonous point
+- Retrace = predict golden finger
+- Ten plot points can extend a lot of story
 
-**末日搭配**：
+**Doomsday Match**:
 ```
-剧情a成功→剧情b被杀→回档→改变路线→剧情e
-```
-
-**副本搭配**：一个副本反复套娃，直到脱离副本
-
----
-
-## 二十七、传统玄幻破局
-
-### 核心问题
-存量太多，同质化严重，读者审美疲劳
-
-### 破局方法：旧酒装新瓶
-**微创新**三个方向：
-1. **人设创新**：围绕核心人设设计剧情
-   - 例：废材人设→"比废"才能加入队伍
-   - 例：废材→反而是陀舍洞府传承的唯一人选
-2. **金手指创新**：给读者无敌感+限制
-   - 例：宝塔类（每层藏至宝，层层期待）
-   - 避免：太无敌→剧情崩盘
-3. **世界观创新**：修炼体系/世界规则
-   - 例：只有强血脉能修炼，普通血脉没资格
-
-### 避坑
-- 新人不要在修炼体系上创新，让读者容易代入
-- 世界运行规则要能引起情绪共鸣
-
----
-
-## 二十八、文笔 vs 剧情
-
-### 核心观点
-**剧情更重要，文笔是最不重要的**
-
-### 文笔定位
-- 文笔是为剧情服务的工具，不是目的
-- 句子通顺、能讲清楚故事 = 核心
-- 文笔靠长期写作慢慢提升
-
----
-
-## 二十九、创作准备
-
-### 素材积累
-- 金手指/世界观的灵感来自：电影/动漫/小说/游戏
-- 随时记录灵光乍现的想法
-- 幽默梗/段子：收集抖音/网上的，融入角色对话
-
----
-
-## 三十、写作心态
-
-### 卡文怎么办
-卡文 = 写出来会不好看/很平/会重复
-
-**应对**：先让自己爽起来，想不出来就硬着头皮快速写
-
-**核心：一定要写，再卡也要写**
-
----
-
-## 三十一、大纲与节奏
-
-### 保障剧情流畅
-**铺垫三个爽点**：
-```
-A剧情 → 铺垫B + C
-B剧情 → 铺垫C + D
-C剧情 → 铺垫D + E
+Scenario a is successful → Scenario b is killed → Backtrack → Change route → Scenario e
 ```
 
-**铺垫好 = 剧情顺畅 = 不需要旁白解释**
+**Copy Matching**: A copy is nested repeatedly until it breaks away from the copy
 
 ---
 
-## 三十二、情绪推进
+## Twenty-seven, the traditional xuanhuan is broken
 
-### 核心原则
-**不写事情，写人表现出来的情绪**
+### Core Issues
+There are too many stocks, serious homogeneity, and readers are tired of aesthetics.
 
-| ❌ 写事情 | ✅ 写情绪 |
+### How to break the situation: put old wine in new bottles
+**Micro-innovation** three directions:
+1. **Character Innovation**: Design plot around core characters
+   - Example: Useless character design → Only "better than useless" can join the team
+   - Example: Waste material → On the contrary, he is the only candidate for the
+     inheritance of Tuoshe Dongfu
+2. **golden finger innovation**: Give readers a sense of invincibility + restrictions
+   - Example: Pagoda type (treasures hidden on each floor, expectations at every level)
+   - Avoid: Too invincible → plot collapse
+3. **Worldview Innovation**: Cultivation System/World Rules
+   - Example: Only strong bloodlines can practice, ordinary bloodlines are not eligible
+
+### Avoid pitfalls
+- Newcomers should not innovate in the cultivation system to make it easier for readers
+  to substitute
+- The rules of how the world works must resonate with emotions
+
+---
+
+## Twenty-eight, writing vs plot
+
+### Core Ideas
+**Plot is more important, writing is the least important**
+
+### Writing style positioning
+- Writing is a tool to serve the plot, not the purpose
+- The sentences are smooth and the story can be told clearly = core
+- Writing skills gradually improve through long-term writing
+
+---
+
+## 29. Creation preparation
+
+### Material accumulation
+- golden finger/world view is inspired by: movies/animations/novels/games
+- Record your sudden ideas at any time
+- Humorous memes/jokes: Collect Douyin/online ones and incorporate them into character
+  dialogues
+
+---
+
+## 30. Writing mentality
+
+### What to do with Kavin
+Kavin = It won’t look good when written / it will be flat / it will be repetitive
+
+**Coping**: Let yourself feel comfortable first, then bite the bullet and write quickly
+if you can’t think of anything.
+
+**Core: You must write, no matter how stuck you must write**
+
+---
+
+## 31. Outline and Rhythm
+
+### Ensure smooth plot
+**Prepare three satisfying payoff**:
+```
+A plot → foreshadowing B + C
+B plot → foreshadowing C + D
+C plot → foreshadowing D + E
+```
+
+**Good foreshadowing = smooth plot = no need for narration to explain**
+
+---
+
+## 32. Emotional promotion
+
+### Core Principles
+**Don’t write about things, write about the emotions shown by people**
+
+| ❌ Write about things | ✅ Write about emotions |
 |---------|---------|
-| 主角家族被屠，很绝望愤怒 | 尸横遍野→瞳孔猛缩→浑身颤栗→撕心裂肺大吼 |
+| The protagonist’s family was slaughtered, and he was very desperate and angry | Corpses littered the field → Pupils shrank → Whole body trembled → Heartbreaking roar |
 
-### 情绪传递链
-- 情绪传递 = 剧情推动
-- 情绪发泄 = 爽感来源
-- 情绪节奏：一步步递进，逼格越来越高
+### Emotional Transmission Chain
+- Emotional transmission = plot promotion
+- Emotional outlet = source of pleasure
+- Emotional rhythm: step by step, the level is getting higher and higher
 
 ---
 
-## 三十三、战斗场面
+## Thirty-three, battle scenes
 
-### 核心原则
-**战斗必须有意义，不是为了打而打**
+### Core Principles
+**The fight must be meaningful, not just for the sake of fighting**
 
-| ❌ 无意义战斗 | ✅ 有意义战斗 |
+| ❌ Meaningless battles | ✅ Meaningful battles |
 |-------------|-------------|
-| 反派无脑嘲讽被打脸，没后续 | 传递情绪：感激/震惊天赋/引入新剧情 |
+| The villain's mindless taunt was face-slapping, but there was no follow-up | Conveying emotions: gratitude/shock talent/introduction of new plot |
 
-### 战斗目的 = 传递几种情绪
-- **传1种情绪**：一招解决
-- **传2种情绪**：需要展示天赋（越级挑战）
-- **传3种情绪**：需要展示绝学
+### Combat purpose = convey several emotions
+- **Transfer 1 emotion**: One move to solve it
+- **Transfer 2 emotions**: Need to show talent (leap-level challenge)
+- **Tell 3 kinds of emotions**: need to show your unique skills
 
-### 好战斗示例
-生死决斗用欲扬先抑：对手一直占上风→底牌爆发→情绪彻底爆发
+### Good Fighting Example
+In a life-and-death duel, the opponent always has the upper hand → his trump card
+explodes → his emotions explode completely
 
 ---
 
-## 三十四、副本设计
+## Thirty-four, copy design
 
-### 副本定义
-- 副本 = 小段故事，嵌套在大故事中
-- 对主线有推动作用
-- 不是支线，是完整事件
+### Copy Definition
+- Transcript = a small story, nested within a larger story
+- Promote the main line
+- It's not a branch line, it's a complete event
 
-### 基础三段式
-| 阶段 | 内容 | 爽点类型 |
+### Basic three-stage
+| Stage | Content | Satisfying payoff type |
 |------|------|---------|
-| **起因** | 铺垫和期待，事件预告 | 爽点预热 |
-| **经过** | 剧情展开、代入感、爽点引爆 | 爽点爆发 |
-| **结果** | 收获和成长 | 爽点回味 |
+| **Cause** | Foreshadowing and expectations, event preview | Satisfying payoff warm-up |
+| **Process** | The plot unfolds, the sense of substitution, the satisfying payoff explodes | The satisfying payoff explodes |
+| **Results** | Harvest and Growth | Satisfying payoff aftertaste |
 
-### 设计流程：倒推法
-1. **先定爽点**（高潮/结局）
-2. **锚定结局**倒推过程
-3. **优势**：人物线收束，动机方向感明确
+### Design Process: Backward Process
+1. **Decide satisfying payoff first** (climax/ending)
+2. **Anchor Ending** Backward Process
+3. **Advantages**: The character lines are consolidated and the sense of motivation and
+   direction is clear.
 
-### 锁链式铺垫
-**❌ 并联**：A→B→C→D
-**✅ 串联**：A1-A2-B1-A3-B2-C1-B3...
+### Chain Bedding
+**❌ Parallel connection**: A→B→C→D
+**✅ Series**: A1-A2-B1-A3-B2-C1-B3...
 
-下一个事件的开头，嵌入到前一个事件的过程中
+The beginning of the next event, embedded in the process of the previous event
 
-### 伏笔埋入
-- **短线伏笔**：直接引爆，短平快
-- **长线伏笔**：深埋，等待结局引爆
-- 锚定结局后，所有伏笔指向同一结局
+### Foreshadowing buried
+- **Short-term foreshadowing**: Detonate directly, short-term and quick
+- **Long-term foreshadowing**: Buried deep, waiting for the ending to explode
+- After anchoring the ending, all the foreshadowing points to the same ending.
 
-### 经过阶段
-- **节奏**：高潮幅度不必太大，不断写小起伏
-- **过度紧张**→阅读疲惫
-- **主角闪光点**：破局之策，人无我有
+### Passing Stage
+- **Rhythm**: The climax does not need to be too big, keep writing small ups and downs
+- **Excessive tension** → Tired from reading
+- **Protagonist's shining point**: The strategy to break the situation, no one else has
+  it but I have it
 
-### 结果阶段
-**收获必须对后续有作用**：
-- 财富、道具、能力
-- 情报线索、新人物关系
-- 成为下一个事件的钩子
+### Result Stage
+**The harvest must have an effect on the follow-up**:
+- Wealth, props, abilities
+- Intelligence clues, new character relationships
+- Become a hook for the next event
 
-### 避坑
-- 挖坑一时爽，填坑火葬场
-- 不要过于追求合理性，适度即可
-- 大高潮过多→期待感耗尽→弃文
-- 日常不能水文，要展现角色对某事的态度
+### Avoid pitfalls
+- Digging a pit feels good for a while, filling it for a crematorium
+- Don’t pursue rationality too much, just be moderate
+- Too many climaxes → Exhausted of expectations → Abandoned the article
+- Daily life cannot be superficial, it must show the character’s attitude towards
+  something
 
 ---
 
-## 三十五、卡文解决
+## Thirty-five, Cavan solution
 
-### 三种卡文类型
+### Three types of cards
 
-| 类型 | 原因 | 解决方案 |
+| Type | Cause | Solution |
 |------|------|---------|
-| 情节卡顿 | 不知道后续怎么发展 | 复盘大纲→拉细纲→找配角线→换地图 |
-| 无框架 | 没写大纲就开写 | 整理细纲找未填的坑 |
-| 个人原因 | 情绪/身体/灵感/素材 | 休息1-2天，翻素材找灵感 |
+| The plot is stuck | I don’t know how it will develop in the future | Review the outline → refine the outline → find supporting characters → change the map |
+| No framework | Start writing without writing an outline | Organize the detailed outline to find unfilled holes |
+| Personal reasons | Emotions/body/inspiration/materials | Take a break for 1-2 days and look through materials for inspiration |
 
-### 情节卡顿四步法
-1. **复盘大纲细纲**，查漏补缺
-2. **加快进度**，精简情节，跳出卡文区域（❌千万别水文）
-3. **换地图**，换支线发展
-4. **从配角下手**，丰满剧情
+### Four Steps to Plot Stuttering
+1. **Review the outline and details**, check for omissions and fill in the gaps
+2. **Speed up the progress**, streamline the plot, and get out of the Cavan area (❌Don’t
+   be hydrological)
+3. **Change map**, change branch line development
+4. **Start with the supporting roles**, full of plot
 
-### 避坑
-- 卡文时**不要水文凑字数**
-- 越卡文越要精简情节，越快越好
-
----
-
-## 三十六、突破十万字
-
-### 核心问题
-十万字考验综合能力：
-- 故事框架搭建
-- 主线支线设计
-- 人物关系拉扯
-- 素材积累
-
-### 开书前想清楚
-1. **开篇是否精彩**：包袱给出来，先不拆
-2. **故事框架够庞大**：困境/目标/反转能否支撑50万字
-3. **人物关系够精彩**：爱恨交织，有让人又爱又恨的角色
-4. **明暗线安排**：支线何时牵出，多线如何并行
-
-### 素材来源
-- 身边人的故事
-- 自己经历的爱恨成败
-- **艺术源自生活**
-
-### 避坑
-- 素材积累是慢功夫，每天积累10个点子
-- 新人前三本书是练手，一本比一本好
+### Avoid pitfalls
+- When you are stuck in writing **don’t try to make up the word count**
+- The more clumsy it is, the more necessary it is to streamline the plot, the sooner the
+  better.
 
 ---
 
-## 三十七、签约要点
+## Thirty-six, breaking through 100,000 words
 
-### 编辑看什么
-1. **三观正**：符合主流价值观，不抄袭
-2. **阅读观感**：无错别字，语句流畅，排版清晰
-3. **题材适配**：研究番茄榜单和数据
-4. **创新性**：独创性 > 同质化
-5. **期待感**：故事节奏详略得当，爽点精彩
+### Core Issues
+One hundred thousand words test comprehensive ability:
+- Story frame building
+- Main line branch line design
+- The relationship between characters
+- Material accumulation
 
-### 避坑
-- 人设不讨喜 = 毒点
-- 故事逻辑不流畅 = 毒点
-- 同质化 = 难签约
+### Think clearly before opening the book
+1. **Is the opening exciting?**: Give me the baggage, don’t unpack it yet
+2. **The story frame is huge enough**: Can the dilemma/goal/reversal support 500,000
+   words?
+3. **The relationship between the characters is exciting**: Love and hate are
+   intertwined, and there are characters that make people love and hate them.
+4. **Arrangement of light and dark lines**: when to pull out branch lines and how to run
+   multiple lines in parallel
+
+### Source of material
+- Stories about people around you
+- The success and failure of love and hate that one has experienced
+- **Art comes from life**
+
+### Avoid pitfalls
+- The accumulation of materials is a slow process. Accumulate 10 ideas every day.
+- The first three books for beginners are for practicing skills, each one is better than
+  the last
 
 ---
 
-## 三十八、CP塑造
+## 37. Key points of signing the contract
 
-### 将CP看做一个整体
-单独人设需要现想冲突；整体设计后续简单
+### What does the editor look at?
+1. **Three Views**: In line with mainstream values, no plagiarism
+2. **Reading impression**: No typos, smooth sentences, clear layout
+3. **Theme Adaptation**: Research Fanqie lists and data
+4. **Innovation**: Originality > Homogenization
+5. **Expectation**: The story is well-paced and the satisfying payoff is exciting.
 
-### CP类型 × CP关系
-| CP类型 | CP关系 |
+### Avoid pitfalls
+- Unlovable character = poisonous point
+- The story logic is not smooth = poisonous point
+- Homogeneity = difficult to sign contracts
+
+---
+
+## Thirty-eight, CP shaping
+
+### Think of CP as a whole
+Individual character design requires immediate conflict; the overall design is simple to
+follow.
+
+### CP type × CP relationship
+| CP type | CP relationship |
 |--------|--------|
-| 一见钟情/日久生情/由恨生爱/步步为营 | 单向暗恋/双向暗恋/明恋/被迫CP |
+| Love at first sight/love over time/hate into love/step by step | One-way secret love/two-way secret love/bright love/forced CP |
 
-### 天然冲突 + 致命吸引
-- **冲突**：三观/立场/阶级/伦理/人生经历
-- **吸引**：不能只有冲突没有糖
+### Natural conflict + fatal attraction
+- **Conflict**: Three views/position/class/ethics/life experience
+- **Attraction**: You can’t have conflict without sugar.
 
-### 增加冲突方式
-- **三观冲突**：环保女主 vs 不择手段商人的男主
-- **阶级冲突**：大小姐 vs 卖烤串的男主
-- **伦理冲突**：前男友的小叔叔/伪骨科
-- **身份冲突**：捉妖师 vs 妖精 / 小偷 vs 警察
+### Add conflict methods
+- **Conflict of Three Views**: Environmental protection heroine vs. unscrupulous
+  businessman hero
+- **Class Conflict**: The eldest lady vs the male protagonist who sells kebabs
+- **Ethical Conflict**: Ex-boyfriend’s uncle/pseudo-orthopedics
+- **Identity Conflict**: Monster Hunter vs Goblin / Thief vs Police
 
-### 人物标签
-- **一个核心标签**：比多个标签更突出
-- 反复用不同情节强化这个标签
-
----
-
-## 三十九、避免人设崩塌
-
-### 根因
-读者认为角色对某事反应不一致 = 人设崩塌
-
-### 方法1：框出行为底层逻辑
-- 为人物设计最底层的行为逻辑
-- 通篇遵循这个逻辑运行
-- 例：大家闺秀用理性思维对待不理性世界
-  - 面对挑衅→迂回处理，不以暴制暴
-
-### 方法2：不对角色下定义
-- 不分绝对善恶黑白
-- 只要动机和欲望不违背底层逻辑
-- 其他选择和行为都合理
-
-### 方法3：重立场和选择
-- **不是善恶对立，而是立场冲突**
-- 例：两个女性争公司权力
-  - 工作上：相互争斗
-  - 工作外：可以互助
-- 人物可以脱离工具化
-
-### 避坑
-- 恶毒女配一路坏事做尽 = 工具人 = 不讨喜
-- 一个角色只有一个欲求 = 单薄
-- 反派单纯给主角添堵 = 难以令人信服
+### Character tag
+- **One core tag**: more prominent than multiple tags
+- Repeatedly use different plots to reinforce this label
 
 ---
 
-## 四十、人物小传构成
+## Thirty-nine, avoid the collapse of the personality
 
-### 五要素
-| 要素 | 内容 |
+### Root Cause
+Readers think characters are reacting inconsistently to something = character collapse
+
+### Method 1: Frame the underlying logic of the behavior
+- Design the lowest level behavioral logic for the characters
+- Follow this logic throughout the article
+- Example: Every lady uses rational thinking to deal with the irrational world
+  - In the face of provocation → deal with it in a roundabout way and do not respond to
+    violence with violence
+
+### Method 2: Not defining the role
+- No distinction between absolute good and evil, black and white
+- As long as motivations and desires do not violate the underlying logic
+- Other choices and actions are reasonable
+
+### Method 3: Emphasis on position and choice
+- **It is not an opposition between good and evil, but a conflict of positions**
+- Example: Two women compete for power in the company
+  - At work: fighting with each other
+  - Outside work: can help each other
+- Characters can be freed from instrumentalization
+
+### Avoid pitfalls
+- The vicious female supporting character does all the bad things along the way = a tool
+  = unlovable
+- A character with only one desire = thin
+- The villain simply creates obstacles for the protagonist = unconvincing
+
+---
+
+## 40. Composition of character biographies
+
+### Five Elements
+| Elements | Content |
 |------|------|
-| 身份背景 | 名字/年龄/出身/职业/势力/等级/技能/武器/社会关系/外貌 |
-| 性格习惯 | 浓缩标签：爽直/隐忍/阴险/懦弱 |
-| 价值态度 | 价值观+对生活的态度，决定面对事件的反应 |
-| 理想目标 | 人物内驱力，代表故事主线 |
-| 外部压力 | 外部迫使做某事，与理想冲突创造故事 |
+| Identity background | Name/age/origin/occupation/power/level/skills/weapons/social relations/appearance |
+| Personality and habits | Condensed tags: straightforward/tolerant/insidious/cowardly |
+| Values and attitudes | Values + attitude towards life determine the reaction to events |
+| Ideal goal | The inner driving force of the character, representing the main line of the story |
+| External pressure | External force to do something, conflict with ideals creates story |
 
-### 性格与背景的关系
-- 梅长苏蛰伏隐忍 → 被陷害死里逃生
-- 甄嬛喜好读书 → 文官之女，家庭教育良好
-- 安陵容阴狠 → 从小被欺压，在混沌中求生
+### Relationship between character and background
+- Mei Changsu lay dormant and endured → escaped from death after being framed
+- Zhen Huan likes to read → the daughter of a civil servant, with a good family
+  education
+- An Lingrong is ruthless → Being bullied since childhood and surviving in chaos
 
-### 习惯作为伏笔锚点
-- 有城府的人：喜怒不形于色，把玩扇子
-- 爽直的人：大口吃饭，徒手啃鸡腿
-- 生性多疑的人：让别人先吃
+### Habits serve as foreshadowing anchors
+- People who have a city: they don't show their emotions or anger, they just play with
+  fans
+- A straightforward person: eats with big mouthfuls and gnaws chicken legs with bare
+  hands
+- People who are suspicious by nature: let others eat first
 
 ---
 
-## 四十一、组合反差标签法
+## 41. Combined contrast labeling method
 
-### 核心公式
-- **"看似如此，实则不然"**：外表柔弱，实则力能扛鼎
-- **"外表如此，实则这般"**：看似油滑奸诈，实则天真呆傻
+### Core Formula
+- **"It seems like this, but it's not"**: Appearing to be weak, but actually being able
+  to carry a heavy weight
+- **"Looks like this, but is actually like this"**: Looks slick and cunning, but is
+  actually naive and stupid
 
-### 扁平 vs 圆形人物
-| 类型 | 特征 |
+### Flat vs Round Figures
+| Type | Characteristics |
 |------|------|
-| 扁平人物 | 类型化，可通过反差标签鲜活 |
-| 圆形人物 | 复杂多面，有不可磨灭的转变与成长 |
+| Flat characters | Typical, can be brought to life through contrasting labels |
+| Round characters | Complex and multi-faceted, with indelible transformation and growth |
 
-### 标签层层剥开
-1. 先展露表层标签（外表/性格）
-2. 层层压力施加，矛盾逼着抉择
-3. 最终展露深层内核（价值态度/理想目标）
+### Peeling off labels layer by layer
+1. Reveal surface labels first (appearance/personality)
+2. Layers of pressure are exerted, and contradictions force choices.
+3. Finally reveal the deep core (value attitude/ideal goal)
 
-### 极端化原则
-- 人设标签极端 = 对应反应只有一个
-- 例子：中庸守正的人 → 被迫冒尖后惶恐不安，急于抹除
-
----
-
-## 四十二、主角团组合
-
-### 人数设定
-- 女频：3人最佳
-- 长篇百万字+：可适当放宽到5-7人
-- 每个副本：1-3人为核心推进，其余淡化
-
-### 引入方式
-- 通过事件给角色贴标签
-- 事件 = 外部压力驱动或内部理想驱动
-- 人物行为动机 = 展露人设标签
-
-### 主角团目标设定
-- **共同长期目标**：将长线剧情拉下去
-- 例子：寻找五灵珠/建设家园/破案找真相
-
-### 主角团内人设要求
-- 彼此之间需要反差
-- 起点不一致，终点一致 = 更多摩擦与火花
-- 不要两个人在目标/性格/背景完全重合
+### Principle of Extremes
+- Personal label extreme = only one corresponding response
+- Example: A person who is moderate and upright → panics after being forced to stand out
+  and is eager to erase
 
 ---
 
-## 四十三、人物弧光
+## Forty-two, protagonist group combination
 
-### 定义
-人物在外部压力和转折事件中做出抉择，完成蜕变或本性的剧变
+### Number of people setting
+- female-oriented: 3 people are the best
+- Long story with one million words+: can be appropriately extended to 5-7 people
+- Each copy: 1-3 people push the core, and the rest fade
 
-### 构建方法
-1. 确定初始标签清晰
-2. 不断加压，让人物在事件中做出选择
-3. 关键事件 → 不可逆转的转折点 → 完成标签转化
+### Introduction method
+- Tag characters by events
+- Event = driven by external pressure or driven by internal ideals
+- Motives for character behavior = revealing character labels
 
-### 弧光示例
-| 开头 | 结尾 |
+### Protagonist group goal setting
+- **Common long-term goal**: To continue the long-term plot
+- Example: Looking for the Five Spiritual Beads/Building a Home/Solving Cases to Find
+  the Truth
+
+### Character requirements for the protagonist group
+- Need contrast between each other
+- Inconsistent Qidian, consistent end points = more friction and sparks
+- Don’t let two people completely overlap in goals/characters/backgrounds
+
+---
+
+## Forty-three, character arc
+
+### Definition
+Characters make choices under external pressure and turning events, completing
+transformation or drastic changes in nature.
+
+### Build method
+1. Make sure the initial label is clear
+2. Continuously increase pressure to allow characters to make choices during events
+3. Key event → irreversible turning point → complete label conversion
+
+### Arc flash example
+| Beginning | End |
 |------|------|
-| "我要荡平天下不平事" | "我早就不练剑了，世道如此，我一人无力改变" |
-| "肃清世界？没兴趣" | "这千年旧秩序，我当一力挑之" |
-| 为了赚钱搞仿制药 | 为了救人 |
+| "I want to put an end to the injustices in the world" | "I stopped practicing swordsmanship a long time ago. The world is like this and I can't change it alone." |
+| "Purge the world? Not interested" | "I will challenge this thousand-year old order" |
+| Make generic drugs to make money | To save people |
 
-### 主角团群像弧光
-- 不需要相同时间/相同事件
-- 各有各的主要副本，各有各的成长
-- 每个副本以其中一人为核心行动
-
----
-
-## 四十四、代入感本质
-
-### 读者感受
-- 主角就是我
-- "我"正在经历什么"事"
-
-### 核心
-- 故事核心 + 关键共鸣
-- 读者无法与角色共鸣 → 无法代入
+### Protagonist group portrait arc light
+- No need for same time/same event
+- Each has its own main copy, and each has its own growth.
+- Each copy operates with one of them as the core
 
 ---
 
-## 四十五、代入感六大支柱
+## 44. The essence of the sense of substitution
 
-### 1. 基础信息交代与标签化
-- 让读者认知主角：外貌/衣着/性格/特征
-- 百十来字概括
-- 例子："小爷我乃镇南府世子林峰..." → 一句话体现地点/人物/特质/身份
+### Readers' feelings
+- The protagonist is me
+- "What" am I going through?
 
-### 2. 具体化、可视化、熟悉感
-- 描述具体到读者能想象的东西
-- 读者会自动联想
-- **熟悉感**：读者经历过的场景 → 天然代入感
-  - 例："高考过后的分手"在教学楼后小树林
-
-### 3. 共鸣（认知 + 情绪）
-**认知共鸣**：
-- 主角的选择与读者的选择重叠
-- "我也会这么做！XX就该这样做！"
-
-**情绪共鸣**：
-- 利用亲情作为纽带（最简单）
-- 以弱势方/愤怒情绪切入
-- 例：
-  - 捡废品抚养长大的奶奶被混混欺负
-  - 战神女儿住狗窝
-  - 妹妹住院工资被克扣
-
-### 4. 欲望与好奇心
-**基础欲望**（被动）：
-- 不劳而获、高人一等、权势地位
-- 读者通过小说释放情绪
-
-**主动欲望**（期待感）：
-- 作者刻意塑造的"情绪缺口"
-- 例："反派登门作恶，殊不知主角早已今非昔比"→期待打脸
-
-### 5. 五感代入
-视觉/听觉/嗅觉/触觉/味觉
-- 潮湿的短袖黏在后背上
-- 医院消毒水的味道
-- 让读者在脑中构建画面
-
-### 6. 人设与代入感
-- 不完美的人设更平易近人
-- 角色有缺点 → 成长空间 → 人物弧光
-- 例子：完美女角色真名叫"牛翠花" / 霸道总裁回家吃淀粉肠
+### Core
+- Story core + key resonance
+- Readers cannot relate to the characters → cannot be substituted
 
 ---
 
-## 四十六、稳住剧情节奏
+## 45. Six Pillars of Sense of Embodiment
 
-### 题材选择
-根据读者需求选题材：
-- 作者 = 销售员
-- 作品 = 商品
-- 人流量多的街道 = 读者多的大分类题材
+### 1. Basic information exchange and labeling
+- Let readers recognize the protagonist: appearance/clothing/personality/characteristics
+- Summary in a hundred or so words
+- Example: "Young master, I am Lin Feng, the eldest son of Zhennan Mansion..." → One
+  sentence reflects the place/person/trait/identity
 
-### 开篇吸引读者
-**把最好看的水果摆在第一层**
-- 开篇一定要吸引读者好奇
-- 不是"慢热后面才好看"（等于把烂苹果摆上面）
+### 2. Embodiment, visualization, and familiarity
+- Describe something specific enough that the reader can imagine it
+- Readers will automatically associate
+- **Familiarity**: Scenes that readers have experienced → Natural sense of immersion
+  - Example: "Breakup after the College Entrance Examination" in the woods behind the
+    teaching building
 
-### 话术循序渐进
-**层层叠加的情绪价值**：
-- 摆满水果 → 挂个牌子"现摘现卖"
-- 加一句"老板和小姨子跑了" → 爆了
+### 3. Resonance (Cognition + Emotion)
+**Cognitive Resonance**:
+- The protagonist's choices overlap with the reader's choices
+- "I will do the same! This is what XX should do!"
 
-### 剧情钩子
-- 开篇留钩子，让读者看第二章
-- 钩子结束时，再留1-2个钩子
-- 一本书 = 一个钩子接一个钩子串起来
+**Emotional Resonance**:
+- Use family ties as a bond (easiest)
+- Enter with the weak side/anger
+- Example:
+  - Grandma who was raised by scavenging was bullied by gangsters
+  - The daughter of the God of War lives in a doghouse
+  - My sister’s salary was deducted when she was hospitalized
 
-### 节奏示例
+### 4. Desire and Curiosity
+**Basic Desire** (Passive):
+- Getting something for nothing, being superior to others, having a powerful position
+- Readers release their emotions through novels
+
+**Active desire** (sense of anticipation):
+- The "emotional gap" deliberately created by the author
+- Example: "The villain comes to do evil, but little does he know that the protagonist
+  is no longer what he used to be" → Looking forward to face-slapping
+
+### 5. Integration of five senses
+Vision/hearing/smell/touch/taste
+- Damp short sleeves stuck to the back
+- The smell of hospital disinfectant
+- Let readers build a picture in their minds
+
+### 6. Personality and immersion
+- Imperfect characters are more approachable
+- Character has flaws → room for growth → character arc
+- Example: The perfect female character's real name is "Niu Cuihua" / The domineering
+  president goes home and eats starch sausage
+
+---
+
+## Forty-six. Stabilize the rhythm of the plot
+
+### Theme selection
+Choose a topic based on reader needs:
+- Author = salesperson
+- work = product
+- Streets with lots of traffic = large categories with lots of readers
+
+### Start to attract readers
+**Put the most beautiful fruits on the first layer**
+- The opening chapter must attract readers’ curiosity
+- It's not "it looks good after it warms up slowly" (it's like putting rotten apples on
+  top)
+
+### Speaking skills step by step
+**Layer upon layer of emotional value**:
+- Place the fruit on display → put up a sign saying "pick now and sell now"
+- Add the sentence "The boss and sister-in-law ran away" → Exploded
+
+### Plot Hook
+- Leave a hook at the beginning to let readers read Chapter 2
+- When the hook ends, leave 1-2 more hooks
+- A book = strung together hook by hook
+
+### Rhythm Example
 ```
-苹果特价1块 → 买10斤有资格买香蕉 → 办卡50赠20 → 进群秒杀
+Apple is on sale for 1 yuan → If you buy 10 kilograms, you are eligible to buy bananas → Get 20 yuan for 50 yuan when you apply for a card → Join the group for flash sale
 ```
 
-### 剧情推进节奏
-**压 → 缓解 → 再压 → 爆发**：
-1. 先压（生存环境塑造压抑）
-2. 缓解（希望/日常/温情）
-3. 再压（更深的绝望）
-4. 爆发（正义伸张）
+### Plot advancement rhythm
+**Stress → Relief → Re-stress → Outbreak**:
+1. First pressure (the living environment shapes depression)
+2. Relief (hope/daily/warmth)
+3. Pressure again (deeper despair)
+4. Outbreak (Justice Delivered)
 
-### 控制节奏方法
-- 列出大纲后强行控制字数
-- 2500字交代什么 → 就写多少
-- 写超了 → 检查是否繁琐/无效剧情 → 删减
+### How to control rhythm
+- Forcibly control the word count after making an outline
+- What to explain in 2500 words → Just write as much as you want
+- Overwritten → Check whether the plot is cumbersome/invalid → Delete
 
 ---
 
-## 四十七、百万长篇节奏
+## Forty-seven, a million long rhythms
 
-### 新人困境
-- 前期爽点太密集 → 30-50万字后思维枯竭
-- 读者连续高节奏 → 阅读疲劳
-- 节奏前后差过大 → 弃书
+### Newcomer's Dilemma
+- Satisfying payoff in the early stage is too intensive → after 300,000-500,000 words,
+  thinking is exhausted
+- Readers’ continuous high rhythm → reading fatigue
+- The rhythm is too different → Abandon the book
 
-**建议：节奏稳，宁愿牺牲前期高密集爆发**
+**Suggestion: Keep the rhythm steady, rather sacrifice the high-intensity burst in the
+early stage**
 
-### 前30万字节奏
-| 阶段 | 内容 | 字数 |
+### Rhythm of the first 300,000 words
+| Stage | Content | Word count |
 |------|------|------|
-| 1-3章 | 新切入点代入 | - |
-| 4-5章 | 抛出设定 | - |
-| 3万字 | 短期目标爆发 + 留伏笔 | - |
-| 3-10万 | 完善人设+世界观 | 7万字 |
-| 10万字 | 大爆发 | - |
-| 10-30万 | 放缓节奏（不要太缓） | 20万字 |
+| Chapter 1-3 | New entry point substitution | - |
+| Chapter 4-5 | Throw setting | - |
+| 30,000 words | Short-term goal explosion + foreshadowing | - |
+| 30,000-100,000 | Perfect character + world view | 70,000 words |
+| 100,000 words | Big explosion | - |
+| 100,000-300,000 words | Slow down the pace (not too slow) | 200,000 words |
 
-### 核心方法
-**种植物思维**：
-- 不是一口气撒完种子
-- 分季节分品种分别播种
-- 始终做到：前方有坑，手中有铲，随时能挖，随时能填
+### Core Method
+**Plant Thinking**:
+- It’s not about scattering the seeds in one go
+- Sow seeds according to seasons and varieties
+- Always do this: there is a hole in front of you and a shovel in your hand. You can dig
+  it out and fill it in at any time.
 
-### 每日小技巧
-- 每1-2章都有看点
-- 每3-5万字有小剧情调动情绪
-- 放缓节奏时添加有趣角色
+### Daily Tips
+- There are highlights in every 1-2 chapters
+- Every 30,000-50,000 words has a small plot to arouse emotions
+- Add interesting characters when slowing down the pace
 
-### 避坑：不给读者出选择题
-| ❌ 选择题 | ✅ 判断题 |
+### Avoid pitfalls: Don’t give readers multiple-choice questions
+| ❌ Multiple Choice Questions | ✅ True or False Questions |
 |-----------|---------|
-| "杀还是不杀？" | "A罪无可赦，该死" |
-| 逼读者做选择 → 分流弃书 | 对错分明 → 无流失 |
+| "To kill or not to kill?" | "A's crime is unpardonable and deserves to die" |
+| Forcing readers to make choices → Diversion and abandonment of books | Clearly distinguish between right and wrong → No attrition |
 
-**例子**：
-- 反派杀全家 → 就是疯子，该死
-- 男女主两情相悦 → 不要搞成"杀父仇人"选择题
+**Example**:
+- The villain kills the whole family → He is a madman, damn it
+- The male and female protagonists are in love with each other → Don't make it a
+  multiple-choice question of "killing father and enemy"
 
 ---
 
-## 四十八、增强代入感四种方式
+## 48. Four ways to enhance the sense of substitution
 
-| 方式 | 说明 |
+| Method | Description |
 |------|------|
-| 熟悉感 | 熟悉的物品/口头禅/场景 |
-| 标签 | 人设标签 + 小缺点 + 记忆点（胎记/口头禅/瘸子） |
-| 冲突紧迫性 | 危机感拉满，读者被推着走 |
-| 接地气 | 人物缺点 + 白话描述 |
+| Sense of familiarity | Familiar items/mantras/scenes |
+| Tags | Personality tags + small flaws + memory points (birthmarks/mantras/lames) |
+| The urgency of the conflict | The sense of crisis is full, and the reader is pushed away |
+| Down-to-earth | Character shortcomings + vernacular description |
 
-### 文笔避坑
-- 减少"了"字和转折词
-- "虽然…但是…" "然而" "却"用多了 → 强行让读者认同作者
+### Avoid pitfalls in writing
+- Reduce the word "LE" and transition words
+- "Although...but..." "However" and "but" are used too much → force readers to identify
+  with the author
 
 ---
 
-## 四十九、人设三维模型
+## Forty-nine. Three-dimensional model of character
 
-### 主角 vs 配角 vs 反派
-| 角色 | 定位 | 核心 |
+### Protagonist vs Supporting Role vs Villain
+| Role | Positioning | Core |
 |------|------|------|
-| 主角 | 功能性 > 完美性 | 有金手指/信息差等其他人做不到的能力 |
-| 配角 | 记忆点 > 完整性 | 一个独特标签（嗜甜暗卫/结巴毒医） |
-| 反派 | 破坏力 > 邪恶值 | 实力强，给主角实际压力 |
+| Protagonist | Functionality > Perfection | Has golden finger/information gap and other abilities that others cannot do |
+| Supporting Role | Memory Points > Integrity | A Unique Label (Sweet Guard/Stuttering Poison Doctor) |
+| Villain | Destructive power > Evil value | Strong strength, putting actual pressure on the protagonist |
 
-### 人物基础模型
-- 姓名/年龄/身份（双面设定）
-- 外貌：**动态描写** > 静态描写
-- 记忆锚点：一个独特特征（刀疤/口头禅）
+### Character base model
+- Name/age/identity (double-sided setting)
+- Appearance: **Dynamic Description** > Static Description
+- Memory Anchor: A Unique Characteristic (Scar/Mantra)
 
-### 背景设定
-1. **家庭背景**：性格根本，冷漠的人从小没感受过爱
-2. **情感联系**：亲情/友情/爱情支撑剧情
-3. **双重身份**：隐藏身份 = 期待感（等读者期待掉马）
-
----
-
-## 五十、性格立体化
-
-### 核心矛盾点（三种）
-1. **价值观冲突**：新身份 vs 旧观念的矛盾
-2. **行为模式冲突**：社恐被迫当领袖
-3. **认知冲突**：缺爱的人不相信被爱
-
-### 特定行为反应
-- **本能反应**：被背叛时立即拔剑（鲁莽型）
-- **理性反应**：强压怒火分析利弊（冷静型）
-- **隐藏反应**：指尖掐入掌心渗血（隐忍型）
-
-### 语言动作
-言行举止必须符合身份，除非有隐藏身份（可用行为暴露埋伏笔）
+### Background Settings
+1. **Family background**: A person with a basic and indifferent personality who has
+   never felt love since childhood.
+2. **Emotional connection**: family/friendship/love supporting plot
+3. **Double identity**: Hidden identity = sense of expectation (waiting for readers to
+   look forward to losing their horses)
 
 ---
 
-## 五十一、成长规划
+## 50. Three-dimensional character
 
-### 成长可视化
-让读者看见主角的成长：
-- 修为实质化（灵气雾状→金丹凝实）
-- 物品升级（电动车→超跑钥匙）
-- 服装变化（帆布鞋→西装革履）
+### Core contradictions (three types)
+1. **Values Conflict**: New Identity vs Old Concepts
+2. **Behavior Pattern Conflict**: Society fears being forced to be a leader
+3. **Cognitive conflict**: People who lack love do not believe in being loved
 
-### 黑化/觉醒触发点
-3个关键事件 + 1个隐藏开关：
-- 亲友背叛/力量反噬/信仰崩塌
-- 童年记忆封印/血脉诅咒
+### Specific Behavioral Responses
+- **Instinct reaction**: Draw your sword immediately when betrayed (reckless type)
+- **Rational response**: Suppressing anger and analyzing the pros and cons (calm type)
+- **Hidden reaction**: Fingertips pinch into palm and blood oozes (forbearance type)
 
----
-
-## 五十二、社会关系网
-
-### 两类关系
-1. **家庭血缘关系**：天然带来麻烦或帮助（父亲是赌徒→孩子被催债）
-2. **人设强联系**：男女主必须紧紧捆绑
-
-### 增强强联系三种方式
-- **利益捆绑**：掌握对方必需资源
-- **信息差掌控**：知晓对方弱点
-- **情感负债**：一方曾因失误导致对方家族蒙冤
+### Verbal Action
+Your words and deeds must be consistent with your identity, unless you are hiding your
+identity (you can use your behavior to reveal your identity)
 
 ---
 
-## 五十三、记忆点强化
+## 51. Growth plan
 
-### 标志性行为
-- 语言特征：特定场景台词
-- 动作标签：小动作（转笔必失误/紧张啃衣角）
-- 时间标签：每逢月圆功力尽失（提到月亮=情绪紧张）
+### Growth visualization
+Let readers see the protagonist’s growth:
+- Cultivation becomes substantial (spiritual energy mist → golden elixir solidifies)
+- Item upgrade (electric car → supercar key)
+- Clothing changes (canvas shoes → suit and leather shoes)
 
-### 反差设定
-- **视觉反差**：娇小女生拿大铁锤
-- **行为反差**：高冷人设的奇怪笑点
-- **语言反差**：硬汉口头禅"你讨厌死了啦"
+### Blackening/awakening trigger point
+3 key events + 1 hidden switch:
+- Betrayal of relatives and friends/backlash of strength/collapse of faith
+- Childhood Memory Seal/Bloodline Curse
 
 ---
 
-## 五十四、人设禁忌
+## 52. Social network
 
-### 三不原则
-1. **配角独立于主角需求**：配角有自己的情感诉求和困境
-2. **忌信息堆砌**：用事件/侧写代替"性格固执"直述
-3. **忌完美人设**：不完美才能展开故事（废柴流/病娇）
+### Two types of relationships
+1. **Family blood relationship**: naturally brings trouble or help (the father is a
+   gambler → the child is debt collector)
+2. **Strong connection between characters**: The male and female protagonists must be
+   tightly bound
+
+### Three ways to enhance strong connections
+- **Bundling of Interests**: Master the other party’s necessary resources
+- **Information Gap Control**: Know the opponent’s weaknesses
+- **Emotional debt**: One party has wronged the other party's family due to mistakes
+
+---
+
+## Fifty-three, memory point strengthening
+
+### Iconic Behavior
+- Linguistic features: specific scene lines
+- Action tag: small actions (turning a pen will make mistakes/nervously chewing on the
+  corners of clothes)
+- Time tag: Every time the moon is full, all power is lost (mentioning the moon =
+  emotional stress)
+
+### Contrast settings
+- **Visual Contrast**: Petite girl holding a big hammer
+- **Behavior Contrast**: The strange laughter of the aloof persona
+- **Language Contrast**: The tough guy's catchphrase "You're so annoying"
+
+---
+
+## Fifty-four, personal taboos
+
+### Three No Principles
+1. **Supporting characters are independent of the protagonist's needs**: Supporting
+   characters have their own emotional appeals and dilemmas
+2. **Avoid information stacking**: Use events/profiles instead of direct statements
+   about "stubborn personality"
+3. **Avoid perfect character**: Only imperfections can unfold the story (waste/yandere)

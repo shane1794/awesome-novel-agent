@@ -1,20 +1,24 @@
-# knowledge 知识库
+# Knowledge Base
 
-> 按用途分为两类：**自动注入** 和 **与作者讨论**。
+> Divided into two categories by use: **Automatic injection** and **Discuss with the
+> author**.
 
-## 分类
+## Classification
 
-| 目录 | 用途 | 决策者 |
+| Table of Contents | Purpose | Decision Makers |
 |------|------|--------|
-| `scene-craft/` | 场景写作方法论——自动注入输出·写作规范 | **AI 自动**，无需作者 |
-| `format-specs/` | 格式规范——定义文件结构 | 系统固定 |
-| `genre-example/` | 题材案例——继承到项目 | 题材决定后自动 |
-| `plot-craft/` | 剧情设计方法论——展示给作者选 | **作者决策** |
-| `character-craft/` | 角色设定方法论——展示给作者选 | **作者决策** |
-| `title-craft/` | 取书名方法论——展示给作者选 | **作者决策** |
-| `anti-ai/` | 反 AI 规则（按题材分类）——去 AI 味参考 | **AI 自动**，无需作者 |
+| `scene-craft/` | Scenario writing methodology - automatically inject output and writing specs | **AI automatic**, no author required |
+| `format-specs/` | Format specification - define file structure | System fixed |
+| `genre-example/` | Theme case - inherited to the project | Automatically after the theme is decided |
+| `plot-craft/` | Plot design methodology - presented to the author for choice | **Author's decision** |
+| `character-craft/` | Character setting methodology - presented to the author for choice | **Author's decision** |
+| `title-craft/` | Methodology for selecting book titles - presented to the author for selection | **Author's Decision** |
+| `anti-ai/` | Anti-AI rules (categorized by subject matter) - reference without AI flavor | **AI automatic**, no author required |
 
-## 规则
+## Rules
 
-- **自动注入类**（scene-craft）：不用问作者，按场景类型自动匹配，经四步转化后注入输出·写作规范
-- **讨论决策类**（plot-craft / character-craft / title-craft）：Agent 展示方案，让作者选，不能自己决定
+- **Automatic injection of classes** (scene-craft): No need to ask the author, it is
+  automatically matched according to the scene type, and the output and writing specs
+  are injected after four steps of transformation.
+- **Discussing decision-making** (plot-craft / character-craft / title-craft): Agent
+  displays the plan and allows the author to choose. He cannot decide by himself.

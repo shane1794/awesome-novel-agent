@@ -1,50 +1,97 @@
-# 活人感写作方法（正向）
+# How to Write a Living Voice (Positive Guidance)
 
-> **职责声明：** 本文件是 anti-ai 的正向方法论——先讲"写成什么样"，写完后的清创以 common-rules.md 分级禁用表为准。本文件不定义阈值与档位；句式识别口径（含翻案腔变形外衣）见 common-rules.md T1 节。
->
-> 移植自 human-writing skill（MIT License, Copyright (c) 2026 Human Writing Skill contributors），按网文流水线转译。
+> **Responsibility statement:** This document is the forward methodology of anti-ai -
+> first talk about "how to write it", and the debridement after writing is based on
+> the common-rules.md hierarchical disablement table. This document does not define
+> thresholds and gears; the sentence pattern recognition caliber (including the
+> deformation coat of overturning the case) can be found in the T1 section of
+> common-rules.md. Ported from human-writing skill (MIT License, Copyright (c) 2026
+> Human Writing Skill contributors), translated according to the online writing
+> pipeline.
 
-## 活人感从哪来
+## Where does the feeling of being alive come from?
 
-活人感不是口头禅、粗口、错别字和网络梗，也不靠烟头、深夜、突然响起的电话这类道具堆出来的"真实感"。它分三层，重要性从高到低：
+The feeling of being alive does not depend on catchphrases, foul language, typos, and
+internet memes, nor does it rely on the "sense of reality" created by props such as
+cigarette butts, late at night, or suddenly ringing phones. It is divided into three
+levels, from high to low importance:
 
-1. **人物有眼下要办的事。** 要回一笔钱、躲过一次见面、保住体面、让家人相信一句话，都能推动故事，不必每场都是生死选择。
-2. **细节跟着人物的视角走。** 紧张的人先看出口，等钱的人盯着手机亮不亮，心虚的人记着对方沉默了多久。
-3. **最后才是句式与节奏。**
+1. **The characters have something to do right now. ** Recovering a sum of money,
+   avoiding a meeting, maintaining dignity, and convincing family members of a word can
+   all advance the story, and every scene does not have to be a life or death choice.
+2. **Details follow the character's perspective. ** Nervous people look at the exit
+   first, people waiting for money stare at whether the phone lights up, and guilty
+   people remember how long the other person has been silent.
+3. **The last thing is sentence structure and rhythm. **
 
-前两层立住了，第三层的技巧才有处安放；前两层空着，句子层面的规避只是换一种姿势。
+Only when the first two layers are upright can the skills of the third layer be placed;
+when the first two layers are left empty, the avoidance at the sentence level is just a
+change of posture.
 
-## 禁的是修辞动作，不是字面
+## What is prohibited is rhetorical action, not literal words
 
-把一个禁用句式换一套字继续做同一个动作，仍然算命中（变形外衣识别见 common-rules.md T1 节）。拆的办法只有一种：找到这句话原本想下的判断，从正面说出来，依据放在旁边。
+Change a forbidden sentence pattern to a set of words and continue to perform the same
+action, and the result is still correct (see section T1 of common-rules.md for deformed
+coat identification). There is only one way to dismantle it: find the original judgment
+in this sentence, state it from the front, and put the evidence beside it.
 
-## 人物与场景
+## Characters and Scenes
 
-- **先给人物一件眼下要办的事：** 谁先受到影响、他此刻想得到什么、为什么今天必须行动、什么让原办法失效、这次行动留下什么后果。
-- **性格藏在选择里。** 不贴善良/聪明/冷漠的标签，写他在谁面前退让、碰到什么会撒谎、总在哪一步犯同一个错。
-- **配角也有眼下要办的事。** 只递消息、制造误会、夸主角的配角，很快露出工具感。
-- **每场戏结束时至少改变一项：** 信息、关系、计划、风险、权力、理解、情绪。只换景色和说法、没有人换办法的戏，删短。
-- **转折来自人物此前的行动与已存在的规则。** 车祸、绝症、双胞胎、遗嘱、临时新规则不能反复救场。
+- **First give the character something to do at the moment:** Who is affected first,
+  what he wants to get at the moment, why he must act today, what makes the original
+  method ineffective, and what consequences this action will leave.
+- **Character is hidden in choice. ** Do not label him as kind/smart/cold, write about
+  whom he gives in to, how he lies about anything, and where he always makes the same
+  mistake.
+- **The supporting characters also have things to do right now. ** He only delivers
+  information, creates misunderstandings, and praises the protagonist's supporting
+  roles, which quickly reveals his tool sense.
+- **At least one thing changes at the end of each scene:** Information, relationship,
+  plan, risk, power, understanding, emotion. Scenes that only change scenery and
+  narration, but no one changes their approach, should be shortened.
+- **The turning point comes from the character's previous actions and existing rules. **
+  Car accidents, terminal illnesses, twins, wills, and temporary new rules cannot be
+  saved repeatedly.
 
-## 对白在做事
+## Dialogue is doing something
 
-人物说话通常在试探、遮掩、说服、拖延、靠近、推开或保住面子。可以答非所问，可以说一半。两人都知道的背景不为读者重念一遍，角色不轮流替作者讲主题。不同声音来自身份、关系与眼下压力，不靠固定口癖。
+Characters usually speak to test, cover up, persuade, delay, get closer, push away, or
+save face. You can answer questions that are not asked, and you can tell half of them.
+Backgrounds that both men know are not repeated to the reader, and characters do not
+take turns speaking for the author. Different voices come from identity, relationship
+and current pressure, not fixed oral preferences.
 
-## 设定等人物碰到再讲
+## We’ll talk about the settings when we meet the characters.
 
-先问一条规则会改变谁的行动、谁因此得利、谁要付代价。人物没碰到它，正文不提前介绍。规则可以被人物误解，作者不能在需要救场时临时改掉。陌生名词先让读者看见它怎么被使用，再补名字与来历。
+Start by asking whose actions a rule will change, who will benefit from it, and who will
+pay the price. The characters do not encounter it, and the text does not introduce it in
+advance. Rules can be misunderstood by characters, and authors cannot change them on the
+fly when a bailout is needed. For unfamiliar nouns, let the reader first see how it is
+used, and then add the name and origin.
 
-## 场景与概述交替
+## Alternating scenes and overviews
 
-关键选择、关系变化、秘密暴露、无法撤回的动作，用场景慢下来；重复劳动、长途移动、数月流逝，概述过去。全是场景时间走不动，全是概述读者碰不到人物。
+Key choices, changes in relationships, exposure of secrets, irrevocable actions are
+slowed down with scenes; repetitive labor, long-distance moves, the passage of months,
+summarize the past. It's all about scenes and you can't move through time, and it's all
+about overviews and the reader can't touch the characters.
 
-## 闲笔与错位必须有来路
+## There must be a reason for idle strokes and misalignment
 
-闲笔、岔话、情绪错位、信息密度极低的段落都是允许的，但每一处都要从当前场景、人物视角或人物关系里长出来。检验标准：删掉它，这一场的某个信息、气氛或关系会受损；毫不受损的就是插上去的装饰。
+Idle writing, digressions, emotional dislocations, and passages with extremely low
+information density are all allowed, but each paragraph must grow from the current
+scene, character perspective, or character relationship. Test criterion: If you delete
+it, a certain message, atmosphere or relationship of this scene will be damaged; what is
+not damaged is the decoration that is inserted.
 
-明令禁止的表演动作：
+Prohibited performance actions:
 
-- 不按固定间隔插闲笔——"每章第 N 段来一段生活细节"是新的模板
-- 不给每章配一处错位反应凑数——错位出自人物性格或场景压力，该错位时才错位
-- 连续短句是鼓点；单句成段只留给确实需要停一下的地方
-- 不穿论坛服装——口头禅、粗口、网络梗只有这个人物真会这样说时才留
+- Do not insert idle pens at regular intervals - "Come with a life detail in paragraph N
+  of each chapter" is the new template
+- Do not assign a misplaced reaction to each chapter to make up the number - the
+  misplacement comes from the character's personality or the pressure of the scene, and
+  it is misplaced when it should be misplaced.
+- Continuous short sentences are the drumbeat; single sentences are divided into
+  paragraphs only for places where you really need to stop.
+- Don’t wear forum attire,catchphrases, swear words, and internet memes are only
+  reserved if the character would actually say them.
