@@ -9,15 +9,15 @@ override: {}
 locked: []
 ---
 
-# 群像场景风格卡
+# Ensemble Scene Style Card
 
-继承主卡 `writing-style.md`，本卡只覆盖群像场景差异维度（rhythm / dialogue_style）。
-量化 override 由 style-distiller 按群像样本蒸馏后填充。
+Inherits the main card `writing-style.md`; this card only overrides the dimensions that differ for ensemble scenes (rhythm / dialogue_style).
+Quantitative overrides are filled in by style-distiller after distilling ensemble scene samples.
 
-## 描写层次和手法（群像场景）
+## Description Levels and Techniques (Ensemble Scene Scene)
 
-- （蒸馏后由 style-distiller 填充群像场景专属技法）
+- (Techniques specific to ensemble scene scenes, filled in by style-distiller after distillation)
 
-## few-shot 例句
+## Few-Shot Example Sentences
 
-- （群像场景标志性例句）
+- (Signature example sentences for ensemble scene scenes)

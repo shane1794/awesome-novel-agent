@@ -1,164 +1,160 @@
 # updater-archive-sop
 
-归档时 lore-keeping 的标准操作流程。
+The standard operating procedure for lore-keeping at archive time.
 
-## 一、输入检查
+## 1. Input Checks
 
-| 检查项 | 通过条件 | 失败处理 |
+| Check Item | Pass Condition | Failure Handling |
 |--------|---------|---------|
-| `.agent/task/archive-order.md` | 存在, 含 vol/chapter 号 | 报错给 novel-agent |
-| `.agent/{chapter}-draft-ai.md` | 存在，或可从 `archives/*.draft.md` 创建 | 缺失 → 复制草稿创建（主路径，见 Step 1 ①） |
-| `archives/vol-{N}-ch-{M}*`（`.md`/`.anti-ai.md`/`.draft.md` 任一） | 存在 | 报缺少正文；定稿 `.md` 由 Step 1 生成 |
-| `settings/character-setting/` | 可读写 | 不存在则创建目录 |
-| `settings/timeline.md` | 可读写 | 不存在则创建文件 |
-| `.agent/status.md` | 存在 | 报错给 novel-agent |
+| `.agent/task/archive-order.md` | Exists, containing the vol/chapter numbers | Report the error to novel-agent |
+| `.agent/{chapter}-draft-ai.md` | Exists, or can be created from `archives/*.draft.md` | Missing → copy the draft to create it (main path, see Step 1, item 1) |
+| `archives/vol-{N}-ch-{M}*` (any of `.md` / `.anti-ai.md` / `.draft.md`) | Exists | Report the missing main text; the finalized `.md` is generated in Step 1 |
+| `settings/character-setting/` | Readable and writable | Create the directory if it does not exist |
+| `settings/timeline.md` | Readable and writable | Create the file if it does not exist |
+| `.agent/status.md` | Exists | Report the error to novel-agent |
 
-## 二、归档前检查
+## 2. Pre-Archive Checks
 
-| 检查项 | 操作 |
+| Check Item | Action |
 |--------|------|
-| 正文草稿存在？ | `archives/vol-{N}-ch-{M}-*.draft.md` 存在？缺失→**STOP**，正文尚未生成 |
-| chapter.md 完整？ | memo + emotional_design 有值？缺失→返回补章纲 |
-| chapter.md#status 为 outline？ | 归档成功后改为 archived（见 Step 1 末尾）；已是 archived → 说明重复归档，进幂等模式 |
-| `.agent/archiving/{chapter}.done` 存在？ | **存在 → 本章已归档过，进入幂等模式：跳过已完成步骤，只补缺失项**（见下"幂等规则"） |
+| Does the main text draft exist? | Does `archives/vol-{N}-ch-{M}-*.draft.md` exist? Missing → **STOP**; the main text has not been generated yet |
+| Is chapter.md complete? | Do memo + emotional_design have values? Missing → return it to fill in the chapter outline |
+| Is chapter.md#status outline? | After archiving succeeds, change it to archived (see the end of Step 1); already archived means a repeated archive; enter idempotent mode |
+| Does `.agent/archiving/{chapter}.done` exist? | **If it exists, this chapter was already archived; enter idempotent mode: skip finished steps and only fill in what is missing** (see "Idempotence rules" below) |
 
-### 幂等规则（防重放重复）
+### Idempotence Rules (prevent replay duplication)
 
-归档所有步骤都是**追加型**操作。如果本章曾归档到一半被中断，重派时必须先查重，不能整段重放：
+Every archive step is an **append-type** operation. If this chapter was archived halfway and interrupted, a re-dispatch must first check for duplicates and must not replay whole sections:
 
-| 追加目标 | 查重锚点 | 命中则 |
+| Append Target | Deduplication Anchor | On a hit |
 |---------|---------|--------|
-| 角色状态 `settings/character-setting/{id}.md` | 已含 `## vol-{N}-ch-{M} 状态变更` | 跳过该角色 |
-| 剧情履历 | 已含 `#### 第 {N} 卷第 {M} 章` | 跳过 |
-| 情绪弧线 | 已含 `#### 第 {N} 卷第 {M} 章` | 跳过 |
-| timeline `settings/timeline.md` | 已含 `vol-{N}-ch-{M}` 行 | 跳过 |
-| 生物检测 world-setting | 已含该生物 | 跳过 |
-| 记忆合并 writing-memory / chapter-memory | 已含同"原文+结论"条目 | 跳过 |
-| 反 AI 规则 / 文风偏好 | 已含 `[writer-preference]` 同规则 | 跳过 |
+| Character state `settings/character-setting/{id}.md` | Already contains `## vol-{N}-ch-{M} 状态变更` | Skip that character |
+| Plot history | Already contains `#### 第 {N} 卷第 {M} 章` | Skip |
+| Emotional arc | Already contains `#### 第 {N} 卷第 {M} 章` | Skip |
+| timeline `settings/timeline.md` | Already contains a `vol-{N}-ch-{M}` row | Skip |
+| Creature check in world-setting | Already contains that creature | Skip |
+| Memory merge in writing-memory / chapter-memory | Already contains an entry with the same "original text + conclusion" | Skip |
+| Anti-AI rules / style preferences | Already contains the same rule marked `[writer-preference]` | Skip |
 
-全部步骤完成后写 `.agent/archiving/{chapter}.done`；已存在则说明归档完整，直接标记 order DONE。
+After all steps finish, write `.agent/archiving/{chapter}.done`; if it already exists, archiving is complete, so directly mark the order DONE.
 
-## 三、存档流程
+## 3. Archive Flow
 
-### Step 1: 正文定稿（定稿 = Write 生成 `archives/vol-{N}-ch-{M}-{slug}.md`；不重命名、不删除——S2 禁删）
+### Step 1: Finalize the Main Text (finalized means Write-generating `archives/vol-{N}-ch-{M}-{slug}.md`; do not rename, do not delete, per S2 no-deletion)
 
-1. **创建 AI 原版快照（主路径，updater 负责）**：若 `.agent/{chapter}-draft-ai.md` 不存在，从当前草稿
-   `archives/vol-{N}-ch-{M}-*.draft.md` 复制一份作为 AI 原版快照（diff 基线）。快照创建必须先于任何
-   diff/定稿动作。快照与保留的 `.draft.md` 职责不同：**快照 = 审计基线（此后不改）；`.draft.md` = 历史稿留档（可偏离基线）**
-2. **判定并生成定稿**：只回答"哪个是最终内容"。任何分支都保留 `.draft.md` / `.anti-ai.md`，不删不改：
-   - **`.md` 已存在**（此前归档已生成）：
-     - 与 `.draft.md` / `.anti-ai.md` 内容一致 → `.md` 即定稿，跳过（幂等）
-     - 与任一保留稿不一致（作者归档后重写过）→ **STOP**，将差异展示给作者确认：
-       用新稿 Write 覆盖 `.md`，或维持旧 `.md`。不自动覆盖
-   - **`.md` 不存在，`.anti-ai.md` 存在** → Write 其内容到定稿：`archives/vol-{N}-ch-{M}-{slug}.md`
-   - **`.md` 不存在，仅 `.draft.md`** → Write 其内容到定稿：`archives/vol-{N}-ch-{M}-{slug}.md`
-   - **正文不存在（`.md`/`.anti-ai.md`/`.draft.md` 均无）** → STOP 报错给 novel-agent
-3. **复核**：定稿 `.md` 存在且非空；中间稿保留未删。归档后所有正文读取（diff、reader 回看、跨章一致性）
-   一律以 `.md` 为权威，其他后缀为中间稿
-4. **标记章纲已归档**：用 Edit 将 `chapters/vol-{N}-ch-{M}.md` 的 `status` 字段从 `outline` 改为 `archived`（只改该字段，不碰章纲正文）。此标记是 Step 10 卷边界检测的判断依据
+1. **Create the AI original snapshot (main path; updater is responsible)**: if `.agent/{chapter}-draft-ai.md` does not exist, copy the current draft `archives/vol-{N}-ch-{M}-*.draft.md` as the AI original snapshot (diff baseline). Snapshot creation must come before any diff / finalization action. The snapshot and the kept `.draft.md` have different duties: **the snapshot is the audit baseline (never changed after this); `.draft.md` is the historical draft kept on file (may drift from the baseline)**
+2. **Judge and generate the finalized text**: only answer "which one is the final content". In every branch, keep `.draft.md` / `.anti-ai.md`; do not delete or change them:
+- **`.md` already exists** (generated by an earlier archive):
+- Its content matches `.draft.md` / `.anti-ai.md` → `.md` is the finalized text; skip (idempotent)
+- It disagrees with either kept draft (the author rewrote it after archiving) → **STOP** and show the difference to the author for confirmation: overwrite `.md` with the new draft using Write, or keep the old `.md`. Do not overwrite automatically
+- **`.md` does not exist and `.anti-ai.md` exists** → Write its content to the finalized text: `archives/vol-{N}-ch-{M}-{slug}.md`
+- **`.md` does not exist, only `.draft.md`** → Write its content to the finalized text: `archives/vol-{N}-ch-{M}-{slug}.md`
+- **No main text exists (none of `.md` / `.anti-ai.md` / `.draft.md`)** → STOP and report the error to novel-agent
+3. **Re-check**: the finalized `.md` exists and is non-empty; the intermediate drafts are kept, not deleted. After archiving, all main text reads (diff, reader re-read, cross-chapter consistency) take `.md` as the authority; the other suffixes are intermediate drafts
+4. **Mark the chapter outline as archived**: use Edit to change the `status` field of `chapters/vol-{N}-ch-{M}.md` from `outline` to `archived` (only change that field; do not touch the chapter outline's main text). This marker is the basis for Step 10's volume boundary detection
 
-### Step 2: 角色状态更新 + 情绪弧线
+### Step 2: Character State Update + Emotional Arc
 
-1. 读正文，提取本幕出场角色
-2. 对每个出场角色：
-   - 如果已有角色文件 → 追加本幕状态变化
-   - 如果新角色（正文出现了但无设定文件）→ 创建角色文件，标注 `[auto-extracted]`
-3. 追加状态历史格式：
-   ```markdown
-   ## vol-{N}-ch-{M} 状态变更
-   - **位置:** 角色当前位置
-   - **状态:** 角色当前状态简述
-   - **人际关系变化:** xxx
-   - **能力/状态变化:** xxx
-   - **本幕关键台词/行为:** "..."
-   ```
-4. 追加剧情履历（跟在状态历史后面）：
-   ```markdown
-   ### 剧情履历
-   #### 第 {N} 卷第 {M} 章
-   - **行为:** {角色本幕实际做的事——击杀/选择/拯救/背叛等，含对象和结果}
-   - **关系变化:** {与谁的关系发生了什么性质变化，无则空}
-   ```
-5. 追记情绪弧线（跟在剧情履历后面）：
-   ```markdown
-   ### 情绪弧线
-   #### 第 {N} 卷第 {M} 章
-   - **情绪状态:** 愤怒/压抑/释然/期待/恐惧/温情/决心
-   - **触发事件:** 触发事件描述
-   - **强度:** 7/10
-   - **弧线方向:** 上升/回落/持平/转折
-   - **表达方式:** 身体反应/行为/对话/环境互动
-   ```
+1. Read the main text and extract the characters appearing in this scene
+2. For each appearing character:
+- If a character file already exists, append this scene's state change
+- If it is a new character (appears in the main text but has no settings file), create a character file marked `[auto-extracted]`
+3. Append the state history in this format:
+```markdown
+## vol-{N}-ch-{M} 状态变更
+- **位置:** 角色当前位置
+- **状态:** 角色当前状态简述
+- **人际关系变化:** xxx
+- **能力/状态变化:** xxx
+- **本幕关键台词/行为:** "..."
+```
+4. Append the plot history (following the state history):
+```markdown
+### 剧情履历
+#### 第 {N} 卷第 {M} 章
+- **行为:** {角色本幕实际做的事，击杀/选择/拯救/背叛等，含对象和结果}
+- **关系变化:** {与谁的关系发生了什么性质变化，无则空}
+```
+5. Add the emotional arc (following the plot history):
+```markdown
+### 情绪弧线
+#### 第 {N} 卷第 {M} 章
+- **情绪状态:** 愤怒/压抑/释然/期待/恐惧/温情/决心
+- **触发事件:** 触发事件描述
+- **强度:** 7/10
+- **弧线方向:** 上升/回落/持平/转折
+- **表达方式:** 身体反应/行为/对话/环境互动
+```
 
-### Step 2.5: 生物/怪物检测
+### Step 2.5: Creature / Monster Detection
 
-1. 读正文，提取本章出现或提及的动物、怪物、生物
-2. 与 `settings/world-setting.md` 的「生物与怪物」节对比
-3. 如发现不在列表中的生物 → 展示给作者确认：
-   > "本章出现了【怪物名】，不在 world-setting.md 的生物列表中。要加进去吗？"
-4. 作者确认 → 追加到 world-setting.md 的生物列表
+1. Read the main text and extract the animals, monsters, and creatures appearing or mentioned in this chapter
+2. Compare against the "Creatures and Monsters" section of `settings/world-setting.md`
+3. If a creature is found that is not in the list, show it to the author for confirmation:
+> "This chapter has, which is not in world-setting.md's creature list. Should it be added?"
+4. After the author confirms, append it to world-setting.md's creature list
 
-### Step 3: timeline 追加
+### Step 3: Timeline Append
 
-1. 提取本章关键事件（改变局势、角色认知、关系变化等）
-2. 追加到 `settings/timeline.md`：
-   ```markdown
-   | 章节 | 事件 | 影响 |
-   |------|------|------|
-   | vol-{N}-ch-{M} | {一句话事件} | {对后续的影响} |
-   ```
+1. Extract this chapter's key events (things that change the situation, character knowledge, or relationships)
+2. Append to `settings/timeline.md`:
+```markdown
+| 章节 | 事件 | 影响 |
+|------|------|------|
+| vol-{N}-ch-{M} | {一句话事件} | {对后续的影响} |
+```
 
-### Step 4: 持有物/经历更新
+### Step 4: Possessions / Experience Update
 
-按需执行（正文中角色的持有物、财产、关键经历有实质变化才更新，无则跳过）：
-- 角色持有物变化（获得/失去重要物品）→ 追加到对应 `settings/character-setting/{id}.md` 的状态历史
-- 角色关键经历变化（身份/职业/立场变更）→ 同上
-- 无变化 → 跳过本步（验收清单"持有物/经历已更新"勾选"无变化跳过"）
+Run as needed (only update when a character's possessions, property, or key experiences in the main text have substantially changed; skip otherwise):
+- A character's possessions change (gaining / losing an important item) → append to that character's `settings/character-setting/{id}.md` state history
+- A character's key experiences change (identity / profession / stance changes) → same as above
+- No change → skip this step (on the acceptance checklist, mark "possessions / experience updated" as "no change, skipped")
 
-### Step 5: 正文一致性检查（L2 合规）
+### Step 5: Main Text Consistency Check (L2 compliance)
 
-归档时对最终正文做内容合规验证：
+At archive time, run a content compliance check on the final main text:
 
-1. **设定合规**
-   - 世界观一致（无矛盾）
-   - 无 OOC（角色行为符合设定）
-   - 无题材禁忌内容
-   - 与前文连续性无断裂
+1. **Settings compliance**
+- Worldview consistent (no contradictions)
+- No OOC (character behavior matches the settings)
+- No genre taboo content
+- No break in continuity with earlier text
 
-2. **章纲兑现**
-   - required_changes 每条是否在正文中发生
-   - payoff 是否兑现
-   - prohibitions 是否遵守
+2. **Chapter outline fulfillment**
+- Did each required_changes item happen in the main text
+- Was the payoff fulfilled
+- Were the prohibitions obeyed
 
-3. **钩子兑现**
-   - 新埋钩子有 seed_text 可提取
-   - 收束钩子有明确段落
-   - 钩子分量与 payoff_plan 一致
+3. **Hook fulfillment**
+- Newly planted hooks have extractable seed_text
+- Closed hooks have a clear passage
+- Hook weight matches payoff_plan
 
-如有违规 → 标注到 status.md 供作者下次修正，不阻断归档。
+If there is a violation, mark it in status.md for the author to fix next time; do not block archiving.
 
-### Step 6: 写作反馈收集
+### Step 6: Writing Feedback Collection
 
-先问作者（或从对话中提取）：
+First ask the author (or extract it from the conversation):
 
-> "这次写这一章，你有没有什么写作上的要求、修改习惯，或者发现章纲没考虑到的地方？分几类说就行。"
+> "Writing this chapter, do you have any writing requirements, revision habits, or places where the chapter outline did not cover something? Just say them in a few categories."
 
-引导作者回顾三类反馈（**给作者展示时用左列作者用语，右列为内部归类名**，遵循 `.claude/knowledge/author-communication.md`）：
+Guide the author to review three kinds of feedback (**when showing them to the author, use the left column's author wording; the right column is the internal category name**, following `.claude/knowledge/author-communication.md`):
 
-1. **写作要求** — 你对文风、节奏、描写、对话的具体偏好（"对话太啰嗦了""动作描写不够细"）（内部归「写作要求」）
-2. **要避免的套路** — 你改掉了哪些"机器腔"的表达？比如用滥了的词、排比堆砌、总结式说教（内部归「反 AI 修改」）
-3. **章纲没想到的地方** — 实际写作时发现章纲没覆盖到的内容或方向偏差（内部归「章纲遗漏」）
+1. **Writing requirements**: your concrete preferences for style, rhythm, description, and dialogue ("the dialogue is too wordy", "the action description is not detailed enough") (internally categorized as "writing requirements")
+2. **Formulas to avoid**: which "machine tone" expressions did you change? For example, overused words, stacked parallel sentences, summary-style preaching (internally categorized as "anti-AI revisions")
+3. **Places the chapter outline did not think of**: content or direction drifts discovered during actual writing that the chapter outline did not cover (internally categorized as "chapter outline gaps")
 
-反馈来源（三路，**合并**而非互斥）：
-- **作者直接反馈**（上面对话）— 优先，有则收录
-- **reader 评审留档**：若 `.agent/review/vol-{N}-ch-{M}.md` 存在，读入并把可沉淀点并入三类（reader 不分类，分类由 updater 在此步完成）— 与作者反馈**并存**，都应收录
-- **AI 快照 vs 定稿 diff**：始终执行，从 diff 自动提取作者改掉的 AI 味表达（无论作者是否反馈）。与作者反馈、reader 留档三路合并，去重后写入记忆——记录不依赖"作者在场回答"
+Feedback sources (three routes, **merged**, not mutually exclusive):
+- **The author's direct feedback** (the conversation above): takes priority; record it when present
+- **reader review filing**: if `.agent/review/vol-{N}-ch-{M}.md` exists, read it and merge the bankable points into the three categories (reader does not classify; updater classifies them in this step). It **coexists** with the author's feedback; both should be recorded
+- **AI snapshot vs finalized text diff**: always run it, automatically extracting the AI flavor expressions the author changed from the diff (whether or not the author gave feedback). Merge it with the author's feedback and the reader filing, deduplicate, then write it into memory. The record does not depend on "the author being present to answer"
 
-三类反馈合并前展示给作者确认分类（与 Step 7 的确认门禁复用；展示用作者用语"写作要求/要避免的套路/章纲没想到的地方"，不用内部归类名）。
+Before merging the three kinds of feedback, show them to the author to confirm the classification (reusing the confirmation gate in Step 7; show the author wording "writing requirements / formulas to avoid / places the chapter outline did not think of", not the internal category names).
 
-### Step 6.5: AI 味等级记录
+### Step 6.5: AI Flavor Level Record
 
-在写作反馈之后，记录本章的反 AI 质量数据供后续趋势追踪：
+After the writing feedback, record this chapter's anti-AI quality data for later trend tracking:
 
 ```markdown
 ## AI 味等级记录
@@ -173,13 +169,13 @@
 - **修改后字数:** XXXX（增减 ±X%）
 ```
 
-数据来源：读 `.agent/review/vol-{N}-ch-{M}.md`（reader 评审留档）的终局判决与 AI 味维度，或从 anti-ai.md 的 Phase 4 报告提取。如两者都无，则跳过不自行计算。
+Data source: read the final verdict and AI flavor dimension in `.agent/review/vol-{N}-ch-{M}.md` (reader review filing), or extract it from anti-ai.md's Phase 4 report. If neither exists, skip it rather than computing it yourself.
 
-### Step 7: 动态记忆合并（分类写入）
+### Step 7: Dynamic Memory Merge (write by category)
 
-将 Step 6 收集的反馈分三类处理：
+Handle the feedback collected in Step 6 in three categories:
 
-**① 写作要求** → 追加到 `.claude/memory/writing-memory.md`
+**1. Writing requirements** → append to `.claude/memory/writing-memory.md`
 ```markdown
 - **原文:** {作者原话关键词}
 - **结论:** {可操作的写作指引}
@@ -187,16 +183,16 @@
 - **use_count:** 1
 ```
 
-**② 反 AI 修改** → 语义合并到 `.claude/knowledge/anti-ai.md`
-- 读取 AI 快照 vs 最终正文，提取修改模式
-- 与已有规则做语义合并：
-  - 完全相同 → 跳过
-  - 语义重复 → 合并为一条，保留更优表述
-  - 场景重叠 → 扩展已有条目的场景范围
-  - 冲突 → STOP，展示给作者确认
-- 追加内容标注 `[writer-preference]`
+**2. Anti-AI revisions** → semantically merge into `.claude/knowledge/anti-ai.md`
+- Read the AI snapshot vs the final main text and extract the revision patterns
+- Semantically merge with the existing rules:
+- Exactly the same → skip
+- Semantically duplicated → merge into one entry, keeping the better wording
+- Overlapping scenarios → expand the existing entry's scenario range
+- Conflict → STOP and show it to the author for confirmation
+- Mark appended content `[writer-preference]`
 
-**③ 章纲遗漏** → 追加到 `.claude/memory/chapter-memory.md`
+**3. Chapter outline gaps** → append to `.claude/memory/chapter-memory.md`
 ```markdown
 - **原文:** {作者原话或 diff 发现的遗漏}
 - **结论:** {下次章纲要注意什么}
@@ -204,85 +200,85 @@
 - **use_count:** 1
 ```
 
-合并前展示给作者确认分类是否准确。
+Before merging, show the author the classification to confirm it is accurate.
 
-### Step 7.5: 报告学习结果
+### Step 7.5: Report the Learning Results
 
-输出本次记忆合并摘要（给作者看，用作者用语）：
-- ✏️ 写作要求：新增 N 条
-- 🤖 要避免的套路：新增 N 条 / 合并 M 条 / 跳过 N 条
-- 📋 章纲没想到的地方：记录 N 条
+Output this round's memory merge summary (for the author, in author wording):
+- Writing requirements: N new entries
+- Formulas to avoid: N new entries / M merged / N skipped
+- Places the chapter outline did not think of: N entries recorded
 
-### Step 8: Hooks 健康检查 + 伏笔台账维护
+### Step 8: Hooks Health Check + Foreshadowing Ledger Maintenance
 
-归档本章后：
+After archiving this chapter:
 
-1. **更新 `settings/foreshadowing.md`（全局伏笔台账）**：读本章 `chapters/vol-{N}-ch-{M}.md#payoff_plan` 的钩子操作，追加/更新台账——
-   - **台账不存在（升级/既有项目兜底）→ 先 Write 创建**：参照 `templates/settings/foreshadowing.md` 结构生成空台账（「未收束钩子」「已收束钩子」两表 + 头部说明），再按本章内容填充。updater 的 Write 白名单含 `settings/foreshadowing.md` 创建权限
-   - 本章新埋的钩子 → 加入「未收束钩子」表（埋设位置 = 本章）
-   - 本章收束的钩子 → 从「未收束」移到「已收束」（记录收束位置与方式）
-   - 已存在的钩子 → 更新「最近提及」为本章
-   这是跨卷伏笔的权威记录（M2 原则：真相源，非派生缓存），volume-planner/chapter-planner/reader 都读它做跨卷检查
-2. **健康检查**，对有钩子引用的角色执行：
-   - 高优先级钩子是否超过 5 章未被提及
-   - 普通钩子是否超过 3 章未被提及
-   - 是否连续 weak 钩子超过 3 章
-   - 是否每 5 章至少有 1 个 strong 钩子
+1. **Update `settings/foreshadowing.md` (the global foreshadowing ledger)**: read the hook operations in this chapter's `chapters/vol-{N}-ch-{M}.md#payoff_plan` and append / update the ledger.
+- **Ledger missing (upgrade / existing-project fallback) → first Write to create it**: generate an empty ledger from the structure in `templates/settings/foreshadowing.md` (the two tables "Unclosed Hooks" and "Closed Hooks" plus the header notes), then fill it with this chapter's content. updater's Write whitelist includes creation permission for `settings/foreshadowing.md`
+- Hooks newly planted this chapter → add to the "Unclosed Hooks" table (planted at = this chapter)
+- Hooks closed this chapter → move them from "Unclosed" to "Closed" (record the close position and method)
+- Hooks already present → update "most recently mentioned" to this chapter
+This is the authoritative record for cross-volume foreshadowing (M2 principle: source of truth, not a derived cache); volume-planner / chapter-planner / reader all read it for cross-volume checks
+2. **Health check**, run for characters with hook references:
+- Has a high-priority hook gone more than 5 chapters without being mentioned
+- Has an ordinary hook gone more than 3 chapters without being mentioned
+- Have there been more than 3 consecutive chapters of weak hooks
+- Is there at least 1 strong hook every 5 chapters
 
-如有异常 → 在 status.md 或对话中提示作者。
+On any anomaly, prompt the author in status.md or in conversation.
 
-### Step 9: 停滞检测
+### Step 9: Stall Detection
 
-检查最近 3 章是否有实质性推进：
-- 核心冲突是否推进
-- 角色关系是否变化
-- 有无新信息/新悬念
+Check whether the last 3 chapters had any substantial advance:
+- Did the core conflict advance
+- Did character relationships change
+- Is there new information / new suspense
 
-连续 3 章无实质推进 → 提示作者"最近 3 章推进较缓，是否需要调整节奏？"
+3 consecutive chapters with no substantial advance → prompt the author: "The last 3 chapters have advanced slowly. Should the rhythm be adjusted?"
 
-### Step 10: 卷边界检测
+### Step 10: Volume Boundary Detection
 
-读 `chapters/` 目录，筛选当前卷的章节文件，按 `status: archived` 标记判断完成度（Step 1 ④ 写入）：
-- 未全部完成 → 更新 status.md，`current_chapter` 前移
-- 全部完成 → **只输出卷完成报告**（不写 `last_volume_completed`、不写 `current_phase`——完成位由 novel-agent 裁决，见 novel-agent THINK）：
+Read the `chapters/` directory, filter the current volume's chapter files, and judge completion from the `status: archived` marker (written in Step 1, item 4):
+- Not all finished → update status.md, moving `current_chapter` forward
+- All finished → **only output the volume completion report** (do not write `last_volume_completed`, do not write `current_phase`. The completion flag is ruled by novel-agent; see novel-agent THINK):
 
 ```text
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  卷 {N} 《{title}》全部 {M} 章已完成
+Volume {N} 《{title}》all {M} chapters complete
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-已归档章节：{逐章列出}
+Archived chapters: {listed chapter by chapter}
 
-下一步选项：
-1. 规划卷 {N+1}
-2. 回顾整卷
-3. 修改某章
+Next options:
+1. Plan volume {N+1}
+2. Review the whole volume
+3. Revise a chapter
 ```
 
-### Step 11: Status 推进 + 清理
+### Step 11: Status Advance + Cleanup
 
-- 更新 `.agent/status.md`：phase→`archive`, current_step→`archiving`, last_archived→当前章号
-- **保留** `.agent/{chapter}-draft-ai.md`（AI 原版快照审计留档；不删除——S2 禁删，靠 `.done` 标记区分过期）
-- 写 `.agent/archiving/{chapter}.done` 完成标记（幂等 checkpoint）
-- 将 `.agent/task/archive-order.md` 覆盖为 `status: DONE`（不删除文件）
+- Update `.agent/status.md`: phase becomes `archive`, current_step becomes `archiving`, last_archived becomes the current chapter number
+- **Keep** `.agent/{chapter}-draft-ai.md` (the AI original snapshot, filed for audit; do not delete, per S2 no-deletion, distinguished as expired by the `.done` marker)
+- Write the `.agent/archiving/{chapter}.done` completion marker (idempotent checkpoint)
+- Overwrite `.agent/task/archive-order.md` as `status: DONE` (without deleting the file)
 
-## 四、验收清单
+## 4. Acceptance Checklist
 
-- [ ] 写作反馈已收集（作者确认或从 diff 自动提取）
-- [ ] 定稿 `archives/*.md` 已 Write 生成，中间稿（`.draft.md`/`.anti-ai.md`）保留未删
-- [ ] 所有出场角色的状态 + 情绪弧线已更新
-- [ ] 生物/怪物检测已完成 + 作者确认
-- [ ] 持有物/经历已更新（如有变化）
-- [ ] timeline 已追加本章事件
-- [ ] 正文一致性检查完成（设定/章纲/钩子）
-- [ ] 三类记忆已分类合并：写作要求 / 反 AI / 章纲遗漏
-- [ ] 合并前已展示给作者确认分类
-- [ ] 学习结果报告已输出
-- [ ] hooks 健康检查已执行
-- [ ] 停滞检测已执行
-- [ ] 卷边界检测已执行 + 报告已输出
-- [ ] status.md 已推进
-- [ ] chapter.md#status 已改为 archived
-- [ ] AI 快照已创建并保留（审计留档）
-- [ ] `.agent/archiving/{chapter}.done` 已写入
-- [ ] order 已标记 DONE
+- [] Writing feedback collected (author confirmed, or automatically extracted from the diff)
+- [] The finalized `archives/*.md` is Written; the intermediate drafts (`.draft.md` / `.anti-ai.md`) are kept, not deleted
+- [] Every appearing character's state + emotional arc is updated
+- [] Creature / monster detection is done + author confirmed
+- [] Possessions / experience updated (when changed)
+- [] The timeline has this chapter's events appended
+- [] Main text consistency check complete (settings / chapter outline / hooks)
+- [] The three kinds of memory are merged by category: writing requirements / anti-AI / chapter outline gaps
+- [] The classification was shown to the author for confirmation before merging
+- [] The learning results report is output
+- [] Hooks health check run
+- [] Stall detection run
+- [] Volume boundary detection run + report output
+- [] status.md advanced
+- [] chapter.md#status changed to archived
+- [] AI snapshot created and kept (filed for audit)
+- [] `.agent/archiving/{chapter}.done` written
+- [] Order marked DONE

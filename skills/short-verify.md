@@ -1,44 +1,44 @@
-# short-verify SOP — 定稿兑现度核对
+# short-verify SOP: Final Draft Fulfillment Check
 
-> short-verifier 执行。兑现度核对是交付前最后一道结构闸门；体验验收（reader）独立在后，MUST NOT 被本清单污染。
+> Executed by short-verifier. The fulfillment check is the last structural gate before delivery; the experience check (reader) stands independently after it, and MUST NOT be contaminated by this checklist.
 
-## 铁律
+## Iron Rules
 
-- 你未参与契约组装、正文写作、去 AI 味清创——保持独立，只核对不修问题
-- 逐项出结论；**未兑现项必须附正文原文证据**；「无足够证据证明有问题」才算通过
-- 逐句扫描而非抽样（对话功能核对尤甚）
+- You did not take part in contract assembly, main text writing, or AI flavor cleanup. Stay independent: check only, do not fix problems
+- Give a verdict for each item; **every unfulfilled item must include verbatim evidence from the main text**; only "no sufficient evidence of a problem" counts as a pass
+- Scan sentence by sentence, not by sampling (especially for the dialogue function check)
 
-## 十项核对清单
+## Ten-Item Checklist
 
-| # | 项 | 判据 |
+| # | Item | Criterion |
 |---|----|------|
-| 1 | 契约硬规则逐条 | 对照冻结契约不可违反规则区，逐条给出遵守/违反 + 原文证据 |
-| 2 | 大纲子事件落地 | outline 每节每个子事件在正文有对应情节；缩水或缺失报出 |
-| 3 | 情绪目标 | 对照 setting 四段情绪强度：实际成稿情绪位置是否达成 |
-| 4 | 反转揭穿位置 | 实际揭穿节号 ÷ 总节数 = 契约承诺位置（±1 节内视为兑现） |
-| 5 | 贯穿道具三次 | 出现三次且语义递进（无害→引注意→揭真相）完整 |
-| 6 | 催化性失常 | 60-75% 位置存在矛盾体（题材标注不适用则跳过） |
-| 7 | 人物前后一致 | 无与 setting 人设或动机矛盾的行动；前后行为逻辑自洽 |
-| 8 | 对话逐句功能 | 每句标注功能（推动/性格/冲突/伏笔）；连续多句仅寒暄或衔接 → 不合格 |
-| 9 | 字数与节数 | 总字数 ≥8000（机器复测）；每节达标；节数 = 大纲节数 |
-| 10 | 标点禁令 | 禁用标点清零（机器扫描） |
+| 1 | Contract hard rules, item by item | Against the frozen contract's non-violable rules zone, give compliance/violation plus verbatim evidence for each rule |
+| 2 | Outline sub-events landed | Every sub-event in every outline section has a corresponding plot beat in the main text; report any that are shrunk or missing |
+| 3 | Emotional goal | Against the four-part emotional intensities in setting: does the finished draft's emotion land where intended |
+| 4 | Reversal reveal position | Actual reveal section number divided by total section count equals the position promised in the contract (within plus or minus 1 section counts as fulfilled) |
+| 5 | Throughline prop, three times | Appears three times with semantic progression (harmless, then attention-grabbing, then truth-revealing) complete |
+| 6 | Catalytic anomaly | A contradiction exists at the 60-75% point (skip if the genre is marked not applicable) |
+| 7 | Character consistency | No action contradicting the setting's character design or motive; behavior is logically consistent throughout |
+| 8 | Dialogue function, sentence by sentence | Label the function of each line (advancing / character / conflict / foreshadowing); several consecutive lines of only small talk or bridging means a fail |
+| 9 | Word count and section count | Total word count at least 8000 (machine re-measured); every section meets its target; section count equals the outline's section count |
+| 10 | Punctuation ban | Banned punctuation is zero (machine scan) |
 
-## 输出格式
+## Output Format
 
 ```markdown
-# 兑现度核对报告：{篇名}
+# Fulfillment Check Report: {Story Title}
 
-| # | 项 | 结论 | 证据（原文引用）/ 实测值 |
+| # | Item | Verdict | Evidence (verbatim quote) / Measured Value |
 |---|----|------|------------------------|
-| 1 | 硬规则×N | 逐条 | ... |
+| 1 | Hard rules xN | Item by item | ... |
 | ... | | | |
 
-## 结论：通过（可进体验验收）/ 不通过
-## 未兑现项回退目标：{写作/精修/大纲}
+## Verdict: Pass (may proceed to experience check) / Fail
+## Unfulfilled Items Rollback Target: {writing/polishing/outline}
 ```
 
-## 约束
+## Constraints
 
-- 不给修改示范；指出问题在哪一节哪一句即可
-- 报告自身无 AI 腔
-- 通过后体验验收仍可能打回——两条闸门独立，互不替代
+- Do not give model fixes; just point out which section and which sentence has the problem
+- The report itself has no AI tone
+- After passing, the experience check may still send it back. The two gates are independent and do not replace each other

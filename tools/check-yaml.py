@@ -1,18 +1,18 @@
 #!/usr/bin/env python3
-"""pyyaml 门槛检查（安装阶段 fail-fast 用）。
+"""pyyaml gate check (fail-fast at install time).
 
-opencode / codex / grok 等非 claude 平台的 agent 转换依赖 pyyaml；install.sh / install.ps1
-在任何目录创建/删除前调用本脚本，缺失时立即中止，而不是等 init.py /
-sync-project.py 执行时才报错。claude 平台纯复制不转换，无需本检查。
+Agent conversion for non-claude platforms such as opencode / codex / grok depends on pyyaml; install.sh / install.ps1
+call this script before creating/deleting any directory, and abort immediately when it is missing, instead of waiting until init.py /
+sync-project.py runs to fail. The claude platform is a plain copy with no conversion, so it does not need this check.
 
-用法:
-  python tools/check-yaml.py                # 仅检查当前解释器能否 import yaml
-  python tools/check-yaml.py codex          # 附带平台名，报错信息更具体
+Usage:
+  python tools/check-yaml.py                # only check whether the current interpreter can import yaml
+  python tools/check-yaml.py codex          # pass a platform name for a more specific error message
 
-返回码:
-  0 = 已安装
-  1 = 缺失（输出 pip install 提示）
-  2 = 参数错误
+Exit codes:
+  0 = installed
+  1 = missing (prints a pip install hint)
+  2 = argument error
 """
 
 import sys
@@ -21,7 +21,7 @@ import sys
 def main(argv) -> int:
     platform = None
     if len(argv) > 2:
-        print("错误: 最多接受一个平台参数。", file=sys.stderr)
+        print("Error: accepts at most one platform argument.", file=sys.stderr)
         return 2
     if len(argv) == 2:
         platform = argv[1]
@@ -29,15 +29,15 @@ def main(argv) -> int:
     try:
         import yaml  # noqa: F401
     except ImportError:
-        label = platform or "当前"
+        label = platform or "current"
         print(
-            f"错误: {label} 平台需要 pyyaml（pip install pyyaml），"
-            f"当前解释器 {sys.executable} 未安装。",
+            f"Error: the {label} platform needs pyyaml (pip install pyyaml),"
+            f"the current interpreter {sys.executable} does not have it installed.",
             file=sys.stderr,
         )
         return 1
 
-    print(f"pyyaml 已安装（解释器 {sys.executable}）。")
+    print(f"pyyaml is installed (interpreter {sys.executable}).")
     return 0
 
 

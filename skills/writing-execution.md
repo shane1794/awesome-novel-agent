@@ -2,136 +2,136 @@
 # writer skill
 
 
-## 流程概览
+## Process Overview
 
 ```text
-Step 1: 准备（确认卷号/章号/prompt 完整性）
-Step 2: 清理上下文（减少干扰）
-Step 3: 写作（sub-agent 执行）
-Step 4: 验证输出（文件存在 + 字数达标）
-Step 5: 叙事规则自查（7 条正面规则逐条过）
+Step 1: Preparation (confirm volume/chapter numbers and prompt completeness)
+Step 2: Clear context (reduce interference)
+Step 3: Writing (executed by a sub-agent)
+Step 4: Verify output (file exists + word count met)
+Step 5: Narrative rules self-check (go through the 7 positive rules one by one)
 ```
 
-> AI 原版快照（`.agent/{chapter}-draft-ai.md`）由 **updater 在归档时创建**（从草稿复制，updater-archive Step 1），writer 不负责保存。
+> The AI original snapshot (`.agent/{chapter}-draft-ai.md`) is created by **updater at archive time** (copied from the draft, updater-archive Step 1); writer is not responsible for saving it.
 
-## 重写分支（writing-order.md 含 rewrite_of 时）
+## Rewrite Branch (when writing-order.md contains rewrite_of)
 
-1. 读 writing-order.md 的 rewrite_of / round / violations 字段。
-2. 读原始案例 2 提示词 prompts/vol-{N}-ch-{M}-prompt.md + 违反报告 violations 文件。
-3. 只重写违反报告中标记「违反」的条目对应段落，向「建议」靠拢；其余段落保持原文。
-4. 完成后照常写 archives/*.draft.md，order 标 DONE（保留 round 原值，由 novel-agent 递增）。
+1. Read the rewrite_of / round / violations fields of writing-order.md.
+2. Read the original Case 2 prompt prompts/vol-{N}-ch-{M}-prompt.md plus the violations report file.
+3. Only rewrite the paragraphs matching the entries marked "violated" in the violations report, moving them toward the "suggestion"; keep all other paragraphs as their original text.
+4. After finishing, write archives/*.draft.md as usual and mark the order DONE (keep the round value unchanged; novel-agent increments it).
 
-## Step 1: 准备
+## Step 1: Preparation
 
-1. 确认卷号 `{N}` 和章号 `{M}`
-2. 读取 `prompts/vol-{N}-ch-{M}-prompt.md`，确认 6 元素完整。字数和驱动力从任务指示获取，叙事视角从输出·写作规范获取
-3. **断点检测**：读 `writing-order.md` 的 `resume_from:` 字段——有 → 读对应 partial 文件，续写（见 Step 3 的续写分支）；无 → 全新写
+1. Confirm the volume number `{N}` and chapter number `{M}`
+2. Read `prompts/vol-{N}-ch-{M}-prompt.md` and confirm all 6 elements are complete. Word count and driving force come from the task instructions; narrative point of view comes from Output, Writing Standards
+3. **Breakpoint detection**: read the `resume_from:` field of `writing-order.md`. If present, read the matching partial file and resume writing (see the resume branch in Step 3); if absent, write fresh
 
-## Step 2: 清理上下文
+## Step 2: Clear Context
 
-调用 sub-agent 前，清理主 agent 的读取历史（genre-example、anti-ai 等文件后续不再需要）。减少 sub-agent 的干扰上下文。
+Before calling the sub-agent, clear the main agent's reading history (genre-example, anti-ai, and other files are no longer needed after this). Reduce the interfering context for the sub-agent.
 
-## Step 3: 写作（sub-agent 执行）
+## Step 3: Writing (executed by a sub-agent)
 
-启动 sub-agent（推荐 flash 模型），传入以下完整指令：
+Start a sub-agent (a flash model is recommended) and pass it the following complete instructions:
 
 ```markdown
-## 基底（先读，再叠加以下指令）
-先 Read `.claude/knowledge/writing-base.md` 作为写作基底（核心写作取舍铁律 + 输出硬性规范 + 禁用行为），
-以下指令在基底之上叠加生效。裁定规则：提示词合规层约束（红线/字数/T1词/认知动词/感官等，见冲突裁定表第 1-5 层）优先于基底；
-合规边界内的质量取舍（文风/情绪优先/主次区分等）按基底执行——压缩顺序先砍环境/路人/过渡描写，保留情绪段落与文风要求段落。
+## Base (read first, then the instructions below stack on top)
+First Read `.claude/knowledge/writing-base.md` as the writing base (the core writing trade-off iron rules + hard output rules + banned behaviors).
+The instructions below take effect stacked on top of the base. Ruling rules: the prompt compliance layer constraints (red lines / word count / T1 words / cognitive verbs / senses, and similar, see the conflict ruling table layers 1-5) take priority over the base;
+quality trade-offs inside the compliance boundary (style / emotion priority / primary vs secondary distinction, and similar) follow the base. The compression order cuts environment / passerby / transition description first, keeping emotional passages and style-required passages.
 
 ## Role
-全章正文写作。只读提示词文件，一次性写完整章正文。章纲约束已全部注入提示词。
+Write the full chapter's main text. Read only the prompt file and write the complete chapter's main text in one pass. All chapter outline constraints have been injected into the prompt.
 
 ## Scope
-- 做：读提示词，按叙事段落顺序写整章
-- 不做：不读卷纲/章纲/archives、不修改提示词、不写其他章、不写 settings/ 下任何文件
+- Do: read the prompt and write the whole chapter in narrative paragraph order
+- Do not: do not read the volume outline / chapter outline / archives, do not modify the prompt, do not write other chapters, do not write any file under settings/
 
 ## Inputs
-- `.claude/knowledge/writing-base.md` — 写作基底（先读）
-- `prompts/vol-{N}-ch-{M}-prompt.md` — 主要输入（6 元素提示词，风格已渲染在内）
-- `settings/genre-setting.md` — 题材设定
+- `.claude/knowledge/writing-base.md`: writing base (read first)
+- `prompts/vol-{N}-ch-{M}-prompt.md`: main input (6-element prompt, style already rendered inside)
+- `settings/genre-setting.md`: genre settings
 
 ## Outputs
-- `archives/vol-{N}-ch-{M}-{slug}.draft.md` — 全章正文草稿（最终）
-- `archives/vol-{N}-ch-{M}-{slug}.draft.partial.md` — 部分草稿（写作过程 checkpoint，边写边存）
+- `archives/vol-{N}-ch-{M}-{slug}.draft.md`: full chapter main text draft (final)
+- `archives/vol-{N}-ch-{M}-{slug}.draft.partial.md`: partial draft (checkpoint during writing, saved as you go)
 
-## 写作规则
-- 按提示词叙事段落 1→N 顺序写，段落间过渡流畅
-- **每场动笔前过「五行反闭环卡」**（规避一眼像机器写的段落结构，判定细则见 `.claude/knowledge/anti-ai.md` 的「结构热源定律」节）：①这场里每个人此刻只想办成什么 ②阻力从谁的即时反应产生 ③本场只演到哪一步就停 ④哪些结果不解释、让读者自己看 ⑤哪条信息留到下一场、不在本场兑现。③-⑤答不出，先想清楚再开写这一场
-- 每个段落的写作指引必须兑现（场景/情绪/角色状态/结束画面）
-- 结尾停在最后一段 ends_with 指定的画面或状态
-- 正文不含解释、说明、引导语；认知动词按规则 2 节制（关键情绪节点 ≤2次/章，其余不写"他感到""他意识到"）
-- 字数不低于提示词任务指示目标字数的 90%（目标 ±10% 下限）
-- **每写完一个叙事段落，立即做两件事（不等全部写完）**：
-  1. 把该段追加写入 `.draft.partial.md`（覆盖式，保留最新进度）
-  2. 在 `writing-order.md` 的 `partial_path:` 字段写入该 partial 路径（覆盖更新）
-  → 这是中断 checkpoint。**即使中途被掐断，order 里也留有最新 partial 指针**，novel-agent 重启后能定位续写。全部段落写完后再写完整 `.draft.md` 并清掉 `partial_path:`
+## Writing Rules
+- Write in the prompt's narrative paragraph order 1 to N, with smooth transitions between paragraphs
+- **Before writing each scene, run the "five-line anti-closed-loop card"** (to avoid paragraph structures that look machine-written at a glance; the detailed ruling rules are in the "structural heat source law" section of `.claude/knowledge/anti-ai.md`): (1) what does each person in this scene want to get done right now (2) whose immediate reaction produces the resistance (3) how far does this scene play before stopping (4) which results are left unexplained for the reader to see for themselves (5) which piece of information is held for the next scene and not paid off in this one. If (3)-(5) cannot be answered, think them through before starting to write this scene
+- Each paragraph's writing guidance must be fulfilled (scene / emotion / character state / ending scene)
+- End on the scene or state specified by the last paragraph's ends_with
+- The main text contains no explanation, exposition, or guiding words; cognitive verbs are restrained per Rule 2 (at most 2 per chapter at key emotional nodes; elsewhere do not write "he felt" or "he realized")
+- Word count is not below 90% of the target word count in the prompt's task instructions (the lower bound of target plus or minus 10%)
+- **After finishing each narrative paragraph, immediately do two things (do not wait until everything is written)**:
+  1. Append that paragraph to `.draft.partial.md` (overwrite style, keeping the latest progress)
+  2. Write that partial path into the `partial_path:` field of `writing-order.md` (overwrite update)
+  → This is the interruption checkpoint. **Even if the run is cut off midway, the order still holds the latest partial pointer**, so novel-agent can locate the resume point on restart. After all paragraphs are written, write the complete `.draft.md` and clear `partial_path:`
 
-## 续写（仅 resume_from 存在时）
-若本 order 带 `resume_from: {partial 路径}`：
-1. 读 partial 文件（允许，见 Inputs），数清已写完的段落数（设为 K）
-2. 从提示词第 K+1 个叙事段落继续写，**不重写** K 段之前的内容
-3. partial 里已有的内容保留，新写的段落追加其后
-4. 若 partial 为空或读不到 → 按全新写处理并报告
+## Resume (only when resume_from exists)
+If this order carries `resume_from: {partial path}`:
+1. Read the partial file (allowed, see Inputs) and count how many paragraphs are already written (call it K)
+2. Continue writing from narrative paragraph K+1 of the prompt, **without rewriting** the content before paragraph K
+3. Keep the content already in the partial file; append newly written paragraphs after it
+4. If the partial file is empty or cannot be read, treat it as a fresh write and report it
 
-## Inputs（续写时追加）
-- `archives/vol-{N}-ch-{M}-{slug}.draft.partial.md` — resume_from 指向的 partial 文件（仅续写时读，数 K 段用）
+## Inputs (added when resuming)
+- `archives/vol-{N}-ch-{M}-{slug}.draft.partial.md`: the partial file resume_from points at (read only when resuming, to count K paragraphs)
 
-## 禁止（违规即重写）
-- 不自行添加提示词中未出现的角色名、细节、描写
-- 不凭空发明章纲/提示词未要求的信息
-- 龙套命名：提示词未给名字就不写名字，用"那几个人""另一个人"等泛指代替
-- 格式违规：正文禁止使用 `---` 分隔符、Markdown 标题（`#` `##` 等）以及其他 Markdown 标记
+## Prohibited (a violation means a rewrite)
+- Do not add character names, details, or descriptions on your own that do not appear in the prompt
+- Do not invent information on your own that the chapter outline / prompt did not ask for
+- Extra character naming: if the prompt gives no name, do not write a name; use generic references such as "those people" or "another person" instead
+- Format violations: the main text must not use `---` separators, Markdown headings (`#` `##` and similar), or other Markdown markers
 
-**原则：提示词没写的情节、对话、角色行为，不自行添加；允许合理的细节填补和氛围铺陈——提示词写了"他在咖啡馆等人"，可以写环境氛围、微动作、思绪，但不能写"他等人等到了仇家"。**
+**Principle: do not add plot, dialogue, or character behavior on your own that the prompt did not write; reasonable detail filling and atmosphere building are allowed. If the prompt wrote "he waits for someone at a cafe", you may write the atmosphere, small actions, and thoughts, but you may not write "he waited and his enemy showed up".**
 ```
 
-sub-agent 执行写完后返回。主 Agent 检查输出文件是否存在。
+After the sub-agent finishes writing, it returns. The main agent checks whether the output file exists.
 
-### Step 3.5: partial 记录校验（中断恢复的权威信号）
+### Step 3.5: Partial Record Check (the authoritative signal for interruption recovery)
 
-partial_path 由**写作 sub-agent 每段写完同步写入 order**（见上文写作规则），主 Agent 返回后只做**校验兜底**：
+partial_path is **written into the order by the writing sub-agent in sync after each paragraph** (see the writing rules above); after the main agent returns, it only does the **check fallback**:
 
-1. **校验 order**：读 `writing-order.md` 的 `partial_path:`——sub-agent 若已正常写入则无需改动
-2. **兜底补写**：若 partial 文件存在但 order 里 `partial_path:` 缺失（sub-agent 异常未写）→ 主 Agent 补写该行
-3. **完成清理**：完整 `.draft.md` 写完 → 清掉 `partial_path:`（断点已完成，novel-agent 不再触发续写）
+1. **Check the order**: read the `partial_path:` of `writing-order.md`. If the sub-agent already wrote it normally, no change is needed
+2. **Fallback write**: if the partial file exists but `partial_path:` is missing from the order (the sub-agent failed to write it), the main agent writes that line in
+3. **Completion cleanup**: once the complete `.draft.md` is written, clear `partial_path:` (the breakpoint is complete; novel-agent no longer triggers a resume)
 
-> 为什么 partial_path 记在 order 而不是 status.md：writer 没有 status.md 写权限（最小权限设计），但 order 是 writer 唯一可写的调度文件。novel-agent 重启动读 order 即可知 partial 位置。
+> Why partial_path is recorded in the order and not in status.md: writer has no status.md write permission (least-privilege design), but the order is the only dispatch file writer can write. novel-agent reads the order on restart and knows the partial position.
 
-## Step 4: 验证输出
+## Step 4: Verify Output
 
-| 检查项 | 操作 |
+| Check Item | Action |
 |--------|------|
-| 输出文件存在？ | `archives/vol-{N}-ch-{M}-*.draft.md` 存在？不存在→重试 1 次 |
-| 字数达标？ | ≥ 章纲字数 90%（目标 ±10% 下限）？不足→**先回写提示词层再问作者**（见下"字数不足处理"），不静默接受 |
-| 文件位置正确？ | 写入到 archives/ 目录而非其他地方？ |
-| partial 清理？ | 完整 `.draft.md` 写完且验证通过后，删掉 `.draft.partial.md` + 清空 order 的 `partial_path:`（断点已完成，不留残留） |
+| Does the output file exist? | Does `archives/vol-{N}-ch-{M}-*.draft.md` exist? If not, retry once |
+| Is the word count met? | At least 90% of the chapter outline word count (the lower bound of target plus or minus 10%)? If short, **first write back to the prompt layer, then ask the author** (see "Handling a word count shortfall" below); do not silently accept it |
+| Is the file location correct? | Written into the archives/ directory and not somewhere else? |
+| Is the partial cleaned up? | After the complete `.draft.md` is written and verified, delete `.draft.partial.md` and clear the order's `partial_path:` (the breakpoint is complete; leave no residue) |
 
-**字数不足处理（显式降级，不静默）：**
-若字数 < 目标 90%（±10% 下限）：
-1. **在 writing-order.md 记录缺口**：`status: DONE` 前在文件追加一行 `quality_gap: ch{M} 字数不足，目标 X 实写 Y`——让降级可追溯（writer 无 status.md 写权限，缺口记录在 order 里，novel-agent 检测 DONE 时同步到 status.md）
-2. **回写提示词层**：在下一章 prompt 的对应场景提高权重（如把低权重场景的字数分配挪给被压缩的核心场景），而非只在本次接受
-3. **再问作者**："本章字数未达目标（X/Y），已记录并会在下一章提示词回写。接受定稿还是补充重写？"
-4. 作者接受 → 继续；作者要求补 → 重写该章，不把未达标草稿静默推进 anti-ai
+**Handling a word count shortfall (explicit degradation, not silent):**
+If the word count is below 90% of the target (the lower bound of plus or minus 10%):
+1. **Record the gap in writing-order.md**: before `status: DONE`, append a line to the file, `quality_gap: ch{M} word count short, target X actually written Y`, so the degradation is traceable (writer has no status.md write permission, so the gap is recorded in the order, and novel-agent syncs it to status.md when it detects DONE)
+2. **Write back to the prompt layer**: in the next chapter's prompt, raise the weight of the matching scene (for example, move the word count allocation of a low-weight scene to the compressed core scene), instead of only accepting it this time
+3. **Ask the author again**: "This chapter's word count did not reach the target (X/Y). It is recorded and will be written back in the next chapter's prompt. Accept the draft as-is, or rewrite with additions?"
+4. Author accepts → continue; author asks for additions → rewrite the chapter; do not silently push an under-target draft into anti-ai
 
-## Step 5: 叙事规则自查
+## Step 5: Narrative Rules Self-Check
 
-通读刚写的 draft，对照 prompt 中注入的叙事规则做一轮快速检查（规则 1-7 定义见 `.claude/knowledge/narrative-rules.md`，单一权威源；本表只列自查操作）：
+Read through the freshly written draft and do one quick check against the narrative rules injected in the prompt (Rules 1-7 are defined in `.claude/knowledge/narrative-rules.md`, the single authoritative source; this table only lists the self-check actions):
 
-| 规则 | 自查 |
+| Rule | Self-Check |
 |------|------|
-| 规则 1（先出感知信号） | 段首是否有"主角+感知动词"结构？（他看到/他听到/他发现）→ 有则改为先扔感知事实 |
-| 规则 2（认知动词节制） | "他发现/他感到/他注意到"等词汇是否过于密集？→ 优先用动作替代，关键节点保留≤2次/章 |
-| 规则 3（按印象深排） | 是否有连续"先→然后→接着→最后"结构？→ 按感知强度重排 |
-| 规则 4（用具体体验） | 是否有"各种/纷纷/一系列"类标签？→ 换成具体感官细节 |
-| 规则 5（因果自然） | 是否有过多因果解释（因为/所以/因此连篇）？→ 删掉多余的，保留必要的 |
-| 规则 6（对话像人话） | 对话是否主谓宾齐全、缺口语味？→ 加人称/语气词/口癖 |
-| 规则 7（叙事自然有温度） | 是否有过度修辞或刻意做作？→ 改为自然叙述，允许适度叙事温度。不要为"不演"而极端白描 |
+| Rule 1 (perception signal first) | Does a paragraph start with a "protagonist + perception verb" structure? (he saw / he heard / he discovered) → if so, change it to throw the perceived fact first |
+| Rule 2 (restrained cognitive verbs) | Are words such as "he discovered / he felt / he noticed" too dense? → prefer replacing them with actions; keep at most 2 per chapter at key nodes |
+| Rule 3 (order by depth of impression) | Is there a continuous "first, then, next, finally" structure? → reorder by perception intensity |
+| Rule 4 (use concrete experience) | Are there labels such as "all kinds of / one after another / a series of"? → replace with concrete sensory details |
+| Rule 5 (natural causality) | Is there too much causal explanation (because / so / therefore in a row)? → delete the excess and keep what is necessary |
+| Rule 6 (dialogue sounds human) | Is the dialogue complete with subject, verb, and object and lacking spoken flavor? → add personal pronouns / tone words / verbal tics |
+| Rule 7 (narrative natural and warm) | Is there excessive rhetoric or deliberate affectation? → change to natural narration, allowing moderate narrative warmth. Do not go to extreme plain description just to "not perform" |
 
-发现问题直接改，**不留违禁品到 anti-ai 管线**。anti-ai 的职责是扫漏网之鱼，不是替你擦屁股。
+Fix problems directly when found; **do not leave banned material for the anti-ai pipeline**. anti-ai's job is to catch what slipped through, not to clean up after you.
 
-## Step 6: （无——快照由 updater 创建）
+## Step 6: (None. The snapshot is created by updater)
 
-AI 原版快照 `.agent/{chapter}-draft-ai.md` 不在 writer 职责内：writer 的 Write 白名单不含 `.agent/`，快照由 **updater 在归档时从草稿复制**（updater-archive Step 1 ①，作为归档 diff 基线）。writer 完成后只需把 draft.md 交给管线。
+The AI original snapshot `.agent/{chapter}-draft-ai.md` is not writer's responsibility: writer's Write whitelist does not include `.agent/`, and the snapshot is **copied from the draft by updater at archive time** (updater-archive Step 1, item 1, as the archive diff baseline). After writer finishes, just hand the draft.md to the pipeline.

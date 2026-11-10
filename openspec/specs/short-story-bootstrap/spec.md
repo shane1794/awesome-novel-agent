@@ -1,177 +1,177 @@
 # short-story-bootstrap Specification
 
 ## Purpose
-让短篇成为一种独立的项目类型：作者说「写短篇」即得到一套短篇专属的骨架、agent 组、题材体系与知识库，四者共同构成短篇自己的运行环境，不依赖也不污染任何其他写作类型的资产。
+Make short stories a standalone project type: when the author says "write a short story", they get a short-story-specific skeleton, agent group, genre system, and knowledge base, four parts that together form the short story's own runtime environment, depending on and polluting no assets of any other writing type.
 
 ## Requirements
 
-### Requirement: A1 初始化入口必须按长度分流
+### Requirement: A1 The initialization entry point must route by length
 
-`tools/init.py` MUST 接受 `--length short|long`。入口 skill（仓库根 `SKILL.md`）的检测流程 MUST 在作者表达短篇意图时走短篇分支，并在边界条件表中列出短篇各场景的处理方式。长度一旦确定 MUST 写入项目 `story.md`，作为后续同步工具判断同步对象的依据。
+`tools/init.py` MUST accept `--length short|long`. The entry-point skill's detection flow (the repo-root `SKILL.md`) MUST take the short-story branch when the author expresses short-story intent, and its boundary-condition table MUST list how each short-story scenario is handled. Once the length is decided, it MUST be written into the project `story.md` as the basis for sync tools to judge what to sync later.
 
-短篇 MUST NOT 成为缺省：不显式指定长度时，`init.py` MUST 沿用既有行为（不启用短篇）。
+Short stories MUST NOT become the default: when no length is explicitly specified, `init.py` MUST keep the existing behavior (short stories not enabled).
 
-#### Scenario: A1.1 短篇意图进入短篇分支
-- **WHEN** 作者在项目目录说出「写短篇」「写个盐言故事」「写个短故事」等短篇意图，且当前目录无 `story.md`
-- **THEN** 入口 skill 询问是否在此目录创建**短篇**项目，确认后以 `--length short` 运行 `init.py`，完成后加载短篇总指挥
+#### Scenario: A1.1 Short-story intent enters the short-story branch
+- **WHEN** the author says short-story intent such as "write a short story", "write a Yanxuan story", or "write a short tale" in the project directory, and the current directory has no `story.md`
+- **THEN** the entry-point skill asks whether to create a **short-story** project in this directory, and after confirmation runs `init.py` with `--length short`, then loads the short-story commander after completion
 
-#### Scenario: A1.2 已有项目按长度标记识别
-- **WHEN** 项目目录已存在 `story.md`，且其中标记 `length: short`
-- **THEN** 入口 skill 直接加载短篇总指挥，不进入任何非短篇流程
+#### Scenario: A1.2 Existing projects are recognized by their length marker
+- **WHEN** the project directory already has a `story.md` marked `length: short`
+- **THEN** the entry-point skill loads the short-story commander directly, without entering any non-short-story flow
 
-#### Scenario: A1.3 短篇不是缺省
-- **WHEN** 运行 `python tools/init.py <path>` 不带 `--length`
-- **THEN** 初始化不启用短篇，`story.md` 中不含短篇标记
+#### Scenario: A1.3 Short stories are not the default
+- **WHEN** running `python tools/init.py <path>` without `--length`
+- **THEN** initialization does not enable short stories, and `story.md` contains no short-story marker
 
-#### Scenario: A1.4 非法长度值被拒绝
-- **WHEN** 传入 `--length medium` 或其他非 `short`/`long` 的值
-- **THEN** `init.py` 打印可选值提示并非零退出，不创建任何文件
+#### Scenario: A1.4 Illegal length values are rejected
+- **WHEN** passing `--length medium` or any other value that is not `short`/`long`
+- **THEN** `init.py` prints a prompt of the allowed values and exits non-zero, creating no files
 
-### Requirement: A2 短篇骨架必须自成一套
+### Requirement: A2 The short-story skeleton must be a complete set of its own
 
-新增模板树承载短篇骨架。`--length short` 时 MUST 只生成短篇骨架：项目索引、篇目目录、沙箱、调度目录、题材设定与平台目录。
+A new template tree carries the short-story skeleton. With `--length short`, it MUST generate only the short-story skeleton: the project index, story directories, sandbox, dispatch directory, genre settings, and platform directories.
 
-短篇 MUST 生成短篇版的项目级指令文件与短篇形态的状态机；短篇骨架 MUST NOT 包含短篇流程不使用的目录。
+Short stories MUST generate short-story versions of the project-level instruction files and a short-story-form state machine; the short-story skeleton MUST NOT contain directories the short-story flow does not use.
 
-#### Scenario: A2.1 短篇骨架目录集
-- **WHEN** 以 `--length short` 初始化项目
-- **THEN** 项目含项目索引（含长度标记）、篇目目录、沙箱、`.agent/task/`、`tools/`、题材设定与平台目录
+#### Scenario: A2.1 Short-story skeleton directory set
+- **WHEN** initializing a project with `--length short`
+- **THEN** the project contains the project index (with the length marker), story directories, sandbox, `.agent/task/`, `tools/`, genre settings, and platform directories
 
-#### Scenario: A2.2 骨架只含短篇资产
-- **WHEN** 检查 `--length short` 初始化后的项目根
-- **THEN** 顶层目录全部属于短篇流程所需，不存在短篇流程不使用的目录
+#### Scenario: A2.2 The skeleton contains only short-story assets
+- **WHEN** checking the project root after `--length short` initialization
+- **THEN** every top-level directory belongs to what the short-story flow needs, and no directory the short-story flow does not use exists
 
-#### Scenario: A2.3 项目级指令为短篇版
-- **WHEN** 读短篇项目根的项目级指令文件
-- **THEN** 其中描述的 agent 构成、写作流程（情绪 → 构思 → 契约 → 写作 → 精修 → 兑现度核对 → 验收）与目录地图均为短篇形态
+#### Scenario: A2.3 Project-level instructions are the short-story version
+- **WHEN** reading the project-level instruction file at the short-story project root
+- **THEN** the agent composition, writing flow (emotion, concept, contract, writing, polish, payoff check, acceptance), and directory map it describes are all in short-story form
 
-#### Scenario: A2.4 状态机为短篇形态
-- **WHEN** 读短篇项目的 `.agent/status.md`
-- **THEN** 含 `phase`（覆盖 setup / planning / contract / writing / polishing / verifying / delivered）、当前篇目标识、篇状态字段，不含卷章相关字段
+#### Scenario: A2.4 The state machine is in short-story form
+- **WHEN** reading the short-story project's `.agent/status.md`
+- **THEN** it contains `phase` (covering setup / planning / contract / writing / polishing / verifying / delivered), the current story identifier, and story-status fields, with no volume-or-chapter fields
 
-### Requirement: A3 短篇题材体系必须独立编号
+### Requirement: A3 The short-story genre system must be numbered independently
 
-短篇 MUST 有独立的题材注册表与题材风格包集合。`--length short` 时题材参数的编号空间 MUST 为短篇题材，编号越界 MUST 报出短篇的可选范围。
+Short stories MUST have an independent genre registry and genre style-pack collection. With `--length short`, the genre parameter's numbering space MUST be the short-story genres, and an out-of-range number MUST report the short-story range of options.
 
-#### Scenario: A3.1 短篇题材注册表齐备
-- **WHEN** 核对短篇题材注册表
-- **THEN** 注册表列出全部短篇题材，每条含编号、标识、中文名，且编号与风格包文件一一对应、全部存在
+#### Scenario: A3.1 The short-story genre registry is complete
+- **WHEN** checking the short-story genre registry
+- **THEN** the registry lists all short-story genres, each with a number, an identifier, and a Chinese name, and the numbers correspond one-to-one with style-pack files, all of which exist
 
-#### Scenario: A3.2 题材编号切换到短篇空间
-- **WHEN** 以 `--length short --genre 1` 初始化
-- **THEN** 部署的题材为短篇注册表第 1 号题材，且知识产物中的题材参考来自短篇风格包
+#### Scenario: A3.2 Genre numbers switch to the short-story space
+- **WHEN** initializing with `--length short --genre 1`
+- **THEN** the deployed genre is short-story registry genre no. 1, and the genre references in the knowledge products come from the short-story style packs
 
-#### Scenario: A3.3 编号越界提示短篇范围
-- **WHEN** 以 `--length short` 传入超出短篇题材数量的编号
-- **THEN** 报错并提示短篇可选编号范围，非零退出
+#### Scenario: A3.3 Out-of-range numbers prompt the short-story range
+- **WHEN** passing a number beyond the short-story genre count with `--length short`
+- **THEN** it errors, prompts the short-story range of available numbers, and exits non-zero
 
-### Requirement: A4 短篇 agent 组必须职责独立且全平台可部署
+### Requirement: A4 The short-story agent group must have independent duties and deploy to all platforms
 
-短篇 agent 组 MUST 由 5 个短篇专属 agent 与 1 个复用的体验验收 agent 组成：
+The short-story agent group MUST consist of 5 short-story-specific agents and 1 reused experience-acceptance agent:
 
-| agent | 职责 | 独立性要求 |
+| agent | Duty | Independence requirement |
 |---|---|---|
-| 总指挥 | phase 路由与调度 | 不写内容文件 |
-| 构思 | 框架 / 大纲 / 写作契约组装 | — |
-| 写手 | 正文写作 | 不组装契约 |
-| 编辑 | 去 AI 味与精修 | 不参与契约组装与写作 |
-| 验收 | 契约审计 + 定稿兑现度核对 | 不参与契约组装、写作、清创 |
-| 体验验收（复用） | 苛刻读者体验验收 | 不参与结构核对 |
+| Commander | phase routing and dispatch | Writes no content files |
+| Concept | Framework / outline / writing-contract assembly | None |
+| Writer | Main-text writing | Does not assemble contracts |
+| Editor | De-AI pass and polish | Does not take part in contract assembly or writing |
+| Verifier | Contract audit + final-draft payoff check | Does not take part in contract assembly, writing, or cleanup |
+| Experience acceptance (reused) | Harsh reader experience acceptance | Does not take part in structure checks |
 
-任一职责 MUST NOT 由承担其他职责的执行兼任。全部 7 个平台 MUST 支持短篇 agent 组部署，且短篇项目 MUST NOT 部署任何非短篇 agent。
+No duty MUST be performed by an executor carrying another duty. All 7 platforms MUST support deploying the short-story agent group, and short-story projects MUST NOT deploy any non-short-story agent.
 
-#### Scenario: A4.1 短篇 agent 定义齐备
-- **WHEN** 核对仓库 agent 目录
-- **THEN** 存在短篇总指挥、构思、写手、编辑、验收五个 agent 定义，每个的 frontmatter 结构（含 name/description/role/tools/skills/knowledge）与既有 agent 同构
+#### Scenario: A4.1 Short-story agent definitions are complete
+- **WHEN** checking the repo agent directory
+- **THEN** definitions exist for the five short-story agents, commander, concept, writer, editor, and verifier, each with a frontmatter structure (name/description/role/tools/skills/knowledge) isomorphic with existing agents
 
-#### Scenario: A4.2 职责独立性可追溯
-- **WHEN** 对照短篇各 agent 定义的输入输出契约
-- **THEN** 契约审计与兑现度核对由验收 agent 执行、契约组装由构思 agent 执行、两者非同一 agent；验收 agent 不写任何内容文件
+#### Scenario: A4.2 Duty independence is traceable
+- **WHEN** comparing the input/output contracts of each short-story agent definition
+- **THEN** contract audit and payoff checks are executed by the verifier agent, contract assembly by the concept agent, and the two are not the same agent; the verifier agent writes no content files
 
-#### Scenario: A4.3 claude 与 opencode 平台部署到 agents 目录
-- **WHEN** 以 `--length short --platform claude`（或 `opencode`）初始化
-- **THEN** 平台 agents 目录下含短篇 agent 组
+#### Scenario: A4.3 Claude and OpenCode platforms deploy to the agents directory
+- **WHEN** initializing with `--length short --platform claude` (or `opencode`)
+- **THEN** the platform agents directory contains the short-story agent group
 
-#### Scenario: A4.4 codex 平台部署为 TOML
-- **WHEN** 以 `--length short --platform codex` 初始化
-- **THEN** 平台 agents 目录下生成短篇 agent 组的 TOML 产物，含名称、描述与内联的 SOP 全文
+#### Scenario: A4.4 Codex platform deploys as TOML
+- **WHEN** initializing with `--length short --platform codex`
+- **THEN** the platform agents directory generates TOML products for the short-story agent group, containing names, descriptions, and the inlined full SOP text
 
-#### Scenario: A4.5 grok 平台部署为 markdown
-- **WHEN** 以 `--length short --platform grok` 初始化
-- **THEN** 平台 agents 目录下生成短篇 agent 组的 markdown 产物，子 agent 带禁止再派生的约束
+#### Scenario: A4.5 Grok platform deploys as Markdown
+- **WHEN** initializing with `--length short --platform grok`
+- **THEN** the platform agents directory generates Markdown products for the short-story agent group, with sub-agents carrying the no-further-dispatch constraint
 
-#### Scenario: A4.6 reasonix 与 zcode 与 dsh 平台部署为内联 skill
-- **WHEN** 以 `--length short --platform zcode`（或 `reasonix`、`dsh`）初始化
-- **THEN** 平台 skills 目录下生成短篇 agent 组对应的 `SKILL.md`，数量与短篇 agent 组一致，总指挥的 SKILL.md 含该平台的调度适配段
+#### Scenario: A4.6 Reasonix, Zcode, and DSH platforms deploy as inlined skills
+- **WHEN** initializing with `--length short --platform zcode` (or `reasonix`, `dsh`)
+- **THEN** the platform skills directory generates a `SKILL.md` for each short-story agent group member, matching the short-story agent group in count, and the commander's SKILL.md contains that platform's dispatch adapter section
 
-#### Scenario: A4.7 不部署非短篇 agent
-- **WHEN** 检查短篇项目任一平台产物
-- **THEN** 不存在任何非短篇的写作 agent
+#### Scenario: A4.7 No non-short-story agents are deployed
+- **WHEN** checking any platform product of a short-story project
+- **THEN** no non-short-story writing agent exists
 
-### Requirement: A5 短篇知识库必须独立部署
+### Requirement: A5 The short-story knowledge base must deploy independently
 
-短篇知识库 MUST 部署为短篇自己的产物集合：语法与格式规范、写作参考、题材风格包、以及短篇自己的去 AI 口径产物。短篇反 AI 口径 MUST 单独合并为一个独立产物文件。
+The short-story knowledge base MUST deploy as its own product collection: grammar and format specs, writing references, genre style packs, and the short story's own de-AI criteria product. The short-story anti-AI criteria MUST be merged separately into a standalone product file.
 
-#### Scenario: A5.1 短篇反 AI 产物独立
-- **WHEN** 以 `--length short` 初始化后检查平台知识目录
-- **THEN** 存在独立的短篇反 AI 合并产物，其内容来自短篇自己的去 AI 口径文件
+#### Scenario: A5.1 The short-story anti-AI product is standalone
+- **WHEN** checking the platform knowledge directory after `--length short` initialization
+- **THEN** a standalone short-story anti-AI merged product exists, its content coming from the short story's own de-AI criteria files
 
-#### Scenario: A5.2 三类写作资产落位
-- **WHEN** 以 `--length short` 初始化后检查平台知识目录
-- **THEN** 短篇格式规范、短篇写作参考、短篇题材风格包三类内容均可通过部署后路径访问
+#### Scenario: A5.2 Three kinds of writing assets land in place
+- **WHEN** checking the platform knowledge directory after `--length short` initialization
+- **THEN** the short-story format specs, short-story writing references, and short-story genre style packs are all reachable through post-deployment paths
 
-#### Scenario: A5.3 引用路径可解析
-- **WHEN** 运行静态校验
-- **THEN** 短篇 agent 对知识文件的引用全部解析成功
+#### Scenario: A5.3 Reference paths resolve
+- **WHEN** running the static checks
+- **THEN** all short-story agent references to knowledge files resolve successfully
 
-#### Scenario: A5.4 题材风格包内容完整
-- **WHEN** 检查短篇题材风格包
-- **THEN** 每个题材包至少含：叙述腔调、开篇范式、钩子母题、情绪烈度、对话风格、**情绪链库**、招式库、节奏骨架、收尾范式；其中情绪链库给出若干条命名情绪弧（每条 4-6 个阶段，阶段有名称），招式库的每条为可套用的公式加一个具体示例，MUST NOT 只列招式名称
+#### Scenario: A5.4 Genre style-pack content is complete
+- **WHEN** checking the short-story genre style packs
+- **THEN** each genre pack contains at least: narrative voice, opening paradigm, hook motifs, emotional intensity, dialogue style, **emotion-chain library**, technique library, pacing skeleton, and ending paradigm. The emotion-chain library gives several named emotional arcs (each with 4-6 stages, each stage named), and each technique-library entry is an applicable formula plus one concrete example; it MUST NOT list only technique names
 
-### Requirement: A6 同步工具必须按项目长度同步
+### Requirement: A6 Sync tools must sync by project length
 
-同步工具 MUST 从项目索引读取长度标记，并按长度选择同步对象。对短篇项目的同步 MUST NOT 引入任何非短篇骨架或非短篇 agent。
+Sync tools MUST read the length marker from the project index and choose sync targets by length. Syncing a short-story project MUST NOT bring in any non-short-story skeleton or non-short-story agent.
 
-#### Scenario: A6.1 短篇项目同步保持短篇形态
-- **WHEN** 对短篇项目运行同步工具
-- **THEN** 同步后的 agent 组、知识库、项目级指令仍为短篇形态
+#### Scenario: A6.1 Short-story project sync keeps short-story form
+- **WHEN** running the sync tool on a short-story project
+- **THEN** the synced agent group, knowledge base, and project-level instructions remain in short-story form
 
-#### Scenario: A6.2 变更检测覆盖短篇资产
-- **WHEN** 仓库侧短篇 agent 或短篇知识文件发生变化
-- **THEN** 同步检查报告有更新并非零退出
+#### Scenario: A6.2 Change detection covers short-story assets
+- **WHEN** a repo-side short-story agent or short-story knowledge file changes
+- **THEN** the sync check reports updates and exits non-zero
 
-### Requirement: A7 静态校验链必须覆盖短篇资产
+### Requirement: A7 The static check chain must cover short-story assets
 
-仓库静态校验 MUST 覆盖短篇 agent 与短篇知识：引用路径 MUST 可解析，短篇知识文件 MUST NOT 被判为孤儿，短篇部署路径 MUST 在部署后路径白名单内，短篇量化阈值 MUST 与本仓既有阈值体系无冲突（冲突时 MUST 走显式豁免并记录理由）。
+Repo static checks MUST cover short-story agents and short-story knowledge: reference paths MUST resolve, short-story knowledge files MUST NOT be judged orphaned, short-story deployment paths MUST be inside the post-deployment path allowlist, and short-story quantitative thresholds MUST not conflict with this repo's existing threshold system (when they conflict, they MUST go through an explicit exemption with the reason recorded).
 
-#### Scenario: A7.1 引用校验通过
-- **WHEN** 运行 agent 引用校验
-- **THEN** 短篇 agent 的引用全部解析成功，退出码 0
+#### Scenario: A7.1 Reference checks pass
+- **WHEN** running the agent reference check
+- **THEN** all short-story agent references resolve successfully, exit code 0
 
-#### Scenario: A7.2 短篇知识不被判为孤儿
-- **WHEN** 运行孤儿知识检查
-- **THEN** 每个被部署的短篇知识文件都被短篇 agent 或入口 skill 引用，或属于显式的作者参考豁免清单
+#### Scenario: A7.2 Short-story knowledge is not judged orphaned
+- **WHEN** running the orphaned-knowledge check
+- **THEN** every deployed short-story knowledge file is referenced by a short-story agent or the entry-point skill, or belongs to an explicit author-reference exemption list
 
-#### Scenario: A7.3 规则冲突检查通过
-- **WHEN** 运行规则冲突检查
-- **THEN** 退出码 0；若短篇阈值与本仓既有阈值存在同对象不同数字，则必须已加入显式豁免并说明理由，不得静默通过
+#### Scenario: A7.3 Rule-conflict checks pass
+- **WHEN** running the rule-conflict check
+- **THEN** exit code 0; if a short-story threshold and an existing repo threshold cover the same object with different numbers, it must already be in an explicit exemption with its reason stated, and must not pass silently
 
-#### Scenario: A7.4 平台 E2E 断言通过
-- **WHEN** 运行平台测试套件
-- **THEN** 短篇初始化在各平台的产物断言全部通过
+#### Scenario: A7.4 Platform E2E assertions pass
+- **WHEN** running the platform test suite
+- **THEN** all short-story initialization product assertions pass on every platform
 
-### Requirement: A8 一个短篇项目必须容纳多篇且篇目互相隔离
+### Requirement: A8 One short-story project must hold multiple stories, with stories isolated from each other
 
-短篇项目 MUST 以「一篇一目录」组织成品，篇目之间 MUST 在文件层面隔离（各自的设定、大纲、契约、正文互不覆盖），共享资源（题材风格包、项目级指令、状态文件）MUST 位于项目级。同一项目内开始新一篇 MUST NOT 影响已交付篇目的文件。
+Short-story projects MUST organize finished work as "one directory per story", with stories isolated from each other at file level (each story's settings, outline, contract, and main text never overwrite another's), and shared resources (genre style packs, project-level instructions, status files) MUST sit at project level. Starting a new story in the same project MUST NOT affect the files of already-delivered stories.
 
-#### Scenario: A8.1 篇目目录隔离
-- **WHEN** 在同一短篇项目内先后写两篇
-- **THEN** 两篇各占独立的篇目目录，各含自己的设定、大纲、契约与正文，任一篇的文件不覆盖另一篇
+#### Scenario: A8.1 Story directories are isolated
+- **WHEN** writing two stories in sequence in the same short-story project
+- **THEN** each story occupies its own story directory, each with its own settings, outline, contract, and main text, and no file of one story overwrites the other's
 
-#### Scenario: A8.2 共享资源位于项目级
-- **WHEN** 检查短篇项目结构
-- **THEN** 项目级指令、状态文件与题材知识位于项目级路径，不被复制进各篇目录
+#### Scenario: A8.2 Shared resources sit at project level
+- **WHEN** checking the short-story project structure
+- **THEN** project-level instructions, status files, and genre knowledge sit at project-level paths and are not copied into each story's directory
 
-#### Scenario: A8.3 新篇不影响旧篇
-- **WHEN** 已交付一篇后开始下一篇
-- **THEN** 已交付篇目的正文文件字节不变
+#### Scenario: A8.3 A new story does not affect old stories
+- **WHEN** starting the next story after one has been delivered
+- **THEN** the delivered story's main-text file is byte-for-byte unchanged

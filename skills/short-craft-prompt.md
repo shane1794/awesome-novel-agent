@@ -1,69 +1,69 @@
-# short-craft-prompt SOP — 写作契约组装
+# short-craft-prompt SOP: Writing Contract Assembly
 
-> short-planner 执行。排纲确认后、写作开始前，组装篇级写作契约 `stories/{slug}/prompt.md`。
-> 契约有双重身份：写作依据 + 验收基线（定稿后由 short-verifier 对照核对兑现度）。
+> Executed by short-planner. After the outline is confirmed and before writing begins, assemble the story-level writing contract `stories/{slug}/prompt.md`.
+> The contract has a dual identity: the basis for writing plus the acceptance baseline (after the final draft, short-verifier checks fulfillment against it).
 
-## 六元素结构
+## Six-Element Structure
 
 ```
-# 写作契约：{篇名}
+# Writing Contract: {Story Title}
 
-## 角色
-（题材 + 本篇叙述身份；照抄 setting，不展开）
+## Role
+(Genre + this story's narrative identity; copy setting verbatim, do not expand)
 
-## 任务指示
-（情绪目标 / 核心悬念 / 读者情绪 / 爽点设计 / 字数与压缩策略±10% /
-  付费点位置与前后密度）
+## Task Instructions
+(Emotional goal / core suspense / reader emotion / satisfying-beat design / word count and compression strategy, plus or minus 10% /
+  paywall point position and density before and after it)
 
-## 背景信息
-（前情上下文：本篇即首篇时写「无前置内容，开篇直接切入行动」/
-  作者偏好记忆：从 `<平台>/memory/author-feedback.md` 取与本篇相关的条目，
-  只注可操作条目「原文 → 结论」，无匹配写「（无）」/ 角色初始状态）
+## Background
+(Prior context: when this story is the first, write "No prior content, the opening cuts straight into action" /
+  author preference memory: take entries relevant to this story from `<platform>/memory/author-feedback.md`,
+  noting only actionable entries as "original text → conclusion", writing "(none)" when nothing matches / character initial states)
 
-## 输入
-（场景序列：每场景 核心事件/信息差/情绪拐点/权重 + 本篇情绪链与阶段覆盖 +
-  招式落点 + 贯穿道具三次语义 + 催化性失常位置）
+## Input
+(Scene sequence: each scene's core event / information gap / emotional turning point / weight + this story's emotional chain and stage coverage +
+  technique landing points + the throughline prop's three semantic steps + catalytic anomaly position)
 
-## 案例
-（每场景类型 1-2 条，经四步转化，末尾标注演示的招式名）
+## Examples
+(1-2 entries per scene type, after the four-step conversion, with the demonstrated technique name noted at the end)
 
-## 输出
-### 不可违反规则（优先级降序）
-1. 约束红线（情节红线/角色禁区/边界禁止——完整填入，无占位符）
-2. 字数（每节下限 + 总字数 + 压缩策略：先砍过场，不动红线）
-3. 禁用项（禁用标点 / 命名禁用清单 / 现代词表（古风题）/ 程度副词上限）
-4. 叙事规则（情绪词后接具体承接 / 所有格清除 / 场景晚进早出 / 对话四功能 / 道具三次语义）
-5. 写作规范同级其他规则
+## Output
+### Non-Violable Rules (priority, descending)
+1. Constraint red lines (plot red lines / character forbidden zones / boundary bans, filled in completely, no placeholders)
+2. Word count (per-section floor + total word count + compression strategy: cut transitions first, never touch the red lines)
+3. Banned items (banned punctuation / naming ban list / modern vocabulary table (for historical-style stories) / degree adverb cap)
+4. Narrative rules (a concrete follow-through after each emotion word / possessive clearing / late entry and early exit / dialogue four functions / prop's three semantic steps)
+5. Other same-level writing standards
 
-### 冲突裁定表（写作侧只执行不裁定）
-数值：节长下限 vs 总字数 vs 五段占比 vs 反转位置 vs 段落形态 的让步顺序
-定性：逻辑自洽优先于爽点虐点——爽点需要角色违背动机时，改爽点设计，不改人物逻辑；
-      角色每次关键行动必须有动机来源、前后一致
+### Conflict Ruling Table (the writing side only executes, never rules)
+Numeric: the concession order among section length floor vs total word count vs five-part proportions vs reversal position vs paragraph form
+Qualitative: logical consistency takes priority over satisfying or tormenting beats. When a satisfying beat would require a character to act against their motive, change the satisfying beat design, not the character logic;
+      every key character action must have a motive source and stay consistent throughout
 
-### 质感要求（建议性，不进硬规则区）
-（不完美约束：半截话 / 生活化细节 / 段落精度分层按权重）
+### Texture Requirements (advisory, not in the hard-rules zone)
+(Imperfection constraints: half-finished sentences / everyday-life details / paragraph precision layered by weight)
 
-### 情绪链与节奏
-（链名 + 阶段覆盖节号 + 各节情绪强度目标 + 反转峰值维持）
+### Emotional Chain and Rhythm
+(Chain name + stage coverage section numbers + target emotional intensity per section + reversal peak hold)
 ```
 
-## 组装三件事
+## Three Assembly Tasks
 
-1. **转化（四步）**：题材包招式 → 本篇写法。Step1 锚定主角（角色名 + 性格对写法的影响）；Step2 锚定信息差（谁在瞒/谁在追）；Step3 锚定情绪节奏（本段情绪对句式节奏的要求）；Step4 融合成一条可直接执行的指令。禁止复制方法论原文
-2. **降序**：硬规则按上面输出段的优先级排列；建议性技法（质感要求）不进硬规则区
-3. **去重**：同一语义只出现一次；同一对象（节长/字数/标点/对话密度）的数量线或禁止项只定义一处；措辞不同但各有侧重的等价约束可保留
+1. **Conversion (four steps)**: genre pack technique becomes this story's writing. Step 1 anchors the protagonist (character name + how personality affects the writing); Step 2 anchors the information gap (who is hiding / who is pursuing); Step 3 anchors the emotional rhythm (what this passage's emotion demands of sentence rhythm); Step 4 fuses them into one directly executable instruction. Copying the methodology's original text is forbidden
+2. **Descending order**: hard rules are arranged by the priority above; advisory techniques (texture requirements) do not enter the hard-rules zone
+3. **Deduplication**: the same meaning appears only once; a quantity line or ban for the same object (section length / word count / punctuation / dialogue density) is defined in only one place; equivalent constraints worded differently but each with its own emphasis may be kept
 
-## 硬性约束
+## Hard Constraints
 
-- 硬规则区每条**可核对**：可机械判定，或给出明确判据；无法核对的抽象表述（如「把握好节奏」）不进硬规则区
-- 冲突裁定表**数值 + 定性**两类都要有（见骨架）
-- 组装后自检：六元素齐、无占位符、无重复、降序正确
-- 本契约组装完成后送 short-verifier 审计，**审计不通过回炉重组**；通过后冻结，写作与兑现度核对均以冻结版为准
+- Every hard-rule entry must be **checkable**: mechanically decidable, or with a clear criterion; abstract wording that cannot be checked (such as "keep a good grip on the rhythm") does not enter the hard-rules zone
+- The conflict ruling table must have **both** the numeric and qualitative types (see the skeleton)
+- Self-check after assembly: all six elements present, no placeholders, no duplicates, descending order correct
+- After this contract is assembled, send it to short-verifier for audit; **if the audit fails, it goes back for reassembly**; once it passes it is frozen, and writing and fulfillment checks both use the frozen version as the standard
 
-## 验收
+## Acceptance
 
-- [ ] 六元素齐备、字段有值、无占位符
-- [ ] 招式条目含角色名与信息差（抽查非原文复制）
-- [ ] 优先级降序、建议性技法未混入
-- [ ] 同对象同格式只定义一次
-- [ ] 冲突裁定表数值五项 + 逻辑优先条款齐备
+- [ ] All six elements present, fields have values, no placeholders
+- [ ] Technique entries contain the character name and the information gap (spot-check that they are not copies of the source text)
+- [ ] Priority in descending order, advisory techniques not mixed in
+- [ ] The same object in the same format is defined only once
+- [ ] Conflict ruling table has all five numeric items plus the logic-priority clause

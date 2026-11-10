@@ -1,12 +1,12 @@
 # {project-name}
 
-## 元信息
+## Metadata
 
 - **skill_version:** 4.13.0
-- **题材：** {genre}
-- **标签：** {tags}
-- **状态：** 设定中
+- **Genre:** {genre}
+- **Tags:** {tags}
+- **Status:** In setup
 
-## 主线拆纲
+## Main Story Arc Outline
 
 {story_arc_placeholder}

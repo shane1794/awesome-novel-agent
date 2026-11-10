@@ -1,4 +1,4 @@
-# 时间线
+# Timeline
 
-| 时间 | 事件 | 关联章节 | 影响角色 |
+| Time | Event | Related Chapters | Characters Affected |
 |------|------|---------|---------|

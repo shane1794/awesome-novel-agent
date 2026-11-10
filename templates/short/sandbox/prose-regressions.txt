@@ -1,4 +1,4 @@
-# 回归模式库
+# Regression pattern library
 
-# 这本书翻过车的原句清单：原句命中即硬失败（check 类工具逐字匹配）。
-# 每行一条，格式：原句	说明
+# List of lines from this book that failed before: an exact hit on a line is a hard failure (check tools match verbatim).
+# One line per entry, format: original line	note

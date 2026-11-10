@@ -9,15 +9,15 @@ override: {}
 locked: []
 ---
 
-# 过渡场景风格卡
+# Transition Scene Style Card
 
-继承主卡 `writing-style.md`，本卡只覆盖过渡场景差异维度（cohesion / rhythm）。
-量化 override 由 style-distiller 按过渡样本蒸馏后填充。
+Inherits the main card `writing-style.md`; this card only overrides the dimensions that differ for transition scenes (cohesion / rhythm).
+Quantitative overrides are filled in by style-distiller after distilling transition scene samples.
 
-## 描写层次和手法（过渡场景）
+## Description Levels and Techniques (Transition Scene Scene)
 
-- （蒸馏后由 style-distiller 填充过渡场景专属技法）
+- (Techniques specific to transition scene scenes, filled in by style-distiller after distillation)
 
-## few-shot 例句
+## Few-Shot Example Sentences
 
-- （过渡场景标志性例句）
+- (Signature example sentences for transition scene scenes)

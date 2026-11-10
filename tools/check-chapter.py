@@ -1,17 +1,17 @@
 #!/usr/bin/env python3
-"""章节交付确定性检查。只报警，不自动改文。
+"""Chapter-delivery deterministic check. Reports only; never edits the text automatically.
 
-与 check-prose.py 分工：check-prose 管 AI 味统计形态（anti-ai Phase 2/4），
-本工具管章节交付硬伤（引语夹层、嵌套引号、半角引号、字数对账、回归串）。
-标点口径对齐 knowledge/anti-ai/common-rules.md：破折号/省略号不做硬禁，
-段落内 ≥3 处时提示逐处按用法判定。
+Division of labor with check-prose.py: check-prose handles AI-flavor statistical patterns (anti-ai Phase 2/4),
+while this tool handles hard chapter-delivery defects (quote sandwiching, nested quotes, half-width quotes, word-count reconciliation, regression strings).
+Punctuation follows knowledge/anti-ai/common-rules.md: dashes/ellipses are not hard-banned;
+when a paragraph has 3 or more, prompt a case-by-case usage check.
 
-项目级资产外置（缺失即跳过，向上最多找 5 层目录）：
-  sandbox/prose-regressions.txt  回归模式库（曾翻车的精确串，一行一条，命中即硬失败）
-  sandbox/locked-lines.txt       锁定台词白名单（一行一条，命中行跳过裁定类检查）
+Project-level assets live outside the tool (skipped when missing; search up to 5 parent directories):
+  sandbox/prose-regressions.txt  regression pattern library (exact strings that failed before, one per line; a hit is a hard failure)
+  sandbox/locked-lines.txt       locked-lines whitelist (one per line; a hit line skips adjudication checks)
 
-用法: python3 check-chapter.py <稿件路径|目录> [更多路径...]   （目录扫描其下 *.md）
-退出码: 0 = 无硬性命中（可有需人工裁定的警告）；1 = 存在硬性命中；2 = 用法错误或读取失败
+Usage: python3 check-chapter.py <manuscript path|directory> [more paths...]   (a directory scans its *.md files)
+Exit codes: 0 = no hard hits (reviewable warnings may remain); 1 = hard hits found; 2 = usage error or read failure
 """
 
 from __future__ import annotations
@@ -27,12 +27,12 @@ for _stream in (sys.stdout, sys.stderr):
 
 MAX_PARENTS = 5
 
-# ---- 硬性检查（命中即失败）----
+# ---- Hard checks (a hit means failure) ----
 SANDWICH_TAG = re.compile(r"。”[^”\n]{0,14}，“")
 NESTED_QUOTE = re.compile(r"“[^”]*“[^”]*”")
 HALFWIDTH_QUOTE = re.compile(r"[\"']")
 
-# 字数表达自动核对：数字在引号前 / 引号在数字前
+# Word-count claims auto-checked: number before the quote / quote before the number
 NUM = r"[一二两三四五六七八九十俩仨]{1,3}"
 COUNT_QUOTE_AFTER = re.compile(
     r"(?:这|那|就|才|整整|刚好|一共|第)?(" + NUM + r")个字[，。：：]?[“‘]([^”’‘\n]{1,30})[”’]"
@@ -40,7 +40,7 @@ COUNT_QUOTE_AFTER = re.compile(
 QUOTE_COUNT_BEFORE = re.compile(
     r"[“‘]([^”’‘\n]{1,30})[”’](?:这|那)?(" + NUM + r")个字"
 )
-# 无引号可对的字数表达 → 提示人工逐字核对
+# Word-count claims with no quote to check against: prompt a manual character-by-character check
 COUNT_BARE = re.compile(r"(?:这|那|就|才|整整|刚好|一共)?" + NUM + r"个字")
 
 CN_NUM = {"零": 0, "一": 1, "二": 2, "两": 2, "俩": 2, "三": 3, "仨": 3, "四": 4,
@@ -63,25 +63,25 @@ def han_count(s: str) -> int:
     return len(re.findall(r"[\u4e00-\u9fff]", s))
 
 
-# ---- 警告级检查（需人工裁定，不失败）----
-# 破折号/省略号：对齐 common-rules 用法判定，段内 ≥3 处才提示（网文每段一行）
+# ---- Warning-level checks (need human review, do not fail) ----
+# Dashes/ellipses: follow the common-rules usage check, prompt only when a paragraph has 3 or more (web novels use one line per paragraph)
 DASH_DENSE = re.compile(r"——|—|--|……")
 SPEECH_VERB = r"(?:说|问|答|回|喊|叫|道|念)"
-# 广义夹层：两段引语被含言说动词的短叙述隔开（需裁定归属）
+# General sandwich: two quoted passages separated by a short narration containing a speech verb (attribution needs review)
 SANDWICH_BROAD = re.compile(r"”[^”\n]{1,18}“")
 SANDWICH_MID_VERB = re.compile(SPEECH_VERB + r"|接话|插|补|应|骂|叹|劝|拦")
-# 多轮问答并段：同段 ≥3 处"代词+言说动词"
+# Multi-turn Q&A in one paragraph: 3 or more "pronoun + speech verb" occurrences in the same paragraph
 QA_DENSITY = re.compile(r"(?:我|他|她|他们|她们)" + SPEECH_VERB)
 QA_DENSITY_LIMIT = 3
-# 尾随标签窄集（代词+言说动词收尾；人物名表属书级资产，不入通用工具）
+# Trailing-tag narrow set (ends with pronoun + speech verb; the character-name table is a book-level asset and does not belong in this general tool)
 TRAILING_TAG = re.compile(r"”[^”\n]{0,12}(?:我|他|她|他们|她们)" + SPEECH_VERB + r"。")
-# 弱化副词密度：千字占比超标提示（阈值 3/千字，与 anti-ai 规则口径一致）
+# Weak-adverb density: warn when the per-thousand-character share exceeds the threshold (3 per thousand characters, matching the anti-ai rule)
 WEAK_ADVERB = re.compile(r"缓缓|微微|轻轻|淡淡")
 WEAK_ADVERB_PER_KILO = 3
 
 
 def load_lines_file(start: Path, name: str) -> list[str]:
-    """从 start 及其父目录向上找 sandbox/<name>，返回非空行列表。"""
+    """Search upward from start and its parent directories for sandbox/<name>; return the list of non-empty lines."""
     cur = start.resolve().parent
     for _ in range(MAX_PARENTS):
         f = cur / "sandbox" / name
@@ -122,68 +122,68 @@ def check_file(path: Path, regressions: list[str], hard_hits: list[str]) -> None
         excerpt = ln[:60]
 
         def report(tag: str, hard: bool, ctx: str = excerpt) -> None:
-            prefix = "" if hard else "(需裁定) "
+            prefix = "" if hard else "(needs review) "
             print(f"  [{tag}] {prefix}L{lineno}: {ctx}")
 
-        # 白名单行：跳过裁定类检查，标注理由
+        # Whitelist line: skip adjudication checks and note the reason
         if locked:
-            print(f"  [白名单跳过] L{lineno}: {ln.strip()[:40]}")
+            print(f"  [whitelist skipped] L{lineno}: {ln.strip()[:40]}")
             continue
 
-        # --- 硬性 ---
+        # --- Hard ---
         if SANDWICH_TAG.search(ln):
-            report("夹层-标签式", True)
-            hard_hits.append(f"{path.name}:{lineno} 夹层-标签式")
+            report("sandwich (labelled)", True)
+            hard_hits.append(f"{path.name}:{lineno} sandwich (labelled)")
         if NESTED_QUOTE.search(ln):
-            report("嵌套双引号", True)
-            hard_hits.append(f"{path.name}:{lineno} 嵌套双引号")
+            report("nested double quotes", True)
+            hard_hits.append(f"{path.name}:{lineno} nested double quotes")
         if HALFWIDTH_QUOTE.search(ln):
-            report("半角引号", True)
-            hard_hits.append(f"{path.name}:{lineno} 半角引号")
+            report("half-width quotes", True)
+            hard_hits.append(f"{path.name}:{lineno} half-width quotes")
         for m in COUNT_QUOTE_AFTER.finditer(ln):
             want, got = cn2int(m.group(1)), han_count(m.group(2))
             if want is not None and want != got:
-                report(f"字数表达不符(应{want}实{got})", True)
-                hard_hits.append(f"{path.name}:{lineno} 字数表达不符")
+                report(f"word-count claim mismatch (claimed {want}, actual {got})", True)
+                hard_hits.append(f"{path.name}:{lineno} word-count claim mismatch")
         for m in QUOTE_COUNT_BEFORE.finditer(ln):
             want, got = cn2int(m.group(2)), han_count(m.group(1))
             if want is not None and want != got:
-                report(f"字数表达不符(应{want}实{got})", True)
-                hard_hits.append(f"{path.name}:{lineno} 字数表达不符")
+                report(f"word-count claim mismatch (claimed {want}, actual {got})", True)
+                hard_hits.append(f"{path.name}:{lineno} word-count claim mismatch")
         for pat in regressions:
             if pat in ln:
-                report(f"回归模式库({pat[:10]}…)", True)
-                hard_hits.append(f"{path.name}:{lineno} 回归模式库")
+                report(f"regression library ({pat[:10]}...)", True)
+                hard_hits.append(f"{path.name}:{lineno} regression library")
                 break
 
-        # --- 警告（需裁定）---
+        # --- Warnings (need review) ---
         if len(DASH_DENSE.findall(ln)) >= 3:
-            report("破折省略密集", False)
+            report("dense dashes/ellipses", False)
         if any(SANDWICH_MID_VERB.search(m.group(0))
                for m in SANDWICH_BROAD.finditer(ln)):
-            report("夹层-广义式", False)
+            report("sandwich (general)", False)
         if len(QA_DENSITY.findall(ln)) >= QA_DENSITY_LIMIT:
-            report("多轮问答并段", False)
+            report("multi-turn Q&A in one paragraph", False)
         if TRAILING_TAG.search(ln):
-            report("尾随标签", False)
+            report("trailing tag", False)
         if COUNT_BARE.search(ln) and not (COUNT_QUOTE_AFTER.search(ln)
                                           or QUOTE_COUNT_BEFORE.search(ln)):
-            report("字数表达(需逐字核对)", False)
+            report("word-count claim (verify character by character)", False)
 
-    # 弱化副词密度（文件级）
+    # Weak-adverb density (file level)
     n_adv = len(WEAK_ADVERB.findall(text))
     n_han = han_count(text)
     if n_han > 0 and n_adv > WEAK_ADVERB_PER_KILO * n_han / 1000:
-        print(f"  [弱化副词超标] (需裁定) {n_adv} 处 / {n_han} 字")
+        print(f"  [weak-adverb density exceeded] (needs review) {n_adv} occurrences / {n_han} characters")
 
-    # 平台口径字数（只统计不设阈值，字数要求属书级设定）
+    # Platform word count (counted only, no threshold; word-count requirements are book-level settings)
     body = text.split("\n", 1)[1] if text.startswith("#") else text
     han = han_count(body)
     full = len(re.findall(r"[\u3000-\u303f\uff00-\uffef]", body))
     quotes = body.count("\u201c") + body.count("\u201d")
     digits = len(re.findall(r"[0-9]", body))
-    print(f"  平台口径字数: {han + full + quotes + digits}"
-          f"  汉字{han} 全角{full} 引号{quotes} 数字{digits}")
+    print(f"  Platform word count: {han + full + quotes + digits}"
+          f"  Chinese chars {han}, full-width {full}, quotes {quotes}, digits {digits}")
 
 
 def main() -> int:
@@ -192,7 +192,7 @@ def main() -> int:
         return 2
     files = iter_prose_files(sys.argv[1:])
     if not files:
-        print("未找到待检查文件")
+        print("No files found to check")
         return 2
     regressions = load_lines_file(files[0], "prose-regressions.txt")
 
@@ -201,13 +201,13 @@ def main() -> int:
         try:
             check_file(path, regressions, hard_hits)
         except OSError as e:
-            print(f"  读取失败: {path}: {e}")
+            print(f"  Read failed: {path}: {e}")
             return 2
 
     if hard_hits:
-        print(f">>> 存在 {len(hard_hits)} 处硬性命中，交付前必须清零或逐条裁决 <<<")
+        print(f">>> {len(hard_hits)} hard hit(s) found; clear them all or adjudicate each one before delivery <<<")
         return 1
-    print(">>> 无硬性命中（警告项需人工裁定）<<<")
+    print(">>> No hard hits (warnings still need human review) <<<")
     return 0
 
 

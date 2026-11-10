@@ -1,51 +1,51 @@
-# 卷 {N} 第 {M} 章：{标题}
+# Volume {N} Chapter {M}: {title}
 
-**状态：** outline  <!-- outline → draft → archived -->
+**Status:** outline  <!-- outline → draft → archived -->
 
-## 大纲
+## Outline
 
-- **概要**：本章一句话概括
-- **关键点**：
-  1. [功能类型] 2-3 句锚点描述（感官/动作/判断）
-- **出场角色**：
-- **场景地点**：
-- **时间**：
+- **Summary**: one sentence summing up this chapter
+- **Key points**:
+  1. [Function type] 2-3 sentence anchor descriptions (senses/action/judgment)
+- **Characters appearing**:
+- **Scene location**:
+- **Time**:
 
 ## Memo
 
-### 当前任务
-本章要推进的具体动作 + 与哪条故事线的什么关系
+### Current task
+The concrete action this chapter must advance + which story thread it relates to and how
 
-### 读者期待
-- **情绪状态**：读者当前情绪
-- **策略**：制造新缺口 / 延迟兑现 / 兑现旧缺口
-- **具体说明**：读者在等什么——等谁出场/等某个真相/等一场对决
+### Reader expectations
+- **Emotional state**: the reader's current emotion
+- **Strategy**: create a new gap / delay a payoff / deliver an old payoff
+- **Details**: what the reader is waiting for: who to appear / what truth / what showdown
 
-### 兑现计划
-- **必须了结**：本章兑现的旧钩子
-- **必须压住**：绝对不能碰的悬念
-- **推进不收束**：推进但不收束的旧线索 + 新钩子
+### Payoff plan
+- **Must resolve**: the old hook this chapter delivers on
+- **Must hold back**: the mystery that must not be touched
+- **Advance without closing**: old threads advanced but not closed + new hooks
 
-### 过渡功能
-每条 `[场景] → [功能]`
+### Transition function
+Each entry `[Scene] → [Function]`
 
-### 关键抉择
-每条回答：为什么做 + 符合人设吗 + 读者感受
+### Key decision
+Each entry answers: why do it + does it fit the character + how does the reader feel
 
-### 角色信息状态
-- 角色名：知道X / 不知道Y
+### Character information state
+- Character name: knows X / does not know Y
 
-### 章尾改变
-1-3 条，每条标注类型 + "从什么变成什么"
+### End-of-chapter change
+1-3 entries, each labeled with a type + "from what to what"
 
-### 硬约束
-每条可验证，不含抽象禁忌
+### Hard constraints
+Each entry verifiable, no abstract prohibitions
 
-## 情绪设计
+## Emotional design
 
-- **主情绪**：一个精确情绪词
-- **情绪走向**：A→B→C 至少三个节点
-- **强度峰值**：具体到场景
-- **强度等级**：1-10
-- **情绪钩子**：具体内容（谁/什么事/什么悬念）
-- **读者获得**：类型 + 描述 + 位置
+- **Main emotion**: one precise emotion word
+- **Emotional arc**: A→B→C, at least three beats
+- **Intensity peak**: tied to a specific scene
+- **Intensity level**: 1-10
+- **Emotional hook**: concrete content (who/what event/what mystery)
+- **Reader payoff**: type + description + location

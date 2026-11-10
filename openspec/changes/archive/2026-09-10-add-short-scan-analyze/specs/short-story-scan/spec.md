@@ -2,58 +2,58 @@
 
 ## Purpose
 
-短篇选题的市场入口：基于榜单样本识别短篇市场的情绪格局，输出可执行的情绪方向、题材候选、风险阈值与验证动作，让作者在动笔前知道「现在什么情绪在火、什么快饱和」。
+The market entry point for short-story topic selection: identify the emotional landscape of the short-story market from chart samples, and output actionable emotional directions, genre candidates, risk thresholds, and verification actions, so the author knows before writing "which emotions are hot right now, and which are about to saturate".
 
 ## ADDED Requirements
 
-### Requirement: S1 扫榜必须先确认平台与方向
+### Requirement: S1 List scanning must first confirm the platform and direction
 
-扫榜 MUST 先确认目标平台与作者的类型方向。作者已有明确方向时 MUST 做该方向的深度扫描；无方向时 MUST 做全榜概览并找趋势；要求跨平台比较时 MUST 做平台对比分析。
+List scanning MUST first confirm the target platform and the author's genre direction. When the author already has a clear direction, it MUST do a deep scan of that direction; with no direction, it MUST do a full-chart overview and look for trends; when a cross-platform comparison is requested, it MUST do a platform-comparison analysis.
 
-#### Scenario: S1.1 平台确认
-- **WHEN** 作者发起扫榜
-- **THEN** 先询问目标平台与想写的类型方向，MUST NOT 默认平台
+#### Scenario: S1.1 Platform confirmation
+- **WHEN** the author starts a list scan
+- **THEN** first ask for the target platform and the genre direction they want to write; MUST NOT assume a platform
 
-#### Scenario: S1.2 按方向选形态
-- **WHEN** 作者给出方向 / 表示没有 / 要求比较
-- **THEN** 分别进入深度扫描 / 全榜概览 / 平台对比三种形态
+#### Scenario: S1.2 Pick the form by direction
+- **WHEN** the author gives a direction / says they have none / asks for a comparison
+- **THEN** enter the deep scan / full-chart overview / platform comparison form respectively
 
-### Requirement: S2 数据来源必须三级降级且失败不中断
+### Requirement: S2 Data sources must degrade across three tiers, and failures must not stop the scan
 
-扫榜 MUST 按优先级使用三级数据来源：实时采集（运行环境具备能力时）→ 作者提供（截图 / 文字 / 链接）→ 内置知识。降级到内置知识时 MUST 标注「基于历史趋势、未完成实时校验，只能作为候选假设」，并列出需复扫页面。单平台采集失败 MUST 标记跳过并继续其余平台，报告中标注缺口。
+List scanning MUST use the three-tier data sources in priority order: live collection (when the runtime environment has the capability), then author-provided (screenshots / text / links), then built-in knowledge. When degrading to built-in knowledge, it MUST mark the output "based on historical trends, live verification not completed, candidate hypothesis only" and list the pages to re-scan. When a single platform's collection fails, it MUST mark that platform skipped and continue with the rest, noting the gap in the report.
 
-#### Scenario: S2.1 降级标注
-- **WHEN** 无实时采集且作者未提供数据
-- **THEN** 报告标注未实时校验、只作候选假设，并列出需复扫页面
+#### Scenario: S2.1 Degradation marking
+- **WHEN** there is no live collection and the author provides no data
+- **THEN** the report marks the output as not live-verified and candidate hypothesis only, and lists the pages to re-scan
 
-#### Scenario: S2.2 单平台失败不中断
-- **WHEN** 某平台采集失败
-- **THEN** 该平台标记跳过，其余照常，报告标注数据缺口
+#### Scenario: S2.2 One platform failing does not stop the scan
+- **WHEN** one platform's collection fails
+- **THEN** that platform is marked skipped, the rest proceed as usual, and the report notes the data gap
 
-### Requirement: S3 分析必须覆盖七个可执行维度
+### Requirement: S3 Analysis must cover seven actionable dimensions
 
-分析 MUST 覆盖：情绪类型分布、题材热点、篇幅分布、开头模式、结尾类型比例、标题模式、人设模型，每项有具体发现而非题材罗列；并给出目标平台调性适配对照。
+Analysis MUST cover: emotion-type distribution, genre hotspots, length distribution, opening patterns, ending-type ratios, title patterns, and character models, with concrete findings per item rather than a genre list; and it must give a tone-fit comparison for the target platform.
 
-#### Scenario: S3.1 七维齐备
-- **WHEN** 读扫榜产出
-- **THEN** 七项各有具体发现
+#### Scenario: S3.1 All seven dimensions present
+- **WHEN** reading the list-scan output
+- **THEN** all seven items have concrete findings
 
-### Requirement: S4 报告必须标注时效并给出风口预警
+### Requirement: S4 Reports must mark freshness and give trend warnings
 
-报告 MUST 标注样本日期、趋势可信度、下次复扫时间；未复扫前 MUST NOT 当长期趋势。MUST 给出风口预警（正在爆发 / 即将起风 / 即将饱和）与值得写的方向，每个方向附情绪拉扯方式与可行性。
+Reports MUST mark the sample date, trend confidence, and the next re-scan time; before a re-scan, they MUST NOT be treated as long-term trends. They MUST give trend warnings (currently exploding / about to take off / about to saturate) and directions worth writing, each with its emotional-pull method and feasibility.
 
-#### Scenario: S4.1 时效声明
-- **WHEN** 检查报告头部
-- **THEN** 含样本日期与下次复扫时间及未复扫声明
+#### Scenario: S4.1 Freshness statement
+- **WHEN** checking the report header
+- **THEN** it contains the sample date, the next re-scan time, and the not-yet-rescanned statement
 
-#### Scenario: S4.2 方向附打法
-- **WHEN** 检查「值得写的方向」
-- **THEN** 每条附情绪拉扯方式与可行性，MUST NOT 只列题材名
+#### Scenario: S4.2 Directions come with a playbook
+- **WHEN** checking the "directions worth writing"
+- **THEN** each entry carries its emotional-pull method and feasibility, and MUST NOT list only genre names
 
-### Requirement: S5 选题匹配必须分级并兜底传播风险
+### Requirement: S5 Topic matching must grade and cover spread risk
 
-选题匹配 MUST 区分低 / 高复杂度候选并给出与项目能力的交叉优先级；推荐方向不含反转时 MUST 要求以强共鸣 / 强话题 / 强余韵补足传播风险。
+Topic matching MUST separate low- and high-complexity candidates and give cross-priorities against the project's capabilities; when a recommended direction contains no reversal, it MUST require strong resonance, strong topicality, or strong aftertaste to cover the spread risk.
 
-#### Scenario: S5.1 传播风险兜底
-- **WHEN** 某推荐方向不含反转
-- **THEN** 明确写出补足方式，未写则不得作为推荐
+#### Scenario: S5.1 Spread-risk coverage
+- **WHEN** a recommended direction contains no reversal
+- **THEN** the coverage method is written out explicitly; without it, the direction must not be recommended

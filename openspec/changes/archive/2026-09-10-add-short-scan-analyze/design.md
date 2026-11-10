@@ -2,73 +2,73 @@
 
 ## Context
 
-短篇流水线（v4.25-v4.26）只有「写」。本 change 补扫榜与拆文两个独立工具——归档 change `2026-09-10-add-short-story-pipeline` 的 proposal「后续变更」明确记录的两项（跨文体检查工具移植不在本 change）。
+The short-story pipeline (v4.25-v4.26) only does "writing". This change adds the list-scanning and text-teardown standalone tools. The archived change `2026-09-10-add-short-story-pipeline`'s proposal "later changes" section explicitly records both items (cross-genre check-tool porting was not in that change).
 
-约束（沿主线 spec 与仓库约定）：
-- 独立工具部署到全部 7 平台，MUST NOT 进 short-agent 调度链、不占 phase（主线 spec `A5` 同类约定的扩展）
-- 工具只用 Python 标准库 + pyyaml；Node 采集脚本不移植（design D8 既有裁定）
-- 知识引用一律 `.claude/knowledge/...` 基座路径；版权标注照 D9
-- 拆文方法论来自获赠包 story-short-analyze（SKILL.md 3.0 + material-decomposition 34K + output-templates 24K 等），按「压缩内联」策略进 SOP
+Constraints (following the mainline spec and repo conventions):
+- Standalone tools deploy to all 7 platforms and MUST NOT enter the short-agent dispatch chain or take a phase (an extension of the same convention as mainline spec `A5`)
+- Tools use only the Python standard library + pyyaml; the Node collection script is not ported (the existing D8 ruling)
+- Knowledge references always use the `.claude/knowledge/...` base path; copyright attribution follows D9
+- The teardown methodology comes from the gifted story-short-analyze pack (SKILL.md 3.0 + material-decomposition 34K + output-templates 24K and more), brought into the SOP under the "compress and inline" strategy
 
 ## Goals / Non-Goals
 
 **Goals:**
-- 两个工具在 7 平台可被作者独立调用（不进调度链）
-- 拆文产出与写作阶段消费打通：`_meta.json` 的题材识别 → 自动加载对应 short-genres 风格包；产出目录 `analysis/{书名}/` 项目级共享（跨篇复用，对齐 bootstrap 主 spec `A8.2` 的共享资源定位）
-- 崩溃安全与三道闸门按既有 spec 设计落地
+- Both tools can be called independently by the author on 7 platforms (outside the dispatch chain)
+- Teardown output connects to writing-stage consumption: `_meta.json` genre identification auto-loads the matching short-genres style pack; the output directory `analysis/{book title}/` is shared at project level (reusable across stories, aligned with the bootstrap main spec `A8.2` shared-resource positioning)
+- Crash safety and the three gates land as the existing spec designs them
 
 **Non-Goals:**
-- 不做实时采集器（CDP / 爬虫）——实时采集依赖运行环境能力（如具备浏览器的 agent 用其自带工具），不可用走三级降级
-- 不做拆文产出在写作阶段的**自动召回**接线（构思 agent 主动推荐对标）——那是 pipeline spec 的 `D2.5` 对标发现，等两工具合并后再接
-- 不移植包内 JS 脚本（cdp-utils / dz-browse-scraper / heiyan-booklist-scraper）
+- Do not build a live collector (CDP / crawler). Live collection depends on runtime-environment capability (an agent with a browser uses its own tools); when unavailable, use the three-tier degradation
+- Do not wire automatic recall of teardown output in the writing stage (the concept agent proactively recommending benchmarks). That is pipeline spec `D2.5` benchmark discovery, wired after both tools merge
+- Do not port the pack's JS scripts (cdp-utils / dz-browse-scraper / heiyan-booklist-scraper)
 
 ## Decisions
 
-### D1: 实现为自包含 SOP，方法论内联不外挂知识文件
+### D1: Implement as self-contained SOPs, with the methodology inlined rather than hung on knowledge files
 
-包内拆文方法论 6 万+字（material-decomposition 34K / output-templates 24K / output-contract 9K）。全部外挂会新增知识目录（init/check/sync 三处接线）且大部分是模板细节。裁定：**把管道协议、五阶段模板、验收闸门压缩内联进 `skills/short-analyze.md`**（约 300 行），市场知识内联进 `skills/short-scan.md` 附录。工具是自包含单元，部署即完整。
+The pack's teardown methodology is 60,000+ words (material-decomposition 34K / output-templates 24K / output-contract 9K). Hanging all of it outside would add a knowledge directory (wiring in three places: init/check/sync) and most of it is template detail. Ruling: **compress the pipeline protocol, the five-stage templates, and the acceptance gates and inline them into `skills/short-analyze.md`** (about 300 lines), and inline market knowledge into the `skills/short-scan.md` appendix. The tools are self-contained units; deployment makes them complete.
 
-- Alternative（新增 `knowledge/short/scan/` + `analyze/` 目录）被拒：三处接线成本换不来复用收益——这两个文件只有一个消费者（工具自身）。
+- Alternative (add `knowledge/short/scan/` + `analyze/` directories) was rejected: three places of wiring cost buys no reuse benefit, since these files have only one consumer (the tools themselves).
 
-### D2: 独立工具的部署形态——全平台统一「平台 skills 目录 + SKILL.md」
+### D2: Deployment form for standalone tools: all platforms use the same "platform skills directory + SKILL.md"
 
-主线 v4.26 的短篇部署三类形态里，codex/grok 本就有独立工具 skills 目录；claude/opencode 有 skills_dir 约定但从未用；inline 三平台 skills 即一切。裁定：新增 `deploy_standalone_skills(project, skill_home, platform, names)` 通用助手，把 `SHORT_STANDALONE_SKILLS = ("short-scan", "short-analyze")` 以 `_convert_standalone_skill` + rewrite_refs 部署为 `<skills_dir>/<name>/SKILL.md`，7 平台统一走它；`deploy_inline_skills(short)` 内也调用它（inline 平台一次生成 6+2）。
+Of the mainline v4.26 short-story deployment's three forms, codex/grok already have standalone-tool skills directories; claude/opencode have a skills_dir convention that was never used; for the three inline platforms, skills are everything. Ruling: add a shared `deploy_standalone_skills(project, skill_home, platform, names)` helper that deploys `SHORT_STANDALONE_SKILLS = ("short-scan", "short-analyze")` as `<skills_dir>/<name>/SKILL.md` via `_convert_standalone_skill` + rewrite_refs, with all 7 platforms using it; `deploy_inline_skills(short)` also calls it (inline platforms generate 6+2 in one pass).
 
-- Alternative（只支持 inline + codex/grok，claude 靠仓库 skills/）被拒：claude 项目里没有仓库 skills/，工具不可达。
+- Alternative (support only inline + codex/grok, with claude relying on the repo skills/) was rejected: Claude projects have no repo skills/, so the tools would be unreachable.
 
-### D3: 扫榜的三级数据来源——采集能力归运行环境
+### D3: Three-tier data sources for list scanning: collection capability belongs to the runtime environment
 
-「实时采集」在 SOP 中定义为：若当前 agent 环境具备浏览器/抓取工具则按附录的字段清单采集；否则跳到下一级。仓库不实现采集器（对齐 v4.23 detect-loop 的「平台无关」先例）。降级标注是硬要求：内置知识产物 MUST 带未校验声明，防止「像真的一样」。
+"Live collection" is defined in the SOP as: if the current agent environment has a browser or scraping tool, collect per the appendix field list; otherwise move to the next tier. The repo implements no collector (aligned with the v4.23 detect-loop "platform-independent" precedent). Degradation marking is a hard requirement: built-in-knowledge products MUST carry an unverified statement, to prevent them from "looking real".
 
-### D4: 拆文的题材标尺用 short-genres 风格包，不新增对照文件
+### D4: The teardown genre yardstick uses the short-genres style packs; no new comparison file
 
-包内 genre-catalog.md（21K）与我们的 short-genres 高度重叠。裁定：题材识别后直接加载 `.claude/knowledge/short-genres/{题材}.md` 的「叙述腔调 / 钩子母题 / 节奏骨架」节作为「该篇是否合标」的对照标尺；识别不到记通用。产出 `_meta.json.genre` 与注册表 slug 对齐，写作阶段据此自动加载同包。
+The pack's genre-catalog.md (21K) heavily overlaps our short-genres. Ruling: after identifying the genre, load the "narrative voice / hook motifs / pacing skeleton" sections of `.claude/knowledge/short-genres/{genre}.md` directly as the "does this story meet the standard" yardstick; when nothing is identified, mark it general. The output `_meta.json.genre` aligns with the registry slug, and the writing stage auto-loads the same pack from it.
 
-### D5: 拆文报告自身过短篇口径
+### D5: The teardown report passes through the short-story criteria itself
 
-包内用 banned-words+anti-ai-writing 双文件扫报告；我们只有一份 `.claude/knowledge/short-anti-ai.md`。裁定：闸门①按它扫（分析师措辞、跳过源文引用），语义等价。报告落 `.agent/task/` 之外——放 `analysis/{书名}/`（与产出同处，作者可直接读）。
+The pack scans reports with banned-words plus anti-ai-writing; we have only one file, `.claude/knowledge/short-anti-ai.md`. Ruling: gate 1 scans against it (the analyst's wording, skipping quoted source text), which is semantically equivalent. Reports land outside `.agent/task/`, in `analysis/{book title}/` (with the output, where the author can read them directly).
 
-### D6: 独立工具不进调度链，入口在 SKILL.md 与项目指令
+### D6: Standalone tools stay out of the dispatch chain; the entry point is SKILL.md and the project instructions
 
-作者触发方式：对话说「扫个榜」「拆这篇」。SKILL.md 短篇分支补一句可选工具说明；`templates/short` 项目级指令不加（避免三份文件同步负担，SKILL.md 一处声明即可被入口 skill 感知）。
+How the author triggers them: say "scan a list" or "tear this story apart" in conversation. The SKILL.md short-story branch adds one optional-tool note; the `templates/short` project-level instructions do not add it (to avoid a three-file sync burden; one statement in SKILL.md is enough for the entry-point skill to sense).
 
 ## Risks / Trade-offs
 
-- [拆文 SOP 内联后过长，模型执行到后期阶段遵守度下降] → 五阶段每阶段独立小步写盘 + order 无关（作者对话直接驱动），单阶段指令自包含；真机验证列为本 PR 后续事项
-- [扫榜内置知识过期，报告误导] → 时效三件套（样本日期/可信度/复扫时间）为 MUST，降级标注为 MUST
-- [拆文产出目录 `analysis/` 在 bootstrap spec 主线是 `A2.1` 骨架目录集之一吗？] → 是（v4.25 起 `templates/short` 已含 analysis/ 占位目录），本 change 恰好填实它，无骨架改动
-- [独立 skill 部署新增 claude 的 `.claude/skills/` 目录，长篇项目没有此目录] → 仅 short 流程调用部署助手，长篇路径不变（测试断言兜住）
+- [After the teardown SOP is inlined and grows long, the model's compliance drops in the later stages] → Each of the five stages writes to disk in its own small step, independent of orders (driven directly by the author's conversation), with each stage's instructions self-contained; live verification is listed as a follow-up item for this PR
+- [Built-in list-scan knowledge goes stale and misleads reports] → The freshness trio (sample date, confidence, re-scan time) is a MUST, and degradation marking is a MUST
+- [Is the teardown output directory `analysis/` one of the skeleton directory set in bootstrap spec mainline `A2.1`?] → Yes (since v4.25, `templates/short` already contains an analysis/ placeholder directory); this change fills it in, with no skeleton changes
+- [Standalone-skill deployment adds a `.claude/skills/` directory for Claude, which long-form projects do not have] → Only the short flow calls the deployment helper; the long-form path is unchanged (guarded by test assertions)
 
 ## Migration Plan
 
-1. platforms.py：`SHORT_STANDALONE_SKILLS` + `deploy_standalone_skills` 助手；`deploy_inline_skills(short)` 内挂独立工具。
-2. init.py：short 流程 Step 3.6 调用部署助手（全平台）。
-3. sync-project.py：短篇 sync_skills 分支补独立工具再部署；find_changes 短篇分支补两文件比对。
-4. SOP 内容：short-scan / short-analyze 自包含实现。
-5. SKILL.md：短篇分支可选工具说明。
-6. test_platforms：独立工具 E2E（7 平台 + inline 数量 6→8 + codex/grok skills 目录）。
-7. 回归全绿后推 PR；评审；**不合入**（作者指定——合并时机待短篇主链路真机实测后决策）。
+1. platforms.py: `SHORT_STANDALONE_SKILLS` + the `deploy_standalone_skills` helper; `deploy_inline_skills(short)` mounts the standalone tools inside.
+2. init.py: the short flow's Step 3.6 calls the deployment helper (all platforms).
+3. sync-project.py: the short sync_skills branch adds standalone-tool re-deployment; the find_changes short branch adds the two-file comparison.
+4. SOP content: self-contained short-scan / short-analyze implementations.
+5. SKILL.md: short-story branch optional-tool note.
+6. test_platforms: standalone-tool E2E (7 platforms + inline count 6 to 8 + codex/grok skills directories).
+7. After full regression is green, push the PR and review it; **do not merge** (author-specified: merge timing waits for a decision after live-testing the short-story main chain).
 
 ## Open Questions
 
-（无。）
+(None.)

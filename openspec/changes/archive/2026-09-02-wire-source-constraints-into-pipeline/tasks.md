@@ -1,29 +1,29 @@
-## 1. writer 写前反闭环卡
+## 1. Writer pre-writing anti-closed-loop card
 
-- [x] 1.1 `skills/writing-execution.md` 起草节前加"每场五行反闭环卡"步骤与不开写条件（验证：步骤可执行、话术过 author-communication 对照表）
-- [x] 1.2 引用 `.claude/knowledge/anti-ai/structural-heat.md` 作为卡的判定依据（验证：`check-agents.py` exit 0）
+- [x] 1.1 Add the "five-line anti-closed-loop card per scene" step and the do-not-start condition to the drafting section of `skills/writing-execution.md` (verify: the step is executable; wording passes the author-communication reference table)
+- [x] 1.2 Reference `.claude/knowledge/anti-ai/structural-heat.md` as the card's decision basis (verify: `check-agents.py` exit 0)
 
-## 2. prompt 结构禁令注入
+## 2. Prompt structural-ban injection
 
-- [x] 2.1 `skills/prompt-crafting.md` 写前约束清单加结构禁令段：问答回合拍数默认上限（新刻度，注明与 Gate E5 句数刻度并行）、章首冷开场、禁同场连续多套回执叠加（单回执爽点兑现场豁免）、过桥链/证明链禁令、章尾禁总结/升华/预告（引用 Gate F + 章纲落点优先），整段带裁决顺序声明（验证：条目齐备、不整段复制知识文件）
-- [x] 2.2 冲突对照核查：逐条对照既有口径（Gate A-F、common-rules 数值、既有提示词节奏规则），确认禁令段无重复定义、无方向相反指令（验证：对照清单零矛盾，含标点/对话频率/章尾三处专项）
-- [x] 2.3 `knowledge/format-specs/author-communication.md` 对照表补新增内部名词（验证：作者可见文本无未翻译内部名词）
+- [x] 2.1 Add the structural-ban section to the pre-writing constraint list in `skills/prompt-crafting.md`: a default cap on question-answer round beats (a new scale, noted as running in parallel with the Gate E5 sentence-count scale), cold chapter openings, a ban on stacking multiple payoff receipts in the same scene (with the single-receipt payoff exemption), bridge-chain/proof-chain bans, and chapter-end bans on summary/elevation/preview (referencing Gate F plus chapter-outline landing-point priority), with the whole section carrying an adjudication-order statement (verify: entries complete, no full copy of the knowledge file)
+- [x] 2.2 Conflict cross-check: check each entry against the existing wordings (Gates A-F, common-rules numeric values, existing prompt pacing rules) to confirm the ban section has no repeated definitions and no instructions pointing in opposite directions (verify: the cross-check list shows zero contradictions, including the three special checks on punctuation, dialogue frequency, and chapter endings)
+- [x] 2.3 Add the new internal terms to the `knowledge/format-specs/author-communication.md` reference table (verify: author-visible text has no untranslated internal terms)
 
-## 3. anti-ai 结构扫描与双脚本初筛
+## 3. anti-ai structural scan and dual-script pre-screen
 
-- [x] 3.1 `skills/anti-ai.md` Phase 1 前加结构热源扫描步骤，报告格式加"结构命中"单列节（验证：Gate A-F 编号不变）
-- [x] 3.2 Phase 2 机器初筛并列调用 `check-chapter.py`，沿用既有降级语义（验证：与 check-prose 的调用/降级描述一致）
-- [x] 3.3 `python tools/check-agents.py`（验证：exit 0）
+- [x] 3.1 Add a structural-heat-source scan step before `skills/anti-ai.md` Phase 1, with a dedicated "structural hits" section in the report format (verify: Gate A-F numbering unchanged)
+- [x] 3.2 Call `check-chapter.py` alongside the Phase 2 machine pre-screen, following the existing degradation semantics (verify: the call and degradation wording match check-prose)
+- [x] 3.3 `python tools/check-agents.py` (verify: exit 0)
 
-## 4. 骨架模板与部署
+## 4. Skeleton templates and deployment
 
-- [x] 4.1 新增 `templates/sandbox/detect-battles.md`、`templates/sandbox/prose-regressions.txt`、`templates/sandbox/locked-lines.txt`（验证：模板含使用说明与示例，语言为作者可读）
-- [x] 4.2 `tools/init.py` 生成三个骨架；`tools/sync-project.py` 覆盖检测（验证：临时目录 init 后文件存在，sync --check 行为正确）
-- [x] 4.3 `tools/test_platforms.py` E2E 断言三文件（验证：七平台测试退出码 0）
+- [x] 4.1 Add `templates/sandbox/detect-battles.md`, `templates/sandbox/prose-regressions.txt`, and `templates/sandbox/locked-lines.txt` (verify: templates contain usage notes and examples in author-readable language)
+- [x] 4.2 `tools/init.py` generates the three skeletons; `tools/sync-project.py` covers detection (verify: the files exist after init in a temp directory, and sync --check behaves correctly)
+- [x] 4.3 `tools/test_platforms.py` E2E assertions for the three files (verify: seven-platform tests exit 0)
 
-## 5. 收尾与发版
+## 5. Wrap-up and release
 
-- [x] 5.1 全量检查：`check-agents.py` + `check-conflicts.py` + `py_compile` + `test_platforms.py`（验证：全绿）
-- [x] 5.2 至少一个 AI 终端实测：初始化新项目→走一遍 writer/prompt/anti-ai 挂接点（验证：按仓库提交指南）
-  - 2026-08-31 claude 无头会话实测 anti-ai 挂接点：结构热源扫描命中 4 处并单列、双脚本真实执行且交叉结论正确（check-prose 全绿/check-chapter 红=热源在结构不在词句，与设计论断一致）
-- [x] 5.3 发版 `chore: bump version to v4.23.0`，更新 `VERSION` 与 `docs/releasenotes/releasenote-4.23.0.md`（验证：`check-version.py` 通过）
+- [x] 5.1 Full checks: `check-agents.py` + `check-conflicts.py` + `py_compile` + `test_platforms.py` (verify: all green)
+- [x] 5.2 Live test on at least one AI terminal: initialize a new project and walk through the writer/prompt/anti-ai wiring points (verify: per the repo contribution guide)
+  - Live test of the anti-ai wiring point in a headless Claude session on 2026-08-31: the structural-heat-source scan hit 4 places and listed them separately, and both scripts actually ran with consistent cross conclusions (check-prose all green / check-chapter red, meaning the heat source is in structure, not wording, matching the design claim)
+- [x] 5.3 Release `chore: bump version to v4.23.0`, updating `VERSION` and `docs/releasenotes/releasenote-4.23.0.md` (verify: `check-version.py` passes)

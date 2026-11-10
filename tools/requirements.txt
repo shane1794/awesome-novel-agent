@@ -1,2 +1,2 @@
-# Python 主体使用标准库；opencode / reasonix / codex / zcode / dsh 平台的 agent 转换需要 pyyaml（CI 自动安装）
+# The Python core uses the standard library; agent conversion for the opencode / reasonix / codex / zcode / dsh platforms needs pyyaml (installed automatically by CI)
 pyyaml

@@ -1,32 +1,32 @@
 # {title}
 
-## 元信息
+## Metadata
 
 - **skill_version:** 4.0
-- **题材：** {genre}
-- **标签：** {tags}
-- **状态：** 写作中
+- **Genre:** {genre}
+- **Tags:** {tags}
+- **Status:** In progress
 
-## 引用路径
+## Reference paths
 
-| 设定 | 路径 | 概要 |
+| Setting | Path | Summary |
 |------|------|------|
-| 世界观 | `settings/world-setting.md` | |
-| 题材 | `settings/genre-setting.md` | |
-| 角色 | `settings/character-setting/` | |
-| 写作风格 | `settings/writing-style.md` | |
+| Worldview | `settings/world-setting.md` | |
+| Genre | `settings/genre-setting.md` | |
+| Characters | `settings/character-setting/` | |
+| Writing style | `settings/writing-style.md` | |
 
-## 故事主线
+## Main story arc
 
-- **结构类型：**  <!-- 短篇/三卷式/五卷式/多卷连载 -->
-- **总卷数：**
-- **全书核心冲突：**  <!-- 一句话主线，不做完所有卷答不出来那种 -->
+- **Structure type:**  <!-- short story / three-volume / five-volume / multi-volume serial -->
+- **Total volumes:**
+- **Core conflict of the book:**  <!-- one-sentence main thread, the kind you cannot answer until every volume is done -->
 
-## 分卷规划
+## Volume plan
 
-### 卷1
+### Volume 1
 
-- **标题：**
-- **弧线位置：**  <!-- 在全篇弧线中的位置：起/承/转/合 -->
-- **核心冲突：**  <!-- 谁+做什么+被什么阻碍 -->
-- **预估章节：**
+- **Title:**
+- **Arc position:**  <!-- position in the full arc: setup / development / turn / resolution -->
+- **Core conflict:**  <!-- who + does what + blocked by what -->
+- **Estimated chapters:**

@@ -9,15 +9,15 @@ override: {}
 locked: []
 ---
 
-# 环境描写场景风格卡
+# Environment Description Scene Style Card
 
-继承主卡 `writing-style.md`，本卡只覆盖环境描写场景差异维度（rhetoric.sensory_dist / rhythm.environment_pct）。
-量化 override 由 style-distiller 按环境描写样本蒸馏后填充。
+Inherits the main card `writing-style.md`; this card only overrides the dimensions that differ for environment description scenes (rhetoric.sensory_dist / rhythm.environment_pct).
+Quantitative overrides are filled in by style-distiller after distilling environment description scene samples.
 
-## 描写层次和手法（环境描写场景）
+## Description Levels and Techniques (Environment Description Scene Scene)
 
-- （蒸馏后由 style-distiller 填充环境描写场景专属技法）
+- (Techniques specific to environment description scene scenes, filled in by style-distiller after distillation)
 
-## few-shot 例句
+## Few-Shot Example Sentences
 
-- （环境描写场景标志性例句）
+- (Signature example sentences for environment description scene scenes)

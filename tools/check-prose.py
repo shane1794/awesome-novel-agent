@@ -1,15 +1,15 @@
 #!/usr/bin/env python3
-"""检查中文正文成稿的 AI 味硬禁令与统计形态。只报警，不自动改文。
+"""Check a finished Chinese manuscript for AI-flavor hard bans and statistical patterns. Reports only; never edits the text automatically.
 
-移植自 human-writing skill 的 scripts/check_prose.py
+Ported from the human-writing skill's scripts/check_prose.py
 （MIT License, Copyright (c) 2026 Human Writing Skill contributors），
-按本项目 knowledge/anti-ai/common-rules.md 口径调整：
-- 冒号不检查（网文无此禁令）；
-- 破折号不做硬禁，段落内 ≥3 处时提示逐处按用法判定（common-rules.md 破折号判定）；
-- 段落按行切分（网文章节每段一行，空行仅作分隔）。
+Adjusted to this project's knowledge/anti-ai/common-rules.md:
+- Colons are not checked (web novels have no such ban);
+- Dashes are not hard-banned; when a paragraph has 3 or more, prompt a case-by-case usage check (common-rules.md dash rule);
+- Paragraphs are split by line (in web-novel chapters each paragraph is one line; blank lines are only separators).
 
-用法: python3 tools/check-prose.py <稿件路径|->    （- 从标准输入读取）
-退出码: 0 = 无失败项（可有需人工判断的警告）；1 = 存在失败项；2 = 读取失败
+Usage: python3 tools/check-prose.py <manuscript path|->    (- reads from standard input)
+Exit codes: 0 = no failures (reviewable warnings may remain); 1 = failures found; 2 = read failure
 """
 
 from __future__ import annotations
@@ -232,7 +232,7 @@ def excerpt(value: str, width: int = 72) -> str:
 
 
 def mask_non_prose(text: str) -> str:
-    """屏蔽代码、网址和机器元数据，同时保留字符位置与换行。"""
+    """Mask code, URLs, and machine metadata while keeping character positions and line breaks."""
 
     def mask(match: re.Match[str]) -> str:
         return "".join("\n" if char == "\n" else " " for char in match.group())
@@ -272,7 +272,7 @@ def all_matches(text: str, patterns: tuple[re.Pattern[str], ...]):
 
 
 def heavy_de_sentences(text: str):
-    """找出主干可能被多个"的"压到后面的长句。"""
+    """Find long sentences whose main clause may be pushed back by multiple "的"."""
 
     matches = []
     pattern = re.compile(r"[^。！？!?\n]+(?:[。！？!?]|$)")
@@ -284,7 +284,7 @@ def heavy_de_sentences(text: str):
 
 
 def anaphora_runs(text: str, minimum: int = 3):
-    """找出同一句里三个以上小句用同一个开头的排比。"""
+    """Find parallelism where three or more clauses in one sentence share the same opening."""
 
     matches = []
     for sentence in re.finditer(r"[^。！？!?\n]+(?:[。！？!?]|$)", text):
@@ -308,7 +308,7 @@ def anaphora_runs(text: str, minimum: int = 3):
 
 
 def sentence_length_cv(text: str):
-    """句长变异系数。人写的长短句差距大，模型的句长彼此接近。"""
+    """Sentence-length coefficient of variation. Human writing mixes long and short sentences widely; model sentence lengths stay close together."""
 
     lengths = [
         han_count(match.group())
@@ -325,13 +325,13 @@ def sentence_length_cv(text: str):
 
 
 def bracket_highlights(text: str):
-    """「」括起来的短语。太密说明在批量造金句。"""
+    """Phrases wrapped in 「」. Too many means golden lines are being mass-produced."""
 
     return list(re.finditer(r"[「『][^」』\n]{1,6}[」』]", text))
 
 
 def prose_paragraphs(text: str) -> list[Paragraph]:
-    """按行切分段落（网文章节每段一行，空行仅作分隔）。"""
+    """Split paragraphs by line (in web-novel chapters each paragraph is one line; blank lines are only separators)."""
 
     paragraphs = []
     position = 0
@@ -398,20 +398,20 @@ def read_text(path: str) -> str:
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="检查中文正文成稿的 AI 味硬禁令与统计形态")
-    parser.add_argument("path", help="Markdown 或文本文件路径。使用 - 从标准输入读取")
+    parser = argparse.ArgumentParser(description="Check a finished Chinese manuscript for AI-flavor hard bans and statistical patterns")
+    parser.add_argument("path", help="Path to a Markdown or text file. Use - to read from standard input")
     args = parser.parse_args()
 
     try:
         text = read_text(args.path)
     except (OSError, UnicodeError) as error:
-        print(f"无法读取稿件。{error}", file=sys.stderr)
+        print(f"Cannot read the manuscript. {error}", file=sys.stderr)
         return 2
 
     prose = mask_non_prose(text)
     total_han = han_count(prose)
     if total_han == 0:
-        print("没有检测到汉字。", file=sys.stderr)
+        print("No Chinese characters detected.", file=sys.stderr)
         return 2
 
     failures = []
@@ -419,11 +419,11 @@ def main() -> int:
 
     stop_matches = non_overlapping_terms(prose, HARD_STOPS)
     for position, phrase in stop_matches:
-        failures.append(f"硬停词，第 {line_number(text, position)} 行，{phrase}")
+        failures.append(f"Hard-stop word, line {line_number(text, position)}: {phrase}")
 
     jargon_matches = non_overlapping_terms(prose, HARD_JARGON)
     for position, phrase in jargon_matches:
-        failures.append(f"黑话，第 {line_number(text, position)} 行，{phrase}")
+        failures.append(f"Jargon, line {line_number(text, position)}: {phrase}")
 
     context_jargon_matches = non_overlapping_terms(prose, CONTEXT_JARGON)
     hard_spans = [
@@ -448,21 +448,21 @@ def main() -> int:
             )
         )
         warnings.append(
-            f"有 {len(context_jargon_matches)} 处词语需要结合语境判断。"
-            f"第 {lines} 行出现 {samples}。本义准确时保留，用来抬价时改写。"
+            f"{len(context_jargon_matches)} word(s) need a context check."
+            f"They appear on line(s) {lines}: {samples}. Keep them when the literal meaning is accurate; rewrite them when they are used to inflate the writing."
         )
 
     road_signs = all_matches(prose, ROAD_SIGN_PATTERNS)
     for match in road_signs:
         failures.append(
-            f"模型路标，第 {line_number(text, match.start())} 行，"
+            f"Model signpost, line {line_number(text, match.start())}:"
             f"“{excerpt(match.group().lstrip(ROAD_STRIP_CHARS))}”"
         )
 
     pivots = all_matches(prose, PIVOT_PATTERNS)
     for match in pivots:
         failures.append(
-            f"禁用翻案句，第 {line_number(text, match.start())} 行，"
+            f"Banned reversal sentence, line {line_number(text, match.start())}:"
             f"“{excerpt(match.group())}”"
         )
 
@@ -478,43 +478,43 @@ def main() -> int:
         occupied_spans.append(match.span())
     for match in semantic_pivots:
         warnings.append(
-            f"疑似翻案腔变形，第 {line_number(text, match.start())} 行，"
-            f"“{excerpt(match.group(), 44)}”。先立误解再推翻就改成正面陈述，正常用法保留。"
+            f"Suspected reversal-rhetoric variant, line {line_number(text, match.start())}:"
+            f"\u201c{excerpt(match.group(), 44)}\u201d. If it sets up a misunderstanding only to overturn it, rewrite it as a direct statement; keep normal usage."
         )
 
     anaphoras = anaphora_runs(prose)
     for match in anaphoras[:4]:
         warnings.append(
-            f"三连以上同构排比，第 {line_number(text, match.start())} 行，"
-            f"“{excerpt(match.group(), 44)}”。留两项，第三项换说法或删掉。"
+            f"Parallelism of three or more identical structures, line {line_number(text, match.start())}:"
+            f"\u201c{excerpt(match.group(), 44)}\u201d. Keep two items; rephrase or delete the third."
         )
 
     lyric_matches = non_overlapping_terms(prose, LYRIC_WORDS)
     if len(lyric_matches) >= 2:
         samples = "、".join(dict.fromkeys(term for _, term in lyric_matches))
         warnings.append(
-            f"模型偏爱的抒情词 {len(lyric_matches)} 处。{samples}。"
-            "写具体事物时保留，给抽象概念穿衣服时删掉。"
+            f"Model-favored lyrical words, {len(lyric_matches)} occurrences: {samples}."
+            "Keep them when describing concrete things; delete them when they dress up abstract concepts."
         )
 
     nominalizations = all_matches(prose, NOMINALIZATION_PATTERNS)
     for match in nominalizations[:4]:
         warnings.append(
-            f"名词化句式，第 {line_number(text, match.start())} 行，"
-            f"“{excerpt(match.group(), 36)}”。还原成直接的动词。"
+            f"Nominalized sentence, line {line_number(text, match.start())}:"
+            f"\u201c{excerpt(match.group(), 36)}\u201d. Restore it to a direct verb."
         )
 
     conjunction_hits = non_overlapping_terms(prose, CONJUNCTIONS)
     if total_han >= 600 and len(conjunction_hits) * 1000 / total_han > 7:
         samples = "、".join(
-            f"{term} {count} 次"
+            f"{term} {count} times"
             for term, count in collections.Counter(
                 term for _, term in conjunction_hits
             ).most_common(4)
         )
         warnings.append(
-            f"连词密度偏高，每千字 {len(conjunction_hits) * 1000 // total_han} 个。{samples}。"
-            "中文小句靠语序和事理相接，删掉一半试试。"
+            f"Conjunction density is high: {len(conjunction_hits) * 1000 // total_han} per thousand characters. {samples}."
+            "In Chinese, short clauses connect by word order and logic; try deleting half of them."
         )
 
     highlights = bracket_highlights(prose)
@@ -522,14 +522,14 @@ def main() -> int:
     if len(highlights) > highlight_limit:
         samples = "、".join(dict.fromkeys(match.group() for match in highlights[:6]))
         warnings.append(
-            f"「」括起的短语共 {len(highlights)} 处。{samples}。太密说明在批量造金句。"
+            f"{len(highlights)} phrases wrapped in 「」. {samples}. Too many means golden lines are being mass-produced."
         )
 
     cv_result = sentence_length_cv(prose)
     if cv_result and cv_result[0] < 0.42:
         warnings.append(
-            f"全文 {cv_result[1]} 个句子长度过于接近（变异系数 {cv_result[0]:.2f}）。"
-            "人写的段落里十个字的句子会挨着四十个字的句子，放开几句，压短几句。"
+            f"{cv_result[1]} sentences in the whole text are too close in length (coefficient of variation {cv_result[0]:.2f})."
+            "In human-written paragraphs a ten-character sentence sits next to a forty-character one; loosen a few sentences and shorten a few."
         )
 
     marker_matches = non_overlapping_terms(prose, SOFT_MARKERS)
@@ -537,8 +537,8 @@ def main() -> int:
     if len(marker_matches) > marker_limit:
         samples = "、".join(dict.fromkeys(term for _, term in marker_matches))
         warnings.append(
-            f"洞察路标共 {len(marker_matches)} 处，当前提醒线为 {marker_limit} 处。"
-            f"重点检查 {samples}。"
+            f"{len(marker_matches)} insight signposts in total; the current alert threshold is {marker_limit}."
+            f"Check {samples} closely."
         )
 
     left_branches = all_matches(prose, LEFT_BRANCH_PATTERNS)
@@ -549,7 +549,7 @@ def main() -> int:
             for match in left_branches[:4]
         )
         warnings.append(
-            f"长前置成分共 {len(left_branches)} 处，可能让主干来得太晚。{samples}"
+            f"{len(left_branches)} long front-loaded elements; they may delay the main clause too long. {samples}"
         )
 
     dense_de = heavy_de_sentences(prose)
@@ -560,7 +560,7 @@ def main() -> int:
             for match in dense_de[:4]
         )
         warnings.append(
-            f"有 {len(dense_de)} 个长句包含四个以上的“的”，可能要先交代人和动作。{samples}"
+            f"{len(dense_de)} long sentence(s) contain more than four \u201c的\u201d; introduce the people and actions first. {samples}"
         )
 
     paragraphs = prose_paragraphs(prose)
@@ -571,8 +571,8 @@ def main() -> int:
         if dash_count >= 3:
             dash_dense_paragraphs += 1
             warnings.append(
-                f"第 {line_number(text, paragraph.position)} 行段落内破折号 {dash_count} 处，"
-                "逐处按用法判定：删掉破折号及两侧内容后意思不变则删（common-rules.md 破折号判定）。"
+                f"Paragraph on line {line_number(text, paragraph.position)} has {dash_count} dashes;"
+                "Judge each one by usage: delete a dash (and the content on both sides) when the meaning stays the same without it (common-rules.md dash rule)."
             )
 
     if len(paragraphs) >= 10:
@@ -580,24 +580,24 @@ def main() -> int:
         ratio = one_sentence / len(paragraphs)
         if ratio >= 0.75:
             warnings.append(
-                f"可识别段落中有 {ratio:.0%} 只有一句话，可能形成统一的短段鼓点。"
+                f"{ratio:.0%} of recognizable paragraphs have only one sentence, which may form a uniform short-paragraph drumbeat."
             )
 
     streak = short_streak(paragraphs)
     if streak:
         first = streak[0]
         warnings.append(
-            f"从第 {line_number(text, first.position)} 行起连续出现 {len(streak)} 个短促单句段，"
-            "检查是否在排队喊结论。"
+            f"{len(streak)} short single-sentence paragraphs appear in a row starting from line {line_number(text, first.position)};"
+            "Check whether they are queuing up to shout conclusions."
         )
 
     counts, opener_examples = opener_counts(paragraphs)
     repeated = [(opener, count) for opener, count in counts.items() if count >= 4]
     if repeated:
-        details = "、".join(f"{opener} {count} 次" for opener, count in repeated)
+        details = "、".join(f"{opener} {count} times" for opener, count in repeated)
         first_position = min(opener_examples[opener] for opener, _ in repeated)
         warnings.append(
-            f"段落开场重复，从第 {line_number(text, first_position)} 行附近开始。{details}。"
+            f"Repeated paragraph openings, starting near line {line_number(text, first_position)}. {details}."
         )
 
     metaphors = metaphor_cluster(prose)
@@ -605,33 +605,33 @@ def main() -> int:
         window, fields = metaphors
         samples = "、".join(dict.fromkeys(hit[2] for hit in window))
         warnings.append(
-            f"八百字内出现 {len(fields)} 套借喻。{'、'.join(sorted(fields))}。"
-            f"例词有 {samples}。"
+            f"{len(fields)} metaphor system(s) appear within eight hundred characters. {'、'.join(sorted(fields))}."
+            f"Example words: {samples}."
         )
 
-    print(f"汉字数 {total_han}")
+    print(f"Chinese character count: {total_han}")
     print(
-        f"翻案句 {len(pivots)}，翻案腔变形 {len(semantic_pivots)}，"
-        f"同构排比 {len(anaphoras)}，名词化 {len(nominalizations)}，"
-        f"黑话 {len(jargon_matches)}，硬停词 {len(stop_matches)}，"
-        f"模型路标 {len(road_signs)}，需辨语境词 {len(context_jargon_matches)}，"
-        f"抒情词 {len(lyric_matches)}，洞察路标 {len(marker_matches)}，"
-        f"长前置成分 {len(left_branches)}，重定语句 {len(dense_de)}，"
-        f"破折号密集段 {dash_dense_paragraphs}"
+        f"Reversal sentences {len(pivots)}, reversal-rhetoric variants {len(semantic_pivots)},"
+        f"Parallel structures {len(anaphoras)}, nominalizations {len(nominalizations)},"
+        f"Jargon {len(jargon_matches)}, hard-stop words {len(stop_matches)},"
+        f"Model signposts {len(road_signs)}, context-check words {len(context_jargon_matches)},"
+        f"Lyrical words {len(lyric_matches)}, insight signposts {len(marker_matches)},"
+        f"Long front-loaded elements {len(left_branches)}, heavy-\u201c的\u201d sentences {len(dense_de)},"
+        f"Dash-dense paragraphs {dash_dense_paragraphs}"
     )
 
     if failures:
-        print("\n需要修改")
+        print("\nNeeds changes")
         for item in failures:
             print(f"- {item}")
 
     if warnings:
-        print("\n需要人工判断")
+        print("\nNeeds human review")
         for item in warnings:
             print(f"- {item}")
 
     if not failures and not warnings:
-        print("\n未发现这份检查器覆盖的问题。")
+        print("\nNo problems covered by this checker were found.")
 
     return 1 if failures else 0
 

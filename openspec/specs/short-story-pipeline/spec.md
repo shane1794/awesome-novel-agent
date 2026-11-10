@@ -1,392 +1,392 @@
 # short-story-pipeline Specification
 
 ## Purpose
-为短篇提供从「想写什么感觉」到「拿到可投稿成品」的完整写作流水线：七个阶段、两道作者确认关卡、两道结构硬验证、一份可验收的写作契约、字数与节数硬底线、交付后的改稿路径，以及独立的断点续跑。懂短篇的作者可以一句话直通，不懂短篇的作者按引导逐项走，两条路径产出同一套成品结构。
+Give short stories a complete writing pipeline from "what feeling do I want to write" to "a submittable finished draft": seven stages, two author confirmation gates, two structural hard validations, one verifiable writing contract, hard floors for word count and section count, a revision path after delivery, and independent breakpoint resume. Authors who know short stories can go straight through in one sentence; authors who do not are guided item by item, and both paths produce the same finished structure.
 
 ## Requirements
 
-### Requirement: D0 调度契约必须独立且为唯一权威源
+### Requirement: D0 The dispatch contract must be independent and the single authoritative source
 
-短篇 MUST 有独立的调度契约文件，作为短篇 order 类型清单、作者确认关卡、断点续跑语义的唯一权威源；短篇总指挥 agent 的流程树 MUST 声明以该文件为准。短篇 MUST 沿用 order 文件协议（待办文件带状态字段，执行方完成后覆盖状态，不删除文件），MUST 只由总指挥写 order、一次只调度一个子 agent。
+Short stories MUST have an independent dispatch contract file as the single authoritative source for the short-story order type list, author confirmation gates, and breakpoint resume semantics; the short-story commander agent's flow tree MUST state that it follows that file. Short stories MUST follow the order-file protocol (to-do files carry a status field, and the executor overwrites the status when done without deleting the file), and only the commander writes orders, dispatching one sub-agent at a time.
 
-#### Scenario: D0.1 契约唯一权威
-- **WHEN** 通读短篇总指挥 agent 定义与短篇调度契约
-- **THEN** 两者对 order 类型与断点语义的表述一致，且 agent 定义中显式声明以契约为准
+#### Scenario: D0.1 The contract is the single authority
+- **WHEN** reading through the short-story commander agent definition and the short-story dispatch contract
+- **THEN** the two agree on order types and breakpoint semantics, and the agent definition explicitly states it follows the contract
 
-#### Scenario: D0.2 order 协议一致
-- **WHEN** 检查短篇项目的待办文件目录
-- **THEN** order 文件只含输入路径、输出路径与状态字段，不含执行步骤与方法论
+#### Scenario: D0.2 Order protocol matches
+- **WHEN** checking a short-story project's to-do file directory
+- **THEN** order files contain only input paths, output paths, and a status field, with no execution steps or methodology
 
-#### Scenario: D0.3 总指挥不越权
-- **WHEN** 短篇总指挥完成一次调度
-- **THEN** 它只写 order 文件与状态文件，未直接写 `setting.md`、`outline.md`、`prompt.md`、`manuscript.md`
+#### Scenario: D0.3 The commander does not overreach
+- **WHEN** the short-story commander completes one dispatch
+- **THEN** it only wrote order files and status files, and did not directly write `setting.md`, `outline.md`, `prompt.md`, or `manuscript.md`
 
-### Requirement: D1 定情绪与定方向
+### Requirement: D1 Set the emotion and direction
 
-流水线 MUST 以**先定情绪、再定故事**开局：动笔前 MUST 确定目标情绪，全部内容为该情绪服务。总指挥 MUST 支持两条入口路径——作者已有明确想法时直通，只有模糊想法时按引导选择。本阶段 MUST 产出篇目目录下的 `setting.md`，并在产出后停下等作者确认。
+The pipeline MUST start by **setting the emotion first, then the story**: before writing, the target emotion MUST be fixed, and all content serves that emotion. The commander MUST support two entry paths: straight through when the author already has a clear idea, guided selection when the idea is only vague. This stage MUST produce `setting.md` in the story directory and stop after producing it to wait for author confirmation.
 
-`setting.md` MUST 包含：基本信息（标题暂定 / 目标字数 / 目标平台）、一句话梗概、核心反转（类型 / 内容 / 至少 3 个铺垫线索）、四段情绪设计（开头 / 中段 / 反转 / 结尾各带 1-10 强度值）、人设速写。情绪设计 MUST 标注反转高潮不骤降的要求。
+`setting.md` MUST contain: basic info (working title / target word count / target platform), a one-sentence premise, the core reversal (type / content / at least 3 setup clues), a four-part emotion design (opening / middle / reversal / ending, each with a 1-10 intensity value), and quick character sketches. The emotion design MUST note the requirement that the reversal climax does not drop sharply.
 
-#### Scenario: D1.1 情绪目标六选一
-- **WHEN** 作者只有模糊想法
-- **THEN** 总指挥给出情绪选项（意难平 / 反转震撼 / 爽感释放 / 治愈温暖 / 细思极恐 / 共鸣感动），每项附适合场景、难度与常配题材，作者选定后据此推荐题材方向
+#### Scenario: D1.1 Pick one of six emotion goals
+- **WHEN** the author has only a vague idea
+- **THEN** the commander offers emotion options (lingering regret / shocking reversal / payoff release / healing warmth / chilling realization / resonant emotion), each with fitting scenarios, difficulty, and commonly paired genres, and recommends a genre direction once the author picks one
 
-#### Scenario: D1.2 投稿平台基调
-- **WHEN** 确定题材方向后
-- **THEN** 总指挥确认投稿平台（知乎盐选 / 小程序 / 番茄短篇），并按该平台的视角、矛盾烈度、章末钩子、结局质感基调继续
+#### Scenario: D1.2 Submission platform tone
+- **WHEN** the genre direction is fixed
+- **THEN** the commander confirms the submission platform (Zhihu Yanxuan / mini-programs / Tomato Short Stories) and continues with that platform's tone for point of view, conflict intensity, chapter-end hooks, and ending texture
 
-#### Scenario: D1.3 明确诉求直通
-- **WHEN** 作者一句话给全要素（如「追妻火葬场，意难平，投盐言，八千字」）
-- **THEN** 总指挥不做逐项引导，直接进入框架产出，缺失项才追问
+#### Scenario: D1.3 A clear request goes straight through
+- **WHEN** the author gives all elements in one sentence (such as "wife-chasing crematorium, lingering regret, submit to Yanxuan, eight thousand words")
+- **THEN** the commander skips item-by-item guidance and goes directly to framework output, asking follow-up questions only for missing items
 
-#### Scenario: D1.4 框架结构完整
-- **WHEN** 本阶段产出 `setting.md`
-- **THEN** 文件含基本信息、一句话梗概、核心反转（含反转类型与至少 3 条铺垫线索）、四段情绪强度值、人设速写，且依据题材风格包写入了本篇选定的题材招式
+#### Scenario: D1.4 The framework is structurally complete
+- **WHEN** this stage produces `setting.md`
+- **THEN** the file contains basic info, a one-sentence premise, the core reversal (with reversal type and at least 3 setup clues), four emotion intensity values, and character sketches, and the selected genre techniques for this story are written in from the genre style pack
 
-#### Scenario: D1.5 作者确认关卡一
-- **WHEN** 构思子 agent 的 order 标记完成
-- **THEN** 总指挥以日常语言展示框架摘要（读者读完什么感觉 / 写了件什么事 / 反转在哪 / 谁和谁）并停下等作者确认；作者回复模糊时视为未确认并追问；未确认前 MUST NOT 排大纲
+#### Scenario: D1.5 Author confirmation gate one
+- **WHEN** the concept sub-agent's order is marked complete
+- **THEN** the commander shows the framework summary in everyday language (what feeling the reader is left with / what happened / where the reversal is / who is who) and stops to wait for author confirmation; a vague author reply counts as unconfirmed and prompts a follow-up question; before confirmation, it MUST NOT lay out the outline
 
-### Requirement: D2 构思与排纲
+### Requirement: D2 Concept and outline
 
-本阶段 MUST 按固定顺序完成设计工作并产出篇目目录下的 `outline.md`，随后 MUST 通过两道硬验证，最后停下等作者确认。任一验证不通过 MUST 回到大纲阶段修正，MUST NOT 带缺陷进入契约组装。
+This stage MUST complete the design work in a fixed order, produce `outline.md` in the story directory, then pass two hard validations, and finally stop to wait for author confirmation. If any validation fails, it MUST return to the outline stage to fix it and MUST NOT enter contract assembly with defects.
 
-本阶段 MUST 先选定一条**情绪链**作为全篇情绪骨架，再据此展开大纲。情绪链是编号命名的情绪推进序列（4-6 个阶段，每阶段有名称，如「猎物入笼 → 请君入瓮 → 逻辑闭环 → 公开处刑 → 视若无物」）。选定后其阶段 MUST 覆盖全篇每一节，MUST NOT 有节落在链外。
+This stage MUST first pick one **emotion chain** as the emotional skeleton of the whole story and then build the outline from it. An emotion chain is a numbered, named sequence of emotional progression (4-6 stages, each with a name, such as "Prey Enters the Cage, Lured Into the Trap, Logic Closes In, Public Execution, Treated as Nothing"). Once picked, its stages MUST cover every section of the whole story; no section MUST fall outside the chain.
 
-情绪链的阶段与五段（开头 / 铺垫 / 升级 / 反转 / 结尾）是两套独立刻画，MUST NOT 强制一一对应——四阶段的链可以有两段由同一个五段承载。
+The emotion chain's stages and the five parts (opening / setup / escalation / reversal / ending) are two independent descriptions and MUST NOT be forced into a one-to-one match: a four-stage chain may have two stages carried by the same one of the five parts.
 
-`outline.md` MUST 为每节一行，含：结构段与功能、主事件、子事件（3-5 个，用连接符串联并各带功能标签）、情绪、人物关系变化、**因果链**、读者新获知信息、结尾承接或钩子、伏笔物件、动静标记、对话密度、目标字数。
+`outline.md` MUST give one line per section, containing: structure part and function, main event, sub-events (3-5, joined with connectors and each carrying a function tag), emotion, character-relationship change, **causal chain**, new information the reader learns, the ending handoff or hook, foreshadowing objects, motion/stillness markers, dialogue density, and target word count.
 
-**因果链字段 MUST 按固定形状写**，MUST NOT 写成泛泛的因果描述：
+**The causal-chain field MUST be written in a fixed shape** and MUST NOT be written as a generic causal description:
 
 ```
-【承接点】→【动机与行动】→【核心事件】→【直接后果】→【结尾钩子】
+[Handoff Point]→[Motivation and Action]→[Core Event]→[Direct Consequence]→[Ending Hook]
 ```
 
-其中「承接点」写明本节从上一节继承什么，「直接后果」写明本节事件导致什么——这两个连接位是防止剧情逐节漂移的关键，MUST NOT 省略。
+Here "handoff point" states what this section inherits from the previous section, and "direct consequence" states what this section's events cause. These two connection points are the key to preventing the plot from drifting section by section, and MUST NOT be omitted.
 
-`outline.md` MUST 另含**情绪链落点**与一张**招式落点表**：情绪链标注链名与各阶段覆盖的节号；招式落点表为本篇选定的每个核心招式标注**承载节**与**兑现节**。承载节与兑现节之间 MUST 留出铺垫距离，MUST NOT 承载即兑现。
+`outline.md` MUST also contain an **emotion-chain landing** and a **technique landing table**: the emotion-chain landing marks the chain name and which section numbers each stage covers; the technique landing table marks, for each core technique selected for this story, its **carrying section** and its **payoff section**. Carrying and payoff sections MUST leave setup distance between them; a technique MUST NOT be carried and paid off in the same breath.
 
-每一节 MUST 至少承担下列功能之一：推进某个核心招式、加压（羞辱 / 误会 / 代价升级）、埋设或兑现伏笔、改变人物关系、兑现情绪、**展开配角支线**。MUST NOT 存在不承担任何功能的节——纯过渡、纯情绪、纯生活流程的孤立节 MUST 与相邻节合并或补足功能。
+Every section MUST take on at least one of the following functions: advancing a core technique, adding pressure (humiliation / misunderstanding / escalating cost), planting or paying off foreshadowing, changing a character relationship, delivering emotion, or **developing a supporting-character subplot**. There MUST NOT be a section with no function at all: isolated sections of pure transition, pure emotion, or pure everyday routine MUST be merged with neighboring sections or given a function.
 
-选定的核心招式数量与节数的关系 MUST 在落点表中可见：招式承载与兑现所覆盖的节不足总节数时，其余节 MUST 由加压、伏笔、关系变化、情绪兑现、配角支线五类功能承接，MUST NOT 留空。推动支线的配角 MUST 有记忆点，且其支线 MUST 对主线产生作用（制造冲突或提供关键帮助），MUST NOT 是只出现不影响的装饰角色。
+The relationship between the number of selected core techniques and the section count MUST be visible in the landing table: when the sections covered by technique carrying and payoff fall short of the total section count, the remaining sections MUST be carried by the five other function types (adding pressure, foreshadowing, relationship change, emotion delivery, supporting-character subplot) and MUST NOT be left empty. A supporting character who drives a subplot MUST have a memorable hook, and the subplot MUST affect the main plot (creating conflict or providing key help); it MUST NOT be a decorative character who appears without effect.
 
-反派（或施害方）的每一次作恶 MUST 有前置铺垫，MUST NOT 无预兆地突然作恶。铺垫 MUST 让读者在作恶发生前已能感觉到危险或恶意在累积——爽感来自「铺垫足够后的反击」，MUST NOT 靠突然降临的恶来制造。
+Every wrongdoing by the villain (or harming party) MUST have prior setup; it MUST NOT happen suddenly with no warning. The setup MUST let readers already sense danger or malice accumulating before the wrongdoing happens: the payoff comes from "retaliation after enough setup", and MUST NOT rely on evil arriving suddenly.
 
-**贯穿道具的三次出现 MUST 各自承担不同的语义状态**，MUST NOT 三次同义重复：
+**The three appearances of a throughline prop MUST each carry a different semantic state** and MUST NOT repeat the same meaning three times:
 
-| 次序 | 语义状态 | 要求 |
+| Order | Semantic state | Requirement |
 |---|---|---|
-| 第一次 | **无害** | 呈现为一个日常细节，读者不觉得重要，不承担任何强调 |
-| 第二次 | **引注意** | 再次出现，读者开始留意，但意义仍未揭晓 |
-| 第三次 | **揭真相** | 意义被颠覆，回收前两次的铺垫 |
+| First | **Harmless** | Presented as an everyday detail the reader does not find important, carrying no emphasis |
+| Second | **Draws attention** | Appears again, and the reader starts to notice, but its meaning is still unrevealed |
+| Third | **Reveals the truth** | Its meaning is overturned, recovering the setup of the first two appearances |
 
-道具 MUST NOT 限于实体信物——一个习惯、一句话、一个数字都可以承担该功能。其判据是「表层日常、深层致命」：第一次读像闲笔，第三次读才发现是引信。
+A prop MUST NOT be limited to a physical keepsake: a habit, a sentence, or a number can carry the function. Its test is "ordinary on the surface, fatal underneath": on first read it looks like idle writing, and only on third read does it turn out to be the fuse.
 
-**反转到来之前 MUST 设一处「催化性失常」**：在全文 60-75% 位置引入一个当前解释框架无法解释的矛盾体（如已经死去的人发来消息、与已知事实冲突的物证）。它的作用不是揭示真相，而是**逼读者放弃旧假设、升级自己的推测**。MUST NOT 用「补充更多同类信息」代替它——同类信息只加强旧假设，不会推动读者改判。反转类型不成立的题材（如纯甜宠、纯治愈）可标注不适用并说明理由。
+**Before the reversal, there MUST be one "catalytic breakdown"**: at the 60-75% point of the full text, introduce a contradictory element the current explanatory framework cannot explain (such as a message from someone already dead, or physical evidence contradicting known facts). Its role is not to reveal the truth but to **force readers to abandon their old assumptions and upgrade their guesses**. It MUST NOT be replaced with "more information of the same kind": same-kind information only strengthens old assumptions and never pushes readers to rejudge. Genres where the reversal type does not apply (such as pure sweet pampering or pure healing) may mark it not applicable with a stated reason.
 
-#### Scenario: D2.1 设计工作按序执行
-- **WHEN** 构思子 agent 执行本阶段
-- **THEN** 依次完成：定投稿平台基调并加载题材风格包、**选定一条情绪链作全篇骨架**、从招式库选 2-3 个核心招式、设计反派、确定揭露方式、编写小节大纲、跑两道验证；不适用的项标注原因后可跳过
+#### Scenario: D2.1 Design work runs in order
+- **WHEN** the concept sub-agent runs this stage
+- **THEN** it completes in order: fix the submission-platform tone and load the genre style pack, **pick one emotion chain as the whole story's skeleton**, pick 2-3 core techniques from the technique library, design the villain, fix the reveal method, write the section outline, and run the two validations; items that do not apply may be skipped after marking the reason
 
-#### Scenario: D2.2 大纲每节一行且字段齐备
-- **WHEN** 读 `outline.md` 的任一小节行
-- **THEN** 该行含结构段与功能、主事件、3-5 个子事件（每个为具体情节描述加功能标签，非纯标签）、情绪、关系变化、因果链、新获知信息、钩子、伏笔、动静、对话密度、目标字数
+#### Scenario: D2.2 Each outline section is one line with complete fields
+- **WHEN** reading any section line in `outline.md`
+- **THEN** the line contains structure part and function, main event, 3-5 sub-events (each a concrete plot description plus a function tag, not a bare tag), emotion, relationship change, causal chain, new information learned, hook, foreshadowing, motion/stillness, dialogue density, and target word count
 
-#### Scenario: D2.8 因果链按固定形状写
-- **WHEN** 检查任一小节的因果链字段
-- **THEN** 该字段含承接点、动机与行动、核心事件、直接后果、结尾钩子五段，其中承接点与直接后果均已写明，未写成泛泛的因果描述、未省略连接位
+#### Scenario: D2.8 The causal chain follows the fixed shape
+- **WHEN** checking any section's causal-chain field
+- **THEN** the field contains five parts (handoff point, motivation and action, core event, direct consequence, ending hook), with the handoff point and direct consequence both written out, not written as a generic causal description and with no connection point omitted
 
-#### Scenario: D2.9 情绪链覆盖全篇
-- **WHEN** 检查 `outline.md` 的情绪链落点
-- **THEN** 标注了链名与各阶段覆盖的节号；全篇每一节都被某个阶段覆盖，无节落在链外；链的阶段与五段未强制一一对应
+#### Scenario: D2.9 The emotion chain covers the whole story
+- **WHEN** checking the emotion-chain landing in `outline.md`
+- **THEN** the chain name and the section numbers each stage covers are marked; every section of the whole story is covered by some stage, with no section outside the chain; the chain's stages and the five parts are not forced into a one-to-one match
 
-#### Scenario: D2.3 反转揭穿位置验证
-- **WHEN** 大纲完成后计算揭穿节号与总节数之比
-- **THEN** 比值低于 50% 判为无效并回到大纲调整；50-60% 判为灰区并复核误导线索是否充分；高于 60% 方可通过
+#### Scenario: D2.3 Reversal reveal position validation
+- **WHEN** computing the reveal section number against the total section count after the outline is done
+- **THEN** a ratio below 50% is invalid and returns to outline adjustment; 50-60% is a gray zone that re-checks whether the misleading clues are sufficient; only above 60% passes
 
-#### Scenario: D2.4 伏笔回查
-- **WHEN** 大纲完成后执行伏笔回查
-- **THEN** 结尾每个关键元素（物件 / 信息 / 角色 / 关系变化）在前文都有至少 1 次铺垫；贯穿道具三次出现（铺垫段 / 反转段 / 结尾段）齐全；铺垫节与揭穿节的间距不少于 3 节；缺项必须补铺垫后重验
+#### Scenario: D2.4 Foreshadowing re-check
+- **WHEN** running the foreshadowing re-check after the outline is done
+- **THEN** every key element of the ending (object / information / character / relationship change) has at least 1 setup earlier in the text; the throughline prop's three appearances (setup section / reversal section / ending section) are all present; the gap between the setup section and the reveal section is at least 3 sections; missing items must be fixed by adding setup and re-verified
 
-#### Scenario: D2.12 贯穿道具三次语义递进
-- **WHEN** 检查贯穿道具的三次出现
-- **THEN** 三次的语义状态分别为无害、引注意、揭真相，未同义重复；第一次不承担强调、读起来像闲笔，第三次回收前两次铺垫；道具类型不限于实体信物（习惯 / 一句话 / 一个数字均可）
+#### Scenario: D2.12 The throughline prop's three appearances progress semantically
+- **WHEN** checking the throughline prop's three appearances
+- **THEN** the three semantic states are harmless, draws attention, and reveals the truth, with no same-meaning repetition; the first carries no emphasis and reads like idle writing, and the third recovers the first two appearances' setup; the prop type is not limited to a physical keepsake (a habit, a sentence, or a number all work)
 
-#### Scenario: D2.5 作者确认关卡二
-- **WHEN** 大纲与两道验证全部通过
-- **THEN** 总指挥以日常语言展示大纲摘要（这节讲什么 / 情绪怎么走 / 卡在哪断点）并停下等作者确认；未确认前 MUST NOT 组装契约
+#### Scenario: D2.5 Author confirmation gate two
+- **WHEN** the outline and both validations have passed
+- **THEN** the commander shows the outline summary in everyday language (what each section is about / how the emotion moves / where the breakpoints fall) and stops to wait for author confirmation; before confirmation, it MUST NOT assemble the contract
 
-#### Scenario: D2.6 招式落点表齐备
-- **WHEN** 检查 `outline.md` 的招式落点表
-- **THEN** 每个核心招式都标注了承载节与兑现节，两节之间留出铺垫距离；不存在承载即兑现的条目
+#### Scenario: D2.6 The technique landing table is complete
+- **WHEN** checking the technique landing table in `outline.md`
+- **THEN** every core technique is marked with a carrying section and a payoff section, with setup distance between the two; no entry carries and pays off at once
 
-#### Scenario: D2.7 无无功能节
-- **WHEN** 逐节检查大纲
-- **THEN** 每一节至少承担推进招式 / 加压 / 伏笔 / 关系变化 / 情绪兑现 / 展开配角支线中的一项；不存在纯过渡或纯情绪的孤立节；招式覆盖不足的节由其余五类功能承接
+#### Scenario: D2.7 No functionless sections
+- **WHEN** checking the outline section by section
+- **THEN** every section takes on at least one of advancing a technique / adding pressure / foreshadowing / relationship change / emotion delivery / developing a supporting-character subplot; there are no isolated pure-transition or pure-emotion sections; sections not covered by techniques are carried by the other five function types
 
-#### Scenario: D2.10 招式条目公式与示例成对
-- **WHEN** 检查从题材风格包选入本篇的招式条目
-- **THEN** 每条含可套用的公式与一个具体示例，MUST NOT 只列招式名称；公式与示例均与本篇题材一致
+#### Scenario: D2.10 Technique entries pair formula with example
+- **WHEN** checking the technique entries picked from the genre style pack into this story
+- **THEN** each entry contains an applicable formula and one concrete example, and MUST NOT list only the technique name; the formula and example both match this story's genre
 
-#### Scenario: D2.11 反派作恶有前置铺垫
-- **WHEN** 通读大纲与成稿，定位反派（或施害方）的每一次作恶
-- **THEN** 每次作恶之前都有累积危险的铺垫，读者在作恶发生前已能感觉到恶意在累积；不存在无预兆突然作恶的节点；反击的爽感来自铺垫足够，未靠突然降临的恶制造
+#### Scenario: D2.11 Villain wrongdoing has prior setup
+- **WHEN** reading through the outline and the finished draft to locate each wrongdoing by the villain (or harming party)
+- **THEN** every wrongdoing has setup that accumulates danger beforehand, and readers can already sense malice accumulating before it happens; there is no node where wrongdoing happens with no warning; the retaliation payoff comes from enough setup, not from evil arriving suddenly
 
-#### Scenario: D2.13 催化性失常已设置
-- **WHEN** 检查全文 60-75% 位置
-- **THEN** 存在一个当前解释框架无法解释的矛盾体，其作用是逼读者放弃旧假设；MUST NOT 是以补充同类信息代替；反转类型不成立的题材已标注不适用并说明理由
+#### Scenario: D2.13 The catalytic breakdown is set
+- **WHEN** checking the 60-75% point of the full text
+- **THEN** there is a contradictory element the current explanatory framework cannot explain, whose role is to force readers to abandon old assumptions; it MUST NOT be replaced by adding same-kind information; genres where the reversal type does not apply are marked not applicable with a stated reason
 
-### Requirement: D3 写作契约必须组装为可执行、可核对的产物
+### Requirement: D3 The writing contract must be assembled as an executable, checkable product
 
-排纲确认后、写作开始前，每篇 MUST 组装一份**篇级写作契约**并落盘为可读产物。契约 MUST 采用六元素结构——角色 / 任务指示 / 背景信息 / 输入 / 案例 / 输出，输出段 MUST 采用扁平结构：把写作规范、叙事规则、约束红线合并为单一「不可违反规则」列表，减少嵌套与优先级判断成本；建议性技法 MUST NOT 进入硬规则区。
+After the outline is confirmed and before writing starts, each story MUST have one **per-story writing contract** assembled and saved as a readable product. The contract MUST use a six-element structure: persona / task instructions / background / input / examples / output. The output section MUST use a flat structure: merge writing standards, narrative rules, and constraint red lines into a single "rules that must not be violated" list to reduce nesting and priority-judgment cost; suggestive techniques MUST NOT enter the hard-rules zone.
 
-契约 MUST NOT 是参考文件与大纲的拼接。组装 MUST 完成三件事：
+The contract MUST NOT be a stitching of reference files and the outline. Assembly MUST complete three things:
 
-1. **转化**：题材包的通用招式 MUST 转化为本篇写法——锚定本篇主角、锚定本篇信息差关系、锚定该段落情绪节奏，形成可直接执行的写法，而非复制通用方法论原文
-2. **排序**：硬规则 MUST 按优先级降序排列（约束红线 > 字数 > 禁用项 > 叙事规则 > 写作规范同级其他规则）
-3. **去重**：组装后 MUST 自查同一语义只出现一次，同一对象（节长 / 字数 / 标点 / 对话密度等）的数量线或禁止项 MUST 只定义一处
+1. **Transform**: the genre pack's general techniques MUST be transformed into this story's writing: anchor them to this story's protagonist, anchor them to this story's information-gap relationships, and anchor them to the emotional rhythm of the passage, forming directly executable writing rather than copying the general methodology text
+2. **Order**: hard rules MUST be sorted in descending priority (constraint red lines > word counts > banned items > narrative rules > other same-level writing-standards rules)
+3. **Deduplicate**: after assembly, it MUST self-check that the same meaning appears only once, and that quantity lines or bans for the same object (section length / word count / punctuation / dialogue density, and so on) MUST be defined in only one place
 
-契约中写入硬规则区的每一条 MUST 是可对照核对的（可机械判定，或给出明确判据）；无法核对的抽象表述 MUST NOT 进入硬规则区。
+Every rule written into the contract's hard-rules zone MUST be checkable against the text (mechanically decidable, or with a clear criterion); abstract wording that cannot be checked MUST NOT enter the hard-rules zone.
 
-契约 MUST 内联短篇自身的**冲突裁定表**，覆盖两类冲突：
+The contract MUST inline the short story's own **conflict adjudication table**, covering two kinds of conflict:
 
-- **数值冲突**：每节节长下限、整篇总字数、五段字数占比、反转揭穿位置、段落行数形态，五者互相冲突时的让步顺序
-- **定性冲突**：**逻辑自洽优先于爽点与虐点**——当某个爽点或虐点需要角色做出不符合其动机、或与已立设定矛盾的行为时，MUST 优先保证逻辑自洽，改为调整爽点设计而非让角色行为失据。角色的每一次关键行动 MUST 有其动机来源，前后一致，MUST NOT 为制造效果而临时改变人物行为逻辑
+- **Numeric conflicts**: the per-section length floor, whole-story total word count, five-part word-count shares, reversal reveal position, and paragraph line-shape, with the concession order when the five conflict with each other
+- **Qualitative conflicts**: **logical consistency takes priority over payoffs and gut-punches**. When a payoff or gut-punch needs a character to act against their motivation or contradict an established setting, logical consistency MUST win, and the payoff design is adjusted instead of letting character behavior lose its basis. Every key action by a character MUST have a motivation source and stay consistent throughout; it MUST NOT change character behavior logic on the spot to manufacture an effect
 
-裁定表 MUST 明确每次裁定的取舍依据，使写作侧只执行、不做优先级决策。
+The adjudication table MUST state the basis for each trade-off, so the writing side only executes and makes no priority decisions.
 
-#### Scenario: D3.1 契约结构完整
-- **WHEN** 检查组装后的写作契约
-- **THEN** 六元素全部存在且字段有值、无占位符残留；输出段为扁平结构，建议性技法位于独立子节而非硬规则区
+#### Scenario: D3.1 The contract is structurally complete
+- **WHEN** checking the assembled writing contract
+- **THEN** all six elements exist with values and no placeholder residue; the output section is a flat structure, with suggestive techniques in a separate sub-section rather than in the hard-rules zone
 
-#### Scenario: D3.2 通用招式已转化为本篇写法
-- **WHEN** 抽查契约中来自题材包的招式条目
-- **THEN** 每条含具体角色名与信息差关系，体现该段情绪节奏对写法的影响，形成一条可直接执行的指令，而非三条并列的通用说明或题材包原文复制
+#### Scenario: D3.2 General techniques are transformed into this story's writing
+- **WHEN** spot-checking the technique entries in the contract that came from the genre pack
+- **THEN** each entry contains a concrete character name and information-gap relationship, shows how the passage's emotional rhythm affects the writing, and forms one directly executable instruction, not three parallel general explanations or a copy of the genre-pack text
 
-#### Scenario: D3.3 硬规则优先级降序
-- **WHEN** 通读契约的不可违反规则列表
-- **THEN** 顺序为约束红线 > 字数 > 禁用项 > 叙事规则 > 写作规范同级其他规则；无优先级颠倒；建议性技法未混入硬规则区
+#### Scenario: D3.3 Hard rules are in descending priority
+- **WHEN** reading through the contract's rules-that-must-not-be-violated list
+- **THEN** the order is constraint red lines > word counts > banned items > narrative rules > other same-level writing-standards rules, with no priority inversions, and suggestive techniques are not mixed into the hard-rules zone
 
-#### Scenario: D3.4 组装后去重
-- **WHEN** 通读契约全文
-- **THEN** 同一对象同一格式的定义只出现一次（不存在同一数量线或禁止项的完全重复）；措辞不同但各有侧重的等价约束可保留
+#### Scenario: D3.4 Deduplicated after assembly
+- **WHEN** reading through the whole contract
+- **THEN** the same object in the same format is defined only once (no exact duplicate of the same quantity line or ban); equivalently worded constraints with different emphases may be kept
 
-#### Scenario: D3.5 契约条目可核对
-- **WHEN** 逐条检视契约硬规则区的约束
-- **THEN** 每条都能被定稿后的正文核对（给出可判定标准或明确判据），不存在无法核对只能凭感觉判断的表述
+#### Scenario: D3.5 Contract entries are checkable
+- **WHEN** examining each constraint in the contract's hard-rules zone one by one
+- **THEN** each one can be checked against the finalized main text (with a decidable standard or a clear criterion), with no wording that can only be judged by feel
 
-#### Scenario: D3.6 冲突裁定表已内联
-- **WHEN** 检查契约中的冲突裁定内容
-- **THEN** 含五者（节长下限 / 总字数 / 五段占比 / 反转揭穿位置 / 段落行数）互相冲突时的让步顺序与取舍依据，且该裁定表在硬规则区可被写作侧直接取用
+#### Scenario: D3.6 The conflict adjudication table is inlined
+- **WHEN** checking the conflict adjudication content in the contract
+- **THEN** it contains the concession order and trade-off basis when the five items (section-length floor / total word count / five-part shares / reversal reveal position / paragraph line-shape) conflict with each other, and the adjudication table can be picked up directly by the writing side in the hard-rules zone
 
-#### Scenario: D3.7 逻辑优先条款已内联
-- **WHEN** 检查契约冲突裁定表的定性冲突部分
-- **THEN** 明确声明逻辑自洽优先于爽点与虐点，并附带「角色关键行动必须有动机来源、前后一致」的要求；写作侧遇到爽点与逻辑冲突时按此执行，不自行裁定
+#### Scenario: D3.7 The logic-first clause is inlined
+- **WHEN** checking the qualitative-conflict part of the contract's conflict adjudication table
+- **THEN** it explicitly states that logical consistency takes priority over payoffs and gut-punches, with the requirement that "a character's key actions must have a motivation source and stay consistent throughout"; when the writing side meets a payoff-versus-logic conflict, it follows this and does not adjudicate on its own
 
-### Requirement: D4 契约必须经独立审计才能进入写作
+### Requirement: D4 The contract must pass independent audit before writing
 
-契约组装完成后 MUST 经独立审计，审计者 MUST NOT 是组装者本人。审计 MUST 至少覆盖：通用招式是否已转化为本篇写法、硬规则优先级是否降序、规则是否重复、情绪与结构约束是否互相矛盾、条目是否可核对五项。审计不通过 MUST 回到组装修正并重新审计，MUST NOT 带缺陷进入写作。
+After the contract is assembled, it MUST pass an independent audit, and the auditor MUST NOT be the assembler. The audit MUST cover at least five items: whether general techniques are transformed into this story's writing, whether hard-rule priority is descending, whether rules repeat, whether emotion and structure constraints contradict each other, and whether entries are checkable. If the audit fails, it MUST return to assembly for fixes and re-audit, and MUST NOT enter writing with defects.
 
-#### Scenario: D4.1 审计独立性
-- **WHEN** 追溯契约的组装者与审计者
-- **THEN** 两者非同一执行
+#### Scenario: D4.1 Audit independence
+- **WHEN** tracing the contract's assembler and auditor
+- **THEN** the two are not the same executor
 
-#### Scenario: D4.2 审计五项齐备
-- **WHEN** 读审计产出
-- **THEN** 覆盖转化质量、优先级顺序、规则去重、约束间一致性、条目可核对性五项，每项附原文证据
+#### Scenario: D4.2 All five audit items present
+- **WHEN** reading the audit output
+- **THEN** it covers transformation quality, priority order, rule deduplication, consistency between constraints, and entry checkability, five items, each with quoted source evidence
 
-#### Scenario: D4.3 审计不通过即回退
-- **WHEN** 审计判定为不通过
-- **THEN** 契约回到组装修正后重新审计，写作 MUST NOT 开始
+#### Scenario: D4.3 Failed audit rolls back
+- **WHEN** the audit judges a failure
+- **THEN** the contract returns to assembly for fixes and re-audit, and writing MUST NOT start
 
-#### Scenario: D4.4 契约冻结
-- **WHEN** 审计通过
-- **THEN** 契约作为本次写作的基线冻结，正文写作与后续验收均以该版本为准
+#### Scenario: D4.4 The contract is frozen
+- **WHEN** the audit passes
+- **THEN** the contract is frozen as the baseline for this writing, and the main-text writing and later acceptance both follow that version
 
-### Requirement: D5 正文写作必须分批并受硬底线约束
+### Requirement: D5 Main text must be written in batches under hard floors
 
-正文 MUST 由写作子 agent 分批产出（每批 2-3 节），每批 MUST 经总指挥核验后才推进。每节 MUST 满足节长底线，整篇 MUST 满足总字数底线，且 MUST 用可执行的统计方式实测。
+The main text MUST be produced by the writing sub-agent in batches (2-3 sections per batch), and each batch MUST be verified by the commander before advancing. Each section MUST meet the section-length floor, the whole story MUST meet the total word-count floor, and both MUST be measured with an executable counting method.
 
-字数统计 MUST 使用跨平台可靠的方式，MUST NOT 由模型估算、MUST NOT 使用字节数统计。字数或节数不达标时 MUST 继续展开而非收尾；节数 MUST 等于大纲规划节数。
+Word counting MUST use a cross-platform reliable method and MUST NOT be model estimation and MUST NOT use byte counts. When word or section counts fall short, the text MUST be expanded further rather than wrapped up; the section count MUST equal the outline's planned section count.
 
-**段与节是两个正交的刻画，MUST NOT 建立一一对应。** 五段（开头 / 铺垫 / 升级 / 反转 / 结尾）是**功能分段**，按占比描述；节是**写作与验收单位**，按字数下限描述。一个节可以跨两个功能段（如首节同时承载开头段与铺垫段的起始），一个功能段也可以跨多个节。MUST NOT 因为某个功能段按占比折算出的字数低于每节下限，就取消该段、合并节或对该节豁免下限。
+**Paragraphs and sections are two orthogonal descriptions and MUST NOT be mapped one-to-one.** The five parts (opening / setup / escalation / reversal / ending) are **functional segments**, described by shares; sections are the **writing and acceptance unit**, described by word-count floors. One section can span two functional segments (such as the first section carrying both the opening part and the start of the setup part), and one functional segment can span multiple sections. A functional segment MUST NOT be cancelled, sections merged, or a section exempted from its floor just because the word count from its share conversion falls below the per-section floor.
 
-**每批写作前 MUST 把契约的硬规则区重新注入写作上下文**，MUST NOT 依赖写作侧自行回溯契约。理由是契约是篇级唯一一份而正文分批产出，写作侧与规则的距离随批次增长——末批与契约之间已隔着全文的已写内容。重注入 MUST 覆盖契约硬规则区的**全部条目**（约束红线、字数、禁用项、叙事规则、写作规范同级其他规则），允许按篇幅做措辞压缩，MUST NOT 丢弃任何一条硬约束；MUST NOT 只注入与本批场景相关的子集。
+**Before each batch of writing, the contract's hard-rules zone MUST be re-injected into the writing context**; the writing side MUST NOT be relied on to look the contract up itself. The reason is that the contract is the story's single copy while the main text is produced in batches, so the distance between the writing side and the rules grows with each batch: by the last batch, the full written text already sits between it and the contract. Re-injection MUST cover **all entries** of the contract's hard-rules zone (constraint red lines, word counts, banned items, narrative rules, and other same-level writing-standards rules); wording may be compressed for length, but no hard constraint MUST be dropped; it MUST NOT inject only the subset relevant to this batch's scenes.
 
-**场景 MUST 从冲突中途进入，MUST NOT 从流程开头进入**（晚进早出）：从一个场景的进行中切入，把读者直接放进正在发生的事里；人物起床、赶路、寒暄、布置这类进入前的流程 MUST NOT 展开，必要信息用一句带过或从后续对话中带出。判据：场景的第一句是否已经处于冲突或张力之中。
+**Scenes MUST enter mid-conflict and MUST NOT enter from the start of the process** (late in, early out): cut into a scene already in progress and put the reader directly into something happening; lead-in routines such as a character waking up, traveling, exchanging greetings, or setting up MUST NOT be expanded, and necessary information is carried in one sentence or brought out in later dialogue. The test: whether the scene's first sentence is already inside conflict or tension.
 
-**反转揭示 MUST 完成读者侧的「瞬时串线」**，MUST NOT 只把真相说出来：揭示时用回看、独白或物证，把前文埋下的线索一次性带回读者眼前，让读者立刻回忆起「原来那几处是这个意思」。仅陈述真相而不回连带线索，反转的冲击力无法兑现——读者会表示「知道了」而非「原来如此」。
+**A reversal reveal MUST complete the reader-side "instant threading"** and MUST NOT only state the truth: when revealing, use a look-back, a monologue, or physical evidence to bring all the clues planted earlier back before the reader's eyes at once, so readers immediately recall "so that's what those places meant". Stating only the truth without reconnecting the clues leaves the reversal's impact undelivered: readers say "I see" instead of "so that's how it is".
 
-#### Scenario: D5.1 写前两问
-- **WHEN** 写作子 agent 开始任一小节
-- **THEN** 先明确本场景目标情绪、契约中对应的技法条目、用在哪个段落；任一答不出则先回读契约再动笔
+#### Scenario: D5.1 Two questions before writing
+- **WHEN** the writing sub-agent starts any section
+- **THEN** it first fixes the scene's target emotion, the matching technique entry in the contract, and which paragraph to use it in; if any cannot be answered, it re-reads the contract before writing
 
-#### Scenario: D5.2 三维度揉进与反模式
-- **WHEN** 检查任一小节的场景写法
-- **THEN** 发生、感知、反应三个维度揉在同一段连续正文中，未拆成三段依次铺陈；段落按新动作 / 新物件 / 新信息 / 新对话 / 视线转移断开
+#### Scenario: D5.2 Three dimensions kneaded in, plus anti-patterns
+- **WHEN** checking any section's scene writing
+- **THEN** the happening, perceiving, and reacting dimensions are kneaded into the same stretch of continuous main text, not split into three paragraphs laid out in sequence; paragraphs break on a new action / new object / new information / new dialogue / a shift of gaze
 
-#### Scenario: D5.12 场景晚进早出
-- **WHEN** 检查任一场景的进入点
-- **THEN** 第一句已处于冲突或张力之中；起床、赶路、寒暄、布置等进入前流程未展开；必要信息用一句带过或从后续对话带出
+#### Scenario: D5.12 Scenes enter late and leave early
+- **WHEN** checking any scene's entry point
+- **THEN** the first sentence is already inside conflict or tension; lead-in routines such as waking up, traveling, greetings, and setup are not expanded; necessary information is carried in one sentence or brought out in later dialogue
 
-#### Scenario: D5.3 节长硬底线
-- **WHEN** 任一小节写完
-- **THEN** 实测字数不低于 800 字；题材若属高信息密度类（爽文 / 打脸 / 系统流），可降至 500 字但不低于 500 字；不足则该节判为未完成，必须补充子事件或对话后重测，MUST NOT 带着未达标的小节写下一节
+#### Scenario: D5.3 Section-length hard floor
+- **WHEN** any section is finished
+- **THEN** the measured word count is at least 800 words; for high-information-density genres (payoff stories / face-slapping / system-flow), it may drop to 500 words but not below 500; if short, the section counts as unfinished and must add sub-events or dialogue and be re-measured, and MUST NOT move on to the next section carrying an under-standard section
 
-#### Scenario: D5.4 总字数硬底线
-- **WHEN** 全部小节写完
-- **THEN** 实测总字数不低于 8000 字，统计方式为跨平台可执行的字符统计，MUST NOT 使用模型估算或字节数
+#### Scenario: D5.4 Total word-count hard floor
+- **WHEN** all sections are finished
+- **THEN** the measured total word count is at least 8000 words, counted by cross-platform executable character counting, and MUST NOT use model estimation or byte counts
 
-#### Scenario: D5.5 节数守恒
-- **WHEN** 对照 `outline.md` 核对成稿
-- **THEN** 正文节数与大纲规划节数相等，未合并、未省略；若写作中发现某节不应独立存在，必须回到大纲阶段调整而非在写作时偷减
+#### Scenario: D5.5 Section-count conservation
+- **WHEN** checking the finished draft against `outline.md`
+- **THEN** the main text's section count equals the outline's planned section count, with none merged or omitted; if writing reveals a section should not stand alone, it must return to the outline stage to adjust rather than quietly cutting it during writing
 
-#### Scenario: D5.6 五段结构落地
-- **WHEN** 通读成稿
-- **THEN** 结构为开头（前 300-500 字，前 100 字事件密度不少于 3，前 3 句不含无事件承载的环境描写）、铺垫（约占 30-40%，埋入不少于 3 条反转线索）、升级（约占 20-30%，冲突至少一个维度升级）、反转（约占 10-15%，一节内完成揭示且冲击强度高于此前所有节）、结尾（约占 5-10%，用安静细节收尾）
+#### Scenario: D5.6 Five-part structure lands
+- **WHEN** reading through the finished draft
+- **THEN** the structure is opening (first 300-500 words, at least 3 event-dense items in the first 100 words, no event-free environment description in the first 3 sentences), setup (about 30-40%, with at least 3 reversal clues planted), escalation (about 20-30%, with conflict escalating on at least one dimension), reversal (about 10-15%, the reveal completed within one section with impact stronger than all previous sections), ending (about 5-10%, closing on a quiet detail)
 
-#### Scenario: D5.13 反转完成读者侧瞬时串线
-- **WHEN** 读反转揭示处
-- **THEN** 揭示时用回看、独白或物证把前文线索一次性带回读者眼前，读者能立刻回忆起具体是哪几处；MUST NOT 只陈述真相而不回收线索
+#### Scenario: D5.13 The reversal completes reader-side instant threading
+- **WHEN** reading the reversal reveal
+- **THEN** the reveal uses a look-back, monologue, or physical evidence to bring the earlier clues back before the reader's eyes at once, so readers can immediately recall exactly which places they were; it MUST NOT only state the truth without recovering the clues
 
-#### Scenario: D5.7 写作侧不越权裁定
-- **WHEN** 写作过程中出现契约内两条硬约束互相冲突
-- **THEN** 按契约内联的冲突裁定表执行，写作侧不自行决定让步顺序
+#### Scenario: D5.7 The writing side does not adjudicate beyond its authority
+- **WHEN** two hard constraints in the contract conflict with each other during writing
+- **THEN** follow the contract's inlined conflict adjudication table; the writing side does not decide the concession order itself
 
-#### Scenario: D5.8 段与节不一一对应
-- **WHEN** 对照大纲与成稿检查功能段的起止与节的边界
-- **THEN** 两者各自独立，未被强制对齐；开头段与结尾段未因占比折算字数低于节下限而被取消或合并
+#### Scenario: D5.8 Paragraphs and sections are not one-to-one
+- **WHEN** checking functional segments' start and end against section boundaries in the outline and finished draft
+- **THEN** the two stand independently and are not forced to align; the opening and ending parts are not cancelled or merged because their share-converted word counts fall below the section floor
 
-#### Scenario: D5.9 每节下限无豁免
-- **WHEN** 统计任一节的字数
-- **THEN** 全部节均满足节长下限，包含承载开头段或结尾段的节；不存在按功能段豁免下限的情形
+#### Scenario: D5.9 No exemption from the per-section floor
+- **WHEN** counting the words of any section
+- **THEN** all sections meet the section-length floor, including sections carrying the opening or ending part; no case of exempting the floor by functional segment exists
 
-#### Scenario: D5.10 每批重注入契约硬规则
-- **WHEN** 开始新一轮分批写作
-- **THEN** 该批的写作上下文含契约硬规则区的完整内容（或等价的完整摘录），未依赖写作侧自行回溯契约
+#### Scenario: D5.10 Re-inject the contract hard rules each batch
+- **WHEN** starting a new round of batched writing
+- **THEN** that batch's writing context contains the complete content of the contract's hard-rules zone (or an equivalent complete excerpt), without relying on the writing side to look the contract up itself
 
-#### Scenario: D5.11 重注入不丢条目
-- **WHEN** 对照某批注入的硬规则与本篇契约的硬规则区
-- **THEN** 条目一一对应，无遗漏；措辞可压缩但未删除任何硬约束，也未只注入本批场景相关的子集
+#### Scenario: D5.11 Re-injection drops no entries
+- **WHEN** comparing a batch's injected hard rules against this story's contract hard-rules zone
+- **THEN** entries correspond one-to-one with none missing; wording may be compressed but no hard constraint is deleted, and only the subset relevant to this batch's scenes was not injected alone
 
-### Requirement: D6 去 AI 味与精修
+### Requirement: D6 De-AI pass and polish
 
-精修阶段 MUST 按短篇专属口径执行，MUST NOT 应用任何其他文体的去 AI 规则。精修 MUST 覆盖开头钩子、情绪曲线、反转铺垫、每句话价值、格式规范五个方面，并 MUST 通过格式合规检查。
+The polish stage MUST follow the short-story-specific criteria and MUST NOT apply any other genre's de-AI rules. Polish MUST cover five aspects (opening hook, emotional curve, reversal setup, the value of every sentence, format compliance) and MUST pass the format compliance check.
 
-#### Scenario: D6.1 短篇口径优先
-- **WHEN** 编辑子 agent 执行去 AI 味
-- **THEN** 按短篇留删对表判定：带主角主观情绪的直接情绪词、第一人称审判句、火葬场预告、心死章尾予以保留；接不上具体反应的空泛情绪总结句、与角色情绪无关的中立作者讲解予以删除
+#### Scenario: D6.1 Short-story criteria take priority
+- **WHEN** the editor sub-agent runs the de-AI pass
+- **THEN** it judges by the short-story keep-or-cut table: direct emotion words carrying the protagonist's subjective emotion, first-person judgment sentences, crematorium previews, and heart-death chapter endings are kept; vague emotional summary sentences with no concrete reaction following them, and neutral author explanations unrelated to the characters' emotions, are deleted
 
-#### Scenario: D6.2 精修清单逐项
-- **WHEN** 精修完成后
-- **THEN** 开头（前 3 句抓人 / 无背景铺垫 / 有开篇钩子）、情绪（曲线有走向 / 反转前铺垫够 / 反转后冲击够）、反转（出乎意料 / 合情合理 / 时机合适）、节奏（无拖沓 / 每句有价值 / 字数在范围内）、钩子（每 2-3 节有钩 / 章末有钩）、技法（情绪后接具体反应 / 信物意义翻转完整 / 一动一静 / 开头事件密度）逐项已过
+#### Scenario: D6.2 Polish checklist item by item
+- **WHEN** polish is complete
+- **THEN** opening (first 3 sentences hook the reader / no background setup / an opening hook exists), emotion (the curve has direction / enough setup before the reversal / enough impact after the reversal), reversal (unexpected / reasonable / well-timed), pacing (no dragging / every sentence has value / word count in range), hooks (a hook every 2-3 sections / a hook at the chapter end), and technique (a concrete reaction follows emotion / the keepsake's meaning flips completely / one movement and one stillness / opening event density) have each passed
 
-#### Scenario: D6.3 格式合规
-- **WHEN** 检查成稿格式
-- **THEN** 小节标记全文统一；相邻段落之间只有一个换行符、无空行；无缩进；正文段落无 Markdown 标记；对话独立成行且引号风格与目标平台一致；正文与对话均不出现被禁的停顿标点；正文未混入章节号或写作工程词
+#### Scenario: D6.3 Format compliance
+- **WHEN** checking the finished draft's format
+- **THEN** section markers are uniform throughout; exactly one line break sits between adjacent paragraphs, with no blank lines; no indentation; main-text paragraphs carry no Markdown markers; dialogue stands on its own lines with quote style matching the target platform; neither main text nor dialogue contains banned pause punctuation; the main text contains no chapter numbers or writing-engineering words
 
-#### Scenario: D6.4 标点与字数收尾
-- **WHEN** 精修完成
-- **THEN** 停顿、哽咽、未尽、被打断、留白一律由短句、动作或换行实现，未使用禁用标点；精修后字数仍满足总字数底线；自检记录不落盘进正文文件
+#### Scenario: D6.4 Punctuation and word-count finish
+- **WHEN** polish is complete
+- **THEN** pauses, choking up, trailing off, interruptions, and blank space are all done with short sentences, actions, or line breaks, with no banned punctuation used; word count still meets the total word-count floor after polish; self-check records are not saved into the main-text file
 
-#### Scenario: D6.5 交付洁净
-- **WHEN** 检查成品正文文件
-- **THEN** 文件末尾无自检记录、无检查标记注释、无写作工程词
+#### Scenario: D6.5 Clean delivery
+- **WHEN** checking the finished main-text file
+- **THEN** the end of the file has no self-check records, no check-marker comments, and no writing-engineering words
 
-### Requirement: D7 定稿必须对照契约验收兑现度并独立体验验收
+### Requirement: D7 The final draft must check payoff against the contract and pass independent experience acceptance
 
-定稿后 MUST 先由**未参与契约组装、未参与写作、未参与清创**的独立执行对照冻结的契约逐项核对正文兑现度，再进入体验验收。两项验收的产出 MUST 分开，体验验收 MUST NOT 被兑现度清单污染。
+After the final draft, an independent executor who **did not take part in contract assembly, writing, or cleanup** MUST first check the main text's payoff item by item against the frozen contract, and only then does experience acceptance begin. The two acceptances' outputs MUST be kept separate, and experience acceptance MUST NOT be contaminated by the payoff checklist.
 
-兑现度核对 MUST 至少覆盖：契约硬规则逐条是否被遵守、大纲每个子事件是否落地、情绪目标是否达成、反转揭穿位置是否与契约一致、贯穿道具三次出现是否齐备（含三次语义递进）、催化性失常是否就位、**人物行为前后一致**（无与其设定或动机矛盾的行动）、**对话逐句承担功能**、字数与节数是否达标、被禁的停顿标点是否清零。
+The payoff check MUST cover at least: whether each contract hard rule was followed, whether every outline sub-event landed, whether the emotion goal was met, whether the reversal reveal position matches the contract, whether the throughline prop's three appearances are complete (including the three semantic progressions), whether the catalytic breakdown is in place, **whether character behavior is consistent throughout** (no action contradicting the character's setting or motivation), **whether each line of dialogue carries a function**, whether word and section counts meet the standard, and whether banned pause punctuation is at zero.
 
-其中**对话功能核对的判据**：每一句对话至少完成推动情节、揭示性格、制造冲突、埋设伏笔之一；连续多句仅承担寒暄、重复已知信息或单纯衔接的对话 MUST 判为不合格。核对 MUST 逐句扫描，MUST NOT 只抽样判断。
+The **criterion for the dialogue-function check** is: every line of dialogue must complete at least one of advancing the plot, revealing character, creating conflict, or planting foreshadowing; several consecutive lines that only carry greetings, repeat known information, or merely connect must be judged unqualified. The check MUST scan line by line and MUST NOT judge by sampling only.
 
-任一硬性条目未兑现 MUST 判定为不通过并回到对应阶段修正；不通过项 MUST 附正文原文证据。
+Any hard item not delivered MUST be judged a failure and return to the matching stage for fixes; failing items MUST carry quoted main-text evidence.
 
-#### Scenario: D7.1 兑现度核对独立性
-- **WHEN** 追溯兑现度核对的执行者
-- **THEN** 其未参与契约组装、正文写作与去 AI 味清创
+#### Scenario: D7.1 Payoff check independence
+- **WHEN** tracing the payoff check's executor
+- **THEN** they did not take part in contract assembly, main-text writing, or de-AI cleanup
 
-#### Scenario: D7.2 兑现度逐条出结论
-- **WHEN** 读兑现度核对产出
-- **THEN** 契约硬规则、大纲子事件、情绪目标、反转位置、贯穿道具（含语义递进）、催化性失常、人物前后一致、对话逐句功能、字数节数、标点禁令各项均有结论，未兑现项附正文原文证据
+#### Scenario: D7.2 Payoff conclusions item by item
+- **WHEN** reading the payoff-check output
+- **THEN** contract hard rules, outline sub-events, emotion goal, reversal position, throughline prop (including semantic progression), catalytic breakdown, character consistency throughout, dialogue line-by-line function, word and section counts, and the punctuation ban each have a conclusion, and undelivered items carry quoted main-text evidence
 
-#### Scenario: D7.7 对话逐句功能核对
-- **WHEN** 执行对话功能核对
-- **THEN** 逐句扫描而非抽样；每句对话标注其完成的功能（推动情节 / 揭示性格 / 制造冲突 / 埋设伏笔）；连续多句仅寒暄、重复已知信息或单纯衔接的判为不合格并给出位置
+#### Scenario: D7.7 Dialogue line-by-line function check
+- **WHEN** running the dialogue-function check
+- **THEN** it scans line by line rather than sampling; every dialogue line is marked with the function it completes (advancing the plot / revealing character / creating conflict / planting foreshadowing); several consecutive lines that only greet, repeat known information, or merely connect are judged unqualified, with positions given
 
-#### Scenario: D7.3 不通过即回退
-- **WHEN** 兑现度核对判定某硬性条目未兑现
-- **THEN** 回到对应阶段修正后重新核对，MUST NOT 直接交付
+#### Scenario: D7.3 Failure rolls back
+- **WHEN** the payoff check judges a hard item undelivered
+- **THEN** it returns to the matching stage for fixes and re-checks, and MUST NOT deliver directly
 
-#### Scenario: D7.4 体验验收独立进行
-- **WHEN** 兑现度核对通过
-- **THEN** 体验验收先沉浸阅读再逐项评价，反馈面向「读完爽不爽」，评价指标名不出现在作者可见文本中
+#### Scenario: D7.4 Experience acceptance runs independently
+- **WHEN** the payoff check passes
+- **THEN** experience acceptance reads immersively first and then evaluates item by item, with feedback aimed at "was it satisfying to read", and evaluation metric names do not appear in author-visible text
 
-#### Scenario: D7.5 交付摘要
-- **WHEN** 两项验收均通过
-- **THEN** 总指挥展示作者可读的交付摘要：本篇写了什么 / 目标情绪有没有达到 / 哪里还可以再改 / 成品文件在哪；不展示内部结构或字段名
+#### Scenario: D7.5 Delivery summary
+- **WHEN** both acceptances pass
+- **THEN** the commander shows an author-readable delivery summary: what this story wrote / whether the target emotion was met / what could still be improved / where the finished files are; it does not show internal structure or field names
 
-#### Scenario: D7.6 推进、改稿与下一篇
-- **WHEN** 作者确认交付
-- **THEN** 篇状态推进为已交付，此后作者可选两条路：就本篇提出修改（走改稿路径）或开始下一篇；下一篇复用同一份题材风格包，占独立的篇目目录、独立的设定与契约，本篇文件字节不变
+#### Scenario: D7.6 Advancing, revising, and the next story
+- **WHEN** the author confirms delivery
+- **THEN** the story status advances to delivered, and the author then has two paths: ask for changes to this story (take the revision path) or start the next story. The next story reuses the same genre style pack, takes an independent story directory with independent settings and contract, and this story's files stay byte-for-byte unchanged
 
-### Requirement: D8 作者改稿必须回到对应阶段并重跑受影响闸门
+### Requirement: D8 Author revisions must return to the matching stage and re-run the affected gates
 
-交付后作者提出修改 MUST 被支持，MUST NOT 要求作者重新走完整流程或重写全文。改稿 MUST 先由总指挥**把作者的自然语言意见定位到具体阶段与具体节**，再只把受影响的部分回退。
+After delivery, when the author asks for changes, they MUST be supported, and the author MUST NOT be asked to walk the whole flow again or rewrite the full text. Revisions MUST first have the commander **locate the author's natural-language feedback to a specific stage and specific sections**, and only then roll back the affected parts.
 
-定位口径：涉及情绪目标 / 核心反转 / 人物的意见 MUST 回到构思；涉及结构调整、伏笔、招式的意见 MUST 回到大纲（并连带重新组装与审计契约）；涉及具体写法、节奏、措辞的意见 MUST 回到对应节的重写。
+The locating rule: feedback touching emotion goals, the core reversal, or characters MUST return to concept; feedback touching structure adjustments, foreshadowing, or techniques MUST return to the outline (and carry re-assembly and re-audit of the contract with it); feedback touching specific writing, pacing, or wording MUST return to rewriting the matching sections.
 
-改稿后 MUST 重跑受影响的闸门，MUST NOT 跳过：契约被重新组装过则 MUST 重新审计；有节被重写则 MUST 重跑该节的去 AI 味与格式合规；任何改动落地后 MUST 重跑兑现度核对。状态机 MUST 支持回退到对应阶段并保留其余进度，MUST NOT 清空整篇进度。
+After revision, the affected gates MUST be re-run and MUST NOT be skipped: if the contract was re-assembled, it MUST be re-audited; if sections were rewritten, the de-AI pass and format compliance for those sections MUST be re-run; after any change lands, the payoff check MUST be re-run. The state machine MUST support rolling back to the matching stage while keeping the rest of the progress, and MUST NOT clear the whole story's progress.
 
-**改稿 MUST 只改被要求的部分，MUST NOT 夹带**。下列改动在未被作者明确要求时 MUST NOT 发生，一旦发生即视为本次改稿失败并回退重做：
+**Revisions MUST change only what was asked for and MUST NOT smuggle in extras.** The following changes MUST NOT happen unless the author explicitly asks for them; if any occurs, the revision counts as failed and rolls back for a redo:
 
-- 改变故事核心走向或结局
-- 删除或弱化关键冲突场景
-- 增加新情节线或新人物
-- 改变人物性格设定
-- 改变叙述视角
-- 改动未被要求重写的节
+- Changing the story's core direction or ending
+- Deleting or weakening key conflict scenes
+- Adding new plot lines or new characters
+- Changing character personality settings
+- Changing the narrative point of view
+- Changing sections not asked to be rewritten
 
-夹带是改稿阶段最常见的事故形态：模型在重写一节时顺手「顺手改好」了相邻内容，导致改动范围失控、作者失去对成稿的掌控。因此改稿完成 MUST 比对改动前后的差异清单，确认落在被要求范围内。
+Smuggling is the most common accident form in the revision stage: while rewriting one section, the model helpfully "fixes" neighboring content along the way, so the change scope runs out of control and the author loses control of the finished draft. So when a revision finishes, the diff list before and after the change MUST be compared to confirm it falls within the requested scope.
 
-#### Scenario: D8.1 意见被定位到阶段
-- **WHEN** 作者提出修改意见
-- **THEN** 总指挥先给出定位结论（回到构思 / 回到大纲 / 重写某几节），再据此回退，MUST NOT 直接全文重写
+#### Scenario: D8.1 Feedback is located to a stage
+- **WHEN** the author asks for a change
+- **THEN** the commander first gives a locating conclusion (return to concept / return to outline / rewrite certain sections) and rolls back from there, and MUST NOT rewrite the full text directly
 
-#### Scenario: D8.2 改稿最小回退
-- **WHEN** 作者的意见只涉及某些节的写法
-- **THEN** 只重写这些节，其余节原样保留；MUST NOT 重写全文、MUST NOT 重新组装契约
+#### Scenario: D8.2 Minimal revision rollback
+- **WHEN** the author's feedback touches only the writing of certain sections
+- **THEN** only those sections are rewritten, and the rest stay as they are; it MUST NOT rewrite the full text and MUST NOT re-assemble the contract
 
-#### Scenario: D8.3 结构改动连带契约
-- **WHEN** 作者的意见涉及结构调整或招式变化
-- **THEN** 回到大纲阶段修正，并连带重新组装契约、重新审计契约，MUST NOT 用未重新审计的契约继续写作
+#### Scenario: D8.3 Structure changes carry the contract with them
+- **WHEN** the author's feedback touches structure adjustments or technique changes
+- **THEN** it returns to the outline stage to fix them, carrying re-assembly and re-audit of the contract with it, and MUST NOT continue writing with a contract that was not re-audited
 
-#### Scenario: D8.4 改稿后重跑闸门
-- **WHEN** 任一改动写完
-- **THEN** 受影响闸门全部重跑（重写节去 AI 味与格式合规、兑现度核对），MUST NOT 直接交付
+#### Scenario: D8.4 Gates re-run after revision
+- **WHEN** any change is written
+- **THEN** all affected gates are re-run (rewritten sections' de-AI pass and format compliance, plus the payoff check), and it MUST NOT deliver directly
 
-#### Scenario: D8.5 状态机支持局部回退
-- **WHEN** 改稿回退到某一阶段
-- **THEN** 状态机保留未受影响部分的进度，MUST NOT 清空整篇进度
+#### Scenario: D8.5 The state machine supports partial rollback
+- **WHEN** a revision rolls back to a stage
+- **THEN** the state machine keeps the progress of unaffected parts and MUST NOT clear the whole story's progress
 
-#### Scenario: D8.6 改稿不夹带
-- **WHEN** 一次改稿完成
-- **THEN** 改动差异清单全部落在作者要求的范围内——未改变核心走向或结局、未删除或弱化关键冲突场景、未增加新情节线或新人物、未改变人物性格、未改变叙述视角、未改动未被要求重写的节；出现任一夹带即视为本次改稿失败并回退重做
+#### Scenario: D8.6 Revisions smuggle nothing in
+- **WHEN** one revision finishes
+- **THEN** the change diff list falls entirely within what the author asked for: the core direction or ending was not changed, key conflict scenes were not deleted or weakened, no new plot lines or characters were added, character personalities were not changed, the narrative point of view was not changed, and sections not asked to be rewritten were not changed. If any smuggled change appears, the revision counts as failed and rolls back for a redo
 
-### Requirement: D9 短篇必须有独立的状态机与断点续跑语义
+### Requirement: D9 Short stories must have an independent state machine and breakpoint resume semantics
 
-短篇项目的进度 MUST 由独立状态文件记录，含当前 phase、当前篇目标识与篇状态。中断重启后 MUST 能从状态文件恢复，MUST NOT 依赖全量扫描。判断已完成的阶段 MUST 使用严格大于语义，等值视为该阶段未完成需重派。
+A short-story project's progress MUST be recorded by an independent status file containing the current phase, the current story identifier, and the story status. After an interrupted restart, it MUST be recoverable from the status file and MUST NOT depend on a full scan. Judging completed stages MUST use strict greater-than semantics, with equal value treated as that stage unfinished and needing re-dispatch.
 
-#### Scenario: D9.1 状态字段短篇专属
-- **WHEN** 读短篇项目状态文件
-- **THEN** 含 phase、当前篇目标识、篇状态与最近一次字数降级记录，不含卷章相关字段
+#### Scenario: D9.1 Status fields are short-story-specific
+- **WHEN** reading a short-story project's status file
+- **THEN** it contains phase, the current story identifier, story status, and the most recent word-count downgrade record, with no volume-or-chapter fields
 
-#### Scenario: D9.2 中断恢复
-- **WHEN** 在正文分批写作中途中断后重启
-- **THEN** 总指挥读状态文件判断断点，从当前篇的未完成 phase 继续，已完成的 phase 不重跑
+#### Scenario: D9.2 Interrupted recovery
+- **WHEN** restarting after an interruption during batched main-text writing
+- **THEN** the commander reads the status file to find the breakpoint and continues from the current story's unfinished phase, without re-running completed phases
 
-#### Scenario: D9.3 等值即未完成
-- **WHEN** 篇状态等于某阶段且该阶段 order 未标完成
-- **THEN** 判定为该阶段未完成并重派，MUST NOT 跳过
+#### Scenario: D9.3 Equal value means unfinished
+- **WHEN** the story status equals a stage and that stage's order is not marked complete
+- **THEN** it is judged unfinished for that stage and re-dispatched, and MUST NOT be skipped

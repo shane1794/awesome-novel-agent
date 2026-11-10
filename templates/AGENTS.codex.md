@@ -1,30 +1,30 @@
 # {project-name}
 
-## Codex 指引
+## Codex Guide
 
-本项目的小说写作流程由 9 个 agent 协作完成，定义在 `.codex/agents/` 下（TOML 自定义 agent）。
+The novel-writing workflow for this project is carried out by 9 collaborating agents, defined under `.codex/agents/` (TOML custom agents).
 
-**开始写作：** 在 Codex 中通过 `@novel-agent` 或 `spawn_agent` 调用 novel-agent 进入写作循环。
+**Start writing:** In Codex, call novel-agent via `@novel-agent` or `spawn_agent` to enter the writing loop.
 
-**写作流程：** 设定 →（作者确认）→ 卷纲 →（作者确认）→ 章纲 →（作者确认）→ 提示词 → 正文 → 去AI味 → 验收 → 归档 → 下一章
+**Writing flow:** Settings -> (author confirms) -> Volume outline -> (author confirms) -> Chapter outline -> (author confirms) -> Prompt -> Main text -> De-AI pass -> Acceptance -> Archive -> Next chapter
 
-**灵魂与笔墨：** 设定、卷纲、章纲是故事的灵魂，每一步都先给作者看摘要、等作者点头才继续；提示词之后的正文与打磨是 AI 的笔墨。
+**Soul and brushwork:** Settings, volume outlines, and chapter outlines are the soul of the story. At each step, show the author a summary first and continue only after the author nods. The main text and polishing after the prompt are the AI's brushwork.
 
-## 调度边界（最高优先级）
+## Dispatch Boundaries (Highest Priority)
 
-- **唯一调度者：** novel-agent 是唯一允许派生子 agent 的 agent；任何被 spawn 的子 agent 禁止再派生（包括派发同名 agent 的递归派生）。
-- 子 agent 即使持有 spawn_agent 工具也不得使用；需要协作时向 novel-agent 报告，由 novel-agent 调度。
-- novel-agent 每次 spawn 后留意 agent 树，发现子 agent 递归派生立即中断并重派。
+- **Single dispatcher:** novel-agent is the only agent allowed to spawn sub-agents; any spawned sub-agent is forbidden from spawning further agents (including recursively spawning an agent of the same name).
+- A sub-agent must not use the spawn_agent tool even if it holds it; when collaboration is needed, report to novel-agent and let novel-agent dispatch.
+- After each spawn, novel-agent watches the agent tree; if a sub-agent spawns recursively, interrupt it immediately and re-dispatch.
 
-**项目结构：**
-- `story.md` — 项目索引 + 主线拆纲
-- `settings/` — 世界观、角色、写作风格、时间线
-- `volumes/` — 卷纲
-- `chapters/` — 章纲
-- `prompts/` — 提示词
-- `archives/` — 正文
-- `.agent/` — 状态追踪 + agent 通信（order 文件）
-- `.codex/agents/` — 9 个自定义 agent 定义（novel-agent, volume-planner, chapter-planner 等）
-- `.codex/skills/` — 独立交互工具（memory-recording、roleplay-sandbox）
-- `.codex/memory/` — 写作动态记忆（各环节作者反馈，持续积累）
-- `.codex/knowledge/` — 反 AI 规则、文风偏好、永久记忆、题材参考材料
+**Project structure:**
+- `story.md`: Project index + main story arc outline
+- `settings/`: Worldbuilding, characters, writing style, timeline
+- `volumes/`: Volume outlines
+- `chapters/`: Chapter outlines
+- `prompts/`: Prompts
+- `archives/`: Main text
+- `.agent/`: Status tracking + agent communication (order files)
+- `.codex/agents/`: 9 custom agent definitions (novel-agent, volume-planner, chapter-planner, etc.)
+- `.codex/skills/`: Standalone interaction tools (memory-recording, roleplay-sandbox)
+- `.codex/memory/`: Live writing memory (author feedback from each stage, accumulated over time)
+- `.codex/knowledge/`: Anti-AI rules, style preferences, permanent memory, genre reference material

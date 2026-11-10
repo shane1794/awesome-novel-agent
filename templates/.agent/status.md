@@ -1,21 +1,21 @@
-# 项目状态
+# Project Status
 
 - **skill_version:** 4.28.0
 - **phase:** setup
 - **current_step:** setting        # volume-planning / chapter-planning / prompt-crafting / writing / anti-ai / reviewing / archiving
-# phase 取值：setup / outline / draft / anti-ai / review / archive / finished
-# last_volume_completed 与 phase: finished 由 novel-agent 写（卷完成判定），updater 不写完成位
+# phase values: setup / outline / draft / anti-ai / review / archive / finished
+# last_volume_completed and phase: finished are written by novel-agent (volume-completion decision); the updater does not write completion flags
 - **current_volume:**
 - **current_chapter:**
 - **last_archived:**
-- **last_quality_gap:**        # 最近一次字数降级记录（由 novel-agent 从 writing-order 同步）
-- **next_task:** 填写基础设定
+- **last_quality_gap:**        # Most recent word-count downgrade record (synced by novel-agent from the writing order)
+- **next_task:** Fill in the basic settings
 
-## 当前章节进度
+## Current Chapter Progress
 
-# 写新章节流程的阶段级断点信号。章节状态 = **最近已完成的阶段**（子 agent order DONE 后才推进）。
-# 中断后重启动，novel-agent 读本节判断断点：判断用严格大于 `>`——状态 > 某阶段才算完成可跳步，
-# 等值 = 该阶段未完成需重派。当前正在进行的阶段由 current_step 表达，不入本节。
-# 章节状态初始值 = 空（新卷/新章开始重置为空，volume-planning 之前）。
-- **章节状态:**                  # volume-planning / chapter-planning / prompt-crafting / writing / anti-ai / reviewing / archiving / 全部完成
-- **writing_order_id:**           # writer 执行的 order 唯一 ID，作审计参考；partial 位置以 writing-order.md 的 partial_path 为准
+# Stage-level breakpoint signals for the new-chapter flow. Chapter status = **the most recently completed stage** (advance only after the sub-agent order is DONE).
+# After an interruption and restart, novel-agent reads this section to find the breakpoint: use strict greater-than `>` for the check. A status greater than a stage means that stage is done and can be skipped;
+# equal means that stage is not done and must be re-dispatched. The stage currently in progress is expressed by current_step and does not go in this section.
+# Chapter status starts empty (reset to empty when a new volume or chapter begins, before volume-planning).
+- **Chapter status:**                  # volume-planning / chapter-planning / prompt-crafting / writing / anti-ai / reviewing / archiving / all complete
+- **writing_order_id:**           # Unique ID of the order the writer executed, for audit reference; the partial location follows the partial_path in writing-order.md

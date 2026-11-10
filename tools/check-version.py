@@ -1,21 +1,21 @@
 #!/usr/bin/env python3
-"""版本号一致性检查（arch-review 2026-08）
+"""Version consistency check (arch-review 2026-08)
 
-版本号以 VERSION 文件为唯一权威源，校验各处副本不漂移：
-  1. ARCHITECTURE.md 版本头（> 当前版本：vX.Y.Z）
-  2. skill.json version 字段
-  3. templates/.agent/status.md 的 skill_version（sync-project 按它回写项目状态）
-  4. tools/init.py write_status 的 skill_version 种子值（新项目状态文件来源）
+The VERSION file is the single authoritative source for the version number; check that the copies elsewhere have not drifted:
+  1. ARCHITECTURE.md version header (> Current version: vX.Y.Z)
+  2. skill.json version field
+  3. templates/.agent/status.md skill_version (sync-project writes the project status back from it)
+  4. tools/init.py write_status skill_version seed value (the source of the status file for new projects)
 
-发版时改 VERSION + 同步四处副本（chore: bump version），漏改此处会红。
+When releasing, change VERSION and sync the four copies (chore: bump version); missing one here turns the check red.
 
-用法: python tools/check-version.py
-返回码 0 = 一致，1 = 有漂移（CI 用）。仅标准库。
+Usage: python tools/check-version.py
+Exit code 0 = consistent, 1 = drift found (used by CI). Standard library only.
 
-测试注入：NOVEL_REPO_ROOT 指向迷你仓库目录（test_platforms 构造漂移场景用）。
+Test injection: NOVEL_REPO_ROOT points at a miniature repository directory (used by test_platforms to construct drift scenarios).
 """
 
-from __future__ import annotations  # str | None 注解在 Python 3.9 下延迟求值
+from __future__ import annotations  # str | None annotations are evaluated lazily under Python 3.9
 
 import os
 import re
@@ -31,7 +31,7 @@ ROOT = Path(os.environ.get("NOVEL_REPO_ROOT") or Path(__file__).resolve().parent
 
 
 def _version_from_version_file() -> str:
-    """VERSION 文件 → 纯版本号（剥 v 前缀与空白）。"""
+    """VERSION file to a bare version number (strip the v prefix and whitespace)."""
     text = (ROOT / "VERSION").read_text(encoding="utf-8").strip()
     return text.lstrip("vV")
 
@@ -40,17 +40,17 @@ def main() -> int:
     errors = []
     version = _version_from_version_file()
     if not re.fullmatch(r"\d+\.\d+\.\d+", version):
-        print(f"❌ VERSION 文件格式异常: {version!r}（期望 vX.Y.Z）")
+        print(f"❌ VERSION file has an abnormal format: {version!r} (expected vX.Y.Z)")
         return 1
 
     def expect(label: str, actual: str | None) -> None:
         if actual != version:
-            errors.append(f"{label}: {actual or '（未找到）'} ≠ VERSION 的 {version}")
+            errors.append(f"{label}: {actual or '(not found)'} != VERSION's {version}")
 
-    # 1. ARCHITECTURE.md 版本头
+    # 1. ARCHITECTURE.md version header
     arch = ROOT / "ARCHITECTURE.md"
-    m = re.search(r"当前版本[：:]\s*v?(\d+\.\d+\.\d+)", arch.read_text(encoding="utf-8"))
-    expect("ARCHITECTURE.md 版本头", m.group(1) if m else None)
+    m = re.search(r"Current version[：:]\s*v?(\d+\.\d+\.\d+)", arch.read_text(encoding="utf-8"))
+    expect("ARCHITECTURE.md version header", m.group(1) if m else None)
 
     # 2. skill.json version
     sj = ROOT / "skill.json"
@@ -59,7 +59,7 @@ def main() -> int:
         data = json.loads(sj.read_text(encoding="utf-8"))
         expect("skill.json version", str(data.get("version") or "") or None)
     except Exception as e:
-        errors.append(f"skill.json 解析失败: {e}")
+        errors.append(f"skill.json parse failed: {e}")
 
     # 3. templates/.agent/status.md skill_version
     status_tpl = ROOT / "templates" / ".agent" / "status.md"
@@ -67,18 +67,18 @@ def main() -> int:
                   status_tpl.read_text(encoding="utf-8"))
     expect("templates/.agent/status.md skill_version", m.group(1) if m else None)
 
-    # 4. tools/init.py write_status 种子值
+    # 4. tools/init.py write_status seed value
     init_src = ROOT / "tools" / "init.py"
     m = re.search(r"skill_version:\*\*\s*(\d+\.\d+\.\d+)",
                   init_src.read_text(encoding="utf-8"))
-    expect("tools/init.py write_status 种子值", m.group(1) if m else None)
+    expect("tools/init.py write_status seed value", m.group(1) if m else None)
 
     for e in errors:
         print(f"❌ {e}")
     if errors:
-        print(f"\n共 {len(errors)} 处版本漂移（以 VERSION=v{version} 为准同步）")
+        print(f"\n{len(errors)} version drift(s) found (sync to VERSION=v{version})")
         return 1
-    print(f"✅ 版本号一致（v{version}，五处单源对齐）")
+    print(f"✅ Version numbers match (v{version}, five copies aligned to a single source)")
     return 0
 
 

@@ -1,29 +1,29 @@
-# 验收章纲 skill
+# Chapter Outline Acceptance Skill
 
-章纲产出后，逐项检查质量和完整性。全部通过才进入提示词生成阶段。验收标准参考 `.claude/knowledge/chapter-setting-style.md`。
+After a chapter outline is produced, check its quality and completeness item by item. Only when everything passes does it move on to the prompt generation stage. Acceptance criteria follow `.claude/knowledge/chapter-setting-style.md`.
 
-## 流程
+## Process
 
-结构化反馈（给作者看）→ 检查清单自检 → 快速嗅探 → AI 味自检
+Structured feedback (for the author) → checklist self-check → quick sniff test → AI flavor self-check
 
-## 一、给作者看结构化反馈
+## 1. Structured Feedback for the Author
 
-按 `chapter-setting-style.md` 做完之后——验收流程 §第 1 步 的格式展示给作者。作者明确说"对"才算通过。"差不多""你看着写"不算。
+After finishing the work in `chapter-setting-style.md`, present it to the author in the format of Step 1 of the acceptance process in that file. It only counts as passed when the author explicitly says "yes". "More or less" or "you decide" does not count.
 
-未通过 → 回到 STEP 3 修改。
+If it fails, go back to STEP 3 and revise.
 
-## 二、检查清单自检
+## 2. Checklist Self-Check
 
-按 `chapter-setting-style.md` 做完之后——验收流程 §第 2 步 的 24 项清单逐项核实。一项不合格就退回修改。
+After finishing the work in `chapter-setting-style.md`, verify each item of the 24-item checklist in Step 2 of the acceptance process in that file. Any single failing item sends it back for revision.
 
-## 三、快速嗅探
+## 3. Quick Sniff Test
 
-按 `chapter-setting-style.md` 做完之后——验收流程 §第 3 步 执行。
+After finishing the work in `chapter-setting-style.md`, run Step 3 of the acceptance process in that file.
 
-## 四、AI 味自检与去除
+## 4. AI Flavor Self-Check and Removal
 
-按 `chapter-setting-style.md` 风骨层的"6种要命模式"和"空洞形容词速查"扫描全文。命中任一条 → 修改后重新检查，确认全部清除才算通过。
+Scan the full text against the "6 fatal patterns" and the "hollow adjective quick reference" in the style layer of `chapter-setting-style.md`. If any pattern matches, revise and re-check, and only confirm it as passed once everything is cleared.
 
-## 五、确认
+## 5. Confirmation
 
-全部检查通过后，写入 `chapters/vol-{N}-ch-{M}.md`，status → `outline`
+Once all checks pass, write it to `chapters/vol-{N}-ch-{M}.md` with status set to `outline`

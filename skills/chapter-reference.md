@@ -1,256 +1,255 @@
-# 获取参考 skill
+# Reference Gathering Skill
 
-为章纲规划准备参考材料。不是章纲，不是大纲——是给作者拍桌子用的素材。
+Prepare reference material for chapter outline planning. This is not a chapter outline or an outline. It is material for the author to slam the table over.
 
-## 流程
+## Process
 
-输入采集 → 角色期望模拟 → 角色碰撞 → 产出参考材料 → 多维建议
+Input gathering → character expectation simulation → character collision → output reference material → multi-dimensional suggestions
 
-## 一、输入采集
+## 1. Input Gathering
 
-开始前必须读完以下四组信息。缺一组就停，不能凭印象编。
+Read all four groups of information below before starting. If any group is missing, stop. Do not invent from impression.
 
-### 1. 卷纲定位
+### 1. Volume Outline Positioning
 
-读 `volumes/volume-{N}.md#chapters_summary` 中本章的 summary。这是故事的骨架——本章在卷里要推进到哪一步。
+Read this chapter's summary in `volumes/volume-{N}.md#chapters_summary`. This is the story's skeleton: what step this chapter must advance to within the volume.
 
-**记录：** 一句话。不加解读，不补推测。
+**Record:** One sentence. No added interpretation, no added speculation.
 
-### 2. 角色认知重建
+### 2. Character Knowledge Reconstruction
 
-读完以下三样，才能说"我理解这个角色此刻的状态"：
+Only after reading the following three things can you say "I understand this character's state right now":
 
-- **角色人设文件**（settings/character-setting/）：核心性格、动机、能力边界——仅对本章重点角色读全文；其余出场角色只读「基本信息」+「状态历史」最近一次状态变更节，不逐文件读全部
-- **knowledge_state 追踪**：每章章尾的 role_information_state 记录了角色当时的知道/不知道状态。从最近一章倒着读，累积出角色"截至本章前"的知识存量
+- **Character profile files** (settings/character-setting/): core personality, motives, ability limits. Read the full text only for this chapter's key characters; for other appearing characters, read only "Basic Information" plus the most recent state-change section under "State History", not the whole file
+- **knowledge_state tracking**: each chapter's end-of-chapter role_information_state records what a character knew / did not know at the time. Read backward from the most recent chapter, accumulating each character's knowledge stock "up to before this chapter"
 
-**每个出场角色按以下模板归纳状态：**
-
-```
-{角色名}
-  刚经历了：{前几章中与ta相关的事件摘要}
-  现在知道：{基于knowledge_state累积的知识存量，不分轻重全部列出}
-  不知道的：{基于knowledge_state，ta还没有接触到的信息}
-  当下的动机：{ta此刻最想推动的事 / 最在意的矛盾 / 最想回避的事}
-```
-
-### 3. 前章脉络
-
-读前几章（至少前 3 章，首章除外）的章纲**章尾摘要**（不读正文全文，控制上下文预算），重点提取：
-
-- **required_changes**：前章结尾改变了什么——这是本章的起点
-- **emotional_hook**：前章末尾的情绪缺口——读者带着什么情绪进入本章
-- **reader_expectation**：前章的读者期待如果没在本章回应，读者会等什么
-
-**只读章尾摘要**：前章正文只需读章纲的 `summary` / `emotional_design` 与结尾画面，
-不读整章正文。需要前情细节时，从对应角色 `settings/character-setting/{id}.md` 的最近状态节查，不重读全文。
-
-### 4. 钩子账本
-
-钩子的真相源在各章章纲的 `payoff_plan` 和角色设定文件中的 hooks 字段。不能靠记忆，必须逐章读。
-
-按以下分类盘点：
+**Summarize each appearing character's state with this template:**
 
 ```
-可收束（must_resolve 候选）：
-  旧钩子已经到了该收的时候。这类钩子通常出现在角色的
-  pending 部分，且经历了足够的铺垫。
-  判断标准：读者已经期待这件事有下文超过 1-2 章。
-  · {钩子描述} → 埋设位置：vol-{N}-ch-{M}.payoff_plan.partial_advance
-
-可推进（partial_advance 候选）：
-  可以推一把但不能全收。推完后状态从"悬着"变成"更悬了"
-  或"有了新方向"。
-  · {钩子描述} → 当前状态：{pending / partial_advance}
-
-绝对不可碰（must_hold 候选）：
-  收了就掀底牌的钩子。一旦碰了，后续章节的设计就废了。
-  这类钩子通常关联故事核心悬念或角色终极动机。
-  · {钩子描述} → 原因：{为什么不能碰}
+{Character Name}
+  Just went through: {summary of events related to them in the last few chapters}
+  Knows now: {knowledge stock accumulated from knowledge_state, listed in full regardless of weight}
+  Does not know: {information they have not yet encountered, based on knowledge_state}
+  Current motive: {what they most want to push forward right now / the contradiction they care most about / what they most want to avoid}
 ```
 
-### 5. 章记忆
+### 3. Previous Chapter Threads
 
-读 `.claude/memory/chapter-memory.md` 中适用于本章规划（场景拆分/情绪设计/钩子安排）的条目并应用；引用后按 skills/memory-recording.md §4.1 递增 use_count。
+Read the chapter outlines of the last few chapters (at least the previous 3 chapters; except for the first chapter), reading only their **end-of-chapter summaries** (do not read the full main text, to control the context budget). Extract mainly:
 
-> 作者反馈沉淀在记忆里——没读就用不上，use_count 不涨就永远不会晋升永久记忆。
+- **required_changes**: what the previous chapter's ending changed. This is this chapter's starting point
+- **emotional_hook**: the emotional gap left at the previous chapter's end. What emotion the reader carries into this chapter
+- **reader_expectation**: if the previous chapter's reader expectation is not answered in this chapter, what the reader will be waiting for
 
-## 二、角色期望模拟
+**Read only the end-of-chapter summaries**: for the previous chapters' main text, read only the outline's `summary` / `emotional_design` and the closing scene, not the whole chapter. When a prior detail is needed, check the most recent state section of the matching character's `settings/character-setting/{id}.md` instead of re-reading the full text.
 
-做完输入采集后，按角色逐一回答以下问题。
+### 4. Hook Ledger
 
-**规则：**
-- 每个出场角色都要做，包括还没正式登场但可能在背景下活动的角色
-- 每项回答必须引用依据（来自输入采集的第几步）
-- 没有依据的"直觉"不算数，回去查文件
+The source of truth for hooks is each chapter outline's `payoff_plan` and the hooks field in the character settings files. Do not rely on memory; read them chapter by chapter.
 
-### 问题模板
-
-```
-站在 {角色名} 的角度：
-
-1. ta 认为现在是什么状况？
-   基于：{引用"角色认知重建"的结果}
-   → ta 对当前局势的理解（注意：这个理解可能和真实情况不同，
-      角色不知道的事就是不存在的）
-
-2. ta 想让这章发生什么？
-   基于：{引用"当下的动机"}
-   → ta 最想推动的具体事情。不是"调查案件"，是"去出租屋
-     翻一遍"或"找方岩打听内幕"。
-
-3. ta 会怎么行动？
-   基于：{引用人设中的能力偏好/行为习惯}
-   → 第一步做什么、第二步做什么。动作链越具体越好。
-      陆征是前刑警 → 他会先找现场痕迹，不会先调监控。
-      苏沫是普通人妹妹 → 她会找信任的人帮忙，不会自己调查。
-
-4. ta 对本章的底线（绝对不能发生的事）？
-   基于：{引用认知模型中ta的恐惧/回避倾向}
-   → "如果这章出现了 X，ta会觉得不对"。
-      陆征不想让方岩知道他还在查旧案。
-      苏沫不想让父母知道姐姐失踪。
-
-5. 如果本章不发生 ta 期望的事，ta 会怎么反应？
-   基于：{引用人设中的性格弹性}
-   → 会退一步换方案？还是会固执到底？会给后续章节留什么尾巴？
-```
-
-### 推演要求
-
-角色期望不是从人设文件里一句话抽出来的，是需要"推理"的：
+Take stock by category:
 
 ```
-人设文件写"陆征观察力强"
-→ 不能直接输出"陆征这章会观察"
-→ 要推演到具体：
-   "上章他摸过充电头有余温(来源: ch-2 key_point 3)，
-    这章他进屋会先摸杯子/摸床单，确认人离开多久了"
+Can close (must_resolve candidates):
+  An old hook that has reached the time to close. Hooks of this kind usually appear in a character's
+  pending section and have had enough planting.
+  Criterion: the reader has already been expecting a follow-up to this for more than 1-2 chapters.
+  · {hook description} → planted at: vol-{N}-ch-{M}.payoff_plan.partial_advance
+
+Can advance (partial_advance candidates):
+  Can be pushed forward but not fully closed. After the push, its state changes from "hanging" to "hanging worse"
+  or "has a new direction".
+  · {hook description} → current state: {pending / partial_advance}
+
+Absolutely do not touch (must_hold candidates):
+  A hook that would reveal the trump card if closed. Once touched, the design of later chapters falls apart.
+  Hooks of this kind are usually tied to the story's core suspense or a character's ultimate motive.
+  · {hook description} → reason: {why it cannot be touched}
 ```
 
-**推演不出来的地方标记为"待定"**，不编，留给作者填。
+### 5. Chapter Memory
 
-### 角色间碰撞
+Read the entries in `.claude/memory/chapter-memory.md` that apply to this chapter's planning (scene breakdown / emotional design / hook arrangement) and apply them; after citing them, increment use_count following skills/memory-recording.md Section 4.1.
 
-所有角色的期望都模拟完后，做一次交叉：
+> The author's feedback is banked in memory. If you do not read it, you cannot use it, and if use_count never rises, it will never be promoted to permanent memory.
 
-- **一致点**：两个角色都想在同一场景发生什么 → 这是本章的锚点
-- **冲突点**：一个角色想做 X，另一个不想让 X 发生 → 这是本章的戏剧燃料
-- **盲区**：所有角色都没注意到的事情 → 这里可能埋新钩子
+## 2. Character Expectation Simulation
 
-### 特殊处理——首章 / 新角色登场
+After input gathering is done, answer the following questions character by character.
 
-- **首章**：没有上章知识存量，但角色的人设文件里写明了故事开始时他们的生活状态。从"此刻之前一天"开始推：主角这一天正常怎么过？什么打破了日常？
-- **新角色登场**：没有前几章的积累，但人设文件会写明"ta 此时正在做什么"。从 ta 的世界线切入：ta 此刻在忙什么？什么信息会把 ta 拉进主线？
+**Rules:**
+- Do it for every appearing character, including ones who have not formally appeared yet but may be active in the background
+- Every answer must cite its basis (which step of the input gathering it comes from)
+- An "intuition" with no basis does not count; go back and check the files
 
-## 三、产出参考材料
+### Question Template
 
-将上面分析结果整理为以下格式，展示给作者。
+```
+From {character name}'s point of view:
 
-### 格式
+1. What does the character think the situation is now?
+   Based on: {cite the "Character Knowledge Reconstruction" result}
+   → The character's understanding of the current situation (note: this understanding may differ from the real situation;
+      what a character does not know simply does not exist for them)
+
+2. What does the character want to happen this chapter?
+   Based on: {cite "Current motive"}
+   → The concrete thing the character most wants to push forward. Not "investigate the case" but "go through the rented room"
+     or "ask 方岩 about the inside story".
+
+3. How would the character act?
+   Based on: {cite ability preferences / behavior habits in the profile}
+   → What they do first, what they do second. The more concrete the action chain, the better.
+      陆征 is a former criminal police officer, so he looks for traces at the scene first, not the surveillance footage.
+      苏沫 is an ordinary person's younger sister, so she asks someone she trusts for help instead of investigating herself.
+
+4. What is the character's bottom line for this chapter (the thing that absolutely must not happen)?
+   Based on: {cite the character's fears / avoidance tendencies in the cognitive model}
+   → "If X appeared in this chapter, the character would feel it is wrong."
+      陆征 does not want 方岩 to know he is still investigating the old case.
+      苏沫 does not want her parents to know her sister is missing.
+
+5. If what the character expects does not happen this chapter, how would the character react?
+   Based on: {cite the character's flexibility in the profile}
+   → Would they step back and switch plans? Or persist stubbornly? What loose end would they leave for later chapters?
+```
+
+### Inference Requirements
+
+A character expectation is not pulled from one sentence in the profile file; it needs to be "reasoned out":
+
+```
+The profile file says "陆征 is highly observant"
+→ You cannot directly output "陆征 will observe this chapter"
+→ You must reason it out to something concrete:
+   "Last chapter he touched a charging plug and it was still warm (source: ch-2 key_point 3),
+    so this chapter when he enters the room he will first touch the cup / touch the bedsheet to confirm how long the person has been gone"
+```
+
+**Mark anything that cannot be inferred as "to be decided"**; do not invent it, leave it for the author to fill in.
+
+### Character Collision
+
+After every character's expectations are simulated, cross them once:
+
+- **Points of agreement**: two characters both want the same thing to happen in the same scene. This is this chapter's anchor
+- **Points of conflict**: one character wants to do X, another does not want X to happen. This is this chapter's dramatic fuel
+- **Blind spots**: something no character has noticed. A new hook may be planted here
+
+### Special Handling: First Chapter / New Character Appearance
+
+- **First chapter**: there is no knowledge stock from a previous chapter, but the character profile files state how they were living when the story began. Reason from "the day before this moment": how does the protagonist normally spend this day? What breaks the routine?
+- **New character appearance**: there is no accumulation from previous chapters, but the profile file states "what the character is doing right now". Cut in from their own world line: what are they busy with right now? What information would pull them into the main line?
+
+## 3. Output Reference Material
+
+Organize the analysis above into the following format and show it to the author.
+
+### Format
 
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  第{N}卷 第{M}章 —— 参考材料
+  Volume {N} Chapter {M}: Reference Material
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-卷纲定位：
-{chapters_summary 一句话，不加解读}
+Volume outline positioning:
+{One sentence from chapters_summary, no added interpretation}
 
 ───────────────────────────────────────────────────
-角色期望
+Character Expectations
 ───────────────────────────────────────────────────
 
-{角色名}
-  刚经历了：{事件摘要}
-  现在知道：{知识存量}
-  不知道的：{信息盲区}
-  当下的动机：{ta最想推动的事}
+{Character Name}
+  Just went through: {event summary}
+  Knows now: {knowledge stock}
+  Does not know: {information blind spot}
+  Current motive: {what they most want to push forward}
 
-  ta 想让这章发生什么：
-  · {具体期望 1} ← 依据：{来源引用}
-  · {具体期望 2} ← 依据：{来源引用}
+  What the character wants to happen this chapter:
+  · {concrete expectation 1} ← basis: {source citation}
+  · {concrete expectation 2} ← basis: {source citation}
 
-  ta 的底线：
-  · {绝对不能发生的事} ← 依据：{来源引用}
+  The character's bottom line:
+  · {thing that absolutely must not happen} ← basis: {source citation}
 
-  ta 会怎么行动（动作链）：
-  · {第一步}
-  · {第二步}
-  · {第三步}
+  How the character would act (action chain):
+  · {first step}
+  · {second step}
+  · {third step}
 
-{下一个角色——同上格式}
-
-───────────────────────────────────────────────────
-角色间关系
-───────────────────────────────────────────────────
-
-一致点：
-· {场景/事件} — {角色A}和{角色B}的目标在此交汇
-
-冲突点：
-· {矛盾事件} — {角色A}想{X}，{角色B}想{Y}
-
-盲区：
-· {所有角色都没注意的事} — 这里可能埋新钩子
+{Next character, same format}
 
 ───────────────────────────────────────────────────
-本章可触碰的钩子
+Relationships Between Characters
 ───────────────────────────────────────────────────
 
-可收束：
-· {钩子名} → 埋设：vol-{N}-ch-{M} | 铺垫已够，本章可收
+Points of agreement:
+· {scene/event}: {Character A} and {Character B}'s goals meet here
 
-可推进：
-· {钩子名} → 当前状态：{partial_advance} | 推一把
+Points of conflict:
+· {conflict event}: {Character A} wants {X}, {Character B} wants {Y}
 
-绝对不可碰：
-· {钩子名} → 原因：{掀底牌/破悬念/角色未到该知道的时候}
+Blind spots:
+· {something no character noticed}: a new hook may be planted here
 
 ───────────────────────────────────────────────────
-作者反馈
+Hooks This Chapter Can Touch
 ───────────────────────────────────────────────────
 
-□ 卷纲定位是否准确？        描述/修改：
-□ 角色A的期望是否对？       描述/修改：
-□ 角色B的期望是否对？       描述/修改：
-□ 钩子判断是否合理？        描述/修改：
-□ 有什么漏掉的角色或钩子？   描述/修改：
+Can close:
+· {hook name} → planted at: vol-{N}-ch-{M} | enough planting, can close this chapter
+
+Can advance:
+· {hook name} → current state: {partial_advance} | give it a push
+
+Absolutely do not touch:
+· {hook name} → reason: {reveals the trump card / breaks the suspense / the character is not yet supposed to know}
+
+───────────────────────────────────────────────────
+Author Feedback
+───────────────────────────────────────────────────
+
+□ Is the volume outline positioning accurate?        Describe / change:
+□ Is Character A's expectation right?       Describe / change:
+□ Is Character B's expectation right?       Describe / change:
+□ Is the hook judgment reasonable?        Describe / change:
+□ Any character or hook left out?   Describe / change:
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
 
-### 展示注意事项
+### Presentation Notes
 
-**不要一次性丢全部信息。** 如果角色多、信息量大，分批展示：
+**Do not dump all the information at once.** If there are many characters and a large amount of information, present it in batches:
 
-1. 先展示卷纲定位和钩子账本（这两个是客观信息，作者不需要判断"对不对"）
-2. 再展示一个角色的期望 → 等作者反馈 → 再下一个
-3. 最后展示角色间关系和完整的钩子分类
+1. First show the volume outline positioning and the hook ledger (these two are objective information; the author does not need to judge whether they are "right")
+2. Then show one character's expectation, wait for the author's feedback, then the next
+3. Finally show the relationships between characters and the complete hook classification
 
-**作者校准过程中**，每改一项，同步更新相关项的引用。比如作者说"陆征这章不应该查出便利贴归属"→ 同时把钩子账本里"便利贴归属"从"可收束"移到"绝对不可碰"。
+**During the author's calibration**, every time an item changes, update the citations of the related items at the same time. For example, if the author says "陆征 should not find out who the sticky note belongs to this chapter", also move "sticky note ownership" in the hook ledger from "can close" to "absolutely do not touch".
 
-**如果作者说"差不多"、"你看着写"、"都行"**：不放过。追问具体："'差不多'是角色期望都对还是都不对？哪个角色最准？哪个不确定？"
+**If the author says "more or less", "you decide", or "whatever"**: do not let it pass. Ask concretely: "'More or less' means the character expectations are all right, or all wrong? Which character is most accurate? Which one is uncertain?"
 
-## 四、多维建议
+## 4. Multi-Dimensional Suggestions
 
-产出参考材料后，在展示给作者校准前，先做一轮多维度分析。目的是帮作者更快定位问题。
+After the reference material is produced, do one round of multi-dimensional analysis before showing it to the author for calibration. The goal is to help the author locate problems faster.
 
-### 分析维度
+### Analysis Dimensions
 
-- **剧情承启：** 上章结尾（required_changes）→ 本章起点是否直接衔接？缺了什么过渡？有没有跳步？
-- **角色配置：** 现有角色够支撑本章吗？缺少某个关键角色推动剧情？某个角色这章不应该出场？
-- **节奏预判：** 参考材料推出来的场景序列，节奏是否合理？高潮位太前太后？需不需要缓冲过渡？
-- **信息缺口：** 上章读者情绪（emotional_hook）本章回应了多少？还有哪些读者在等的没有覆盖？
+- **Plot continuity:** Does the previous chapter's ending (required_changes) connect directly to this chapter's starting point? What transition is missing? Is there a jump?
+- **Character setup:** Are the existing characters enough to support this chapter? Is a key character missing to push the plot? Is there a character who should not appear this chapter?
+- **Rhythm forecast:** Does the scene sequence the reference material produces have a reasonable rhythm? Is the climax too early or too late? Is a buffer transition needed?
+- **Information gaps:** How much of the previous chapter's reader emotion (emotional_hook) does this chapter answer? What is the reader still waiting for that is not covered?
 
-### 输出格式
+### Output Format
 
-每个维度一句话判断 + 一个具体建议（1-2条），不强推。跟着参考材料一起展示给作者。
+One sentence of judgment per dimension plus one concrete suggestion (1-2 items); do not push hard. Show it together with the reference material to the author.
 
-## 五、校准标准
+## 5. Calibration Standard
 
-参考材料通过校准的判断标准：**作者能指着每个角色的期望说"对，ta确实会这样"或"不对，ta不会这么想"**。
+The standard for judging whether the reference material has passed calibration: **the author can point at each character's expectation and say "Yes, the character would indeed think this way" or "No, the character would not think this way"**.
 
-一个角色都没调 → 危险信号。意味着材料不够具体，作者没法判断。
-所有角色都说"差不多" → 等于没过。追问一个最具体的点。
-至少一个角色有调整 → 正常。说明材料具体到让作者有反应了。
-多个角色有调整 → 好。校准后的材料才是真正的起点。
+No character adjusted at all is a danger signal. It means the material is not concrete enough for the author to judge.
+All characters answered with "more or less" means it did not pass. Ask about one most concrete point.
+At least one character adjusted is normal. It shows the material is concrete enough to get a reaction from the author.
+Multiple characters adjusted is good. The calibrated material is the real starting point.

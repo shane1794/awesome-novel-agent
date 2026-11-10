@@ -1,11 +1,11 @@
 # {project-name}
 
-## 元信息
+## Metadata
 - **skill_version:** 4.24.1
 - **length:** short
-- **题材：** {genre}
-- **状态：** 设定中
+- **Genre:** {genre}
+- **Status:** In setup
 
-## 篇目
+## Stories
 
-<!-- 一篇一行：| 篇名 | slug | 状态（写作中/已交付） | -->
+<!-- One story per line: | Story title | slug | Status (writing/delivered) | -->

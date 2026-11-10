@@ -5,7 +5,7 @@ source_sample_length: 0
 confidence: 0
 last_updated: ""
 locked: []
-# 题材基线·标杆卡（suspense）
+# Genre Baseline, Benchmark Card (suspense)
 lexicon: { adj_density_per_100: 0, adv_density_per_100: 0, four_phrase_freq_per_100: 0, preferred_words: [], banned_words: [], name_pronoun_ratio: 0 }
 syntax: { avg_sentence_length: 0, sentence_length_dist: {}, single_sentence_paragraph_pct: 0, avg_sentences_per_paragraph: 0, question_ratio: 0, exclamation_ratio: 0 }
 rhythm: { dialogue_pct: 0, action_pct: 0, environment_pct: 0, inner_thought_pct: 0, narration_pct: 0 }
@@ -17,6 +17,6 @@ cohesion: { conjunction_freq_per_100: 0, transition_sentence_ratio: 0, paragraph
 verb_style: { action_verb_ratio: 0, mental_verb_ratio: 0, state_verb_ratio: 0, strength: "" }
 ---
 
-# 题材基线·标杆卡（悬疑）
+# Genre Baseline, Benchmark Card (Suspense)
 
-作者认可的标杆卡占位，盲测目标正确率 ≥70%（spec §13-6），P1 填充。
+Placeholder for the author-approved benchmark card. Blind-test target accuracy is 70% or higher (spec section 13-6); filled in at P1.

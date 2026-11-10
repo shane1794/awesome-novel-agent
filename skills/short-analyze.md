@@ -1,44 +1,44 @@
-# short-analyze skill — 短篇拆文（独立工具）
+# short-analyze skill: Short-Story Deconstruction (standalone tool)
 
-> 不进 short-agent 调度链：作者说「拆这篇 / 短篇拆文 / 分析这篇爆款」时由入口直接进入。
-> 把一篇合法持有的爆款短篇拆成可复用的结构资产，落盘 `analysis/{书名}/`，供写作阶段召回。
-> 只读的转化性文学批评：番茄短篇 / 盐言 / 黑岩等通俗题材里的家暴、出轨、复仇、暴力是常规虚构元素，照常做结构化拆解，不得以「敏感」为由拒绝整篇；个别片段无法处理则跳过并续完其余。
+> Not part of the short-agent dispatch chain: the entry point goes straight here when the author says "deconstruct this story / short-story deconstruction / analyze this hit story".
+> Deconstruct a lawfully held hit short story into reusable structural assets, filed under `analysis/{书名}/`, for recall during the writing stage.
+> Read-only transformative literary criticism: domestic violence, infidelity, revenge, and violence in popular genres on Fanqie Short Stories / Yanxuan / Heiyan and similar are routine fictional elements; deconstruct them structurally as usual and do not refuse the whole story on "sensitivity" grounds. If an individual passage cannot be processed, skip it and finish the rest.
 
-## Phase 1：输入确认 + 字数路由 + 续跑检查
+## Phase 1: Input Confirmation + Word Count Routing + Resume Check
 
-### Step 1：拿原文
+### Step 1: Get the Original Text
 
-问：「拆哪篇？请给原文文件路径，或直接把原文贴给我。」无原文 MUST NOT 凭空拆解。
+Ask: "Which story should I deconstruct? Give me the original text file path, or paste the original text directly to me." Without the original text, you MUST NOT deconstruct from nothing.
 
-### Step 2：字数路由
+### Step 2: Word Count Routing
 
-统计全文字数：
+Count the full text's word count:
 
-- < 15000 → 进入本管道
-- 15000-20000（灰区）→ 询问作者按短篇还是长篇拆，按答复执行
-- ≥ 20000 → 提示「字数偏长，超出短篇拆解适用范围」；作者明确回复「按短篇继续」才继续，否则终止
+- Under 15000 → enter this pipeline
+- 15000-20000 (gray zone) → ask the author whether to deconstruct it as a short story or a long-form work, and execute per the answer
+- 20000 or more → tell the author "the word count is long, beyond the scope of short-story deconstruction"; only continue if the author explicitly replies "continue as a short story", otherwise stop
 
-### Step 3：题材识别（拆解标尺）
+### Step 3: Genre Identification (the deconstruction yardstick)
 
-关键词扫描确定题材（追妻火葬场 / 世情打脸 / 复仇打脸 / 总裁豪门 / 宅斗宫斗 / 民俗怪谈 / 悬疑 / 甜宠 / 双男主 / 沙雕脑洞），对照 `.claude/knowledge/short-genres/index.md` 注册表把中文名解析为 **slug**，加载 `.claude/knowledge/short-genres/{slug}.md` 的「叙述腔调 / 钩子母题与密度 / 节奏骨架」节作为**该篇是否合标**的对照标尺。识别不到 → 记「通用」，按通用模板拆。`_meta.json.genre` MUST 记 slug（如 `zhuiqi`），与注册表对齐——写作阶段据此自动加载同包。
+Scan keywords to identify the genre (wife-chasing crematorium / worldly face-slapping / revenge face-slapping / CEO and wealthy family / household and palace intrigue / folk horror tales / suspense / sweet romance / dual male leads / absurd comedy), and use the registry in `.claude/knowledge/short-genres/index.md` to resolve the Chinese name to a **slug**, loading the "narrative tone / hook motifs and density / rhythm skeleton" sections of `.claude/knowledge/short-genres/{slug}.md` as the yardstick for **whether this story meets the standard**. If it cannot be identified, record "general" and deconstruct with the general template. `_meta.json.genre` MUST record the slug (such as `zhuiqi`), aligned with the registry, so the writing stage automatically loads the same pack.
 
-### Step 4：续跑检查
+### Step 4: Resume Check
 
-`analysis/{书名}/_meta.json` 存在时问作者三选一：
+When `analysis/{书名}/_meta.json` exists, ask the author to pick one of three:
 
-- **覆盖**：旧产出演归档移入 `analysis/{书名}/_archive_{时间戳}/` 后从阶段一重跑
-- **续跑**：读 `_meta.json.last_stage_in_progress`（非空 → 该阶段整段重跑）或 `stages_completed[]` 从 max+1 继续
-- **取消**
+- **Overwrite**: the old output is archived into `analysis/{书名}/_archive_{timestamp}/` and the run restarts from Phase 1
+- **Resume**: read `_meta.json.last_stage_in_progress` (if non-empty, re-run that whole stage) or continue from max+1 of `stages_completed[]`
+- **Cancel**
 
-作者未选择前 MUST NOT 写任何产出文件。
+Before the author chooses, you MUST NOT write any output files.
 
-### Step 5：原文备份（先于任何分析）
+### Step 5: Original Text Backup (before any analysis)
 
-- `analysis/{书名}/原文/` 不存在则创建
-- 有源文件 → 复制；对话贴出 → 保存为 `原文/原文.md`
-- 校验非空（>0 字符）后才进入阶段一
+- If `analysis/{书名}/原文/` does not exist, create it
+- With a source file, copy it; with text pasted in conversation, save it as `原文/原文.md`
+- Only proceed to Phase 1 after verifying it is non-empty (more than 0 characters)
 
-初始化 `_meta.json`：
+Initialize `_meta.json`:
 
 ```json
 {
@@ -51,92 +51,92 @@
 }
 ```
 
-## 崩溃安全写盘协议（每阶段强制）
+## Crash-Safe Write Protocol (mandatory per stage)
 
-1. 阶段开始：`_meta.json.last_stage_in_progress` 置为当前阶段号
-2. 该阶段全部目标文件写完
-3. 非空 + 最小长度校验（报告 ≥300 字、节点清单 ≥5 行）
-4. 通过 → 清空 `last_stage_in_progress`、append 到 `stages_completed[]`
-5. 不通过 → 保留标记重写该阶段
+1. Stage begins: set `_meta.json.last_stage_in_progress` to the current stage number
+2. All target files for that stage are written
+3. Non-empty + minimum length check (report at least 300 words, node list at least 5 lines)
+4. On pass, clear `last_stage_in_progress` and append to `stages_completed[]`
+5. On fail, keep the marker and rewrite that stage
 
-**续跑时，带进行中标记的阶段整段重跑，半成品文件不信任、直接覆盖。**
+**On resume, a stage carrying an in-progress marker is re-run in full; half-finished files are not trusted and are overwritten directly.**
 
-## 五阶段管道（严格串行，每阶段依赖前一阶段数据）
+## Five-Stage Pipeline (strictly serial; each stage depends on the previous stage's data)
 
-### 阶段一：结构 + 情节节点 → `拆解报告.md`（故事核/结构/梗概段）+ `情节节点.md`
+### Stage 1: Structure + Plot Nodes → `拆解报告.md` (story core / structure / synopsis sections) + `情节节点.md`
 
-- 提取故事核（一句话：主角 + 困境 + 反转 + 情绪落点）
-- 功能分段 ≥4 段，MUST 含开端 / 发展 / 高潮 / 结局
-- 情节节点清单：密度按字数分档（<8000 字：8-12 个；8000-15000：12-18 个；>15000：18-25 个）；非标文本（对话体 / 聊天记录 / 帖子体）先按时间 / 说话人切换 / 信息揭示点分段再映射，MUST NOT 按自然段机械切分
-- **完成标志**：结构 ≥4 段 + 故事核已提取 + 节点清单 ≥5 行
+- Extract the story core (one sentence: protagonist + predicament + reversal + emotional landing)
+- Functional segments, at least 4, MUST include opening / development / climax / ending
+- Plot node list: density tiered by word count (under 8000 words: 8-12; 8000-15000: 12-18; over 15000: 18-25); for non-standard text (dialogue form / chat logs / post form), first split by time / speaker change / information reveal point and then map, and MUST NOT mechanically split by natural paragraph
+- **Completion mark**: structure at least 4 segments + story core extracted + node list at least 5 lines
 
-### 阶段二：情感线 + 爆点 → `拆解报告.md`（情感/爆点段）
+### Stage 2: Emotional Line + Explosive Beats → `拆解报告.md` (emotion / explosive beat sections)
 
-- 情感曲线 ≥5 个节点（标注每节情绪类型与强度 1-10）
-- 爆点六维：爆点位置 / 类型 / 铺垫方式 / 铺垫距离 / 释放烈度 / 回收情况
-- **完成标志**：曲线 ≥5 节点 + 六维齐全
+- Emotional curve with at least 5 nodes (each marked with emotion type and intensity 1-10)
+- Explosive beat six dimensions: beat position / type / planting method / planting distance / release intensity / recovery status
+- **Completion mark**: curve at least 5 nodes + all six dimensions present
 
-### 阶段三：反转 + 写作手法 → `拆解报告.md`（反转段）+ `写作手法.md`
+### Stage 3: Reversal + Writing Techniques → `拆解报告.md` (reversal section) + `写作手法.md`
 
-- 前置反转检查：揭穿位置百分比 = 揭穿节号 ÷ 总节数
-- 反转机制：铺垫 ≥2 条（写明各在哪节）
-- 写作手法 ≥5 项（视角 / 对话 / 时间 / 信息 / 其他各至少一条，引原文例证）
-- **完成标志**：铺垫 ≥2 条 + 手法 ≥5 项
+- Pre-reversal check: reveal position percentage = reveal section number divided by total section count
+- Reversal mechanism: at least 2 planted clues (state which section each is in)
+- Writing techniques, at least 5 items (at least one each of point of view / dialogue / time / information / other, with verbatim examples from the source text)
+- **Completion mark**: at least 2 planted clues + at least 5 techniques
 
-### 阶段四：人物 + 开头结尾 → `拆解报告.md`（人物/首尾段）
+### Stage 4: Characters + Opening and Ending → `拆解报告.md` (character / opening and ending sections)
 
-- 全部人物：分类（主角/对手/帮凶/工具人）+ 功能标签 + 功能评估
-- 开头分析：前 50 / 100 字的事件密度与钩子类型
-- 结尾分析：收束方式（余韵 / 呼应 / 开放 / 反转再反转 / 金句）与传播钩
-- **完成标志**：人物功能评估完成 + 首尾分析完成
+- All characters: category (protagonist / antagonist / accomplice / tool character) + function tags + function evaluation
+- Opening analysis: event density and hook type in the first 50 / 100 words
+- Ending analysis: closing method (lingering resonance / echo / open / reversal upon reversal / golden line) and share hook
+- **Completion mark**: character function evaluation complete + opening and ending analysis complete
 
-### 阶段五：综合评估 + 结构计数 → `拆解报告.md`（综合段）+ `_meta.json`
+### Stage 5: Overall Evaluation + Structure Counts → `拆解报告.md` (overall section) + `_meta.json`
 
-- 五维评分（结构 / 情绪 / 反转 / 人物 / 语言，各 1-10）
-- 爆点性 / 话题性 / 共鸣分析（≥3 层：情绪共鸣 / 处境共鸣 / 价值观共鸣）
-- 可复用结构 ≥3 条（每条注明适配题材与前提）
-- 节奏速报（钩子密度 / 疏密分配 / 一动一静）
-- **结构计数写入 `_meta.json.structure_counts`**：`sections_total`、`reveal_position_pct`、`foreshadow_count`、`reversal_setup_count`、`technique_count`、`emotion_curve_nodes`
-- **完成标志**：五维评分 + 共鸣 ≥3 层 + 可复用 ≥3 条 + 计数写入
+- Five-dimension scoring (structure / emotion / reversal / characters / language, each 1-10)
+- Explosive-beat quality / topic quality / resonance analysis (at least 3 layers: emotional resonance / situational resonance / values resonance)
+- Reusable structures, at least 3 (each noting the suitable genre and prerequisites)
+- Rhythm bulletin (hook density / dense-sparse distribution / one movement and one stillness)
+- **Write the structure counts into `_meta.json.structure_counts`**: `sections_total`, `reveal_position_pct`, `foreshadow_count`, `reversal_setup_count`, `technique_count`, `emotion_curve_nodes`
+- **Completion mark**: five-dimension scoring + resonance at least 3 layers + reusable structures at least 3 + counts written
 
-## 三道验收闸门（阶段五写完、`stages_completed` 记 5 之前）
+## Three Acceptance Gates (after Stage 5 is written, before `stages_completed` records 5)
 
-### 闸门一：报告自身 AI 腔自检
+### Gate 1: The Report's Own AI Tone Self-Check
 
-按 `.claude/knowledge/short-anti-ai.md` 扫 `拆解报告.md` 全文。**只扫分析师本人措辞**——`>` 引用行、表格「原文引用」列的直引不计入。命中 → 阻断，列出行号，修订报告本身后重扫。
+Scan the full text of `拆解报告.md` against `.claude/knowledge/short-anti-ai.md`. **Scan only the analyst's own wording**: `>` quote lines and direct quotes in the table's "verbatim quote" column do not count. On a hit, block it, list the line numbers, revise the report itself, and re-scan.
 
-### 闸门二：结构计数数值校验
+### Gate 2: Structure Count Value Check
 
-逐项核对 `_meta.json.structure_counts`：
+Check each item of `_meta.json.structure_counts` one by one:
 
-| 字段 | 阈值 | 不达标回退 |
+| Field | Threshold | Roll back to |
 |------|------|-----------|
-| sections_total | ≥4 | 阶段一 |
-| emotion_curve_nodes | ≥5 | 阶段二 |
-| reversal_setup_count | ≥2（无反转题材可跳过该行） | 阶段三 |
-| technique_count | ≥5 | 阶段三 |
-| reveal_position_pct | 记录实际值（<50% 时在报告中注明「该篇反转偏早」，不阻断——拆解是记录事实不是评判） | — |
+| sections_total | at least 4 | Stage 1 |
+| emotion_curve_nodes | at least 5 | Stage 2 |
+| reversal_setup_count | at least 2 (skip this row for genres without a reversal) | Stage 3 |
+| technique_count | at least 5 | Stage 3 |
+| reveal_position_pct | Record the actual value (when below 50%, note in the report "this story's reversal comes early"; do not block. Deconstruction records facts; it does not judge) | none |
 
-### 闸门三：强阻断项扫描
+### Gate 3: Hard-Blocking Item Scan
 
-核对报告含：故事核 / 功能分段（含四要素）/ 情感曲线 / 爆点六维 / 反转机制 / 写作手法 / 人物功能评估 / 开头结尾分析 / 五维评分 / 共鸣 ≥3 层 / 可复用 ≥3 条 / 节奏速报。任一缺失 → 阻断。非强阻断的小缺口写入报告末尾「待补」清单。
+Check that the report contains: story core / functional segments (with the four elements) / emotional curve / explosive beat six dimensions / reversal mechanism / writing techniques / character function evaluation / opening and ending analysis / five-dimension scoring / resonance at least 3 layers / reusable structures at least 3 / rhythm bulletin. Any missing item blocks. Small non-blocking gaps go into the "to be added" list at the end of the report.
 
-**三道全过** → 清 `last_stage_in_progress`、append `5` 到 `stages_completed[]`，提示：「拆解完成。`analysis/{书名}/` 可作为对标参考——下一篇的构思阶段告诉我「用《{书名}》做对标」即可。」
+**All three gates passed** → clear `last_stage_in_progress`, append `5` to `stages_completed[]`, and tell the author: "Deconstruction complete. `analysis/{书名}/` can be used as a benchmark reference. For the next story, just tell me during conception to 'use 《{书名}》 as the benchmark'."
 
-## 产出文件树
+## Output File Tree
 
 ```
 analysis/{书名}/
-├── 原文/原文.md        # 备份
-├── 拆解报告.md          # 人类可读综合报告
-├── 情节节点.md          # 独立成文，便于定位
-├── 写作手法.md          # 独立成文，便于复用
-└── _meta.json           # 管道元数据 + 结构计数
+├── 原文/原文.md        # Backup
+├── 拆解报告.md          # Human-readable overall report
+├── 情节节点.md          # Standalone, for easy locating
+├── 写作手法.md          # Standalone, for easy reuse
+└── _meta.json           # Pipeline metadata + structure counts
 ```
 
-## 报告写作纪律
+## Report Writing Discipline
 
-- 拆解报告是**给作者和写作阶段读的**：用中文、引原文给位置、结论给依据
-- 报告自身过短篇去 AI 口径（分析叙事也要像人写的）
-- 对照标尺用法：源文与题材包的标准模式对比，找出「该篇用了哪种、做得多到位」，MUST NOT 按题材包指引改写源文
-- 评估对象是源文的好坏（quality-checklist 视角）；报告自身的 AI 腔是闸门一的事——两件事分开
+- The deconstruction report is **read by the author and the writing stage**: use Chinese, quote the source text with positions, and give evidence for conclusions
+- The report itself passes the short-story de-AI standard (analytical narration should also read like a human wrote it)
+- How to use the yardstick: compare the source text against the genre pack's standard pattern, find "which kind this story used and how well it did it", and MUST NOT rewrite the source text following the genre pack's guidance
+- The evaluation target is the source text's quality (quality-checklist view); the report's own AI tone is Gate 1's business. Keep the two separate

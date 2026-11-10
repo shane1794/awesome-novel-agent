@@ -1,70 +1,70 @@
 # short-story-analyze Specification
 
 ## Purpose
-短篇的对标拆解管道：把一篇爆款拆成可复用的结构资产（故事核、结构分段、情节节点、情感曲线、反转机制、写作手法、结构计数），落盘为写作阶段可直接召回的参考材料。
+The benchmarking teardown pipeline for short stories: break a hit story into reusable structural assets (story core, structural segments, plot nodes, emotional curve, reversal mechanism, writing techniques, structure counts) and save them as reference material the writing stage can recall directly.
 
 ## Requirements
 
-### Requirement: A1 输入确认与字数路由
+### Requirement: A1 Input confirmation and word-count routing
 
-拆文 MUST 先取得原文（文件路径或作者贴出），无原文 MUST 引导提供、MUST NOT 凭空拆解。取得后 MUST 统计字数：短篇范围内直接进管道；灰区询问作者；超上限提示不适用并仅在作者明确要求时继续。
+Teardown MUST first obtain the original text (a file path or text pasted by the author); without the original, it MUST guide the author to provide it and MUST NOT tear down from nothing. After obtaining it, it MUST count the words: within the short-story range, enter the pipeline directly; in the gray zone, ask the author; over the limit, note that it does not apply and continue only when the author explicitly asks.
 
-#### Scenario: A1.1 无原文被拦
-- **WHEN** 作者未提供原文
-- **THEN** 引导提供，MUST NOT 凭空拆解
+#### Scenario: A1.1 No original text is blocked
+- **WHEN** the author has not provided the original text
+- **THEN** guide them to provide it; MUST NOT tear down from nothing
 
-#### Scenario: A1.2 字数路由
-- **WHEN** 统计字数
-- **THEN** 范围内进管道 / 灰区询问 / 超限提示不适用并在作者坚持时才继续
+#### Scenario: A1.2 Word-count routing
+- **WHEN** counting the words
+- **THEN** within range, enter the pipeline; in the gray zone, ask; over the limit, note it does not apply and continue only if the author insists
 
-### Requirement: A2 题材标尺与续跑检查
+### Requirement: A2 Genre yardstick and resume checks
 
-MUST 识别题材并加载对应短篇题材风格包作为拆解标尺；识别不到记通用。已有拆解产出时 MUST 询问覆盖 / 续跑 / 取消，MUST NOT 静默覆盖；续跑按产出元数据的阶段标记从断点继续。
+The genre MUST be identified and the matching short-story genre style pack loaded as the teardown yardstick; if no genre is identified, mark it as general. When teardown output already exists, the agent MUST ask whether to overwrite, resume, or cancel, and MUST NOT silently overwrite; resuming continues from the breakpoint using the output metadata's stage markers.
 
-#### Scenario: A2.1 已有产出必须询问
-- **WHEN** 该篇已有拆解产出
-- **THEN** 询问三选一；未选择前 MUST NOT 写任何产出文件
+#### Scenario: A2.1 Existing output must prompt a question
+- **WHEN** teardown output already exists for this story
+- **THEN** ask the three-way choice; before a choice is made, MUST NOT write any output files
 
-### Requirement: A3 原文备份先于分析
+### Requirement: A3 Original-text backup comes before analysis
 
-进入管道前 MUST 备份原文到产出目录（复制源文件或保存对话文本），备份后校验非空。
+Before entering the pipeline, the original text MUST be backed up into the output directory (copy the source file or save the conversation text), and the backup must be verified non-empty afterward.
 
-#### Scenario: A3.1 备份先行
-- **WHEN** 拆解开始
-- **THEN** 原文备份存在且非空，先于任何分析写盘
+#### Scenario: A3.1 Backup first
+- **WHEN** teardown starts
+- **THEN** the original-text backup exists and is non-empty, before any analysis is written to disk
 
-### Requirement: A4 五阶段串行管道且每阶段有完成标志
+### Requirement: A4 Five-stage serial pipeline, each stage with a completion marker
 
-拆解 MUST 按五阶段串行执行，MUST NOT 跳阶：①结构+情节节点（结构 ≥4 段含开端/发展/高潮/结局；节点密度按字数分档，非标文本先按时间/说话人/信息揭示点重排）②情感曲线（≥5 节点）+爆点六维 ③反转机制（铺垫 ≥2 条）+写作手法（≥5 项）④人物功能+开头结尾 ⑤综合评估+结构计数写入元数据。
+Teardown MUST run in five serial stages and MUST NOT skip stages: (1) structure + plot nodes (at least 4 structural segments including beginning, development, climax, and ending; node density tiered by word count, with non-standard texts reordered first by time, speaker, or information-reveal points); (2) emotional curve (at least 5 nodes) + the six dimensions of the high point; (3) reversal mechanism (at least 2 setups) + writing techniques (at least 5 items); (4) character functions + opening and ending; (5) overall assessment + structure counts written into metadata.
 
-#### Scenario: A4.1 逐阶段完成标志
-- **WHEN** 某阶段结束
-- **THEN** 完成标志全部满足才进下一阶段
+#### Scenario: A4.1 Per-stage completion markers
+- **WHEN** a stage ends
+- **THEN** it advances to the next stage only when all completion markers are met
 
-### Requirement: A5 写盘必须崩溃安全
+### Requirement: A5 Writes must be crash-safe
 
-每阶段开始前 MUST 在元数据标记进行中；全部目标文件写完并过非空+最小长度校验后才清标记并记入已完成；续跑时未完成阶段整段重跑，半成品不被信任。
+Before each stage starts, its in-progress state MUST be marked in the metadata; the marker is cleared and the stage recorded as complete only after all target files are written and pass non-empty plus minimum-length checks; on resume, an incomplete stage is re-run in full, and half-finished work is not trusted.
 
-#### Scenario: A5.1 半成品不被信任
-- **WHEN** 中断后续跑
-- **THEN** 进行中标记的阶段整段重跑
+#### Scenario: A5.1 Half-finished work is not trusted
+- **WHEN** resuming after an interruption
+- **THEN** the stage marked in-progress is re-run in full
 
-### Requirement: A6 产出固定文件树且写作可消费
+### Requirement: A6 Fixed output file tree, consumable by writing
 
-产出目录 MUST 含：原文备份、拆解报告、情节节点、写作手法、`_meta.json`（题材识别 + 结构计数）。各文件可独立读取；元数据供写作阶段自动加载对应题材风格包。
+The output directory MUST contain: the original-text backup, the teardown report, plot nodes, writing techniques, and `_meta.json` (genre identification + structure counts). Each file must be independently readable; the metadata lets the writing stage automatically load the matching genre style pack.
 
-#### Scenario: A6.1 文件树齐备
-- **WHEN** 拆解完成
-- **THEN** 五项产出齐备且可独立读取
+#### Scenario: A6.1 File tree complete
+- **WHEN** teardown finishes
+- **THEN** all five outputs are present and independently readable
 
-### Requirement: A7 三道验收闸门后才计完成
+### Requirement: A7 Three acceptance gates before counting as complete
 
-最后一阶段写完 MUST 过三道检查：①报告自身 AI 腔自检（按短篇去 AI 口径，只扫分析师措辞、跳过源文引用，命中列出行号阻断）②结构计数逐项达阈值（不达标指明回退阶段）③模板强阻断项扫描（缺失阻断；非强阻断缺失写入待补清单）。全过才清标记、记完成、提示可进入写作。
+After the last stage is written, three checks MUST pass: (1) the report's own AI-tone self-check (per the short-story de-AI criteria, scanning only the analyst's wording and skipping quoted source text; hits block and list line numbers); (2) structure counts verified item by item against thresholds (a miss names the stage to roll back to); (3) a strong-blocking item scan of the template (missing items block; missing non-strong-blocking items go on a to-add list). Only when all pass are the markers cleared, completion recorded, and the author told they can move on to writing.
 
-#### Scenario: A7.1 报告自身无 AI 腔
-- **WHEN** 扫描拆解报告
-- **THEN** 只扫分析师措辞；命中即阻断并列行号
+#### Scenario: A7.1 The report itself has no AI tone
+- **WHEN** scanning the teardown report
+- **THEN** only the analyst's wording is scanned; a hit blocks and lists line numbers
 
-#### Scenario: A7.2 计数校验指明回退
-- **WHEN** 某计数不达标
-- **THEN** 阻断并指出回退到哪个阶段
+#### Scenario: A7.2 Count checks name the rollback
+- **WHEN** a count is below its threshold
+- **THEN** it blocks and names which stage to roll back to

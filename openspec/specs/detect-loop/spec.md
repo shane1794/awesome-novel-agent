@@ -1,58 +1,58 @@
 # detect-loop Specification
 
 ## Purpose
-提供可选的外部检测校准闭环：作者自愿把自己的稿件送外部 AI 检测器核验时，agent 按最小干预原则定向修复（只动最高分片段、其余字符级不动），达标即锁版，并把经验沉淀为项目资产。
+Provide an optional external-detection calibration loop: when the author voluntarily sends their own manuscript to an external AI detector for verification, the agent fixes with minimal intervention (only the highest-scoring segment moves; everything else stays character-for-character untouched), locks the version once it passes, and distills the lessons into project assets.
 
 ## Requirements
 
-### Requirement: 仅作者触发且默认离线
+### Requirement: Author-triggered only, offline by default
 
-detect-loop MUST 为可选 phase：仅当作者明确要求送检/核验时启动；默认管线（draft→anti-ai→review→archive）MUST NOT 自动进入该环节；本地无送检工具或作者未提供检测途径时 MUST 优雅终止并说明，不阻塞主流程。
+detect-loop MUST be an optional phase: it starts only when the author explicitly asks for submission or verification; the default pipeline (draft→anti-ai→review→archive) MUST NOT enter this stage automatically; when no local submission tool exists or the author has not provided a detection route, it MUST end gracefully with an explanation and not block the main flow.
 
-#### Scenario: 未触发不启动
-- **WHEN** 正常走完 anti-ai phase
-- **THEN** 调度不产生 detect-loop order，直接进入 review
+#### Scenario: Not triggered, does not start
+- **WHEN** the anti-ai phase finishes normally
+- **THEN** dispatch produces no detect-loop order and goes directly to review
 
-#### Scenario: 作者触发
-- **WHEN** 作者说"送检/过一遍外部检测"
-- **THEN** 调度产生 detect-loop order，流程按 SOP 执行
+#### Scenario: Author triggers it
+- **WHEN** the author says "submit it / run it through an external detector"
+- **THEN** dispatch produces a detect-loop order and the flow runs per the SOP
 
-#### Scenario: 无工具降级
-- **WHEN** 本地不存在可用送检工具
-- **THEN** 环节终止并告知作者需自行准备检测途径，主流程可继续
+#### Scenario: No tool, degrade
+- **WHEN** no usable submission tool exists locally
+- **THEN** the stage ends and tells the author they need to prepare a detection route themselves; the main flow can continue
 
-### Requirement: 最小干预修复契约
+### Requirement: Minimal-intervention fix contract
 
-修复 MUST 遵守：每轮只修一个最高分片段；其余片段字符级不动（以内容子串哈希验证）；片段首末句逐字保持；改幅等长优先；连续两轮改善不足 0.05 或反升时 MUST 停止同类改法（换内容类型或回滚上一版）；片段判定阈值（如 0.5）作为参数而非硬编码。检测反馈驱动的修改 MUST 遵守与写作侧相同的裁决顺序（作者设定与章纲 > 题材知识 > 结构默认值 > 检测优化）：MUST NOT 为降分改写锁定台词、章纲落点等作者侧核心表达，与文风冲突时以文风为准。
+Fixes MUST follow: each round fixes only one highest-scoring segment; all other segments stay character-for-character untouched (verified by content-substring hashing); the first and last sentences of a segment stay word-for-word; equal-length edits are preferred; when improvement over two consecutive rounds is under 0.05 or the score rises instead, the agent MUST stop using the same kind of edit (switch content type or roll back to the previous version); segment decision thresholds (such as 0.5) are parameters, not hard-coded values. Detection-feedback-driven edits MUST follow the same adjudication order as the writing side (author settings and chapter outline > genre knowledge > structural defaults > detection optimization): they MUST NOT rewrite locked lines, chapter-outline landing points, or other author-side core expressions to lower a score, and when they conflict with style, style wins.
 
-#### Scenario: 定向修复
-- **WHEN** 检测返回多片段结果且仅一片超阈
-- **THEN** 只修改该片段，其余片段修改前后哈希一致
+#### Scenario: Targeted fix
+- **WHEN** detection returns multi-segment results with only one segment over the threshold
+- **THEN** only that segment is changed, and the other segments' hashes are identical before and after
 
-#### Scenario: 检测优化不越权
-- **WHEN** 降分修改与作者设定或章纲落点冲突
-- **THEN** 保留作者侧表达，报告中标注该片段为"设定优先、接受残分"或提交作者裁决
+#### Scenario: Detection optimization does not overreach
+- **WHEN** a score-lowering edit conflicts with author settings or a chapter-outline landing point
+- **THEN** the author-side expression is kept, and the report marks that segment as "settings take priority, residual score accepted" or submits it to the author for adjudication
 
-#### Scenario: 止损
-- **WHEN** 同一片段连续两轮改善不足 0.05 或分数反升
-- **THEN** 停止同类改法，报告中给出换内容类型或回滚两个选项
+#### Scenario: Stop-loss
+- **WHEN** the same segment improves by under 0.05 for two consecutive rounds or its score rises
+- **THEN** stop using the same kind of edit and offer two options in the report: switch content type or roll back
 
-### Requirement: 达标锁版与经验沉淀
+### Requirement: Pass-and-lock plus lessons learned
 
-全部片段低于阈值后 MUST 锁版：生成快照、记录内容哈希，锁版后不再改动；本轮的轮次、改动、逐片结果 MUST 追加进项目 `sandbox/detect-battles.md`；翻车原句 MUST 经作者确认后加入 `sandbox/prose-regressions.txt`；沉淀前 MUST 复跑 `check-chapter.py` 确认硬伤清零。
+Once all segments are below the threshold, the draft MUST be locked: generate a snapshot and record the content hash, and make no further changes after locking; the rounds, edits, and per-segment results of this round MUST be appended to the project `sandbox/detect-battles.md`; failure sentences MUST be added to `sandbox/prose-regressions.txt` only after author confirmation; before distilling lessons, `check-chapter.py` MUST be re-run to confirm hard defects are at zero.
 
-#### Scenario: 锁版
-- **WHEN** 检测结果全部片段低于阈值
-- **THEN** 生成锁版快照与哈希记录，后续修改被拒直到作者明确解版
+#### Scenario: Locking
+- **WHEN** all detection segments are below the threshold
+- **THEN** generate a locked snapshot with a hash record, and reject later changes until the author explicitly unlocks it
 
-#### Scenario: 经验入库
-- **WHEN** 一轮战役结束
-- **THEN** 战役记录追加完整轮次表，新增回归串有作者确认记录，`check-chapter.py` 复跑 exit 0
+#### Scenario: Lessons enter the library
+- **WHEN** a battle round ends
+- **THEN** the battle log gains the complete round table, newly added regression strings have an author-confirmation record, and the `check-chapter.py` re-run exits 0
 
-### Requirement: 合规边界与资产隔离
+### Requirement: Compliance boundary and asset isolation
 
-skill 文本 MUST 声明：本环节面向作者对自己稿件的自愿质量校准；仓库 MUST NOT 包含任何检测平台的自动化脚本、接口逆向文档、密钥与浏览器指纹方案；与本地工具的对接只以"输入稿件路径/输出逐片结果文件"的适配器接口描述。
+The skill text MUST state: this stage serves the author's voluntary quality calibration of their own manuscript; the repo MUST NOT contain any automation scripts, interface-reversing docs, keys, or browser-fingerprint schemes for any detection platform; the connection to a local tool is described only as an adapter interface of "input manuscript path / output per-segment result file".
 
-#### Scenario: 仓库内容审查
-- **WHEN** 检查本 change 产出与仓库内容
-- **THEN** 无检测平台自动化脚本、无逆向协议文档、无密钥文件；适配器接口只描述输入/输出文件约定
+#### Scenario: Repo content review
+- **WHEN** checking this change's output and the repo contents
+- **THEN** there are no detection-platform automation scripts, no reverse-engineered protocol docs, and no key files; the adapter interface only describes the input/output file conventions

@@ -1,44 +1,44 @@
-# short-plan SOP — 定情绪与排纲
+# short-plan SOP: Set the Emotion and Lay Out the Outline
 
-> short-planner 执行。覆盖两个 phase：setup（定情绪与定方向 → setting.md）与 planning（构思与排纲 → outline.md）。
+> Executed by short-planner. Covers two phases: setup (set the emotion and the direction, producing setting.md) and planning (conceive and lay out the outline, producing outline.md).
 
-## Phase setup：定情绪与定方向
+## Phase setup: Set the Emotion and the Direction
 
-1. **先定情绪**：作者有明确想法 → 直接采纳；模糊 → 给六选一（意难平 / 反转震撼 / 爽感释放 / 治愈温暖 / 细思极恐 / 共鸣感动），每项附适合场景、难度、常配题材
-2. **定题材方向**：按情绪推荐题材 → 加载 `.claude/knowledge/short-genres/{题材}.md`
-3. **定投稿平台基调**：知乎盐选（第一人称沉浸、细思极恐、章末颠覆认知细节、留白多）/ 小程序（开局即地狱、当众打脸、卡脖子断点、直白爽）/ 番茄短篇（顺滑、金手指直白、大满贯收尾）
-4. **产出 `stories/{slug}/setting.md`**，必含：
-   - 基本信息：标题暂定 / 目标字数（8000-20000）/ 目标平台 / 情绪目标
-   - 一句话梗概：主角 + 困境 + 反转 + 情绪落点
-   - 核心反转：类型 / 内容 / ≥3 条铺垫线索
-   - 四段情绪设计：开头 / 中段 / 反转 / 结尾各带 1-10 强度；标注反转高潮不骤降（反转前一节升温、反转节到顶、反转后一节维持）
-   - 人设速写：主角 / 关键角色 / 关系
-   - **命名记录**：全部角色名落盘（对照 `.claude/knowledge/short-anti-ai.md` 第九节禁用清单），后续改稿以此为准
+1. **Set the emotion first**: If the author has a clear idea, adopt it directly. If it is vague, offer a choice of six (bittersweet regret / shocking reversal / satisfying release / healing warmth / chilling realization / resonant emotion), each with suitable scenes, difficulty, and commonly paired genres
+2. **Set the genre direction**: Recommend genres based on the emotion, then load `.claude/knowledge/short-genres/{genre}.md`
+3. **Set the submission platform tone**: Zhihu Yanxuan (first-person immersion, chilling realization, a detail at the end of each chapter that overturns what the reader thought, lots of blank space) / mini-program (hell from the opening, public face-slapping, a cliffhanger breakpoint, blunt satisfaction) / Fanqie short stories (smooth, a straightforward golden finger, a grand-slam ending)
+4. **Produce `stories/{slug}/setting.md`**, which must contain:
+   - Basic info: provisional title / target word count (8000-20000) / target platform / emotional goal
+   - One-sentence hook: protagonist + predicament + reversal + emotional landing
+   - Core reversal: type / content / at least 3 planted clues
+   - Four-part emotional design: opening / middle / reversal / ending, each with an intensity of 1-10; mark that the reversal climax does not drop sharply (the section before the reversal warms up, the reversal section peaks, the section after the reversal holds)
+   - Character sketches: protagonist / key characters / relationships
+   - **Naming record**: All character names are written down (checked against the banned list in Section 9 of `.claude/knowledge/short-anti-ai.md`); later revisions use this as the standard
 
-## Phase planning：构思与排纲
+## Phase planning: Conceive and Lay Out the Outline
 
-按序执行，不适用项标注原因后可跳过：
+Execute in order; an item that does not apply may be skipped after noting the reason:
 
-1. **选定情绪链**：从题材包「情绪链库」选一条（4-6 阶段）作全篇骨架；阶段数不强制等于五段
-2. **选招式**：从题材包招式库选 2-3 个核心招式（每条是公式 + 示例，使用时必须转化）
-3. **设计反派**（如有）：身份 + 动机 + 作恶阶梯（道德→经济→生命）+ 致命弱点 + 报应
-4. **确定揭露方式**：证物 / 证人 / 偷听 / 剥洋葱，四选一（机制细节见 `.claude/knowledge/short-craft/villain-and-reveal.md`；反转类型与铺垫手法见 `.claude/knowledge/short-craft/reversal-toolkit.md`；羁绊与余韵的铺法见 `.claude/knowledge/short-craft/emotional-methods.md`；导语与付费点细节见 `.claude/knowledge/short-craft/submission-craft.md`；注册表外冷门题材用 `.claude/knowledge/short-craft/genre-writing-formulas.md` 结构骨架兜底）
-5. **编写 `outline.md`**：
-   - **每节一行**，字段：`结构段/五段功能 | 主事件 | 子事件×3-5（->连接，各带功能标签：对话/冲突/伏笔/回忆/发现/递进，描述具体到谁做了什么）| 情绪 | 人物/关系变化 | 因果链 | 读者新获知 | 结尾承接/钩子 | 伏笔/物件 | 动静 | 对话密度 | 目标字数`
-   - **因果链固定形状**：`承接点 → 动机与行动 → 核心事件 → 直接后果 → 结尾钩子`；承接点写明继承什么，直接后果写明导致什么，MUST NOT 省略连接位
-   - **情绪链落点**：链名 + 各阶段覆盖的节号（全篇每节都被覆盖，无节落链外）
-   - **招式落点表**：每招式标承载节与兑现节，中间留铺垫距离，禁止承载即兑现
-   - **无无功能节**：每节至少承担 推进招式 / 加压 / 伏笔 / 关系变化 / 情绪兑现 / 展开配角支线 之一；配角支线须有记忆点且作用于主线；纯过渡节合并或补功能
-   - **反派作恶前置铺垫**：每次作恶前有危险累积的铺垫
-   - **催化性失常**：全文 60-75% 位置放一个当前解释框架无法解释的矛盾体（纯甜宠等反转不成立题材标注不适用）
-6. **两道验证**：
-   - **反转位置**：揭穿节号 ÷ 总节数。<50% 回大纲调整；50-60% 灰区复核误导线索；>60% 通过。另需 ≥1 条成功误导假线索
-   - **伏笔回查**：结尾每个关键元素前文有 ≥1 次铺垫；贯穿道具三次出现（无害→引注意→揭真相）齐备；铺垫节与揭穿节间距 ≥3 节
+1. **Pick the emotional chain**: Pick one chain (4-6 stages) from the genre pack's "emotional chain library" as the skeleton of the whole story; the number of stages is not forced to equal the five parts
+2. **Pick techniques**: Pick 2-3 core techniques from the genre pack's technique library (each is a formula plus an example, and must be converted when used)
+3. **Design the villain** (if any): identity + motive + ladder of wrongdoing (moral, then economic, then life-threatening) + fatal weakness + retribution
+4. **Decide the reveal method**: physical evidence / witness / eavesdropping / peeling the onion, pick one (for the mechanism details see `.claude/knowledge/short-craft/villain-and-reveal.md`; for reversal types and planting techniques see `.claude/knowledge/short-craft/reversal-toolkit.md`; for how to lay bonds and lingering resonance see `.claude/knowledge/short-craft/emotional-methods.md`; for lead and paywall point details see `.claude/knowledge/short-craft/submission-craft.md`; for unregistered niche genres outside the registry, use the structural skeleton in `.claude/knowledge/short-craft/genre-writing-formulas.md` as the fallback)
+5. **Write `outline.md`**:
+   - **One line per section**, with fields: `structural part / five-part function | main event | sub-events x3-5 (connected with ->, each with a function tag: dialogue/conflict/foreshadowing/flashback/discovery/escalation, described concretely as who did what) | emotion | character/relationship change | causal chain | what the reader newly learns | ending carryover/hook | foreshadowing/object | movement/stillness | dialogue density | target word count`
+   - **Fixed causal chain shape**: `carryover point → motive and action → core event → direct consequence → ending hook`; the carryover point states what is inherited, the direct consequence states what it causes, and the connecting slots MUST NOT be omitted
+   - **Emotional chain landing points**: chain name + the section numbers each stage covers (every section in the whole story is covered, with no section outside the chain)
+   - **Technique landing table**: for each technique, mark its carrying section and its payoff section, leaving planting distance in between; carrying and payoff in the same section is forbidden
+   - **No functionless sections**: every section carries at least one of advancing a technique / raising pressure / planting foreshadowing / changing a relationship / paying off an emotion / developing a supporting-character subplot; a supporting-character subplot must have a memorable point and act on the main line; a pure transition section is merged or given a function
+   - **Villain wrongdoing is preceded by planting**: before each act of wrongdoing there is planting that accumulates danger
+   - **Catalytic anomaly**: at the 60-75% point of the whole text, place one contradiction that the current explanatory framework cannot explain (for genres where a reversal cannot hold, such as pure sweet romance, mark it not applicable)
+6. **Two verifications**:
+   - **Reversal position**: reveal section number divided by total section count. Below 50%, go back and adjust the outline; 50-60% is a gray zone, re-check the misleading clues; above 60% passes. Also requires at least 1 successful misleading false clue
+   - **Foreshadowing back-check**: every key element in the ending has at least 1 earlier planting; the throughline prop appears three times (harmless, then attention-grabbing, then truth-revealing), all present; the gap between a planting section and its reveal section is at least 3 sections
 
-## 验收
+## Acceptance
 
-- [ ] setting.md 七节齐备、命名记录落盘
-- [ ] outline.md 每节字段齐备、因果链五段形状完整
-- [ ] 情绪链落点 / 招式落点表齐备、无无功能节
-- [ ] 两道验证留痕（百分比、回查清单）
-- [ ] 对作者的摘要用日常语言，无内部字段名
+- [ ] setting.md has all seven parts, naming record written down
+- [ ] outline.md has all fields for every section, causal chains in the complete five-part shape
+- [ ] Emotional chain landing points / technique landing table complete, no functionless sections
+- [ ] Both verifications leave a trace (percentage, back-check list)
+- [ ] The summary for the author uses everyday language, with no internal field names

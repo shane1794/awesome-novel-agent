@@ -2,306 +2,306 @@
 
 ## Context
 
-现状（动机见 proposal.md）：仓库只有长篇一条流水线，架构由四处耦合支撑——`tools/init.py`（骨架生成 + 题材选择 + 知识合并）、`tools/platforms.py`（7 平台产物转换）、`skills/novel-dispatch.md`（调度契约 + order 协议 + 断点语义）、`agents/*.md`（9 个 agent）。短篇要在不改坏这四处的前提下接入。
+Current state (motivation in proposal.md): the repo has only the long-form pipeline, held together by four coupled places: `tools/init.py` (skeleton generation + genre selection + knowledge merging), `tools/platforms.py` (7-platform product conversion), `skills/novel-dispatch.md` (dispatch contract + order protocol + breakpoint semantics), and `agents/*.md` (9 agents). Short stories must plug in without breaking these four.
 
-关键既有约束（实现时不可破坏）：
+Key existing constraints (must not be broken during implementation):
 
-- `agents/` 目录下所有 `.md` 会被 `deploy_agents` 全量部署，**没有过滤机制**；`platforms.py` 的 `SUBAGENT_NAMES` / `EXEC_AGENT_SOPS` 是硬编码单源，内联 skill 数量被 `test_platforms.py` 硬断言为 11。
-- `deploy_knowledge` 把 `knowledge/anti-ai/` 下 5 个通用文件 + 题材文件**合并成单一 `anti-ai.md`**；`knowledge/format-specs/*.md` 拍平部署。
-- `check-agents.py` 的 `DEPLOYED_PATTERNS` 是部署后路径白名单；`_deployed_knowledge_files` 通过**真实调用 `init.deploy_knowledge`** 到临时目录来取得产物清单，再据此做孤儿检测。
-- agents/skills 正文引用 knowledge 一律写 `.claude/knowledge/...` 基座路径，由 `rewrite_refs` 按平台改前缀；写仓库相对路径会被 `check-agents.py` 直接报错。
-- `check-conflicts.py` 扫描 `knowledge/` + `skills/` 全部 `.md`，按「同对象不同数字」判跨文件阈值冲突，权威源为 `knowledge/anti-ai/common-rules.md`。
-- 仓库工具只用 Python 标准库（pyyaml 为例外），CI 在 `.github/workflows/static.yml` 跑语法检查 + agent 校验 + 规则冲突检查 + 平台测试。
-- 部署引用与作者话术受 `knowledge/format-specs/author-communication.md` 约束。
+- Every `.md` under `agents/` is deployed in full by `deploy_agents`, with **no filtering mechanism**; `platforms.py`'s `SUBAGENT_NAMES` / `EXEC_AGENT_SOPS` are hard-coded single sources, and the inlined skill count is hard-asserted as 11 by `test_platforms.py`.
+- `deploy_knowledge` merges the 5 general files under `knowledge/anti-ai/` plus genre files into a **single `anti-ai.md`**; `knowledge/format-specs/*.md` deploy flattened.
+- `check-agents.py`'s `DEPLOYED_PATTERNS` is the post-deployment path allowlist; `_deployed_knowledge_files` obtains the product manifest by **actually calling `init.deploy_knowledge`** into a temp directory, then runs orphan detection from it.
+- Agent and skill body text references to knowledge always use the `.claude/knowledge/...` base path, rewritten per platform by `rewrite_refs`; writing a repo-relative path makes `check-agents.py` error directly.
+- `check-conflicts.py` scans all `.md` under `knowledge/` + `skills/` and judges cross-file threshold conflicts by "same object, different number", with `knowledge/anti-ai/common-rules.md` as the authoritative source.
+- Repo tools use only the Python standard library (pyyaml is the exception), and CI runs syntax checks + agent checks + rule-conflict checks + platform tests in `.github/workflows/static.yml`.
+- Deployment references and author-facing wording are constrained by `knowledge/format-specs/author-communication.md`.
 
 ## Goals / Non-Goals
 
 **Goals:**
 
-- 短篇在骨架、题材编号、agent 名单、知识产物四个层面与长篇**物理隔离**，长篇项目产物逐字节不变。
-- 短篇反 AI 有独立的知识源、独立的部署产物、独立的判据，且**不复用**长篇校准过的检查工具。
-- 短篇既有懂行者的直通路径，也有不懂者的引导路径，两条路径产出同一套成品结构。
-- 短篇保留可核对的写作契约，使「正文对不对」判得出来——定稿能对照契约逐项核对，而不是只靠主观读感。
-- 三条主流程（初始化 / 写作流水线 / 跨篇复用与扩展）全部落到可测试的 requirement。
+- Short stories are **physically isolated** from long-form at four levels (skeleton, genre numbering, agent roster, knowledge products), with long-form project products byte-for-byte unchanged.
+- Short-story anti-AI has an independent knowledge source, an independent deployed product, and independent criteria, and does **not reuse** long-form-calibrated check tools.
+- Short stories have both a straight-through path for experts and a guided path for newcomers, with both paths producing the same finished structure.
+- Short stories keep a checkable writing contract, so "is the main text right" can be judged: the final draft can be checked item by item against the contract instead of relying only on subjective reading feel.
+- All three main flows (initialization / writing pipeline / cross-story reuse and extension) land as testable requirements.
 
 **Non-Goals:**
 
-- 不引入任何 Node 依赖。包内 4 个 Node 检查脚本的处理见 D8。
-- 不改动既有 spec 的 requirement；短篇与既有流水线在行为上互不影响（见 D13 的兼容声明）。
-- 不做短篇的文风蒸馏接入——短篇 8 千至 2 万字不足以支撑三段式蒸馏，且会显著增加 agent 数与部署面。
-- 不做扫榜与拆文——两者是写作的可选前置，不服务于「先写出成品」，另行提案（见 D13 与 proposal「后续变更」）。
+- Do not introduce any Node dependency. The pack's 4 Node check scripts are handled in D8.
+- Do not change any existing spec's requirements; short stories and the existing pipeline do not affect each other behaviorally (see the D13 compatibility statement).
+- Do not wire short-story style distillation: 8,000 to 20,000 words cannot support three-stage distillation, and it would significantly increase agent count and deployment surface.
+- Do not do list scanning or text teardown: both are optional front-ends for writing, do not serve "write the finished draft first", and get separate proposals (see D13 and the proposal's "Later Changes").
 
 ## Decisions
 
-### D1: 用 `--length` 做项目类型开关，而不是「长度模式」
+### D1: Use `--length` as the project-type switch, not a "length mode"
 
-短篇的骨架（`stories/` vs `volumes/`+`chapters/`+`prompts/`）与 agent 名单（4+1 vs 9）都是**互斥集合**，不是同一集合的参数化。做成开关，`init.py` 只需在 `create_skeleton` / `deploy_agents` / `deploy_knowledge` / `write_status` 四处加分支，长篇分支保持原样。
+The short-story skeleton (`stories/` vs `volumes/`+`chapters/`+`prompts/`) and agent roster (4+1 vs 9) are **mutually exclusive sets**, not parameterizations of the same set. As a switch, `init.py` only needs branches in four places (`create_skeleton` / `deploy_agents` / `deploy_knowledge` / `write_status`), with the long-form branches kept as-is.
 
-- Alternative A（同一项目两种都写，靠长度模式切换 agent 行为）被拒：`anti-ai` agent 要同时扛两套**相反**口径（长篇禁情绪词、短篇留情绪词），`chapter-planner` 要兼做没有「章」的短篇大纲，语义拉伸必致串味。
-- Alternative B（不做项目类型，纯 skill 组）被拒：无总指挥则无作者确认关卡与断点续跑，与仓库「9 个 agent 协作、人铸灵魂 AI 行笔墨」的体验叙事不一致，且作者要自己知道该调哪个 skill。
-- 缺省 `long` 保证向后兼容：不传 `--length` 时产物与改动前一致。
+- Alternative A (write both in one project, switching agent behavior by length mode) was rejected: the `anti-ai` agent would have to carry two **opposite** criteria at once (long-form bans emotion words, short-form keeps them), and `chapter-planner` would have to double as an outline for short stories that have no "chapters", so stretched semantics would inevitably leak across.
+- Alternative B (no project type, just a skill group) was rejected: without a commander there are no author confirmation gates or breakpoint resume, which contradicts the repo's experience narrative of "9 collaborating agents, humans forge the soul, AI does the brushwork", and authors would have to know which skill to call themselves.
+- The default `long` guarantees backward compatibility: without `--length`, products match the pre-change state.
 
-### D2: 反 AI 按检查项分级——知识口径分轨，工具逐项复用
+### D2: Grade anti-AI per check item: separate knowledge criteria tracks, reuse tools item by item
 
-初版把这里处理成了整体分轨（「短篇不复用 `check-prose.py`」），复审修正：那是一次**按工具一刀切**，把大量文体无关的检查项一起丢掉了。正确做法是**按检查项决定复用还是独立**。
+The first draft handled this as whole-track separation ("short stories do not reuse `check-prose.py`"); review corrected it: that was a **per-tool blanket cut** that threw away many genre-independent check items along with it. The correct approach is to **decide reuse or independence per check item**.
 
-**必须独立的部分（知识口径）**：短篇的去 AI 口径、禁用词、留删判据放短篇专属目录，部署为独立产物文件。理由是留删判据与长篇**直接相反**，共用会让 `check-conflicts.py` 的「同对象不同数字」判定产生无法两全的冲突（`common-rules.md` 自述是既有规则的唯一权威源）。
+**Parts that must be independent (knowledge criteria)**: the short story's de-AI criteria, banned words, and keep-or-cut criteria go in a short-story-specific directory and deploy as a standalone product file. The reason is that the keep-or-cut criteria are **directly opposite** to long-form's, so sharing them would make `check-conflicts.py`'s "same object, different number" judgment produce an unresolvable conflict (`common-rules.md` describes itself as the single authoritative source for existing rules).
 
-**必须复用的部分（文体无关的检查项）**：
+**Parts that must be reused (genre-independent check items)**:
 
-| 来源 | 检查项 | 判定 | 理由 |
+| Source | Check items | Verdict | Reason |
 |---|---|---|---|
-| `check-chapter.py` | 夹层标签式 / 嵌套双引号 / 引号半全角 / 字数表达对账 / 破折号省略号密度 / 弱化副词每千字上限 / 多轮问答并段 / 尾随标签 | **复用** | 格式与排版约束，短篇同约束；项目级资产（回归模式库 / 锁定台词白名单）机制也通用 |
-| `check-prose.py` | 套话停用词（说白了 / 说穿了 / 先说结论） | **复用** | 通用 AI 腔 |
-| `check-prose.py` | 商务黑话（赋能 / 抓手 / 闭环…） | **复用** | 通用 AI 腔 |
-| `check-prose.py` | 路标语（更微妙的是 / 还有一层…） | **复用** | 通用 AI 腔 |
-| `check-prose.py` | 段落开场重复 / 句长变异系数 | **复用** | 防单调，与文体无关 |
+| `check-chapter.py` | Label-style sandwiches / nested double quotes / half- vs full-width quotes / word-count expression reconciliation / dash and ellipsis density / weak-adverb per-thousand-word cap / multi-round question-answer in one paragraph / trailing labels | **Reuse** | Format and layout constraints, which short stories share; the project-level asset mechanisms (regression pattern library / locked-lines whitelist) are also general |
+| `check-prose.py` | Cliché stop words (说白了 / 说穿了 / 先说结论, "to put it bluntly / to put it plainly / first, the conclusion") | **Reuse** | General AI tone |
+| `check-prose.py` | Business jargon (赋能 / 抓手 / 闭环…, "empower / lever / closed loop" and similar) | **Reuse** | General AI tone |
+| `check-prose.py` | Signpost language (更微妙的是 / 还有一层…, "more subtly / there is another layer" and similar) | **Reuse** | General AI tone |
+| `check-prose.py` | Repeated paragraph openings / sentence-length coefficient of variation | **Reuse** | Guards against monotony, independent of genre |
 
-> 模型退化类（复读 / 截断 / 工程词泄漏）同属文体无关、应当有机器兜底，但本仓目前**没有**该能力。它是跨文体的缺口而非短篇专有需求，因此从本次范围移出，见 D8 与 proposal 的「后续变更」。
+> Model-degradation items (repetition / truncation / engineering-word leaks) are also genre-independent and should have a machine backstop, but this repo currently **has no** such capability. It is a cross-genre gap, not a short-story-specific need, so it is moved out of this change's scope; see D8 and the proposal's "Later Changes".
 
-**必须独立的部分（与文体口径绑定的检查项）**：
+**Parts that must be independent (check items bound to genre wording)**:
 
-| 检查项 | 短篇口径 |
+| Check item | Short-story criteria |
 |---|---|
-| 抒情用词（`LYRIC_WORDS`：安放 / 抵达 / 微光 / 褶皱 / 丰盈 / 滚烫…） | 短篇要留，判为违规是假阳性 |
-| 转折句式（`PIVOT_PATTERNS` 含 `以为…才发现 / 才明白 / 后来才`） | 短篇主力句式 |
-| 段落形态与单句段占比 | 短篇是平台形态要求（见 D12） |
-| 万能比喻阈值 | 数值口径不同 |
+| Lyrical words (`LYRIC_WORDS`: 安放 / 抵达 / 微光 / 褶皱 / 丰盈 / 滚烫…, "settle / arrive / faint light / folds / fullness / scorching" and similar) | Short stories keep them; judging them a violation is a false positive |
+| Reversal sentence patterns (`PIVOT_PATTERNS` including 以为…才发现 / 才明白 / 后来才, "thought... only to discover / only then understood / only later") | A core short-story sentence pattern |
+| Paragraph shape and single-sentence paragraph share | Short stories require it as a platform shape (see D12) |
+| Universal-metaphor threshold | The numeric wording differs |
 
-- Alternative A（整体弃用 `check-prose.py`）被拒：会连带丢掉黑话、路标、段落开场重复、句长变异这些短篇同样该查的项，等于自造一套重复实现。这是初版的做法。
-- Alternative B（整体套用，给 `check-prose.py` 加 `--mode short` 开关）被拒：把两套相反的词表塞进同一工具，任何词表调整都会同时影响两个产品，且开关会让「当前是哪种校准」变成隐式状态。
-- 采用方案：**检查项清单化**——短篇项目按一份显式的检查项清单执行，每项标注由哪个工具承担或由短篇自己的校准承担（见 spec `AR1`）。清单是唯一的分级依据，可被测试核对。
+- Alternative A (drop `check-prose.py` entirely) was rejected: it would also drop the business-jargon, signpost, repeated-paragraph-opening, and sentence-length-variation items that short stories should also check, equal to building a duplicate implementation. That was the first draft's approach.
+- Alternative B (apply it wholesale, adding a `--mode short` switch to `check-prose.py`) was rejected: stuffing two opposite word lists into one tool means any word-list adjustment affects both products at once, and the switch turns "which calibration is current" into implicit state.
+- Adopted approach: **itemize the check list**. Short-story projects execute against an explicit check-item list, with each item marked as handled by a tool or by the short story's own calibration (see spec `AR1`). The list is the single grading basis and can be checked by tests.
 
-### D3: agent 组切分为 5 新增 + 1 复用，验收职责必须独立成岗
+### D3: Split the agent group into 5 new + 1 reused, with acceptance as an independent post
 
-| 短篇 agent | 职责 | 为什么不复用长篇的 |
+| Short-story agent | Duty | Why not reuse the long-form one |
 |---|---|---|
-| `short-agent` 总指挥 | phase 路由、order、确认关卡 | `novel-agent` 的调度表绑定卷/章 |
-| `short-planner` 构思 | 框架 + 六项设计 + 大纲 + 两道验证**+ 组装写作契约** | `chapter-planner` 依赖卷纲与参考材料 |
-| `short-writer` 写手 | 分批写正文 + 字数硬验证 | `writer` 依赖 `prompts/*.md` 的 6 元素结构（短篇契约结构不同） |
-| `short-editor` 编辑 | 短篇去 AI 味 + 精修 | `anti-ai` 的口径与短篇相反 |
-| `short-verifier` 验收 | **契约审计** + **定稿兑现度核对** | 长篇没有对应岗；`reader` 是体验岗不是结构岗 |
-| `reader` 体验验收 | 苛刻读者体验验收 | **复用**，体验视角与篇幅无关 |
+| `short-agent` commander | phase routing, orders, confirmation gates | `novel-agent`'s dispatch table is bound to volumes and chapters |
+| `short-planner` concept | Framework + six design items + outline + two validations **+ assembling the writing contract** | `chapter-planner` depends on volume outlines and reference material |
+| `short-writer` writer | Batched main-text writing + word-count hard validation | `writer` depends on the 6-element structure of `prompts/*.md` (the short-story contract structure differs) |
+| `short-editor` editor | Short-story de-AI pass + polish | `anti-ai`'s criteria are opposite to the short story's |
+| `short-verifier` verifier | **Contract audit** + **final-draft payoff check** | Long-form has no matching post; `reader` is an experience post, not a structure post |
+| `reader` experience acceptance | Harsh reader experience acceptance | **Reuse**: the experience perspective is independent of length |
 
-不新建的与理由：**无 `updater`**——短篇没有跨章 lore-keeping，设定文件由构思 agent 直接写；**无 `style-distiller`**——短篇 8 千至 2 万字不足以支撑三段式蒸馏，且会显著增加 agent 数与部署面。
+Not created, with reasons: **no `updater`**, since short stories have no cross-chapter lore-keeping and the concept agent writes the setting files directly; **no `style-distiller`**, since 8,000 to 20,000 words cannot support three-stage distillation and it would significantly increase agent count and deployment surface.
 
-**为什么验收必须独立成岗**（本条的 Alternative 论证）：契约要有「审」和「核」两道闸，而两道闸都不能由被审对象自己执行——这是仓库既有 doctrine，`skills/prompt-audit.md` 开篇即写明「你不是 prompt-crafter，你没有维护自己作品的包袱；你的唯一职责是找问题」。三个替代方案逐一被拒：
+**Why acceptance must be an independent post** (the alternative analysis for this item): the contract needs two gates, "audit" and "check", and neither gate may be executed by the object being checked. That is the repo's existing doctrine; `skills/prompt-audit.md` states at its start, "you are not prompt-crafter, you carry no baggage for maintaining your own work; your only duty is to find problems". Three alternatives were rejected one by one:
 
-- Alternative A（构思 agent 自查契约）被拒：正是 prompt-audit 明令排除的自我审计。
-- Alternative B（编辑 agent 兼做兑现度核对）被拒：编辑刚做完清创，核对「清创有没有改坏原文」是自证；且清创与核对在同一上下文里会互相迁就。
-- Alternative C（`reader` 兼做兑现度核对）被拒：`reader` 的存在价值就在于「以真实阅读体验为唯一标准」的沉浸式读感，塞进结构清单会污染它的第一遍沉浸阅读——而沉浸被污染后无法补救（先看清单再看文，读感回不去了）。
-- Alternative D（总指挥自己写完全程）被拒：长输出与规则堆积会污染总指挥上下文，且调度者兼生产者在断点续跑上会自我循环。
+- Alternative A (the concept agent audits its own contract) was rejected: exactly the self-audit that prompt-audit explicitly excludes.
+- Alternative B (the editor agent doubles as the payoff checker) was rejected: the editor just finished cleanup, so checking "did cleanup break the original" is self-certification; and cleanup and checking in the same context accommodate each other.
+- Alternative C (`reader` doubles as the payoff checker) was rejected: `reader`'s whole value is immersive reading feel with "real reading experience as the only standard"; stuffing a structure checklist into it pollutes its first immersive read, and polluted immersion cannot be repaired (once you read the list first and the text second, the reading feel never comes back).
+- Alternative D (the commander writes the whole thing itself) was rejected: long output and piled-up rules pollute the commander's context, and a dispatcher who is also a producer loops on itself at breakpoint resume.
 
-代价是短篇 agent 数从 4 涨到 5。判断依据：短篇的成品是**一次性的**（不像长篇有后续章节可以纠偏），一次交付定生死，所以结构核对的独立性优先级高于节省一个 agent。
+The cost is a short-story agent count rising from 4 to 5. The judgment basis: the short story's finished draft is **one-shot** (unlike long-form, where later chapters can correct course), so one delivery decides everything, and the independence of structure checking outranks saving one agent.
 
-### D4: 目录与文件命名跟随仓库英文约定，不沿用包里的中文路径
+### D4: Directory and file naming follow the repo's English convention; do not carry over the pack's Chinese paths
 
-包里用 `拆文库/`、`{标题}/正文.md`。本仓库既有约定是英文目录 + 英文文件名（`volumes/`、`chapters/`、`archives/`、`settings/world-setting.md`）。短篇采用 `stories/{slug}/{setting.md, outline.md, manuscript.md}`、`analysis/`、`market/`。
+The pack uses `拆文库/` ("teardown library") and `{title}/正文.md` ("main text"). This repo's existing convention is English directories + English file names (`volumes/`, `chapters/`, `archives/`, `settings/world-setting.md`). Short stories use `stories/{slug}/{setting.md, outline.md, manuscript.md}`, `analysis/`, `market/`.
 
-- 理由一：toolchain 已按此假设建立——`check-agents.py` 的引用正则为 `.claude/knowledge/([A-Za-z0-9_./{}-]+)`，不含中文；`DEPLOYED_PATTERNS` 的 frontmatter 白名单是 `[a-z-]+\.md`。
-- 理由二：作者面向的是 AI 对话而非文件树，中文路径对作者的可读性收益不抵消工具链成本。
-- Alternative（保留中文路径）被拒：需放宽多个正则并逐处验证跨平台路径行为，收益与成本不匹配。
+- Reason one: the toolchain is already built on this assumption. `check-agents.py`'s reference regex is `.claude/knowledge/([A-Za-z0-9_./{}-]+)`, which contains no Chinese; `DEPLOYED_PATTERNS`'s frontmatter allowlist is `[a-z-]+\.md`.
+- Reason two: authors face AI conversation, not the file tree, so Chinese paths' readability benefit does not outweigh the toolchain cost.
+- Alternative (keep Chinese paths) was rejected: it would require loosening several regexes and verifying cross-platform path behavior one place at a time, with benefits that do not match the cost.
 
-### D5: 题材风格包用拼音 slug
+### D5: Genre style packs use pinyin slugs
 
-10 个短篇题材的 slug：`zhuiqi`（追妻火葬场）、`shiqing`（世情打脸）、`fuchou`（复仇打脸）、`zongcai`（总裁豪门）、`zhaidou`（宅斗宫斗）、`minsu`（民俗怪谈）、`xuanyi`（悬疑）、`tianchong`（甜宠）、`shuangnan`（双男主）、`shadiao`（沙雕脑洞）。
+The 10 short-story genre slugs: `zhuiqi` (wife-chasing crematorium), `shiqing` (worldly face-slapping), `fuchou` (revenge face-slapping), `zongcai` (CEO and wealthy families), `zhaidou` (household and palace intrigue), `minsu` (folk horror), `xuanyi` (suspense), `tianchong` (sweet pampering), `shuangnan` (dual male leads), `shadiao` (absurdist comedy).
 
-- 理由：与既有 `xianxia` / `xuanhuan` / `guba` 同风格（既有 24 题材也大量使用拼音 id），且满足 `[a-z-]+` 的文件名约束。
-- Alternative A（英文意译如 `chase-wife-crematorium`）被拒：译名长且易产生歧义，作者与 agent 都难对应。
-- Alternative B（保留中文文件名）被拒：同 D4。
+- Reason: same style as the existing `xianxia` / `xuanhuan` / `guba` (the existing 24 genres also heavily use pinyin ids), and it satisfies the `[a-z-]+` file-name constraint.
+- Alternative A (English translations such as `chase-wife-crematorium`) was rejected: the translated names are long, ambiguous, and hard for authors and agents to match.
+- Alternative B (keep Chinese file names) was rejected: same as D4.
 
-### D6: `length` 标记落 `story.md`，作为同步与路由的唯一依据
+### D6: The `length` marker lands in `story.md` as the single basis for sync and routing
 
-`init.py` 写入 `story.md` 时带上长度标记；`sync-project.py` 与入口 skill 都读它决定同步对象与加载哪个总指挥。不新增独立配置文件（避免与 `story.md` 的元信息段重复）。
+`init.py` writes the length marker when writing `story.md`; `sync-project.py` and the entry-point skill both read it to decide sync targets and which commander to load. No standalone config file is added (to avoid duplicating the `story.md` metadata section).
 
-- Alternative（用 `.agent/status.md` 承载）被拒：状态文件是运行期断点载体、会被反复改写，项目类型属静态元信息，应随 `story.md` 走。
+- Alternative (carry it in `.agent/status.md`) was rejected: the status file is a runtime breakpoint carrier that is rewritten repeatedly, while the project type is static metadata that belongs with `story.md`.
 
-### D7: `check-agents.py` 的部署产物模拟必须覆盖两种长度
+### D7: `check-agents.py`'s deployed-product simulation must cover both lengths
 
-`_deployed_knowledge_files` 通过真实调用 `deploy_knowledge` 取得产物清单，再据此判孤儿。若只模拟长篇，短篇知识文件会被全部误判为孤儿（进而 CI 红）。因此该模拟 MUST 同时跑 long 与 short 两种长度并取并集。
+`_deployed_knowledge_files` obtains the product manifest by actually calling `deploy_knowledge`, then judges orphans from it. If it only simulated long-form, short-story knowledge files would all be misjudged as orphaned (and CI would go red). So the simulation MUST run both long and short lengths and take the union.
 
-- Alternative（把短篇知识加入 `_KNOWLEDGE_AUTHOR_REFS` 豁免）被拒：那是「面向作者、不经 agent 消费」的豁免语义，短篇知识是被 agent 消费的，语义不符。
+- Alternative (add short-story knowledge to the `_KNOWLEDGE_AUTHOR_REFS` exemption) was rejected: that exemption means "for the author, not consumed by any agent", while short-story knowledge is consumed by agents, so the semantics do not fit.
 
-### D8: 包内 4 个 Node 脚本本次均不接入
+### D8: None of the pack's 4 Node scripts are wired in this change
 
-沿用 D2 的判据——**按检查项的价值与文体相关性决定处置**，不按「来自哪个包」整体取舍：
+Following D2's criterion, decide by **each check item's value and genre relevance**, not by "which pack it came from" as a whole:
 
-| 脚本 | 处置 | 理由 |
+| Script | Disposition | Reason |
 |---|---|---|
-| `check-ai-patterns.js` | 不移植 | 能力面与 `check-prose.py` 高度重叠；短篇真正需要的差异在**词表**（抒情词、转折句式、段落形态），那部分归短篇自己的校准（D2），移植工具解决不了 |
-| `normalize-punctuation.js` | 不移植 | 它是**机械替换**标点，会掩盖语义问题；短篇要求停顿处做语义级改写（改成短句 / 动作 beat / 换行，见 spec `AR6.2`），机械归一反而会把该改的地方糊过去 |
-| `check-degeneration.js` | 不接入本次，另行提案 | 复读 / 截断 / 工程词泄漏**与文体无关**，是本仓真缺口，且退化是模型自报不了的失效模式。但它属**跨文体的能力补齐**，不是「让作者先写出小说」的必要条件，与短篇绑定反而拖慢主链路 |
-| `check-outline-copy.js` | 不接入本次，另行提案 | 同上；短篇大纲每节一行且子事件写得很细、照搬风险确实更高，但该检查同样与文体无关，适合独立变更先落 |
+| `check-ai-patterns.js` | Do not port | Its capability surface heavily overlaps `check-prose.py`; what short stories really need differently is in the **word lists** (lyrical words, reversal sentence patterns, paragraph shape), which belong to the short story's own calibration (D2); porting the tool does not solve that |
+| `normalize-punctuation.js` | Do not port | It is **mechanical replacement** of punctuation, which hides semantic problems; short stories require semantic-level rewrites at pauses (change to short sentences / action beats / line breaks, see spec `AR6.2`), and mechanical normalization would paper over places that should be changed |
+| `check-degeneration.js` | Not wired in this change; separate proposal | Repetition / truncation / engineering-word leaks are **genre-independent**, a real gap in this repo, and degeneration is a failure mode the model cannot report on itself. But it is a **cross-genre capability addition**, not a precondition for "let the author write a novel first", and tying it to short stories would only slow the main chain |
+| `check-outline-copy.js` | Not wired in this change; separate proposal | Same as above; short-story outlines give one line per section with very detailed sub-events, so copy risk is indeed higher, but the check is equally genre-independent and fits an independent change landing first |
 
-- Alternative（保留 Node 并接入部署）被拒：破仓库「工具只用 Python 标准库」约定，且需改 CI 与安装脚本。
-- Alternative（本次一并移植两个）被拒：它们是跨文体能力，与短篇主链路无依赖关系；放进本次会拉长交付路径，而本次的目标是让作者尽快能写出成品（D13）。
+- Alternative (keep Node and wire it into deployment) was rejected: it breaks the repo's "tools use only the Python standard library" convention and would require changing CI and install scripts.
+- Alternative (port both in this change) was rejected: they are cross-genre capabilities with no dependency on the short-story main chain; putting them in this change lengthens the delivery path, while this change's goal is to let the author write a finished draft as soon as possible (D13).
 
-本次短篇的机器侧保障为：字数用 Python 实测（spec `D5.3`/`D5.4` 已硬性要求）+ 复用既有工具承担文体无关的格式与通用 AI 腔检查 + 短篇自己的校准承担文体绑定项 + 自检清单人工项。
+This change's machine-side guarantees for short stories are: word counts measured in Python (spec `D5.3`/`D5.4` hard-require it) + reusing existing tools for genre-independent format and general AI-tone checks + the short story's own calibration for genre-bound items + manual items on the self-check list.
 
-### D9: 包内内容以「三件改写」搬运，不重写方法论
+### D9: Move the pack's content with "three rewrites", without rewriting the methodology
 
-搬运 `knowledge/short/` 约 26 个文件时只做三件改写：①引用路径改为部署后基座路径（`.claude/knowledge/short-*`）；②删除 oh-story 外部体系引用（`story-architect`、`narrative-writer`、`character-designer`、`consistency-checker`、`/story-setup`、`.story-deployed`、`/story-long-*`）；③话术过 `author-communication.md`（去内部字段名与流程词）。方法论本体不改。
+When moving the roughly 26 files under `knowledge/short/`, make only three rewrites: (1) change reference paths to post-deployment base paths (`.claude/knowledge/short-*`); (2) delete oh-story external-system references (`story-architect`, `narrative-writer`, `character-designer`, `consistency-checker`, `/story-setup`, `.story-deployed`, `/story-long-*`); (3) pass the wording through `author-communication.md` (remove internal field names and workflow words). The methodology itself does not change.
 
-- 理由：内容是获赠资产且经对方实测，重写会引入未验证的改动；机械改写可复核、可分批。
-- 版权：文件头 MUST 标注来源，公开或商用前需原作者确认（对齐既有 change 对同类资产的处理惯例）。
+- Reason: the content is a gifted asset that the other side has field-tested; rewriting it would introduce unverified changes, while mechanical rewrites can be re-checked and done in batches.
+- Copyright: file headers MUST mark the source, and the original author must confirm before public or commercial use (aligned with how existing changes handled similar assets).
 
-### D10: `templates/short/` 独立成套，而非给 `templates/` 加条件分支
+### D10: `templates/short/` stands alone as a set, rather than adding condition branches to `templates/`
 
-现有 `create_skeleton` 从 `templates/` 全量 `rglob` 拷贝，并对 `CLAUDE.md` / `AGENTS.md` / `AGENTS.codex.md` 做 codex 特判与路径改写。短篇若塞进同一目录树，需要给每个文件加长度条件，逻辑会散开。改为整棵 `templates/short/` 独立，`create_skeleton` 按长度选择**树根**，`_GENERATED_SCAFFOLD` 与 codex 特判逻辑对两棵树复用同一套代码路径。
+The existing `create_skeleton` copies everything from `templates/` with a full `rglob` and applies codex special-casing and path rewriting to `CLAUDE.md` / `AGENTS.md` / `AGENTS.codex.md`. If short stories were stuffed into the same directory tree, every file would need a length condition and the logic would spread out. Instead, the whole `templates/short/` tree stands alone, `create_skeleton` picks the **tree root** by length, and `_GENERATED_SCAFFOLD` and the codex special-case logic reuse the same code path for both trees.
 
-- Alternative（单棵树 + 文件名后缀约定）被拒：条件分支会渗进拷贝循环、路径改写与脚手架白名单三处。
+- Alternative (one tree + file-name suffix convention) was rejected: condition branches would seep into the copy loop, path rewriting, and the scaffold allowlist in three places.
 
-### D11: 短篇保留写作契约层，并把契约提升为验收基线
+### D11: Keep the writing-contract layer in short stories, and promote the contract to the acceptance baseline
 
-初版设计把契约层砍掉（理由：短篇的「提示词」就是设定 + 大纲 + 题材包），经提示词工程复审推翻。复盘结论：砍掉契约不是少写一个文件，而是**同时丢掉四个已验证的质量机制**——
+The first draft cut the contract layer (reason: a short story's "prompt" is just settings + outline + genre pack). Prompt-engineering review overturned that. The review conclusion: cutting the contract does not just remove one file; it **simultaneously drops four verified quality mechanisms**:
 
-| 机制 | 已有载体 | 砍掉后的后果 |
+| Mechanism | Existing carrier | Consequence of cutting it |
 |---|---|---|
-| 规则去重（同一语义只出现一次） | 组装后去重检查 + 审计的去重维度（硬门禁） | 短篇 20 多个参考文件、约 40 条硬规则直接堆给写手，重复规则互相打架 |
-| 规则重排（优先级降序 + 位置效应） | 审计的重排维度（硬门禁） | 硬规则与建议技法混排，写手自行判优先级 |
-| 通用技法四步转化 | 审计的转化完整性维度（硬门禁） | 写手拿到题材包的通用招式而非本篇写法 |
-| 冲突裁定内联 | 组装前的优先级 hierarchy | 写手在五个互相冲突的硬数字之间自行让步 |
+| Rule deduplication (the same meaning appears only once) | Post-assembly deduplication check + the audit's deduplication dimension (hard gate) | With 20+ short-story reference files and about 40 hard rules handed straight to the writer, duplicate rules fight each other |
+| Rule reordering (descending priority + position effects) | The audit's reordering dimension (hard gate) | Hard rules and suggestive techniques are mixed together, and the writer judges priorities itself |
+| Four-step transformation of general techniques | The audit's transformation-completeness dimension (hard gate) | The writer gets the genre pack's general techniques instead of this story's writing |
+| Inlined conflict adjudication | The pre-assembly priority hierarchy | The writer concedes on its own between five mutually conflicting hard numbers |
 
-因此短篇 MUST 保留篇级契约 `stories/{slug}/prompt.md`，沿用六元素结构与扁平输出，但按短篇体量做两处收缩：**篇级一份**（因为情绪目标 / 核心反转 / 贯穿道具都是篇级属性，不是每节一份），**审计维度按短篇重定**（保留转换质量、优先级顺序、规则去重、约束间一致性、条目可核对性五项）。
+So short stories MUST keep the per-story contract `stories/{slug}/prompt.md`, following the six-element structure and flat output, but with two contractions for short-story size: **one per story** (because the emotion goal, core reversal, and throughline prop are story-level attributes, not one per section), and **audit dimensions redefined for short stories** (keeping the five items: transformation quality, priority order, rule deduplication, consistency between constraints, entry checkability).
 
-**契约的第二重身份是验收基线。** 这是本次复审最有价值的结论：契约定下来之后，「正文对不对」从主观读感变成可逐项核对——硬规则是否遵守、大纲子事件是否落地、情绪目标是否达成、反转位置是否一致、贯穿道具三次出现是否齐备、字数节数是否达标、标点禁令是否清零。没有契约，这些只能靠读者「感觉不对」；有契约，未兑现项可以直接附原文证据回退。
+**The contract's second identity is the acceptance baseline.** This is the review's most valuable conclusion: once the contract is set, "is the main text right" changes from subjective reading feel to item-by-item checking: whether hard rules were followed, whether outline sub-events landed, whether the emotion goal was met, whether the reversal position matches, whether the throughline prop's three appearances are complete, whether word and section counts meet the standard, whether the punctuation ban is at zero. Without a contract, these can only be felt as "something is off" by a reader; with a contract, undelivered items can roll back directly with quoted source evidence.
 
-- Alternative（只做契约不做兑现度核对）被拒：契约只用于生成时，等于把「写没写到位」的判定仍留给主观读感，浪费了契约的可核对性。
-- Alternative（兑现度核对与体验验收合成一次）被拒：先看清单会毁掉沉浸阅读，两者必须分开且体验在后。
+- Alternative (contract only, no payoff check) was rejected: using the contract only for generation leaves the "was it written well enough" judgment to subjective reading feel, wasting the contract's checkability.
+- Alternative (merge the payoff check and experience acceptance into one) was rejected: reading the checklist first destroys immersive reading; the two must be separate, with experience second.
 
-### D12: 短篇的段落形态必须同时定下限与上限
+### D12: Short-story paragraph shape must set both a floor and a ceiling
 
-短篇包里的硬约束是「每节 ≥800 字 / 50-65 行」，换算每行 12-16 字，实际要求一行一句；包的黑岩模板示例也是一句一段。而本仓既有的「温感平衡」判定把「要求独句段占硬性比例」判为高 AI 嫌疑，`2026-09-04-enhance-generation-prompt-antiai` 的 design D2 还专门把「电报体风险」列为拒绝理由。
+The short-story pack's hard constraint is "each section at least 800 words / 50-65 lines", which converts at 12-16 words per line to effectively one sentence per line; the pack's Heiyan template examples are also one sentence per paragraph. But this repo's existing "warmth balance" judgment treats "requiring single-sentence paragraphs at a hard share" as high AI suspicion, and the `2026-09-04-enhance-generation-prompt-antiai` design D2 even lists "telegram-style risk" as a reason for rejection.
 
-两套口径正面冲突，必须裁定。裁定结果：**平台形态优先，但必须补上限**。
+The two wordings directly conflict, so an adjudication was needed. The adjudication: **the platform shape takes priority, but a ceiling must be added**.
 
-- 下限成立的理由：黑岩 / 盐言是手机流式阅读，一句一段是平台形态而非风格选择，改掉它短篇就不成立。
-- 上限必须补的理由：包自己就写了「别把话硬拆成三字碎句成片排列」（`submission-craft.md`「调基调不松去 AI 底线」），说明对方也知道删过头是风险；只搬下限不搬上限等于只抄了一半。
-- 表述归属：这组冲突是**设计层的论证**，按 D13 的表述决策，spec 不写「与另一种文体不同」，只正向声明短篇自己的下限、上限与短句定位（见 spec `AR7`）。
+- Why the floor stands: Heiyan / Yanxuan are phone streaming reads; one sentence per paragraph is a platform shape, not a style choice, and changing it makes short stories untenable.
+- Why the ceiling must be added: the pack itself writes "do not hard-split speech into three-word fragments arranged in sheets" (`submission-craft.md`, "adjust the tone without loosening the de-AI floor"), showing the other side also knows over-deletion is a risk; copying only the floor copies only half of it.
+- Wording ownership: this conflict is **design-layer reasoning**; per the D13 wording decision, the spec does not write "different from another genre" and only positively states the short story's own floor, ceiling, and short-sentence positioning (see spec `AR7`).
 
-- Alternative（沿用既有的温感平衡判据）被拒：会让短篇的格式规范与平台形态直接矛盾，写手无所适从。
-- Alternative（只写下限不写上限）被拒：即初版 spec 的状态，属自相矛盾——一边要求近乎全篇单句段，一边继承防碎句的审计体系。
+- Alternative (follow the existing warmth-balance criterion) was rejected: it would put the short-story format spec in direct contradiction with the platform shape, leaving the writer with nowhere to stand.
+- Alternative (write only the floor, no ceiling) was rejected: that was the first draft spec's state, and it is self-contradictory, requiring near-total single-sentence paragraphs on one side while inheriting an anti-fragment audit system on the other.
 
-### D13: 范围以「作者能先写出小说」为界
+### D13: Scope is bounded by "the author can write a novel first"
 
-**范围决策**：本 change 的范围判据只有一条——**作者说一句「写个短篇」，能不能拿到一篇成品**。按此判据排出三块：
+**Scope decision**: this change has only one scope criterion: **when the author says "write a short story", can they get a finished draft**. Three blocks are sorted by it:
 
-| 主流程 | 定位 | 是否在本次范围 |
+| Main flow | Positioning | In this change's scope |
 |---|---|---|
-| A 初始化与部署 | 建立短篇自己的运行环境 | **在**（成品的前置条件） |
-| B 写作流水线 | 情绪 → 成品 | **在**（本次主体） |
-| C 反 AI 轨 | 贯穿 B 的判定口径 | **在**（成品质量的一部分） |
+| A Initialization and deployment | Build the short story's own runtime environment | **In** (a precondition for the finished draft) |
+| B Writing pipeline | Emotion to finished draft | **In** (the main body of this change) |
+| C Anti-AI track | The judgment criteria running through B | **In** (part of finished-draft quality) |
 
-范围外的三项各自单独提案：**扫榜**（选题辅助）、**拆文**（对标辅助）、**跨文体检查工具移植**（模型退化检测、细纲照搬检测）。理由见 proposal「后续变更」——前两项是可选入口（作者已有想法即可直接写作），第三项与短篇主链路无依赖关系。
+The three out-of-scope items each get separate proposals: **list scanning** (topic assistance), **text teardown** (benchmarking assistance), **cross-genre check-tool porting** (model-degradation detection, fine-outline copy detection). Reasons are in the proposal's "Later Changes": the first two are optional entry points (authors with an idea can write directly), and the third has no dependency on the short-story main chain.
 
-这个判据也回头修正了 D8：那两项工具即使「该做」，也不是「让作者先写出小说」的必要条件，与短篇绑定只会拉长交付路径。
+This criterion also corrects D8 in hindsight: even if those two tools "should be done", they are not preconditions for "let the author write a novel first", and tying them to short stories only lengthens the delivery path.
 
-**表述决策**：spec MUST 用短篇自己的语言陈述要求，不得以「与另一种文体不同」作为 requirement 的骨架。差异与对比是**设计层的论证素材**（D2、D11、D12 用它论证为什么这样切），不是 spec 的正文——spec 只描述短篇自己应当具备什么行为，这样任何单条 requirement 都能独立成立与被测试。
+**Wording decision**: the spec MUST state requirements in the short story's own language and must not use "different from another genre" as a requirement's skeleton. Differences and comparisons are **design-layer reasoning material** (D2, D11, D12 use them to argue why the cut is made this way), not spec body text. The spec only describes what short stories themselves should do, so any single requirement stands and can be tested on its own.
 
-**兼容声明**：短篇与既有流水线在行为上互不影响。实现上共享的只有工具层（初始化脚本、平台转换、校验脚本），这些工具按长度分流；分流之外的分支 MUST NOT 因本 change 改变行为。
+**Compatibility statement**: short stories and the existing pipeline do not affect each other behaviorally. In implementation, only the tool layer is shared (initialization scripts, platform conversion, check scripts), and those tools route by length; branches outside the routing MUST NOT change behavior because of this change.
 
-### D14: 情绪链是一层结构，不是又一条规则
+### D14: The emotion chain is one more structural layer, not one more rule
 
-初版设计里**情绪这一层是断的**：
+In the first draft, **the emotion layer was broken**:
 
-- 五段结构（开头 / 铺垫 / 升级 / 反转 / 结尾）是**容器**——只给占比数字，是通用的、空心的
-- 题材包的招式库是**点**——冲突级的、离散的
+- The five-part structure (opening / setup / escalation / reversal / ending) is a **container**: it only gives share numbers, and is generic and hollow
+- The genre pack's technique library is **points**: conflict-level and discrete
 
-中间缺一条**串起全篇的、命名过的情绪弧**。补法是在大纲阶段先选定一条情绪链作为全篇骨架：4-6 个阶段，每阶段有名称，例如「猎物入笼 → 请君入瓮 → 逻辑闭环 → 公开处刑 → 视若无物」。选定后阶段 MUST 覆盖全篇每一节。
+In between, a **named emotional arc that strings the whole story together** was missing. The fix is to pick one emotion chain at the outline stage as the whole story's skeleton: 4-6 stages, each with a name, for example "Prey Enters the Cage, Lured Into the Trap, Logic Closes In, Public Execution, Treated as Nothing". Once picked, its stages MUST cover every section of the whole story.
 
-三项收益，其中第一项是**直接改善**：
+Three benefits, the first of which is a **direct improvement**:
 
-1. **节数由链推出，而不是凑出来**——D2.7 原本用「五类功能填空」解决招式撑不起节数的问题，那是打补丁；有了链，节数是链的每个阶段自然展开的结果。两者保留且互补：链给骨架，五类功能保证每一节都不空。
-2. 「这篇情绪怎么走」从一组占比数字，变成**可命名、可复用、可校验**的对象。占比只能校验总量，链能校验推进顺序。
-3. 题材包从「招式集合」升级为「招式 + 骨架」，作者的选项从"用哪个招式"变成"走哪条情绪线"——后者才是短篇真正的决策。
+1. **Section counts are derived from the chain, not padded out**. D2.7 originally solved "techniques cannot fill the section count" with "five function types as filler", which was a patch. With the chain, section counts are the natural unfolding of each stage of the chain. Both are kept and complement each other: the chain gives the skeleton, and the five function types guarantee no section is empty.
+2. "How does this story's emotion move" changes from a set of share numbers into an object that is **nameable, reusable, and checkable**. Shares can only check totals; a chain can check the order of progression.
+3. Genre packs upgrade from "technique collections" to "techniques + skeleton", and the author's choice changes from "which technique to use" to "which emotional line to take". The latter is the short story's real decision.
 
-**链的阶段与五段 MUST NOT 强制一一对应**，沿用 D5 已定的段/节正交界口：链是情绪骨架（4-6 段），五段是功能分段（固定 5 段），两者独立刻画。四阶段的链可以有两段落在同一个五段里。
+**The chain's stages and the five parts MUST NOT be forced into a one-to-one match**, following the paragraph/section orthogonality already set in D5: the chain is the emotional skeleton (4-6 parts), the five parts are functional segments (a fixed 5 parts), and the two are described independently. A four-stage chain may have two stages landing in the same one of the five parts.
 
-- Alternative A（只往招式库里加更多招式）被拒：招式是点，数量再多也不回答「全篇情绪怎么走」。
-- Alternative B（把情绪链写成新的占比分配）被拒：那与五段是同一层的重复，不增加信息。
-- Alternative C（要求链与五段一一对应）被拒：四阶段的链会与固定五段打架，等于新造一组需要在运行时裁定的矛盾——正是 D5.8/D5.9 刚消掉的那类问题。
+- Alternative A (just add more techniques to the technique library) was rejected: techniques are points, and no quantity of them answers "how does the whole story's emotion move".
+- Alternative B (write the emotion chain as a new share allocation) was rejected: that repeats the five parts at the same layer and adds no information.
+- Alternative C (require the chain to match the five parts one-to-one) was rejected: a four-stage chain would fight the fixed five parts, equal to manufacturing a new set of contradictions to adjudicate at runtime, exactly the kind of problem D5.8/D5.9 just removed.
 
-### D15: 外部提示词的取舍原则与清单
+### D15: Principles and list for adopting or rejecting external prompts
 
-评审过两份外部短篇提示词（单体爆款提示词 V3.1、叙事工程·元系统），从中吸收了若干条规则。为避免「看着权威就抄」和「因为出自别处就拒」，取舍按四条原则：
+Two external short-story prompts were reviewed (a standalone hit-story prompt V3.1 and a narrative-engineering meta-system), and several rules were absorbed from them. To avoid "copy it because it looks authoritative" and "reject it because it came from elsewhere", adoption follows four principles:
 
-1. **可判定优先于态度**——给硬数字、清单、正反对照表的条目优先吸收；只说「要写好」的不吸收（无法验收）。
-2. **机制优先于意图**——意图对但机制错的，改成对的机制再收。典型是命名：「随机生成以避免烂俗名」意图正确，但随机在语言模型里不可复现，会破坏 D8 的改稿最小回退，因此改为可判定禁用清单 + 命名落盘（AR8）。
-3. **短篇口径优先**——两份提示词的理论底座是长篇小说与影视叙事工艺（冰山法则、零度写作、节拍表）。与短篇口径冲突时以短篇为准：短篇留直接情绪词（AR3），不适用「删除所有情绪词」那一路。
-4. **不引入配额化**——用「每段至少 N 种感官」「每章至少 N 处特写」这类配额凑字数，会把短篇推成同一个模子，与 AR7 防电报体、D12 段落形态上限的目标相反。给手段不给配额（沿用 D5.3 的既有口径）。
+1. **Decidable beats attitude**: entries that give hard numbers, lists, or positive/negative comparisons are absorbed first; entries that only say "write it well" are not absorbed (they cannot be checked).
+2. **Mechanism beats intent**: when the intent is right but the mechanism is wrong, fix the mechanism first and then take it. The classic case is naming: "generate randomly to avoid hackneyed names" has the right intent, but randomness is not reproducible in a language model and would break D8's minimal-revision rollback, so it becomes a decidable banned list + naming saved to disk (AR8).
+3. **Short-story criteria take priority**: the two prompts' theoretical bases are long-form novels and film/TV narrative craft (the iceberg principle, zero-degree writing, beat sheets). When they conflict with short-story criteria, short stories win: short stories keep direct emotion words (AR3) and do not take the "delete all emotion words" route.
+4. **No quotas**: using quotas such as "at least N kinds of senses per paragraph" or "at least N close-ups per chapter" to pad word counts pushes short stories into a single mold, contrary to AR7's anti-telegram-style goal and D12's paragraph-shape ceiling. Give methods, not quotas (following the existing D5.3 wording).
 
-**吸收清单：**
+**Adopted list:**
 
-| 来源条目 | 落点 | 吸收理由 |
+| Source entry | Landing point | Reason for adopting |
 |---|---|---|
-| 改稿致命红线（禁改走向 / 删冲突 / 加人物 / 改人设 / 改视角） | `D8.6` | 可判定；补上了改稿路径缺失的夹带护栏 |
-| 第一人称所有格删除（我的心 → 心） | `AR3.4` | 正则可查；本仓此前零覆盖 |
-| 推理层现代概念不得裸露进古代语境 | `AR9` | 可判定；长篇仅有定性规则且只覆盖口语层，短篇古言题材需要 |
-| 贯穿道具三次的语义递进（无害 → 引注意 → 揭真相） | `D2.12` | 可判定；原规则只有位置定义，无语义定义 |
-| 催化性失常（60-75% 放无法解释的矛盾体） | `D2.13` | 可判定；补上反转的助推装置 |
-| 瞬时完形重构（揭示时回连全部伏笔） | `D5.13` | 可判定；原来只有「冲击最强」的目标，没有达成手段 |
-| 场景晚进早出 | `D5.12` | 可判定；原规则只到段落级，缺场景级进入点 |
-| 对话四功能导航 | `D7.7` | 可判定；原功能校验只到节级 |
-| 情绪操控链（命名情绪弧） | `D2.9` / `D14` | 见 D14，属补一层结构 |
-| 程度副词强弱两端词表 | `AR4.5` | 可判定；补齐既有词表缺的好像 / 非常 / 越来越 / 果然 |
-| 禁用名清单 | `AR8` | 可判定；改了机制（见原则 2） |
+| Revision fatal red lines (do not change the direction / delete conflicts / add characters / change characterization / change point of view) | `D8.6` | Decidable; fills the missing smuggling guardrail on the revision path |
+| First-person possessive deletion (my heart becomes heart) | `AR3.4` | Checkable by regex; this repo had zero coverage before |
+| Reasoning-layer modern concepts must not bare into ancient settings | `AR9` | Decidable; long-form has only a qualitative rule covering only the spoken layer, while short-story historical romance needs it |
+| Throughline prop's three semantic progressions (harmless, draws attention, reveals the truth) | `D2.12` | Decidable; the original rule only defined positions, with no semantic definition |
+| Catalytic breakdown (place an unexplainable contradiction at 60-75%) | `D2.13` | Decidable; adds the reversal's booster device |
+| Instant gestalt reconstruction (reconnect all foreshadowing at the reveal) | `D5.13` | Decidable; before, there was only the "strongest impact" goal, with no means to achieve it |
+| Scenes enter late and leave early | `D5.12` | Decidable; the original rule only reached paragraph level and lacked a scene-level entry point |
+| Dialogue four-function navigation | `D7.7` | Decidable; the original function check only reached section level |
+| Emotion manipulation chain (named emotional arcs) | `D2.9` / `D14` | See D14; adds a structural layer |
+| Degree-adverb strong-and-weak word lists | `AR4.5` | Decidable; fills the gaps in the existing word list (seemingly / very / increasingly / indeed) |
+| Banned-name list | `AR8` | Decidable; changed the mechanism (see principle 2) |
 
-**不吸收清单：**
+**Not adopted list:**
 
-| 条目 | 不吸收的理由 |
+| Entry | Reason for not adopting |
 |---|---|
-| 一次性生成全文（15 章 2.5 万字一把梭） | 上下文衰减的极端形态；本 change 的 `D5.10` 正是为防它 |
-| 角色扮演堆叠（集主编 / 大纲师 / 写手 / 编辑于一体） | 头衔不改变输出质量；且自审等于取消 `D4` 与 `D7.1` 要求的独立性 |
-| 每段至少 2 种感官、每章至少 3 处特写 | 配额化（原则 4） |
-| 比喻每千字 ≤1 的硬上限 | 会产生误删——功能性比喻（如贯穿道具的物象）可能是卖点；既有口径是「成片才处理」，硬上限与之冲突 |
-| 生理反应词库照抄（心脏咯噔 / 眼眶一红 / 腿软） | 词库可用，但照抄会把 AI 腔从抽象层挪到词库层；要用必须配「每篇不重复用同一批」的约束，本 change 不引入 |
-| 单句 ≤15 字 / 段落 ≤3 行 | 与短篇段落形态口径冲突：古言与世情允许多句回溯叙述段（见短篇格式规范） |
-| 章节标题口语化改造 | 短篇的小节不带标题（纯数字），不适用；篇名部分已由既有标题方法论覆盖 |
-| 术数框架（无极太极两仪三清四象五行六壬…） | 装饰性包装，层级之间无生成关系，不承载信息 |
-| 交付模板中的「结语」「创作信息 · 总字数／创作时间」 | 过程产物会污染正文文件，与 `D6.5` 交付洁净冲突 |
-| 张力描写中的规避审核化表述 | 以隐喻替代直接描写本身是合法言情技法，但那份表述的框架是规避平台审核，对投向盐选之类有明确内容规则的平台是自埋风险 |
+| Generate the whole text in one pass (15 chapters, 25,000 words in one go) | An extreme form of context decay; this change's `D5.10` exists precisely to guard against it |
+| Role-play stacking (editor-in-chief / outline writer / writer / editor in one) | Titles do not change output quality; and self-review cancels the independence that `D4` and `D7.1` require |
+| At least 2 kinds of senses per paragraph, at least 3 close-ups per chapter | Quotas (principle 4) |
+| A hard cap of at most 1 metaphor per thousand words | Creates wrongful deletions: functional metaphors (such as a throughline prop's imagery) may be selling points; the existing wording is "handle it only when they appear in sheets", and a hard cap conflicts with it |
+| Copying the physiological-reaction word list verbatim (heart skipping a beat / eyes reddening / legs going weak) | The word list is usable, but copying it verbatim moves AI tone from the abstract layer to the word-list layer; it can only be used with a "do not reuse the same batch across stories" constraint, which this change does not introduce |
+| Single sentences of at most 15 words / paragraphs of at most 3 lines | Conflicts with the short-story paragraph-shape wording: historical romance and worldly-life genres allow multi-sentence retrospective passages (see the short-story format spec) |
+| Colloquializing chapter titles | Short-story sections carry no titles (pure numbers), so it does not apply; story titles are already covered by the existing title methodology |
+| Numerology frameworks (wuji, taiji, liangyi, sanqing, sixiang, wuxing, liuren...) | Decorative packaging, with no generative relationship between levels and no information carried |
+| "Closing remarks" and "creation info: total words / creation time" in delivery templates | Process products pollute the main-text file, conflicting with `D6.5` clean delivery |
+| Censorship-avoiding wording in tension writing | Replacing direct description with metaphor is itself a legitimate romance technique, but that wording's framework is about evading platform review, which is a self-buried risk for platforms with explicit content rules such as Yanxuan |
 
-**这份清单的用途**：不是评审记录，是维护约束。后续再引入外部素材时按同样四条原则处理；若有人想把上表右列某项加回来，须先推翻对应原则或给出可判定形式。
+**What this list is for**: not a review record, but a maintenance constraint. When introducing external material later, apply the same four principles; if someone wants to add back an item from the right column above, they must first overturn the matching principle or give it a decidable form.
 
 ## Risks / Trade-offs
 
-- [短篇阈值与长篇权威源判为冲突，CI 红] → `check-conflicts.py` 按「同对象不同数字」判定；实现时先跑一次，真冲突则加入显式豁免并记录理由（spec `A7.3` 已要求不得静默通过）。短篇对象多为定性判据，量化项主要是弱化副词上限，预计冲突面很小。
-- [内容搬运量大（约 26 文件），易漏路径或残留外部引用] → 改完跑 `check-agents.py`（引用有效性 + 孤儿检测）；外部引用用关键词 `grep` 兜一遍（`story-architect` / `narrative-writer` / `.story-deployed` / `/story-`）。
-- [内联 skill 数量断言被写死在测试里] → `test_platforms.py` 的断言按 length 分两套，长篇那套保持不变（spec `A7.4`）。
-- [长短篇知识存在同名词条，作者或 agent 混淆] → 短篇文件全部带短篇标识（文件名前缀 `short-` + 文件头声明适用范围）；部署产物分文件，不合并。
-- [`templates/short/` 的 codex 特判与路径改写走同一套逻辑，可能出现短篇专属文件被误改写] → `create_skeleton` 的长度分支只改**树根**，改写逻辑复用；E2E 断言覆盖 codex 短篇产物（spec `A4.3`）。
-- [`reader` 复用后其 SOP 仍是长篇口径，短篇验收关注点（完读率 / 传播欲）可能没被覆盖] → 结构侧的兑现度核对已由独立验收 agent 承担（D3/D11），`reader` 只需管体验；本期给 `reader-review.md` 加短篇增补段（不改既有长篇条目）。
-- [契约过载——短篇只有 8 千至 1.2 万字，契约写太长会挤占写手上下文，且规则堆越多越容易被忽略] → 契约按篇级一份（不由每节各出一份），组装侧设总量意识（技法逐场景只取 1-2 条）；契约审计把「建议性技法是否混入硬规则区」列为必查项。
-- [契约变成新模板——每篇契约结构雷同，等于把模板指纹从正文挪到了契约上，最终仍会渗进正文] → 契约的硬规则区只放本篇特有的红线与数字，通用写作规范按需引用而非整包搬运；去 AI 口径保留「本篇招式、开头、结尾与上一篇不一样」的自检项（spec `AR5.4`）。
-- [兑现度核对变成形式主义——为了填满清单而核，发现不了真问题] → 判决口径与既有审计一致：「审计通过的标准是无足够证据证明有问题」，未兑现项必须附正文原文证据，不允许只报结论。
-- [本次收窄后，作者遇到「不知道写什么」时没有出品路径] → 写作流水线的第一阶段（定情绪与定方向）已提供引导式选题：六种情绪目标各配推荐题材与市场热度（spec `D1.1`），足够支撑「从零到一篇」；扫榜只在「想跟当前市场风口」时才需要，属可选增强。
-- [收窄被理解成「这些能力不做了」] → proposal 的「后续变更」一节逐项记录移出的三项及其理由，tasks 不残留相关条目，避免遗忘。
-- **[契约随批次衰减——篇级唯一一份契约 + 分批写作，导致末批与规则的距离是首批的数倍，后半段开始失守，而字数照样达标]** → 每批写作前 MUST 把契约硬规则区完整重新注入（spec `D5.10`/`D5.11`），不依赖写作侧自行回溯。这是本次复审补上的最主要缺口：它不是某条 requirement 被违反，而是**所有 requirement 都不管这件事**。残余风险：重注入让每批的上下文多出一份规则副本，属必要成本。
-- **[段与节的字数口径打架——开头段 300-500 字、结尾段 400-800 字，均低于每节 800 字下限]** → 在 spec 层把段与节明确为正交的两套刻画（`D5.8`/`D5.9`），禁止一一对应与按段豁免。**不在运行时裁定**：初版把这组冲突交给「契约内联冲突裁定表」处理，等于每写一篇就让构思 agent 即席重裁一次数字矛盾，而它不是数学校验器，裁定结果无稳定性。
-- **[交付后无改稿路径——作家不可能一次成稿就满意]** → 新增 `D8` 改稿 requirement：意见先定位到阶段（构思 / 大纲 / 具体节），只回退受影响部分，重跑受影响闸门，状态机支持局部回退保留其余进度。
-- **[2-3 个核心招式撑不起 10 节，中段无事可写即注水]** → 两层应对：`outline.md` MUST 含情绪链落点（D14，节数由链的阶段自然展开）与招式落点表，且每节 MUST 至少承担六类功能之一（`D2.6`/`D2.7`）。招式覆盖不到的节由加压、伏笔、关系变化、情绪兑现、配角支线承接。
-- **[角色命名落在模型高度收敛的名池里，成为可被读者识别的机器痕迹]** → `AR8`：以可判定的禁用清单（完整名 + 用字 + 同音字）约束，MUST NOT 用「随机生成」作机制。随机在语言模型里不可复现，改稿时会换名字——这会直接破坏 `D8` 的最小回退（重写某几节却换了人名），所以命名结果 MUST 落盘为记录，后续阶段以记录为准。
-- **[情绪链退化成一个新模板——每条链固定配同一套节数分配，等于把模板从正文挪到了骨架]** → 链只定阶段序列，阶段覆盖几节由本篇题材与目标字数推出，MUST NOT 固定；`AR5.4` 的「本篇招式、开头、结尾与上一篇不一样」自检项同样覆盖链的选择。
-- **[公式化招式退化成「套公式」——每条招式带公式和示例，反而更容易被照抄]** → `D3.2` 已要求招式必须转化为本篇写法（锚定主角、信息差、情绪节奏）；`D2.10` 只要求条目「公式 + 示例成对」以保证可选可用，不替代转化步骤。
+- [Short-story thresholds are judged as conflicting with the long-form authoritative source, turning CI red] → `check-conflicts.py` judges by "same object, different number"; run it once during implementation, and add a real conflict to an explicit exemption with its reason recorded (spec `A7.3` already requires no silent passing). Most short-story objects are qualitative criteria, and the quantitative items are mainly the weak-adverb cap, so the expected conflict surface is small.
+- [Large content-moving volume (about 26 files), easy to miss a path or leave an external reference] → After the move, run `check-agents.py` (reference validity + orphan detection); sweep external references once with keyword `grep` (`story-architect` / `narrative-writer` / `.story-deployed` / `/story-`).
+- [Inlined skill-count assertions are hard-coded in tests] → `test_platforms.py` assertions split into two sets by length, with the long-form set unchanged (spec `A7.4`).
+- [Long- and short-story knowledge have same-named entries, confusing authors or agents] → All short-story files carry short-story marks (file-name prefix `short-` + a scope statement in the file header); deployed products are separate files, not merged.
+- [`templates/short/` codex special-casing and path rewriting follow the same logic, so short-story-specific files may be wrongly rewritten] → `create_skeleton`'s length branch only changes the **tree root**, with the rewriting logic reused; E2E assertions cover codex short-story products (spec `A4.3`).
+- [`reader` is reused but its SOP is still long-form wording, so short-story acceptance focuses (completion rate / spread desire) may not be covered] → The structure-side payoff check is already carried by the independent verifier agent (D3/D11); `reader` only handles experience. This round adds a short-story supplement to `reader-review.md` (without changing existing long-form entries).
+- [Contract overload: short stories are only 8,000 to 12,000 words, so an overlong contract squeezes the writer's context, and the more rules pile up, the easier they are to ignore] → The contract is one per story (not one per section), the assembly side keeps a sense of total volume (techniques take only 1-2 entries per scene), and the contract audit lists "whether suggestive techniques leaked into the hard-rules zone" as a must-check item.
+- [The contract becomes a new template: every story's contract has the same structure, equal to moving the template fingerprint from the main text to the contract, where it still seeps into the main text] → The contract's hard-rules zone only holds this story's specific red lines and numbers, with general writing standards referenced on demand rather than moved over wholesale; the de-AI criteria keep the "this story's techniques, opening, and ending differ from the previous story" self-check item (spec `AR5.4`).
+- [The payoff check becomes formalism: checking just to fill the list, finding no real problems] → The judgment wording matches the existing audit: "the standard for passing an audit is having no sufficient evidence of a problem", and undelivered items must carry quoted main-text evidence; reporting a conclusion alone is not allowed.
+- [After narrowing scope, authors who "do not know what to write" have no path to a product] → The writing pipeline's first stage (set the emotion and direction) already provides guided topic selection: six emotion goals, each with recommended genres and market heat (spec `D1.1`), enough to support "from zero to one story"; list scanning is only needed when "following the current market trend", which is an optional enhancement.
+- [Narrowing is read as "these capabilities will not be done"] → The proposal's "Later Changes" section records each moved-out item with its reason, and tasks keep no leftover entries for them, avoiding forgetfulness.
+- **[The contract decays across batches: one per-story contract plus batched writing means the last batch is several times further from the rules than the first, so the second half starts slipping while word counts still pass]** → Before each batch of writing, the contract's hard-rules zone MUST be fully re-injected (spec `D5.10`/`D5.11`), without relying on the writing side to look it up itself. This is the main gap the review added: it is not one requirement being violated, but **no requirement at all covering this**. Residual risk: re-injection adds one extra copy of the rules to each batch's context, a necessary cost.
+- **[Paragraph and section word-count wordings fight: the opening part at 300-500 words and the ending part at 400-800 words both fall below the 800-word per-section floor]** → At spec level, paragraphs and sections are fixed as two orthogonal descriptions (`D5.8`/`D5.9`), with one-to-one mapping and per-part exemptions banned. **Do not adjudicate at runtime**: the first draft handed this conflict to the "contract inlined conflict adjudication table", equal to making the concept agent re-adjudicate a numeric contradiction on the spot for every story, when it is not a math checker and its adjudication results have no stability.
+- **[No revision path after delivery: no writer is satisfied in one draft]** → Add the `D8` revision requirement: feedback is first located to a stage (concept / outline / specific sections), only the affected parts roll back, affected gates re-run, and the state machine supports partial rollback that keeps the rest of the progress.
+- **[2-3 core techniques cannot fill 10 sections, so the middle has nothing to write and gets padded]** → Two layers of response: `outline.md` MUST contain the emotion-chain landing (D14, with section counts unfolding naturally from the chain's stages) and the technique landing table, and every section MUST take on at least one of six function types (`D2.6`/`D2.7`). Sections the techniques do not cover are carried by adding pressure, foreshadowing, relationship change, emotion delivery, and supporting-character subplots.
+- **[Character naming lands in the model's highly convergent name pool, becoming a machine trace readers can recognize]** → `AR8`: constrain with a decidable banned list (full names + characters + homophones), and MUST NOT use "random generation" as the mechanism. Randomness is not reproducible in a language model, so revisions would change names, which would directly break `D8`'s minimal rollback (rewriting a few sections while changing a character's name). So naming results MUST be saved as a record, with later stages following the record.
+- **[The emotion chain degrades into a new template: every chain fixed to the same section-count allocation, equal to moving the template from the main text to the skeleton]** → The chain only fixes the stage sequence; how many sections each stage covers is derived from this story's genre and target word count and MUST NOT be fixed; the `AR5.4` self-check item ("this story's techniques, opening, and ending differ from the previous story") also covers the chain's selection.
+- **[Formulaic techniques degrade into "applying formulas": every technique carrying a formula and an example makes it easier to copy verbatim]** → `D3.2` already requires techniques to be transformed into this story's writing (anchoring the protagonist, information gap, and emotional rhythm); `D2.10` only requires entries to pair "formula + example" so they are usable when picked, and does not replace the transformation step.
 
 ## Migration Plan
 
-0. **最小可跑切片先行**（实施策略，非独立步骤）：本 change 铺满后是 10 个题材包 × 7 个平台 × 26 个知识文件，**要全部做完才能跑通第一次**——这个顺序本身就是风险：链路是否成立，要到最后才知道。因此按下面的节奏实施：
-   - **第一波（跑通链路）**：1 个题材包（追妻火葬场，短篇包里最完整的一个）、1 个平台（先在 claude 或 zcode 单平台）、知识文件只搬格式规范 + 去 AI 口径 + 写作底座三件必需、篇幅压到 3-4 节。目标是**端到端产出一次 `manuscript.md`**，验证契约组装 → 审计 → 分批写作 → 去 AI → 兑现度核对这条链路真的能跑。
-   - **第二波（铺满）**：补足 10 题材与全部写作参考，补 7 平台适配与 E2E 断言。
-   - **第三波（收尾）**：文档、兼容回归、全流程实测。
-   - 判据：第一波若跑不通，问题一定在链路设计而非素材数量——此时返工成本最低。
+0. **A minimal runnable slice goes first** (implementation strategy, not a standalone step): after this change is fully laid out, it is 10 genre packs x 7 platforms x 26 knowledge files, and **nothing runs end to end until all of it is done**. That order is itself a risk: whether the chain holds together is only known at the end. So implement in this rhythm:
+   - **First wave (run the chain through)**: 1 genre pack (wife-chasing crematorium, the most complete one in the short-story pack), 1 platform (first on Claude or Zcode alone), knowledge files limited to the three essentials (format spec + de-AI criteria + writing base), length pressed to 3-4 sections. The goal is to **produce one `manuscript.md` end to end**, verifying that the chain of contract assembly, audit, batched writing, de-AI pass, and payoff check really runs.
+   - **Second wave (fill in)**: add the 10 genres and all writing references, plus 7-platform adaptation and E2E assertions.
+   - **Third wave (wrap up)**: docs, compatibility regression, full-flow live tests.
+   - Criterion: if the first wave cannot run, the problem is certainly in the chain design rather than the material volume, and rework costs the least at that point.
 
-1. **骨架与开关**：`templates/short/` + `init.py --length` + `platforms.py` 名单常量。验证：短篇初始化产物目录树正确，既有初始化产物无变化。
-2. **agent 组与 SOP**：5 个短篇 agent + 7 个短篇 SOP，接线 frontmatter 引用，并产出短篇的检查项分级清单（D2）。验证：`check-agents.py` 通过；清单每项已标注承担方。
-3. **知识搬运**：`knowledge/short/` 三个子目录，按 D9 三件改写；同时把 AR7 的段落形态上下限补进格式规范与去 AI 口径（D12）。验证：`check-agents.py` + `check-conflicts.py` 通过，外部引用 grep 清零。
-4. **契约层**：契约组装 SOP、契约审计 SOP、兑现度核对 SOP 三条落地，并在短篇调度契约里把七个 phase 与三道闸（契约审计 / 兑现度核对 / 体验验收）接进 order 类型表。验证：契约产物含六元素与优先级降序、审计五项齐备、兑现度清单可逐条出结论。
-5. **平台适配与 E2E**：`deploy_inline_skills` 长度分支、codex/grok 短篇产物、`sync-project.py` 长度识别、`check-agents.py` 双长度模拟。验证：`test_platforms.py` 短篇用例全绿。
-6. **入口与文档**：`SKILL.md` 分流与边界条件、README / ARCHITECTURE。
-7. **实测**：至少一种 AI 终端从「说一句写短篇」跑到拿到成品正文，覆盖懂行直通与不懂引导两条路径，且兑现度核对能真的拦下一个未兑现项（人为构造一次）。
+1. **Skeleton and switch**: `templates/short/` + `init.py --length` + `platforms.py` roster constants. Verify: short-story initialization products have the right directory tree, and existing initialization products are unchanged.
+2. **Agent group and SOPs**: 5 short-story agents + 7 short-story SOPs, wiring frontmatter references, and producing the short-story check-item grading list (D2). Verify: `check-agents.py` passes; every list item is marked with its owner.
+3. **Knowledge moving**: `knowledge/short/` in three subdirectories, with D9's three rewrites; at the same time, add AR7's paragraph-shape floor and ceiling into the format spec and de-AI criteria (D12). Verify: `check-agents.py` + `check-conflicts.py` pass, and external-reference grep is at zero.
+4. **Contract layer**: the contract assembly SOP, contract audit SOP, and payoff-check SOP land, and the short-story dispatch contract wires the seven phases and three gates (contract audit / payoff check / experience acceptance) into the order-type table. Verify: contract products contain six elements with descending priority, the audit's five items are complete, and the payoff checklist can produce conclusions item by item.
+5. **Platform adaptation and E2E**: `deploy_inline_skills` length branch, codex/grok short-story products, `sync-project.py` length recognition, `check-agents.py` dual-length simulation. Verify: `test_platforms.py` short-story cases all green.
+6. **Entry point and docs**: `SKILL.md` routing and boundary conditions, README / ARCHITECTURE.
+7. **Live test**: from "say one sentence, write a short story" to receiving the finished main text on at least one AI terminal, covering both the expert straight-through path and the guided path, with the payoff check really blocking one deliberately constructed undelivered item.
 
-**Rollback**：整体 revert 即可。无数据迁移、无状态升级——短篇项目是新建的独立类型，既有项目的项目索引不含长度标记时按既定行为处理，与改动前一致。已有短篇项目不存在（本 change 之前无短篇能力）。
+**Rollback**: revert the whole thing. No data migration, no state upgrade. Short-story projects are a newly created independent type; existing projects' indexes carry no length marker and are handled per the established behavior, matching the pre-change state. No short-story projects exist yet (there was no short-story capability before this change).
 
 ## Open Questions
 
-（无。范围外的三项已记入 proposal「后续变更」，各自独立提案；短篇是否需要文风蒸馏接入列在 Non-Goals。）
+(None. The three out-of-scope items are recorded in the proposal's "Later Changes" and get separate proposals; whether short stories need style-distillation wiring is listed in Non-Goals.)

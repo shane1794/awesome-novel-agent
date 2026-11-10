@@ -1,147 +1,147 @@
-# 单章正文写作提示词（填写案例·现代都市言情·2500字）
+# Single-Chapter Main-Text Writing Prompt (Filled Example: Modern Urban Romance, 2500 words)
 
-## 角色
+## Persona
 
-你是一个现代都市言情题材小说作家。
+You are a modern urban romance novelist.
 
-## 任务指示
+## Task Instructions
 
-创作第 2 章正文（在全卷中的角色：情绪升温——久别重逢后的第一次长时间相处，打破生疏）。
+Write the main text of Chapter 2 (its role in the volume: warming up the mood, the first long time together after a long separation, breaking the awkwardness).
 
-目标字数：2500 ±200 字
-本章驱动力：暧昧驱动（距离拉近但不挑明）
-信息释放节奏：章末留钩子——陆屿的细节暗示三年来没有忘记
+Target word count: 2500 ±200 words
+Driving force of this chapter: Ambiguity (drawing closer without saying it outright)
+Information release pacing: End the chapter on a hook: a small detail from Lu Yu hints that he has not forgotten her in three years
 
-叙事目标：
-1. 核心悬念：陆屿这次回来是暂时的还是长久的？ → 本章结束时：**加深**（依然没有回答，但他的行为暗示了倾向）
-2. 读者情绪：心动但不挑明，心照不宣的甜
-3. 爽点设计：暧昧爽——日常互动中的距离拉近感，铺垫于场景2（书店整理旧书），释放于场景3（黄昏拂落叶，指尖擦过耳廓）
+Narrative goals:
+1. Core suspense: Is Lu Yu back temporarily or for good? -> By the end of this chapter: **deepened** (still unanswered, but his behavior hints at an inclination)
+2. Reader emotion: Heart-fluttering but unspoken, sweet in a way both of them understand without saying it
+3. Payoff design: Ambiguity payoff, the feeling of distance closing through everyday interaction, set up in Scene 2 (tidying old books in the bookstore) and released in Scene 3 (brushing a fallen leaf away at dusk, fingertips grazing her ear)
 
-写作方法论：
-1. 焦点锁定：识别本场景唯一核心冲突/人物情绪/信息差。70% 笔墨集中在焦点对象，次要元素简笔带过。高权重场景细化，低权重场景快速转场
-2. 感官分层取舍：每场景只选 2 种感官细化（如听觉+触觉），其余一笔略写。禁止全维度均匀堆砌
-3. 叙事节奏交替：一段密集动作/对话 + 一段短心理留白 + 一句轻环境过渡循环。禁止连续长描写、连续对话、通篇等长段落
-4. 信息释放控制：关键伏笔、人物秘密拆分碎片化带出，不一次性完整交代。允许留白
+Writing method:
+1. Focus lock: Identify the single core conflict, character emotion, or information gap of each scene. Spend 70% of the writing on the focus object and sketch secondary elements briefly. Flesh out high-weight scenes and move quickly through low-weight ones
+2. Layered sensory choices: In each scene, flesh out only 2 senses in detail (for example hearing plus touch) and mention the rest in passing. Do not pile up every sense evenly
+3. Alternating narrative rhythm: Cycle through one dense stretch of action or dialogue, one short stretch of mental breathing room, and one light environmental transition. No long stretches of description in a row, no long stretches of dialogue in a row, no uniform paragraph lengths throughout
+4. Controlled information release: Split key foreshadowing and character secrets into fragments and bring them out piece by piece; never explain everything at once. Leaving gaps is allowed
 
-## 背景信息
+## Background
 
-### 前情上下文
+### Prior Context
 
-上章结尾画面：陆屿三年前离开临海市去外地读大学，昨天傍晚悄悄回来，在梧桐巷口偶遇苏晚，两人只匆匆说了两句话，约定今天清晨一起吃早餐。
+End of the previous chapter: Lu Yu left Linhai City three years ago to attend university elsewhere. Yesterday evening he quietly came back and ran into Su Wan at the entrance of Wutong Lane. They exchanged only a couple of hurried sentences and agreed to have breakfast together this morning.
 
-读者情绪残留：期待（终于见面了，他们会说什么？）
+Lingering reader emotion: Anticipation (they finally met, what will they say to each other?)
 
-上章留下的缺口：陆屿为什么离开三年？他回来是要做什么？
+Gaps left by the previous chapter: Why did Lu Yu leave for three years? What is he back to do?
 
-### 角色初始状态
+### Characters' Starting States
 
-苏晚：
-  起点：紧张恍惚，反复换衣服，提前到了早餐铺坐在老位置
-  → 经历：被张奶奶念叨糗事打破拘谨 → 书店整理时的默契靠近
-  → 终点：心动但不挑明，留暧昧余韵
-  本章微习惯/小动作：紧张时摩挲书页边缘，走神看陆屿侧脸
+Su Wan:
+  Starting point: Nervous and dazed, changing clothes over and over, arriving early at the breakfast shop and sitting in the old seat
+  -> Goes through: Granny Zhang teasing her about an embarrassing childhood story breaks the stiffness -> a quiet, unspoken rapport while tidying books in the bookstore
+  -> Ends at: Heart-fluttering but unspoken, with an ambiguous aftertaste
+  This chapter's small habits and mannerisms: Rubbing the edge of a book page when nervous, spacing out while looking at Lu Yu's profile
 
-陆屿：
-  起点：克制紧张，提前半小时到，在巷口踱步
-  → 经历：整理书店时自然互动 → 黄昏主动送她回家
-  → 终点：更坚定靠近，但不表白
-  本章微习惯/小动作：词穷时用动作代替语言，抬手想帮忙又停顿
+Lu Yu:
+  Starting point: Restrained and nervous, arriving half an hour early and pacing at the lane entrance
+  -> Goes through: Natural interaction while tidying the bookstore -> walking her home at dusk on his own initiative
+  -> Ends at: More determined to draw closer, but without confessing
+  This chapter's small habits and mannerisms: Using actions instead of words when he runs out of things to say, raising a hand to help and then pausing
 
-张奶奶（配角）：
-  印象：早餐铺老板，快六十岁，说话慢，看着两人长大
-  本章作用：念叨小时候糗事打破苏晚和陆屿之间的生疏
+Granny Zhang (supporting character):
+  Impression: Owner of the breakfast shop, almost sixty, speaks slowly, watched the two of them grow up
+  Role in this chapter: Teasing them about an embarrassing childhood story to break the awkwardness between Su Wan and Lu Yu
 
-## 案例
+## Examples
 
-以下为经四步转化后的场景写法参考示例：
+The following are reference examples of scene writing after the four-step transformation:
 
-对话场景示例——苏晚与陆屿早餐铺对话：
-信息差：苏晚不知道陆屿这三年的动向 ↦ 陆屿也不确定苏晚是否还介意他不辞而别。
-苏晚紧张时用动作回避（摩挲书页、低头喝豆浆），陆屿克制时用简短回答加动作（"嗯"一声然后低头翻书）。张奶奶念叨时两人都不打断——日常对话的节奏感通过打断和停顿的自然交替实现。
-情绪是紧张段→破冰段，苏晚从说话有点结巴到低头笑了，陆屿从语气生硬到松了表情。
+Dialogue scene example, Su Wan and Lu Yu talking at the breakfast shop:
+Information gap: Su Wan does not know what Lu Yu has been doing these three years; Lu Yu is not sure whether Su Wan still minds that he left without saying goodbye.
+When Su Wan is nervous she avoids it with actions (rubbing a book page, bowing her head to drink soy milk), and when Lu Yu holds himself back he answers briefly and adds an action (a "mm" and then bowing his head to flip through a book). When Granny Zhang teases them, neither interrupts her. The rhythm of everyday dialogue comes from the natural alternation of interruptions and pauses.
+The emotion moves from a tense stretch to a thawed stretch: Su Wan goes from stammering a little to bowing her head and smiling, and Lu Yu goes from a stiff tone to a relaxed expression.
 
-情愫暗示示例——书店旧画册场景：
-不写"陆屿对苏晚有感情"，用细节暗示——他记得她小时候的糗事、留意到她一直在找那本画册、走路的步速配合她的节奏。两人同时伸手碰向画册时，指尖差一点碰到，都顿了半拍——用停顿写心动。
+Hints of affection example, the old sketchbook scene in the bookstore:
+Do not write "Lu Yu has feelings for Su Wan". Hint at it through details: he remembers an embarrassing story from her childhood, notices she has been looking for that sketchbook, and matches his walking pace to hers. When they both reach for the sketchbook at the same time and their fingertips almost touch, both pause for half a beat. Use the pause to write the flutter.
 
-## 输入
+## Input
 
-### 场景原材料
+### Scene Raw Material
 
-场景1｜梧桐巷早餐铺｜紧张基调｜权重：中
-  核心事件：两人客气打招呼，说话生硬。张奶奶端豆浆过来念叨糗事，打破隔阂。苏晚低头笑了，陆屿松了表情。
-  情绪意义：破冰——从僵硬回到自然的过渡
-  信息差：苏晚不知道陆屿这三年的动向 ↦ 陆屿也不确定苏晚是否还介意他不辞而别
-  情绪拐点：紧张尴尬 → 放松自然（张奶奶念叨小时候的事，两人同时笑了）
-  → 衔接：苏晚站起来结账，陆屿瞥见她钥匙串上挂着书店钥匙，问"你开店了？"
-  本场景权重：中
+Scene 1 | Wutong Lane breakfast shop | Tense mood | Weight: Medium
+  Core event: The two greet each other politely, speaking stiffly. Granny Zhang brings over soy milk and teases them about an embarrassing story, breaking the barrier. Su Wan bows her head and smiles, and Lu Yu relaxes.
+  Emotional meaning: Thawing, the transition from stiff back to natural
+  Information gap: Su Wan does not know what Lu Yu has been doing these three years; Lu Yu is not sure whether Su Wan still minds that he left without saying goodbye
+  Emotional turning point: Nervous and awkward -> relaxed and natural (Granny Zhang teases them about a childhood story and they both laugh at the same time)
+  -> Transition: Su Wan stands up to pay, and Lu Yu notices the bookstore key on her key ring and asks, "You run a shop now?"
+  Weight of this scene: Medium
 
-场景2｜拾光集书店｜温情基调｜权重：高
-  核心事件：陆屿扫了一眼书店就开始帮忙分类旧书，在书架间走动时胳膊时不时擦到。陆屿从架上抽出一本旧画册，"这本你不是一直在找？"两人同时伸手，指尖差一点碰到。
-  情绪意义：默契重新建立——三年的空白在共同做一件事时被悄然填平
-  信息差：陆屿特意留意了画册带回来 ↦ 苏晚以为只是碰巧（读者知道陆屿有心，苏晚不知道）
-  情绪拐点：自然互动 → 暧昧心跳（指尖差一点碰到后，两人都顿了片刻）
-  → 衔接：天色暗了，书架还没整完。苏晚说"剩下的我自己来"，陆屿看了一眼窗外，说"我送你回去吧"。
-  本场景权重：高
+Scene 2 | Shiguangji Bookstore | Warm mood | Weight: High
+  Core event: Lu Yu glances around the bookstore and starts helping sort old books, his arm brushing hers now and then as they move between the shelves. Lu Yu pulls an old sketchbook off a shelf: "Isn't this the one you've been looking for?" They both reach for it at the same time, their fingertips almost touching.
+  Emotional meaning: Their unspoken rapport is rebuilt, three years of blank space quietly filled in by doing something together
+  Information gap: Lu Yu deliberately kept an eye out for the sketchbook and brought it back; Su Wan thinks it is just a coincidence (the reader knows Lu Yu put thought into it, Su Wan does not)
+  Emotional turning point: Natural interaction -> ambiguous flutter (after their fingertips almost touch, both pause for a moment)
+  -> Transition: It grows dark, and the shelves are still not tidy. Su Wan says, "I'll handle the rest myself," and Lu Yu glances out the window and says, "Let me walk you home."
+  Weight of this scene: High
 
-场景3｜梧桐巷黄昏小路｜余韵基调｜权重：中
-  核心事件：两人沿着石板路慢慢走，陆屿说起大学里的零碎小事，苏晚听着偶尔接两句。一片落叶掉到苏晚肩上，陆屿抬手帮她拂掉——指尖擦过她耳廓。两人都愣了一下。
-  情绪意义：暧昧不挑明，余韵留在心照不宣里
-  信息差：陆屿对苏晚的感情（三年来没放下） → 苏晚不确定但开始心动
-  情绪拐点：放松散步 → 心动（指尖擦过耳廓，他先笑了，她心跳快了几拍）
-  → 衔接：陆屿转身走了。苏晚上楼翻旧画册，发现里面夹着一片压平的梧桐叶——不是临海市的梧桐叶。
-  本场景权重：中
+Scene 3 | Wutong Lane side street at dusk | Lingering mood | Weight: Medium
+  Core event: The two walk slowly along the stone-paved road. Lu Yu talks about small, scattered things from university, and Su Wan listens, chiming in now and then. A fallen leaf lands on Su Wan's shoulder, and Lu Yu raises a hand to brush it off, his fingertips grazing her ear. Both of them freeze for a moment.
+  Emotional meaning: Ambiguity left unspoken, the aftertaste kept in what both understand without saying it
+  Information gap: Lu Yu's feelings for Su Wan (he has not let go in three years) -> Su Wan is unsure but starting to flutter
+  Emotional turning point: Relaxed stroll -> heart flutter (fingertips grazing her ear, he smiles first and her heart beats a few beats faster)
+  -> Transition: Lu Yu turns and walks away. Su Wan goes upstairs and flips through the old sketchbook, and finds a flattened wutong leaf pressed inside, one that is not from a Linhai City wutong tree.
+  Weight of this scene: Medium
 
-## 输出
+## Output
 
-### 写作规范
+### Writing Standards
 
-视角：单一 POV（聚焦苏晚，读者只知道苏晚的感受和内心活动；陆屿的心思通过动作和神态暗示，不进入他的内心）
+Point of view: Single POV (focused on Su Wan; the reader only knows Su Wan's feelings and inner life. Lu Yu's thoughts are hinted at through his actions and expressions; never enter his inner life)
 
-描写手法：
-- 环境描写：有烟火气——早餐铺桌上的油污、书店旧书的霉味、窗台发黄的绿萝、黄昏时踩上去软软的梧桐叶
-- 动作描写：有笨拙感——陆屿抬手想帮苏晚摘碎渣又停顿；苏晚递书碰到他指尖下意识缩回；陆屿被木刺扎到偷偷皱眉
-- 情绪外化：禁止直述"她感到……"，用动作和环境代替——苏晚低头看豆浆冒出的白气，眼睛发酸；陆屿不说话，把豆浆杯捏扁了
+Description techniques:
+- Environment description: Lived-in warmth, the grease on the breakfast shop table, the musty smell of old books in the bookstore, the yellowing pothos on the windowsill, the soft wutong leaves underfoot at dusk
+- Action description: A clumsy feel, Lu Yu raising a hand to pick a crumb off Su Wan and then pausing; Su Wan handing over a book, touching his fingertip, and pulling back instinctively; Lu Yu pricked by a wood splinter and secretly frowning
+- Externalizing emotion: Do not state feelings directly, as in "she felt...". Use actions and environment instead: Su Wan bows her head to watch the white steam rising from her soy milk, her eyes stinging; Lu Yu says nothing and crushes his soy milk cup in his hand
 
-节奏要求：有张有弛——早餐铺节奏放缓（张奶奶念叨琐事），书店整理中等节奏，黄昏散步放慢，允许沉默和发呆
+Pacing requirements: Tension and release, the breakfast shop slows down (Granny Zhang rambling about small things), the bookstore tidying moves at a medium pace, the dusk walk slows down, with silence and spacing out allowed
 
-反 AI 规则：
-- 疲劳词阈值：【按项目 anti-ai/common-rules.md 填充】
-- 句式规则：连续 4 句主语不得相同
-- 元叙事禁止：正文禁止出现"本章""下一章""他感到""他意识到"
-- 情绪外化：禁止直述情绪结论，用动作/神态/环境代替
-- 重复检测：段落开头连续 3 段不得相同
-- 标点规范：破折号 ≤3 次/章，禁止一段内多次滥用
+Anti-AI rules:
+- Fatigue-word threshold: [Fill in from the project anti-ai/common-rules.md]
+- Sentence-pattern rule: The subject must not be the same for 4 sentences in a row
+- No meta-narration: The main text must not contain "this chapter", "next chapter", "he felt", or "he realized"
+- Externalizing emotion: Do not state emotional conclusions directly; use actions, expressions, and environment instead
+- Repetition check: Paragraph openings must not be identical for 3 paragraphs in a row
+- Punctuation rules: No more than 3 em dashes per chapter; do not abuse them several times in one paragraph
 
-题材反 AI：【按题材特定 anti-ai 文件填充】
+Genre-specific anti-AI: [Fill in from the genre-specific anti-AI file]
 
-### 约束红线
+### Hard Constraint Lines
 
-冲突阶梯：第1层（人际暧昧冲突，无外部威胁，压迫感来源于"说不说"的内心拉扯）
+Conflict ladder: Level 1 (interpersonal ambiguity conflict, no external threat; the pressure comes from the inner tug of "to say it or not")
 
-情节红线（不可删减）：
-1. 张奶奶必须念叨小时候糗事，打破尴尬
-2. 旧画册必须出现且两人指尖差一点碰到
-3. 章尾梧桐叶作为收束画面不可省略
+Plot red lines (must not be cut):
+1. Granny Zhang must tease them about an embarrassing childhood story, breaking the awkwardness
+2. The old sketchbook must appear, and their fingertips must almost touch
+3. The wutong leaf at the end of the chapter must stay as the closing image
 
-边界禁止（不涉及）：
-1. 不出场额外人物（同学/路人甲乙）
-2. 陆屿本场景不告白不挑明心意
+Boundary prohibitions (not involved):
+1. No extra characters appear (classmates, passersby)
+2. Lu Yu does not confess or reveal his feelings in this scene
 
-角色禁区：
-  苏晚不会主动拉陆屿的手
-  陆屿不会说土味情话或突然表白
+Character forbidden zones:
+  Su Wan will not take the initiative to hold Lu Yu's hand
+  Lu Yu will not use cheesy pickup lines or suddenly confess
 
-### 质感要求
+### Texture Requirements
 
-无用细节（不服务主线的细碎生活化细节）：
-1. 苏晚喝豆浆洒了一点在袖口，陆屿递纸巾没说话
-2. 陆屿被木刺扎到，苏晚笨拙地帮他挑出来
-3. 张奶奶递油条掉了一根，笑着说"老了手都抖了"
+Useless details (small, everyday details that do not serve the main plot):
+1. Su Wan spills a little soy milk on her sleeve, and Lu Yu hands her a tissue without a word
+2. Lu Yu is pricked by a wood splinter, and Su Wan clumsily picks it out for him
+3. Granny Zhang drops a fried dough stick while handing it over and laughs, "I'm old, my hands shake now"
 
-对话节奏：允许半截话、语气词、无意义停顿、重复口头禅，贴合人设习惯——"你来了，比我想的……来得早一点"；"没什么特别的，就是……经常想起这里，想起你"
+Dialogue rhythm: Half-finished sentences, filler words, meaningless pauses, and repeated verbal habits are allowed, matching each character's habits: "You came, earlier than I... expected"; "Nothing special, just... I often think of this place, think of you"
 
-段落精度分层：
-- 高权重场景（场景2）：细节饱满，动作/微表情/心理细化（书架间的近距离、指尖差一点碰到的瞬间）
-- 中权重场景（场景1、3）：正常叙事，不刻意精简也不铺张
+Paragraph precision layering:
+- High-weight scene (Scene 2): Full detail, with actions, micro-expressions, and inner life fleshed out (the close quarters between the shelves, the instant their fingertips almost touch)
+- Medium-weight scenes (Scenes 1 and 3): Normal narration, neither deliberately trimmed nor overdone
 
-真人痕迹：允许词穷/重复/停顿；苏晚走神看陆屿侧脸，被叫了才"啊？"一声回过神来
+Human traces: Wordlessness, repetition, and pauses are allowed; Su Wan spaces out looking at Lu Yu's profile and only snaps back with an "Huh?" when called

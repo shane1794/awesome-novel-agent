@@ -9,15 +9,15 @@ override: {}
 locked: []
 ---
 
-# 对话场景风格卡
+# Dialogue Scene Style Card
 
-继承主卡 `writing-style.md`，本卡只覆盖对话场景差异维度（dialogue_style / lexicon / syntax）。
-量化 override 由 style-distiller 按对话样本蒸馏后填充。
+Inherits the main card `writing-style.md`; this card only overrides the dimensions that differ for dialogue scenes (dialogue_style / lexicon / syntax).
+Quantitative overrides are filled in by style-distiller after distilling dialogue scene samples.
 
-## 描写层次和手法（对话场景）
+## Description Levels and Techniques (Dialogue Scene Scene)
 
-- （蒸馏后由 style-distiller 填充对话场景专属技法）
+- (Techniques specific to dialogue scene scenes, filled in by style-distiller after distillation)
 
-## few-shot 例句
+## Few-Shot Example Sentences
 
-- （对话场景标志性例句）
+- (Signature example sentences for dialogue scene scenes)

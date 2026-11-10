@@ -1,6 +1,6 @@
 # {type}-order
 status: pending
 inputs:
-  - 输入文件路径
+  - Input file path
 outputs:
-  - 输出目标路径
+  - Output target path

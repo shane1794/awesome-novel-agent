@@ -1,120 +1,120 @@
-# short-scan skill — 短篇扫榜（独立工具）
+# short-scan skill: Short-Story Chart Scan (standalone tool)
 
-> 不进 short-agent 调度链：作者说「扫个榜 / 看看什么火 / 短篇市场」时由入口直接进入。
-> 服务知乎盐言 / 番茄短篇 / 七猫 / 黑岩 / 点众等平台的短篇选题决策。
+> Not part of the short-agent dispatch chain: the entry point goes straight here when the author says "scan the charts / see what is hot / short-story market".
+> Serves short-story topic decisions for platforms such as Zhihu Yanxuan, Fanqie Short Stories, Qimao, Heiyan, and Dianzhong.
 
-## 核心哲学
+## Core Philosophy
 
-1. **短篇市场是情绪市场**：提取高频情绪、触发场景、情绪爆发点和读者愿意转发的点，不是只记题材名。
-2. **短篇的生命力在传播**：完读率高 = 情绪拉扯到位；传播率高 = 有共鸣或反转让人想转发。
-3. **风口来得快去得快**：题材信号可能在数周内失效，未复扫前 MUST NOT 当长期趋势。
+1. **The short-story market is an emotion market**: extract high-frequency emotions, trigger scenes, emotional eruption points, and the points readers want to forward, not just genre names.
+2. **A short story's life is in its spread**: a high completion rate means the emotional pull is in place; a high share rate means there is resonance or a reversal people want to forward.
+3. **Trends come and go fast**: a genre signal may expire within weeks; before a rescan, it MUST NOT be treated as a long-term trend.
 
-## Phase 1：确认平台和方向
+## Phase 1: Confirm the Platform and Direction
 
-问作者：「想看哪个平台？（知乎盐言 / 番茄短篇 / 七猫 / 黑岩 / 点众 / 其他）有没有想写的类型方向？」
+Ask the author: "Which platform do you want to look at? (Zhihu Yanxuan / Fanqie Short Stories / Qimao / Heiyan / Dianzhong / other) Is there a type direction you want to write?"
 
-- 有方向 → 该方向深度扫描
-- 没方向 → 全榜概览找趋势
-- 要跨平台比较 → 平台对比分析
+- Has a direction → deep scan in that direction
+- No direction → overview of the whole chart to find trends
+- Wants a cross-platform comparison → platform comparison analysis
 
-## Phase 2：数据来源（三级降级）
+## Phase 2: Data Sources (three levels of fallback)
 
-| 优先级 | 模式 | 何时用 |
+| Priority | Mode | When to use |
 |--------|------|--------|
-| 1 | **运行环境实时采集** | 当前 agent 具备浏览器 / 网页抓取工具时，按附录 A 字段清单采集榜单页 |
-| 2 | **作者提供** | 作者粘贴榜单截图 / 文字 / 链接（链接用环境自带的网页读取能力） |
-| 3 | **内置知识** | 前两级都不可用时，基于附录 A 的历史趋势做分析 |
+| 1 | **Real-time collection in the runtime** | When the current agent has a browser / web scraping tool, collect the chart pages using the field list in Appendix A |
+| 2 | **Author-provided** | The author pastes chart screenshots / text / links (links use the runtime's built-in web reading ability) |
+| 3 | **Built-in knowledge** | When neither of the first two levels is available, analyze using the historical trends in Appendix A |
 
-硬规则：
+Hard rules:
 
-- 降级到内置知识时，报告 MUST 标注「基于历史趋势、未完成实时校验，只能作为候选假设」，并列出需要复扫的平台页面
-- 单平台采集失败 → 标记跳过、继续其余平台，报告标注该平台数据缺口，MUST NOT 中断本轮
+- When falling back to built-in knowledge, the report MUST be labeled "Based on historical trends, not verified in real time; usable only as a candidate hypothesis", and list the platform pages that need a rescan
+- If a single platform's collection fails, mark it skipped and continue with the remaining platforms; the report labels that platform's data gap, and MUST NOT interrupt this round
 
-## Phase 3：七维分析
+## Phase 3: Seven-Dimension Analysis
 
-对每平台提取（每项要有具体发现，MUST NOT 只罗列题材名）：
+For each platform, extract (each item needs a concrete finding; MUST NOT just list genre names):
 
-1. **情绪类型分布**：当前哪种情绪拉扯最火（虐恋 / 反转 / 悬疑 / 治愈 / 打脸）
-2. **题材热点**：反复出现的设定 / 场景
-3. **篇幅分布**：热门短篇集中的字数区间
-4. **开头模式**：第一段 / 第一句怎么写
-5. **结尾类型**：HE / BE / 开放式比例
-6. **标题模式**：命名规律
-7. **人设模型**：高频主角类型
+1. **Emotion type distribution**: which kind of emotional pull is hottest right now (tormented love / reversal / suspense / healing / face-slapping)
+2. **Genre hotspots**: settings / scenes that keep recurring
+3. **Length distribution**: the word-count range where popular short stories cluster
+4. **Opening patterns**: how the first paragraph / first sentence is written
+5. **Ending types**: HE / BE / open-ending proportions
+6. **Title patterns**: naming conventions
+7. **Character models**: high-frequency protagonist types
 
-平台调性适配对照（判断候选方向在该平台是否成立）见附录 A.1。
+See Appendix A.1 for the platform tone matching reference (judging whether a candidate direction holds on that platform).
 
-## Phase 4：输出扫榜报告
+## Phase 4: Output the Chart Scan Report
 
 ```
-# 短篇扫榜报告：{平台}
+# Short-Story Chart Scan Report: {Platform}
 
-## 市场概况
-- 扫榜时间：{日期}    样本可信度：高（实时）/ 中（作者提供）/ 低（内置知识）
-- 下次复扫：{日期或事件}
-- 核心发现：{一句话}
+## Market Overview
+- Scan time: {date}    Sample credibility: High (real-time) / Medium (author-provided) / Low (built-in knowledge)
+- Next rescan: {date or event}
+- Core finding: {one sentence}
 
-## 情绪热度排行
-| 排名 | 情绪类型 | 榜上数量 | 趋势 | 代表作 |
+## Emotion Heat Ranking
+| Rank | Emotion Type | Count on Chart | Trend | Representative Work |
 
-## 题材热点
-| 题材 | 热度 | 竞争 | 门槛 | 代表作 |
+## Genre Hotspots
+| Genre | Heat | Competition | Barrier | Representative Work |
 
-## 关键数据洞察
-（篇幅区间 / 开头模式 / 结尾比例 / 标题特征 / 人设热词）
+## Key Data Insights
+(Length range / opening patterns / ending proportions / title features / character hot words)
 
-## 风口预警
-- 🔥 正在爆发：{题材} — {依据}
-- ⚡ 即将起风：{题材} — {依据}
-- ⚠️ 即将饱和：{题材} — {依据}
+## Trend Warnings
+- 🔥 Breaking out now: {genre}: {basis}
+- ⚡ About to take off: {genre}: {basis}
+- ⚠️ About to saturate: {genre}: {basis}
 
-## 值得写的方向
-1. {方向 + 情绪拉扯方式 + 可行性}
+## Directions Worth Writing
+1. {direction + how the emotion pulls + feasibility}
 
-## 一句话
-{犀利总结}
+## One Sentence
+{Sharp summary}
 ```
 
-报告语言用作者语言，MUST NOT 出现内部词。
+The report language uses the author's language, and MUST NOT contain internal terms.
 
-## Phase 5：选题匹配
+## Phase 5: Topic Matching
 
-- **低复杂度候选**：反转类、打脸类（结构清晰、验证成本低）
-- **高复杂度候选**：悬疑类、虐恋类（需要伏笔、反转与情绪控制功底）
-- **优先候选**：当前强信号 × 作者能力可支撑的交叉点
+- **Low-complexity candidates**: reversal and face-slapping types (clear structure, low verification cost)
+- **High-complexity candidates**: suspense and tormented love types (need foreshadowing, reversal, and emotion control skill)
+- **Priority candidates**: the intersection of a strong current signal and what the author's ability can support
 
-判断基准：
+Judgment basis:
 
-- 情绪拉扯力 > 题材创新力（短篇读者更看重情绪体验）
-- 开头 3 句是留存高风险区，必须有冲突、身份差或情绪钩子
-- **传播风险兜底**：推荐方向不含反转时，MUST 写明以强共鸣 / 强话题 / 强余韵补足；未写不得作为推荐方向
+- Emotional pull > genre innovation (short-story readers care more about the emotional experience)
+- The opening 3 sentences are a high-risk retention zone; they must have conflict, an identity gap, or an emotional hook
+- **Spread risk fallback**: when a recommended direction contains no reversal, it MUST state that it is compensated by strong resonance / a strong topic / strong lingering resonance; without that statement it cannot stand as a recommended direction
 
-## 附录 A：内置市场知识（历史趋势，使用 MUST 附未校验标注）
+## Appendix A: Built-In Market Knowledge (historical trends; use MUST carry the unverified label)
 
-### A.1 平台调性对照
+### A.1 Platform Tone Reference
 
-| 平台 | 调性 | 核心指标 | 主力读者 | 适合类型 | 短篇主力字数 |
-|------|------|----------|----------|----------|-------------|
-| 知乎盐言故事 | 精品短篇，情绪深度 | 付费转化、收藏 | 20-35 都市人群 | 虐恋、反转、悬疑、现实 | 5千-1.5万字 |
-| 七猫短篇 | 下沉市场，女频为主 | 完读率 | 女性为主(80%+) | 总裁/现实/宅斗/年代/悬疑 | 1-2万字(7-19章) |
-| 黑岩短篇 | 极端情绪，快节奏 | 完读率、付费 | 混合 | 虐恋、复仇、身份反转 | 8千-4万字 |
-| 点众短篇 | 精品快节奏 | 完读率 | 混合 | 家庭复仇、假千金、弹幕流 | 1-2万字(5-10章) |
-| 番茄短篇 | 顺滑快节奏 | 完读率 | 下沉混合 | 金手指直白、大满贯收尾 | 8千-2万字 |
+| Platform | Tone | Core Metric | Main Readers | Suitable Types | Main Short-Story Word Count |
+|------|------|----------|----------|-------------|-------------|
+| Zhihu Yanxuan Stories | Quality short stories, emotional depth | Paid conversion, favorites | Urban readers aged 20-35 | Tormented love, reversal, suspense, realistic | 5,000-15,000 words |
+| Qimao Short Stories | Down-market, mostly female readership | Completion rate | Mostly women (80%+) | CEO / realistic / household intrigue / period / suspense | 10,000-20,000 words (7-19 chapters) |
+| Heiyan Short Stories | Extreme emotion, fast pace | Completion rate, paid | Mixed | Tormented love, revenge, identity reversal | 8,000-40,000 words |
+| Dianzhong Short Stories | Quality, fast pace | Completion rate | Mixed | Family revenge, fake heiress, bullet-comment stream | 10,000-20,000 words (5-10 chapters) |
+| Fanqie Short Stories | Smooth, fast pace | Completion rate | Down-market mixed | Straightforward golden finger, grand-slam ending | 8,000-20,000 words |
 
-### A.2 平台简介公式速查
+### A.2 Platform Opening Formula Quick Reference
 
-- 知乎盐言：第一人称 + 生活化违和感切入（「老公副驾驶有根红头发」）+ 剥洋葱细思极恐
-- 小程序（黑岩/点众）：开局即地狱 + 当众打脸 + 卡脖子断点
-- 番茄短篇：金手指直白 + 顺滑无毒点 + 大满贯收尾
+- Zhihu Yanxuan: first person + an everyday-life sense of wrongness to enter ("there is a red hair on my husband's passenger seat", 老公副驾驶有根红头发) + peeling-the-onion chilling realization
+- Mini-programs (Heiyan / Dianzhong): hell from the opening + public face-slapping + cliffhanger breakpoint
+- Fanqie Short Stories: straightforward golden finger + smooth with no poison points + grand-slam ending
 
-### A.3 题材爆款公式速查（历史样本）
+### A.3 Genre Hit Formula Quick Reference (historical samples)
 
-| 题材 | 爆款要素 | 常配情绪 |
+| Genre | Hit Elements | Commonly Paired Emotion |
 |------|----------|----------|
-| 追妻火葬场 | 白月光触发 + 求救反辱 + 火葬场预告 | 意难平 |
-| 假千金 | 身份错位 + 当众翻转 + 数字承重 | 爽感 |
-| 民俗怪谈 | 规矩 + 破戒 + 应验实锤 | 细思极恐 |
-| 复仇重生 | 作践慢放 + 底牌后置 + 公开处刑 | 爽感 |
-| 甜宠错位 | 高概念误会 + 强制同框 + 日常糖点 | 治愈 |
+| Wife-chasing crematorium (追妻火葬场) | First-love trigger + plea-for-help turned humiliation + crematorium preview | Bittersweet regret (意难平) |
+| Fake heiress (假千金) | Identity mismatch + public flip + numbers carrying weight | Satisfying release |
+| Folk horror tales (民俗怪谈) | Rules + breaking the rules + the consequence confirmed | Chilling realization |
+| Revenge rebirth (复仇重生) | Slow-motion humiliation + hole card held back + public execution | Satisfying release |
+| Sweet romance mix-up (甜宠错位) | High-concept misunderstanding + forced sharing of scenes + everyday sweet moments | Healing |
 
-> 以上为写作校准候选假设，任何选题决策前 MUST 完成一次实时复扫或取得作者提供的当期数据。
+> The above are candidate hypotheses for writing calibration; before any topic decision, MUST complete one real-time rescan or obtain the current data provided by the author.

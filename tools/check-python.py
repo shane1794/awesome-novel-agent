@@ -1,24 +1,24 @@
 #!/usr/bin/env python3
-"""Python 版本门槛检查（安装阶段 fail-fast 用）。
+"""Python version gate check (fail-fast at install time).
 
-install.sh / install.ps1 在任何目录创建/删除前调用本脚本，解释器版本不满足
-要求时立即报错退出——版本问题在安装阶段暴露，而不是等 init.py /
-sync-project.py 执行时才以 TypeError / SyntaxError 的形式出现。
+install.sh / install.ps1 call this script before creating/deleting any directory; when the interpreter version does not meet
+the requirement it fails immediately, so version problems surface at install time instead of waiting until init.py /
+sync-project.py runs and they appear as a TypeError / SyntaxError.
 
-用法:
-  python tools/check-python.py             # 检查当前解释器 >= 3.9
-  python tools/check-python.py --min 3.10  # 自定义最低版本（测试用）
+Usage:
+  python tools/check-python.py             # check the current interpreter >= 3.9
+  python tools/check-python.py --min 3.10  # custom minimum version (for tests)
 
-返回码:
-  0 = 满足要求
-  1 = 版本过低
-  2 = 参数错误
+Exit codes:
+  0 = requirement met
+  1 = version too low
+  2 = argument error
 """
 
 import sys
 
-# 项目实际最低版本（tools/*.py 均已验证 3.9 兼容；
-# 新代码若用到更高版本语法，应同步提高这里并在安装阶段暴露）。
+# Project's actual minimum version (tools/*.py have all been verified 3.9-compatible;
+# if new code uses syntax from a higher version, raise this in sync and expose it at install time).
 MIN_VERSION = (3, 9)
 
 
@@ -31,7 +31,7 @@ def main(argv) -> int:
     if "--min" in argv:
         idx = argv.index("--min")
         if idx + 1 >= len(argv):
-            print("错误: --min 需要一个版本号（如 3.10）", file=sys.stderr)
+            print("Error: --min needs a version number (e.g. 3.10)", file=sys.stderr)
             return 2
         raw = argv[idx + 1]
         try:
@@ -40,23 +40,23 @@ def main(argv) -> int:
                 raise ValueError
             min_version = parts
         except ValueError:
-            print(f"错误: --min 需要形如 3.10 的版本号，收到: {raw}", file=sys.stderr)
+            print(f"Error: --min needs a version number like 3.10, got: {raw}", file=sys.stderr)
             return 2
 
     current = sys.version_info[:2]
     if current < min_version:
         print(
-            f"错误: 需要 Python {_label(min_version)} 或更高版本，当前是 {sys.version.split()[0]}。",
+            f"Error: Python {_label(min_version)} or higher is required; current version is {sys.version.split()[0]}.",
             file=sys.stderr,
         )
         print(
-            "请升级 Python 后重试：https://www.python.org/downloads/"
-            "（macOS 也可运行 `brew install python@3.12`）",
+            "Please upgrade Python and try again: https://www.python.org/downloads/"
+            "(on macOS you can also run `brew install python@3.12`)",
             file=sys.stderr,
         )
         return 1
 
-    print(f"Python {sys.version.split()[0]} 满足要求（>= {_label(min_version)}）。")
+    print(f"Python {sys.version.split()[0]} meets the requirement (>= {_label(min_version)}).")
     return 0
 
 

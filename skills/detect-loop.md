@@ -1,70 +1,70 @@
-# detect-loop skill — 外部检测校准闭环（作者触发，可选）
+# detect-loop skill: External Detection Calibration Loop (author-triggered, optional)
 
-## 职责与边界
+## Responsibilities and Boundaries
 
-作者自愿把稿件送**外部 AI 检测工具**（朱雀等）核验时，按最小干预原则定向修复：只动最高分片段、其余字符级不动、达标锁版、经验沉淀。
+When the author voluntarily sends a draft to an **external AI detection tool** (such as Zhuque) for verification, fix it with minimal intervention in a targeted way: only touch the highest-scoring segment, leave everything else unchanged at the character level, lock the version once it meets the bar, and bank the experience.
 
-- **合规声明**：本环节面向作者对自己稿件的自愿质量校准。不包装"检测器对抗"，不绕过任何平台风控；仓库不含任何检测平台的自动化脚本、接口逆向文档、密钥与浏览器指纹方案——这些属于作者本地自备工具。
-- **默认离线**：不进默认管线，只有作者明确说"送检/过一遍外部检测/检测一下"才启动；送检方式不存在时优雅终止（告知作者需自备检测途径或手动网页送检），不阻塞主流程。
+- **Compliance statement**: This step is for the author's voluntary quality calibration of their own draft. It is not packaged as "detector evasion" and does not bypass any platform risk control; the repository contains no automation scripts, interface reverse-engineering documents, keys, or browser fingerprinting schemes for any detection platform. Those belong to tools the author provides locally.
+- **Offline by default**: It is not part of the default pipeline; it only starts when the author explicitly says "send it for checking / run it through external detection / check it". If no submission method exists, end gracefully (tell the author they need to provide their own detection route or submit it manually on a web page) without blocking the main flow.
 
-## 触发与输入
+## Trigger and Input
 
-novel-agent 写 `detect-loop-order.md` 调 anti-ai agent 执行（本 skill 是 anti-ai 的支线 SOP）。order inputs：
+novel-agent writes `detect-loop-order.md` to call the anti-ai agent (this skill is a branch SOP of anti-ai). Order inputs:
 
 ```markdown
 # detect-loop-order
 status: pending
 inputs:
-  - 稿件路径（默认 archives/ 当前章 .anti-ai.md 的正文，或作者指定文件）
-  - 送检方式：本地工具命令（作者自备，可空）/ 作者手动送检
-  - 结果文件路径（送检产出；作者手动送检时为作者粘贴的结果文件）
-  - 达标线（默认 0.5，按检测工具口径调整）
+  - Draft path (by default the main text of the current chapter's .anti-ai.md in archives/, or a file the author specifies)
+  - Submission method: local tool command (author-provided, may be empty) / author submits manually
+  - Result file path (the submission output; for manual submission, the result file the author pastes)
+  - Pass bar (default 0.5, adjusted to the detection tool's scale)
 outputs:
-  - 修订后稿件路径
-  - sandbox/detect-battles.md（追加本轮战役记录）
+  - Revised draft path
+  - sandbox/detect-battles.md (append this round's battle record)
 ```
 
-outputs 里不含检测工具本身。
+The outputs do not include the detection tool itself.
 
-## 送检适配器（平台无关）
+## Submission Adapter (platform-independent)
 
-仓库只约定三件事，检测工具的具体对接完全在作者本地：
+The repository only agrees on three things; connecting to the specific detection tool is entirely local to the author:
 
-1. **送检入口**：一条本地命令（作者自备，如本地脚本），或作者手动在检测网页粘贴稿件。
-2. **结果文件**：送检产出的逐片结果文件（JSON 或表格），约定字段：
+1. **Submission entry point**: one local command (author-provided, such as a local script), or the author manually pasting the draft on the detection web page.
+2. **Result file**: the segment-by-segment result file produced by the submission (JSON or a table), with the agreed fields:
 
 ```json
 {
-  "tool": "示例工具名",
+  "tool": "Example tool name",
   "threshold": 0.5,
-  "overall": "整体结论文本（可空）",
+  "overall": "Overall conclusion text (may be empty)",
   "segments": [
-    {"start": 0, "end": 536, "score": 0.5123, "text": "该片段原文（用于定位）"},
+    {"start": 0, "end": 536, "score": 0.5123, "text": "Original text of this segment (for locating it)"},
     {"start": 536, "end": 1024, "score": 0.2301, "text": "…"}
   ]
 }
 ```
 
-   `start/end` 为字符偏移；`text` 用于在稿件中做内容子串定位（偏移可能因口径不同有偏差，以 text 匹配为准）。
-3. **达标线**：全部片段 `score` 低于 `threshold` 即达标；单一数值口径，不引入检测工具的其他评级。
+   `start/end` are character offsets; `text` is used to locate the content substring in the draft (offsets may differ by scale, so text matching takes precedence).
+3. **Pass bar**: all segments with `score` below `threshold` count as passing; a single numeric scale, without introducing any other rating from the detection tool.
 
-## 修复纪律（每轮）
+## Repair Discipline (per round)
 
-1. **只修一个最高分片段**：取 score 最高的片段；多个同分取靠前者。其余片段**字符级不动**（修改前后对该片段做内容哈希比对验证）。
-2. **边界稳定**：片段首句、末句逐字保持原样；改幅等长优先（±3% 内）；用片段 text 在稿件中定位内容子串，不按行号猜。
-3. **修法顺序**：先对照 `.claude/knowledge/anti-ai.md`「结构热源定律」判结构类型——先改结构（换内容类型/砍问答拍/拆微闭环/删意义确认），句子级清理在后。
-4. **裁决顺序**：作者设定与章纲 > 题材知识 > 结构默认值 > 检测优化。降分修改**不得**改写锁定台词、章纲落点等作者侧核心表达；冲突时保留作者侧表达，报告标注"设定优先、接受残分"或提交作者裁决。
-5. **止损**：同片段连续两轮改善不足 0.05 或分数反升 → 停止同类改法，下一轮换内容类型或回滚上一版（作者说"不如刚才/适得其反"→ 立即回滚）。
-6. **每轮前后**：修改后同轮复跑 `check-chapter.py`（exit=0 才送检）；每轮结果追加进 `sandbox/detect-battles.md`（轮次/改动/逐片结果/结论）。
+1. **Fix only the single highest-scoring segment**: take the segment with the highest score; if several tie, take the earliest. All other segments stay **unchanged at the character level** (verify by comparing a content hash of that segment before and after the edit).
+2. **Stable boundaries**: the first and last sentences of the segment stay verbatim; prefer edits of equal length (within plus or minus 3%); locate the content substring in the draft using the segment text, never by guessing line numbers.
+3. **Repair order**: first check the "structural heat source law" in `.claude/knowledge/anti-ai.md` to judge the structure type. Change structure first (swap content type / cut the Q&A beats / split a micro-loop / delete the meaning confirmation), and do sentence-level cleanup after.
+4. **Decision order**: author settings and chapter outline > genre knowledge > structural defaults > detection optimization. A score-lowering edit **must not** rewrite locked lines, chapter outline landing points, or other core expressions on the author side; on conflict, keep the author-side expression and mark the report "settings take priority, residual score accepted" or submit it to the author for a ruling.
+5. **Damage control**: if the same segment improves by less than 0.05 for two consecutive rounds, or its score rises instead, stop using that kind of edit, switch content type in the next round, or roll back to the previous version (if the author says "worse than before / backfired", roll back immediately).
+6. **Before and after each round**: after editing, re-run `check-chapter.py` in the same round (only submit for checking when exit code is 0); append each round's result to `sandbox/detect-battles.md` (round number / changes / segment-by-segment results / conclusion).
 
-## 锁版与沉淀
+## Locking the Version and Banking Experience
 
-- **达标**：全部片段低于达标线 → 生成锁版快照（作者指定位置，默认 `archives/`），记录 SHA256 到战役记录；锁版后不再改动，除非作者明确解版。
-- **经验入库**：战役记录沉淀本轮规律（什么结构热、什么修法有效）；翻车原句经**作者确认**后加入 `sandbox/prose-regressions.txt`（作者不点头不入库）。
-- **复跑**：沉淀前复跑 `check-chapter.py` 确认硬伤清零。
+- **Passing**: all segments below the pass bar means generating a locked snapshot (at the location the author specifies, by default `archives/`), recording the SHA256 in the battle record; once locked, do not change it further unless the author explicitly unlocks it.
+- **Banking experience**: the battle record banks the patterns from this round (which structures run hot, which repairs work); a failed original sentence is added to `sandbox/prose-regressions.txt` only after **the author confirms it** (no entry without the author's nod).
+- **Re-run**: before banking, re-run `check-chapter.py` to confirm the hard defects are zero.
 
-## 报告（面向作者，日常语言）
+## Report (for the author, in everyday language)
 
-- 本轮检测：分了 X 段，最像机器写的一段在开头/中段/结尾
-- 改了什么：一句话人话描述（"这场问答太顺，拆了两拍"），不出现片段/阈值等内部词
-- 结果：改前多少、改后多少，达标/未达标；达标即已锁版备份
+- This round's detection: split into X segments; the segment that reads most machine-written is at the beginning / middle / end
+- What changed: a one-sentence plain-language description ("this Q&A ran too smoothly, so two beats were cut"), with no internal terms such as segment or threshold
+- Result: the score before and after the change, pass or fail; once it passes, it is locked and backed up

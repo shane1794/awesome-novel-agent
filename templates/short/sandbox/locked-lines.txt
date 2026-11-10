@@ -1,4 +1,4 @@
-# 锁定台词白名单
+# Locked-lines whitelist
 
-# 作者拍板保留的原句豁免清单（裁定类检查跳过这些行）。
-# 每行一条。
+# Exemption list of lines the author has approved to keep (ruling-type checks skip these lines).
+# One line per entry.

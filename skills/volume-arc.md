@@ -1,70 +1,70 @@
 
-# 主线拆纲 skill
+# Main Line Breakdown Skill
 
-仅首次规划时执行。后续卷规划跳过此 skill。
+Only executed during the first planning. Later volume planning skips this skill.
 
-## 流程
+## Process
 
-判断作者类型 → 总主线 → 定终点 → 找断点 → 定每卷冲突 → 写入 → 三向核对
+Judge the author type → main line → set the ending → find the breakpoints → set each volume's conflict → write it down → three-way check
 
-## 1. 判断作者类型
+## 1. Judge the Author Type
 
-问："你目前对全书的故事走向有完整概念吗——从开头到结局都想好了？还是只有第一卷的思路，后面边走边看？"
+Ask: "Do you currently have a complete picture of the whole book's story direction, from the opening to the ending, or do you only have ideas for the first volume and will figure the rest out as you go?"
 
-- **类型 A：都清楚** → 走 2→7 全流程
-- **类型 B：只知道开头** → 跳过第 3 节（定终点）和第 4 节（找断点）；第 2 节（总主线）窄化为"第一卷方向"；第 5 节只定第一卷冲突，后续卷标"待定"
-- **介于之间** → 走类型 A，后卷冲突标"待定"
+- **Type A: knows it all** → follow the full flow, steps 2 to 7
+- **Type B: only knows the opening** → skip Section 3 (set the ending) and Section 4 (find the breakpoints); narrow Section 2 (main line) to "the first volume's direction"; in Section 5 set only the first volume's conflict and mark later volumes "to be decided"
+- **In between** → follow Type A, with later volumes' conflicts marked "to be decided"
 
-## 2. 总主线
+## 2. Main Line
 
-从作者回答中提取三要素（**谁 + 追求什么 + 对抗什么**），浓缩为一句话让作者确认。
+Extract three elements from the author's answer (**who + pursuing what + opposing what**), condense them into one sentence, and have the author confirm it.
 
-- 类型 A：标准——不做完所有卷答不出来的全书核心冲突
-- 类型 B：只聊第一卷方向——谁 + 想做什么 + 被什么阻碍
+- Type A: the standard. The core conflict of the whole book, which cannot be answered without finishing all volumes
+- Type B: only discuss the first volume's direction. Who + wants to do what + is blocked by what
 
-## 3. 定终点
+## 3. Set the Ending
 
-> 类型 B 跳过。终点和断点标"待定"，直入第 5 节。
+> Type B skips this. The ending and breakpoints are marked "to be decided"; go straight to Section 5.
 
-从结局倒推不问"几卷"，问"最后一幕"。根据作者回答类型（有画面/有调性没画面/完全不知道）走不同分支。
+Work backward from the ending; do not ask "how many volumes", ask about "the final scene". Follow different branches depending on the author's answer type (has a visual image / has a tone but no image / does not know at all).
 
-终点确定后核验与总主线的一致性：矛盾可能是张力来源，确认作者意图。
+After the ending is set, verify it against the main line for consistency: a contradiction may be a source of tension, so confirm the author's intent.
 
-## 4. 找自然断点
+## 4. Find the Natural Breakpoints
 
-> 类型 B 跳过。
+> Type B skips this.
 
-起点到终点之间的根本性变化。Agent 可根据题材+总主线推理提案让作者确认。
+The fundamental changes between the starting point and the ending. The agent may reason out proposals from the genre plus the main line and have the author confirm them.
 
-## 5. 定每卷冲突
+## 5. Set Each Volume's Conflict
 
-一卷一卷确认，不要一次列完。
+Confirm one volume at a time; do not list them all at once.
 
-| 字段 | 标准 | 不合格示例 |
+| Field | Standard | Failing Example |
 |------|------|-----------|
-| 标题 | 2-4 字，概括本卷核心事件 | "第一卷"（等于没起） |
-| 核心冲突 | **总主线在哪一步 +** 谁 + 做什么 + 被什么阻碍。是主线子集，不是另起炉灶 | "主角继续调查"（无对抗）；"主角卷入国际阴谋"（与主线无关） |
-| 预估章节 | 根据题材节奏估算，允许 ±30% | 0 或空 |
+| Title | 2-4 characters, summarizing this volume's core event | "Volume One" (says nothing) |
+| Core conflict | **Which step of the main line +** who + does what + is blocked by what. A subset of the main line, not a fresh start | "The protagonist keeps investigating" (no opposition); "The protagonist gets drawn into an international conspiracy" (unrelated to the main line) |
+| Estimated chapters | Estimate from the genre's rhythm, plus or minus 30% allowed | 0 or empty |
 
-后卷处理：
-- 类型 A：后卷至少写一句话核心冲突+浮动章数，写到时再细化
-- 类型 B：只写第一卷，后续卷全部标"待定"
+Handling later volumes:
+- Type A: later volumes get at least one sentence of core conflict plus a floating chapter count, refined when their time comes
+- Type B: write only the first volume; mark all later volumes "to be decided"
 
-## 6. 产出写入
+## 6. Write the Output
 
-按格式写入 `story.md`：
+Write it into `story.md` in the set format:
 
-类型 A 含全书核心冲突 + 结构类型 + 总卷数 + 每卷核心冲突。
-类型 B 核心冲突标"待定"，仅第一卷有内容。
+Type A contains the whole book's core conflict + structure type + total volume count + each volume's core conflict.
+Type B marks the core conflict "to be decided", with content only for the first volume.
 
-## 7. 验收：三向核对
+## 7. Acceptance: Three-Way Check
 
-三项核对全部通过才可进入卷方向确定：
+All three checks must pass before moving on to setting the volume direction:
 
-1. **总主线→逐卷：** 指着总主线，对每卷问"这卷是主线的哪一步？"——能答出✅，答不出或牵强❌
-2. **卷序列→完整路径：** 所有卷核心冲突串起来，是一条完整的故事线、没有断裂跳步吗？
-3. **卷→反向推断总主线：** 只看卷冲突能猜出全书核心冲突吗？还是各自指向不同方向？
+1. **Main line to each volume:** Point at the main line and ask for each volume, "Which step of the main line is this volume?" Answerable means pass, unanswerable or forced means fail
+2. **Volume sequence to complete path:** Do all volumes' core conflicts string together into one complete story line, with no breaks or jumps?
+3. **Volumes to reverse-inferred main line:** Looking only at the volume conflicts, can the whole book's core conflict be guessed, or do they point in different directions?
 
-类型 B：核对一只验第一卷，核对二/三自动通过。
+Type B: check one only verifies the first volume; checks two and three pass automatically.
 
-**总检：** 指着总主线问"没有这卷，主线走得完吗？"——走不完✅
+**Overall check:** Point at the main line and ask, "Without this volume, can the main line still finish?" If not, pass.

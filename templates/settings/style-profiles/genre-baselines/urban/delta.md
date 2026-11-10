@@ -6,7 +6,7 @@ source_sample_length: 0
 confidence: 0
 last_updated: ""
 locked: []
-# 题材基线·题材偏移（urban）
+# Genre Baseline, Genre Delta (urban)
 lexicon: { adj_density_per_100: 0, adv_density_per_100: 0, four_phrase_freq_per_100: 0, preferred_words: [], banned_words: [], name_pronoun_ratio: 0 }
 syntax: { avg_sentence_length: 0, sentence_length_dist: {}, single_sentence_paragraph_pct: 0, avg_sentences_per_paragraph: 0, question_ratio: 0, exclamation_ratio: 0 }
 rhythm: { dialogue_pct: 0, action_pct: 0, environment_pct: 0, inner_thought_pct: 0, narration_pct: 0 }
@@ -18,6 +18,6 @@ cohesion: { conjunction_freq_per_100: 0, transition_sentence_ratio: 0, paragraph
 verb_style: { action_verb_ratio: 0, mental_verb_ratio: 0, state_verb_ratio: 0, strength: "" }
 ---
 
-# 题材基线·题材偏移（都市）
+# Genre Baseline, Genre Delta (Urban)
 
-本卡只写与基础卡的题材偏移 delta（纯参照，无运行时引用）。数值暂为 0（偏移占位），待作者/C6 盲测阶段填充。
+This card records only the genre delta relative to the base card (reference only, never referenced at runtime). Values are 0 for now (delta placeholder), to be filled in during the author/C6 blind-test stage.

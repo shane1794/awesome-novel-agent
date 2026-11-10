@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-"""style-distill 共享工具（单源化，review #36/#38/#39/#40）。
+"""style-distill shared utilities (single-sourced, review #36/#38/#39/#40).
 
-style_render / style_verify / check-agents / platforms / 测试 共用，避免多副本漂移：
-- force_utf8         stdout/stderr 强制 UTF-8（Windows GBK 防崩，替代各脚本复制的 reconfigure）
-- frontmatter_text   frontmatter 原文提取（按行定位闭合，值内含 '---' 不错位、BOM 兼容）
-- split_frontmatter  frontmatter → (dict, 正文)（缺闭行/解析失败/非 map → ({}, 原文)）
-- SCENE_INJECTION    场景稀疏注入矩阵（唯一权威；check-agents 的场景/维度枚举派生自此）
-- pct_ok             决策 A 单位校验：0-100 百分数合法值（type 排除 bool）
+Shared by style_render / style_verify / check-agents / platforms / tests to avoid drift across copies:
+- force_utf8         force UTF-8 on stdout/stderr (prevents Windows GBK crashes, replacing the reconfigure copied into each script)
+- frontmatter_text   extract the raw frontmatter text (locate the closing line by line, so a value containing '---' does not misalign; BOM-compatible)
+- split_frontmatter  frontmatter to (dict, body) (missing closing line / parse failure / non-map to ({}, raw text))
+- SCENE_INJECTION    scene sparse-injection matrix (the single authority; check-agents derives its scene/dimension enumeration from it)
+- pct_ok             decision A unit check: a legal percentage value in 0-100 (type excludes bool)
 """
 from __future__ import annotations
 
@@ -14,7 +14,7 @@ import sys
 
 
 def force_utf8() -> None:
-    """stdout/stderr 强制 UTF-8，避免 Windows GBK 控制台报错（AGENTS.md:79）。"""
+    """Force UTF-8 on stdout/stderr to avoid Windows GBK console errors (AGENTS.md:79)."""
     for _s in (sys.stdout, sys.stderr):
         try:
             _s.reconfigure(encoding="utf-8")
@@ -23,8 +23,8 @@ def force_utf8() -> None:
 
 
 def frontmatter_text(text: str) -> str | None:
-    """frontmatter 原文（两行 --- 之间）。按行定位闭合行，正文含 '---'（markdown 分隔线）不错位；
-    缺闭合返回 None。BOM 兼容（init 的 utf-8-sig 口径，review #23）。"""
+    """Raw frontmatter text (between the two --- lines). Locate the closing line by line, so body text containing '---' (a markdown divider) does not misalign;
+    return None when the closing line is missing. BOM-compatible (init's utf-8-sig convention, review #23)."""
     text = text.lstrip("\ufeff")
     lines = text.splitlines()
     if not lines or lines[0].strip() != "---":
@@ -36,7 +36,7 @@ def frontmatter_text(text: str) -> str | None:
 
 
 def split_frontmatter(text: str) -> tuple:
-    """frontmatter → (dict, 正文)。缺闭行/解析失败/非 map → ({}, 原文)。"""
+    """frontmatter to (dict, body). Missing closing line / parse failure / non-map to ({}, raw text)."""
     import yaml
     text = text.lstrip("\ufeff")
     lines = text.splitlines()
@@ -53,7 +53,7 @@ def split_frontmatter(text: str) -> tuple:
     return {}, text
 
 
-# 场景稀疏注入矩阵（spec 6.3 / 旧 injection-template 表）——唯一权威，check-agents 枚举派生自此
+# Scene sparse-injection matrix (spec 6.3 / old injection-template table), the single authority; check-agents derives its enumeration from it
 SCENE_INJECTION = {
     "general": ["lexicon", "syntax", "rhythm", "rhetoric", "emotion_expression",
                 "narrative", "dialogue_style", "cohesion", "verb_style"],
@@ -70,6 +70,6 @@ STYLE_CARD_DIMS = list(SCENE_INJECTION["general"])
 
 
 def pct_ok(v) -> bool:
-    """决策 A 单位校验：0-100 百分数合法值（type 排除 bool——True/False 是 int 子类）。
-    旧 jieba 引擎产出 0-100 一位小数百分数（13.4），0.3 是 0.3% 而非 30%。"""
+    """Decision A unit check: a legal percentage value in 0-100 (type excludes bool, since True/False are int subclasses).
+    The old jieba engine produced 0-100 percentages with one decimal place (13.4), so 0.3 means 0.3%, not 30%."""
     return type(v) in (int, float) and not isinstance(v, bool) and 0 <= v <= 100

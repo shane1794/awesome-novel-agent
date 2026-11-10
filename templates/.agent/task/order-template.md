@@ -3,15 +3,15 @@
 status: pending
 
 inputs:
-  - {输入文件路径}
+  - {input file path}
 
 outputs:
-  - {输出目标路径}
+  - {output target path}
 
-resume_from: {writer 中断恢复时填 partial 文件路径；其他场景留空}
+resume_from: {fill in the partial file path when resuming after a writer interruption; leave blank in other cases}
 
 ---
 
-> 本文件是 order 模板。novel-agent 写 order 时用本结构；子 agent 完成后**用 Write 覆盖 `status: pending` 为 `status: DONE`**，不要删除本文件。
-> 完成信号 = order 存在 且 `status: DONE` 且 outputs 全部存在非空。
-> `resume_from` 可选：writer 是唯一长输出阶段，中断后重派时填 `archives/*.draft.partial.md` 路径，writer 从该 partial 续写不重头；其他阶段留空。
+> This file is the order template. novel-agent writes orders using this structure; after a sub-agent finishes, **overwrite `status: pending` with `status: DONE` using Write**, do not delete this file.
+> Completion signal = the order exists AND `status: DONE` AND all outputs exist and are non-empty.
+> `resume_from` is optional: the writer is the only long-output stage. When re-dispatching after an interruption, fill in the `archives/*.draft.partial.md` path and the writer resumes from that partial instead of starting over; leave it blank for other stages.

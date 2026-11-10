@@ -1,181 +1,181 @@
 # Tasks: 2026-09-10-add-short-story-pipeline
 
-> 组织方式：`## N.` = 主流程 · 子流程；`- [ ] N.M` = 叶子节点。
-> 每条的 `[编号]` 与 `specs/` 下的 Scenario 编号一一对应，可双向追溯。
+> Organization: `## N.` = main flow / sub-flow; `- [ ] N.M` = leaf node.
+> Each item's `[number]` maps one-to-one to the Scenario numbers under `specs/`, traceable in both directions.
 >
-> 范围（design D13）：以「作者说一句写短篇，能拿到成品」为界。扫榜、拆文、跨文体检查工具移植不在本次，见 proposal「后续变更」。
+> Scope (design D13): bounded by "the author says one sentence, write a short story, and gets a finished draft". List scanning, text teardown, and cross-genre check-tool porting are not in this change; see the proposal's "Later Changes".
 >
-> **实施节奏（design 迁移计划第 0 步）**：不要等 18 组全做完才做第一次端到端实测——那时才知道链路行不行，返工成本最高。先按**第一波**跑通链路：1 个题材包（追妻火葬场）、1 个平台、知识文件只搬格式规范 + 去 AI 口径 + 写作底座三件必需、篇幅压到 3-4 节；拿到一次 `manuscript.md` 后再按组铺满（10 题材 / 7 平台 / 全部参考文件）。
+> **Implementation pace (design migration plan step 0)**: do not wait until all 18 groups are done before the first end-to-end live test. By then, finding out whether the chain works costs the most rework. First run the chain through in the **first wave**: 1 genre pack (wife-chasing crematorium), 1 platform, knowledge files limited to the three essentials (format spec + de-AI criteria + writing base), length pressed to 3-4 sections. Once one `manuscript.md` exists, fill in by group (10 genres / 7 platforms / all reference files).
 
-## 1. 主流程 A · 子流程 A1 初始化入口按长度分流
+## 1. Main flow A, sub-flow A1: initialization entry point routes by length
 
-- [ ] 1.1 [A1.1] 入口 skill 加短篇分支：识别「写短篇 / 写个盐言故事 / 写个短故事」等意图 → 询问 → 以 `--length short` 运行 `init.py` → 完成后加载短篇总指挥。验证：实测说一句话，确认走短篇分支
-- [ ] 1.2 [A1.2] 已有项目按项目索引的 `length` 标记路由：标记为 short 时直接加载短篇总指挥。验证：手改标记后重新唤起，确认不进任何非短篇流程
-- [ ] 1.3 [A1.3] 短篇不是缺省：不传 `--length` 时项目索引不含短篇标记。验证：`init.py <tmp>` 后 grep 长度标记无命中
-- [ ] 1.4 [A1.4] `--length` 取值校验：非 `short`/`long` 时打印可选值并非零退出、不建文件。验证：`python tools/init.py /tmp/t --length medium; echo $?` 非 0 且目录未被创建
+- [ ] 1.1 [A1.1] The entry-point skill gains a short-story branch: recognize intents such as "write a short story / write a Yanxuan story / write a short tale", then ask, run `init.py` with `--length short`, and load the short-story commander after completion. Verify: say one sentence in a live test and confirm it takes the short-story branch
+- [ ] 1.2 [A1.2] Existing projects route by the `length` marker in the project index: when marked short, load the short-story commander directly. Verify: hand-edit the marker and re-invoke, confirming it enters no non-short-story flow
+- [ ] 1.3 [A1.3] Short stories are not the default: without `--length`, the project index contains no short-story marker. Verify: after `init.py <tmp>`, grep finds no length marker
+- [ ] 1.4 [A1.4] `--length` value check: a value other than `short`/`long` prints the allowed values and exits non-zero, creating no files. Verify: `python tools/init.py /tmp/t --length medium; echo $?` is non-zero and the directory was not created
 
-## 2. 主流程 A · 子流程 A2 短篇骨架自成一套
+## 2. Main flow A, sub-flow A2: short-story skeleton is a complete set of its own
 
-- [ ] 2.1 [A2.1] 新建 `templates/short/` 骨架树：项目索引（含长度标记）、篇目目录、沙箱、`.agent/task/`、`tools/`、题材设定、平台目录。验证：`--length short` 初始化后目录树齐备且索引含标记
-- [ ] 2.2 [A2.2] `create_skeleton` 按长度选择模板树根（design D10），骨架只含短篇流程所需目录。验证：顶层目录全部属于短篇流程，无多余目录
-- [ ] 2.3 [A2.3] 短篇版项目级指令（`CLAUDE.md` / `AGENTS.md` / `AGENTS.codex.md`）：agent 构成、流程（情绪→构思→契约→写作→精修→兑现度核对→验收→改稿）、目录地图均为短篇形态。验证：三份文件与短篇流程一致
-- [ ] 2.4 [A2.4] 短篇版状态机：`phase` 覆盖 setup/planning/contract/writing/polishing/verifying/delivered，含当前篇目标识与篇状态。验证：grep 断言，且不含卷章字段
+- [ ] 2.1 [A2.1] Create the `templates/short/` skeleton tree: project index (with length marker), story directories, sandbox, `.agent/task/`, `tools/`, genre settings, platform directories. Verify: after `--length short` initialization, the directory tree is complete and the index contains the marker
+- [ ] 2.2 [A2.2] `create_skeleton` picks the template-tree root by length (design D10), and the skeleton contains only directories the short-story flow needs. Verify: top-level directories all belong to the short-story flow, with no extra directories
+- [ ] 2.3 [A2.3] Short-story project-level instructions (`CLAUDE.md` / `AGENTS.md` / `AGENTS.codex.md`): agent composition, flow (emotion, concept, contract, writing, polish, payoff check, acceptance, revision), and directory map are all in short-story form. Verify: the three files match the short-story flow
+- [ ] 2.4 [A2.4] Short-story state machine: `phase` covers setup/planning/contract/writing/polishing/verifying/delivered, with the current story identifier and story status. Verify: grep assertions, and no volume-or-chapter fields
 
-## 3. 主流程 A · 子流程 A3 题材体系独立编号
+## 3. Main flow A, sub-flow A3: genre system numbered independently
 
-- [ ] 3.1 [A3.1] 建短篇题材注册表（10 条：编号 + 标识 + 中文名），编号与风格包文件一一对应。验证：脚本核对注册表每条的标识都有对应文件
-- [ ] 3.2 [A3.2] `--length short` 时题材编号空间切到短篇注册表，知识产物取短篇风格包。验证：`--length short --genre 1` 后题材参考来自短篇风格包
-- [ ] 3.3 [A3.3] 短篇编号越界报错并提示短篇范围。验证：超出 10 的编号非零退出且提示 1-10
+- [ ] 3.1 [A3.1] Build the short-story genre registry (10 entries: number + identifier + Chinese name), with numbers corresponding one-to-one to style-pack files. Verify: a script checks that every registry identifier has a matching file
+- [ ] 3.2 [A3.2] With `--length short`, the genre numbering space switches to the short-story registry, and knowledge products take the short-story style packs. Verify: after `--length short --genre 1`, genre references come from the short-story style packs
+- [ ] 3.3 [A3.3] Short-story out-of-range numbers error and prompt the short-story range. Verify: a number above 10 exits non-zero and prompts 1-10
 
-## 4. 主流程 A · 子流程 A4 短篇 agent 组职责独立且全平台可部署
+## 4. Main flow A, sub-flow A4: short-story agent group with independent duties, deployable on all platforms
 
-- [ ] 4.1 [A4.1] 写 5 个短篇 agent 定义（总指挥 / 构思 / 写手 / 编辑 / 验收），frontmatter 与既有 agent 同构。验证：`python tools/check-agents.py` 退出码 0
-- [ ] 4.2 [A4.2] 职责独立性可追溯：契约审计与兑现度核对归验收 agent、契约组装归构思 agent、两者非同一 agent、验收 agent 不写内容文件。验证：对照五个定义的输入输出契约逐项核对
-- [ ] 4.3 [A4.3] claude 与 opencode 部署到 agents 目录。验证：两平台短篇项目 agents 目录含短篇组
-- [ ] 4.4 [A4.4] codex 平台 TOML 产物（名称 / 描述 / 内联 SOP）。验证：产物可解析且 SOP 已内联
-- [ ] 4.5 [A4.5] grok 平台 markdown 产物，子 agent 带禁止再派生约束。验证：产物含子 agent 列表与禁用再派生段
-- [ ] 4.6 [A4.6] reasonix / zcode / dsh 内联 skill，数量与短篇 agent 组一致，总指挥含该平台调度适配段。验证：三平台各初始化一次，断言 SKILL.md 数量与内容
-- [ ] 4.7 [A4.7] 不部署非短篇 agent。验证：短篇项目任一平台产物中无非短篇写作 agent
+- [ ] 4.1 [A4.1] Write 5 short-story agent definitions (commander / concept / writer / editor / verifier), with frontmatter isomorphic to existing agents. Verify: `python tools/check-agents.py` exit code 0
+- [ ] 4.2 [A4.2] Duty independence is traceable: contract audit and payoff checks belong to the verifier agent, contract assembly belongs to the concept agent, the two are not the same agent, and the verifier agent writes no content files. Verify: check each of the five definitions' input/output contracts item by item
+- [ ] 4.3 [A4.3] Claude and OpenCode deploy to the agents directory. Verify: both platforms' short-story project agents directories contain the short-story group
+- [ ] 4.4 [A4.4] Codex platform TOML products (name / description / inlined SOP). Verify: products parse and the SOP is inlined
+- [ ] 4.5 [A4.5] Grok platform Markdown products, with sub-agents carrying the no-further-dispatch constraint. Verify: products contain the sub-agent list and the no-redispatch section
+- [ ] 4.6 [A4.6] Reasonix / Zcode / DSH inlined skills, matching the short-story agent group in count, with the commander containing that platform's dispatch adapter section. Verify: initialize each of the three platforms once and assert SKILL.md counts and content
+- [ ] 4.7 [A4.7] No non-short-story agents deployed. Verify: no non-short-story writing agent in any platform product of a short-story project
 
-## 5. 主流程 A · 子流程 A5 知识库独立部署
+## 5. Main flow A, sub-flow A5: knowledge base deployed independently
 
-- [ ] 5.1 [A5.1] `deploy_knowledge` 加短篇分支：短篇去 AI 口径合并为独立产物。验证：短篇项目知识目录存在独立短篇反 AI 产物，内容来自短篇口径文件
-- [ ] 5.2 [A5.2] 短篇格式规范 / 写作参考 / 题材风格包三类落位。验证：三类均可通过部署后路径访问
-- [ ] 5.3 [A5.3] 引用路径全部可解析。验证：`check-agents.py` 退出码 0
-- [ ] 5.4 [A5.4] 题材风格包内容完整：每个包含叙述腔调 / 开篇范式 / 钩子母题 / 情绪烈度 / 对话风格 / **情绪链库** / 招式库 / 节奏骨架 / 收尾范式；情绪链库给出若干条命名情绪弧（每条 4-6 个阶段且阶段有名称）；招式库每条为公式 + 具体示例，不止列名称。验证：逐包核对九节齐备；抽查招式条目含公式与示例
+- [ ] 5.1 [A5.1] `deploy_knowledge` gains a short-story branch: the short-story de-AI criteria merge into a standalone product. Verify: the short-story project knowledge directory has a standalone short-story anti-AI product whose content comes from the short-story criteria files
+- [ ] 5.2 [A5.2] The three kinds (short-story format specs / writing references / genre style packs) land in place. Verify: all three are reachable through post-deployment paths
+- [ ] 5.3 [A5.3] All reference paths resolve. Verify: `check-agents.py` exit code 0
+- [ ] 5.4 [A5.4] Genre style-pack content is complete: each contains narrative voice / opening paradigm / hook motifs / emotional intensity / dialogue style / **emotion-chain library** / technique library / pacing skeleton / ending paradigm; the emotion-chain library gives several named emotional arcs (each with 4-6 stages, each stage named); each technique-library entry is a formula + concrete example, not just a name. Verify: check each pack for all nine sections; spot-check technique entries for formula and example
 
-## 6. 主流程 A · 子流程 A6 同步工具按长度同步
+## 6. Main flow A, sub-flow A6: sync tools sync by length
 
-- [ ] 6.1 [A6.1] 同步工具读项目索引的长度标记，短篇项目同步后仍为短篇形态。验证：短篇项目跑同步后形态断言一致
-- [ ] 6.2 [A6.2] 变更检测覆盖短篇资产。验证：改动仓库侧某短篇知识文件后同步检查非零退出
+- [ ] 6.1 [A6.1] The sync tool reads the project index's length marker, and a short-story project stays in short-story form after sync. Verify: short-story form assertions still hold after running sync on a short-story project
+- [ ] 6.2 [A6.2] Change detection covers short-story assets. Verify: changing a repo-side short-story knowledge file makes the sync check exit non-zero
 
-## 7. 主流程 A · 子流程 A7 静态校验链覆盖短篇
+## 7. Main flow A, sub-flow A7: static check chain covers short stories
 
-- [ ] 7.1 [A7.1] 短篇 agent 的引用全部可解析。验证：`python tools/check-agents.py` 退出码 0
-- [ ] 7.2 [A7.2] 部署产物模拟覆盖 long 与 short 两种长度（design D7），短篇知识不被判孤儿。验证：短篇知识文件全部有引用来源或位于显式豁免清单
-- [ ] 7.3 [A7.3] 跑规则冲突检查：短篇阈值与既有阈值体系无冲突；若有同对象不同数字则加显式豁免并记录理由。验证：退出码 0 且豁免条目带理由
-- [ ] 7.4 [A7.4] 平台测试套件加短篇 E2E 断言（按长度分套）。验证：`python tools/test_platforms.py` 全绿
+- [ ] 7.1 [A7.1] All short-story agent references resolve. Verify: `python tools/check-agents.py` exit code 0
+- [ ] 7.2 [A7.2] Deployed-product simulation covers both long and short lengths (design D7), and short-story knowledge is not judged orphaned. Verify: every short-story knowledge file has a reference source or sits on an explicit exemption list
+- [ ] 7.3 [A7.3] Run the rule-conflict check: short-story thresholds do not conflict with the existing threshold system; where the same object has different numbers, add an explicit exemption with its reason recorded. Verify: exit code 0 and exemption entries carry reasons
+- [ ] 7.4 [A7.4] The platform test suite adds short-story E2E assertions (split by length). Verify: `python tools/test_platforms.py` all green
 
-## 8. 主流程 A · 子流程 A8 一篇一目录且篇目隔离
+## 8. Main flow A, sub-flow A8: one directory per story, with story isolation
 
-- [ ] 8.1 [A8.1] 篇目目录隔离：两篇各占独立目录，各含设定 / 大纲 / 契约 / 正文。验证：连写两篇后核对文件路径与内容独立
-- [ ] 8.2 [A8.2] 共享资源位于项目级（项目级指令 / 状态 / 题材知识），不复制进篇目录。验证：篇目目录下无共享资源文件
-- [ ] 8.3 [A8.3] 新篇不影响旧篇。验证：开始第二篇后第一篇成品文件校验和不变
+- [ ] 8.1 [A8.1] Story-directory isolation: two stories each occupy independent directories, each with settings / outline / contract / main text. Verify: after writing two stories in sequence, check file paths and content independence
+- [ ] 8.2 [A8.2] Shared resources sit at project level (project-level instructions / status / genre knowledge) and are not copied into story directories. Verify: no shared-resource files under story directories
+- [ ] 8.3 [A8.3] A new story does not affect old stories. Verify: after starting a second story, the first finished story's checksum is unchanged
 
-## 9. 主流程 B · 子流程 D0 独立调度契约
+## 9. Main flow B, sub-flow D0: independent dispatch contract
 
-- [ ] 9.1 [D0.1] 写短篇调度契约作唯一权威源，总指挥定义声明以它为准。验证：两者表述一致且定义含声明
-- [ ] 9.2 [D0.2] order 协议一致（只含输入 / 输出路径 + 状态字段）。验证：待办目录内文件无执行步骤与方法论
-- [ ] 9.3 [D0.3] 总指挥不越权（只写 order 与状态文件）。验证：一次调度后内容文件的写入者非总指挥
+- [ ] 9.1 [D0.1] Write the short-story dispatch contract as the single authoritative source, with the commander definition stating it follows it. Verify: both state the same thing and the definition contains the statement
+- [ ] 9.2 [D0.2] Order protocol matches (only input / output paths + status field). Verify: to-do directory files contain no execution steps or methodology
+- [ ] 9.3 [D0.3] The commander does not overreach (only writes order and status files). Verify: after one dispatch, the content files' writer is not the commander
 
-## 10. 主流程 B · 子流程 D1 定情绪与定方向
+## 10. Main flow B, sub-flow D1: set the emotion and direction
 
-- [ ] 10.1 [D1.1] 情绪目标六选一 + 每项配适合场景 / 难度 / 常配题材包。验证：无想法时走引导路径可选出情绪并得到题材推荐
-- [ ] 10.2 [D1.2] 投稿平台基调三选一（知乎盐选 / 小程序 / 番茄短篇），按平台切视角、烈度、章末钩、结局质感。验证：选定平台后框架的视角与落点与模板一致
-- [ ] 10.3 [D1.3] 明确诉求直通（一句话给全要素时不逐项引导）。验证：给全要素输入时直接产出框架，仅追问缺失项
-- [ ] 10.4 [D1.4] `setting.md` 结构完整（基本信息 / 梗概 / 核心反转含类型与 ≥3 铺垫线索 / 四段情绪强度 / 人设速写 / 题材招式）。验证：逐项核对
-- [ ] 10.5 [D1.5] 确认关卡一：完成后展示框架摘要并停下；模糊回复视为未确认；未确认不排大纲。验证：回复「差不多」时不推进
+- [ ] 10.1 [D1.1] Six emotion goals to pick from, each with fitting scenarios / difficulty / commonly paired genre packs. Verify: with no idea, the guided path picks an emotion and yields a genre recommendation
+- [ ] 10.2 [D1.2] Submission-platform tone, three to pick from (Zhihu Yanxuan / mini-programs / Tomato Short Stories), switching point of view, intensity, chapter-end hooks, and ending texture by platform. Verify: after picking a platform, the framework's point of view and landing points match the template
+- [ ] 10.3 [D1.3] A clear request goes straight through (no item-by-item guidance when one sentence gives all elements). Verify: with all elements given as input, the framework is produced directly, with follow-up questions only for missing items
+- [ ] 10.4 [D1.4] `setting.md` is structurally complete (basic info / premise / core reversal with type and at least 3 setup clues / four emotion intensities / character sketches / genre techniques). Verify: check item by item
+- [ ] 10.5 [D1.5] Confirmation gate one: after completion, show the framework summary and stop; vague replies count as unconfirmed; do not lay out the outline before confirmation. Verify: replying "more or less" does not advance
 
-## 11. 主流程 B · 子流程 D2 构思与排纲
+## 11. Main flow B, sub-flow D2: concept and outline
 
-- [ ] 11.1 [D2.1] 设计工作按序执行（平台基调+题材包 → 招式选 2-3 → 反派 → 揭露方式 → 大纲 → 两道验证）。验证：不适用项有原因标注
-- [ ] 11.2 [D2.2] `outline.md` 每节一行、字段齐备（结构段 / 主事件 / 3-5 子事件带功能标签 / 情绪 / 关系变化 / 因果链 / 新获知信息 / 钩子 / 伏笔 / 动静 / 对话密度 / 目标字数）。验证：任取一行核对字段
-- [ ] 11.3 [D2.3] 反转揭穿位置验证：<50% 回退、50-60% 灰区复核、>60% 通过。验证：构造一个 <50% 的大纲，确认被拦下
-- [ ] 11.4 [D2.4] 伏笔回查：结尾元素有前置铺垫、贯穿道具三次出现、铺垫与揭穿间距 ≥3 节。验证：删掉一条铺垫后回查能报出缺项
-- [ ] 11.5 [D2.5] 确认关卡二：展示大纲摘要并停下，未确认不组装契约。验证：确认前契约文件不存在
-- [ ] 11.6 [D2.6] 招式落点表：每个核心招式标注承载节与兑现节，两节之间留铺垫距离，无承载即兑现的条目。验证：读落点表逐条核对；构造一条承载即兑现，确认被拦下
-- [ ] 11.7 [D2.7] 无无功能节：每节至少承担推进招式 / 加压 / 伏笔 / 关系变化 / 情绪兑现 / 展开配角支线之一；招式覆盖不到的节由其余五类承接；推动支线的配角须有记忆点且对主线产生作用，不做装饰角色。验证：逐节检查，构造一个纯过渡节确认被判不合格
-- [ ] 11.8 [D2.8] 因果链按固定形状写：承接点 → 动机与行动 → 核心事件 → 直接后果 → 结尾钩子；承接点与直接后果均写明，不省略连接位、不写成泛泛因果描述。验证：抽查任一小节行
-- [ ] 11.9 [D2.9] 情绪链覆盖全篇：大纲含链名与各阶段覆盖节号；每节都被某阶段覆盖、无节落在链外；链的阶段与五段未强制一一对应。验证：对照节号逐节勾兑
-- [ ] 11.10 [D2.10] 招式条目公式与示例成对：选入本篇的每条招式含可套用公式与一个具体示例，不止列名称。验证：抽查招式条目
-- [ ] 11.11 [D2.11] 反派作恶有前置铺垫：每次作恶之前都有累积危险的铺垫，读者在作恶前已能感到恶意在累积；无无预兆突然作恶的节点。验证：定位反派每次作恶，逐次回溯其前置铺垫
-- [ ] 11.12 [D2.12] 贯穿道具三次语义递进：三次的语义状态分别为无害（像闲笔、不承担强调）、引注意、揭真相（回收前两次）；不限于实体信物（习惯 / 一句话 / 一个数字均可）。验证：逐次核对道具出现的语义状态
-- [ ] 11.13 [D2.13] 催化性失常已设置：全文 60-75% 位置有一个当前解释框架无法解释的矛盾体，作用是逼读者放弃旧假设；不以补充同类信息代替；反转类型不成立的题材已标注不适用。验证：定位该装置并核对位置
+- [ ] 11.1 [D2.1] Design work runs in order (platform tone + genre pack, then pick 2-3 techniques, villain, reveal method, outline, two validations). Verify: non-applicable items carry a reason mark
+- [ ] 11.2 [D2.2] `outline.md` gives one line per section with complete fields (structure part / main event / 3-5 sub-events with function tags / emotion / relationship change / causal chain / new information learned / hook / foreshadowing / motion-stillness / dialogue density / target word count). Verify: pick any line and check its fields
+- [ ] 11.3 [D2.3] Reversal reveal position validation: below 50% rolls back, 50-60% is a gray zone for re-check, above 60% passes. Verify: construct an outline below 50% and confirm it is blocked
+- [ ] 11.4 [D2.4] Foreshadowing re-check: ending elements have prior setup, the throughline prop appears three times, setup-to-reveal gap is at least 3 sections. Verify: deleting one setup makes the re-check report the missing item
+- [ ] 11.5 [D2.5] Confirmation gate two: show the outline summary and stop; do not assemble the contract before confirmation. Verify: the contract file does not exist before confirmation
+- [ ] 11.6 [D2.6] Technique landing table: each core technique is marked with a carrying section and a payoff section, with setup distance between the two and no carry-and-payoff-at-once entries. Verify: read the landing table entry by entry; construct one carry-and-payoff-at-once entry and confirm it is blocked
+- [ ] 11.7 [D2.7] No functionless sections: every section takes on at least one of advancing a technique / adding pressure / foreshadowing / relationship change / emotion delivery / developing a supporting-character subplot; sections the techniques do not cover are carried by the other five types; supporting characters who drive subplots have a memorable hook and affect the main plot, and are not decorative characters. Verify: check section by section; construct a pure-transition section and confirm it is judged unqualified
+- [ ] 11.8 [D2.8] The causal chain follows the fixed shape: handoff point, motivation and action, core event, direct consequence, ending hook; the handoff point and direct consequence are both written out, with no connection point omitted and no generic causal description. Verify: spot-check any section line
+- [ ] 11.9 [D2.9] The emotion chain covers the whole story: the outline contains the chain name and the section numbers each stage covers; every section is covered by some stage, with no section outside the chain; the chain's stages and the five parts are not forced into a one-to-one match. Verify: reconcile section numbers one by one
+- [ ] 11.10 [D2.10] Technique entries pair formula with example: every technique picked into this story contains an applicable formula and one concrete example, not just a name. Verify: spot-check technique entries
+- [ ] 11.11 [D2.11] Villain wrongdoing has prior setup: before each wrongdoing there is setup where danger accumulates, and readers can already sense malice accumulating before it happens; there is no node with sudden wrongdoing and no warning. Verify: locate each villain wrongdoing and trace back its prior setup
+- [ ] 11.12 [D2.12] The throughline prop's three appearances progress semantically: the three semantic states are harmless (like idle writing, carrying no emphasis), draws attention, and reveals the truth (recovering the first two); not limited to physical keepsakes (a habit / a sentence / a number all work). Verify: check each appearance's semantic state in turn
+- [ ] 11.13 [D2.13] The catalytic breakdown is set: at the 60-75% point of the full text there is a contradictory element the current explanatory framework cannot explain, whose role is to force readers to abandon old assumptions; it is not replaced by adding same-kind information; genres where the reversal type does not apply are marked not applicable. Verify: locate the device and check its position
 
-## 12. 主流程 B · 子流程 D3 契约组装 ／ D4 契约独立审计
+## 12. Main flow B, sub-flows D3 contract assembly / D4 independent contract audit
 
-- [ ] 12.1 [D3.1] 契约组装 SOP：六元素结构、输出段扁平化、建议性技法独立子节不进硬规则区。验证：产出的契约六元素齐备、无占位符残留
-- [ ] 12.2 [D3.2] 通用招式→本篇写法的转化（锚定主角 / 锚定信息差 / 锚定情绪节奏 / 融合输出）。验证：抽查招式条目含具体角色名与信息差关系，非题材包原文复制
-- [ ] 12.3 [D3.3] 硬规则优先级降序（红线 > 字数 > 禁用项 > 叙事规则 > 写作规范同级其他）。验证：通读契约无优先级颠倒、建议性技法未混入硬规则区
-- [ ] 12.4 [D3.4] 组装后去重：同一对象同一格式只定义一次。验证：通读契约无同一数量线或禁止项的完全重复
-- [ ] 12.5 [D3.5] 契约条目可核对：硬规则区每条都能被定稿正文核对。验证：逐条检视，无「凭感觉判断」类表述
-- [ ] 12.6 [D3.6] 契约内联冲突裁定表——数值冲突部分（节长下限 / 总字数 / 五段占比 / 反转揭穿位置 / 段落行数五者冲突时的让步顺序与取舍依据）。验证：构造一次数字冲突，确认契约内有可执行的裁定
-- [ ] 12.11 [D3.7] 契约内联冲突裁定表——定性冲突部分：逻辑自洽优先于爽点与虐点；附「角色关键行动必须有其动机来源、前后一致」要求；写作侧遇冲突按此执行不自行裁定。验证：构造一个「爽点需要角色违背动机」的情形，确认裁定表给出改爽点而非改逻辑
-- [ ] 12.7 [D4.1] 契约审计 SOP：审计者非组装者（由验收 agent 执行）。验证：追溯组装者与审计者非同一 agent
-- [ ] 12.8 [D4.2] 审计五项齐备（转化质量 / 优先级顺序 / 规则去重 / 约束间一致性 / 条目可核对性），每项附原文证据。验证：读审计产出逐项核对
-- [ ] 12.9 [D4.3] 审计不通过即回退组装修正后重审，写作不开始。验证：人为制造一处优先级颠倒，确认被拦下
-- [ ] 12.10 [D4.4] 审计通过后契约冻结为本次基线。验证：写作与兑现度核对使用的契约版本一致
+- [ ] 12.1 [D3.1] Contract assembly SOP: six-element structure, flattened output section, suggestive techniques in a separate sub-section outside the hard-rules zone. Verify: the produced contract has all six elements and no placeholder residue
+- [ ] 12.2 [D3.2] Transforming general techniques into this story's writing (anchor the protagonist / anchor the information gap / anchor the emotional rhythm / merge into output). Verify: spot-check technique entries for concrete character names and information-gap relationships, not genre-pack text copies
+- [ ] 12.3 [D3.3] Hard rules in descending priority (red lines > word counts > banned items > narrative rules > other same-level writing-standards rules). Verify: read through the contract with no priority inversions, and suggestive techniques not mixed into the hard-rules zone
+- [ ] 12.4 [D3.4] Deduplication after assembly: the same object in the same format is defined only once. Verify: read through the contract with no exact duplicate of the same quantity line or ban
+- [ ] 12.5 [D3.5] Contract entries are checkable: every hard-rules-zone entry can be checked against the finalized main text. Verify: examine entry by entry, with no "judge by feel" wording
+- [ ] 12.6 [D3.6] The contract inlines the conflict adjudication table, numeric-conflict part (the concession order and trade-off basis when section-length floor / total word count / five-part shares / reversal reveal position / paragraph line-shape conflict). Verify: construct one numeric conflict and confirm the contract has an executable adjudication
+- [ ] 12.11 [D3.7] The contract inlines the conflict adjudication table, qualitative-conflict part: logical consistency takes priority over payoffs and gut-punches, with the requirement that "a character's key actions must have a motivation source and stay consistent throughout"; when the writing side meets a conflict, it follows this and does not adjudicate on its own. Verify: construct a case where "a payoff needs a character to act against their motivation" and confirm the adjudication table says to change the payoff, not the logic
+- [ ] 12.7 [D4.1] Contract audit SOP: the auditor is not the assembler (the verifier agent performs it). Verify: trace assembler and auditor as different agents
+- [ ] 12.8 [D4.2] All five audit items present (transformation quality / priority order / rule deduplication / consistency between constraints / entry checkability), each with quoted source evidence. Verify: read the audit output item by item
+- [ ] 12.9 [D4.3] Failed audit rolls back to assembly for fixes and re-audit, and writing does not start. Verify: deliberately create one priority inversion and confirm it is blocked
+- [ ] 12.10 [D4.4] After the audit passes, the contract is frozen as this round's baseline. Verify: the contract version used by writing and the payoff check matches
 
-## 13. 主流程 B · 子流程 D5 正文写作硬底线
+## 13. Main flow B, sub-flow D5: main-text writing hard floors
 
-- [ ] 13.1 [D5.1] 写前两问改为对契约（目标情绪 / 契约中对应技法条目 / 用在哪个段落）。验证：答不出时先回读契约再动笔
-- [ ] 13.2 [D5.2] 三维度揉进（发生 / 感知 / 反应同段），段落按新动作 / 物件 / 信息 / 对话 / 视线断。验证：抽查小节无「三段式堆叠」写法
-- [ ] 13.3 [D5.3] 节长底线 ≥800 字（高信息密度题材 ≥500）且机器实测；不足则补足后可写下一节。验证：构造一个 600 字的普通题材小节，确认被判未完成
-- [ ] 13.4 [D5.4] 总字数 ≥8000 且用跨平台可执行的字符统计（禁模型估算、禁字节数）。验证：统计命令在 macOS / Linux / Windows 均可执行
-- [ ] 13.5 [D5.5] 节数守恒：正文节数 = 大纲规划节数。验证：构造少一节的成稿，确认被拦下
-- [ ] 13.6 [D5.6] 五段结构落地（占比 + 前 100 字事件密度 ≥3 + 前 3 句无无事件环境描写）。验证：对照 spec `D5.6` 抽查成稿
-- [ ] 13.7 [D5.7] 写作侧不越权裁定：契约内硬约束冲突时按契约裁定表执行。验证：构造一次冲突，确认写手未自行决定让步顺序
-- [ ] 13.8 [D5.8] 段与节不一一对应：功能段的起止与节的边界各自独立，开头段与结尾段未因占比折算字数低于节下限而被取消或合并。验证：对照大纲与成稿核对两套边界
-- [ ] 13.9 [D5.9] 每节下限无豁免：承载开头段或结尾段的节同样满足节长下限。验证：统计全部节字数，无按功能段豁免的情形
-- [ ] 13.10 [D5.10] 每批重注入契约硬规则：新一批开始时写作上下文含硬规则区完整内容，不依赖写作侧自行回溯。验证：检查第二批及以后每批的写作输入
-- [ ] 13.11 [D5.11] 重注入不丢条目：逐批注入的硬规则与契约硬规则区条目一一对应，无遗漏、无只注入子集。验证：对比首批与末批的注入内容与契约原文
-- [ ] 13.12 [D5.12] 场景晚进早出：每个场景第一句已处于冲突或张力之中；起床 / 赶路 / 寒暄 / 布置等进入前流程未展开。验证：抽查每个场景的进入点
-- [ ] 13.13 [D5.13] 反转完成读者侧瞬时串线：揭示时用回看 / 独白 / 物证把前文线索一次性带回，读者能说出具体是哪几处；不只陈述真相。验证：读反转节，检查是否回收了具体线索
+- [ ] 13.1 [D5.1] Two questions before writing, now against the contract (target emotion / matching technique entry in the contract / which paragraph to use it in). Verify: when they cannot be answered, the contract is re-read before writing
+- [ ] 13.2 [D5.2] Three dimensions kneaded in (happening / perceiving / reacting in the same paragraph), with paragraphs breaking on new action / object / information / dialogue / gaze. Verify: spot-check sections for no "three-paragraph stacking" writing
+- [ ] 13.3 [D5.3] Section-length floor of at least 800 words (high-information-density genres at least 500), machine-measured; when short, expand before writing the next section. Verify: construct a 600-word section in an ordinary genre and confirm it is judged unfinished
+- [ ] 13.4 [D5.4] Total word count of at least 8000, using cross-platform executable character counting (model estimation banned, byte counts banned). Verify: the counting command runs on macOS / Linux / Windows
+- [ ] 13.5 [D5.5] Section-count conservation: main-text section count equals the outline's planned section count. Verify: construct a finished draft missing one section and confirm it is blocked
+- [ ] 13.6 [D5.6] Five-part structure lands (shares + at least 3 event-dense items in the first 100 words + no event-free environment description in the first 3 sentences). Verify: spot-check the finished draft against spec `D5.6`
+- [ ] 13.7 [D5.7] The writing side does not adjudicate beyond its authority: when contract hard constraints conflict, follow the contract's adjudication table. Verify: construct one conflict and confirm the writer did not decide the concession order itself
+- [ ] 13.8 [D5.8] Paragraphs and sections are not one-to-one: functional segments' start and end stand independently of section boundaries, and the opening and ending parts are not cancelled or merged because their share-converted word counts fall below the section floor. Verify: check both sets of boundaries against the outline and finished draft
+- [ ] 13.9 [D5.9] No exemption from the per-section floor: sections carrying the opening or ending part meet the section-length floor just the same. Verify: count all sections' words; no case of exemption by functional segment
+- [ ] 13.10 [D5.10] Re-inject the contract hard rules each batch: when a new batch starts, the writing context contains the hard-rules zone's complete content, without relying on the writing side to look it up itself. Verify: check the writing input of the second and later batches
+- [ ] 13.11 [D5.11] Re-injection drops no entries: batch-by-batch injected hard rules correspond one-to-one with the contract hard-rules zone, with none missing and no subset-only injection. Verify: compare the first and last batches' injected content against the contract text
+- [ ] 13.12 [D5.12] Scenes enter late and leave early: every scene's first sentence is already inside conflict or tension; lead-in routines such as waking up / traveling / greetings / setup are not expanded. Verify: spot-check every scene's entry point
+- [ ] 13.13 [D5.13] The reversal completes reader-side instant threading: at the reveal, a look-back / monologue / physical evidence brings the earlier clues back at once, and readers can name exactly which places they were; not just stating the truth. Verify: read the reversal section and check whether concrete clues were recovered
 
-## 14. 主流程 B · 子流程 D6 去 AI 味与精修
+## 14. Main flow B, sub-flow D6: de-AI pass and polish
 
-- [ ] 14.1 [D6.1] 按短篇口径执行去 AI 味（留删对表见 AR2）。验证：审判句 / 火葬场预告 / 心死章尾未被误删
-- [ ] 14.2 [D6.2] 精修清单六类逐项（开头 / 情绪 / 反转 / 节奏 / 钩子 / 技法）。验证：清单逐项有结论
-- [ ] 14.3 [D6.3] 格式合规（小节标记统一 / 段间单换行无空行 / 无缩进 / 正文无 Markdown / 对话独立成行 / 引号风格 / 无章节号与工程词）。验证：逐项 grep 断言
-- [ ] 14.4 [D6.4] 标点与字数收尾：禁用标点清零，停顿改用短句 / 动作 / 换行；精修后字数仍达标。验证：grep 禁用标点无命中 + 重新实测字数
-- [ ] 14.5 [D6.5] 交付洁净：末尾无自检记录、无检查标记注释、无工程词。验证：成品文件末尾 20 行人工核对
+- [ ] 14.1 [D6.1] Run the de-AI pass by the short-story criteria (keep-or-cut table, see AR2). Verify: judgment sentences / crematorium previews / heart-death chapter endings were not wrongly deleted
+- [ ] 14.2 [D6.2] Polish checklist, six categories item by item (opening / emotion / reversal / pacing / hooks / technique). Verify: each checklist item has a conclusion
+- [ ] 14.3 [D6.3] Format compliance (uniform section markers / single line break between paragraphs with no blank lines / no indentation / no Markdown in main text / dialogue on its own lines / quote style / no chapter numbers or engineering words). Verify: item-by-item grep assertions
+- [ ] 14.4 [D6.4] Punctuation and word-count finish: banned punctuation at zero, pauses done with short sentences / actions / line breaks; word count still meets the standard after polish. Verify: grep finds no banned punctuation + re-measure word count
+- [ ] 14.5 [D6.5] Clean delivery: no self-check records, no check-marker comments, and no engineering words at the end. Verify: manually check the last 20 lines of the finished file
 
-## 15. 主流程 B · 子流程 D7 兑现度核对与验收交付
+## 15. Main flow B, sub-flow D7: payoff check and acceptance delivery
 
-- [ ] 15.1 [D7.1] 兑现度核对 SOP：由未参与组装 / 写作 / 清创的执行完成。验证：追溯执行者三项均未参与
-- [ ] 15.2 [D7.2] 逐项出结论（硬规则遵守 / 大纲子事件落地 / 情绪目标 / 反转位置 / 贯穿道具三次出现含语义递进 / 催化性失常 / 人物前后一致 / 对话逐句功能 / 字数节数 / 标点禁令），未兑现项附正文原文证据。验证：读核对产出，无「只报结论无证据」项
-- [ ] 15.3 [D7.3] 未兑现即回退：硬性条目未兑现时回到对应阶段修正后重核，不得直接交付。验证：人为制造一处未兑现（如反转位置偏移），确认被拦下
-- [ ] 15.4 [D7.4] 体验验收独立进行：先沉浸阅读再逐项评价，指标名不出现在作者可见文本。验证：验收输出无内部指标名
-- [ ] 15.5 [D7.5] 交付摘要（写了什么 / 情绪有没有达到 / 哪里可再改 / 文件在哪），不展示内部结构。验证：摘要对照作者沟通规范无违规词
-- [ ] 15.6 [D7.6] 交付后两条路可用：就本篇提出修改、或开始下一篇；下一篇独立目录与独立契约，本篇文件字节不变。验证：两条路各走一次
-- [ ] 15.7 [D7.7] 对话逐句功能核对：逐句扫描（不抽样），每句标注其功能（推动情节 / 揭示性格 / 制造冲突 / 埋设伏笔）；连续多句仅寒暄、重复已知信息或单纯衔接的判为不合格并给出位置。验证：对一节正文逐句过一遍
+- [ ] 15.1 [D7.1] Payoff-check SOP: performed by an executor who took part in neither assembly / writing / cleanup. Verify: trace the executor as having taken part in none of the three
+- [ ] 15.2 [D7.2] Conclusions item by item (hard-rule compliance / outline sub-event landing / emotion goal / reversal position / throughline prop's three appearances including semantic progression / catalytic breakdown / character consistency throughout / dialogue line-by-line function / word and section counts / punctuation ban), with undelivered items carrying quoted main-text evidence. Verify: read the check output; no item has "conclusion only, no evidence"
+- [ ] 15.3 [D7.3] Undelivered means rollback: when a hard item is undelivered, return to the matching stage for fixes and re-check; do not deliver directly. Verify: deliberately create one undelivered item (such as a shifted reversal position) and confirm it is blocked
+- [ ] 15.4 [D7.4] Experience acceptance runs independently: immerse-read first, then evaluate item by item, with metric names absent from author-visible text. Verify: the acceptance output contains no internal metric names
+- [ ] 15.5 [D7.5] Delivery summary (what was written / whether the emotion was met / what could still be improved / where the files are), without showing internal structure. Verify: the summary has no violating words per the author-communication spec
+- [ ] 15.6 [D7.6] Two paths available after delivery: ask for changes to this story, or start the next story; the next story has an independent directory and independent contract, and this story's files stay byte-for-byte unchanged. Verify: walk both paths once
+- [ ] 15.7 [D7.7] Dialogue line-by-line function check: scan line by line (no sampling), marking each line's function (advancing the plot / revealing character / creating conflict / planting foreshadowing); several consecutive lines that only greet, repeat known information, or merely connect are judged unqualified, with positions given. Verify: go through one section's main text line by line
 
-## 16. 主流程 B · 子流程 D8 作者改稿
+## 16. Main flow B, sub-flow D8: author revisions
 
-- [ ] 16.1 [D8.1] 意见定位：作者提出修改后先给出定位结论（回到构思 / 回到大纲 / 重写某几节），不直接全文重写。验证：分别给三类意见（情绪目标类 / 结构类 / 写法类），确认定位到不同阶段
-- [ ] 16.2 [D8.2] 最小回退：只涉及某些节写法的意见只重写这些节，其余原样保留，不重新组装契约。验证：改一节后其余节文件未变、契约未重新生成
-- [ ] 16.3 [D8.3] 结构改动连带契约：涉及结构调整或招式变化的意见回到大纲修正，并连带重新组装与重新审计契约。验证：改一处招式，确认契约被重新组装且重新审计后才继续写作
-- [ ] 16.4 [D8.4] 改稿后重跑闸门：重写节重跑去 AI 味与格式合规，改动落地后重跑兑现度核对，不得直接交付。验证：改一节后核对产出已更新
-- [ ] 16.5 [D8.5] 状态机局部回退：回退保留未受影响部分的进度，不清空整篇进度。验证：改第 2 节后确认第 3 节及以后的进度仍在
-- [ ] 16.6 [D8.6] 改稿不夹带：改动差异清单全部落在作者要求范围内——未改核心走向或结局、未删或弱化关键冲突场景、未加新情节线或新人物、未改人物性格、未改叙述视角、未改未被要求重写的节；出现任一即判本次改稿失败并回退重做。验证：构造一次「改一节顺手改了相邻节」的场景，确认被拦下
+- [ ] 16.1 [D8.1] Locate the feedback: after the author asks for a change, first give a locating conclusion (return to concept / return to outline / rewrite certain sections) instead of rewriting the full text directly. Verify: give three kinds of feedback (emotion-goal type / structure type / writing type) and confirm they locate to different stages
+- [ ] 16.2 [D8.2] Minimal rollback: feedback touching only certain sections' writing rewrites only those sections, keeping the rest as-is, without re-assembling the contract. Verify: after changing one section, the other sections' files are unchanged and the contract was not regenerated
+- [ ] 16.3 [D8.3] Structure changes carry the contract with them: feedback touching structure adjustments or technique changes returns to the outline to fix, carrying re-assembly and re-audit of the contract with it. Verify: change one technique and confirm the contract was re-assembled and re-audited before writing continued
+- [ ] 16.4 [D8.4] Re-run gates after revision: rewritten sections re-run the de-AI pass and format compliance, and the payoff check re-runs after changes land; do not deliver directly. Verify: after changing one section, the check output is updated
+- [ ] 16.5 [D8.5] State machine partial rollback: rollback keeps the progress of unaffected parts and does not clear the whole story's progress. Verify: after changing section 2, confirm section 3 and later progress is still there
+- [ ] 16.6 [D8.6] Revisions smuggle nothing in: the change diff list falls entirely within what the author asked for: core direction or ending unchanged, key conflict scenes not deleted or weakened, no new plot lines or characters added, character personalities unchanged, narrative point of view unchanged, sections not asked to be rewritten unchanged; if any appears, the revision counts as failed and rolls back for a redo. Verify: construct a "change one section and helpfully change the neighboring section" case and confirm it is blocked
 
-## 17. 主流程 B · 子流程 D9 状态机与断点续跑
+## 17. Main flow B, sub-flow D9: state machine and breakpoint resume
 
-- [ ] 17.1 [D9.1] 状态字段短篇专属（phase / 当前篇目标识 / 篇状态 / 字数降级记录；不含卷章字段）。验证：grep 断言
-- [ ] 17.2 [D9.2] 中断恢复：正文分批中途中断后重启，从未完成 phase 继续，已完成 phase 不重跑（含契约阶段）。验证：人为中断一次后重启观察
-- [ ] 17.3 [D9.3] 等值即未完成：篇状态等于某阶段且 order 未标完成时判定未完成并重派。验证：构造等值场景确认重派
+- [ ] 17.1 [D9.1] Short-story-specific status fields (phase / current story identifier / story status / word-count downgrade record; no volume-or-chapter fields). Verify: grep assertions
+- [ ] 17.2 [D9.2] Interrupted recovery: after an interruption midway through batched main-text writing, restart and continue from the unfinished phase, without re-running completed phases (including the contract stage). Verify: interrupt once manually and observe the restart
+- [ ] 17.3 [D9.3] Equal value means unfinished: when the story status equals a stage and the order is not marked complete, judge it unfinished and re-dispatch. Verify: construct an equal-value case and confirm re-dispatch
 
-## 18. 主流程 C · 短篇独立反 AI 轨（AR1-AR7）
+## 18. Main flow C, short-story independent anti-AI track (AR1-AR7)
 
-- [ ] 18.1 [AR1.1] 产出短篇去 AI 的**检查项分级清单**：逐项标注复用或独立并给出理由（文体无关 / 与文体口径绑定）；不得出现「整工具复用」或「整工具弃用」式整体结论。验证：清单每项均有承担方与理由；对照 design D2 的分级表无遗漏
-- [ ] 18.2 [AR1.2] 文体无关项由既有工具承担：格式与排版类、通用 AI 腔类。验证：短篇项目执行检查时这些项由既有工具产出，仓库内无同类检查的重复实现
-- [ ] 18.3 [AR1.3] 文体绑定项使用短篇校准：抒情用词、转折句式、段落形态、万能比喻阈值。验证：这四项的判定来自短篇自己的词表与判据，未直接采用他方校准输出
-- [ ] 18.4 [AR1.4] 建短篇去 AI 目录，口径部署为独立产物文件。验证：知识目录位置正确、部署产物独立
-- [ ] 18.5 [AR2.1-2.3] 写短篇留删对表（三类保留 / 两类删除 / 三列结构）与唯一判据「是否带主角此刻的主观情绪」。验证：对同一存疑句判定不产生冲突结论
-- [ ] 18.6 [AR3.1-3.4] 情绪写法落到短篇写作参考：情绪词后接场景特有具体动作物件；一个情绪只写一次；情绪词本身不在删除范围；**第一人称所有格已清除**（我的心 → 心，我的灵魂 → 灵魂；我知道 / 我明白 / 我意识到 / 我感到 / 我看到自己 类引导小句改成陈述、感受或动作）。验证：正则在成稿中扫「我的 + 身体部位」零命中
-- [ ] 18.7 [AR4.1-4.5] 写短篇禁用词清单（八类），不含情绪词本身；**程度副词类目覆盖强弱两端**（弱化：微微 / 淡淡 / 缓缓 / 轻轻；强化：正 / 正在 / 非常 / 十分 / 极其 / 越来越 / 果然 / 好像），统一按每千字上限约束、按密度删减而非一刀切。验证：`check-conflicts.py` 退出码 0 或豁免条目带理由；抽查清单两端词齐备
-- [ ] 18.8 [AR5.1-5.4] 写短篇自检清单（情绪承接 / 在场叙述保留 / 章尾有钩有判 / 反模板化）。验证：四条均可机械判定或有明确判据
-- [ ] 18.9 [AR6.1-6.3] 标点硬约束在短篇格式规范与短篇口径各声明一次；停顿处做语义级改写（短句 / 动作 / 换行），不用机械替换。验证：两处均有声明；成稿无禁用标点且停顿处语义通顺
-- [ ] 18.10 [AR7.1-7.3] 补段落形态上下限（design D12）：下限为平台形态（一句一段的短段底色），上限为防电报体（连续碎句成片的可判定信号）；声明短句是落在情绪峰值的偶发重拍而非通篇底色。验证：格式规范与去 AI 口径两处均含上下限与定位声明，上限信号可判定
-- [ ] 18.11 搬运短篇写作参考与题材风格包全部文件，按 design D9 三件改写（路径改部署后基座 / 删外部体系引用 / 过作者沟通规范），文件头标注来源与商用需原作者确认。验证：`grep -r "story-architect\|narrative-writer\|character-designer\|consistency-checker\|\.story-deployed\|/story-"` 无命中；`check-agents.py` 退出码 0
-- [ ] 18.12 [AR8.1-8.3] 角色命名约束：以清单形式给出高收敛的完整名字与用字（含同音字）、可机械扫描，不用「随机生成」作机制；命名结果落盘进篇目设定（跨次稳定，改稿不换名）；后续阶段以记录为准不重新生成。验证：用清单扫一遍成品无命中；改稿一次确认名字未变
-- [ ] 18.13 [AR9.1-9.4] 现代概念防火墙：一份可机械扫描的词表，覆盖现代科技术语 / 网络用语 / 学术名词 / 现代制度与职业名 / 现代时间与计量单位五类，并标注**仅适用于古代与架空背景题材**；正文不得裸露推理层现代概念（心理创伤 / 原生家庭 / 边界感类）；翻译不成立时删除并改用感官与行为描写，不用通用喻体绕过。验证：古代题材样稿扫词表零命中；现代题材样稿确认未被误套
+- [ ] 18.1 [AR1.1] Produce the short-story de-AI **check-item grading list**: each item marked reuse or independent with its reason (genre-independent / bound to genre wording); no blanket "reuse the whole tool" or "drop the whole tool" conclusions. Verify: every list item has an owner and a reason; check against design D2's grading table with nothing missing
+- [ ] 18.2 [AR1.2] Genre-independent items are handled by existing tools: format and layout items, general AI-tone items. Verify: when a short-story project runs checks, these items come from existing tools, with no duplicate implementation of the same kind of check in the repo
+- [ ] 18.3 [AR1.3] Genre-bound items use short-story calibration: lyrical word choice, reversal sentence patterns, paragraph shape, universal-metaphor thresholds. Verify: these four items' judgments come from the short story's own word lists and criteria, without directly adopting another party's calibrated output
+- [ ] 18.4 [AR1.4] Build the short-story de-AI directory, with the criteria deployed as a standalone product file. Verify: knowledge directory location is correct and the deployed product is standalone
+- [ ] 18.5 [AR2.1-2.3] Write the short-story keep-or-cut table (three keep categories / two cut categories / three-column structure) with the single criterion "does it carry the protagonist's subjective emotion right now". Verify: judging the same doubtful sentence produces no conflicting conclusions
+- [ ] 18.6 [AR3.1-3.4] Land emotion writing in the short-story writing references: emotion words are followed by scene-specific concrete actions or objects; one emotion is written once; emotion words themselves are not in the deletion scope; **first-person possessives are cleared** ("my heart" becomes "heart", "my soul" becomes "soul"; leading mini-clauses such as "I know / I understand / I realize / I feel / I see myself" become statements, feelings, or actions). Verify: a regex scan of the finished draft finds zero hits for "my + body part"
+- [ ] 18.7 [AR4.1-4.5] Write the short-story banned-word list (eight categories), containing no emotion words themselves; **the degree-adverb category covers both weak and strong ends** (weak: slightly / faintly / slowly / gently; strong: right / currently / very / extremely / increasingly / indeed / seemingly), constrained together by one per-thousand-word cap and trimmed by density rather than deleted indiscriminately. Verify: `check-conflicts.py` exit code 0 or exemption entries carry reasons; spot-check the list for both ends' words
+- [ ] 18.8 [AR5.1-5.4] Write the short-story self-check list (emotion follow-through / present-tense narration kept / chapter ending with hook and judgment / anti-templating). Verify: all four items are mechanically decidable or have clear criteria
+- [ ] 18.9 [AR6.1-6.3] The punctuation hard constraint is stated once each in the short-story format spec and the short-story criteria; pauses are rewritten at the semantic level (short sentences / actions / line breaks), not by mechanical replacement. Verify: both places carry the statement; the finished draft has no banned punctuation and its pauses read naturally
+- [ ] 18.10 [AR7.1-7.3] Add the paragraph-shape floor and ceiling (design D12): the floor is the platform shape (a short-paragraph base color with one sentence per paragraph), the ceiling guards against telegram style (a decidable signal for consecutive fragments in sheets); state that short sentences are occasional beats landing on emotional peaks, not the base color throughout. Verify: both the format spec and the de-AI criteria contain the floor, ceiling, and positioning statement, and the ceiling signal is decidable
+- [ ] 18.11 Move all short-story writing references and genre style-pack files, applying design D9's three rewrites (paths changed to the post-deployment base / external-system references removed / passed through the author-communication spec), with file headers marking the source and the "commercial use needs original author confirmation" note. Verify: `grep -r "story-architect\|narrative-writer\|character-designer\|consistency-checker\|\.story-deployed\|/story-"` finds nothing; `check-agents.py` exit code 0
+- [ ] 18.12 [AR8.1-8.3] Character-naming constraint: give high-convergence full names and characters (including homophones) as a list that is machine-scannable, without using "random generation" as the mechanism; naming results are saved into the story settings (stable across passes, revisions do not change names); later stages follow the record and do not regenerate. Verify: scan a finished draft with the list and find zero hits; revise once and confirm names are unchanged
+- [ ] 18.13 [AR9.1-9.4] Modern-concept firewall: one machine-scannable word list covering five categories (modern science and technology terms / internet slang / academic terms / modern institutions and job titles / modern time and measurement units), marked as **applying only to ancient- and fictional-world-setting genres**; main text must not bare reasoning-layer modern concepts (psychological trauma / family of origin / boundaries and similar); when translation fails, delete the concept and use senses and behavior instead, without bypassing with a generic metaphor. Verify: an ancient-genre sample draft scans the word list with zero hits; a modern-genre sample draft is confirmed not wrongly covered
 
-## 19. 兼容回归、端到端实测与收尾
+## 19. Compatibility regression, end-to-end live test, and wrap-up
 
-- [ ] 19.1 兼容回归：既有初始化与既有流水线行为不因本 change 改变（design D13 兼容声明）。验证：不传 `--length` 的初始化产物与改动前逐项一致；既有 spec 的 requirement 未被修改
-- [ ] 19.2 全链回归：`python -m py_compile tools/*.py`、`python tools/test_platforms.py`、`python tools/check-agents.py`、`python tools/check-conflicts.py` 全部退出码 0。验证：四条命令输出无 FAIL
-- [ ] 19.3 七平台短篇初始化各跑一次，人工核对产物形态。验证：七个平台产物符合 spec A4 / A5
-- [ ] 19.4 端到端实测（仓库提交前要求）：从「说一句写短篇」跑到拿到成品正文，覆盖懂行直通与不懂引导两条路径；人为构造一次未兑现项确认兑现度核对能拦下；人为提一次改稿意见确认走 D8 路径。验证：实测记录附入 PR 描述
-- [ ] 19.5 文档同步：`README.md` / `README-en.md` / `ARCHITECTURE.md` / `SKILL.md` 加短篇说明与触发词。验证：四份文档含短篇章节
-- [ ] 19.6 提交并建 PR（`feat: 短篇写作流水线`，关联本 change），合并后按发版流程 bump `VERSION` 与写 releasenotes。验证：CI 绿、review 通过
+- [ ] 19.1 Compatibility regression: existing initialization and existing pipeline behavior do not change because of this change (design D13 compatibility statement). Verify: initialization products without `--length` match the pre-change items one by one; existing specs' requirements are unmodified
+- [ ] 19.2 Full-chain regression: `python -m py_compile tools/*.py`, `python tools/test_platforms.py`, `python tools/check-agents.py`, and `python tools/check-conflicts.py` all exit 0. Verify: all four commands output no FAIL
+- [ ] 19.3 Run short-story initialization once on each of the seven platforms and manually check the product shapes. Verify: the seven platforms' products match spec A4 / A5
+- [ ] 19.4 End-to-end live test (required before repo submission): from "say one sentence, write a short story" to receiving the finished main text, covering both the expert straight-through path and the guided path for newcomers; deliberately construct one undelivered item to confirm the payoff check blocks it; deliberately raise one revision request to confirm it takes the D8 path. Verify: the live-test record is attached to the PR description
+- [ ] 19.5 Documentation sync: `README.md` / `README-en.md` / `ARCHITECTURE.md` / `SKILL.md` gain short-story explanations and trigger words. Verify: all four documents contain short-story sections
+- [ ] 19.6 Submit and open a PR (`feat: 短篇写作流水线`, linked to this change); after merging, bump `VERSION` and write release notes per the release flow. Verify: CI green, review passed

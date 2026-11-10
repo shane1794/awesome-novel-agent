@@ -1,26 +1,26 @@
 #!/usr/bin/env python3
-"""反 AI 规则冲突静态检查
+"""Static check for anti-AI rule conflicts
 
-扫描 knowledge/ 与 skills/ 下的规则文件，检查两类问题：
+Scan the rule files under knowledge/ and skills/ for two kinds of problems:
 
-A. 阈值冲突：同一对象在不同文件里定义了不同的数量阈值。
-   权威源 = knowledge/anti-ai/common-rules.md。其他文件的阈值若与权威源
-   同对象但数字不同 → 报冲突（职责声明要求其他文件只引用、不重复定义）。
+A. Threshold conflicts: the same object is given different numeric thresholds in different files.
+   The authoritative source is knowledge/anti-ai/common-rules.md. If another file gives a threshold for the same object
+   with a different number, report a conflict (the responsibility statement requires other files to reference, not redefine).
 
-B. 边界越界：方法论/豁免类文件（anti-ai-writing.md、boundary-cases.md）
-   职责是解释"为什么"和"怎么做"，禁止出现数量线。检出即报越界。
+B. Boundary violations: methodology/exemption files (anti-ai-writing.md, boundary-cases.md)
+   exist to explain "why" and "how", and must not contain numeric thresholds. Any found is reported as a violation.
 
-C. 术语/反模式禁现（审计 2026-08-13 §3-C5，决策 P2-10）：
-   提示词结构已统一为「6 元素」，以下遗留词禁止出现在注入侧
-   （agents/skills/knowledge）；「叙事规则优先级高于所有约束」反模式句
-   除 prompt-audit.md（验收探针定义，必须保留）外禁现——防止旧表述回潮。
+C. Banned terms/anti-patterns (audit 2026-08-13 section 3-C5, decision P2-10):
+   The prompt structure is unified as "6 elements", so the legacy terms below are banned from the injection side
+   (agents/skills/knowledge); the anti-pattern sentence "叙事规则优先级高于所有约束"
+   is banned everywhere except prompt-audit.md (acceptance probe definitions, which must be kept), to prevent old wording from returning.
 
-用法: python tools/check-conflicts.py
-返回码 0 = 通过，非 0 = 有问题（CI 用）。
+Usage: python tools/check-conflicts.py
+Exit code 0 = pass, non-zero = problems found (used by CI).
 
-阈值格式（兼容两种）：
-  - 代码块: 单章阈值: 5 次 | 严重度: medium
-  - 表格:   | 疲劳词 | 3 次 | 替代策略 |
+Threshold formats (two supported):
+  - Code block: 单章阈值: 5 次 | 严重度: medium
+  - Table:   | 疲劳词 | 3 次 | 替代策略 |
 """
 
 import sys
@@ -37,66 +37,66 @@ ROOT = Path(__file__).resolve().parent.parent
 KNOWLEDGE_DIR = ROOT / "knowledge"
 SKILLS_DIR = ROOT / "skills"
 
-# 唯一权威源——其他文件的阈值以它为准
+# The single authoritative source; other files' thresholds defer to it
 AUTHORITY = KNOWLEDGE_DIR / "anti-ai" / "common-rules.md"
 
-# 越界白名单：这些文件职责是方法论/豁免，禁止数量线
+# Boundary whitelist: these files are methodology/exemption files, so numeric thresholds are banned in them
 METHODOLOGY_FILES = [
     "knowledge/anti-ai/anti-ai-writing.md",
     "knowledge/anti-ai/boundary-cases.md",
 ]
 
-# 扫描范围：knowledge/ + skills/ 下所有 .md
+# Scan scope: all .md files under knowledge/ + skills/
 SCAN_GLOBS = [
     (KNOWLEDGE_DIR, "knowledge"),
     (SKILLS_DIR, "skills"),
 ]
 
-# 匹配 "对象 | 数字 次" 表格行（纯数字：| 默默 | 3 次 |）
+# Match "object | number 次" table rows (plain numbers: | 默默 | 3 次 |)
 TBL_RE = re.compile(r"^\|\s*([^|]+?)\s*\|\s*(\d+)\s*(次)")
-# 匹配 "对象 | ≤数字次[/单位]" 表格行（≤格式：| 突然/忽然 | ≤4次/章 | 或速查表裸格式 | 然而/不过 | ≤4次 |）
+# Match "object | ≤N 次[/unit]" table rows (≤ format: | 突然/忽然 | ≤4次/章 |, or the bare quick-reference format | 然而/不过 | ≤4次 |)
 TBL_LE_RE = re.compile(r"^\|\s*([^|]+?)\s*\|\s*(?:≤|≤)?(\d+)\s*(次)(?:/(?:章|500字|段|千字))?")
-# 匹配 "对象 | N 句" 表格行（对话密度类：连续 ≥8 句）
+# Match "object | N 句" table rows (dialogue-density class: ≥8 consecutive sentences)
 TBL_SEN_RE = re.compile(r"^\|\s*([^|]+?)\s*\|\s*(?:≥|>)?(\d+)\s*(句)")
-# 匹配 "单章阈值: 数字 次[/单位]"
+# Match "单章阈值: number 次[/unit]"
 CODE_RE = re.compile(r"单章阈值[:：]\s*(\d+)\s*(次)(?:/(章|500字|段|千字))?")
-# 通用数量线（越界检测用，只认"次"——方法论描述里的句数示例不算越界）
+# Generic quantity threshold (for boundary detection; only "次" counts, sentence-count examples in methodology text do not count as violations)
 ANY_COUNT_RE = re.compile(r"(?:≤|≤)?\d+\s*次(?:/(?:章|500字|段|千字))?")
-# 引用 common-rules 的行（豁免越界）
+# Lines referencing common-rules (exempt from boundary checks)
 REFERENCE_RE = re.compile(r"common-rules\.md")
 
-# --- C5 术语/反模式禁现（审计 2026-08-13 §3-C5，决策 P2-10）---
-# 提示词结构已统一为「6 元素」，遗留术语禁现防回潮。
-# 正则精确化：排除「2-4 层」（冲突阶梯）、opening-hooks.md（文件名）等合法命中。
+# --- C5 banned terms/anti-patterns (audit 2026-08-13 section 3-C5, decision P2-10) ---
+# The prompt structure is unified as "6 elements"; legacy terms are banned to prevent regression.
+# Precise regexes: exclude legitimate hits such as "2-4 层" (conflict ladder) and opening-hooks.md (a file name).
 BANNED_TERMS = [
-    (re.compile(r"(?<![0-9-])4 层"), "「4 层」遗留术语（已统一为 6 元素）"),
-    (re.compile(r"9 层"), "「9 层」遗留术语（已统一为 6 元素）"),
-    (re.compile(r"任务层"), "「任务层」遗留术语"),
-    (re.compile(r"prompt 模块 5"), "「prompt 模块 5」遗留术语"),
-    (re.compile(r"\bGoals\b"), "「Goals」遗留字段名（已改名叙事目标）"),
-    (re.compile(r"(?<!-)hooks\.md"), "「hooks.md」遗留文件名"),
-    (re.compile(r"genre_profile"), "「genre_profile」遗留字段名（读 settings/genre-setting.md 的选定类型）"),
+    (re.compile(r"(?<![0-9-])4 层"), "Legacy term \"4 层\" (now unified as 6 elements)"),
+    (re.compile(r"9 层"), "Legacy term \"9 层\" (now unified as 6 elements)"),
+    (re.compile(r"任务层"), "Legacy term \"任务层\""),
+    (re.compile(r"prompt 模块 5"), "Legacy term \"prompt 模块 5\""),
+    (re.compile(r"\bGoals\b"), "Legacy field name \"Goals\" (renamed to 叙事目标)"),
+    (re.compile(r"(?<!-)hooks\.md"), "Legacy file name \"hooks.md\""),
+    (re.compile(r"genre_profile"), "Legacy field name \"genre_profile\" (read the selected type in settings/genre-setting.md)"),
 ]
 
-# 反模式句：审计修正记录（prompt-crafting）与验收探针（prompt-audit）已清理/豁免后，
-# 其余出现即视为旧表述回潮
+# Anti-pattern sentence: after the audit correction records (prompt-crafting) and acceptance probes (prompt-audit) are cleaned up/exempted,
+# any remaining occurrence counts as old wording returning
 BANNED_ANTI_PATTERN = re.compile(r"叙事规则优先级高于所有约束")
-# 验收探针把旧表述列为 FAIL 信号，属检测器定义，豁免
+# Acceptance probes list the old wording as a FAIL signal; that is a detector definition, so it is exempt
 ANTI_PATTERN_EXEMPT = {"skills/prompt-audit.md"}
 
-# 对象名规范化：取第一个关键词，去掉括号、斜杠组、顿号枚举
+# Object-name normalization: take the first keyword, drop parentheses, slash groups, and enumeration lists
 def norm_obj(raw: str) -> str:
     obj = raw.strip().replace("**", "")
-    obj = re.sub(r"[（(].*?[)）]", "", obj)  # 去括号
+    obj = re.sub(r"[（(].*?[)）]", "", obj)  # drop parentheses
     obj = obj.split("、")[0].split("/")[0].split(",")[0].strip()
     return obj
 
 
 def extract_thresholds(text: str, path: Path) -> dict:
-    """提取 {规范对象@单位: {数字, 行号, 原文}}。
+    """Extract {normalized object@unit: {number, line number, original text}}.
 
-    同文件同对象同单位：数字相同则跳过（速查表/正文重复不算问题），
-    数字不同则记录后一个（同文件内部互搏也要暴露）。
+    Same file, same object, same unit: skip when the numbers match (repeats in quick-reference tables/body text are not a problem);
+    when they differ, record the later one (intra-file conflicts must also surface).
     """
     found = {}
     lines = text.split("\n")
@@ -111,7 +111,7 @@ def extract_thresholds(text: str, path: Path) -> dict:
         else:
             m2 = CODE_RE.search(ln)
             if m2:
-                # 代码块格式：对象来自前一行"命中模式"
+                # Code-block format: the object comes from the previous line's "命中模式"
                 obj = None
                 for j in range(i - 2, i):
                     if j >= 1:
@@ -130,7 +130,7 @@ def extract_thresholds(text: str, path: Path) -> dict:
         if key not in found:
             found[key] = {"num": num, "line": i, "raw": ln.strip()[:70], "obj": obj}
         elif found[key]["num"] != num:
-            # 同文件内同对象数字不同 → 覆盖为后一个，让 check_conflicts 跨文件比对时暴露
+            # Same object with different numbers in one file: overwrite with the later one, so check_conflicts exposes it in the cross-file comparison
             found[key] = {"num": num, "line": i, "raw": ln.strip()[:70], "obj": obj,
                           "same_file_conflict": True}
     return found
@@ -149,17 +149,17 @@ def check_conflicts() -> list:
             text = f.read_text(encoding="utf-8")
             found = extract_thresholds(text, f)
             for key, info in found.items():
-                # 同文件内同对象出现不同数字 → 文件内部互搏，直接报
+                # The same object appears with different numbers in one file: an intra-file conflict, report directly
                 if info.get("same_file_conflict"):
                     errors.append(
-                        f"{rel}:{info['line']} 「{info['obj']}」阈值 {info['num']}次 与该文件其他位置的定义不一致（同文件互搏）"
+                        f"{rel}:{info['line']} threshold for \"{info['obj']}\" is {info['num']} occurrences, inconsistent with definitions elsewhere in this file (intra-file conflict)"
                     )
                     continue
-                # 跨文件：与权威源同对象同单位但数字不同 → 冲突
+                # Cross-file: same object and unit as the authoritative source but a different number means a conflict
                 if key in auth and auth[key]["num"] != info["num"]:
                     errors.append(
-                        f"{rel}:{info['line']} 「{info['obj']}」阈值 {info['num']}次 与权威源 "
-                        f"common-rules.md:{auth[key]['line']} 的 {auth[key]['num']}次 冲突"
+                        f"{rel}:{info['line']} threshold for \"{info['obj']}\" is {info['num']} occurrences, conflicting with the authoritative source "
+                        f"common-rules.md:{auth[key]['line']} value of {auth[key]['num']} occurrences"
                     )
     return errors
 
@@ -169,24 +169,24 @@ def check_boundary() -> list:
     for rel in METHODOLOGY_FILES:
         f = ROOT / rel
         if not f.exists():
-            errors.append(f"{rel}: 文件不存在（越界检测跳过）")
+            errors.append(f"{rel}: file does not exist (boundary check skipped)")
             continue
         text = f.read_text(encoding="utf-8")
         lines = text.split("\n")
         for i, ln in enumerate(lines, 1):
-            # 引用 common-rules 的行豁免
+            # Lines referencing common-rules are exempt
             if REFERENCE_RE.search(ln):
                 continue
             if ANY_COUNT_RE.search(ln):
                 errors.append(
-                    f"{rel}:{i} 方法论/豁免文件出现数量线「{ln.strip()[:50]}」"
-                    f"（阈值只能定义在 common-rules.md）"
+                    f"{rel}:{i} methodology/exemption file contains a quantity threshold: \"{ln.strip()[:50]}\""
+                    f"(thresholds may only be defined in common-rules.md)"
                 )
     return errors
 
 
 def check_banned_terms() -> list:
-    """C5 防回潮：遗留术语 + 反模式句在注入侧（agents/skills/knowledge）禁现。"""
+    """C5 regression guard: legacy terms + anti-pattern sentences are banned from the injection side (agents/skills/knowledge)."""
     errors = []
     for base, label in SCAN_GLOBS:
         for f in sorted(base.rglob("*.md")):
@@ -195,13 +195,13 @@ def check_banned_terms() -> list:
             for pat, desc in BANNED_TERMS:
                 for m in pat.finditer(text):
                     line = text[:m.start()].count("\n") + 1
-                    errors.append(f"{rel}:{line} 出现{desc}（防回潮禁现，删除或改写）")
+                    errors.append(f"{rel}:{line} found {desc} (banned to prevent regression; delete or rewrite)")
             if rel in ANTI_PATTERN_EXEMPT:
                 continue
             for m in BANNED_ANTI_PATTERN.finditer(text):
                 line = text[:m.start()].count("\n") + 1
-                errors.append(f"{rel}:{line} 出现反模式「叙事规则优先级高于所有约束」"
-                              f"（已修正为低于第1-5层，见 prompt-crafting 冲突裁定表）")
+                errors.append(f"{rel}:{line} found anti-pattern \"叙事规则优先级高于所有约束\""
+                              f"(corrected to below layers 1-5; see the prompt-crafting conflict ruling table)")
     return errors
 
 
@@ -215,9 +215,9 @@ def main() -> int:
         print(f"  ❌ {e}")
 
     if all_errors:
-        print(f"\n共 {len(all_errors)} 个问题")
+        print(f"\n{len(all_errors)} problem(s) in total")
         return 1
-    print("✅ 规则冲突检查通过（无阈值冲突、无边界越界、无遗留术语）")
+    print("✅ Rule conflict check passed (no threshold conflicts, no boundary violations, no legacy terms)")
     return 0
 
 

@@ -1,252 +1,250 @@
+# Prompt Audit SOP
 
-# Prompt 审计 SOP
+## Core Principles
 
-## 核心原则
+- **You are not prompt-crafter**; you carry no burden of "maintaining your own work"
+- **Your only duty is to find problems**, not to fix them and not to explain why it was written that way
+- The more problems found, the more successful the audit
+- Every finding must include verbatim evidence and a knowledge base comparison
+- The bar for passing the audit is "no sufficient evidence of a problem", not "it looks fine"
 
-- **你不是 prompt-crafter**，你没有"维护自己作品"的包袱
-- **你的唯一职责是找问题**，不是修问题，不是解释为什么这么写
-- 发现的问题越多，审计越成功
-- 每条发现必须附带原文证据和知识库对照
-- 审计通过的标准是"无足够证据证明有问题"，而非"看起来没问题"
+## Inputs
 
-## 输入
+- `prompts/vol-{N}-ch-{M}-prompt.md`: the prompt to audit
+- `chapters/vol-{N}-ch-{M}.md`: the chapter outline (especially the outline matching the scene sequence)
+- `settings/genre-setting.md`: the genre type
+- The methodology files under `.claude/knowledge/scene-craft/` matching this chapter's scene types
+- `.claude/knowledge/scene-craft/index.md`: the scene methodology index
 
-- `prompts/vol-{N}-ch-{M}-prompt.md` — 待审计的 prompt
-- `chapters/vol-{N}-ch-{M}.md` — 章纲（尤其是场景序列对应的 outline）
-- `settings/genre-setting.md` — 题材类型
-- `.claude/knowledge/scene-craft/` 下与本章场景类型对应的方法论文件
-- `.claude/knowledge/scene-craft/index.md` — 场景方法论目录
+## Audit Dimensions
 
-## 审计维度
+### Dimension A: Scene-Technique Coverage (sparsity check)
 
-### 维度 A：场景-技法覆盖率（稀疏校验）
+**Purpose:** Make sure Output, Writing Standards has writing guidance for the matching scene types, without requiring full coverage.
 
-**目的：** 确保输出·写作规范有对应场景类型的写法指引，但不要求全覆盖。
+**Steps:**
+1. Extract every scene type from the chapter outline's scene sequence into a deduplicated list
+2. Check the index structure of `scene-craft/index.md` to confirm a methodology exists for each scene type
+3. Check Output, Writing Standards item by item. **Each scene type needs at least 1 technique guidance; full coverage is not required, and some scene types may have no technique guidance**
 
-**步骤：**
-1. 从章纲的场景序列中提取所有场景类型，形成去重清单
-2. 对照 `scene-craft/index.md` 的目录结构，确认每个场景类型都有方法论可用
-3. 逐项检查输出·写作规范——**每个场景类型有至少 1 条技法指引即可，不要求全部覆盖，允许部分场景类型无技法指引**
+**Checklist:**
 
-**检查表：**
-
-| 检查项 | PASS 标准 |
+| Check Item | PASS Standard |
 |--------|-----------|
-| 至少 1 种场景类型有技法指引 | 输出·写作规范中存在 ≥ 1 种场景类型的写法指引 |
-| 场景权重标注 | 场景序列每个场景有高/中/低权重标注 |
-| 对照一致性（宽松） | 场景类型有技法指引的不超过场景类型数 − 1 即可 |
+| At least 1 scene type has technique guidance | Output, Writing Standards contains writing guidance for at least 1 scene type |
+| Scene weights labeled | Every scene in the scene sequence has a high / medium / low weight label |
+| Comparison consistency (loose) | The number of scene types with technique guidance is at most the scene type count minus 1 |
 
-**判定标准：**
-- 场景类型数 > 2 且无任何技法指引 → **FAIL**
-- 其余情况 → **PASS（放宽校验，允许不全）**
+**Ruling standard:**
+- Scene type count > 2 and no technique guidance at all → **FAIL**
+- Everything else → **PASS (relaxed check; incomplete coverage allowed)**
 
 
-### 维度 B：知识点溯源
+### Dimension B: Knowledge Point Traceability
 
-**目的：** 确保输出·写作规范中每一条场景写法指引都有原始知识来源，且经过了上下文适配（四步转化），而非直接复制方法论原文。
+**Purpose:** Make sure every scene writing guidance in Output, Writing Standards has an original knowledge source and went through contextual adaptation (the four-step conversion), rather than copying the methodology's original text directly.
 
-**步骤：**
-1. 从输出·写作规范提取每条场景写法指引（以"指引""要求""规则"等形式出现的独立语义块）
-2. 对每条指引，在 `scene-craft/` 中找到对应的方法论原文
-3. 判断转化质量
+**Steps:**
+1. Extract each scene writing guidance from Output, Writing Standards (independent semantic blocks appearing as "guidance", "requirement", "rule", or similar)
+2. For each guidance, find the matching methodology original text in `scene-craft/`
+3. Judge the conversion quality
 
-**转化质量分类：**
+**Conversion quality levels:**
 
-| 等级 | 判断标准 | 例子 |
+| Level | Ruling Standard | Example |
 |------|----------|------|
-| ✅ 成功转化 | 方法论经过四步转化，适配了具体角色名、信息差关系、情绪段 | "方岩回避时低头喝茶——陆征每追问一句他就喝一口，不接话" |
-| ⚠️ 部分转化 | 引用了方法论但套用痕迹明显，角色/信息差/情绪至少缺一项 | "谨慎的角色回避时会用动作代替回答"（没写具体是哪个角色、什么动作） |
-| ❌ 未转化 | 直接复制方法论原文或只改了角色名 | "角色不说真话。表层话和深层意之间的差距就是对话的张力" |
-| 🔍 无源指引 | 输出·写作规范中的写法要求在 scene-craft 中找不到对应的方法论 | 可能是 prompt-crafter 自己编的或从其他来源引入的 |
+| Successful conversion | The methodology went through the four-step conversion, adapted to a concrete character name, information gap relationship, and emotion stretch | "When 方岩 dodges, he lowers his head and drinks tea. Every time 陆征 presses with a question, he takes a sip and does not answer" |
+| Partial conversion | The methodology was cited but the applied formula shows through; at least one of character / information gap / emotion is missing | "When a cautious character dodges, they use actions instead of answering" (does not say which character, or what action) |
+| Not converted | The methodology's original text was copied directly, or only the character name was changed | "A character does not tell the truth. The gap between the surface words and the deeper meaning is the tension of the dialogue" |
+| No-source guidance | A writing requirement in Output, Writing Standards has no matching methodology in scene-craft | It may have been invented by prompt-crafter or brought in from another source |
 
-**判定标准：**
-- 任一条 ❌ 未转化 → **FAIL**
-- 🔍 无源指引 ≥ 2 条 → **WARN**
-- ⚠️ 部分转化 ≥ 全部指引的 50% → **WARN**
-- 其余 → **PASS**
-
-
-### 维度 C：可执行性评估
-
-**目的：** 判断输出·写作规范的写法指引是否具体到 writer 可以直接照着执行。
-
-**步骤：**
-1. 逐条判断输出·写作规范指令的 writer 可执行性
-
-| 等级 | 特征 | 例子 |
-|------|------|------|
-| 具体 | writer 可以直接照着写，有明确的操作指示 | "方岩回避时低头喝茶。陆征每追问一句，他喝一口，目光移开" |
-| 抽象 | writer 知道要做什么但不知道怎么具体写 | "用动作体现场景的紧张氛围" |
-| 模糊 | writer 看了不知道怎么下笔 | "注意对话的张力" / "把握好节奏" |
-
-**判定标准：**
-- 模糊指令 ≥ 1 条 → **FAIL**
-- 抽象指令 ≥ 全部指引的 50% → **WARN**
-- 其余 → **PASS**
+**Ruling standard:**
+- Any "not converted" entry → **FAIL**
+- "No-source guidance" at least 2 entries → **WARN**
+- "Partial conversion" at least 50% of all guidance → **WARN**
+- Everything else → **PASS**
 
 
-### 维度 D：四步转化完整性
+### Dimension C: Executability Evaluation
 
-**目的：** 对于从 scene-craft 加载的每条方法论，检查是否完整经过了四步转化。
+**Purpose:** Judge whether the writing guidance in Output, Writing Standards is concrete enough for writer to execute directly.
 
-**检查表（每条方法论逐条检查）：**
+**Steps:**
+1. Judge the writer executability of each instruction in Output, Writing Standards, one by one
 
-| 转化步骤 | PASS 标准 |
+| Level | Features | Example |
+|------|----------|------|
+| Concrete | writer can write directly from it, with clear operating instructions | "When 方岩 dodges, he lowers his head and drinks tea. Every time 陆征 presses with a question, he takes a sip and looks away" |
+| Abstract | writer knows what to do but not how to write it concretely | "Use actions to show the scene's tense atmosphere" |
+| Vague | writer reads it and does not know where to start writing | "Pay attention to the dialogue's tension" / "Keep a good grip on the rhythm" |
+
+**Ruling standard:**
+- Vague instructions at least 1 → **FAIL**
+- Abstract instructions at least 50% of all guidance → **WARN**
+- Everything else → **PASS**
+
+
+### Dimension D: Four-Step Conversion Completeness
+
+**Purpose:** For each methodology loaded from scene-craft, check whether it fully went through the four-step conversion.
+
+**Checklist (check each methodology one by one):**
+
+| Conversion Step | PASS Standard |
 |----------|-----------|
-| Step 1 锚定角色 | 指引中出现了具体角色名，并体现了该角色的性格/当前状态对写法的影响 |
-| Step 2 锚定信息差 | 指引中体现了角色之间的信息不对称如何影响写法（谁在瞒/谁在追/效果如何） |
-| Step 3 锚定情绪节奏 | 指引中写明了当前情绪段对写法的影响（紧张段短句/舒缓段长句等） |
-| Step 4 融合输出 | 以上三者的融合，形成一条可直接执行的指引，而非三条并列的说明 |
+| Step 1 anchor the character | The guidance names a concrete character and shows how that character's personality / current state affects the writing |
+| Step 2 anchor the information gap | The guidance shows how the information asymmetry between characters affects the writing (who is hiding / who is pursuing / what effect it has) |
+| Step 3 anchor the emotional rhythm | The guidance states how the current emotional stretch affects the writing (short sentences in tense stretches / long sentences in relaxed stretches, and similar) |
+| Step 4 fused output | The three above are fused into one directly executable guidance, not three parallel explanations |
 
-**判定标准：**
-- 任一条方法论缺失 Step 1-3 中任一步 → **FAIL**
-- 全部方法论完成四步转化 → **PASS**
+**Ruling standard:**
+- Any methodology missing any of Steps 1-3 → **FAIL**
+- All methodologies completed the four-step conversion → **PASS**
 
 
-### 维度 E：层间一致性
+### Dimension E: Inter-Layer Consistency
 
-**目的：** 确保输出·写作规范的规则与其他节没有矛盾。
+**Purpose:** Make sure the rules in Output, Writing Standards do not contradict other sections.
 
-**检查表：**
+**Checklist:**
 
-| 检查项 | PASS 标准 |
+| Check Item | PASS Standard |
 |--------|-----------|
-| 输出·写作规范视角 vs 场景序列情绪拐点 | 视角选择是否支持场景的情绪目标（第一人称加强代入 vs 第三人称拉开距离） |
-| 输出·写作规范节奏 vs 任务指示·叙事目标 | 节奏要求不压制爽点的释放（紧张段还在用舒缓节奏就是矛盾） |
-| 输出·写作规范描写 vs 约束红线 | 描写方式不触犯情节红线 |
-| 输出·写作规范反 AI 规则 vs 质感要求 | 反 AI 规则与质感要求不互相抵消 |
+| Output, Writing Standards point of view vs scene sequence emotional turning points | Does the point of view choice support the scene's emotional goal (first person strengthens immersion vs third person pulls back for distance) |
+| Output, Writing Standards rhythm vs Task Instructions, Narrative Goal | The rhythm requirement does not suppress the satisfying beat's release (a tense stretch still using a relaxed rhythm is a contradiction) |
+| Output, Writing Standards description vs constraint red lines | The description method does not violate a plot red line |
+| Output, Writing Standards anti-AI rules vs texture requirements | The anti-AI rules and the texture requirements do not cancel each other out |
 
-**判定标准：**
-- 任一项矛盾 → **FAIL**
-- 全部一致 → **PASS**
+**Ruling standard:**
+- Any contradiction → **FAIL**
+- All consistent → **PASS**
 
 
-### 维度 F：去 AI 校验（新增核心维度）
+### Dimension F: De-AI Check (new core dimension)
 
-**目的：** 确保 prompt 从根源上抑制 AI 均匀工整的写作惯性。
+**Purpose:** Make sure the prompt suppresses the AI's even, tidy writing habits at the root.
 
-**检查表：**
+**Checklist:**
 
-| 检查项 | PASS 标准 | FAIL 信号 |
+| Check Item | PASS Standard | FAIL Signal |
 |--------|-----------|----------|
-| 技法稀疏使用 | 每个场景类型只注入 1-2 条技法，未要求全覆盖 | 要求每个场景类型使用 ≥ 3 条技法或"全部技法" |
-| 主次区分 | 输出·写作规范明确要求主次笔墨区分（高权重复、低权重简） | 无任何主次区分规则，暗示"均匀描写" |
-| 四步执行逻辑 | 输出·写作规范包含焦点锁定/感官分层/节奏交替/信息控制四条 | 缺失其中 2 条及以上 |
-| 不完美约束 | 质感要求包含半截话/生活化细节/段落精度分层 | 无任何"不完美"约束 |
-| 禁止均匀堆砌 | 有明确指令禁止全维度感官堆砌、等长段落、成套修辞 | 无相关禁止项 |
-| 温感平衡 | prompt 不要求极端碎片化（无"独句段占比不低于X%"类硬性指标） | prompt 要求独句段≥25%或"强制硬切" |
+| Sparse technique use | Each scene type is injected with only 1-2 techniques; full coverage is not required | Requires each scene type to use 3 or more techniques, or "all techniques" |
+| Primary vs secondary distinction | Output, Writing Standards explicitly requires primary vs secondary ink distinction (repeat high-weight passages, keep low-weight passages brief) | No primary vs secondary distinction rule at all, implying "even description" |
+| Four-step execution logic | Output, Writing Standards contains all four: focus lock / sensory layering / rhythm alternation / information control | 2 or more of the four missing |
+| Imperfection constraints | The texture requirements contain half-finished sentences / everyday-life details / paragraph precision layering | No "imperfection" constraint at all |
+| Ban on even stacking | There is an explicit instruction banning full-dimension sensory stacking, equal-length paragraphs, and sets of rhetoric | No related ban |
+| Warmth balance | The prompt does not demand extreme fragmentation (no hard indicator such as "single-sentence paragraphs at least X%") | The prompt demands single-sentence paragraphs at least 25% or "forced hard cuts" |
 
-**判定标准：**
-- 6 项全部 PASS → **PASS（去 AI 设计完整）**
-- 4-5 项 PASS → **WARN（建议补充缺失项）**
-- ≤ 3 项 PASS → **FAIL（严重去 AI 缺陷）**
+**Ruling standard:**
+- All 6 items PASS → **PASS (de-AI design complete)**
+- 4-5 items PASS → **WARN (suggest adding the missing items)**
+- 3 or fewer items PASS → **FAIL (serious de-AI defect)**
 
 
-### 维度 G：冲突裁定执行检查
+### Dimension G: Conflict Ruling Execution Check
 
-**目的：** 确保 prompt 内部已经预置了冲突裁定策略，而非把裁定责任留给 writer。此维度是"优化内联"的核心验证——writer 应该只执行，不做优先级决策。
+**Purpose:** Make sure the prompt already has a conflict ruling strategy built in, rather than leaving the ruling responsibility to writer. This dimension is the core verification of "inlined optimization": writer should only execute, not make priority decisions.
 
-**步骤：**
-1. 检查 prompt 的任务指示中是否包含字数压缩策略
-2. 检查 prompt 的写作方法论·感官分层取舍是否包含声音例外说明
-3. 检查 prompt 的约束红线是否标记了最高优先级（明确说"红线内容不可压缩"）
-4. 检查 prompt 的写作规范中是否有与上述冲突裁定矛盾的内容（特别是"叙事规则优先级高于所有约束"这类旧表述）
+**Steps:**
+1. Check whether the prompt's task instructions contain a word count compression strategy
+2. Check whether the prompt's writing methodology, sensory layering trade-off, contains a sound exception note
+3. Check whether the prompt's constraint red lines are marked as highest priority (explicitly saying "red line content cannot be compressed")
+4. Check whether the prompt's writing standards contain anything contradicting the conflict ruling above (especially old wording such as "narrative rules have higher priority than all constraints")
 
-**检查表：**
+**Checklist:**
 
-| 检查项 | PASS 标准 | FAIL 信号 |
+| Check Item | PASS Standard | FAIL Signal |
 |--------|-----------|----------|
-| 字数压缩策略已注入 | 任务指示·目标字数字段含弹性说明（±10%可接受）和压缩策略（"超字数优先压缩低权重场景，不得删红线"或类似表述） | 目标字数字段无弹性说明或压缩策略，把字数控制责任留给了 writer |
-| 感官例外已注入 | 写作方法论·感官分层取舍存在声音例外规则（关键声音线索可不计2种感官） | 无声音例外，或声音例外条件不完整（缺"红线关键信息"与"简短白描"两个条件） |
-| 红线优先级确认 | 约束红线段明确声明"红线内容不可压缩/不可删减" | 红线仅列出内容，未声明其最高优先级地位 |
-| 无内部矛盾 | 写作规范中叙事规则注明"优先级低于红线/字数/T1词/认知动词/感官规则"之类表述 | 仍有"叙事规则优先级高于所有约束"旧表述，与层级表矛盾 |
+| Word count compression strategy injected | The task instructions, target word count field contains an elasticity note (plus or minus 10% acceptable) and a compression strategy ("when over the word count, compress low-weight scenes first; never delete red lines", or similar wording) | The target word count field has no elasticity note or compression strategy, leaving word count control to writer |
+| Sensory exception injected | The writing methodology, sensory layering trade-off has a sound exception rule (a key sound clue may not count toward the 2-sense limit) | No sound exception, or the sound exception's conditions are incomplete (missing the two conditions "red line key information" and "brief plain description") |
+| Red line priority confirmed | The constraint red lines section explicitly states "red line content cannot be compressed / cannot be deleted" | The red lines only list content, without stating their highest priority status |
+| No internal contradiction | The writing standards state that narrative rules are "lower priority than red lines / word count / T1 words / cognitive verbs / sensory rules" or similar wording | Old wording such as "narrative rules have higher priority than all constraints" remains, contradicting the level table |
 
-**判定标准：**
-- 4 项全部 PASS → **PASS（冲突裁定内联完整）**
-- 3 项 PASS → **WARN（建议补充缺失项，但可交付）**
-- ≤ 2 项 PASS → **FAIL（冲突裁定内联严重缺陷，必须修正）**
+**Ruling standard:**
+- All 4 items PASS → **PASS (conflict ruling inlining complete)**
+- 3 items PASS → **WARN (suggest adding the missing items, but deliverable)**
+- 2 or fewer items PASS → **FAIL (conflict ruling inlining seriously defective, must be fixed)**
 
 
-### 维度 H：规则去重（硬门禁）
+### Dimension H: Rule Deduplication (hard gate)
 
-**目的：** 确保 prompt 里同一语义只出现一次，没有从多源（writing-style / anti-ai / scene-craft / genre-example）带进来的重复规则。这是"组装后去重检查"（prompt-crafting.md Step 2）的核验——组装流程要求了，但需要独立视角确认做到了没有。
+**Purpose:** Make sure the same meaning appears only once in the prompt, with no duplicate rules brought in from multiple sources (writing-style / anti-ai / scene-craft / genre-example). This is the check on the "deduplication check after assembly" (prompt-crafting.md Step 2): the assembly flow required it, but an independent view must confirm it was actually done.
 
-**步骤：**
-1. 通读 prompt 全文，提取所有带约束性质的规则（数量线、禁止项、阈值、硬性要求）
-2. 对每条规则，追问：这个语义在 prompt 其他位置是否已经出现过？
-3. 按类别归并：跨源重复 / 数量线重复
+**Steps:**
+1. Read the whole prompt and extract every rule with a constraining nature (quantity lines, bans, thresholds, hard requirements)
+2. For each rule, ask: has this meaning already appeared elsewhere in the prompt?
+3. Group by category: cross-source duplicates / quantity line duplicates
 
-**检查表：**
+**Checklist:**
 
-| 检查项 | PASS 标准 | FAIL 信号 |
+| Check Item | PASS Standard | FAIL Signal |
 |--------|-----------|----------|
-| 跨源重复 | 同一约束（对话密度/破折号/字数等）全 prompt 只出现一次 | 同一规则在写作规范、场景指引、质感要求里各出现一次 |
-| 数量线重复 | 同一对象只有一处定义（如"对话≤8句"只在反 AI 注入处出现一次） | 同一数量线在反 AI 注入和场景方法论里各写一遍 |
+| Cross-source duplicates | The same constraint (dialogue density / em dash / word count, and similar) appears only once in the whole prompt | The same rule appears once each in the writing standards, scene guidance, and texture requirements |
+| Quantity line duplicates | The same object has only one definition (such as "dialogue at most 8 lines" appearing only once, at the anti-AI injection) | The same quantity line is written once in the anti-AI injection and once in the scene methodology |
 
-**判定标准：**
-- 任一重复 → **FAIL**（打回时指出哪两条是同一件事，建议合并哪条）
-- 全部唯一 → **PASS**
+**Ruling standard:**
+- Any duplicate → **FAIL** (when sending it back, point out which two entries are the same thing and suggest which one to merge)
+- All unique → **PASS**
 
-**操作判据（硬门禁必须可判定）：**
+**Operation criteria (a hard gate must be decidable):**
 
-判为重复（FAIL）的两种情形——
-1. **同一格式重复**：同一对象被同一格式定义了两次（数量线/阈值/禁止项完全重复，如"对话≤8句"出现两次）
-2. **完全重复**：两条规则措辞几乎一致，指同一件事，无信息增量
+The two cases ruled as duplicates (FAIL):
+1. **Same-format duplicate**: the same object is defined twice in the same format (a quantity line / threshold / ban fully repeated, such as "dialogue at most 8 lines" appearing twice)
+2. **Complete duplicate**: two rules worded almost identically, about the same thing, with no added information
 
-不判为重复（有效冗余，不算 FAIL）的情形——
-- **措辞不同的等价约束**："对话要短"+"纯台词不超8句"+"少让角色长篇"指向同一件事但各有侧重（一个给原则、一个给数量、一个给反例）→ 是有效冗余，保留。审计只要求**同一格式的完全重复**被合并，不要求所有语义等价约束合并成一条。
+Cases not ruled as duplicates (effective redundancy, not FAIL):
+- **Equivalently worded constraints**: "keep dialogue short" + "pure dialogue at most 8 lines" + "let characters speak at length less often" point at the same thing but each has its own emphasis (one gives the principle, one gives the number, one gives the counter-example). That is effective redundancy; keep it. The audit only requires **same-format complete duplicates** to be merged; it does not require every semantically equivalent constraint to be merged into one.
 
 
-### 维度 I：规则重排（位置效应核验，硬门禁）
+### Dimension I: Rule Reordering (position effect check, hard gate)
 
-**目的：** 确保最不可违反的规则排在 prompt 前面，利用 LLM 对开头/结尾遵从度最高的特性。这是"不可违反规则"列表优先级降序的实际落地核验。
+**Purpose:** Make sure the least violable rules sit at the front of the prompt, using the LLM's property of following the start / end most strongly. This is the practical landing check of the "non-violable rules" list in descending priority.
 
-**步骤：**
-1. 定位 prompt 的"不可违反规则"列表（及写作规范、质感要求等约束性段落）
-2. 按优先级层级检查排列顺序
-3. 检查低优先级规则是否混进了硬规则区
+**Steps:**
+1. Locate the prompt's "non-violable rules" list (and the constraining paragraphs such as the writing standards and texture requirements)
+2. Check the order of the arrangement against the priority levels
+3. Check whether low-priority rules have mixed into the hard-rules zone
 
-**优先级层级（从高到低）：**
-红线（情节红线/角色禁区/边界禁止）> 字数（硬性目标）> T1词/认知动词/感官（修饰阈值）> 叙事规则 > 写作规范同级其他规则
+**Priority levels (high to low):**
+Red lines (plot red lines / character forbidden zones / boundary bans) > word count (hard target) > T1 words / cognitive verbs / senses (style thresholds) > narrative rules > other same-level writing standards rules
 
-**检查表：**
+**Checklist:**
 
-| 检查项 | PASS 标准 | FAIL 信号 |
+| Check Item | PASS Standard | FAIL Signal |
 |--------|-----------|----------|
-| 红线置顶 | 约束红线位于"不可违反规则"列表最前 | 红线排在技法/建议后面 |
-| 优先级降序 | 整体按红线 > 字数 > T1词 > 叙事规则 > 写作规范排列 | 优先级颠倒（技法在红线前、叙事规则在字数前） |
-| 场景指引沉底 | 建议性技法（场景写作指引、质感要求）在附录/案例段，不进硬规则区 | 低优先级技法混进"不可违反"区 |
+| Red lines on top | The constraint red lines sit at the very front of the "non-violable rules" list | Red lines sit behind techniques / suggestions |
+| Priority descending | The whole thing is ordered red lines > word count > T1 words > narrative rules > writing standards | Priority inverted (technique before red lines, narrative rules before word count) |
+| Scene guidance at the bottom | Advisory techniques (scene writing guidance, texture requirements) sit in the appendix / examples section and do not enter the hard-rules zone | Low-priority techniques mixed into the "non-violable" zone |
 
-**判定标准：**
-- 任一处优先级颠倒 → **FAIL**
-- 全部按序 → **PASS**
+**Ruling standard:**
+- Any priority inversion → **FAIL**
+- All in order → **PASS**
 
-**注意：** 重排只关心顺序，不改内容。若审计发现某条硬规则放错位置，打回时指出"这条应上移/下移"，不重写规则本身。
+**Note:** Reordering only concerns order; it does not change content. If the audit finds a hard rule in the wrong position, send it back noting "this entry should move up / down"; do not rewrite the rule itself.
 
+## Audit Ruling General Rule
 
-## 审计判定总则
-
-| 条件 | 结论 |
+| Condition | Conclusion |
 |------|------|
-| 维度 B/E/F/G 任一 FAIL | **审计不通过** → prompt-crafter 需回到 THINK 修正 |
-| 维度 H（去重）/ I（重排）任一 FAIL | **审计不通过** → 规则重复或优先级颠倒，必须修正后重新审计（硬门禁，不允许带病交付） |
-| 仅维度 A/C/D 任一 FAIL，其他全部 PASS | **审计通过** → 技法覆盖/可执行性/转化完整度不卡死，允许不全 |
-| 无 FAIL，WARN ≥ 4 项 | **审计不通过** → 建议修正 |
-| 无 FAIL，WARN ≤ 3 项 | **审计通过** → 可交付 |
+| Any of Dimensions B / E / F / G FAIL | **Audit fails** → prompt-crafter must return to THINK and fix it |
+| Any of Dimensions H (deduplication) / I (reordering) FAIL | **Audit fails** → rules are duplicated or priority is inverted; must be fixed and re-audited (hard gate; delivering with the defect is not allowed) |
+| Only one of Dimensions A / C / D FAIL, everything else PASS | **Audit passes** → technique coverage / executability / conversion completeness do not block; incomplete is allowed |
+| No FAIL, WARN at least 4 items | **Audit fails** → suggest fixing |
+| No FAIL, WARN at most 3 items | **Audit passes** → deliverable |
 
-**FAIL 场景（必须返回修正）：**
-- 缺失硬性世界观/人设/剧情红线约束（维度 B/E）
-- 存在 meta 泄漏（维度 E）
-- 无主次写作规则、去 AI 设计严重缺陷（维度 F）
-- 规则重复未合并（维度 H）、优先级颠倒（维度 I）
+**FAIL scenarios (must return for fixing):**
+- Missing hard worldview / character / plot red line constraints (Dimensions B / E)
+- Meta leakage exists (Dimension E)
+- No primary vs secondary writing rules, serious de-AI design defect (Dimension F)
+- Rules duplicated and not merged (Dimension H), priority inverted (Dimension I)
 
-**PASS 场景（即使不完全也允许通过）：**
-- 技法不全（维度 A 部分场景无指引）→ 允许
-- 部分场景简略、描写不对称（维度 C 部分抽象）→ 允许
-- 部分方法论转化不完整（维度 D 部分不完整）→ 允许
-- **核心原则：只要硬性约束齐全、去 AI 规则存在、无元泄漏、规则不重复、优先级不倒置，即可交付。**
+**PASS scenarios (allowed even when incomplete):**
+- Techniques incomplete (Dimension A: some scenes have no guidance) → allowed
+- Some scenes brief, description asymmetric (Dimension C: some abstract) → allowed
+- Some methodologies incompletely converted (Dimension D: some incomplete) → allowed
+- **Core principle: as long as the hard constraints are complete, the de-AI rules exist, there is no meta leakage, the rules are not duplicated, and the priority is not inverted, it can be delivered.**
 
-审计不通过时，在推进中说明：
-- 哪些维度出了什么问题
-- 每条问题的证据（原文引用 + 知识库对照）
-- 建议修正方向（不具体到怎么写，只指出问题在哪）
+When the audit fails, state during the handover:
+- Which dimensions had what problems
+- The evidence for each problem (verbatim quote + knowledge base comparison)
+- The suggested fix direction (not specific to how to write it; only point out where the problem is)

@@ -1,280 +1,280 @@
-# 角色推演沙盘
+# Roleplay Sandbox
 
-> 交互式角色推演工具。作者卡剧情时，设好"舞台"和"演员"给出触发条件，AI 串行推演每个角色的行动/台词/神态，作者可在每轮修改，多轮推进直到剧情目标达成。推演记录供作者编写章纲时参考。
+> An interactive character roleplay tool. When the author is stuck on the plot, set the "stage" and the "actors" and give the trigger conditions; the AI roleplays each character's actions / lines / expressions in series, and the author can change things each round, advancing over multiple rounds until the plot goal is reached. The roleplay record is a reference for the author when writing the chapter outline.
 
-## 定位
+## Positioning
 
-**什么时候用：** 作者主动要求剧情推演，或新章编写过程中卡剧情——有核心故事但不知道怎么展开成具体剧情。推演记录给你角色行为素材，帮你写出章纲。
+**When to use:** The author actively asks for a plot roleplay, or gets stuck on the plot while writing a new chapter: there is a core story but no idea how to develop it into concrete plot. The roleplay record gives character behavior material that helps write the chapter outline.
 
-**什么时候不用：** 作者对剧情走向和角色行为已经清楚，不需要额外素材。
+**When not to use:** The author is already clear about the plot direction and character behavior and needs no extra material.
 
-**与现有流程的关系：** 推演沙盘是**作者主动调用的交互工具**，不在 novel-agent 的自动调度流程中。不产生 order 文件，不改变 `.agent/status.md`。
+**Relation to the existing flow:** The roleplay sandbox is an **interactive tool the author calls on their own**; it is not in novel-agent's automatic dispatch flow. It produces no order files and does not change `.agent/status.md`.
 
-## 流程一览
+## Flow Overview
 
 ```
-Step 1: 确认输入
-   → 读卷纲章节走向 + 角色设定（认知6层模型）+ 上章结尾场景 + 钩子
-   → 输出目录：sandbox/vol-{N}-ch-{M}/
+Step 1: Confirm the inputs
+   → read the volume outline chapter direction + character settings (6-layer cognitive model) + the previous chapter's ending scene + hooks
+   → output directory: sandbox/vol-{N}-ch-{M}/
 
-Step 2: 搭台（场景初始化）
-   → 询问作者场景设定：地点/时间/氛围/角色位置/触发事件
-   → 组装初始场景状态 → 与作者确认
+Step 2: Set the stage (scene initialization)
+   → ask the author for the scene settings: location / time / atmosphere / character positions / trigger event
+   → assemble the initial scene state → confirm with the author
 
-Step 3: 定出场顺序
-   → 作者确定角色推演的先后顺序
+Step 3: Fix the appearance order
+   → the author fixes the order in which characters are roleplayed
 
-Step 4: 串行轮次推演
-   ┌→ for each 轮次:
-   │    for each 角色:
-   │      ① AI 生成角色输出（动作+台词+神态+场景变化）
-   │      ② 展示给作者
-   │      ③ 作者选择：接受/修改/重来/插队/加信息/终止
-   │      ④ 更新场景状态 → 下一角色
-   │    一轮结束 → 检查终止条件
-   └→ 直到终止
+Step 4: Serial round roleplay
+   ┌→ for each round:
+   │    for each character:
+   │      1. AI generates the character output (action + line + expression + scene change)
+   │      2. Show it to the author
+   │      3. The author chooses: accept / modify / redo / cut in / add information / stop
+   │      4. Update the scene state → next character
+   │    End of a round → check the stop conditions
+   └→ until it stops
 
-Step 5: 终止判断 → 目标达成/场景收束/作者叫停
+Step 5: Stop judgment → goal reached / scene closed / author calls a stop
 
-Step 6: 产出推演记录
-   → 写入 sandbox/vol-{N}-ch-{M}/推演{序号}.md
+Step 6: Produce the roleplay record
+   → write to sandbox/vol-{N}-ch-{M}/推演{序号}.md
 ```
 
-## Step 1: 确认输入
+## Step 1: Confirm the Inputs
 
-### 必须读取的文件
+### Files that must be read
 
-| 文件 | 用途 |
+| File | Purpose |
 |------|------|
-| `volumes/vol-{N}.md` | 卷纲：本章的 `chapters_summary`（谁+做了什么+冲突+什么变了） |
-| `settings/character-setting/{角色id}.md` | 每个出场角色的认知6层模型 + 状态历史 |
+| `volumes/vol-{N}.md` | Volume outline: this chapter's `chapters_summary` (who + did what + conflict + what changed) |
+| `settings/character-setting/{character id}.md` | Each appearing character's 6-layer cognitive model + state history |
 
-### 可选读取的文件
+### Files that may be read
 
-| 文件 | 存在则读 |
+| File | Read if it exists |
 |------|---------|
-| `settings/foreshadowing.md` | 活跃钩子列表 |
-| 前章 `archives/vol-{N}-ch-{M-1}.md` 结尾画面 | 场景初始化参考 |
+| `settings/foreshadowing.md` | List of active hooks |
+| The previous chapter's `archives/vol-{N}-ch-{M-1}.md` ending scene | Scene initialization reference |
 
-### 从卷纲提取的关键信息
+### Key information extracted from the volume outline
 
-- `chapters_summary` → 本章的一句话剧情走向，作为推演的总体方向
-- `情绪走向` → 本章在卷情绪弧线上的位置，作为场景氛围的初始参考
-- `冲突阶梯` → 当前冲突层位，作为推演中冲突强度的边界参考
+- `chapters_summary` → this chapter's one-sentence plot direction, as the roleplay's overall direction
+- `情绪走向` (emotional direction) → this chapter's position on the volume's emotional arc, as the initial reference for the scene atmosphere
+- `冲突阶梯` (conflict ladder) → the current conflict layer, as the boundary reference for conflict intensity during the roleplay
 
-### 从角色设定提取的关键信息
+### Key information extracted from the character settings
 
-- `认知6层模型` → 到各层的详细描述，用于推导角色行为
-- `状态历史` → 最近的几章状态变更，确定角色的当前位置和情绪
-- `情绪弧线` → 最近的触发事件和强度
-- `hooks`字段 → 该角色关联的未解决钩子
+- `认知6层模型` (6-layer cognitive model) → the detailed description of each layer, used to derive character behavior
+- `状态历史` (state history) → the recent chapters' state changes, fixing the character's current position and emotion
+- `情绪弧线` (emotional arc) → the recent trigger events and intensity
+- `hooks` field → the character's unresolved hooks
 
-## Step 2: 搭台（场景初始化）
+## Step 2: Set the Stage (scene initialization)
 
-### 向作者提问
+### Ask the author
 
-完成输入读取后，逐个场景询问作者：
+After the input reading is done, ask the author scene by scene:
 
 ```
-我们准备推演第 {N} 章的 {场景名}。
+We are about to roleplay the {scene name} of chapter {N}.
 
-请你告诉我：
-1. **场景设定** — 发生在什么地方？什么时间？什么氛围？
-2. **出场角色** — 谁在这个场景里？他们在什么位置？开始时在做什么？
-3. **触发事件** — 什么事件让这个场景开始？（例如："陆征推门进来，发现方岩已经在等他了"）
-4. **有额外的信息差吗？** — 当前角色之间有什么特殊的信息不对等？
-5. **这轮推演你想达到什么目标？** — 比如"确认方岩的反应是否符合人设"或"测试原对话节奏"
+Please tell me:
+1. **Scene settings**: where does it happen? When? What atmosphere?
+2. **Appearing characters**: who is in this scene? Where are they positioned? What are they doing at the start?
+3. **Trigger event**: what event starts this scene? (For example: "陆征 pushes the door open and finds 方岩 already waiting for him")
+4. **Any extra information gap?**: what special information asymmetry exists between the characters right now?
+5. **What do you want this round of roleplay to reach?**: for example, "confirm whether 方岩's reaction fits the character design" or "test the original dialogue rhythm"
 
-如果你不确定，可以只说"照卷纲走"，我会从卷纲章节走向中提取。
+If you are not sure, just say "follow the volume outline" and I will extract it from the volume outline's chapter direction.
 ```
 
-### 组装初始场景状态
+### Assemble the initial scene state
 
-根据作者的回答 + 已读取的文件，组装初始场景状态：
+From the author's answers + the files already read, assemble the initial scene state:
 
 ```markdown
-### 场景设定
-- **地点**: {提取或作者提供}
-- **时间**: {提取或作者提供}
-- **氛围**: {提取或作者提供}
+### Scene Settings
+- **Location**: {extracted or provided by the author}
+- **Time**: {extracted or provided by the author}
+- **Atmosphere**: {extracted or provided by the author}
 
-### 角色初始状态
-#### {角色名}
-- **位置**: {物理位置，可包含姿势}
-- **情绪**: {当前情绪，从角色状态历史提取}
-- **知晓**: {从角色状态历史 + 前章结尾推导}
-- **不知道**: {从信息差推导}
-- **当前目标**: {从角色设定 + 卷纲章节走向推导}
-- **微行为模式**: {从角色设定中提取的习惯性小动作}
+### Characters' Initial States
+#### {Character Name}
+- **Position**: {physical position, may include posture}
+- **Emotion**: {current emotion, extracted from the character's state history}
+- **Knows**: {derived from the character's state history + the previous chapter's ending}
+- **Does not know**: {derived from the information gap}
+- **Current goal**: {derived from the character settings + the volume outline's chapter direction}
+- **Micro-behavior pattern**: {habitual small actions extracted from the character settings}
 ```
 
-### 与作者确认
+### Confirm with the author
 
-展示初始场景状态，用下面的话：
-
-```
-这是初始场景状态，你看一下有没有需要调的？
-→ 没问题 → 进入 Step 3
-→ 修改XX → 更新后进入 Step 3
-```
-
-## Step 3: 定出场顺序
+Show the initial scene state with these words:
 
 ```
-出场角色顺序怎么排？默认按角色在当前场景的重要性：
-1. {角色A} — {一句话说明为什么他先出场，例如"他是主动发起对话的人"}
-2. {角色B} — {说明}
-3. {角色C} — {说明}
-
-你想换顺序，或者让某个角色先不说话后面再介入吗？
+This is the initial scene state. Take a look and see if anything needs adjusting.
+→ No problem → go to Step 3
+→ Change XX → update, then go to Step 3
 ```
 
-- 顺序由作者最终决定
-- 一旦确定，本轮内不改变（除非作者在推演中要求插队）
-- 顺序在每轮应保持一致（除非作者明确要求换顺序）
-
-## Step 4: 串行轮次推演
-
-### AI 生成角色输出的逻辑
-
-对每个角色执行以下推理步骤：
+## Step 3: Fix the Appearance Order
 
 ```
-输入：
-- 当前场景状态（初始状态 + 之前所有角色输出的累积变化）
-- 目标角色的认知6层模型
-- 目标角色的知晓状态、情绪、目标
-- 当前场景的冲突/信息差
+How should the appearance order of the characters go? By default, order by each character's importance in the current scene:
+1. {Character A}: {one sentence on why they appear first, for example "they are the one who starts the dialogue"}
+2. {Character B}: {explanation}
+3. {Character C}: {explanation}
 
-推理：
-1. 角色在当前场景「看到/听到/感知到」了什么？（基于信息边界）
-2. 角色的认知层1(世界观)如何解读当前情况？
-3. 角色的认知层2(自我定位)如何要求自己反应？
-4. 角色的认知层3(价值观)设定了什么边界？
-5. 角色的认知层4(能力)能观察到什么细节？
-6. 角色的认知层5(技能)能做什么？
-7. 角色的认知层6(环境)影响行为方式吗？
-8. 角色的当前目标是什么？上述因素如何影响他的选择？
-
-输出（只输出结果，不展示推理过程）：
-- 台词/动作/神态：角色说了什么、做了什么、什么表情
-- 场景状态变化：角色的行为改变了什么
+Do you want to change the order, or have a character stay silent at first and join later?
 ```
 
-### 输出格式
+- The order is finally decided by the author
+- Once fixed, it does not change within this round (unless the author asks for a cut-in during the roleplay)
+- The order should stay consistent each round (unless the author explicitly asks to change it)
+
+## Step 4: Serial Round Roleplay
+
+### The logic for AI generating a character's output
+
+For each character, run the following reasoning steps:
+
+```
+Inputs:
+- Current scene state (the initial state + the accumulated changes from all previous character outputs)
+- The target character's 6-layer cognitive model
+- The target character's known state, emotion, and goal
+- The current scene's conflict / information gap
+
+Reasoning:
+1. What did the character "see / hear / perceive" in the current scene? (based on the information boundary)
+2. How does the character's cognitive layer 1 (worldview) interpret the current situation?
+3. How does the character's cognitive layer 2 (self-positioning) require them to react?
+4. What boundary does the character's cognitive layer 3 (values) set?
+5. What details can the character's cognitive layer 4 (abilities) observe?
+6. What can the character's cognitive layer 5 (skills) do?
+7. Does the character's cognitive layer 6 (environment) affect how they behave?
+8. What is the character's current goal? How do the factors above affect their choice?
+
+Output (output only the result; do not show the reasoning process):
+- Lines / actions / expressions: what the character said, did, and what expression they wore
+- Scene state change: what the character's behavior changed
+```
+
+### Output format
 
 ```markdown
-#### 轮次 {N} · 角色: {角色名}
+#### Round {N} · Character: {Character Name}
 
-**台词/动作/神态:**
-> {角色说了什么话，做了什么动作，什么表情神态}
+**Lines / Actions / Expressions:**
+> {What the character said, what they did, what expression they wore}
 
-**场景状态变化:**
-- {维度}: {具体变化}
+**Scene State Change:**
+- {dimension}: {concrete change}
 ```
 
-### 作者反馈处理
+### Handling author feedback
 
-每轮角色输出后，暂停并等待作者反馈。用下面的话：
+After each round's character output, pause and wait for the author's feedback. Use these words:
 
 ```
-{角色名}的推演如上。你可以：
-- ✅ 接受 — 继续下一角色
-- ✏️ 修改 — 告诉我要改什么
-- 🔄 重来 — 告诉我方向，我重写这段
-- ⏭ 插队 — 让另一个角色先出场
-- ℹ️ 加信息 — 补充当前角色不知道但应该知道的背景
-- 🛑 终止 — 推演到此为止
+{Character Name}'s roleplay is above. You can:
+- Accept: continue to the next character
+- Modify: tell me what to change
+- Redo: tell me the direction and I will rewrite this passage
+- Cut in: let another character appear first
+- Add information: add background the current character does not know but should know
+- Stop: the roleplay ends here
 ```
 
-#### 各反馈类型的处理规则
+#### Handling rules for each feedback type
 
-| 反馈 | AI 动作 | 后续影响 |
+| Feedback | AI action | Later effect |
 |------|---------|---------|
-| **接受** | 场景状态应用当前变化，进入下一角色 | 正常 |
-| **修改** | 按作者要求修改输出 → 更新场景状态 → 进入下一角色 | 本轮后续角色看到修改后的状态 |
-| **重来** | 将场景状态回退到本角色开始前的状态 → 加入作者方向 → 重新生成 | 不影响之前角色的输出 |
-| **插队** | 记录当前角色状态 → 先推演插队角色 → 完成后返回当前角色 | 插队角色的输出成为当前角色的新输入 |
-| **加信息** | 更新场景状态中该角色的「知晓」字段 → 当前角色重新推演 | 后续所有轮次看到更新后的信息边界 |
-| **终止** | 场景状态定格 → 进入 Step 5 | — |
+| **Accept** | Apply the current change to the scene state and move to the next character | Normal |
+| **Modify** | Modify the output per the author's request → update the scene state → move to the next character | Later characters in this round see the modified state |
+| **Redo** | Roll the scene state back to before this character started → add the author's direction → regenerate | Does not affect previous characters' output |
+| **Cut in** | Record the current character's state → roleplay the cut-in character first → return to the current character after finishing | The cut-in character's output becomes the current character's new input |
+| **Add information** | Update the "Knows" field of that character in the scene state → the current character roleplays again | All later rounds see the updated information boundary |
+| **Stop** | Freeze the scene state → go to Step 5 | none |
 
-### 推演铁律
+### Roleplay iron rules
 
-1. **基于认知层** — 角色行为必须能从其认知6层模型推导。认知层决定行为，不能凭空感觉。
-2. **不OOC** — 角色不能做其层3（价值观）拒绝的事、不能有层2（自我定位）不认可的自我认知。
-3. **信息差透明** — AI 只使用该角色当前知道的信息。角色不知道的信息不能出现在其行为或台词中。
-4. **可观察** — 输出只包含其他角色可看到/听到的行为。不写内心独白。
-5. **因果链** — 每个角色行为必须改变场景状态的至少一个维度。
-6. **单向演进** — 场景状态只向前演进。作者的修改产生新分支，不回溯已发生的其他角色行为。
+1. **Based on the cognitive layers**: character behavior must be derivable from the character's 6-layer cognitive model. The cognitive layers decide behavior; do not go by empty feeling.
+2. **No OOC**: a character cannot do something their layer 3 (values) refuses, and cannot hold a self-perception their layer 2 (self-positioning) does not accept.
+3. **Transparent information gap**: the AI only uses the information that character currently knows. Information the character does not know cannot appear in their behavior or lines.
+4. **Observable**: the output contains only behavior other characters can see / hear. Do not write inner monologue.
+5. **Causal chain**: each character behavior must change at least one dimension of the scene state.
+6. **One-way evolution**: the scene state only moves forward. The author's changes create new branches; they do not rewind other characters' behavior that already happened.
 
-## Step 5: 终止判断
+## Step 5: Stop Judgment
 
-### 终止条件（任一满足即停）
+### Stop conditions (stop when any one is met)
 
-1. **目标达成** — 作者提出的推演目标已展现
-2. **场景收束** — 角色全部沉默/离场，无新行为可推演
-3. **停滞超限** — 连续 3 轮无实质性推进，此时提问作者"是继续推演还是停？"
-4. **作者叫停** — 作者在任一反馈点选择"终止"
+1. **Goal reached**: the roleplay goal the author proposed has been shown
+2. **Scene closed**: all characters are silent / have left, with no new behavior to roleplay
+3. **Stall limit exceeded**: 3 consecutive rounds with no substantial advance; at that point ask the author "continue roleplaying or stop?"
+4. **Author calls a stop**: the author picks "stop" at any feedback point
 
-### 终止处理后
+### After the stop is handled
 
 ```
-推演已结束，共 {N} 轮。
+The roleplay has ended, {N} rounds in total.
 
-总结一下推演结果：
-- 场景最终状态：{简述}
-- 关键行为节点：{行为1 → 行为2 → ...}
-- 角色关系变化：{变化简述}
-- 可用于正文的素材：{对话片段、微行为、氛围词等}
+A summary of the roleplay results:
+- Final scene state: {brief description}
+- Key behavior nodes: {behavior 1 → behavior 2 → ...}
+- Character relationship changes: {brief description of the changes}
+- Material usable in the main text: {dialogue fragments, micro-behaviors, atmosphere words, and similar}
 
-要把推演记录写入文件吗？
+Should the roleplay record be written to a file?
 ```
 
-## Step 6: 产出推演记录
+## Step 6: Produce the Roleplay Record
 
-按 `.claude/knowledge/roleplay-sandbox-style.md` 的格式，将完整的推演过程写入：
+Following the format in `.claude/knowledge/roleplay-sandbox-style.md`, write the complete roleplay process to:
 
 `sandbox/vol-{N}-ch-{M}/推演{序号}.md`
 
-### 文件命名
+### File naming
 
-- 首次运行：`sandbox/vol-{N}-ch-{M}/推演01.md`
-- 同一章再次推演：`推演02.md`、`推演03.md`……依次递增
-- 写入前询问作者确认文件名
+- First run: `sandbox/vol-{N}-ch-{M}/推演01.md`
+- Roleplaying the same chapter again: `推演02.md`, `推演03.md`, and so on in order
+- Ask the author to confirm the file name before writing
 
-### 写入规则
+### Writing rules
 
-- 写入前展示给作者确认："这是要写的推演记录，看看有没有需要调整的？"
-- 作者确认后写入
-- 文件内容包含：元数据、初始场景状态、完整推演过程（所有轮次+作者干预）、推演结果
+- Before writing, show it to the author for confirmation: "This is the roleplay record to write. Take a look and see if anything needs adjusting?"
+- Write it after the author confirms
+- The file content includes: metadata, the initial scene state, the complete roleplay process (all rounds + author interventions), and the roleplay results
 
-### 文件状态
+### File status
 
-推演记录存放在 `sandbox/` 目录下，与 `chapters/`、`volumes/` 同级。不影响项目状态，不出现在 `.agent/status.md` 或任何 order 文件路径中。
+The roleplay record lives in the `sandbox/` directory, at the same level as `chapters/` and `volumes/`. It does not affect project state and does not appear in `.agent/status.md` or any order file path.
 
-## 下一步
+## Next Step
 
-推演记录写入后，告诉作者后续路径：
+After the roleplay record is written, tell the author the path forward:
 
 ```
-推演记录已写入 sandbox/vol-{N}-ch-{M}/推演{序号}.md。
-你可以根据推演记录中的角色行为和对话素材来编写章纲，正文写作时也有具体的行为参考。
+The roleplay record is written to sandbox/vol-{N}-ch-{M}/推演{序号}.md.
+You can use the character behavior and dialogue material in the roleplay record to write the chapter outline, and the main text writing also has concrete behavior references.
 
-需要继续写章纲吗？还是你想再改推演记录？
+Do you want to continue writing the chapter outline? Or do you want to change the roleplay record first?
 ```
 
-## 边界与约束
+## Boundaries and Constraints
 
-### 沙盘不做的
+### What the sandbox does not do
 
-- ✗ 不写 order 文件
-- ✗ 不修改 `.agent/status.md`
-- ✗ 不修改角色设定文件或 foreshadowing.md
-- ✗ 不生成正文（writer 的职责）
-- ✗ 不自动调度后续步骤（由作者或 novel-agent 决定）
+- Does not write order files
+- Does not modify `.agent/status.md`
+- Does not modify character settings files or foreshadowing.md
+- Does not generate main text (that is writer's job)
+- Does not automatically dispatch later steps (the author or novel-agent decides)
 
-### 沙盘产出的用途边界
+### Use boundaries for sandbox output
 
-推演记录是给作者的参考素材，不是系统强制输入：
-- 作者根据推演记录中的角色行为和对话，编写章纲和正文
-- 推演记录不自动注入任何后续流程
+The roleplay record is reference material for the author, not a forced system input:
+- The author writes the chapter outline and main text from the character behavior and dialogue in the roleplay record
+- The roleplay record is not automatically injected into any later flow

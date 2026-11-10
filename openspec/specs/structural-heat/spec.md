@@ -1,50 +1,50 @@
 # structural-heat Specification
 
 ## Purpose
-为 writer 与 anti-ai 提供结构级 AI 热源知识：外部 AI 检测器的热源常在段落结构而非用词，本能力让 agent 在写前与修文前按可验证的定律规避/识别高风险结构，从源头降低检出。
+Provide structure-level AI heat-source knowledge for the writer and anti-ai: external AI detectors' heat sources often sit in paragraph structure rather than word choice, and this capability lets agents avoid or identify high-risk structures using verifiable laws before writing and before editing, lowering detection rates from the source.
 
 ## Requirements
 
-### Requirement: 结构热源知识文件必须存在且按部署路径可达
+### Requirement: The structural-heat knowledge file must exist and be reachable at its deployment path
 
-知识文件 `knowledge/anti-ai/structural-heat.md` MUST 存在于仓库；init MUST 将其并入 anti-ai 知识合并清单，随部署产物 `.claude/knowledge/anti-ai.md`（各平台对应知识目录）下发；对它的引用 MUST 指向该合并产物路径，通过 `tools/check-agents.py` 校验。
+The knowledge file `knowledge/anti-ai/structural-heat.md` MUST exist in the repo; init MUST merge it into the anti-ai knowledge merge list and ship it with the deployed product `.claude/knowledge/anti-ai.md` (each platform's matching knowledge directory); references to it MUST point at that merged-product path, verified by `tools/check-agents.py`.
 
-#### Scenario: agent 写前召回
-- **WHEN** writer 或 anti-ai agent 读取部署后的 anti-ai 知识
-- **THEN** 合并产物中包含结构热源定律内容，`check-agents.py` 对引用路径校验通过（exit 0）
+#### Scenario: Agent recall before writing
+- **WHEN** the writer or anti-ai agent reads the deployed anti-ai knowledge
+- **THEN** the merged product contains the structural-heat law content, and `check-agents.py` passes its reference-path check (exit 0)
 
-#### Scenario: 仓库静态检查
-- **WHEN** CI 运行 `check-agents.py` 与 `check-conflicts.py`
-- **THEN** 均以 0 退出，无路径断链、无阈值冲突
+#### Scenario: Repo static checks
+- **WHEN** CI runs `check-agents.py` and `check-conflicts.py`
+- **THEN** both exit 0, with no broken reference paths and no threshold conflicts
 
-### Requirement: 知识内容必须通用化且可溯源
+### Requirement: Knowledge content must be generalized and traceable
 
-文件内容 MUST 满足：①覆盖问答链密度、位置热值、切片边界稳定、补字铁律、内容类型切换、语气词拉长法、整章重写边界七条定律；②覆盖高风险结构清单（不少于 13 种：工作汇报体、取证结案体、经营验收体、协作示范体、前置准备体、数字讲解体、微闭环递归体、连续验收叠加体、固定位置换皮体、标准悬念搭台体、过桥链前缀体、私人回忆证明链、固定章首完整小戏）；③不含任何具体书名、人物名、章节号；④每条定律 MUST 附带实测数据作证据。
+The file content MUST satisfy: (1) cover seven laws, question-answer chain density, positional heat value, slice-boundary stability, the character-padding iron rule, content-type switching, the particle-stretching method, and whole-chapter rewrite boundaries; (2) cover a high-risk structure list of at least 13 kinds: work-report style, evidence-closing style, operations-acceptance style, collaboration-demonstration style, advance-preparation style, numbers-explanation style, micro-closed-loop recursion, consecutive acceptance stacking, fixed-position reskinning, standard suspense staging, bridge-chain prefix style, private-memory proof chains, and fixed chapter-opening mini-plays; (3) contain no specific book titles, character names, or chapter numbers; (4) attach measured data as evidence to each law.
 
-#### Scenario: 内容完整性验收
-- **WHEN** 人工或脚本核对文件内容
-- **THEN** 七条定律与不少于 13 种高风险结构齐备，全文无特定书目专有名词，定律条目附实测分数
+#### Scenario: Content completeness acceptance
+- **WHEN** a human or script checks the file content
+- **THEN** the seven laws and at least 13 high-risk structures are all present, the text has no proper nouns specific to a particular book, and law entries carry measured scores
 
-#### Scenario: 阈值体系不冲突
-- **WHEN** 运行 `check-conflicts.py`
-- **THEN** 新增定律中的数量表述与既有 anti-ai 规则阈值无冲突
+#### Scenario: Threshold system does not conflict
+- **WHEN** running `check-conflicts.py`
+- **THEN** the numeric statements in the new laws do not conflict with existing anti-ai rule thresholds
 
-### Requirement: human-writing 系规则增量合并不得覆盖既有体系
+### Requirement: Incremental merges from the human-writing rule pack must not overwrite the existing system
 
-从 human-writing 系规则包合并条目时 MUST 只增不删：不修改 `common-rules.md` / `anti-ai-writing.md` 既有阈值与方法论框架，新增条目 MUST 能逐条追溯到来源文件；不得以包内旧分叉文件整文件替换仓库重构版。
+When merging entries from the human-writing rule pack, the merge MUST be additions only: do not change the existing thresholds or methodology framework of `common-rules.md` / `anti-ai-writing.md`, new entries MUST be traceable back to their source files one by one, and do not replace the repo's refactored versions wholesale with old fork files from the pack.
 
-#### Scenario: 合并后回归
-- **WHEN** 合并完成并运行 anti-ai 相关检查与测试
-- **THEN** 既有规则条目与阈值不变（git diff 仅见新增行），无重复定义同一名词的冲突条目
+#### Scenario: Regression after merging
+- **WHEN** the merge is done and anti-ai checks and tests run
+- **THEN** existing rule entries and thresholds are unchanged (git diff shows only added lines), with no conflicting entries that redefine the same term
 
-### Requirement: 适用范围与冲突裁决顺序必须声明
+### Requirement: Scope and conflict-adjudication order must be stated
 
-知识文件 MUST 声明：①实测来源与适用边界（经验来自现实题材单书实测，数量阈值为默认值，按文风/题材校准）；②冲突裁决顺序——作者设定与章纲 > 题材知识 > 结构默认值 > 检测优化。数量表述 MUST 标注为默认值；与既有规则覆盖同一现象时 MUST 写明关系（新刻度并行或引用既有规则），MUST NOT 重复定义同一数值口径（如对话密度、标点用法）。
+The knowledge file MUST state: (1) the measured source and scope (the experience comes from live tests on a single realistic-genre book; numeric thresholds are defaults, calibrated by style and genre); (2) the conflict-adjudication order: author settings and chapter outline > genre knowledge > structural defaults > detection optimization. Numeric statements MUST be labeled as defaults; when covering the same phenomenon as an existing rule, the file MUST state the relationship (a new scale running in parallel, or a reference to the existing rule) and MUST NOT redefine the same numeric wording (such as dialogue density or punctuation usage).
 
-#### Scenario: 与既有规则同题
-- **WHEN** 结构默认值与既有规则（如 Gate E5 对话句数、common-rules 破折号判定）覆盖相近现象
-- **THEN** 文件明确两者为不同刻度或直接引用既有口径，无方向相反的指令
+#### Scenario: Same topic as an existing rule
+- **WHEN** a structural default and an existing rule (such as Gate E5 dialogue sentence counts or the common-rules dash ruling) cover a similar phenomenon
+- **THEN** the file states clearly that they are different scales or directly references the existing wording, with no instructions pointing in opposite directions
 
-#### Scenario: 优先级落文
-- **WHEN** writer 或 anti-ai 引用该文件做判定且与作者设定/章纲冲突
-- **THEN** 按声明的裁决顺序执行，作者设定与章纲始终优先于检测优化
+#### Scenario: Priority written down
+- **WHEN** the writer or anti-ai cites the file for a decision that conflicts with author settings or the chapter outline
+- **THEN** it follows the stated adjudication order, and author settings and the chapter outline always win over detection optimization

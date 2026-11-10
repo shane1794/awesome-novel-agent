@@ -1,566 +1,565 @@
-
 # prompt-crafter skill
 
 
-## 流程概览
+## Process Overview
 
 ```text
-Step 1: 读取输入源（10 类文件）
-Step 2: 按 6 元素 Prompt 结构填充：角色 / 任务指示 / 背景信息 / 案例 / 输入 / 输出
-Step 3: 冲突检测
-Step 4: 验收自检
+Step 1: Read the input sources (10 kinds of files)
+Step 2: Fill in by the 6-element Prompt structure: role / task instructions / background / examples / input / output
+Step 3: Conflict detection
+Step 4: Acceptance self-check
 ```
 
-## Step 1: 读取输入源
+## Step 1: Read the Input Sources
 
-> 10 类文件（含写作记忆/提示词记忆/永久记忆）。
+> 10 kinds of files (including writing memory / prompt memory / permanent memory).
 
-1. **writing-style.md（主卡）** → 提取正文定性层四字段（叙事身份 / 硬约束 / AI 易犯错误 / 描写层次和手法）+ 量化层 9 大维度 + confidence。**双态**：confidence=0 → 只注入定性层（读主卡正文 → 定性四字段注入，现状不变）；confidence>0 → 按 rendering-rules.md 渲染案例 2（读主卡 + 场景卡 frontmatter → 量化节 + 声音层透传）
-2. **上一章 chapter.md**（`chapters/vol-{N}-ch-{M-1}.md`）→ 提取 emotional_design（情绪钩子 emotional_hook + 章末落点，取 mood_progression 末段）+ required_changes，据此还原上章结尾画面；`volume.md` 前章摘要辅助
-3. **chapter.md** → 提取 memo, emotional_design, 场景卡, outline（场景分解）, payoff_plan
-4. **角色设定文件** → 读取涉及的角色，提取本章相关状态
-5. **genre-example** → 取对应题材的提示词注入段（输出·写作规范用）
-6. **反 AI 规则文件**（`.claude/knowledge/anti-ai.md`）→ 只注入生成期需要的部分：活人感正向要点（人物有眼下要办的事 / 细节跟着人物视角走 / 对白在做事）、T1 最毒句式简表（不是A而是B、带着…状语、认知动词前置、与此同时等，出现即换）、元叙事禁止、题材反 AI 正反例。**疲劳词阈值、T2/T3 分级、二级禁用词不注入**——清创留给 anti-ai agent 完稿后执行，writer 不边写边对照负面清单（生成与清创分离）
-7. **写作记忆**（`.claude/memory/writing-memory.md`）→ 提取本章相关的作者文风/节奏/描写/对话偏好，注入背景信息·作者偏好记忆
-8. **永久记忆**（`.claude/knowledge/permanent-memory.md`）→ 提取高频沉淀的作者规则，与写作记忆合并去重后注入
-9. **style-profiles/ 场景卡** → 本章每个场景类型查 `settings/style-profiles/{scene_type}.md`，有则把该卡 override 合并进主卡量化层（仅该场景注入用，confidence>0 渲染即按此 override 叠加）；无则主卡兜底。**合并为 LLM 手工执行，无脚本校验（review #34）——合并后按 Step 4 验收自检核对数值口径（0-100 百分数、非负），异常即回查源卡**
-10. **提示词记忆**（`.claude/memory/prompt-memory.md`）→ 提取与本章提示词组装/冲突裁定/校验相关的作者反馈条目，在 Step 2 填充与 Step 3 冲突检测时应用；引用后按 skills/memory-recording.md §4.1 递增 use_count
-**注意：前情上下文只读上一章章纲（chapters/vol-{N}-ch-{M-1}.md）的 emotional_design 与 required_changes，不读上一章正文全文；archives/ 始终禁止读取。**
+1. **writing-style.md (main card)** → extract the main text's qualitative layer four fields (narrative identity / hard constraints / common AI mistakes / description layers and techniques) + the quantitative layer's 9 dimensions + confidence. **Two states**: confidence=0 → inject only the qualitative layer (read the main card's main text → inject the qualitative four fields, unchanged); confidence>0 → render Case 2 per rendering-rules.md (read the main card + scene card frontmatter → quantitative section + voice layer passed through)
+2. **Previous chapter's chapter.md** (`chapters/vol-{N}-ch-{M-1}.md`) → extract emotional_design (emotional hook emotional_hook + chapter-end landing, taking the last stretch of mood_progression) + required_changes, and from them reconstruct the previous chapter's ending scene; `volume.md`'s previous chapter summary helps
+3. **chapter.md** → extract memo, emotional_design, scene cards, outline (scene breakdown), payoff_plan
+4. **Character settings files** → read the involved characters and extract this chapter's relevant states
+5. **genre-example** → take the matching genre's prompt injection passage (for Output, Writing Standards)
+6. **Anti-AI rules file** (`.claude/knowledge/anti-ai.md`) → inject only the parts generation needs: human-feel positive points (the character has something to do right now / details follow the character's point of view / dialogue is doing work), the T1 most toxic sentence pattern short table ("not A but B", "with..." adverbials, cognitive verb first, "meanwhile", and similar; replace on sight), meta-narrative bans, genre anti-AI positive and negative examples. **Fatigue word thresholds, T2/T3 tiers, and tier 2 banned words are not injected**. Cleanup is left for the anti-ai agent to run after the draft is finished; writer does not check a negative list while writing (generation and cleanup are separate)
+7. **Writing memory** (`.claude/memory/writing-memory.md`) → extract the author's style / rhythm / description / dialogue preferences relevant to this chapter and inject them into Background, Author Preference Memory
+8. **Permanent memory** (`.claude/knowledge/permanent-memory.md`) → extract the author's high-frequency banked rules, deduplicate them against the writing memory, then inject them
+9. **style-profiles/ scene cards** → for each scene type in this chapter, look up `settings/style-profiles/{scene_type}.md`; when present, merge that card's override into the main card's quantitative layer (only for that scene's injection; a confidence>0 render stacks the override on top); when absent, the main card is the fallback. **Merging is done by hand by the LLM, with no script check (review #34). After merging, check the value scales in the Step 4 acceptance self-check (0-100 percentages, non-negative); on an anomaly, check the source card**
+10. **Prompt memory** (`.claude/memory/prompt-memory.md`) → extract the author's feedback entries related to this chapter's prompt assembly / conflict ruling / checks, and apply them when filling in Step 2 and detecting conflicts in Step 3; after citing them, increment use_count following skills/memory-recording.md Section 4.1
+**Note: the prior context reads only the previous chapter's outline (chapters/vol-{N}-ch-{M-1}.md) emotional_design and required_changes; do not read the previous chapter's main text in full; archives/ is always forbidden to read.**
 
-**占位符守卫：** 若 `settings/writing-style.md` / `settings/genre-setting.md` 仍含未替换的 `{...}` 占位符（如 `{role}`、`{genre_id}`，即初始化后设定阶段未执行），**禁止把占位符原样注入 prompt**。改为从 `.claude/knowledge/genre-example.md` 提取对应题材的「叙事者角色/文风蓝图/类型禁忌/题材配置」作为默认风格注入，并在完成报告标注 `[设定未填写，已用 genre-example 默认兜底]`，提示 novel-agent 补做设定。
+**Placeholder guard:** If `settings/writing-style.md` / `settings/genre-setting.md` still contain unreplaced `{...}` placeholders (such as `{role}` or `{genre_id}`, meaning the settings stage was not run after initialization), **do not inject the placeholders into the prompt as-is**. Instead, extract the matching genre's "narrator role / style blueprint / genre taboos / genre configuration" from `.claude/knowledge/genre-example.md` as the default style injection, and mark the completion report `[settings not filled in; genre-example default used as fallback]`, telling novel-agent to fill in the settings later.
 
-## Step 1.5: 全局冲突裁定预加载
+## Step 1.5: Global Conflict Ruling Preload
 
-在开始填充 6 元素之前，先加载以下全局冲突裁定表。后续所有填充步骤中遇到规则冲突时（如字数不足与感官细化冲突、红线保留与字数压缩冲突），按此优先级裁决。此步骤为内部参考，不产出到 prompt 文本。
+Before filling in the 6 elements, load the following global conflict ruling table. Whenever a rule conflict appears in the later filling steps (such as insufficient word count vs sensory detail, or red line preservation vs word count compression), rule by this priority. This step is an internal reference and is not output into the prompt text.
 
-### 优先级 hierarchy（从高到低）
+### Priority hierarchy (high to low)
 
-| 优先级 | 规则 | 说明 | 执行要求 |
+| Priority | Rule | Description | Execution Requirement |
 |--------|------|------|---------|
-| 1（最高） | 约束红线 | 情节红线、角色禁区、边界禁止 | 任何时候不得删改红线内容。字数压缩不能导致红线缺失。感官例外仅限于作为红线关键信息的声音线索。风格卡 `banned_words` / `hard_constraints` 并入红线级，任何压缩不得删改 |
-| 2 | 字数 | 目标字数硬性约束（以章纲 memo 目标字数为准，±10%） | 超限时启用压缩策略——优先压缩低权重场景（场景1/2过渡/中权重段落），推荐压缩至100字以内（保留1句环境切换 + 1句人物动作 + 1句情绪/氛围留白）；压缩不得触碰红线。高权重场景的核心冲突段落不动 |
-| 3 | T1词（修饰类） | 仿佛、一丝、不禁、不由得等（突然/忽然/猛然 属语境敏感类，≤4次/章，红线段落从宽） | 超阈值时优先保留有叙事功能的，删除无功能的赘词。红线段落出现时从宽（保留节奏功能） |
-| 4 | 认知动词 | 意识到、发现、明白、感到、觉得、认为 | 替换为外部动作或直接感知描写；关键情绪节点可简要使用（≤2次/章，见 narrative-rules.md 规则 2），其余不让步 |
-| 5 | 感官/X了一下 | 每场景以 2 种为主，氛围允许时增至 3 种；X了一下结构 | 声音线索如果是红线关键信息可不计数。其他感官超阈值时精简。X了一下有节奏功能时可保留 |
-| 6（最低） | 写作规范 | 所有其他写作规范和技法指引（含叙事规则、基底铁律） | 与以上第1-5条冲突时自动让步。叙事规则优先级高于写作规范同级规则，低于第1-5层。写作规范级内冲突优先级：**文风（风格卡量化数值）> 作者最新记忆偏好（writing-memory）> 基底铁律（writing-base）> genre-example 题材基线**。质量层取舍（如字数达标前提下的压缩顺序）按此顺序：先砍环境/路人/过渡描写，保留情绪段落与文风要求段落 |
+| 1 (highest) | Constraint red lines | Plot red lines, character forbidden zones, boundary bans | Never delete or change red line content at any time. Word count compression must not cause red lines to go missing. Sensory exceptions apply only to sound clues that are red line key information. The style card's `banned_words` / `hard_constraints` merge into red line level; no compression may delete or change them |
+| 2 | Word count | Target word count hard constraint (based on the chapter outline memo's target word count, plus or minus 10%) | When over the limit, use the compression strategy: compress low-weight scenes first (scenes 1/2 transitions / medium-weight passages), recommending compression to within 100 words (keeping 1 environment switch sentence + 1 character action sentence + 1 emotion / atmosphere blank sentence); compression must not touch red lines. The core conflict passages of high-weight scenes do not move |
+| 3 | T1 words (style words) | Seemingly, a trace of, could not help, involuntarily, and similar (suddenly / abruptly / fiercely are context-sensitive, at most 4 per chapter, with red line passages treated leniently) | When over the threshold, keep the ones with a narrative function first and delete functionless filler words. When they appear in red line passages, treat them leniently (keeping the rhythm function) |
+| 4 | Cognitive verbs | Realized, discovered, understood, felt, thought, believed | Replace with external actions or direct perception description; they may be used briefly at key emotional nodes (at most 2 per chapter, see narrative-rules.md Rule 2); otherwise no concession |
+| 5 | Senses / "X for a moment" | 2 senses per scene as the main ones, rising to 3 when the atmosphere allows; the "X for a moment" structure (X了一下) | A sound clue that is red line key information may not count. When other senses exceed the threshold, trim them. Keep an "X for a moment" when it has a rhythm function |
+| 6 (lowest) | Writing standards | All other writing standards and technique guidance (including narrative rules and the base iron rules) | Automatically yields when it conflicts with items 1-5 above. Narrative rules outrank same-level writing standards rules and sit below layers 1-5. Priority within the writing standards level when they conflict: **style (style card quantitative values) > the author's latest memory preferences (writing-memory) > base iron rules (writing-base) > genre-example genre baseline**. Quality-layer trade-offs (such as the compression order once the word count target is met) follow this order: cut environment / passerby / transition description first, keeping emotional passages and style-required passages |
 
-### 字数压缩细则（优先级 2 执行规则）
-
-```
-1. 绝对不删：情节红线内容（2-4条）、角色关键转折、情绪拐点段落
-2. 优先压缩：低权重场景（优先第1个低权重场景的过渡段）、中权重场景的非核心段落
-3. 次优先压缩：高权重场景的次要元素（环境描写从3句缩为1句、路人描写精简）
-4. 不动：高权重场景的核心冲突段落
-```
-
-### 感官冲突细则（优先级 5 执行规则）
+### Word Count Compression Details (priority 2 execution rules)
 
 ```
-1. 每场景以 2 种感官为主进行细化，氛围允许时增至 3 种（如听觉+触觉），其余一笔略写
-2. 例外：声音线索（角色的听觉判断、环境关键声响）如果属于本章情节红线的关键信息，可作为简短白描保留，不计入 2 种感官名额
-3. 例外触发条件：声音线索必须是红线内容的一部分（如枪声=战斗关键信号、脚步声逼近=危险标志），而非环境装饰音
-4. 场景中"X了一下"结构超阈值时，保留有节奏功能的X了一下（如"停了一下"有停顿感），删除冗余项
+1. Never delete: plot red line content (2-4 items), character key turning points, emotional turning point passages
+2. Compress first: low-weight scenes (first the transition passage of the first low-weight scene), non-core passages of medium-weight scenes
+3. Compress next: secondary elements of high-weight scenes (environment description from 3 sentences to 1, passerby description trimmed)
+4. Do not move: the core conflict passages of high-weight scenes
 ```
 
-### 二义性条件覆盖（优先级 5 的边界示例）
+### Sensory Conflict Details (priority 5 execution rules)
 
-以下示例帮助判定规则是否触发：
+```
+1. Detail each scene mainly with 2 senses, rising to 3 when the atmosphere allows (such as hearing + touch); write the rest in a passing line
+2. Exception: a sound clue (a character's hearing judgment, a key environmental sound) that is red line key information for this chapter may be kept as a brief plain description and does not count toward the 2-sense quota
+3. Exception trigger condition: the sound clue must be part of the red line content (such as a gunshot as a combat key signal, or approaching footsteps as a danger marker), not an environmental decoration sound
+4. When the "X for a moment" structure in a scene exceeds the threshold, keep the ones with a rhythm function (such as "paused for a moment", which has a sense of stopping) and delete the redundant ones
+```
 
-| 规则 | 当条件成立时适用 | 当条件不成立时不适用 |
+### Ambiguous Condition Coverage (boundary examples for priority 5)
+
+The following examples help judge whether a rule triggers:
+
+| Rule | Applies when the condition holds | Does not apply when the condition does not hold |
 |------|-----------------|-------------------|
-| 字数压缩·低权重场景压缩 | 场景权重标注为"低"，且内容不属于红线关键信息 | 场景权重为"低"但承载了红线关键信息（如低权重场景中出现了关键伏笔） |
-| 感官例外·声音线索 | 声音是红线关键信息且以简短白描形式呈现（"门开了"三字） | 声音是大段环境描写（200字的风声/脚步声细节）或非红线信息 |
-| 认知动词替换 | 认知动词可用外部动作或直接感知替代（"他感到害怕"→"他的手指用力扣进掌心"） | 关键情绪节点外一律替换（≤2次/章，见 narrative-rules.md 规则 2），不因字数或其他规则让步——字数超限时走压缩策略（优先压缩低权重场景，见全局冲突裁定表"认知动词 vs 字数"裁定） |
+| Word count compression, low-weight scene compression | The scene weight is labeled "low" and its content is not red line key information | The scene weight is "low" but it carries red line key information (such as a key foreshadowing appearing in a low-weight scene) |
+| Sensory exception, sound clue | The sound is red line key information and is presented as a brief plain description ("the door opened", three words) | The sound is a long environmental description (200 words of wind / footsteps detail) or non-red line information |
+| Cognitive verb replacement | The cognitive verb can be replaced with an external action or direct perception ("he felt afraid" becomes "his fingers dug hard into his palm") | Outside key emotional nodes, always replace (at most 2 per chapter, see narrative-rules.md Rule 2); do not yield for word count or other rules. When the word count is over the limit, use the compression strategy (compress low-weight scenes first, see the "cognitive verbs vs word count" ruling in the global conflict ruling table) |
 
-## Step 2: 按 6 元素 Prompt 结构填充
+## Step 2: Fill In by the 6-Element Prompt Structure
 
-填充顺序：角色 → 任务指示 → 背景信息（前情上下文 + 角色初始状态）→ 输入（场景原材料 + 场景类型识别）→ 场景方法论加载与转化 → 案例 → 输出（约束红线 + 写作规范 + 质感要求）
+Filling order: role → task instructions → background (prior context + character initial states) → input (scene raw material + scene type identification) → scene methodology loading and conversion → examples → output (constraint red lines + writing standards + texture requirements)
 
-### 角色
+### Role
 
-从 genre-setting.md 提取题材，照抄不展开。
+Extract the genre from genre-setting.md and copy it verbatim without expanding it.
 
-### 任务指示
+### Task Instructions
 
-从 chapter.md memo + volume.md + writing-style 提取：
+Extract from chapter.md memo + volume.md + writing-style:
 
-- 章号、在全卷中的角色、本章驱动力、信息释放节奏
-  **字数与压缩策略（独立节，注入到 任务指示 段落的"字数与压缩策略"子节下）：** 格式见下方。
-- **叙事目标**：
-  - 核心悬念（问题形式，不是情节概述）+ 悬念状态（解决/加深/转移）
-  - 读者情绪（离场感受，一个情绪词或画面）
-  - 爽点设计（类型 + 铺垫场景 + 释放场景）
+- Chapter number, its role in the whole volume, this chapter's driving force, information release rhythm
+  **Word count and compression strategy (a standalone section, injected under the "word count and compression strategy" subsection of the Task Instructions paragraph):** format as below.
+- **Narrative goal**:
+  - Core suspense (in question form, not a plot summary) + suspense state (resolved / deepened / shifted)
+  - Reader emotion (the feeling on leaving, one emotion word or scene)
+  - Satisfying beat design (type + planting scene + release scene)
 
-### 背景信息
+### Background
 
-#### 前情上下文
+#### Prior Context
 
-从上一章章纲（`chapters/vol-{N}-ch-{M-1}.md`）的 emotional_design（情绪钩子 emotional_hook + 章末落点，取 mood_progression 末段）+ required_changes 提取结尾画面；卷纲前章摘要辅助（不读上一章正文全文，archives/ 禁读）：
-- 上章结尾画面、情绪残留、读者信息缺口
+Extract the ending scene from the previous chapter's outline (`chapters/vol-{N}-ch-{M-1}.md`) emotional_design (emotional hook emotional_hook + chapter-end landing, taking the last stretch of mood_progression) + required_changes; the volume outline's previous chapter summary helps (do not read the previous chapter's main text in full; archives/ is forbidden to read):
+- The previous chapter's ending scene, emotional residue, reader information gap
 
-上章为 ch-1 时：固定填写"无前置章节，开篇直接切入角色当下行动"，禁用大段世界背景介绍。
+When the previous chapter is ch-1: always write "No prior chapters; the opening cuts straight into the character's current action", and ban long world background introductions.
 
-#### 作者偏好记忆
+#### Author Preference Memory
 
-从 `.claude/memory/writing-memory.md` + `.claude/knowledge/permanent-memory.md` 提取与本章写作相关的条目注入：
-- 只注入**可操作**的作者偏好（文风/节奏/描写/对话），过滤场景不匹配或表述模糊的条目
-- 每条以「原文 → 结论」形式保留，让 writer 知道这是作者的明确要求，不是泛泛建议
-- 写作记忆与永久记忆去重（永久记忆是被高频晋升的，重复条目只保留永久版）
-- 若记忆文件为空或无可匹配条目 → 本子节标注"（无）"，不硬凑
+Extract entries relevant to this chapter's writing from `.claude/memory/writing-memory.md` + `.claude/knowledge/permanent-memory.md` and inject them:
+- Only inject **actionable** author preferences (style / rhythm / description / dialogue); filter out entries whose scenario does not match or whose wording is vague
+- Keep each entry in "original text → conclusion" form, so writer knows this is the author's explicit requirement, not a general suggestion
+- Deduplicate the writing memory and permanent memory (permanent memory was promoted by high frequency; keep only the permanent version of a repeated entry)
+- If the memory files are empty or have no matching entries, mark this subsection "(none)" and do not force-fill it
 
-注入示例：
+Injection example:
 ```
-作者偏好记忆：
-- 「对话太啰嗦了 → 对话要短、要碎，能用半句说完不用整句」适用于本章对话场景
-- 「动作描写不够细 → 关键动作写清过程，不写'他打开门'，写'他拧门把、门轴响了一声'」适用于本章动作场景
+Author preference memory:
+- "The dialogue is too wordy → keep dialogue short and broken; if half a sentence says it, do not use a whole sentence" (对话太啰嗦了 → 对话要短、要碎，能用半句说完不用整句) applies to this chapter's dialogue scenes
+- "The action description is not detailed enough → write the key action's process clearly; do not write 'he opened the door', write 'he turned the doorknob, and the door hinge sounded once'" (动作描写不够细 → 关键动作写清过程，不写'他打开门'，写'他拧门把、门轴响了一声') applies to this chapter's action scenes
 ```
 
-#### 角色初始状态
+#### Character Initial State
 
-从 chapter.md 人物状态 + 角色文件提取：
-- 每角色起点→转折→落点 + 微习惯
+Extract from chapter.md character states + the character files:
+- Each character's start → turn → landing + micro-habits
 
-### 输入
+### Input
 
-#### 场景原材料
+#### Scene Raw Material
 
-从 chapter.md **场景卡** + 信息差关系提取：
-- 按边界信号（换地点/跳时间/情绪转折）切分场景（2-4 个），与章纲场景卡一一对应
-- 每场景填四字段：核心事件 / **信息差** / 情绪拐点 + 场景权重
+Extract from chapter.md **scene cards** + information gap relationships:
+- Split scenes by boundary signals (location change / time jump / emotional turn), 2-4 scenes, matching the chapter outline's scene cards one by one
+- Fill four fields per scene: core event / **information gap** / emotional turning point + scene weight
 
-**核心事件填充：**
-- 输入源：章纲**场景卡的三要素**（主角想干啥 / 有什么拦着他 / 有什么悬念），不从 outline.key_points 提取
-- 格式：外部事件链，用箭头串联（"动作A → 动作B → 动作C"），不写成叙事段落
-- 禁止：角色内心活动、认知动词（意识到/发现/明白）、情绪结论
+**Core event filling:**
+- Input source: the chapter outline **scene card's three elements** (what the protagonist wants to do / what blocks them / what suspense there is), not from outline.key_points
+- Format: an external event chain, linked with arrows ("action A → action B → action C"), not written as a narrative paragraph
+- Forbidden: character inner activity, cognitive verbs (realized / discovered / understood), emotion conclusions
 
-信息差从章纲 knowledge_state 的"信息差关系"中取本场景对应的那对关系。
+The information gap takes the matching pair of relationships for this scene from the chapter outline knowledge_state's "information gap relationships".
 
-**场景类型识别：** 分析每个场景的核心事件，识别场景类型（可选值：dialogue / fight / environment / inner-mono / transition / group-scene）。记录为列表，用于下一步加载场景方法论和叙事规则选择。
+**Scene type identification:** Analyze each scene's core event and identify the scene type (allowed values: dialogue / fight / environment / inner-mono / transition / group-scene). Record them as a list, for loading the scene methodology and picking narrative rules in the next step.
 
-#### 叙事规则选择
+#### Narrative Rule Selection
 
-根据已识别的场景类型列表，按以下映射选择注入的叙事规则（规则 1-7 定义见 `.claude/knowledge/narrative-rules.md`，单一权威源）。规则在写入 prompt 的"写作规范"段时，需要带上角色设定关联——从角色设定文件的具体字段推导行为特征再注入，不是只写角色名。
+Pick the narrative rules to inject from the identified scene type list, using the mapping below (Rules 1-7 are defined in `.claude/knowledge/narrative-rules.md`, the single authoritative source). When a rule is written into the prompt's "writing standards" section, it needs to carry a character settings link: derive the behavior traits from the character settings file's concrete fields before injecting; do not just write the character name.
 
-**使用 Step 1 已读取的角色设定数据**（Step 1.4 已读取本章涉及的角色文件），从中提取用于规则关联推导的字段：
+**Use the character settings data already read in Step 1** (Step 1.4 already read this chapter's involved character files) and extract the fields used for rule link derivation:
 
-| 所需字段 | 来源 | 用途 |
+| Field Needed | Source | Purpose |
 |---------|------|------|
-| 基本信息·语言特征 | 口头禅、粗口、说话习惯 | 规则 6 对话风格 |
-| 层2 自我定位 | 角色怎么看待自己 | 规则 3 叙事排序、规则 6 表达姿态 |
-| 层3 价值观 | 什么不能退让 | 规则 3 感知优先级、规则 6 关键时刻的对话 |
-| 层4 能力 | 战斗经验、感知精度 | 规则 1 感知信号、规则 3 战斗感知 |
-| 层5 技能 | 擅长什么、会什么 | 规则 1 感知类型、规则 4 举例范围 |
-| 层6 环境 | 出身、成长经历 | 规则 1 感知习惯、规则 4 生活经验、规则 6 语域 |
+| Basic information, language traits | Catchphrases, swearing, speaking habits | Rule 6 dialogue style |
+| Layer 2 self-positioning | How the character sees themself | Rule 3 narrative order, Rule 6 expression posture |
+| Layer 3 values | What cannot be yielded | Rule 3 perception priority, Rule 6 dialogue at key moments |
+| Layer 4 abilities | Combat experience, perception precision | Rule 1 perception signals, Rule 3 combat perception |
+| Layer 5 skills | What they are good at, what they can do | Rule 1 perception types, Rule 4 example range |
+| Layer 6 environment | Birthplace, upbringing | Rule 1 perception habits, Rule 4 life experience, Rule 6 register |
 
-**角色关联推导表（agent 按此从字段值推导具体行为）：**
+**Character link derivation table (the agent derives concrete behavior from the field values per this table):**
 
-| 规则 | 读取字段 | 推导逻辑 | 注入到规则说明 |
+| Rule | Fields Read | Derivation Logic | Injected into the Rule Note |
 |------|---------|---------|---------------|
-| 规则 1（先出感知信号） | 层6 + 层4 + 层5 | 出身决定感知熟悉度（猎户→动物声/足迹，码头工→人声/船声），能力决定精度，技能决定类型 | "本章 POV 角色 {名} 出身{层6关键词}，擅长{层5技能}，ta 最先注意到的感知信号是{推导类型}" |
-| 规则 2（认知动词节制） | 层6 + 层5 + 层4 + 层1/2/3（辅助） | 角色经验范围内的感知直接写，范围外的不出现在叙述里。盲区从认知 6 层中信息最充分的层推导——层1（不懂的世界规则）、层2（不符合定位的知识）、层3（不认同的行为逻辑）、层4（能力之外的技术）、层5（未掌握的技能领域）、层6（没接触过的环境规则） | "删掉'他感到'，直接从{角色名}的经验出发——ta 擅长{技能}所以会注意到{相关感知}，但不了解{盲区}（从认知{层号}推导）" |
-| 规则 3（按感知强度排序） | 层3 + 层2 + 层4 | 层3决定信息优先级（兄弟安全 > 任务），层2决定叙述姿态，层4决定可捕获的细节量 | "叙事按{角色名}心中什么最重要排：层3价值观{条目}决定{条目A}先于{条目B}" |
-| 规则 4（用具体体验） | 层6 + 层5 + 语言特征 + 层1 | 例子从角色亲身经历取，语言特征决定用词，世界观决定描述尺度 | "举例从{层6出身}中来，语言带{语言特征}的味道，不用角色没接触过的比喻" |
-| 规则 6（对话符合角色） | 语言特征 + 层6 + 层2 + 层3 | 语言特征决定口头禅/粗口，层6决定语域，层2决定表达姿态，层3决定关键时刻的对话 | "{角色A}语言特征{口头禅}，出身{层6}习惯{推导语域}，不是像人说话是像这个人在说话" |
+| Rule 1 (perception signal first) | Layer 6 + Layer 4 + Layer 5 | Upbringing decides perception familiarity (a hunter notices animal sounds / footprints; a dock worker notices voices / boat sounds), ability decides precision, skill decides the type | "This chapter's POV character {name} comes from {layer 6 keyword} and is good at {layer 5 skill}; the perception signal they notice first is {derived type}" |
+| Rule 2 (restrained cognitive verbs) | Layer 6 + Layer 5 + Layer 4 + Layers 1/2/3 (supporting) | Perceptions inside the character's experience range are written directly; things outside the range do not appear in the narration. Derive the blind spot from the most information-rich layer of the 6 cognitive layers: layer 1 (world rules they do not understand), layer 2 (knowledge that does not fit their positioning), layer 3 (behavior logic they do not accept), layer 4 (techniques beyond their ability), layer 5 (skill areas not mastered), layer 6 (environment rules never encountered) | "Delete 'he felt' and start directly from {character name}'s experience: they are good at {skill}, so they would notice {related perception}, but do not understand {blind spot} (derived from cognitive layer {number})" |
+| Rule 3 (order by perception intensity) | Layer 3 + Layer 2 + Layer 4 | Layer 3 decides the information priority (a brother's safety > the mission), layer 2 decides the narrative posture, layer 4 decides how much detail can be captured | "The narration orders by what matters most in {character name}'s heart: layer 3 values {entry} decide {entry A} comes before {entry B}" |
+| Rule 4 (use concrete experience) | Layer 6 + Layer 5 + language traits + Layer 1 | Examples come from the character's own experience; language traits decide the wording; worldview decides the description scale | "Examples come from {layer 6 upbringing}; the language carries the flavor of {language trait}; do not use metaphors the character has never encountered" |
+| Rule 6 (dialogue fits the character) | Language traits + Layer 6 + Layer 2 + Layer 3 | Language traits decide catchphrases / swearing, layer 6 decides the register, layer 2 decides the expression posture, layer 3 decides the dialogue at key moments | "{Character A}'s language trait is {catchphrase}; coming from {layer 6}, they are used to {derived register}. It is not speaking like a person; it is speaking like this person" |
 
-**通用叙事规则（任何章节必注）：**
-以下 3 条规则为网文通用基线，适用于所有题材（规则定义见 `.claude/knowledge/narrative-rules.md`，本处为注入操作细节）。题材示例文件（genre-example）的特殊文风要求在此基线上叠加，不取代基线——即题材注入段可增加视角/节奏/氛围要求，但不覆盖基线的「有温度」定位。
-- 规则 2 — 认知动词节制使用（≤2次/章）。优先用动作或直接感知替代（"他感到害怕" → "他的手指用力扣进掌心"），但在关键情绪节点可简要使用
-- 规则 5 — 因果关系自然呈现。删掉多余的解释性连接词（因为/所以/因此），但保留必要的因果承接——当因果关系需要明确给读者时才写
-- 规则 7 — 叙事自然有温度。允许适度的叙述存在感——自然的氛围铺垫、心理概括、感官描述只要不堆砌即可。禁止为"不演"而极端白描到丢失阅读温度
+**General narrative rules (must be injected in any chapter):**
+The following 3 rules are the general web novel baseline, applying to all genres (the rule definitions are in `.claude/knowledge/narrative-rules.md`; this is the injection operation detail). The genre example file's (genre-example) special style requirements stack on top of this baseline; they do not replace it. That is, the genre injection passage may add point of view / rhythm / atmosphere requirements, but it does not override the baseline's "has warmth" positioning.
+- Rule 2: restrained cognitive verb use (at most 2 per chapter). Prefer replacing them with actions or direct perception ("he felt afraid" becomes "his fingers dug hard into his palm"), but they may be used briefly at key emotional nodes
+- Rule 5: causality presented naturally. Delete excess explanatory connectors (because / so / therefore), but keep necessary causal links. Write them only when the causal relationship needs to be clear to the reader
+- Rule 7: narration natural and warm. A moderate narrative presence is allowed: natural atmosphere buildup, psychological summaries, and sensory description are fine as long as they are not piled up. Do not go to extreme plain description just to "not perform" and lose the reading warmth
 
-**按场景类型追加：**
-| 场景类型 | 追加规则 | 角色关联重点 |
+**Append by scene type:**
+| Scene Type | Rules Appended | Character Link Focus |
 |---------|---------|-------------|
-| dialogue | 规则 6 | 语言特征 → 口头禅/粗口；层6 → 语域；层2 → 表达姿态；层3 → 关键时刻的对话 |
-| environment | 规则 1 + 规则 4 | 层6 → 感知优先级分类；层5 → 举例来源；层1 → 描述尺度 |
-| inner-mono | 规则 2 加强 | 层3 → 当前冲突触发点；层6 + 层2 → 角色当前可能的身体反应 |
-| fight | 规则 3 | 层4 → 战斗经验级别；层3 → 战斗中的优先判断；层2 → 攻/防/游走风格 |
-| transition | 规则 4 + 规则 7 | 层6 → 此刻可能走神的内容；层2 → 走神方式 |
-| group-scene | 规则 6 | 多角色各自的语言特征 + 层6 + 层2（每个角色独立推导） |
+| dialogue | Rule 6 | Language traits → catchphrases / swearing; layer 6 → register; layer 2 → expression posture; layer 3 → dialogue at key moments |
+| environment | Rule 1 + Rule 4 | Layer 6 → perception priority classification; layer 5 → example sources; layer 1 → description scale |
+| inner-mono | Rule 2 strengthened | Layer 3 → current conflict trigger point; layer 6 + layer 2 → the character's possible bodily reactions right now |
+| fight | Rule 3 | Layer 4 → combat experience level; layer 3 → priority judgment in combat; layer 2 → attack / defense / roaming style |
+| transition | Rule 4 + Rule 7 | Layer 6 → what the character might drift off thinking about right now; layer 2 → how they drift off |
+| group-scene | Rule 6 | Each character's language traits + layer 6 + layer 2 (derived independently per character) |
 
-每条规则的案例要求：
-- 正反案例用"说话带杂质"的真人语感写，不用提纯过的"标准人话"
-- 允许模糊归纳（"反正就那样""吵得要命"）
-- 允许语气词和半截话
-- 允许信息密度不均匀——不是每句都在推情节
+Requirements for each rule's examples:
+- Write the positive and negative examples with the "speaking with impurities" feel of a real person; do not use purified "standard human speech"
+- Vague summaries are allowed ("anyway, it was like that" / "so noisy it was unbearable", 反正就那样 / 吵得要命)
+- Tone words and half-finished sentences are allowed
+- Uneven information density is allowed: not every sentence pushes the plot
 
-**产出示例**（以下为注入写作规范·叙事规则段的完整样式）：
-
-```
-
-通用叙事规则（必注）：
-· 规则 2 — 认知动词节制。❌ "他发现自己走进了一家嘈杂的酒馆"
-  ✅ "门一开，吵得要命。喝酒的、划拳的。反正就那种地方。"
-  角色关联：陆征前刑警出身（层6），侦察经验（层5）让ta先注意人，
-  不是酒——扫一圈座位分布、后门在哪、有没有人盯他。
-· 规则 5 — 只说动作结果。❌ "他不小心蹭到了旁边的人"
-  ✅ "过道就那么窄，两步路蹭了三个人。"
-· 规则 7 — 叙事自然有温度。
-  ❌ "他眯着眼站在门口，好半天才瞅出个大概" → 过度刻画，节奏拖
-  ✓ "门口挤满了人。他站在那儿看了好一会儿，心里有点烦躁——全是人头，根本看不清里面什么情况。" → 有温度版
-  ✅ "他站门口看了好一会儿。全是人，挤得没地方站。" → 极简版，适合快节奏段落
-  说明：两种写法都可用，根据段落节奏选择。不要全文都用极简版。
-
-场景类型追加（dialogue + environment）：
-· 规则 6 — 对话符合角色。陆征说话直接、短问句（语言特征·前刑警）；
-  方岩回避冲突，紧张时低头喝茶不接话（层3·不想惹事）。
-· 规则 1 — 先出感知信号。陆征进门先扫人（层5·侦察习惯），
-  不是先看装修/菜单。
-· 规则 4 — 用具体体验。例子从刑警生涯取（层6），不用角色没见过的比喻。
-```
-
-→ 注入到 **输出·写作规范**
-
-**场景焦点+权重标注（写入每个场景末尾）：**
-```
-本场景焦点：核心冲突 / 人物情绪 / 信息差（三选一）
-本场景权重：高/中/低
-```
-焦点替代了写作方法论中"焦点锁定"的通用描述——每场景各自声明焦点类型，writer 不再跨段回查。高权重场景的焦点必须与"感官分层取舍"同时应用。
-- 高权重 = 细化动作、微表情、心理；占用本章 70% 以上笔墨
-- 中权重 = 正常叙事，不刻意精简也不铺张
-- 低权重 = 快速转场，简笔带过，不增加多余细节
-- 每章必须有 1 个高权重场景，低权重场景至少 1 个
-- 第一个场景强制标记高权重（vol-x-ch-1 第一个场景必须立刻切入行动，禁用大段世界观旁白）
-
-#### 段落分解（写段落结构指引）
-
-从 chapter.md **outline.key_points** 提取段落结构指引。不重写叙事——核心事件已经写了"什么发生"，段落分解只回答"这段怎么写"。
-
-**拆分规则：**
-- 按 key_points 的划分一一对应，每一条 key_point 对应一段
-- 每段写结构指引（不是叙事描述），包括：
-  - 段落功能（推进/过渡/造悬念/对话）
-  - 节奏侧重（短句快/中等/舒缓）
-  - 镜头提示（特写/中景/远景）
-  - 注意项（"不写内心""纯外部动作"等约束）
-- 可加 1 句关于"这段和其他段在节奏上怎么区分"的提示
-
-**格式（写入输入·场景原材料末尾）：**
+**Output example** (the complete style for injecting into the writing standards, narrative rules section):
 
 ```
-¶1 [功能] | [节奏侧重] | 注意项
-¶2 [功能] | [节奏侧重] | 注意项
+
+General narrative rules (must be injected):
+· Rule 2: restrained cognitive verbs. Wrong: "He realized he had walked into a noisy tavern" (他发现自己走进了一家嘈杂的酒馆)
+  Right: "The door opened, and it was unbearably noisy. Drinkers, people playing drinking games. Anyway, that kind of place." (门一开，吵得要命。喝酒的、划拳的。反正就那种地方。)
+  Character link: 陆征 is a former criminal police officer (layer 6); his reconnaissance experience (layer 5) makes him notice people first,
+  not the drinks. He scans the seat layout, where the back door is, and whether anyone is watching him.
+· Rule 5: only state the action result. Wrong: "He accidentally bumped into the person next to him" (他不小心蹭到了旁边的人)
+  Right: "The aisle was that narrow; two steps and he bumped into three people." (过道就那么窄，两步路蹭了三个人。)
+· Rule 7: narration natural and warm.
+  Wrong: "He squinted at the doorway, and only after a long while made out a rough picture" (他眯着眼站在门口，好半天才瞅出个大概) → overworked description, dragging rhythm
+  Okay: "The doorway was packed with people. He stood there watching for a good while, a bit irritated inside. All heads; he could not see what was going on inside at all." (门口挤满了人。他站在那儿看了好一会儿，心里有点烦躁，全是人头，根本看不清里面什么情况。) → the warm version
+  Right: "He stood at the doorway watching for a good while. All people, packed with nowhere to stand." (他站门口看了好一会儿。全是人，挤得没地方站。) → the minimal version, suits fast-paced passages
+  Note: both versions are usable; pick by the passage's rhythm. Do not use the minimal version throughout the whole text.
+
+Scene type additions (dialogue + environment):
+· Rule 6: dialogue fits the character. 陆征 speaks directly, in short questions (language trait, former criminal police officer);
+  方岩 avoids conflict; when nervous he lowers his head and drinks tea instead of answering (layer 3, does not want trouble).
+· Rule 1: perception signal first. When 陆征 enters, he scans people first (layer 5, reconnaissance habit),
+  not the decoration / menu.
+· Rule 4: use concrete experience. Examples come from the criminal police career (layer 6); do not use metaphors the character has never seen.
+```
+
+→ Inject into **Output, Writing Standards**
+
+**Scene focus + weight labels (written at the end of each scene):**
+```
+This scene's focus: core conflict / character emotion / information gap (pick one of the three)
+This scene's weight: high / medium / low
+```
+Focus replaces the generic "focus lock" description in the writing methodology. Each scene declares its own focus type, so writer no longer checks back across passages. A high-weight scene's focus must be applied together with the "sensory layering trade-off".
+- High weight = detail the actions, micro-expressions, and psychology; takes more than 70% of this chapter's ink
+- Medium weight = normal narration; neither deliberately trimmed nor lavish
+- Low weight = quick transition, brief strokes, no extra details added
+- Each chapter must have 1 high-weight scene and at least 1 low-weight scene
+- The first scene is forced to high weight (volume-x chapter-1's first scene must cut straight into action; long worldview asides are banned)
+
+#### Paragraph Breakdown (write the paragraph structure guidance)
+
+Extract the paragraph structure guidance from chapter.md **outline.key_points**. Do not rewrite the narration: the core event already wrote "what happens"; the paragraph breakdown only answers "how this paragraph is written".
+
+**Splitting rules:**
+- Match the key_points split one by one; each key_point maps to one paragraph
+- Write structure guidance per paragraph (not narrative description), including:
+  - Paragraph function (advance / transition / build suspense / dialogue)
+  - Rhythm emphasis (fast short sentences / medium / relaxed)
+  - Shot cue (close-up / medium shot / long shot)
+  - Notes ("do not write inner life" / "pure external action" and similar constraints)
+- One sentence may be added about "how this paragraph differs in rhythm from the other paragraphs"
+
+**Format (written at the end of Input, Scene Raw Material):**
+
+```
+¶1 [function] | [rhythm emphasis] | notes
+¶2 [function] | [rhythm emphasis] | notes
 ...
 ```
 
-每个 ¶ 对应一条 key_point。这个列表让 writer 的段落结构和节奏由 key_points 决定，**每章不同**。
+Each ¶ maps to one key_point. This list lets writer's paragraph structure and rhythm be decided by the key_points, **different in every chapter**.
 
-#### 写作方法论
-
-```
-动笔前按以下顺序执行：
-1. 焦点锁定：对每一场景，识别其唯一的"核心冲突"或"人物情绪"或"信息差"（三选一，不叠加）。全文 70% 笔墨集中于此焦点对象；次要环境、路人、背景一律简笔带过。禁止同等篇幅刻画所有元素。高权重场景细化到动作与感知层级，且必须同时应用"感官分层取舍"规则（见下条）；低权重场景允许快速转场，但不得违反焦点锁定或感官分层取舍规则。
-2. 感官分层取舍：以 2 种感官为主进行细化，氛围允许时增至 3 种，剩余感官一笔略写。避免全维度均匀堆砌。**声音例外：声音线索属于本章情节红线的关键信息、且以简短白描（1-2 句）呈现时，可不计入感官名额（如枪声=战斗关键信号、脚步声逼近=危险标志）；环境装饰音（鸟鸣、叫卖等）不属于例外**
-3. 叙事节奏交替：一段密集动作/对话 + 一段短心理留白 + 一句轻环境过渡循环。禁止连续长描写、连续对话、通篇等长段落
-4. 信息释放控制：关键伏笔、人物秘密拆分碎片化带出，不一次性完整交代。允许留白，不把所有设定、心理全部写透
-5. 结构红线（源头规避"一眼像机器写"的段落结构，判定细则见 `.claude/knowledge/anti-ai.md` 的「结构热源定律」节；与作者设定或本章其他要求冲突时，以作者侧为准）：
-   a. 问答别打成乒乓链：一问一答回合连续超过约 8 拍必拆——插动作拍、把回答转述化、或砍拍数。这是"回合"刻度，与"纯对话 6-8 句插动作"的句数刻度并行、互不替代
-   b. 章首冷开场：直接进对话或动作，时间地点并进随行叙述，不用"时间标记 + 场景状态"式开头
-   c. 同一场最多一个结果拿到明确回执（签字生效/资源到账/授权确认/查实线索，只兑现一个）；打脸、立威等爽点兑现照常写，但不在同场连发多套回执
-   d. 禁过桥链与证明链：新信息不许"出现→确认不知→指出谁能知→立即获准"一路打通；私人回忆不连续摆证据、不在段尾盖章"原来他很在乎"
-   e. 章尾禁总结、升华、预告（与反 AI 结尾规则同向）；本章以章末落点为准——钩子照常埋，只是别让所有句子都为末句排证据
-```
-
-→ 注入到 **任务指示**（写作方法论段）
-
-#### 场景方法论加载（场景类型 → 案例 + 输出·写作规范）
-
-根据场景原材料识别的场景类型列表，动态加载对应的场景写作方法论。加载后的方法论经四步转化后：**短示例写入案例，详细指引写入输出·写作规范**。
-
-**核心原则：稀疏抽取，禁止全覆盖。** 每个场景类型只选 1-2 条技法写入提示词，其余技法不出现。严禁全部套用。
-
-**加载机制：**
-
-1. 从场景场景类型列表中**去重**，得到本章涉及的不重复场景类型（如 ["dialogue", "environment"]）
-2. 对每个类型，按以下顺序读取：
-   a. 通用方法论：`.claude/knowledge/scene-craft/{类型}/universal.md`（必须存在）
-   b. 题材特化：`.claude/knowledge/scene-craft/{类型}/{当前题材}.md`（存在则读，否则跳过）
-3. 通用方法论 + 题材特化合并为该场景类型的方法论来源
-4. **按标签过滤**：读取 `.claude/knowledge/scene-craft/{类型}/universal.md` 的 `## 标签选择指南` 节，根据场景核心事件匹配合适的标签。从合并后的方法论中随机抽取 1-2 条标签匹配的方法论。如果某个场景匹配不到任何标签，从通用方法论中随机抽取 1-2 条最通用的
-5. **特殊检查一：角色外貌描写**——额外检查每个场景的核心事件是否触发外貌描写条件（新角色登场/角色外貌变化/场景涉及外貌感知）。如果触发，加载 `.claude/knowledge/scene-craft/appearance/universal.md` + `.claude/knowledge/scene-craft/appearance/{题材}.md`（如存在），经四步转化后追加到输出·写作规范
-6. **特殊检查二：心理活动/内心独白**——额外检查每个场景的核心事件 + 情绪设计 + 关键抉择是否触发心理描写条件（角色遭遇重大事件/情绪剧烈波动/面临重大抉择/打脸反转/内心冲突）。如果触发，加载 `.claude/knowledge/scene-craft/inner-mono/universal.md` + `.claude/knowledge/scene-craft/inner-mono/{题材}.md`（如存在），经四步转化后追加到输出·写作规范
-7. **特殊检查三：死亡/牺牲场景**——额外检查每个场景的核心事件是否涉及角色死亡/牺牲/下线（关键词：阵亡、陨落、牺牲、被杀）。如果触发，加载 `.claude/knowledge/scene-craft/death-scene/universal.md`，经四步转化后追加到输出·写作规范
-8. **始终加载（始终加载但稀疏注入）**——无论本章包含什么场景，始终加载以下文件，但每条只需注入 1-2 句精炼指引，不展开全部技法：
-   - `.claude/knowledge/scene-craft/prose/universal.md`（始终选 1 条最相关的：抽象具体化/镜头节奏/动词代形容词/感官叠加 四选一）
-   - `.claude/knowledge/scene-craft/pov/universal.md`（始终选 1 条最相关的：视角分界/物理转场/信息差错位 三选一）
-9. 如果某个类型的目录不存在（如 `group-scene/` `transition/` 暂为空框架），跳过该类型
-
-**上下文过滤（关键步骤）：**
-
-读取方法论后，不能直接复制到输出·写作规范。必须经过 **四步转化法**，把通用方法论变成具体场景的写法指引。### 四步转化法：通用方法论 → 场景写法
-
-以 `dialogue/universal.md` 中的"动作穿插"方法论为例，演示四步转化流程：
+#### Writing Methodology
 
 ```
-收到的方法论原文：
-  "对话需要动作穿插——纯对话超过 6-8 句，读者就丢了画面感"
-
-角色设定中读到的（当前章节涉及的角色）：
-  方岩：性格谨慎，回避冲突，紧张时低头喝茶/目光移开
-  陆征：前刑警，直接，追问时身体前倾/用手指敲桌面
-
-信息差中读到的：
-  方岩知道三年前压案的内幕 ↦ 陆征不知道
-
-本章情绪节奏：
-  紧张段（陆征在追问）
+Before writing, execute in this order:
+1. Focus lock: for each scene, identify its single "core conflict" or "character emotion" or "information gap" (pick one of the three, do not stack them). 70% of the whole text's ink concentrates on this focus object; secondary environment, passersby, and background are all brief strokes. Do not describe every element with equal length. High-weight scenes are detailed to the action and perception level and must apply the "sensory layering trade-off" rule at the same time (see the next item); low-weight scenes may transition quickly, but must not violate the focus lock or sensory layering trade-off rules.
+2. Sensory layering trade-off: detail mainly with 2 senses, rising to 3 when the atmosphere allows; write the remaining senses in a passing line. Avoid even stacking across all dimensions. **Sound exception: when a sound clue is red line key information for this chapter and is presented as a brief plain description (1-2 sentences), it may not count toward the sense quota (such as a gunshot as a combat key signal, or approaching footsteps as a danger marker); environmental decoration sounds (birdsong, hawkers, and similar) are not exceptions**
+3. Narrative rhythm alternation: one dense action / dialogue passage + one short psychological blank + one light environment transition, cycling. No consecutive long description, consecutive dialogue, or paragraphs of equal length throughout
+4. Information release control: key foreshadowing and character secrets are released in fragmented pieces, never fully explained at once. Blank space is allowed; do not write every setting and psychology through to the end
+5. Structural red lines (avoiding paragraph structures that look machine-written at a glance at the source; the ruling details are in the "structural heat source law" section of `.claude/knowledge/anti-ai.md`. When they conflict with the author's settings or this chapter's other requirements, the author side wins):
+   a. Do not play Q&A as a ping-pong chain: when one question and one answer run for more than about 8 beats in a row, split them. Insert action beats, turn the answers into reported speech, or cut the beat count. This is a "round" scale, running alongside the "pure dialogue 6-8 sentences, insert an action" sentence-count scale; neither replaces the other
+   b. Cold open at the chapter start: enter dialogue or action directly, with time and place carried in the passing narration; do not open with a "time marker + scene state" pattern
+   c. At most one result per scene gets an explicit receipt (signature taking effect / resources arriving / authorization confirmed / a clue verified; only one is paid off). Face-slapping, establishing authority, and other satisfying beat payoffs are written as usual, but do not fire multiple receipt sets in the same scene
+   d. No bridge chains or proof chains: new information must not run straight through "appears → confirmed unknown → pointed at who can know → immediately approved"; private memories do not lay out evidence in a row or stamp "so he cared a lot" at the paragraph end
+   e. No summary, elevation, or preview at the chapter end (same direction as the anti-AI ending rules); this chapter follows its chapter-end landing. Hooks are planted as usual, only do not let every sentence line up evidence for the final sentence
 ```
 
-#### Step 1：锚定角色
+→ Inject into **Task Instructions** (the writing methodology section)
 
-不把方法论套在"角色A""角色B"上，套在具体的人上。
+#### Scene Methodology Loading (scene type → examples + Output, Writing Standards)
 
-> **问：这个角色是什么性格？TA 在这个场景里是什么状态？**
+Based on the scene type list identified from the scene raw material, dynamically load the matching scene writing methodology. After loading, the methodology goes through the four-step conversion: **short examples go into Examples, detailed guidance goes into Output, Writing Standards**.
 
-- 谨慎的人回避方式 vs 直接的人追问方式
-- 傲慢的人不耐烦的方式 vs 自卑的人躲闪的方式
-- 同一场景、同一方法论，换一个角色写出来完全不一样
+**Core principle: sparse extraction; full coverage is forbidden.** For each scene type, pick only 1-2 techniques to write into the prompt; the rest do not appear. Applying all of them is strictly forbidden.
 
-#### Step 2：锚定信息差
+**Loading mechanism:**
 
-确定角色之间的**信息不对称**——这决定了"不说真话"的方向和方式。
+1. **Deduplicate** the scene type list to get this chapter's non-repeating scene types (such as ["dialogue", "environment"])
+2. For each type, read in this order:
+   a. General methodology: `.claude/knowledge/scene-craft/<type>/universal.md` (must exist)
+   b. Genre specialization: `.claude/knowledge/scene-craft/<type>/<current-genre>.md` (read when present; skip otherwise)
+3. The general methodology + genre specialization merge into that scene type's methodology source
+4. **Filter by tag**: read the `## Tag Selection Guide` section of `.claude/knowledge/scene-craft/<type>/universal.md` and match suitable tags from the scene's core event. From the merged methodology, randomly pick 1-2 methodology entries matching the tags. If a scene matches no tag, randomly pick 1-2 of the most general entries from the general methodology
+5. **Special check 1: character appearance description**. Additionally check whether each scene's core event triggers appearance description conditions (a new character appears / a character's appearance changes / the scene involves appearance perception). If triggered, load `.claude/knowledge/scene-craft/appearance/universal.md` + `.claude/knowledge/scene-craft/appearance/{genre}.md` (when present), and after the four-step conversion, append them to Output, Writing Standards
+6. **Special check 2: psychological activity / inner monologue**. Additionally check whether each scene's core event + emotional design + key decisions trigger psychological description conditions (the character meets a major event / violent emotional swing / faces a major decision / a face-slapping reversal / inner conflict). If triggered, load `.claude/knowledge/scene-craft/inner-mono/universal.md` + `.claude/knowledge/scene-craft/inner-mono/{genre}.md` (when present), and after the four-step conversion, append them to Output, Writing Standards
+7. **Special check 3: death / sacrifice scenes**. Additionally check whether each scene's core event involves a character's death / sacrifice / exit (keywords: killed in battle, fallen, sacrificed, killed). If triggered, load `.claude/knowledge/scene-craft/death-scene/universal.md`, and after the four-step conversion, append it to Output, Writing Standards
+8. **Always loaded (always loaded but sparsely injected)**. No matter what scenes this chapter contains, always load the following files, but each only needs 1-2 refined guidance sentences injected, without expanding all the techniques:
+   - `.claude/knowledge/scene-craft/prose/universal.md` (always pick the 1 most relevant: concretizing abstractions / shot rhythm / verbs instead of adjectives / sensory stacking, pick one of the four)
+   - `.claude/knowledge/scene-craft/pov/universal.md` (always pick the 1 most relevant: point of view boundary / physical transition / information gap mismatch, pick one of the three)
+9. If a type's directory does not exist (such as `group-scene/` or `transition/`, temporarily empty frameworks), skip that type
 
-> **问：谁在瞒？瞒什么？为什么瞒？**
+**Context filtering (key step):**
 
-| 信息差类型 | 对对话写法的影响 |
+After reading the methodology, do not copy it directly into Output, Writing Standards. It must go through the **four-step conversion method**, turning the general methodology into writing guidance for the concrete scene.### Four-Step Conversion Method: General Methodology → Scene Writing
+
+Using the "action interweaving" methodology in `dialogue/universal.md` as an example, showing the four-step conversion flow:
+
+```
+Methodology original text received:
+  "Dialogue needs action interweaving. Once pure dialogue passes 6-8 sentences, the reader loses the sense of the scene"
+
+What was read in the character settings (the characters involved in the current chapter):
+  方岩: cautious by nature, avoids conflict, lowers his head to drink tea / looks away when nervous
+  陆征: former criminal police officer, direct, leans forward / taps the table with a finger when pressing with questions
+
+What was read in the information gap:
+  方岩 knows the inside story of the case suppressed three years ago, and 陆征 does not
+
+This chapter's emotional rhythm:
+  A tense stretch (陆征 is pressing with questions)
+```
+
+#### Step 1: Anchor the Character
+
+Do not apply the methodology to "Character A" / "Character B"; apply it to concrete people.
+
+> **Ask: what is this character's personality? What state are they in this scene?**
+
+- How a cautious person dodges vs how a direct person presses with questions
+- How an arrogant person shows impatience vs how an insecure person dodges
+- The same scene, the same methodology, comes out completely differently with a different character
+
+#### Step 2: Anchor the Information Gap
+
+Fix the **information asymmetry** between characters. This decides the direction and manner of "not telling the truth".
+
+> **Ask: who is hiding? Hiding what? Why hide it?**
+
+| Information Gap Type | Effect on Dialogue Writing |
 |-----------|----------------|
-| 方岩知道↦陆征不知道 | 方岩在回避、在防守；陆征在试探、在逼近 |
-| 陆征知道↦方岩不知道 | 陆征在引导、在布局；方岩在被动回应 |
-| 读者知道↦角色不知道 | 读者焦急等角色拆穿，对话中埋"观众看得见角色看不见"的伏笔 |
+| 方岩 knows, and 陆征 does not | 方岩 is dodging and defending; 陆征 is probing and closing in |
+| 陆征 knows, and 方岩 does not | 陆征 is guiding and laying out; 方岩 is responding passively |
+| The reader knows, and the characters do not | The reader waits anxiously for the character to expose it; the dialogue plants foreshadowing that "the audience can see but the character cannot" |
 
-#### Step 3：锚定情绪与节奏
+#### Step 3: Anchor Emotion and Rhythm
 
-方法论的具体写法要匹配本章情绪指向。
+The methodology's concrete writing must match this chapter's emotional direction.
 
-> **问：这段场景的情绪是紧张、舒缓还是转折？**
+> **Ask: is this scene's emotion tense, relaxed, or turning?**
 
-| 情绪段 | 对话节奏 | 动作穿插频率 | 句子长度 |
+| Emotion Stretch | Dialogue Rhythm | Action Interweaving Frequency | Sentence Length |
 |--------|---------|-------------|---------|
-| 紧张/对峙 | 快、互相打断 | 少（动作干扰紧张感） | 短句碎片 |
-| 压抑/隐瞒 | 慢、长停顿 | 多（用动作代替回答） | 话说到一半 |
-| 舒缓/和解 | 自然、有停顿 | 中等（间歇性动作） | 完整句子 |
+| Tense / confrontation | Fast, interrupting each other | Low (actions disturb the tension) | Short fragmented sentences |
+| Repressed / hiding | Slow, long pauses | High (actions answer instead of words) | Sentences cut off halfway |
+| Relaxed / reconciliation | Natural, with pauses | Medium (intermittent actions) | Complete sentences |
 
-#### Step 4：融合输出
+#### Step 4: Fused Output
 
-把前三步的结论合起来，写成一条**可直接写入输出·写作规范的场景写法指引**。
-
-```
-❌ 错误案例（通用方法论，没有转化）：
-  "对话要有动作穿插，每 6-8 句插一个动作。"
-  → 所有章节的对话都按一个模板写，角色没有区分。
-
-✅ 正确案例（经四步转化后）：
-  "这场对话的信息差是方岩知道内幕↦陆征不知道。
-  方岩性格谨慎，回避时会低头喝茶——陆征问一句，他喝一口，不接话。
-  陆征前刑警的追问方式是身体前倾、缩短距离——每问一句就往前挪一点。
-  情绪是紧张段，对话节奏要快——陆征短句追问，方岩用动作回避，不用长句解释。"
-  → 方法论落地到具体角色、具体信息差、具体情绪，每个角色写法不同。
-```**四步转化法流程图：**
+Combine the conclusions of the first three steps into one **scene writing guidance that can go directly into Output, Writing Standards**.
 
 ```
-场景-craft 方法论
-     ↓
-Step 1：锚定角色（从角色设定中提取性格、微习惯）
-     ↓
-Step 2：锚定信息差（从 knowledge_state 中提取谁在瞒谁）
-     ↓
-Step 3：锚定情绪节奏（从 emotional_design 中提取当前情绪段）
-     ↓
-Step 4：融合输出 → 写入输出·写作规范
-```
+Wrong example (general methodology, no conversion):
+"Dialogue needs action interweaving; insert an action every 6-8 sentences."
+→ Every chapter's dialogue is written to one template; the characters have no distinction.
 
-**底线：**
-- ❌ 每条方法论生搬硬套，所有角色的对话写法都一样
-- ✅ 经过 Step 1-4 转化，同一方法论在不同角色身上表现不同
-- ❌ 整段复制 scene-craft 文件的内容
-- ✅ 从方法论中随机抽取 1-2 条最相关的，经四步转化后精炼输出
-- ❌ 跳过转化直接写"角色A说...角色B说..."的通用指引
-- ✅ 转化后的指引能让 writer 直接写出符合角色性格的对话
-- ✅ 技法稀疏使用，每类型最多 2 条，其余技法不出现在提示词中
-
-> 如果本章只有对话场景，从 `dialogue/universal.md` + `dialogue/{题材}.md`（如果存在）选 1-2 条方法论，每条经四步转化后注入输出·写作规范。
-> 如果同时有对话和战斗，两个场景目录各选 1-2 条方法论（含题材特化），分别结合各自场景的角色和冲突转化后注入。
-> 如果某条方法论对应的角色没有参与当前场景，跳过该条。### 转化示例库（few-shot）
-
-以下展示两条方法论从"通用 → 四步转化 → 输出·写作规范注入"的完整过程。你的转化输出应该达到同样的具体度和上下文感知度。
-
-#### 示例一：对话场景 · 方岩与陆征（悬疑 · 隐瞒与试探）
+Right example (after the four-step conversion):
+"This dialogue's information gap is 方岩 knows the inside story, and 陆征 does not.
+方岩 is cautious by nature; when dodging, he lowers his head and drinks tea. Every time 陆征 asks a question, he takes a sip and does not answer.
+陆征's way of pressing as a former criminal police officer is to lean forward and close the distance. With every question, he moves a little closer.
+The emotion is a tense stretch, so the dialogue rhythm is fast. 陆征 presses with short sentences, and 方岩 dodges with actions; no long explanatory sentences."
+→ The methodology lands on concrete characters, a concrete information gap, and a concrete emotion, so each character is written differently.
+```**Four-step conversion method flowchart:**
 
 ```
-【场景-craft 方法论原文】
-"角色不说真话。表层话和深层意之间的差距就是对话的张力。"
-
-【当前上下文】
-角色：
-  方岩：警队内部人员，知道三年前压案内幕，性格谨慎，回避冲突
-  陆征：前刑警，正在调查此案，直接、敏锐，追问时身体前倾
-信息差：
-  方岩知道内幕 ↦ 陆征不知道（方岩在瞒、陆征在追）
-情绪节奏：
-  紧张段——陆征在施压，方岩在防守
-
-【四步转化过程】
-Step 1 锚定角色：
-  方岩谨慎→回避方式：低头喝茶、看窗外、不接话
-  陆征直接→追问方式：身体前倾、缩短距离、盯着对方
-Step 2 锚定信息差：
-  方岩知道但不能说→他在防守，用"这个案子我不清楚"推脱
-  陆征不知道但想确认→他在试探，用具体细节逼对方反应
-Step 3 锚定情绪节奏：
-  紧张段→短句、快节奏，动作穿插少（但关键时刻的动作要放大）
-Step 4 融合输出：
-  方岩知道三年前的事但不能说（信息差），陆征在追问。
-  陆征身体前倾，短句逼问；方岩低头喝茶不接话，用回避动作代替回答。
-  紧张段节奏快——没有长句解释，只有逼问和沉默交替。
-
-【注入的最终文本】
-"信息差：方岩知道内幕↦陆征不知道。陆征短句逼问，身体前倾；
-方岩回避，低头喝茶、不接话。紧张段快节奏，没有长句解释，
-只有逼问和沉默交替——方岩的回避不是沉默不语，是每次陆征问到关键
-他就用动作岔开（喝茶/看窗外/反问'你查到哪了'）。"
+scene-craft methodology
+↓
+Step 1: Anchor the character (extract personality and micro-habits from the character settings)
+↓
+Step 2: Anchor the information gap (extract who is hiding from whom from knowledge_state)
+↓
+Step 3: Anchor the emotional rhythm (extract the current emotional stretch from emotional_design)
+↓
+Step 4: Fused output → write into Output, Writing Standards
 ```
 
-#### 示例二：战斗场景 · 叶秋与王虎（修仙 · 实力压制）
+**Bottom line:**
+- Wrong: each methodology applied by rote, so every character's dialogue is written the same way
+- Right: after Steps 1-4 conversion, the same methodology shows differently on different characters
+- Wrong: copying a whole passage of a scene-craft file
+- Right: randomly picking 1-2 of the most relevant entries from the methodology, refining them after the four-step conversion
+- Wrong: skipping the conversion and writing generic guidance such as "Character A says... Character B says..."
+- Right: the converted guidance lets writer directly write dialogue that fits the character's personality
+- Right: sparse technique use, at most 2 per type; the rest of the techniques do not appear in the prompt
+
+> If this chapter has only dialogue scenes, pick 1-2 methodology entries from `dialogue/universal.md` + `dialogue/{genre}.md` (when present), inject them into Output, Writing Standards after the four-step conversion each.
+> If there is both dialogue and combat, pick 1-2 methodology entries from each of the two scene directories (including genre specialization), convert each against its own scene's characters and conflict, then inject them.
+> If a methodology entry's character does not take part in the current scene, skip that entry.### Conversion Example Library (few-shot)
+
+The following shows two methodology entries going through the complete process from "general → four-step conversion → Output, Writing Standards injection". Your conversion output should reach the same level of concreteness and context awareness.
+
+#### Example 1: Dialogue Scene · 方岩 and 陆征 (suspense · hiding and probing)
 
 ```
-【场景-craft 方法论原文】
-"结果 > 过程。读者关心的是谁赢了、代价是什么，不是每一招的细节。
-代价可视化——不写'主角受伤了'，写伤口的后果。"
 
-【当前上下文】
-角色：
-  叶秋：练气三层，刚突破不久，还不熟悉新获得的力量
-  王虎：练气二层，混混头目，仗着修为欺负人
-信息差：
-  叶秋刚突破↦王虎不知道（王虎以为叶秋还是上次见面的修为）
-情绪节奏：
-  爽点段——读者期待叶秋展示实力
+"A character does not tell the truth. The gap between the surface words and the deeper meaning is the tension of the dialogue."
 
-【四步转化过程】
-Step 1 锚定角色：
-  叶秋：刚突破还不适应新力量→出手会有"没收住"的生涩感
-  王虎：以为对方还是弱鸡→一开始轻敌，吃亏后才认真
-Step 2 锚定信息差：
-  王虎不知道叶秋突破了→他的轻敌是信息差造成的，不是故意
-  叶秋知道自己变强了→但他也不确定到底强了多少，有试探成分
-Step 3 锚定情绪节奏：
-  爽点段→节奏先快（王虎被碾压的震惊）后慢（展示后果）
-Step 4 融合输出：
-  不写一招一式，聚焦"结果→王虎的反应→代价可视化"。
-  用王虎的视角写——他还没反应过来已经飞出去了，这才看到叶秋的
-  境界已经不一样了。
 
-【注入的最终文本】
-"这场战斗是信息差驱动的——王虎不知道叶秋已经突破了。
-不写招数细节，用结果+反应代替：王虎还没看清怎么回事就已经飞出去了。
-代价可视化：叶秋没收住力，拳头砸穿墙壁，虎口裂开渗血。
-节奏：快（王虎飞出去）→慢（他抬头看叶秋，发现境界变了）
-→余韵（叶秋看自己的手，不太确定自己现在多强）。"
+Characters:
+方岩: police insider, knows the inside story of the case suppressed three years ago, cautious by nature, avoids conflict
+陆征: former criminal police officer, investigating this case, direct and sharp, leans forward when pressing with questions
+Information gap:
+方岩 knows the inside story, and 陆征 does not (方岩 is hiding, 陆征 is pursuing)
+Emotional rhythm:
+A tense stretch: 陆征 is applying pressure, 方岩 is defending
+
+
+Step 1 anchor the character:
+方岩 is cautious, so his way of dodging is lowering his head to drink tea, looking out the window, not answering
+陆征 is direct, so his way of pressing is leaning forward, closing the distance, staring at the other side
+Step 2 anchor the information gap:
+方岩 knows but cannot say, so he is defending, deflecting with "I do not know about this case"
+陆征 does not know but wants to confirm, so he is probing, forcing a reaction with concrete details
+Step 3 anchor the emotional rhythm:
+A tense stretch means short sentences and a fast rhythm, with little action interweaving (but key actions are amplified at the crucial moment)
+Step 4 fused output:
+方岩 knows what happened three years ago but cannot say it (information gap), and 陆征 is pressing with questions.
+陆征 leans forward and presses with short sentences; 方岩 lowers his head and drinks tea without answering, using dodging actions instead of answers.
+The tense stretch is fast-paced. There are no long explanatory sentences, only pressing questions and silence alternating.
+
+
+"The information gap: 方岩 knows the inside story, and 陆征 does not. 陆征 presses with short sentences, leaning forward;
+方岩 dodges, lowering his head to drink tea and not answering. A fast rhythm in the tense stretch, with no long explanatory sentences,
+only pressing questions and silence alternating. 方岩's dodging is not silence; every time 陆征 asks about something key,
+he deflects with an action (drinking tea / looking out the window / asking back 'how far have you gotten')."
 ```
 
-### 案例
+#### Example 2: Combat Scene · 叶秋 and 王虎 (xianxia (immortal cultivation) · power suppression)
 
-从场景方法论经四步转化后填入。每个场景类型选 1-2 条方法论，经四步转化后作为案例写入。案例是"具体角色在具体场景下怎么写"的示范，不是通用方法论复制。
+```
 
-**案例标注要求：** 每个案例末尾用括号标注其演示的方法论名称，如（演示：感官分层取舍·触觉+听觉）。标注帮助 writer 理解案例与写作方法论的对应关系，增强方法论的可迁移性。同一条方法论有多个案例时，只标注第一个。
+"Results > process. The reader cares who won and what it cost, not the details of every move.
+Make the cost visible. Do not write 'the protagonist was hurt'; write the consequences of the wound."
 
-### 输出
 
-组装为 **扁平结构**，将写作规范、叙事规则、约束红线合并为一个"不可违反规则"列表，减少嵌套和优先级判断成本。**场景写作指引**（从场景方法论加载并四步转化）和**质感要求**保留独立子节。
+Characters:
+叶秋: Qi Refining layer 3, just broke through not long ago, still unfamiliar with the newly gained power
+王虎: Qi Refining layer 2, a thug leader who bullies people with his cultivation
+Information gap:
+叶秋 just broke through, and 王虎 does not know (王虎 thinks 叶秋 is still at the cultivation he saw last time)
+Emotional rhythm:
+A satisfying beat stretch: the reader expects 叶秋 to show his strength
 
-#### 不可违反规则
 
-**优先级（从高到低）：**
-1. **约束红线** — 情节红线、角色禁区、边界禁止（红线与叙事规则冲突时优先满足红线）
-2. **字数** — 目标字数硬性约束（超限启用压缩策略）
-3. **T1词 / 认知动词 / 感官** — 修饰阈值、认知动词节制、感官分层
-4. **叙事规则**（高于同层·写作规范其他规则）
-5. **写作规范同级其他规则**
+Step 1 anchor the character:
+叶秋 just broke through and has not adapted to the new power, so his strikes have the rawness of "not holding back"
+王虎 thinks the other side is still a weakling, so he starts by underestimating him and only gets serious after taking a loss
+Step 2 anchor the information gap:
+王虎 does not know 叶秋 broke through, so his underestimation comes from the information gap, not on purpose
+叶秋 knows he got stronger, but he is not sure exactly how much stronger, so there is a probing element
+Step 3 anchor the emotional rhythm:
+A satisfying beat stretch means the rhythm is fast first (王虎's shock at being crushed) then slow (showing the consequences)
+Step 4 fused output:
+Do not write the moves one by one; focus on "result → 王虎's reaction → visible cost".
+Write it from 王虎's point of view: before he reacts, he has already flown out; only then does he see that 叶秋's
+realm is already different.
 
-**红线约束：**
-- 冲突阶梯、情节红线（2-4条）、边界禁止、角色禁区——从 chapter.md memo 提取，完整填入，无占位符
 
-**网文风格基线（任何章节适用）：**
-- 全程线性叙事；拒绝完美叙事——允许留白和思绪跳跃；禁止刻意堆砌技法；禁止诗词腔
-- 认知动词节制（规则 2）、因果自然（规则 5）、叙事有温度（规则 7）由上方「具体叙事规则」段注入，本基线不重复
+"This combat is driven by the information gap: 王虎 does not know 叶秋 already broke through.
+Do not write the move details; use results + reactions instead: before 王虎 sees clearly what happened, he has already flown out.
+Make the cost visible: 叶秋 did not hold back, his fist smashed through the wall, and the tiger's mouth of his hand split open and bled.
+Rhythm: fast (王虎 flies out) → slow (he looks up at 叶秋 and realizes the realm changed)
+→ lingering resonance (叶秋 looks at his own hand, not quite sure how strong he is now)."
+```
 
-**风格建议（可偏离）：**（**仅未蒸馏态注入；已蒸馏态本节删除**——风格以案例 2 渲染节为准，严格匹配偏差≤20%，不设可偏离条款）
-- 视角：视角类型按 settings/writing-style.md 定义传递（未蒸馏=正文「叙事身份」字段；已蒸馏=渲染【视角】节）——设定阶段定义、全书一致，**不在提示词中重新定义**；本章 POV 角色从 chapter.md outline.pov 读取（在设定视角类型内选择）。
-- 描写：用动作感知推动叙事，感官服务于氛围。
-- 节奏：段落自然起伏，句式长短交替。以上若服务情绪或剧情可适度偏离。
+### Examples
 
-题材示例文件（genre-example）的提示词注入段叠加在网文风格基线之上，不取代基线。
-- **具体叙事规则**：{根据本章场景类型，从"叙事规则选择"段选取对应规则，每条规则与角色设定关联后注入}
+Fill them in from the scene methodology after the four-step conversion. For each scene type, pick 1-2 methodology entries and write them as examples after the four-step conversion. An example is a demonstration of "how a concrete character writes in a concrete scene", not a copy of the general methodology.
 
-**组装后去重检查：** 同一语义在输出中只出现一次。
+**Example labeling requirement:** At the end of each example, mark in parentheses the methodology name it demonstrates, such as "(demonstrates: sensory layering trade-off, touch + hearing)". The label helps writer understand the mapping between the example and the writing methodology and improves the methodology's transferability. When the same methodology has multiple examples, label only the first one.
 
-#### 场景写作指引
+### Output
 
-（从场景方法论加载并四步转化的结果中选取）：本章涉及 {N} 种场景类型（{类型列表}。可选值：dialogue / fight / environment / inner-mono / transition / group-scene）。针对每种类型，注入 1-2 条具体写法指引。
+Assemble it as a **flat structure**, merging the writing standards, narrative rules, and constraint red lines into one "non-violable rules" list to reduce nesting and priority judgment cost. **Scene writing guidance** (loaded from the scene methodology and converted in four steps) and **texture requirements** keep their own subsections.
 
-#### 写作风格约束
+#### Non-Violable Rules
 
-**双态分支：**
+**Priority (high to low):**
+1. **Constraint red lines**: plot red lines, character forbidden zones, boundary bans (when red lines conflict with narrative rules, satisfy the red lines first)
+2. **Word count**: target word count hard constraint (use the compression strategy when over the limit)
+3. **T1 words / cognitive verbs / senses**: style thresholds, restrained cognitive verbs, sensory layering
+4. **Narrative rules** (outranking same-level, other writing standards rules)
+5. **Other same-level writing standards rules**
 
-- **confidence=0（未蒸馏）→ 正文定性四字段注入：** 读主卡正文四字段（叙事身份 / 硬约束 / AI 易犯错误 / 描写层次）注入本节，节标题沿用「写作风格约束」，现状不变。
-- **confidence>0（已蒸馏）→ 案例 2 渲染：** 本节输出 `【词汇】【句式】【节奏】【修辞与感官】【情绪表达】【对话风格】【衔接】【视角】【硬性规则】【整体基调】【风格参考例句】【剧情上下文】【写作要求】`（案例 2 结构），渲染步骤按 `.claude/knowledge/style-distill/prompt-templates/rendering-rules.md`（精确值自含：区间/枚举/稀疏注入矩阵）。banned_words / 硬约束归入「不可违反规则·红线约束」。
+**Red line constraints:**
+- Conflict ladder, plot red lines (2-4 items), boundary bans, character forbidden zones. Extract them from chapter.md memo and fill them in completely, with no placeholders
 
-**分工：** confidence>0 时量化节（【词汇】…【视角】）来自渲染规则，声音层（【硬性规则】【整体基调】【风格参考例句】）原样透传；scene-craft 方法论只注入「怎么写」（场景写作指引子节），两者不并列重复。
+**Web novel style baseline (applies to any chapter):**
+- Linear narration throughout; refuse perfect narration: blank space and jumping thoughts are allowed; deliberately piled-up techniques are forbidden; poetry-style tone is forbidden
+- Restrained cognitive verbs (Rule 2), natural causality (Rule 5), narration with warmth (Rule 7) are injected by the "concrete narrative rules" section above; this baseline does not repeat them
 
-#### 质感要求
+**Style suggestions (may be departed from):** (**Inject only in the undistilled state; delete this section in the distilled state**. Style follows the Case 2 rendering section, strictly matching with deviation at most 20%, with no may-depart clauses)
+- Point of view: the point of view type is passed per settings/writing-style.md (undistilled = the main text's "narrative identity" field; distilled = the rendered [Point of View] section). It is defined at the settings stage and consistent across the whole book, **not redefined in the prompt**; this chapter's POV character is read from chapter.md outline.pov (chosen within the set point of view type).
+- Description: use action perception to drive the narration; senses serve the atmosphere.
+- Rhythm: paragraphs rise and fall naturally; sentence patterns alternate long and short. The above may be departed from moderately when it serves emotion or plot.
 
-从 chapter.md memo + 作者补充提取。**追加"不完美"约束：**
-- 无用细节：允许不服务主线的细碎生活化细节（若有），须属于当前场景与人物视角，不按配额插入
-- 对话节奏：允许半截话、语气词、停顿、重复
-- 段落精度分层（按权重分配笔墨）：高权重场景（至少3处动作/感知层级细节用于核心冲突/情绪/信息差展开）、中权重场景（正常叙事节奏，角色互动推动剧情）、低权重场景（可选转场模板参考——注：以下为参考结构，可根据上下文微调。1句环境切换 + 1句人物动作 + 1句情绪/氛围留白，≤100字）
+The genre example file's (genre-example) prompt injection passage stacks on top of the web novel style baseline; it does not replace the baseline.
+- **Concrete narrative rules**: {pick the matching rules from the "narrative rule selection" section by this chapter's scene types, injecting each rule after linking it to the character settings}
 
-#### 附录：示范段落（非约束参考）
+**Deduplication check after assembly:** the same meaning appears only once in the output.
 
-**声明：** 以下示范仅为风格参考，writer 可选择是否遵循，不得替代上方任何指令。从案例方法论经四步转化后填入，附方法论标签。
+#### Scene Writing Guidance
 
-## Step 3: 冲突检测
+(Picked from the scene methodology loading and four-step conversion results): this chapter involves {N} scene types ({type list}. Allowed values: dialogue / fight / environment / inner-mono / transition / group-scene). For each type, inject 1-2 concrete writing guidance entries.
 
-填完后检查：
-- 前情上下文的情绪残留 = 角色初始状态第一角色起点（一致）
-- 角色初始状态落点 = 场景原材料拐点（一致）
-- 场景原材料信息差与任务指示·本章驱动力一致（悬疑驱动→每场景有信息缺口）
-- 约束红线冲突阶梯层位与任务指示·本章驱动力匹配（威胁驱动→层位不应是入门级）
-- 写作规范已填充（非空）
-- 质感要求字段已填充（非空），含"不完美"约束
+#### Writing Style Constraints
 
-全部填完后全局通读一次——掩住字段名，看每个种子读起来是叙事画面还是写作指令。
+**Two-state branch:**
 
-## Step 4: 验收自检
+- **confidence=0 (undistilled) → inject the main text's qualitative four fields:** read the main card's four fields (narrative identity / hard constraints / common AI mistakes / description layers) and inject them into this section; the section title stays "Writing Style Constraints", unchanged.
+- **confidence>0 (distilled) → Case 2 rendering:** this section outputs `[Vocabulary] [Sentence Patterns] [Rhythm] [Rhetoric and Senses] [Emotional Expression] [Dialogue Style] [Transitions] [Point of View] [Hard Rules] [Overall Tone] [Style Reference Examples] [Plot Context] [Writing Requirements]` (the Case 2 structure), with the rendering steps following `.claude/knowledge/style-distill/prompt-templates/rendering-rules.md` (exact values self-contained: ranges / enums / sparse injection matrix). banned_words / hard constraints go into "Non-Violable Rules, Red Line Constraints".
 
-逐条检查 prompt.md：
+**Division of labor:** when confidence>0, the quantitative sections ([Vocabulary] through [Point of View]) come from the rendering rules, and the voice layer ([Hard Rules] [Overall Tone] [Style Reference Examples]) is passed through verbatim; the scene-craft methodology only injects "how to write" (the scene writing guidance subsection), and the two are not listed side by side as duplicates.
 
-| 检查项 | 标准 |
+#### Texture Requirements
+
+Extract from chapter.md memo + the author's additions. **Append the "imperfection" constraints:**
+- Useless details: allow fragmented everyday-life details that do not serve the main line (when present); they must belong to the current scene and the character's point of view, and are not inserted by quota
+- Dialogue rhythm: allow half-finished sentences, tone words, pauses, repetition
+- Paragraph precision layering (assign ink by weight): high-weight scenes (at least 3 action / perception level details for the core conflict / emotion / information gap development), medium-weight scenes (normal narration rhythm, with character interaction driving the plot), low-weight scenes (optional transition template reference. Note: the following is a reference structure and may be fine-tuned by context. 1 environment switch sentence + 1 character action sentence + 1 emotion / atmosphere blank sentence, at most 100 words)
+
+#### Appendix: Model Paragraphs (non-binding reference)
+
+**Statement:** The model paragraphs below are only a style reference; writer may choose whether to follow them, and they must not replace any instruction above. Fill them in from the case methodology after the four-step conversion, with methodology tags attached.
+
+## Step 3: Conflict Detection
+
+After filling in, check:
+- The prior context's emotional residue equals the first character's starting point in the character initial states (consistent)
+- The character initial states' landings equal the scene raw material's turning points (consistent)
+- The scene raw material's information gap is consistent with the task instructions' chapter driving force (suspense driven means every scene has an information gap)
+- The constraint red lines' conflict ladder layer matches the task instructions' chapter driving force (threat driven means the layer should not be entry level)
+- The writing standards are filled in (non-empty)
+- The texture requirements field is filled in (non-empty) and contains the "imperfection" constraints
+
+After filling everything in, read through the whole thing once. Cover the field names and check whether each seed reads as a narrative scene or a writing instruction.
+
+## Step 4: Acceptance Self-Check
+
+Check prompt.md item by item:
+
+| Check Item | Standard |
 |--------|------|
-| 结构完整 | 角色/任务指示/背景信息/案例/输入/输出 6 元素全部存在 |
-| 字段填充完整 | 各元素字段有值，无 `______` 占位符残留 |
-| writing-style 注入 | 双态：confidence=0 → 定性四字段注入（现状不变）；confidence>0 → 案例 2 十一节齐全（量化节按 rendering-rules 渲染；硬性规则/基调/例句透传；无声音层走 §6.0b 回退）；banned_words 与 anti-ai 禁用词去重后无重复；无占位符泄漏 |
-| 风格块与指引无重复 | 「写作风格约束」块与「场景写作指引」块无语义重复（量化约束不与方法论技法并列注入） |
-| banned_words 无重复 | 注入的 banned_words 与 anti-ai 禁用词合并去重后无重复出现 |
-| 硬性约束齐全 | 人设红线、世界观禁区、剧情红线全部存在 |
-| 前情上下文画面感 | 有具体结尾画面描述（ch-1 标注无前文，直接切入行动） |
-| 场景权重标注 | 每场景末尾标注了高/中/低权重，有 1 个高权重+至少 1 个低权重 |
-| 写作方法论 | 任务指示已注入焦点锁定/感官分层/节奏交替/信息控制四条 |
-| 案例已填充 | 至少 1 条四步转化后的场景写法案例 |
-| 技法稀疏 | 每个场景类型只注入 1-2 条技法指引，未全覆盖（技法由 anti-ai 步骤覆盖） |
-| 反AI注入范围 | 写作规范含活人感正向要点 + T1 最毒句式简表 + 元叙事禁止 + 题材反AI正反例；疲劳词阈值 / T2 / T3 / 二级禁用词未注入（清创归 anti-ai agent 完稿后执行） |
-| 视角策略 | 从 outline.pov 读取，注入 POV 角色 + 叙述者有限性 + 配角信息传递规则 |
-| 描写/节奏/句式要求 | 描写手法有值；节奏含整体 + 情绪段变化 + 段落长度自然起伏；句式长短交替，无连续 4 句相同结构 |
-| 情绪要求 | 允许微妙情绪反差（若有），须出自人物性格或场景压力，不破坏情绪连贯性 |
-| 信息要求 | 允许闲笔/跑题/死线索（若有），须属于当前场景与人物，不按配额要求每章插入 |
-| 段落分解 | 场景原材料末尾含 ¶ 结构指引（至少 2 段，每段有功能/节奏/注意项） |
-| 叙事规则已注入 | 写作规范段含"叙事规则"子段，通用规则 3 条 + 场景追加规则均填充，每条规则有关联角色设定推导 |
-| 无来源标注 | prompt 全文中不出现 `来源：`、`（来源）` 等来源标注，writer 不需要知道规则出处 |
-| 质感字段 | 有"不完美"约束（半截话/生活化细节/段落精度分层） |
-| 无 meta 泄漏 | 不包含"以下是小说的正文"类自我引用短语 |
-| 无整段复制章纲 | 各层内容是提炼后注入，非原文复制 |
-| 字数压缩策略已注入 | 任务指示·目标字数字段含弹性说明+压缩策略描述（"±10%可接受，叙事完整性优先" / "超字数优先压缩低权重场景，不得删红线"或类似表述） |
-| 感官例外已注入 | 写作方法论·感官分层取舍含声音例外规则（关键声音线索可不计2种感官名额） |
+| Structure complete | Role / task instructions / background / examples / input / output, all 6 elements present |
+| Fields filled completely | Each element's fields have values, no `______` placeholder left |
+| writing-style injected | Two states: confidence=0 → qualitative four fields injected (unchanged); confidence>0 → all eleven Case 2 sections present (quantitative sections rendered per rendering-rules; hard rules / tone / examples passed through; no voice layer means the Section 6.0b fallback); banned_words deduplicated against the anti-ai banned words with no duplicates; no placeholder leakage |
+| Style block and guidance without duplicates | The "Writing Style Constraints" block and the "Scene Writing Guidance" block have no semantic duplicates (quantitative constraints are not injected side by side with methodology techniques) |
+| banned_words without duplicates | The injected banned_words, merged and deduplicated with the anti-ai banned words, appear with no duplicates |
+| Hard constraints complete | Character red lines, worldview forbidden zones, and plot red lines all present |
+| Prior context has a sense of scene | A concrete ending scene description (ch-1 marked as having no prior text, cutting straight into action) |
+| Scene weights labeled | Every scene's end is labeled high / medium / low, with 1 high-weight + at least 1 low-weight scene |
+| Writing methodology | The task instructions already inject the four: focus lock / sensory layering / rhythm alternation / information control |
+| Examples filled | At least 1 scene writing example after the four-step conversion |
+| Sparse techniques | Each scene type is injected with only 1-2 technique guidance entries, without full coverage (techniques are covered by the anti-ai step) |
+| Anti-AI injection range | The writing standards contain the human-feel positive points + T1 most toxic sentence pattern short table + meta-narrative ban + genre anti-AI positive and negative examples; fatigue word thresholds / T2 / T3 / tier 2 banned words are not injected (cleanup belongs to the anti-ai agent after the draft is finished) |
+| Point of view strategy | Read from outline.pov; inject the POV character + the narrator's limited scope + the supporting character information passing rules |
+| Description / rhythm / sentence pattern requirements | Description techniques have values; rhythm contains the whole + emotional stretch changes + natural paragraph length rise and fall; sentence patterns alternate long and short, with no 4 consecutive sentences of the same structure |
+| Emotion requirements | Subtle emotional contrast is allowed (when present); it must come from the character's personality or the scene's pressure, without breaking emotional coherence |
+| Information requirements | Idle brushstrokes / digressions / dead clues are allowed (when present); they must belong to the current scene and character, without requiring one per chapter by quota |
+| Paragraph breakdown | The scene raw material's end contains ¶ structure guidance (at least 2 paragraphs, each with function / rhythm / notes) |
+| Narrative rules injected | The writing standards section contains a "narrative rules" subsection; the 3 general rules + the scene-appended rules are all filled in, and each rule has a linked character settings derivation |
+| No source labels | The prompt text contains no `来源：` / `(来源)` or similar source labels; writer does not need to know where a rule came from |
+| Texture fields | Have the "imperfection" constraints (half-finished sentences / everyday-life details / paragraph precision layering) |
+| No meta leakage | Contains no self-referential phrases such as "the following is the novel's main text" |
+| No whole-paragraph copying of the chapter outline | Each layer's content is injected after distilling, not copied verbatim |
+| Word count compression strategy injected | The task instructions, target word count field contains an elasticity note + compression strategy description ("plus or minus 10% acceptable, narrative completeness first" / "when over the word count, compress low-weight scenes first; never delete red lines", or similar wording) |
+| Sensory exception injected | The writing methodology, sensory layering trade-off contains the sound exception rule (key sound clues may not count toward the 2-sense quota) |
 
-**全部通过后**，写入 `prompts/vol-{N}-ch-{M}-prompt.md`。
-不通过则回到 Step 2 修正对应元素。
+**After everything passes**, write it to `prompts/vol-{N}-ch-{M}-prompt.md`.
+If it fails, go back to Step 2 and fix the matching elements.

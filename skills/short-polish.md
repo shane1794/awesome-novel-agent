@@ -1,56 +1,56 @@
-# short-polish SOP — 去 AI 味与精修
+# short-polish SOP: De-AI Flavor and Fine Polishing
 
-> short-editor 执行。只改表达不改剧情；短篇口径（`.claude/knowledge/short-anti-ai.md`）是唯一判定依据。
+> Executed by short-editor. Change only the expression, not the plot; the short-story standard (`.claude/knowledge/short-anti-ai.md`) is the only basis for judgment.
 
-## Step 1: 留删对表逐段判定
+## Step 1: Keep/Delete Comparison Table, Judged Paragraph by Paragraph
 
-| 留（卖点） | 删 |
+| Keep (selling point) | Delete |
 |---|---|
-| 直接情绪词（后接具体承接） | 空泛情绪总结句（一丝 X 涌上心头） |
-| 第一人称审判句 / 剧透 / 火葬场预告 | 中立作者讲解（与角色情绪无关的交代） |
-| 审判金句 / 心死式章尾 | 空洞哲理升华 |
+| Direct emotion words (followed by a concrete follow-through) | Vague emotional summary sentences (a trace of X welled up in the heart, 一丝 X 涌上心头) |
+| First-person judgment sentences / spoilers / "burn the bridge, then the reckoning" previews | Neutral author exposition (explanation unrelated to the character's emotion) |
+| Judgment one-liners / "heart-dead" chapter endings | Hollow philosophical elevation |
 
-判据：**这句带不带主角此刻的主观情绪？** 带则留，中立则删。
+Criterion: **Does this sentence carry the protagonist's subjective emotion right now?** Keep it if it does, delete it if it is neutral.
 
-删除优先：删后不丢伏笔 / 钩子 / 角色 / 情节 / 必要信息的直接删；会丢才改写；改写优先于重生成。
+Delete first: if deleting loses no foreshadowing / hook / character / plot / necessary information, delete directly; only rewrite when something would be lost; prefer rewriting over regenerating.
 
-## Step 2: 自检清单逐项过（口径第十一节）
+## Step 2: Self-Check List, Item by Item (Section 11 of the standard)
 
-重点扫描：
+Scan especially for:
 
-- 第一人称所有格（我的心 → 心）与引导小句（我知道 / 我感到 / 我看到自己）
-- 程度副词密度：弱化（微微/淡淡/缓缓/轻轻）+ 强化（正/正在/非常/十分/极其/越来越/果然/好像）合计每千字 ≤3
-- AI 套话清零（映入眼帘 / 心中暗道 / 沉声道 / 不难看出 / 于是乎…）
-- 比喻不成片（功能性比喻——如贯穿道具物象——保留）
-- 章尾不为工整收口（不凑对仗 / 排比 / 押韵）
-- （古代 / 架空题材）现代词表扫描零命中
-- 命名与 setting.md 记录一致
+- First-person possessives (my heart becomes heart, 我的心 → 心) and leading small clauses (I know / I feel / I see myself, 我知道 / 我感到 / 我看到自己)
+- Degree adverb density: weakening (slightly / faintly / slowly / gently, 微微/淡淡/缓缓/轻轻) plus strengthening (just / in the middle of / very / extremely / increasingly / as expected / seemingly, 正/正在/非常/十分/极其/越来越/果然/好像) totaling at most 3 per thousand words
+- AI stock phrases zero (met the eye / said to oneself in the heart / said in a deep voice / it is not hard to see / and so on, 映入眼帘 / 心中暗道 / 沉声道 / 不难看出 / 于是乎…)
+- Metaphors not in clusters (functional metaphors, such as the throughline prop's imagery, are kept)
+- Chapter endings not neatly tied off for the sake of tidiness (no forced parallelism / lists / rhyme)
+- (Historical / alternate-world genres) modern vocabulary table scan with zero hits
+- Names consistent with the record in setting.md
 
-## Step 3: 六类精修清单
+## Step 3: Six-Category Polishing Checklist
 
-| 类 | 检查项 |
+| Category | Check Items |
 |----|--------|
-| 开头 | 前 3 句抓人 / 无背景铺垫 / 有开篇钩子 / 场景从冲突中途进入 |
-| 情绪 | 曲线有走向 / 反转前铺垫够 / 反转后冲击够（峰值维持一节） |
-| 反转 | 出乎意料且合情合理 / 揭示完成瞬时串线（线索回连）/ 位置与契约一致 |
-| 节奏 | 无拖沓 / 每句有价值 / 疏密有致（爽点密、过场疏） |
-| 钩子 | 每 2-3 节有钩 / 节尾有钩（悬念或心死余韵） |
-| 技法 | 情绪后接具体反应 / 道具三次语义递进完整 / 一动一静 / 开头事件密度 ≥3 |
+| Opening | First 3 sentences grab the reader / no background setup / an opening hook exists / the scene enters mid-conflict |
+| Emotion | The curve has a direction / enough planting before the reversal / enough impact after the reversal (peak held for one section) |
+| Reversal | Surprising yet reasonable / the reveal completes the instant thread-stringing (clues linked back) / position matches the contract |
+| Rhythm | No dragging / every sentence has value / density varies (dense at satisfying beats, sparse at transitions) |
+| Hooks | A hook every 2-3 sections / a hook at each section's end (suspense or heart-dead lingering resonance) |
+| Technique | A concrete reaction follows each emotion / the prop's three semantic steps complete / one movement and one stillness / opening event density at least 3 |
 
-## Step 4: 格式合规（grep 逐项）
+## Step 4: Format Compliance (grep, item by item)
 
-- [ ] 小节标记全文统一
-- [ ] 段间单换行（无空行 / `\n\n`）
-- [ ] 无缩进；正文段落无 Markdown
-- [ ] 对话独立成行、引号符合平台
-- [ ] 禁用标点（…… —— — --）清零；停顿处为语义级改写（短句 / 动作 / 换行），非机械替换
-- [ ] 无元信息词（本章 / 前文 / 伏笔 / 读者…）
+- [ ] Section markers uniform throughout
+- [ ] Single line break between paragraphs (no blank lines / `\n\n`)
+- [ ] No indentation; main text paragraphs have no Markdown
+- [ ] Dialogue on its own line, quotes match the platform
+- [ ] Banned punctuation (ellipsis, double em dash, em dash, double hyphen) zero; pauses are rewritten at the semantic level (short sentences / action / line break), not mechanically replaced
+- [ ] No meta-information words (this chapter / earlier text / foreshadowing / reader...)
 
-## Step 5: 收尾
+## Step 5: Wrap-Up
 
-- 沙箱资产：`sandbox/prose-regressions.txt` 命中即失败；`sandbox/locked-lines.txt` 命中行跳过裁定
-- 字数复测仍达标（跌破下限 → 回退本次删改，改用降 AI 重写）
-- **交付洁净**：正文末尾无自检记录、无检查标记注释、无工程词
-- 成稿逐项复查对照 `.claude/knowledge/short-craft/quality-checklist.md`（章节结构/开篇/信息传递/场景/章尾/语言）
-- **改稿模式附加**：只动作者要求的节；差异清单不越界（不改走向 / 删冲突 / 加人物 / 改人设 / 改视角）；发现剧情层问题只标记上报，不自行修
-- 剧情层问题清单（本 agent 无权修的）→ order 备注退回总指挥
+- Sandbox assets: a hit in `sandbox/prose-regressions.txt` means failure; a hit in `sandbox/locked-lines.txt` means that line skips the ruling
+- Word count re-measured and still on target (dropping below the floor means rolling back this round of deletions and switching to de-AI rewriting instead)
+- **Clean delivery**: no self-check records, no check-mark comments, and no engineering terms at the end of the main text
+- The finished draft is re-checked item by item against `.claude/knowledge/short-craft/quality-checklist.md` (chapter structure / opening / information delivery / scene / chapter ending / language)
+- **Revision mode extra**: only touch the sections the author asked for; the difference list does not overreach (no changing the direction / deleting conflict / adding characters / changing character design / changing point of view); plot-level problems found are only marked and reported upward, not fixed on the spot
+- The plot-level problem list (things this agent has no authority to fix) goes in the order notes and is returned to the coordinator

@@ -1,104 +1,104 @@
-# updater 回滚 skill — 撤销本章归档追加
+# updater Rollback Skill: Undo This Chapter's Archive Append
 
-## 职责
+## Responsibilities
 
-**回滚某章 = 撤销该章归档时对设定的所有追加**，回到该章编写前的状态。只撤本章，不动其他章。这是 #81-4 "归档后重写"场景的准备工作——作者要重写某章，先把这章写进设定的痕迹撤掉，再重新走章纲/正文/归档。
+**Rolling back a chapter means undoing every append that chapter's archiving made to the settings**, returning to the state before that chapter was written. Only roll back this chapter; do not touch other chapters. This is the preparation step for the #81-4 "rewrite after archiving" scenario: when the author wants to rewrite a chapter, first remove the traces that chapter wrote into the settings, then walk the chapter outline / main text / archive pipeline again.
 
-**输入：** `rollback-order.md`（含 volume N / chapter M）
-**输出：** 回滚完成报告（每类设定删了几条 + 涉及文件清单），order 标 `status: DONE`
+**Input:** `rollback-order.md` (containing volume N / chapter M)
+**Output:** A rollback completion report (how many entries of each settings type were deleted + the list of files involved), with the order marked `status: DONE`
 
-**触发方式（#81-7 /undo）：** 作者在归档后交互点直接说「重写第X章」即可——novel-agent 识别后派本 order。无需专门命令，自然语言触发。
+**How it is triggered (#81-7 /undo):** After archiving, the author only needs to say "rewrite chapter X" directly in conversation. novel-agent recognizes it and dispatches this order. No special command is needed; natural language triggers it.
 
-## 核心原则
+## Core Principles
 
-- **反推删除，不做快照**：归档是"追加"（timeline 加行、foreshadowing 加钩子、角色状态加块），回滚就是"删掉追加的"。每个目标文件都有章节锚点可查。
-- **只撤本章**：所有操作以 `vol-{N}-ch-{M}` 或 `第 {N} 卷第 {M} 章` 为锚点，绝不误删其他章节的设定。
-- **宁少删**：锚点匹配不到的（如记忆条目无章节字段）→ 保留，不硬删。
+- **Delete by reverse inference, not by snapshot**: archiving is an "append" (a row added to the timeline, a hook added to foreshadowing, a block added to character state), so rollback is "deleting what was appended". Every target file has a chapter anchor to check against.
+- **Only roll back this chapter**: all operations are anchored on `vol-{N}-ch-{M}` or `第 {N} 卷第 {M} 章`; never delete another chapter's settings by mistake.
+- **Delete less rather than more**: when an anchor does not match (for example, a memory entry has no chapter field), keep it; do not force the deletion.
 
 ---
 
-## Step 1: 读 order，确认回滚目标
+## Step 1: Read the Order, Confirm the Rollback Target
 
-1. 读 `rollback-order.md`，取 volume `{N}`、chapter `{M}`
-2. 确认 `chapters/vol-{N}-ch-{M}.md` 存在且 `status: archived`（只有已归档的章才需要回滚）
+1. Read `rollback-order.md` and take volume `{N}` and chapter `{M}`
+2. Confirm that `chapters/vol-{N}-ch-{M}.md` exists and its `status: archived` (only an archived chapter needs rolling back)
 
-## Step 2: 撤销 timeline 追加
+## Step 2: Undo the Timeline Append
 
-**目标：** `settings/timeline.md`
-**锚点：** 表格行 `| vol-{N}-ch-{M} |`
-**操作：** Grep `vol-{N}-ch-{M}` 找到对应行 → 用 Edit 删除整行。
+**Target:** `settings/timeline.md`
+**Anchor:** the table row `| vol-{N}-ch-{M} |`
+**Action:** Grep for `vol-{N}-ch-{M}` to find the matching row, then use Edit to delete the whole row.
 
-> 每章归档时 timeline 加一行，回滚删掉该行。其他章节的行不动。
+> Each chapter's archiving adds one row to the timeline; rollback deletes that row. Other chapters' rows stay untouched.
 
-## Step 3: 撤销 foreshadowing 追加（双向）
+## Step 3: Undo the Foreshadowing Append (both directions)
 
-**目标：** `settings/foreshadowing.md`
-**锚点：** `埋设位置` 列 / `收束位置` 列 = `vol-{N}-ch-{M}`
+**Target:** `settings/foreshadowing.md`
+**Anchor:** the `埋设位置` (planted at) column / `收束位置` (closed at) column equals `vol-{N}-ch-{M}`
 
-**① 删除本章埋设的钩子**（从「未收束钩子」表）：
-- 找所有 `埋设位置` 列含 `vol-{N}-ch-{M}` 的行 → 整行删除
-- 这些钩子是本章新埋的，本章重写后作废
+**1. Delete the hooks this chapter planted** (from the "unclosed hooks" table):
+- Find every row whose `埋设位置` column contains `vol-{N}-ch-{M}` and delete the whole row
+- These hooks are newly planted by this chapter; once the chapter is rewritten they are void
 
-**② 回退本章收束的钩子**（从「已收束钩子」移回「未收束钩子」）：
-- 找所有 `收束位置` 列含 `vol-{N}-ch-{M}` 的行 → 从「已收束」表删除，移回「未收束」表（状态改回活跃，计划收束清空）
-- 这些钩子是更早章节埋的、本章收束的——本章重写后收束可能不再成立，先回退
+**2. Roll back the hooks this chapter closed** (move them from "closed hooks" back to "unclosed hooks"):
+- Find every row whose `收束位置` column contains `vol-{N}-ch-{M}`, delete it from the "closed" table, and move it back to the "unclosed" table (status back to active, planned closure cleared)
+- These hooks were planted in earlier chapters and closed by this chapter. After the chapter is rewritten, the closure may no longer hold, so roll them back first
 
-## Step 4: 撤销角色状态追加
+## Step 4: Undo the Character State Append
 
-**目标：** `settings/character-setting/{id}.md`（所有出场角色）
-**锚点：** 两种格式兼容——
-- v4.9.0 新版：`## vol-{N}-ch-{M} 状态变更`
-- 旧版：`#### 第 {N} 卷第 {M} 章`
+**Target:** `settings/character-setting/{id}.md` (every appearing character)
+**Anchor:** two formats are supported:
+- v4.9.0 new format: `## vol-{N}-ch-{M} 状态变更`
+- Old format: `#### 第 {N} 卷第 {M} 章`
 
-**操作：** 对每个角色文件：
-1. Grep 找到 `## vol-{N}-ch-{M} 状态变更` 或 `#### 第 {N} 卷第 {M} 章` 块头
-2. 删除该块头到下一个**同级或更高级** header 之间的所有内容
-   - 剧情履历（`### 剧情履历` 下的 `#### 第 {N} 卷第 {M} 章`）和情绪弧线（`### 情绪弧线` 下的对应子块）都要删
-3. 若角色文件无该章块（如配角只在首次出场建文件）→ 跳过，不动
+**Action:** For each character file:
+1. Grep for the block heading `## vol-{N}-ch-{M} 状态变更` or `#### 第 {N} 卷第 {M} 章`
+2. Delete everything from that block heading up to the next header of the **same or higher level**
+   - Both the plot history (the `#### 第 {N} 卷第 {M} 章` under `### 剧情履历`) and the emotional arc (the matching sub-block under `### 情绪弧线`) are deleted
+3. If a character file has no block for this chapter (for example, a supporting character whose file was only created on first appearance), skip it and leave it untouched
 
-> 注意：角色设定文件是"追加状态块"，不是"覆盖全量状态"。删除本章块后，该角色恢复到上一章结束时的状态（由 ch1~ch(N-1) 的块叠加而成）。
+> Note: a character settings file "appends state blocks"; it does not "overwrite the whole state". After deleting this chapter's block, the character returns to the state at the end of the previous chapter (built by stacking the blocks from ch1 through ch(N-1)).
 
-## Step 5: 章纲 status 改回
+## Step 5: Change the Chapter Outline Status Back
 
-**目标：** `chapters/vol-{N}-ch-{M}.md`
-**操作：** Edit 将 `status: archived` → `status: outline`
+**Target:** `chapters/vol-{N}-ch-{M}.md`
+**Action:** Edit `status: archived` to `status: outline`
 
-> 这触发 novel-agent 重新走本章的章纲/提示词/正文/归档管线。
+> This triggers novel-agent to run this chapter through the chapter outline / prompt / main text / archive pipeline again.
 
-## Step 6: 回退本章记忆（宁少删）
+## Step 6: Roll Back This Chapter's Memory (delete less rather than more)
 
-**目标：** `.claude/memory/*.md`（writing-memory / chapter-memory / prompt-memory / volume-memory）
-**限制：** 记忆条目有 `日期` 无 `章节` 字段，不可靠。
-**操作：** 仅当条目同时满足以下条件才回退，否则保留：
-1. `场景` 字段含 `vol-{N}-ch-{M}` 或 `第 {N} 卷第 {M} 章`
-2. `日期` 字段等于本章归档日期（从 `.agent/archiving/vol-{N}-ch-{M}.done` 的 `archived_at` 读）
+**Target:** `.claude/memory/*.md` (writing-memory / chapter-memory / prompt-memory / volume-memory)
+**Limitation:** memory entries have a `日期` (date) field but no `章节` (chapter) field, so they are unreliable.
+**Action:** Only roll back an entry when it meets both conditions at once; otherwise keep it:
+1. Its `场景` (scenario) field contains `vol-{N}-ch-{M}` or `第 {N} 卷第 {M} 章`
+2. Its `日期` (date) field equals this chapter's archive date (read `archived_at` from `.agent/archiving/vol-{N}-ch-{M}.done`)
 
-> 宁少删：记忆是作者偏好的沉淀，误删损失大。匹配不到宁可留着。
+> Delete less rather than more: memory is the author's banked preferences, and deleting it by mistake costs a lot. When no anchor matches, keep it.
 
-## Step 7: 输出回滚报告
+## Step 7: Output the Rollback Report
 
 ```
-## 回滚完成报告 — vol-{N}-ch-{M}
-- timeline: 删除 X 行
-- foreshadowing: 删除 X 个埋设钩子 / 回退 X 个收束钩子
-- 角色设定: {角色名} 删除状态块，{角色名} 跳过
-- 章纲 status: archived → outline
-- 记忆回退: X 条（匹配到锚点的）
-- 涉及文件: {清单}
+## Rollback Completion Report: vol-{N}-ch-{M}
+- timeline: deleted X rows
+- foreshadowing: deleted X planted hooks / rolled back X closed hooks
+- Character settings: {character name} state block deleted, {character name} skipped
+- Chapter outline status: archived → outline
+- Memory rollback: X entries (those matching the anchor)
+- Files involved: {list}
 ```
 
-order 标 `status: DONE`（不删除）。
+Mark the order `status: DONE` (do not delete it).
 
-## 卷完成状态（交给 novel-agent）
+## Volume Completion State (left to novel-agent)
 
-回滚后该章不再是 `archived`。novel-agent 需重算卷完成：
-- 已归档数 < 规划数 → 清除 `last_volume_completed`（novel-agent 是唯一写者，updater 不写）
+After rollback, this chapter is no longer `archived`. novel-agent must recalculate volume completion:
+- Archived count < planned count → clear `last_volume_completed` (novel-agent is the only writer; updater does not write it)
 
-## 验收清单
+## Acceptance Checklist
 
-- [ ] timeline 删掉本章行，其他章行完整
-- [ ] foreshadowing 本章埋设钩子已删、本章收束钩子已回退
-- [ ] 角色设定本章状态块已删，恢复到上一章结束状态
-- [ ] 章纲 status 已改回 outline
-- [ ] 记忆只回退了锚点匹配的条目（宁少删）
-- [ ] 其他章节的设定完全未动
+- [ ] The timeline row for this chapter is deleted; other chapters' rows are complete
+- [ ] Foreshadowing: hooks planted by this chapter are deleted, hooks closed by this chapter are rolled back
+- [ ] Character settings: this chapter's state block is deleted, restored to the state at the end of the previous chapter
+- [ ] Chapter outline status is changed back to outline
+- [ ] Memory: only anchor-matching entries were rolled back (delete less rather than more)
+- [ ] Other chapters' settings are completely untouched

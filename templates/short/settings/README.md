@@ -1,3 +1,3 @@
-# 设定说明（短篇）
+# Settings Notes (Short Stories)
 
-# 每篇的题材设定由构思 agent 写入 stories/{slug}/setting.md，此目录存放项目级共享设定（如统一命名记录）。
+# Each story's genre setting is written by the concept agent into stories/{slug}/setting.md. This directory holds project-level shared settings (such as a unified naming record).

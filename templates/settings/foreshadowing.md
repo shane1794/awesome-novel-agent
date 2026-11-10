@@ -1,17 +1,17 @@
-# 伏笔/钩子全局台账
+# Global Foreshadowing and Hook Ledger
 
-> 跨卷伏笔与钩子的**权威记录**（M2 原则：这是真相源，不是从 chapter.md 派生的缓存）。
-> 由 updater 在归档时维护：从各章 `chapter.md#payoff_plan` 的钩子操作汇总，追加/更新状态。
-> volume-planner / chapter-planner / reader 读取此文件做跨卷钩子检查。
+> The **authoritative record** of cross-volume foreshadowing and hooks (M2 principle: this is the source of truth, not a cache derived from chapter.md).
+> Maintained by the updater when archiving: hooks are summarized from each chapter's `chapter.md#payoff_plan` hook operations, then appended or updated.
+> volume-planner / chapter-planner / reader read this file for cross-volume hook checks.
 
-## 未收束钩子
+## Unresolved Hooks
 
-| 钩子 | 埋设位置 | 当前状态 | 最近提及 | 计划收束 |
+| Hook | Planted At | Current Status | Last Mentioned | Planned Payoff |
 |------|---------|---------|---------|---------|
-| {示例钩子} | vol-{N}-ch-{M} | pending / partial_advance | vol-{N}-ch-{M} | vol-{N+2}-ch-{M} |
+| {example hook} | vol-{N}-ch-{M} | pending / partial_advance | vol-{N}-ch-{M} | vol-{N+2}-ch-{M} |
 
-## 已收束钩子
+## Resolved Hooks
 
-| 钩子 | 埋设位置 | 收束位置 | 收束方式 |
+| Hook | Planted At | Resolved At | How It Paid Off |
 |------|---------|---------|---------|
-| {示例钩子} | vol-{N}-ch-{M} | vol-{N+2}-ch-{M} | {如何兑现} |
+| {example hook} | vol-{N}-ch-{M} | vol-{N+2}-ch-{M} | {how it paid off} |

@@ -6,7 +6,7 @@ confidence: 0
 last_updated: ""
 locked: []
 
-# 9 大维度（PRD 定义；0/空 = 未蒸馏，首次蒸馏后由 style-distiller 填充）
+# 9 dimensions (defined by the PRD; 0/empty = not distilled yet, filled in by style-distiller after the first distillation)
 lexicon: { adj_density_per_100: 0, adv_density_per_100: 0, four_phrase_freq_per_100: 0, preferred_words: [], banned_words: [], name_pronoun_ratio: 0 }
 syntax: { avg_sentence_length: 0, sentence_length_dist: {}, single_sentence_paragraph_pct: 0, avg_sentences_per_paragraph: 0, question_ratio: 0, exclamation_ratio: 0 }
 rhythm: { dialogue_pct: 0, action_pct: 0, environment_pct: 0, inner_thought_pct: 0, narration_pct: 0 }
@@ -18,24 +18,24 @@ cohesion: { conjunction_freq_per_100: 0, transition_sentence_ratio: 0, paragraph
 verb_style: { action_verb_ratio: 0, mental_verb_ratio: 0, state_verb_ratio: 0, strength: "" }
 ---
 
-# 写作风格
+# Writing Style
 
-## 叙事身份（原 role）
+## Narrative Identity (formerly role)
 
 {role}
 
-## 硬约束（原 core_principles）
+## Hard Constraints (formerly core_principles)
 
 - {principle_1}
 
-## AI 易犯错误（原 possible_mistakes）
+## Mistakes AI Commonly Makes (formerly possible_mistakes)
 
 - {mistake_1}
 
-## 描写层次和手法（原 depiction_techniques）
+## Description Levels and Techniques (formerly depiction_techniques)
 
 {depiction_techniques}
 
-## few-shot 例句
+## Few-Shot Example Sentences
 
-- （蒸馏后由 style-distiller 填入标志性例句）
+- (Signature example sentences, filled in by style-distiller after distillation)

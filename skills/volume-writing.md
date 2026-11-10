@@ -1,338 +1,337 @@
+# Volume Outline Discussion Skill
 
-# 卷纲讨论 skill
+> One volume has only one main line; all chapters together tell that main line. If any chapter is missing, the story is incomplete.
 
-> 一卷只有一个主线，所有章合起来讲完这个主线。少了任何一章故事就不完整。
+## Process
 
-## 流程
+Read the volume memory → set the emotional direction → fix the core conflict → set the conflict ladder → build the information gap → break into scene cards → append new characters / settings → write the output → accept
 
-读卷记忆 → 立情绪走向 → 定核心冲突 → 设冲突阶梯 → 建信息差 → 拆场景卡 → 新角色/设定追加 → 产出写入 → 验收
+## 0. Read the Volume Memory
 
-## 0. 读卷记忆
+Before planning starts, read the entries in `.claude/memory/volume-memory.md` that apply to this volume's planning (volume direction / conflict design / rhythm distribution) and apply them; after citing them, increment use_count following skills/memory-recording.md Section 4.1.
 
-开始规划前，读 `.claude/memory/volume-memory.md` 中适用于本卷规划（卷方向/冲突设计/节奏分布）的条目并应用；引用后按 skills/memory-recording.md §4.1 递增 use_count。
+> The author's feedback is banked in memory. If you do not read it, you cannot use it, and if use_count never rises, it will never be promoted to permanent memory.
 
-> 作者反馈沉淀在记忆里——没读就用不上，use_count 不涨就永远不会晋升永久记忆。
+## 1. Fix the Core Conflict
 
-## 1. 定核心冲突
+Inherit this volume's core conflict from story.md and ask the author, "Is there anything to adjust?"
 
-从 story.md 继承本卷核心冲突，问作者"有要调整的吗？"
+**Bottom line (if any item fails, do not proceed to breaking into chapters):**
+1. **The core conflict can be said in one sentence**: "who + wants to do what + is blocked by what", with no need for "at the same time" or "on the other hand"
+2. **The opposing force is concrete**: the obstacle must be a concrete character / force / situation, not hollow words such as "fighting fate" or "fighting society"
+3. **Both sides of the conflict have a reason they cannot back down**: derive it from the characters' layer 3 values in their settings; if it cannot be derived, ask the author to add it.
 
-**底线（任一不通过禁止进入拆章节）：**
-1. **核心冲突可一句说完**——"谁 + 想做什么 + 被什么阻碍"，不需要"与此同时""另一方面"
-2. **对抗力量具体**——阻碍必须是具体的角色/势力/处境，不是"对抗命运""对抗社会"这类虚词
-3. **冲突双方都有不能退让的理由**——读角色设定的层3价值观推导，推导不出则问作者补充。
-
-> 问作者冲突双方的不可退让理由（只问剧情）：
-> "主角和{对手}的冲突核心是{X}，冲突双方各自输不起什么？——{角色A}退了会怎样？{角色B}退了会怎样？"
+> Ask the author about the non-negotiable reasons of both sides of the conflict (ask only about plot):
+> "The core of the conflict between the protagonist and {opponent} is {X}. What does each side stand to lose if they back down? What happens if {Character A} backs down? What happens if {Character B} backs down?"
 >
-> 作者回答后，对照 `.claude/knowledge/plot-craft/conflict-motivation.md` 判断是否够具体：
-> - 双方都有具象动机（生存威胁/身份认同/执念创伤等），且互斥 → 通过
-> - 任一方是无效动机（天生邪恶/剧情需要/抽象概念）→ 追问："如果{角色}退了，ta 具体会失去什么？"
-> - 双方动机可调和（存在 Z 方案让各退一步）→ 提醒："这个冲突目前可调和，是否加固？参考 conflict-motivation.md 的加固方法"
+> After the author answers, judge against `.claude/knowledge/plot-craft/conflict-motivation.md` whether it is concrete enough:
+> - Both sides have concrete motives (survival threat / identity / obsessive trauma, and similar) and they are mutually exclusive → pass
+> - Either side has an invalid motive (born evil / needed by the plot / abstract concept) → ask: "If {character} backed down, what exactly would they lose?"
+> - Both sides' motives can be reconciled (a Plan Z exists that lets each side step back) → warn: "This conflict can currently be reconciled. Should it be hardened? See the hardening methods in conflict-motivation.md"
 >
-> 如果角色设定层3价值观太抽象导致作者也答不出，追加设定变更通知提醒补充。
+> If the characters' layer 3 values are too abstract for even the author to answer, append a setting-change notice as a reminder to add them.
 
-## 2. 立情绪走向
+## 2. Set the Emotional Direction
 
-> 冲突定义"发生什么事"，情绪走向定义"读者读这卷从头到尾，情绪怎么变化"。
+> Conflict defines "what happens"; the emotional direction defines "how the reader's emotion changes from the start of this volume to the end".
 
-从 story.md 继承本卷核心冲突后，agent 先不急拆章节，先自行设计情绪走向。不先问作者。
+After inheriting this volume's core conflict from story.md, the agent first designs the emotional direction on its own; do not rush to break it into chapters, and do not ask the author first.
 
-### 情绪走向确定方法
+### How the Emotional Direction Is Set
 
-**Step 1：定弧线模式**
+**Step 1: Fix the arc mode**
 
-根据核心冲突类型和题材，agent 自行选择最合适的情绪弧线模式。选择依据：
+Based on the core conflict type and genre, the agent picks the most suitable emotional arc mode on its own. The basis for the choice:
 
-| 冲突类型 | 推荐弧线模式 | 说明 |
+| Conflict Type | Recommended Arc Mode | Description |
 |---------|-------------|------|
-| 复仇/逆袭 | 先压后爽 | 压抑→压抑→提升→打脸→装逼 |
-| 追查/解谜 | 层层逼近 | 紧张→逼近→震惊→舒缓 |
-| 成长/试炼 | 张力开合 | 紧张→舒缓→紧张↑→舒缓→高潮 |
-| 对抗/战争 | 蓄势爆发 | 压抑蓄势→压抑蓄势→爆发→余韵 |
+| Revenge / comeback | Repress first, then satisfy | repression → repression → rise → face-slap → showing off |
+| Investigation / puzzle | Closing in layer by layer | tension → closing in → shock → relief |
+| Growth / trial | Tension opening and closing | tension → relief → tension, higher → relief → climax |
+| Confrontation / war | Building up to an eruption | repression building up → repression building up → eruption → lingering resonance |
 
-如果拿不准，默认使用"层层逼近"（追查型叙事最通用）。
+If unsure, default to "closing in layer by layer" (the most general investigation-type narration).
 
-**Step 2：分配到冲突阶梯的各层**
+**Step 2: Assign it to each layer of the conflict ladder**
 
-弧线的每一步对应冲突阶梯的一层：
-
-```
-冲突阶梯                    情绪走向
-第1层：困境建立     ←→   压抑（卷首压迫）
-第2层：压迫升级     ←→   压抑↑（更难受）  
-第3层：绝境/转折   ←→   更压抑/震惊（最低点）
-第4层：反击/高潮   ←→   提升→打脸→装逼（释放）
-```
-
-**Step 3：验证弧线可感知**
-
-agent 自行检查：如果压抑层写成了主角日常喝茶 → 冲突设计有问题，回去改。
-不需要问作者——等方案展示时让作者一次性判断。
-
-### 底线
-
-- **情绪走向必须是弧线，不是点**——"爽"不是走向，"压抑→压抑→提升→打脸→装逼"才是
-- **弧线每一步对应冲突阶梯的一层**——情绪不能脱离冲突单独设计
-- **弧线必须有递进**——"压抑→压抑→压抑"只有量变没有质变，中间需要一个转折点让情绪从压抑转向期待或愤怒
-
-> **冲突升级参考：** 设计冲突阶梯各层障碍时，参考 `.claude/knowledge/plot-craft/index.md` 中的冲突升级手法（价值错位/环境压力/目标置换/连锁反应）和剧情反转手法（逻辑误导/人设置换/多重套娃），让每层障碍的冲突类型有变化，不只是"更强的人来了"。
-
-## 3. 设冲突阶梯
-
-核心冲突是"谁对抗谁"，冲突阶梯是"怎么一步一步对抗"。
-
-### 阶梯设计方法
-
-把一个核心冲突拆成 2-4 层逐级升高的障碍：
+Each step of the arc maps to one layer of the conflict ladder:
 
 ```
-核心冲突"陆征查旧案——警队内部有人阻止"
+Conflict ladder                    Emotional direction
+Layer 1: predicament set up     ↔   repression (oppression at the volume's start)
+Layer 2: pressure escalates     ↔   repression, higher (even more painful)
+Layer 3: desperate straits / turning point   ↔   more repression / shock (the lowest point)
+Layer 4: counterattack / climax   ↔   rise → face-slap → showing off (release)
+```
+
+**Step 3: Verify the arc is perceptible**
+
+The agent checks on its own: if the repression layer is written as the protagonist drinking tea in everyday life, the conflict design has a problem; go back and change it.
+No need to ask the author. Let the author judge it in one go when the plan is shown.
+
+### Bottom line
+
+- **The emotional direction must be an arc, not a point**: "satisfying" is not a direction; "repression → repression → rise → face-slap → showing off" is
+- **Each step of the arc maps to one layer of the conflict ladder**: emotion cannot be designed separately from conflict
+- **The arc must progress**: "repression → repression → repression" is only a change in amount, not in quality; it needs a turning point in the middle that turns the emotion from repression toward anticipation or anger
+
+> **Conflict escalation reference:** When designing the obstacles at each layer of the conflict ladder, consult the conflict escalation techniques in `.claude/knowledge/plot-craft/index.md` (value mismatch / environmental pressure / goal substitution / chain reaction) and the plot twist techniques (logic misdirection / character substitution / nested dolls), so each layer's conflict type changes instead of just being "a stronger person shows up".
+
+## 3. Set the Conflict Ladder
+
+The core conflict is "who fights whom"; the conflict ladder is "how the fight proceeds step by step".
+
+### Ladder design method
+
+Break one core conflict into 2-4 layers of obstacles that rise step by step:
+
+```
+Core conflict: "陆征 investigates the old case, and someone inside the police force stops him"
   ↓
-第1层：信息受阻——卷宗不全，方岩不敢说    ← 入门级
-  ↓ 转折：发现旧案被压
-第2层：外部施压——有人跟踪/警告              ← 升级
-  ↓ 转折：保护伞露出真面目
-第3层：内部损失——证人失踪，证据链断裂      ← 重大挫折
-  ↓ 转折：主角被迫选择
-第4层：正面交锋——与幕后势力对决            ← 终极
+Layer 1: information blocked: the case file is incomplete, and 方岩 dares not speak    ← entry level
+  ↓ turning point: discovering the old case was suppressed
+Layer 2: outside pressure: someone tails / warns him              ← escalation
+  ↓ turning point: the protector shows their true face
+Layer 3: inside loss: a witness disappears, the evidence chain breaks      ← major setback
+  ↓ turning point: the protagonist is forced to choose
+Layer 4: head-on confrontation: showdown with the power behind the scenes            ← ultimate
 ```
 
-展示给作者，确认每层的"难度递增"是否合理。
+Show it to the author and confirm whether each layer's "rising difficulty" is reasonable.
 
-### 关键转折点标记
+### Mark the key turning points
 
-在阶梯中标出 2-4 个"局面根本性变化"的转折点：
+Mark 2-4 turning points in the ladder where "the situation fundamentally changes":
 
-| 转折类型 | 示例 | 标记 |
+| Turning Point Type | Example | Mark |
 |---------|------|------|
-| 信息转折 | "发现旧案被压" | 之后的目标变了 |
-| 关系转折 | "合作者其实是敌人" | 之后的阵营变了 |
-| 状态转折 | "失去警队支持" | 之后的手段变了 |
-| 事件转折 | "证人被杀" | 之后的局势不可逆了 |
+| Information turning point | "Discovering the old case was suppressed" | The goal changes after this |
+| Relationship turning point | "The collaborator is actually the enemy" | The camp changes after this |
+| State turning point | "Losing police support" | The means change after this |
+| Event turning point | "The witness is killed" | The situation becomes irreversible after this |
 
-**底线：** 每一层障碍比前一层更难——如果第二层和第一层难度差不多，合并或删掉。
+**Bottom line:** Each layer's obstacle is harder than the last. If layer 2 is about as hard as layer 1, merge or delete it.
 
-## 4. 建信息差
+## 4. Build the Information Gap
 
-冲突推着情节走，信息差推着读者走。信息差是"读者为什么想翻页"的根本来源。
+Conflict pushes the plot forward; the information gap pushes the reader forward. The information gap is the root source of "why the reader wants to turn the page".
 
-### 信息差确立方法
+### How the Information Gap Is Set
 
-**Step 1：识别信息在谁手里**
+**Step 1: Identify who holds the information**
 
-与作者逐类确认——关键在于"谁知道什么、谁不知道什么"：
+Confirm with the author category by category. The key is "who knows what, and who does not know what":
 
-| 关系 | 问作者 | 示例 |
+| Relationship | Ask the author | Example |
 |------|--------|------|
-| **主角知道↦其他人不知道** | "本卷中主角知道什么关键信息，是反派/配角不知道的？" | 主角有金手指、主角提前得知了阴谋 |
-| **反派/配角知道↦主角不知道** | "反派或配角有什么秘密/陷阱是主角不知道的？" | 反派设好埋伏、配角有双重身份 |
-| **读者知道↦主角不知道** | "读者通过叙事知道什么，但主角还被蒙在鼓里？" | 读者知道是误会但主角在生气、读者知道叛徒是谁 |
+| **The protagonist knows, others do not** | "What key information does the protagonist know this volume that the villain / supporting characters do not?" | The protagonist has a golden finger; the protagonist learned of the conspiracy in advance |
+| **The villain / supporting character knows, the protagonist does not** | "What secret / trap does the villain or a supporting character have that the protagonist does not know?" | The villain set an ambush; a supporting character has a double identity |
+| **The reader knows, the protagonist does not** | "What does the reader know through the narration that the protagonist is still in the dark about?" | The reader knows it is a misunderstanding but the protagonist is angry; the reader knows who the traitor is |
 
-**Step 2：定卷级起点→终点**
+**Step 2: Fix the volume-level start → end**
 
-卷不定义每章的信息差细节——只定义 **这卷开始时的信息差** 和 **这卷结束后的信息差**。中间的变化由章纲演绎。
+A volume does not define each chapter's information gap detail. It only defines **the information gap at the start of this volume** and **the information gap after this volume ends**. The changes in between are acted out by the chapter outlines.
 
-> "这卷开头，主角知道什么、反派知道什么？这卷结尾，主角知道了什么以前不知道的？"
+> "At the start of this volume, what does the protagonist know and what does the villain know? At the end of this volume, what does the protagonist know that they did not know before?"
 
 ```
-卷开始时：
-  主角知道：苏棠失踪，警方判定主动离开
-  反派知道：三年前压案内幕、苏棠在哪
-  读者知道：和主角一样
-  
-卷结束时：
-  主角新知道：旧案被压、保护伞存在
-  反派新知道：主角在查，很难缠
-  读者知道：和主角一样
-  
-弧线方向：信息差从"完全不对称"变成"部分平衡"，
-          主角追上了一步但不够 → 支撑下一卷
+At the volume's start:
+  The protagonist knows: 苏棠 is missing, and the police ruled it a voluntary departure
+  The villain knows: the inside story of the case suppressed three years ago, and where 苏棠 is
+  The reader knows: the same as the protagonist
+
+At the volume's end:
+  The protagonist newly knows: the old case was suppressed, and a protector exists
+  The villain newly knows: the protagonist is investigating, and is hard to deal with
+  The reader knows: the same as the protagonist
+
+Arc direction: the information gap moves from "completely asymmetric" to "partly balanced",
+          the protagonist caught up a step but not enough, supporting the next volume
 ```
 
-**Step 3：确定主导驱动力**
+**Step 3: Fix the dominant driving force**
 
-根据起点→终点的弧线方向决定本卷用什么驱动读者：
+Decide from the start → end arc direction what drives the reader this volume:
 
-| 弧线方向 | → 驱动力 | 章节节奏 |
+| Arc Direction | Driving Force | Chapter Rhythm |
 |---------|---------|---------|
-| 信息逐步向主角揭露 | 悬疑驱动 | 每章留钩子，释放一层新信息 |
-| 反派陷阱逐步浮现 | 威胁驱动 | 安全期越来越短 |
-| 主角优势逐步展示 | 目标驱动 | 阶段性成果→新阻碍，循环推进 |
-| 读者知道但角色不知道 | 关系驱动/信息差驱动 | 累积张力到揭穿 |
+| Information gradually revealed to the protagonist | Suspense driven | Each chapter leaves a hook and releases one layer of new information |
+| The villain's trap gradually surfaces | Threat driven | The safe period gets shorter and shorter |
+| The protagonist's advantage gradually shows | Goal driven | Staged results lead to new obstacles, cycling forward |
+| The reader knows but the characters do not | Relationship driven / information gap driven | Tension accumulates until the reveal |
 
-**Step 4：标记到每章**
+**Step 4: Mark it on each chapter**
 
-拆章节时，每章标注该章的信息差——每章就是信息差弧线上的一个动态变化点：
+When breaking into chapters, mark each chapter's information gap. Each chapter is one dynamic change point on the information gap arc:
 
 ```
-### 1-4：陷阱
-- **冲突事件**：陆征前往仓库，情报是假的——对方设好埋伏
-- **情绪锚点**：紧张
-- **信息差**：反派知道是陷阱 ↦ 主角不知道 ⬅ 本章的信息差变化：从"主角在明处"变成"主角步入陷阱"
+### 1-4: The Trap
+- **Conflict event**: 陆征 goes to the warehouse; the tip was fake, and the other side set an ambush
+- **Emotional anchor**: tension
+- **Information gap**: the villain knows it is a trap, and the protagonist does not ⬅ this chapter's information gap change: from "the protagonist in the open" to "the protagonist walking into the trap"
 
-### 1-5：反杀
-- **冲突事件**：陆征将计就计，反钓鱼出线人背后的人
-- **情绪锚点**：爽
-- **信息差**：主角有后手 ↦ 反派不知道 ✅ 信息差反转了：从"被动"变成"主动"
+### 1-5: The Counter-Kill
+- **Conflict event**: 陆征 plays along and fishes out the person behind the informant
+- **Emotional anchor**: satisfaction
+- **Information gap**: the protagonist has a backup plan, and the villain does not know ✅ the information gap reversed: from "passive" to "active"
 ```
 
-### 底线
+### Bottom line
 
-- **卷级定起点→终点，不规定中间细节**——每章的信息差变化交给章纲演绎
-- **终点信息差不能等于起点**——如果卷结束后主角知道的还是和开始时一样，这卷白写了
-- **终点信息差不能完全平衡**——如果卷结束后主角"什么都知道了"，下一卷没有信息驱动力
+- **At volume level, fix the start → end; do not set the middle details**. Each chapter's information gap change is left to the chapter outline to act out
+- **The end information gap cannot equal the start**: if the protagonist knows the same things at the volume's end as at its start, the volume was written for nothing
+- **The end information gap cannot be fully balanced**: if the protagonist "knows everything" at the volume's end, the next volume has no information driving force
 
-## 5. 拆场景卡
+## 5. Break into Scene Cards
 
-> 卷纲→章（情绪锚点+冲突事件+信息差+悬念钩子）
-> 章纲→场景卡（主角想干啥 + 有什么拦着他 + 有什么悬念让读者想看下去）
+> Volume outline → chapter (emotional anchor + conflict event + information gap + suspense hook)
+> Chapter outline → scene card (what the protagonist wants to do + what blocks them + what suspense makes the reader want to keep reading)
 
-以上一步确认的冲突阶梯各阶段为骨架，逐章填充。每章的"有什么悬念让读者想看下去"参考 `.claude/knowledge/plot-craft/hook-techniques.md` 中的三种钩子手法设计。
+Using the conflict ladder stages confirmed in the previous step as the skeleton, fill in chapter by chapter. For each chapter's "what suspense makes the reader want to keep reading", design it with the three hook techniques in `.claude/knowledge/plot-craft/hook-techniques.md`.
 
-> **第一卷第一章特殊处理：** 如果是首卷首章，agent 自行根据题材和文风选择最合适的开篇手法（参考 `.claude/knowledge/plot-craft/opening-hooks.md`），起草开篇场景卡，展示给作者确认。不展示手法列表让作者挑。
+> **Special handling for volume 1, chapter 1:** If it is the first volume's first chapter, the agent picks the most suitable opening technique on its own from the genre and style (see `.claude/knowledge/plot-craft/opening-hooks.md`), drafts the opening scene card, and shows it to the author for confirmation. Do not show a list of techniques for the author to pick from.
 
-每章包含三个维度：
+Each chapter contains three dimensions:
 
-| 字段 | 标准 | 不合格示例 |
+| Field | Standard | Failing Example |
 |------|------|-----------|
-| id | "卷号-章号"（如 1-1），连续不跳号 | 1-1, 1-3（跳了 1-2） |
-| title | 有信息量，能猜到本章核心事件 | "第一章""新的开始""转折" |
-| 冲突事件 | **三要素：谁做什么 + 冲突事件 + 结束时什么变了** | "主角继续调查"（什么都没变） |
-| 情绪锚点 | 本章读者核心心情（对应卷级情绪弧线的当前阶段） | 无 |
-| 信息差 | {谁知道什么} ↦ {谁不知道什么} | 无 |
+| id | "volume-chapter" (such as 1-1), consecutive with no skipped numbers | 1-1, 1-3 (1-2 skipped) |
+| title | Has information; the chapter's core event can be guessed from it | "Chapter One" / "A New Beginning" / "Turning Point" |
+| Conflict event | **Three elements: who does what + the conflict event + what changed at the end** | "The protagonist keeps investigating" (nothing changed) |
+| Emotional anchor | The reader's core feeling this chapter (matching the current stage of the volume-level emotional arc) | None |
+| Information gap | {who knows what} → {who does not know what} | None |
 
-### 场景卡细化（章纲阶段使用）
+### Scene card detail (used at the chapter outline stage)
 
-一章由 2-5 个场景卡组成，每个场景卡三个信息：
+One chapter is made of 2-5 scene cards; each scene card has three pieces of information:
 
-| 字段 | 含义 | 说明 |
+| Field | Meaning | Notes |
 |------|------|------|
-| **主角想干啥** | Goal——主角在这场景要达成什么 | 哪怕被动场景也有目的（"活下来""搞清楚"） |
-| **有什么拦着他** | Obstacle——阻碍是什么 | 人对人、事对事、内心对内心 |
-| **有什么悬念让读者想看下去** | Hook——读者为什么关心这段 | 来自情绪锚点+信息差 |
+| **What the protagonist wants to do** | Goal: what the protagonist wants to achieve in this scene | Even a passive scene has a goal ("stay alive" / "figure it out") |
+| **What blocks them** | Obstacle: what the obstacle is | Person against person, event against event, inner self against inner self |
+| **What suspense makes the reader want to keep reading** | Hook: why the reader cares about this passage | Comes from the emotional anchor + information gap |
 
-**示例：**
+**Example:**
 ```
-### 场景一：方岩办公室
-- **主角想干啥**：陆征想从方岩拿到三年前压案的内情
-- **有什么拦着他**：方岩不敢说——办公室有别人，暗示"有人盯着"
-- **有什么悬念让读者想看下去**：读者好奇方岩到底知道什么、为什么不敢说
+### Scene 1: 方岩's Office
+- **What the protagonist wants to do**: 陆征 wants to get the inside story of the case suppressed three years ago from 方岩
+- **What blocks them**: 方岩 dares not speak. There are other people in the office, hinting "someone is watching"
+- **What suspense makes the reader want to keep reading**: the reader wonders what 方岩 actually knows and why he dares not say it
 ```
 
-### 4 种不合格章纲
+### 4 kinds of failing chapter outlines
 
-| 类型 | 典型句式 | 修正方向 |
+| Type | Typical Wording | Fix Direction |
 |------|---------|---------|
-| **主题式** | "本章讲信任"（无事件） | 把概念变成具体事件 |
-| **功能式** | "建立人物关系"（功能≠推进） | 把功能折入冲突事件 |
-| **梗概式** | "主角经历了一天的冒险"（无冲突点） | 指认最核心的一件事 |
-| **结果式** | "主角赢了比赛"（只有结果无过程） | 写出阻碍和对抗过程 |
+| **Theme-style** | "This chapter is about trust" (no event) | Turn the concept into a concrete event |
+| **Function-style** | "Build the character relationships" (a function is not progress) | Fold the function into the conflict event |
+| **Synopsis-style** | "The protagonist went through a day of adventure" (no conflict point) | Point out the single most core event |
+| **Result-style** | "The protagonist won the competition" (only the result, no process) | Write the obstacle and the confrontation process |
 
-**章节间必须存在因果链：** 前一章的章末变化是后一章的起点或动机。
+**A causal chain must exist between chapters:** the previous chapter's end-of-chapter change is the next chapter's starting point or motive.
 
-## 6. 新角色与设定追加
+## 6. New Characters and Setting Appends
 
-卷纲讨论中新增的角色/设定，在 volume-{N}.md 末尾追加设定变更通知块，由 novel-agent 在写作循环前调度 updater 执行：
+New characters / settings added during the volume outline discussion are appended as a setting-change notice block at the end of volume-{N}.md, for novel-agent to dispatch updater to execute before the writing loop:
 
 ```
-## 设定变更通知
+## Setting Change Notice
 
-- **目标：** settings/character-setting/{id}.md
-- **类型：** 新角色 / 状态更新 / 世界观更新 / 时间线
-- **原因：** {为什么需要这个变更}
-- **详情：** {变更描述}
+- **Target:** settings/character-setting/{id}.md
+- **Type:** New character / status update / worldview update / timeline
+- **Reason:** {why this change is needed}
+- **Details:** {change description}
 ```
 
-> **消费规则**：novel-agent 写下一章前 Grep `volumes/` + `chapters/` 的 `## 设定变更通知` 头，发现即派 setting-update-order（inputs 指向源文件）；updater 执行完变更后**移除源文件中的通知块**（Edit 删除该块，防重复消费）。若块与已有归档章节冲突 → STOP 给作者。
+> **Consumption rule**: Before writing the next chapter, novel-agent greps `volumes/` + `chapters/` for the `## Setting Change Notice` heading; when found, it dispatches a setting-update-order (inputs pointing at the source file); after updater finishes the change, it **removes the notice block from the source file** (deleting the block with Edit, to prevent repeat consumption). If the block conflicts with an already archived chapter, STOP and give it to the author.
 
-一致性检查 → 新增设定与已归档章节无矛盾。
+Consistency check: the new settings do not contradict already archived chapters.
 
-## 7. 产出写入
+## 7. Write the Output
 
-按格式写入 `volumes/volume-{N}.md`：
+Write it into `volumes/volume-{N}.md` in the set format:
 
 ```markdown
-# 卷 N：{标题}
+# Volume N: {Title}
 
-## 卷信息
+## Volume Information
 
-- **情绪走向**：本卷读者的情绪变化弧线（压抑→压抑→提升→打脸→装逼）
-- **核心冲突**：谁 + 做什么 + 被什么阻碍
-- **主导驱动力**：悬疑驱动 / 威胁驱动 / 目标驱动 / 关系驱动 / 信息差驱动
-- **冲突阶梯**：第1层（入门）→ 第2层（升级）→ 第3层（转折）→ 第4层（终极）
-- **预估章节**：N
+- **Emotional direction**: this volume's arc of the reader's emotional change (repression → repression → rise → face-slap → showing off)
+- **Core conflict**: who + does what + is blocked by what
+- **Dominant driving force**: suspense driven / threat driven / goal driven / relationship driven / information gap driven
+- **Conflict ladder**: Layer 1 (entry) → Layer 2 (escalation) → Layer 3 (turning point) → Layer 4 (ultimate)
+- **Estimated chapters**: N
 
-## 章节列表
+## Chapter List
 
-### N-1：{有信息量的标题}
+### N-1: {Informative Title}
 
-- **冲突事件**：谁做什么 + 冲突事件 + 结束时什么变了
-- **情绪锚点**：本章读者心情
-- **信息差**：{谁知道什么} ↦ {谁不知道什么}
+- **Conflict event**: who does what + the conflict event + what changed at the end
+- **Emotional anchor**: this chapter's reader feeling
+- **Information gap**: {who knows what} → {who does not know what}
 ```
 
-## 8. 验收
+## 8. Acceptance
 
-**三维验收：**
+**Three-dimensional acceptance:**
 
-**维度一：情绪走向验收**
-- [ ] **情绪走向已确立**——是一条弧线（压抑→提升→打脸），不是单个情绪词
-- [ ] **情绪走向有递进**——弧线有起点、转折、终点，每步有情绪变化
-- [ ] **每章标注了情绪锚点**——和情绪走向的当前阶段匹配
+**Dimension 1: Emotional direction acceptance**
+- [ ] **The emotional direction is set**: it is an arc (repression → rise → face-slap), not a single emotion word
+- [ ] **The emotional direction progresses**: the arc has a start, a turning point, and an end, with an emotional change at each step
+- [ ] **Each chapter is marked with an emotional anchor**, matching the emotional direction's current stage
 
-**维度二：冲突阶梯验收**
-- [ ] **冲突双方都有不能退让的理由**——从角色设定层3价值观可推导，双方动机互斥。如果推导不出，说明设定有问题或冲突架构虚
-- [ ] **每层障碍比前一层更难**——不是重复同一种对抗
-- [ ] **层间有清晰转折点**——局面发生根本性变化
-- [ ] **转折点 2-4 个**——太少太平，太多喘不过气
-- [ ] **每章标注了信息差**——写清"谁知道什么 ↦ 谁不知道什么"
-- [ ] **信息差在卷内有"设→用→揭"的完整周期**
+**Dimension 2: Conflict ladder acceptance**
+- [ ] **Both sides of the conflict have a reason they cannot back down**: derivable from the characters' layer 3 values, with mutually exclusive motives. If it cannot be derived, the settings are flawed or the conflict architecture is hollow
+- [ ] **Each layer's obstacle is harder than the last**: not the same confrontation repeated
+- [ ] **Clear turning points between layers**: the situation fundamentally changes
+- [ ] **2-4 turning points**: too few is flat, too many leaves no room to breathe
+- [ ] **Each chapter is marked with an information gap**, stating "who knows what → who does not know what"
+- [ ] **The information gap has a complete "set → use → reveal" cycle within the volume**
 
-**维度三：章节结构验收（原卷级 4 验证）**
-1. **章合起来=这卷讲完？** — 逐章读所有 summary，合起来是完整故事吗？
-2. **每章可追溯到卷冲突？** — 指着核心冲突，每章问"这章推进了冲突的哪一步？"
-3. **每章结束后卷故事前进了？** — 章末变化是否影响了后续？
-4. **标题匹配故事？** — 只看 title 能猜到这章发生什么吗？
+**Dimension 3: Chapter structure acceptance (the original volume-level 4 checks)**
+1. **Do the chapters together tell this volume?** Read every summary chapter by chapter; together, are they a complete story?
+2. **Can each chapter be traced back to the volume conflict?** Point at the core conflict and ask for each chapter, "Which step of the conflict does this chapter advance?"
+3. **Did the volume's story advance after each chapter?** Does the end-of-chapter change affect what follows?
+4. **Does the title match the story?** Can you guess what happens in this chapter from the title alone?
 
-**15 秒快速嗅探（三个全过≈合格）：**
-1. 能不看文件说出核心冲突一句话吗？
-2. 随便指一章，能说出"这章结束后什么东西变了"吗？
-3. 随便指两章，能说出"为什么第一章之后是第二章、不是直接跳到第三章"吗？
+**15-second quick sniff test (all three passing means roughly qualified):**
+1. Can you state the core conflict in one sentence without looking at the file?
+2. Point at any chapter: can you say "what changed after this chapter ended"?
+3. Point at any two chapters: can you say "why chapter 1 is followed by chapter 2, and not skipped straight to chapter 3"?
 
-**卷 N+1 补充：** 验证角色发声（参考 volume-direction.md）中的角色状态是否与已归档章节一致——不一致说明归档时状态更新有遗漏，需修复。
+**Volume N+1 supplement:** Verify whether the character states in the character voices (see volume-direction.md) are consistent with the archived chapters. Inconsistency means the archive-time state update missed something and needs fixing.
 
-## 9. AI 味自检与去除
+## 9. AI Flavor Self-Check and Removal
 
-扫描卷纲全文，命中任一条 → 修改后重新检查，确认全部清除才算通过。
+Scan the whole volume outline; if any pattern matches, revise and re-check, and only confirm it as passed once everything is cleared.
 
-**模式一：空洞的冲突描述**
-核心冲突或 chapter summary 用了形容词表态但没写具体事件。
-- ❌ "展开精彩对决" → ✅ "陆征在废弃工厂与灰短袖男人对峙，对方掏出旧案卷宗要挟"
-- ❌ "冲突激烈升级" → ✅ "方岩被上级停职，陆征失去警队内部信息源"
-- 速查：全文搜"精彩""激烈""惊心动魄"——有 → 命中
+**Pattern 1: Hollow conflict descriptions**
+The core conflict or chapter summary uses adjectives to state a position but does not write a concrete event.
+- Bad: "unfolds a thrilling showdown" (展开精彩对决) → Good: "陆征 confronts the man in the gray short sleeves in an abandoned factory, and the other side pulls out the old case file as leverage" (陆征在废弃工厂与灰短袖男人对峙，对方掏出旧案卷宗要挟)
+- Bad: "the conflict escalates fiercely" (冲突激烈升级) → Good: "方岩 is suspended by his superior, and 陆征 loses his information source inside the police" (方岩被上级停职，陆征失去警队内部信息源)
+- Quick check: search the whole text for "thrilling", "fierce", "heart-stopping" (精彩 / 激烈 / 惊心动魄). If found, it matches
 
-**模式二："万能推进句式"**
-不推进具体情节、只填充位置的万能句。
-- ❌ "随着调查的深入，真相逐渐浮出水面"
-- ❌ "在这个过程中，主角遇到了新的挑战"
-- ❌ "故事开始朝着不可预测的方向发展"
-- 速查：全文搜"随着""在这个过程中""与此同时"——有 → 命中
+**Pattern 2: "All-purpose advance sentences"**
+All-purpose sentences that advance no concrete plot and only fill a position.
+- Bad: "As the investigation deepened, the truth gradually surfaced" (随着调查的深入，真相逐渐浮出水面)
+- Bad: "In this process, the protagonist met new challenges" (在这个过程中，主角遇到了新的挑战)
+- Bad: "The story began moving in an unpredictable direction" (故事开始朝着不可预测的方向发展)
+- Quick check: search the whole text for "as", "in this process", "at the same time" (随着 / 在这个过程中 / 与此同时). If found, it matches
 
-**模式三：预告片式语言**
-像预告片一样勾勒气氛但不给事件。
-- ❌ "更大的阴谋正在酝酿" → 谁在酝酿？酝酿什么？有行动吗？
-- ❌ "命运的齿轮开始转动" → 哪件事触发了什么？
-- 速查：全文搜"酝酿""拉开帷幕""命运的齿轮"——有 → 命中
+**Pattern 3: Trailer-style language**
+Language that sketches atmosphere like a trailer but gives no event.
+- Bad: "A bigger conspiracy is brewing" (更大的阴谋正在酝酿). Who is brewing it? Brewing what? Is there an action?
+- Bad: "The gears of fate begin to turn" (命运的齿轮开始转动). Which event triggered what?
+- Quick check: search the whole text for "brewing", "the curtain rises", "gears of fate" (酝酿 / 拉开帷幕 / 命运的齿轮). If found, it matches
 
-**模式四：空洞的节奏填充词**
-用来撑篇幅的节奏词，后文没有对应事件。
-- ❌ "暗流涌动"（卷纲出现但不写涌动的内容）→ 必须写明谁和谁在对抗
-- ❌ "波谲云诡"（同上）
-- 速查：全文搜"暗流""波谲""扑朔迷离"——有 → 命中
+**Pattern 4: Hollow rhythm filler words**
+Rhythm words used to pad length, with no matching event later in the text.
+- Bad: "undercurrents surge" (暗流涌动) (appears in the volume outline without writing what is surging) → must state who is fighting whom
+- Bad: "treacherous and unpredictable" (波谲云诡) (same as above)
+- Quick check: search the whole text for "undercurrent", "treacherous", "murky and unpredictable" (暗流 / 波谲 / 扑朔迷离). If found, it matches
 
-**模式五：AI 自指 meta**
-- ❌ "经过一系列的冒险"
-- ❌ "故事的核心冲突在于"
-- ❌ "我们接下来要讲述的是"
-- 速查：全文搜"经过一系列""核心冲突在于""我们要讲述"——有 → 命中
+**Pattern 5: AI self-reference meta**
+- Bad: "After a series of adventures" (经过一系列的冒险)
+- Bad: "The core conflict of the story is" (故事的核心冲突在于)
+- Bad: "What we are about to tell next is" (我们接下来要讲述的是)
+- Quick check: search the whole text for "after a series of", "the core conflict is", "what we are about to tell" (经过一系列 / 核心冲突在于 / 我们要讲述). If found, it matches

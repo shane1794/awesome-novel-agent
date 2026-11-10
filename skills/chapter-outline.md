@@ -1,158 +1,158 @@
-# 生成章纲 skill
+# Chapter Outline Generation Skill
 
-校准后的参考材料 → 一份可执行的章纲。格式规范参考 `.claude/knowledge/chapter-setting-style.md`。
+Calibrated reference material becomes one executable chapter outline. Format rules follow `.claude/knowledge/chapter-setting-style.md`.
 
-## 流程
+## Process
 
-立情绪锚点 → 设冲突阶梯 → 建信息差 → 拆场景卡 → 禁止清单 → Memo 填充 → Hooks → 设变通知（可选）→ 产出
+Set the emotional anchor → set the conflict ladder → build the information gap → break into scene cards → banned list → Memo fill-in → Hooks → setting-change notice (optional) → output
 
-## 细化章纲
+## Refining the Chapter Outline
 
-按 `chapter-setting-style.md` 的格式规范逐项填充。以下为执行顺序，具体格式和写法参考该规范。前三步（情绪锚点/冲突阶梯/信息差）与卷纲方法论一致，只是粒度从"卷"细化到"章"。
+Fill in each item following the format rules in `chapter-setting-style.md`. The execution order follows below; the exact format and wording follow that specification. The first three steps (emotional anchor / conflict ladder / information gap) match the volume outline methodology, only with the granularity refined from "volume" to "chapter".
 
-**a. 立情绪锚点** — 分两层：**从卷纲读取本章在卷情绪走向中的位置** + **与作者讨论本章内部的情绪走向**。如果是首章，agent 自行根据题材和文风选择开篇钩子手法（参考 `.claude/knowledge/plot-craft/opening-hooks.md`），起草开篇场景卡展示给作者确认。不展示手法列表让作者挑。
+**a. Set the emotional anchor**: Two layers: **read this chapter's position in the volume's emotional direction from the volume outline** + **discuss this chapter's internal emotional direction with the author**. For the first chapter, the agent picks an opening hook technique on its own from the genre and style (see `.claude/knowledge/plot-craft/opening-hooks.md`), drafts an opening scene card, and shows it to the author for confirmation. Do not show a list of techniques for the author to pick from.
 
-> 从卷纲情绪走向中读取：本章走到哪一步了？——"压抑阶段的中段"还是"到了打脸的释放阶段"？
+> Reading from the volume's emotional direction: where has this chapter reached? Is it "the middle of the repression stage" or "the face-slapping release stage"?
 
-本章的情绪主色调由卷的弧线位置决定。压抑阶段写压抑基调，释放阶段写爽基调。
+This chapter's dominant emotional tone is set by its position on the volume's arc. A repression stage is written with a repressive tone; a release stage with a satisfying tone.
 
-定完位置后，问作者本章的情绪走向（只问剧情，不问技法）：
+After fixing the position, ask the author about this chapter's emotional direction (ask only about plot, not technique):
 
-> "卷的走向走到 {压抑/释放/转折} 阶段了。你预想这章读者的情绪怎么走？——比如从什么情绪开始、中间因什么事转折、以什么情绪收尾？"
+> "The volume has reached the {repression / release / turning point} stage. How do you picture the reader's emotions moving in this chapter? For example, what emotion does it start from, what event turns it midway, and what emotion does it end on?"
 
-作者回答后，agent 判断是否够具体：
-- 够（≥3 步，有因果锚点，章末落点支撑卷的下一步）→ 进入下一步
-- 不够（只有"先抑后扬"两个节点，或章末落点与卷走向矛盾）→ 追问具体事件或转折点
+After the author answers, the agent judges whether it is specific enough:
+- Specific enough (at least 3 steps, with causal anchors, and the chapter-end landing supports the volume's next step) → move to the next step
+- Not specific enough (only two nodes such as "repress then lift", or the chapter-end landing contradicts the volume direction) → ask for the concrete event or turning point
 
-技法选择（弧线模式、强度分布）由 agent 自行匹配，不展示给作者挑。情绪走向确定后记录到 mood_progression。
+Technique choices (arc mode, intensity distribution) are matched by the agent on its own and are not shown to the author to pick. Once the emotional direction is set, record it in mood_progression.
 
-卷走向的一部分 → 章内微弧线（平静→不安→确认困境→压抑），章末落点必须支撑卷走向的下一步。
+Part of the volume direction becomes a chapter-internal micro-arc (calm → unease → confirmed predicament → repression), and the chapter-end landing must support the volume direction's next step.
 
-**b. 设冲突阶梯** — 分两层：**从卷纲读取本章在卷冲突阶梯中的层位** + **与作者讨论章内障碍递进**。
+**b. Set the conflict ladder**: Two layers: **read this chapter's layer in the volume's conflict ladder from the volume outline** + **discuss the obstacle escalation inside the chapter with the author**.
 
-> 从卷纲冲突阶梯中读取：本章走到哪一层了？——"第1层·入门"还是"第4层·终极"？
+> Reading from the volume's conflict ladder: which layer has this chapter reached? "Layer 1, entry" or "Layer 4, ultimate"?
 
-本章的障碍强度由卷的层位决定。入门级写信息受阻，终极级写正面对决。
+This chapter's obstacle intensity is set by the volume's layer. An entry layer is written as blocked information; an ultimate layer as a head-on showdown.
 
-定完层位后，问作者本章的障碍设计（只问剧情，不问技法）：
+After fixing the layer, ask the author about this chapter's obstacle design (ask only about plot, not technique):
 
-> "这章在 {层位} 阶段。你预想主角这章遇到哪些阻碍？——几个场景、每个场景卡在什么地方？"
+> "This chapter is at the {layer} stage. What obstacles do you picture the protagonist running into this chapter? How many scenes, and where does each scene get stuck?"
 
-作者回答后，agent 判断是否够具体：
-- 够（2-3 步障碍，每步比前一步更难，层间有转折点）→ 进入下一步
-- 不够（只说了一个障碍，或障碍之间没有递进）→ 追问："第一个障碍之后呢？主角做了什么让局面变化了？"
+After the author answers, the agent judges whether it is specific enough:
+- Specific enough (2-3 obstacle steps, each harder than the last, with turning points between layers) → move to the next step
+- Not specific enough (only one obstacle named, or no escalation between obstacles) → ask: "After the first obstacle, what then? What did the protagonist do that changed the situation?"
 
-技法选择（冲突升级手法：环境压力/目标置换/连锁反应等）由 agent 自行从 plot-craft 匹配，不展示给作者挑。
+Technique choices (conflict escalation methods: environmental pressure / goal substitution / chain reaction, and similar) are matched by the agent from plot-craft on its own and are not shown to the author to pick.
 
-卷的某一层 → 章内小阶梯（试探→遭遇→升级），每一步比前一步更难：
+One layer of the volume becomes a small in-chapter ladder (probe → encounter → escalation), each step harder than the last:
 
 ```
-卷冲突阶梯：第1层 入门 → 第2层 升级 → 第3层 转折 → 第4层 终极
+Volume conflict ladder: Layer 1 Entry → Layer 2 Escalation → Layer 3 Turning Point → Layer 4 Ultimate
                         ↑
-本章位置：第2层·升级
+This chapter's position: Layer 2, Escalation
 
-章内小阶梯：
-  场景1：试探——主角尝试接触，发现对方有防备        ← 入门级
-  场景2：遭遇——主角被警告/阻拦，确认阻力存在        ← 升级
-  场景3：冲突升级——主角坚持调查，对方加大施压       ← 章内高潮
-  结束：主角处于更危险的境地 → 支撑卷的下一步（第3层 转折）
+In-chapter small ladder:
+  Scene 1: Probe: the protagonist tries to make contact and finds the other side on guard        ← entry level
+  Scene 2: Encounter: the protagonist is warned / blocked, confirming the resistance exists        ← escalation
+  Scene 3: Conflict escalation: the protagonist persists in investigating, the other side increases pressure       ← in-chapter climax
+  End: the protagonist is in a more dangerous position, supporting the volume's next step (Layer 3, Turning Point)
 ```
 
-**底线：** 章内阶梯不是重复同一件事——如果三个场景都是"主角查资料→被阻止→换个方式查资料"，这是平的，不是阶梯。
+**Bottom line:** The in-chapter ladder is not the same thing repeated. If all three scenes are "the protagonist checks information, gets stopped, checks it another way", that is flat, not a ladder.
 
-**c. 建信息差** — 信息差的定义在卷级（起点→终点），章级是信息差**动态变化**的地方。
+**c. Build the information gap**: The information gap is defined at the volume level (start → end); at the chapter level it is where the information gap **changes dynamically**.
 
-> 从卷纲信息差中读取：本章继承卷信息差弧线的当前位置——卷走到"反派有优势"阶段还是"主角在反追"阶段？
+> Reading from the volume's information gap: which position on the volume's information gap arc does this chapter inherit? Is the volume at the "villain has the advantage" stage or the "protagonist is catching up" stage?
 
-定好位置后，问作者本章的信息差设计（只问剧情，不问技法）：
+After fixing the position, ask the author about this chapter's information gap design (ask only about plot, not technique):
 
-> "卷的弧线走到 {阶段}，这章出场角色有 {名单}。你预设这章的信息怎么流动？——开场谁不知道什么、中间揭露什么、结尾留下什么新疑问？"
+> "The volume's arc has reached the {stage}, and the characters appearing this chapter are {list}. How do you plan the information to flow this chapter? Who does not know what at the opening, what is revealed midway, and what new question is left at the end?"
 
-作者回答后，agent 判断是否够具体：
-- 够（开场↔中段↔结尾有变化，新信息差驱动下一章）→ 进入下一步
-- 不够（只有开场状态没有变化）→ 追问："中间谁发现了什么？结尾留给读者什么悬念？"
+After the author answers, the agent judges whether it is specific enough:
+- Specific enough (change across opening ↔ middle ↔ ending, with the new information gap driving the next chapter) → move to the next step
+- Not specific enough (only the opening state, no change) → ask: "Who discovered what midway? What suspense is left for the reader at the end?"
 
-卷的弧线的一段 → 章内信息差变化（设→用→揭→新），每次揭露产生新的信息差：
+One stretch of the volume's arc becomes an in-chapter information gap change (set → use → reveal → new), where each reveal creates a new information gap:
 
 ```
-卷信息差弧线：主角不知道↦逐步揭露 → 信息逐步向主角靠近
+Volume information gap arc: the protagonist does not know, gradually revealed → information gradually moves toward the protagonist
                        ↑
-本章位置：主角开始发现矛盾，但反派的优势仍然存在
+This chapter's position: the protagonist starts noticing contradictions, but the villain's advantage still stands
 
-章内信息差变化：
-  开场：主角不知道现场线索意味着什么（读者和主角一样）
-  中段：发现矛盾细节→主角开始觉得不对（信息差在缩小）
-  结尾：被跟踪→主角知道有人在盯着（新信息差：反派知道↦主角不知道是谁）
+In-chapter information gap change:
+  Opening: the protagonist does not know what the scene's clues mean (the reader is in the same place as the protagonist)
+  Middle: a contradictory detail is found, and the protagonist starts feeling something is wrong (the information gap is narrowing)
+  End: being followed, the protagonist knows someone is watching (new information gap: the villain knows, the protagonist does not know who)
 ```
 
-明确本章出场角色谁知道什么↦谁不知道什么，同时标注变化过程：
+State clearly which appearing character knows what and who does not know what this chapter, and mark the change process:
 
 ```markdown
-信息差关系（开场 → 结尾）：
-· 开场：主角不知道苏棠去哪了 ↦ 读者和主角一样
-· 中段：主角发现矛盾 ↦ 信息差缩小（主角追上了一步）
-· 结尾：反派知道在跟踪 ↦ 主角不知道对方身份 ⬅ 新信息差，驱动下一章
+Information gap relationships (opening → ending):
+· Opening: the protagonist does not know where 苏棠 went; the reader is in the same place as the protagonist
+· Middle: the protagonist finds a contradiction; the information gap narrows (the protagonist caught up a step)
+· End: the villain knows about the tailing; the protagonist does not know who the other side is ⬅ new information gap, driving the next chapter
 ```
 
-信息差变化决定了本章的驱动力节奏（悬疑/威胁/目标/关系/信息差驱动）。
+The information gap change sets this chapter's driving rhythm (suspense / threat / goal / relationship / information-gap driven).
 
-**d. 定视角策略** — 确认本章用谁的视角叙事。
+**d. Set the point-of-view strategy**: Confirm whose point of view this chapter is narrated from.
 
-> "这章从谁的视角写？默认主角有限 POV。如果想切视角——比如前两段从反派视角写——你怎么切、切到哪里切回来。注意：视角类型（有限/全知/第几人称）由设定阶段定义（settings/writing-style.md narrative.perspective，全书一致），这里只定**本章 POV 角色**及切法，不重新定义视角类型。"
+> "Whose point of view is this chapter written from? The default is the protagonist's limited POV. If you want to switch POV, for example writing the first two paragraphs from the villain's POV, how do you switch, and where do you switch back? Note: the POV type (limited / omniscient / which person) is defined at the settings stage (settings/writing-style.md narrative.perspective, consistent across the whole book). Here you only set **this chapter's POV character** and how to switch; do not redefine the POV type."
 
-记录到大纲·视角字段（`outline.pov`）。
+Record it in the outline's POV field (`outline.pov`).
 
-| 策略 | 说明 | 示例 |
+| Strategy | Description | Example |
 |------|------|------|
-| 单主角有限POV | 全程锁定一人，只写TA感知到的 | `陆征（单主角有限POV）` |
-| 多段切换POV | 按段落切换视角人物 | `前2段反派POV，之后切回陆征` |
+| Single-protagonist limited POV | Locked to one person throughout, writing only what they perceive | `陆征 (single-protagonist limited POV)` |
+| Multi-segment POV switching | Switch the POV character by paragraph | `First 2 paragraphs villain POV, then switch back to 陆征` |
 
-POV 确定后进入拆场景卡（e），场景卡的三段锚点以此 POV 角色的感知为基准。如果是多段切换，各段分别以对应 POV 角色为基准。
+After the POV is set, move on to breaking into scene cards (e); the three anchor points of a scene card are based on this POV character's perceptions. For multi-segment switching, each segment uses its own POV character as the baseline.
 
-**e. 拆场景卡** — 按 §二(从方向到纲要点) 的三段锚点法拆解关键点。每条关键点对应一个场景卡，底层逻辑与卷纲一致。如果本章涉及悲剧/虐心情节，参考 `.claude/knowledge/plot-craft/tragedy-techniques.md` 设计情绪节奏；情绪拉扯参考 `.claude/knowledge/plot-craft/emotional-pull.md`：
-
-```
-场景卡三要素 → 关键点中的体现
-  主角想干啥 → 动作锚点（角色具体做什么）
-  有什么拦着他 → 判断锚点（角色遇到什么阻碍/发现什么矛盾）
-  有什么悬念让读者想看下去 → 全文的情绪钩子+信息差
-```
-
-拆出 key_points（条数按 §二 字数倒推法——默认 2500 字 ≈ 5 条），每条用三段锚点法（感官+动作+判断）写 2-3 句。出完整方案时让作者确认——按 `.claude/knowledge/chapter-setting-style.md` §验收第 1 步的 📋 摘要格式展示要点，完整章纲（含英文字段名）只写文件不展示原文；对作者用语遵循 `.claude/knowledge/author-communication.md`。
-
-**f. 禁止清单** — 按 §(不做什么——硬约束红线) 询问并记录 prohibitions。
-
-**g. Chapter Memo 填充** — 按 §三(章纲内容清单) 的 8 段逐段填充（情绪锚点/信息差/冲突阶梯已在 a-c 完成，此处填充其余字段）：
-1. current_task（当前任务）
-2. reader_expectation（读者期待）
-3. payoff_plan（兑现计划）
-4. downtime_functions（过渡功能）
-5. key_choices（关键抉择）
-6. knowledge_state（角色信息状态——已在 c 完成信息差关系，这里补充各角色知道/不知道清单）
-7. required_changes（章尾改变——与 b 冲突阶梯的"结束时什么变了"一致）
-8. scene_cards（场景卡——已在 e 拆场景卡完成三要素，此处归并进章纲）
-
-填完后按 `.claude/knowledge/chapter-setting-style.md` §验收第 1 步的 📋 摘要格式展示要点供作者确认——完整 memo 含英文字段名，只写文件，不直接展示原文。
-
-**h. Emotional Design（完善）** — 按 §四(情绪设计) 填充情绪细节：mood_progression（已在 a 完成）、intensity_peak、intensity_level、emotional_hook、micro_payoffs。
-
-**i. Hooks 操作** — 写入本章的钩子操作（埋/推进/收束）到 `payoff_plan`。参考 `.claude/knowledge/plot-craft/hook-techniques.md` 中的三种钩子设计手法（认知错位/信息差/倒计时）。章级钩子真相源在各 chapter.md 的 `payoff_plan` 字段，角色级钩子真相源在 `settings/character-setting/*.md` 的 hooks 字段。
-
-**j. 设变通知（可选）** — 规划/校准过程中发现的设定变更需求。用于通知 novel-agent 调度 updater。按需在章纲末尾追加：
+**e. Break into scene cards**: Break down the key points using the three-anchor method in Section 2 (from direction to outline points). Each key point maps to one scene card, with the same underlying logic as the volume outline. If this chapter involves tragedy or heartbreaking plot, see `.claude/knowledge/plot-craft/tragedy-techniques.md` for the emotional rhythm design; for emotional pull see `.claude/knowledge/plot-craft/emotional-pull.md`:
 
 ```
-## 设定变更通知
-
-- **目标：** settings/character-setting/{id}.md
-- **类型：** 状态更新 / 新角色 / 世界观更新 / 时间线
-- **原因：** {为什么需要这个变更}
-- **详情：** {具体变更描述}
+Scene card three elements → how they appear in a key point
+  What the protagonist wants to do → action anchor (what the character concretely does)
+  What is blocking them → judgment anchor (what obstacle the character meets / what contradiction they discover)
+  What suspense makes the reader want to keep reading → the whole text's emotional hook + information gap
 ```
 
-> **消费规则**：novel-agent 写下一章前 Grep `volumes/` + `chapters/` 的 `## 设定变更通知` 头，发现即派 setting-update-order（inputs 指向源文件）；updater 执行完变更后**移除源文件中的通知块**（Edit 删除该块，防重复消费）。
+Break out the key_points (count by the Section 2 word-count back-calculation method: by default 2500 words is about 5 points), writing 2-3 sentences per point with the three-anchor method (senses + action + judgment). When presenting the complete plan, have the author confirm it. Show the key points in the summary format of Step 1 of the acceptance section in `.claude/knowledge/chapter-setting-style.md`; the complete chapter outline (with English field names) is only written to the file and its raw text is not shown. Author-facing wording follows `.claude/knowledge/author-communication.md`.
 
-只在有变更时追加，无则省略。
+**f. Banned list**: Ask about and record prohibitions following the section "(What not to do: hard-constraint red lines)".
 
-## 产出
+**g. Chapter Memo fill-in**: Fill in the 8 parts in Section 3 (chapter outline content list) one by one (the emotional anchor / information gap / conflict ladder are already done in a-c; fill in the remaining fields here):
+1. current_task (current task)
+2. reader_expectation (reader expectation)
+3. payoff_plan (payoff plan)
+4. downtime_functions (transition functions)
+5. key_choices (key decisions)
+6. knowledge_state (character information state; the information gap relationships are already done in c, so here add the list of what each character knows / does not know)
+7. required_changes (end-of-chapter changes, consistent with "what changes at the end" in the conflict ladder in b)
+8. scene_cards (scene cards; the three elements are already done in the scene card breakdown in e, so merge them into the chapter outline here)
 
-写入 `chapters/vol-{N}-ch-{M}.md`，status → `outline`
+After filling them in, show the key points in the summary format of Step 1 of the acceptance section in `.claude/knowledge/chapter-setting-style.md` for the author to confirm. The complete memo contains English field names; only write it to the file, do not show the raw text directly.
+
+**h. Emotional Design (refinement)**: Fill in the emotional details following Section 4 (emotional design): mood_progression (already done in a), intensity_peak, intensity_level, emotional_hook, micro_payoffs.
+
+**i. Hooks operations**: Write this chapter's hook operations (plant / advance / close) into `payoff_plan`. See the three hook design methods (cognitive mismatch / information gap / countdown) in `.claude/knowledge/plot-craft/hook-techniques.md`. At chapter level, the source of truth for a hook is each chapter.md's `payoff_plan` field; at character level, it is the hooks field in `settings/character-setting/*.md`.
+
+**j. Setting-change notice (optional)**: Setting change needs discovered during planning / calibration. Used to notify novel-agent to dispatch updater. When needed, append to the end of the chapter outline:
+
+```
+## Setting Change Notice
+
+- **Target:** settings/character-setting/{id}.md
+- **Type:** status update / new character / worldview update / timeline
+- **Reason:** {why this change is needed}
+- **Details:** {concrete description of the change}
+```
+
+> **Consumption rule**: Before writing the next chapter, novel-agent greps `volumes/` + `chapters/` for the `## Setting Change Notice` heading; when found, it dispatches a setting-update-order (inputs pointing at the source file); after updater finishes the change, it **removes the notice block from the source file** (delete the block with Edit, to prevent repeat consumption).
+
+Only append when there is a change; omit it otherwise.
+
+## Output
+
+Write to `chapters/vol-{N}-ch-{M}.md`, status becomes `outline`

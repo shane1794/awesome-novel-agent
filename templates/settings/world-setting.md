@@ -1,17 +1,17 @@
-# 世界观
+# Worldbuilding
 
-## 地理
+## Geography
 
 {geography}
 
-## 政治
+## Politics
 
 {politics}
 
-## 生物与怪物
+## Creatures and Monsters
 
 {creatures}
 
-## 规则
+## Rules
 
 {rules}

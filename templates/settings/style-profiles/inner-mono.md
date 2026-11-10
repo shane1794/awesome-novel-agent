@@ -9,15 +9,15 @@ override: {}
 locked: []
 ---
 
-# 内心独白场景风格卡
+# Inner Monologue Scene Style Card
 
-继承主卡 `writing-style.md`，本卡只覆盖内心独白场景差异维度（emotion_expression / narrative.inner_monologue_style）。
-量化 override 由 style-distiller 按内心独白样本蒸馏后填充。
+Inherits the main card `writing-style.md`; this card only overrides the dimensions that differ for inner monologue scenes (emotion_expression / narrative.inner_monologue_style).
+Quantitative overrides are filled in by style-distiller after distilling inner monologue scene samples.
 
-## 描写层次和手法（内心独白场景）
+## Description Levels and Techniques (Inner Monologue Scene Scene)
 
-- （蒸馏后由 style-distiller 填充内心独白场景专属技法）
+- (Techniques specific to inner monologue scene scenes, filled in by style-distiller after distillation)
 
-## few-shot 例句
+## Few-Shot Example Sentences
 
-- （内心独白场景标志性例句）
+- (Signature example sentences for inner monologue scene scenes)

@@ -1,22 +1,22 @@
 # {project-name}
 
-## AI 指引
+## AI Guide
 
-本项目的写作流程由 9 个 agent 协作完成，定义在 `.claude/agents/` 下。
+The writing workflow for this project is carried out by 9 collaborating agents, defined under `.claude/agents/`.
 
-**开始写作：** 输入 `@novel-agent` 进入写作循环。
+**Start writing:** Enter `@novel-agent` to enter the writing loop.
 
-**写作流程：** 设定 →（作者确认）→ 卷纲 →（作者确认）→ 章纲 →（作者确认）→ 提示词 → 正文 → 验收 → 归档 → 下一章
+**Writing flow:** Settings -> (author confirms) -> Volume outline -> (author confirms) -> Chapter outline -> (author confirms) -> Prompt -> Main text -> Acceptance -> Archive -> Next chapter
 
-**灵魂与笔墨：** 设定、卷纲、章纲是故事的灵魂，每一步都先给作者看摘要、等作者点头才继续；提示词之后的正文与打磨是 AI 的笔墨。
+**Soul and brushwork:** Settings, volume outlines, and chapter outlines are the soul of the story. At each step, show the author a summary first and continue only after the author nods. The main text and polishing after the prompt are the AI's brushwork.
 
-**项目结构：**
-- `story.md` — 项目索引 + 主线拆纲
-- `settings/` — 世界观、角色、写作风格、时间线
-- `volumes/` — 卷纲
-- `chapters/` — 章纲
-- `prompts/` — 提示词
-- `archives/` — 正文
-- `.agent/` — 状态追踪 + agent 通信
-- `.claude/memory/` — 写作动态记忆（各环节作者反馈，持续积累）
-- `.claude/knowledge/` — 反 AI 规则、文风偏好、永久记忆、题材参考材料
+**Project structure:**
+- `story.md`: Project index + main story arc outline
+- `settings/`: Worldbuilding, characters, writing style, timeline
+- `volumes/`: Volume outlines
+- `chapters/`: Chapter outlines
+- `prompts/`: Prompts
+- `archives/`: Main text
+- `.agent/`: Status tracking + agent communication
+- `.claude/memory/`: Live writing memory (author feedback from each stage, accumulated over time)
+- `.claude/knowledge/`: Anti-AI rules, style preferences, permanent memory, genre reference material

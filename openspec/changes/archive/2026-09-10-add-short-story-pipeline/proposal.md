@@ -2,87 +2,87 @@
 
 ## Why
 
-本仓库当前只有长篇连载一条流水线：初始化生成卷纲 / 章纲 / 提示词骨架，总指挥按卷-章两级调度。短篇（番茄短篇 / 知乎盐言 / 黑岩 / 七猫，8 千至 2 万字）是另一种产品：短篇靠单篇完读率和传播吃饭，以情绪为目标、一个反转撑一篇、默认第一人称在场叙述；长篇靠追读，以卷章节奏和设定一致性为目标。两者在**去 AI 味口径上直接冲突**——长篇禁「直接写情绪词 / 第一人称审判句 / 剧透预告」，而这三类正是短篇的招牌卖点。
+This repo currently has only one pipeline, the long-form serial: initialization generates volume-outline / chapter-outline / prompt skeletons, and the commander dispatches on two levels, volume then chapter. Short stories (Tomato Short Stories / Zhihu Yanxuan / Heiyan / Qimao, 8,000 to 20,000 words) are a different product: short stories live on single-story completion rates and spread, take emotion as their goal, carry one story on a single reversal, and default to first-person present narration; long-form lives on follow-up reads, taking volume-chapter pacing and setting consistency as its goal. The two **directly conflict on de-AI criteria**: long-form bans "writing emotion words directly / first-person judgment sentences / spoiler previews", while those three are exactly the short story's signature selling points.
 
-现状下短篇作者无路可走：作者说「帮我写个短篇」，只能拿到长篇流程——卷纲没有落点、去 AI 味会把卖点删光。经核 `tools/check-prose.py` 的规则表，其 `LYRIC_WORDS`、`PIVOT_PATTERNS`（含 `以为…才发现`）、破折号判定都会把短篇的合法写法判成违规，**证实短篇不能套用长篇的反 AI 校准**。
+As things stand, short-story authors have nowhere to go: when the author says "write me a short story", they can only get the long-form flow: the volume outline has no landing points, and the de-AI pass deletes the selling points. Checking the rule table in `tools/check-prose.py` confirms it: its `LYRIC_WORDS`, `PIVOT_PATTERNS` (including "thought... only to discover"), and dash rulings all judge the short story's legitimate writing as violations, **proving short stories cannot use long-form anti-AI calibration**.
 
-获赠的短篇写作流程包（`~/Downloads/短篇写作流程包_给awesome-novel/`）提供了完整的短篇写作方法论（10 题材风格包 + 短篇专属去 AI 口径 + 写作契约与验收口径），与本仓库同源（Markdown + skill 格式）。
+The gifted short-story writing flow pack (`~/Downloads/短篇写作流程包_给awesome-novel/`) provides a complete short-story writing methodology (10 genre style packs + short-story-specific de-AI criteria + writing-contract and acceptance criteria) from the same origin as this repo (Markdown + skill format).
 
-**本次目标只有一个：让作者说一句「写个短篇」，就能拿到一篇写完成的短篇小说。** 因此范围收窄到写出成品所必需的部分——项目类型、写作流水线、短篇自己的去 AI 口径。不服务于这个目标的能力（选题扫榜、对标拆文、跨文体检查工具移植）记为后续变更，见文末。
+**This change has only one goal: let the author say "write a short story" and get a finished short-story novel.** So the scope narrows to what is needed to produce a finished draft: the project type, the writing pipeline, and the short story's own de-AI criteria. Capabilities that do not serve that goal (topic list-scanning, benchmark teardown, cross-genre check-tool porting) are recorded as later changes; see the end of this document.
 
 ## What Changes
 
-### 主流程 A：初始化与部署
+### Main flow A: Initialization and deployment
 
-- `tools/init.py` 新增 `--length short|long`；`--length short` 时生成短篇专属骨架（一篇一目录的篇目结构、沙箱、调度目录），不生成卷纲 / 章纲 / 提示词 / 归档 / 文风蒸馏样本 / 分场景风格卡等目录
-- 新增 `templates/short/`：短篇版项目索引、短篇版项目级指令（`CLAUDE.md` / `AGENTS.md` / `AGENTS.codex.md`）、短篇版状态机
-- 新增 10 个短篇题材（追妻火葬场 / 世情打脸 / 复仇打脸 / 总裁豪门 / 宅斗宫斗 / 民俗怪谈 / 悬疑 / 甜宠 / 双男主 / 沙雕脑洞），用拼音标识命名；`--length short` 时题材编号空间切换到这 10 个
-- `tools/platforms.py` 新增短篇 agent 名单与 SOP 映射常量；内联 skill 生成支持按长度产出（claude / opencode 的 agents 目录、codex TOML、grok markdown、reasonix / zcode / dsh 内联 skill 五条产出路径全部覆盖）
-- 短篇去 AI 部署为独立产物文件，不与任何其他文体的反 AI 产物合并
-- 一个项目容纳多篇，篇目文件隔离，题材风格包跨篇复用
+- `tools/init.py` adds `--length short|long`; with `--length short` it generates the short-story-specific skeleton (one-directory-per-story structure, sandbox, dispatch directory) and does not generate volume-outline / chapter-outline / prompt / archive / style-distillation-sample / per-scene style-card directories
+- Add `templates/short/`: the short-story project index, short-story project-level instructions (`CLAUDE.md` / `AGENTS.md` / `AGENTS.codex.md`), and the short-story state machine
+- Add 10 short-story genres (wife-chasing crematorium (zhuiqi) / worldly face-slapping (shiqing) / revenge face-slapping (fuchou) / CEO and wealthy families (zongcai) / household and palace intrigue (zhaidou) / folk horror (minsu) / suspense (xuanyi) / sweet pampering (tianchong) / dual male leads (shuangnan) / absurdist comedy (shadiao)), named with pinyin identifiers; with `--length short`, the genre numbering space switches to these 10
+- `tools/platforms.py` adds the short-story agent roster and SOP mapping constants; inlined skill generation supports per-length output (all five output paths covered: claude / opencode agents directories, codex TOML, grok Markdown, reasonix / zcode / dsh inlined skills)
+- Short-story de-AI deploys as a standalone product file, never merged with any other genre's anti-AI product
+- One project holds multiple stories, with story files isolated and genre style packs reused across stories
 
-### 主流程 B：写作流水线
+### Main flow B: Writing pipeline
 
-- 新增 5 个短篇 agent：总指挥、构思、写手、编辑、验收；复用 1 个体验验收 agent。共 6 个，职责互不兼任
-- 新增 7 个短篇 SOP：调度契约、构思、契约组装、契约审计、写作、精修、兑现度核对
-- 七个阶段：定情绪与定方向 → 构思与排纲 → **写作契约组装** → **契约独立审计** → 正文写作 → 去 AI 味与精修 → 验收与交付；**两道作者确认关卡**（框架、大纲），与仓库「人铸灵魂，AI 行笔墨」语义一致
-- **篇级写作契约**：六元素结构（角色 / 任务指示 / 背景信息 / 输入 / 案例 / 输出），输出段为扁平结构（单一「不可违反规则」列表 + 优先级降序）；组装必须完成通用招式→本篇写法的转化、硬规则降序、组装后去重三件事，并内联短篇自己的冲突裁定表（节长 / 总字数 / 段落占比 / 反转位置 / 行数五者冲突时的让步顺序）
-- **契约同时是验收基线**：定稿后由未参与组装、写作、清创的独立执行逐项核对兑现度（硬规则遵守 / 大纲子事件落地 / 情绪目标 / 反转位置 / 贯穿道具三次出现 / 字数节数 / 标点禁令），未兑现项附正文原文证据并回退修正；体验验收独立进行、不被清单污染
-- 硬约束：每节 ≥800 字（高信息密度题材 ≥500）、整篇 ≥8000 字、节数守恒、反转揭穿位置 ≥60%、结尾元素必须有前置铺垫、字数必须机器实测禁止模型估数
-- 独立状态机与断点续跑语义（phase + 当前篇目 + 篇状态）
-- 两条入口路径：作者有明确想法时一句话直通，只有模糊想法时按引导逐项走，两条路径产出同一套成品结构
-- **交付后支持改稿**：作者的意见先被定位到具体阶段（构思 / 大纲 / 具体节），只回退受影响部分并重跑受影响闸门，状态机支持局部回退保留其余进度——不要求作者重走完整流程或重写全文
-- **契约硬规则每批重新注入**：契约是篇级唯一一份而正文分批产出，写作侧与规则的距离随批次增长；每批写作前把硬规则区完整重新注入，不依赖写作侧自行回溯
-- **段与节的字数口径在 spec 层定死**：五段是功能分段（按占比描述），节是写作与验收单位（按字数下限描述），两者正交、不建一一对应，禁止因某段折算字数低于节下限就取消该段或豁免该节
-- **情绪链作为全篇骨架**：大纲阶段先选定一条命名情绪弧（4-6 个阶段，如「猎物入笼 → 请君入瓮 → 逻辑闭环 → 公开处刑 → 视若无物」），阶段 MUST 覆盖全篇每一节。节数由链的阶段自然展开，而非靠功能填空凑出；链的阶段与五段各自独立刻画，不强制一一对应
-- **大纲含招式落点表且无无功能节**：每个核心招式标注承载节与兑现节；每节至少承担推进招式 / 加压 / 伏笔 / 关系变化 / 情绪兑现 / 展开配角支线之一，招式覆盖不到的节由其余五类承接；推动支线的配角须对主线产生作用，不做装饰角色
-- **因果链字段按固定形状写**：承接点 → 动机与行动 → 核心事件 → 直接后果 → 结尾钩子；承接点与直接后果 MUST NOT 省略（这两个连接位是防剧情逐节漂移的关键）
-- **反派作恶必须有前置铺垫**：每次作恶前都要有危险累积的铺垫，爽感来自铺垫足够后的反击，不靠突然降临的恶制造
-- **冲突裁定表含定性冲突**：除五个数值冲突外，必须内联「逻辑自洽优先于爽点与虐点」——爽点需要角色违背动机时改爽点设计，不改人物逻辑
-- **角色命名避开收敛名池**：以可判定的禁用清单（完整名 + 用字 + 同音字）约束，不用「随机生成」作机制；命名结果落盘为记录并跨次稳定，改稿不换名
-- **题材风格包含情绪链库与公式化招式**：每个题材包给若干条命名情绪弧；招式库每条为可套用公式加具体示例，不止列名称
-- **贯穿道具三次出现各有语义状态**：无害（像闲笔）→ 引注意 → 揭真相；道具不限于实体信物
-- **反转前设催化性失常**：全文 60-75% 位置放一个当前解释框架无法解释的矛盾体，逼读者放弃旧假设；反转揭示时用回看 / 独白 / 物证让读者瞬时串线
-- **场景从冲突中途进入（晚进早出）**：不从起床、赶路、寒暄这类流程开头进入
-- **改稿不得夹带**：未获明确要求时不得改变核心走向或结局、删或弱化关键冲突场景、增加新情节线或人物、改变人物性格、改变叙述视角、改动未被要求重写的节；完成时比对差异清单
-- **对话逐句承担功能**：每句至少完成推动情节 / 揭示性格 / 制造冲突 / 埋设伏笔之一，连续多句仅寒暄或衔接判为不合格
-- **正文语汇防火墙**：古代与架空背景的正文不得裸露推理层现代概念（心理创伤 / 原生家庭 / 边界感类），须先完成世界观内翻译，翻译不成立则删除并改用感官与行为描写；配可机械扫描的五类词表并标注仅适用于古风题材
+- Add 5 short-story agents: commander, concept, writer, editor, verifier; reuse 1 experience-acceptance agent. Six in total, with mutually exclusive duties
+- Add 7 short-story SOPs: dispatch contract, concept, contract assembly, contract audit, writing, polish, payoff check
+- Seven stages: set the emotion and direction, then concept and outline, then **writing contract assembly**, then **independent contract audit**, then main-text writing, then de-AI pass and polish, then acceptance and delivery; **two author confirmation gates** (framework, outline), consistent with the repo's "humans forge the soul, AI does the brushwork" semantics
+- **Per-story writing contract**: six-element structure (persona / task instructions / background / input / examples / output), with the output section as a flat structure (a single "rules that must not be violated" list in descending priority); assembly must complete three things (transforming general techniques into this story's writing, hard rules in descending order, deduplication after assembly) and inline the short story's own conflict adjudication table (the concession order when section length / total word count / paragraph shares / reversal position / line count conflict)
+- **The contract is also the acceptance baseline**: after the final draft, an independent executor who did not take part in assembly, writing, or cleanup checks payoff item by item (hard-rule compliance / outline sub-event landing / emotion goal / reversal position / throughline prop's three appearances / word and section counts / punctuation ban), with undelivered items carrying quoted main-text evidence and rolling back for fixes; experience acceptance runs independently and is not contaminated by the checklist
+- Hard constraints: each section at least 800 words (high-information-density genres at least 500), whole story at least 8000 words, section-count conservation, reversal reveal position at least 60%, ending elements must have prior setup, word counts must be machine-measured with model estimation banned
+- Independent state machine and breakpoint resume semantics (phase + current story + story status)
+- Two entry paths: authors with a clear idea go straight through in one sentence, authors with only a vague idea are guided item by item; both paths produce the same finished structure
+- **Revisions supported after delivery**: the author's feedback is first located to a specific stage (concept / outline / specific sections), only the affected parts roll back, and the affected gates re-run, with the state machine supporting partial rollback that keeps the rest of the progress. The author is not asked to walk the whole flow again or rewrite the full text
+- **Contract hard rules re-injected each batch**: the contract is the story's single copy while the main text is produced in batches, so the distance between the writing side and the rules grows with each batch; before each batch, the hard-rules zone is fully re-injected, without relying on the writing side to look it up itself
+- **Paragraph and section word-count wordings are fixed at spec level**: the five parts are functional segments (described by shares), sections are the writing and acceptance unit (described by word-count floors); the two are orthogonal with no one-to-one mapping, and a part must not be cancelled or a section exempted just because its share-converted word count falls below the section floor
+- **The emotion chain is the whole story's skeleton**: at the outline stage, first pick one named emotional arc (4-6 stages, such as "Prey Enters the Cage, Lured Into the Trap, Logic Closes In, Public Execution, Treated as Nothing"); its stages MUST cover every section of the whole story. Section counts unfold naturally from the chain's stages rather than being padded out by filling functions; the chain's stages and the five parts are described independently and not forced into a one-to-one match
+- **The outline contains a technique landing table and no functionless sections**: each core technique is marked with a carrying section and a payoff section; every section takes on at least one of advancing a technique / adding pressure / foreshadowing / relationship change / emotion delivery / developing a supporting-character subplot, with sections the techniques do not cover carried by the other five types; supporting characters who drive subplots must affect the main plot and are not decorative characters
+- **The causal-chain field is written in a fixed shape**: handoff point, motivation and action, core event, direct consequence, ending hook; the handoff point and direct consequence MUST NOT be omitted (these two connection points are the key to preventing the plot from drifting section by section)
+- **Villain wrongdoing must have prior setup**: before each wrongdoing there must be setup where danger accumulates; the payoff comes from retaliation after enough setup, not from evil arriving suddenly
+- **The conflict adjudication table contains qualitative conflicts**: besides the five numeric conflicts, it must inline "logical consistency takes priority over payoffs and gut-punches". When a payoff needs a character to act against their motivation, change the payoff design, not the character logic
+- **Character naming avoids the convergent name pool**: constrained by a decidable banned list (full names + characters + homophones), not by "random generation" as the mechanism; naming results are saved as a record and stay stable across passes, so revisions do not change names
+- **Genre style includes an emotion-chain library and formulaic techniques**: each genre pack gives several named emotional arcs; each technique-library entry is an applicable formula plus a concrete example, not just a name
+- **The throughline prop's three appearances each have a semantic state**: harmless (like idle writing), then draws attention, then reveals the truth; props are not limited to physical keepsakes
+- **A catalytic breakdown is set before the reversal**: at the 60-75% point of the full text, place a contradictory element the current explanatory framework cannot explain, forcing readers to abandon old assumptions; at the reversal reveal, use a look-back, monologue, or physical evidence to let readers thread everything together instantly
+- **Scenes enter mid-conflict (late in, early out)**: do not enter from lead-in routines such as waking up, traveling, or exchanging greetings
+- **Revisions must not smuggle extras in**: without explicit author requests, do not change the core direction or ending, delete or weaken key conflict scenes, add new plot lines or characters, change character personalities, change the narrative point of view, or change sections not asked to be rewritten; when done, compare the diff list
+- **Each line of dialogue carries a function**: every line completes at least one of advancing the plot / revealing character / creating conflict / planting foreshadowing; several consecutive lines that only greet or connect are judged unqualified
+- **Main-text vocabulary firewall**: main text with ancient or fictional-world settings must not bare reasoning-layer modern concepts (psychological trauma / family of origin / boundaries and similar); they must first complete an in-world translation, and when translation fails, delete them and use senses and behavior instead; a machine-scannable five-category word list is provided, marked as applying only to historical-style genres
 
-### 主流程 C：短篇独立反 AI 轨（贯穿 B）
+### Main flow C: The short story's independent anti-AI track (running through B)
 
-- 新增短篇知识库：去 AI 口径（留删对表 + 唯一判据）、禁用词清单（八类 + 量化上限，不含情绪词）、自检清单（五项）、写作参考（格式规范 / 底座 / 情绪技法 / 对话 / 反转 / 钩子 / 投稿 / 质量清单等）、题材风格包（10 个 + 注册表）
-- 短篇口径核心：**留**直接情绪词、第一人称审判句、火葬场预告、心死章尾（判据「这句带不带主角此刻的主观情绪」）；**删**接不上具体反应的空泛情绪总结句、与角色情绪无关的中立作者讲解
-- **角色命名约束**：避开模型高度收敛的取名池（同一批用字与名字在多篇间反复出现，是可直接识别的机器痕迹）；约束以可判定的禁用清单给出，命名结果落盘并跨次稳定
-- **第一人称所有格清除**：「我的心 / 我的灵魂 / 我的眼眶」改为无主语写法；「我知道 / 我明白 / 我意识到 / 我感到 / 我看到自己」类引导小句直接改成陈述、感受或动作——第一人称里反复标注「我的 X」是把叙述位置推回体外，属旁观者痕迹
-- **程度副词类目覆盖强弱两端**：弱化（微微 / 淡淡 / 缓缓 / 轻轻）与强化（正 / 正在 / 非常 / 十分 / 极其 / 越来越 / 果然 / 好像）统一按每千字上限约束、按密度删减
-- **检查项逐项定复用或独立，不按工具一刀切**：格式与排版类、通用 AI 腔类（套话停用词 / 商务黑话 / 路标语 / 段落开场重复 / 句长变异）复用既有工具；抒情用词、转折句式、段落形态与万能比喻阈值使用短篇自己的校准。仓库内不出现同类检查的重复实现
-- **段落形态必须同时有下限与上限**：下限是平台形态（一句一段的短段底色），上限是防电报体（连续碎句成片的判定）；短句是落在情绪峰值的偶发重拍，不是通篇底色
+- Add the short-story knowledge base: de-AI criteria (keep-or-cut table + single criterion), a banned-word list (eight categories + quantitative caps, containing no emotion words), a self-check list (five items), writing references (format specs / base / emotion techniques / dialogue / reversal / hooks / submission / quality checklist, and more), genre style packs (10 + registry)
+- Short-story criteria core: **keep** direct emotion words, first-person judgment sentences, crematorium previews, and heart-death chapter endings (criterion: "does this sentence carry the protagonist's subjective emotion right now"); **cut** vague emotional summary sentences with no concrete reaction following them, and neutral author explanations unrelated to the characters' emotions
+- **Character-naming constraint**: avoid the model's highly convergent naming pool (the same batch of characters and names recurring across many stories is a directly recognizable machine trace); the constraint is given as a decidable banned list, and naming results are saved and stable across passes
+- **First-person possessive cleanup**: "my heart / my soul / my eyes" becomes subject-less writing; leading mini-clauses such as "I know / I understand / I realize / I feel / I see myself" become statements, feelings, or actions directly. Repeatedly marking "my X" in first person pushes the narrative position back outside the body, which is a bystander trace
+- **The degree-adverb category covers both weak and strong ends**: weak (slightly / faintly / slowly / gently) and strong (right / currently / very / extremely / increasingly / indeed / seemingly) are constrained together by one per-thousand-word cap, trimmed by density
+- **Check items are graded reuse or independent one by one, not by whole tool**: format and layout items and general AI-tone items (cliché stop words / business jargon / signpost language / repeated paragraph openings / sentence-length variation) reuse existing tools; lyrical word choice, reversal sentence patterns, paragraph shape, and universal-metaphor thresholds use the short story's own calibration. No duplicate implementation of the same kind of check appears in the repo
+- **Paragraph shape must have both a floor and a ceiling**: the floor is the platform shape (a short-paragraph base color with one sentence per paragraph), the ceiling guards against telegram style (a decidable signal for consecutive fragments in sheets); short sentences are occasional beats landing on emotional peaks, not the base color throughout
 
 ## Capabilities
 
 ### New Capabilities
 
-- `short-story-bootstrap`: 短篇项目类型——长度开关与入口分流、自成一套的骨架、独立题材编号空间、职责独立的 agent 组在全平台部署、独立知识产物、按长度同步、静态校验链覆盖、一个项目多篇且篇目隔离
-- `short-story-pipeline`: 短篇写作流水线——调度契约、定情绪与定方向、构思与排纲（含反转位置验证与伏笔回查）、写作契约组装、契约独立审计、分批写作与字数节数硬底线、去 AI 味与精修、契约兑现度核对与体验验收、独立状态机与断点续跑
-- `short-story-anti-ai`: 短篇去 AI 轨——按检查项逐项定复用或独立、自成一套的口径与独立产物、留删对表与唯一判据、情绪直写加具体承接、独立禁用词清单、逐条可判定的自检清单、标点硬约束、段落形态的下限与上限
+- `short-story-bootstrap`: the short-story project type: length switch and entry-point routing, a self-contained skeleton, an independent genre numbering space, an agent group with independent duties deployed on all platforms, independent knowledge products, sync by length, static-check-chain coverage, one project holding multiple stories with story isolation
+- `short-story-pipeline`: the short-story writing pipeline: dispatch contract, set the emotion and direction, concept and outline (with reversal-position validation and foreshadowing re-check), writing contract assembly, independent contract audit, batched writing with word-count and section-count hard floors, de-AI pass and polish, contract payoff check and experience acceptance, independent state machine and breakpoint resume
+- `short-story-anti-ai`: the short-story de-AI track: per-check-item reuse-or-independent grading, a self-contained criteria set with a standalone product, the keep-or-cut table with a single criterion, emotions written directly with concrete follow-through, an independent banned-word list, an item-by-item decidable self-check list, punctuation hard constraints, paragraph-shape floor and ceiling
 
 ### Modified Capabilities
 
-（无——本次全部为新增能力，不改动既有 spec 的 requirement。）
+(None. This change is all new capabilities and does not change any existing spec requirement.)
 
 ## Impact
 
-- **新增代码/文档**：`templates/short/`（骨架 + 项目级指令 + 状态机）、`agents/short-*.md` × 5、`skills/short-*.md` × 7（调度契约 / 构思 / 契约组装 / 契约审计 / 写作 / 精修 / 兑现度核对）、`knowledge/short/`（anti-ai + craft + genres，约 26 个文件）
-- **修改现有文件**：`tools/init.py`（`--length`、骨架 / agent / 知识 / 状态的长度分支、短篇题材编号）、`tools/platforms.py`（短篇名单常量 + 内联 skill 生成）、`tools/check-agents.py`（部署后路径白名单加短篇目录、部署产物模拟覆盖两种长度以消除孤儿误判）、`tools/sync-project.py`（按项目长度标记同步）、`SKILL.md`（入口分流与边界条件）、`README.md` / `README-en.md` / `ARCHITECTURE.md`、`tools/test_platforms.py`（短篇 E2E 断言）
-- **部署产物**：短篇项目新增 `<平台>/knowledge/` 下的短篇反 AI 产物、短篇格式规范、短篇写作参考、短篇题材风格包
-- **检查链**：`check-agents.py`（短篇 agent 的引用、孤儿知识、命名约定）、`check-conflicts.py`（短篇阈值与既有阈值体系无冲突，冲突则加豁免）、`test_platforms.py`（内联 skill 数量断言按长度分套）
-- **新增外部依赖**：无。仓库仍只用 Python 标准库 + pyyaml
-- **版权**：短篇包来源为获赠资产，文件头标注来源，公开/商用前需原作者确认
+- **New code/docs**: `templates/short/` (skeleton + project-level instructions + state machine), `agents/short-*.md` x 5, `skills/short-*.md` x 7 (dispatch contract / concept / contract assembly / contract audit / writing / polish / payoff check), `knowledge/short/` (anti-ai + craft + genres, about 26 files)
+- **Changed existing files**: `tools/init.py` (`--length`, length branches for skeleton / agents / knowledge / status, short-story genre numbering), `tools/platforms.py` (short-story roster constants + inlined skill generation), `tools/check-agents.py` (short-story directories added to the post-deployment path allowlist, deployed-product simulation covering both lengths to remove orphan false positives), `tools/sync-project.py` (sync by project length marker), `SKILL.md` (entry-point routing and boundary conditions), `README.md` / `README-en.md` / `ARCHITECTURE.md`, `tools/test_platforms.py` (short-story E2E assertions)
+- **Deployment products**: short-story projects gain the short-story anti-AI product, short-story format specs, short-story writing references, and short-story genre style packs under `<platform>/knowledge/`
+- **Check chain**: `check-agents.py` (short-story agent references, orphaned knowledge, naming conventions), `check-conflicts.py` (short-story thresholds do not conflict with the existing threshold system; conflicts get exemptions), `test_platforms.py` (inlined skill-count assertions split by length)
+- **New external dependencies**: none. The repo still uses only the Python standard library + pyyaml
+- **Copyright**: the short-story pack is a gifted asset; file headers mark the source, and the original author must confirm before public or commercial use
 
-## 后续变更（本次不做，另行提案）
+## Later Changes (Not Done Here, Separate Proposals)
 
-以下三项**不服务于「先写出来小说」**，从本次范围移出，各自单独变更：
+The following three items **do not serve "write the novel first"** and are moved out of this change's scope, each as its own change:
 
-1. **扫榜**（市场数据 → 情绪方向与题材候选）：选题阶段的辅助入口。作者已有想法即可直接写作，不阻塞成品产出。
-2. **拆文**（爆款 → 可复用的结构资产）：对标阶段的辅助入口。同上，且需要五阶段管道与崩溃安全写盘，体量独立。
-3. **跨文体检查工具移植**（模型退化检测：复读 / 截断 / 工程词泄漏；细纲照搬检测）：两项均与文体无关、对既有流程同样有效，可作为独立变更先落，不必与短篇绑定。
+1. **List scanning** (market data to emotional directions and genre candidates): an auxiliary entry point at the topic stage. Authors who already have an idea can write directly, so it does not block finished-draft output.
+2. **Text teardown** (hit stories to reusable structural assets): an auxiliary entry point at the benchmarking stage. Same as above, and it needs a five-stage pipeline with crash-safe writes, so it stands alone in size.
+3. **Cross-genre check-tool porting** (model-degradation detection: repetition / truncation / engineering-word leaks; fine-outline copy detection): both are genre-independent and equally effective for the existing flow, so they can land first as an independent change without being tied to short stories.

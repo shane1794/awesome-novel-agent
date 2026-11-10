@@ -1,17 +1,17 @@
 # updater-setting-sop
 
-规划时设定变更的标准操作流程。
+The standard operating procedure for setting changes during planning.
 
-## 一、输入检查
+## 1. Input Checks
 
-| 检查项 | 通过条件 | 失败处理 |
+| Check Item | Pass Condition | Failure Handling |
 |--------|---------|---------|
-| `.agent/task/setting-update-order.md` | 存在 | 报错给 novel-agent |
-| order 中指定的目标文件 | 存在或可创建 | 报路径错误 |
+| `.agent/task/setting-update-order.md` | Exists | Report the error to novel-agent |
+| Target files named in the order | Exist or can be created | Report a path error |
 
-## 二、Order 解析
+## 2. Order Parsing
 
-`setting-update-order.md` 遵循统一 order 模板（`templates/.agent/task/order-template.md`），`inputs`/`outputs` 为列表。变更规格有两种载体，按 `inputs` 内容区分：
+`setting-update-order.md` follows the unified order template (`templates/.agent/task/order-template.md`); `inputs`/`outputs` are lists. There are two carriers for the change specification, distinguished by the `inputs` content:
 
 ```markdown
 # setting-update-order
@@ -19,100 +19,100 @@
 status: pending
 
 inputs:
-  - 源文件路径（含 `## 设定变更通知` 块，见下「载体 1」）
-  # 或
-  - content: |                    # 初始设定（setup 阶段，作者对话直接给 spec，见「载体 2」）
+  - Source file path (containing the `## Setting Change Notice` block, see "Carrier 1" below)
+  # or
+  - content: |                    # Initial settings (setup phase, the spec comes directly from the author's conversation, see "Carrier 2")
       type: character | world | timeline | genre | style | memory
       action: create | modify | delete
       target: settings/character-setting/{id}.md
       content: |
-        # 要写入/追加的内容（结构化）
-      reason: 作者要求
+        # The content to write/append (structured)
+      reason: Author request
 
 outputs:
-  - 目标设定文件路径
+  - Target settings file path
 ```
 
-### 载体 1：源文件通知块（规划期变更）
+### Carrier 1: Notice Block in the Source File (planning-phase changes)
 
-`inputs` 指向卷纲/章纲文件，updater 读取其中的 `## 设定变更通知` 块提取变更 spec（块结构见 updater-archive 消费约定）。**执行完变更后，updater 负责从源文件删除该通知块**（Edit 移除，防重复消费）。
+`inputs` points at a volume outline / chapter outline file; updater reads its `## Setting Change Notice` block to extract the change spec (the block structure follows the updater-archive consumption convention). **After executing the change, updater removes the notice block from the source file** (removing it with Edit, to prevent repeat consumption).
 
-### 载体 2：content 内联 spec（初始设定 / 无源文件可指）
+### Carrier 2: Inline Spec in content (initial settings / no source file to point at)
 
-`inputs` 里带 `content:` 字段直接给出 type/action/target/reason（setup 阶段作者对话内容），updater 直接按 spec 执行，无源文件可清理。
+`inputs` carries a `content:` field giving type/action/target/reason directly (the author's conversation content in the setup phase); updater executes the spec directly, with no source file to clean up.
 
-## 三、设定更新流程
+## 3. Setting Update Flow
 
-### 场景 A: 新增角色
+### Scenario A: Add a Character
 
-1. 检查 `settings/character-setting/` 下 ID 是否唯一
-2. 如冲突 → 报作者确认是否覆盖
-3. 创建角色文件, 使用标准模板：
+1. Check that the ID is unique under `settings/character-setting/`
+2. On a conflict, ask the author to confirm whether to overwrite
+3. Create the character file using the standard template:
 
    ```markdown
-   # {角色名}
+   # {Character Name}
 
-   ## 基础信息
-   - **ID:** {唯一标识}
-   - **登场卷/章:** vol-{N}-ch-{M}
-   - **阵营:** {阵营}
+   ## Basic Information
+   - **ID:** {unique identifier}
+   - **First Appearance Volume/Chapter:** vol-{N}-ch-{M}
+   - **Faction:** {faction}
 
-   ## 角色定位
-   - **核心动机:** ...
-   - **与主角关系:** ...
+   ## Character Positioning
+   - **Core Motive:** ...
+   - **Relationship to Protagonist:** ...
 
-   ## 能力/特质
+   ## Abilities / Traits
    - ...
 
-   ## 出场记录
-   - vol-{N}-ch-{M}: 首次出场
+   ## Appearance Record
+   - vol-{N}-ch-{M}: First appearance
    ```
 
-4. 如果该角色与其他角色有关联 → 同步追加关系到相关角色文件
+4. If the character is related to other characters, append the relationship to the related character files as well
 
-### 场景 B: 修改世界观/题材/风格
+### Scenario B: Change the Worldview / Genre / Style
 
-1. 读现有文件，确认修改不矛盾
-2. 如果新内容与已有内容冲突：
-   - 轻微不一致 → 追加说明，标注 `[updated]`
-   - 原则性矛盾 → STOP，展示冲突点给作者
-3. 无冲突 → 追加或替换指定段落
+1. Read the existing file and confirm the change is not contradictory
+2. If the new content conflicts with existing content:
+   - Minor inconsistency → append an explanation, marked `[updated]`
+   - Fundamental contradiction → STOP and show the conflict points to the author
+3. No conflict → append or replace the specified paragraph
 
-### 场景 C: 追加时间线事件
+### Scenario C: Append a Timeline Event
 
-1. 读 `settings/timeline.md` 现有内容
-2. 按时间顺序插入新事件
-3. 如果事件涉及角色 → 同步到角色文件标记
+1. Read the existing content of `settings/timeline.md`
+2. Insert the new event in chronological order
+3. If the event involves a character, sync it to the character file as a marker
 
-### 场景 D: 直接修改记忆
+### Scenario D: Directly Change Memory
 
-1. 读 `.claude/memory/` 目标文件
-2. 追加内容标注 `[writer-preference]`
-3. 不走 diff（作者指定的规则直接生效）
+1. Read the target file under `.claude/memory/`
+2. Mark appended content `[writer-preference]`
+3. Does not go through diff (a rule specified by the author takes effect directly)
 
-### 场景 E: 删除设定
+### Scenario E: Delete a Setting
 
-1. 确认删除范围
-2. 检查是否有其他文件引用被删除内容
-3. 有关联依赖 → 展示引用链给作者确认
-4. 无依赖或已确认 → 执行删除
+1. Confirm the deletion range
+2. Check whether any other file references the content to be deleted
+3. Has dependent references → show the reference chain to the author for confirmation
+4. No dependencies, or confirmed → execute the deletion
 
-**删除粒度（S2 禁删）：** 只做**内容级删除**——用 Edit 移除文件中的段落/条目（如角色文件里的某次状态变更、world-setting 里的某个生物条目），**不删除整个文件**（系统无 Bash，Edit/Write 均无法删文件）。若作者要求整文件删除（如删除整个角色）→ 不可行，改为在文件头部标注 `[deprecated]` 保留文件本体（作为权威源删除痕迹，M2），并在引用它的文件中移除对应关系。
+**Deletion granularity (S2, no deletion):** Only do **content-level deletion**. Use Edit to remove a paragraph / entry inside a file (such as one state change in a character file, or one creature entry in world-setting); **do not delete a whole file** (the system has no Bash, and neither Edit nor Write can delete a file). If the author asks for a whole file to be deleted (such as deleting a whole character), it is not feasible; instead, mark `[deprecated]` at the top of the file and keep the file itself (as the trace of the authoritative source's deletion, M2), and remove the matching relationship in the files that reference it.
 
-## 四、一致性检查（通用）
+## 4. Consistency Checks (general)
 
-任何设定变更后检查：
+After any setting change, check:
 
-- [ ] 新内容不与现有 `settings/` 下文件矛盾
-- [ ] 新角色 ID 不与已有角色重复
-- [ ] 世界观修改不导致已写章节产生逻辑矛盾（标注可能受影响的章节）
-- [ ] memory 修改不混用 `[community-defaults]` 和 `[writer-preference]` 标记
+- [ ] The new content does not contradict existing files under `settings/`
+- [ ] A new character ID does not duplicate an existing character
+- [ ] A worldview change does not create a logic contradiction in already-written chapters (mark chapters that may be affected)
+- [ ] A memory change does not mix the `[community-defaults]` and `[writer-preference]` markers
 
-## 五、验收清单
+## 5. Acceptance Checklist
 
-- [ ] 变更已按 order 要求执行
-- [ ] 新创建的文件格式正确
-- [ ] 无未解决的冲突（所有冲突已展示给作者）
-- [ ] 有关联更新（如新角色→关系同步）已执行
-- [ ] 载体 1（源文件通知块）：源文件中的 `## 设定变更通知` 块已移除
-- [ ] order 已标记 DONE
+- [ ] The change was executed as the order requires
+- [ ] Newly created files are correctly formatted
+- [ ] No unresolved conflicts (all conflicts have been shown to the author)
+- [ ] Related updates (such as a new character's relationship sync) have been executed
+- [ ] Carrier 1 (notice block in the source file): the `## Setting Change Notice` block in the source file has been removed
+- [ ] The order is marked DONE

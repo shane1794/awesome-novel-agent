@@ -1,30 +1,30 @@
-# 检测战役记录
+# Detection Battle Log
 
-> 用途：作者自愿把稿件送外部 AI 检测（朱雀等）核验时，逐轮记录"改了什么、分数怎么走"，达标后沉淀规律。这本书记录本身就是写作规则的来源——下一章开写前重读。
-> 使用方式：agent 送检时每轮追加一行；作者手动送检时也可以让 agent 代记。面向作者展示时只说"第几轮、改了什么、分数从多少到多少"。
+> Purpose: when the author voluntarily sends a manuscript to an external AI detector (such as Zhuque) for verification, record each round of "what changed and how the scores moved", and once the target is met, distill the patterns. This log itself is a source of writing rules: re-read it before starting the next chapter.
+> How to use: the agent appends one row per round when submitting for detection; when the author submits manually, the agent can record it on their behalf. When showing it to the author, only say "which round, what changed, and how the scores moved from X to Y".
 
-## 本书判定口径
+## Detection Criteria for This Book
 
-- 检测工具：<!-- 例：朱雀网页版（逐片段 AIGC 值，达标线 = 全部片段低于 0.5） -->
-- 送检方式：<!-- 例：本地工具自动送检 / 作者手动网页粘贴 -->
-- 达标线：<!-- 例：全部片段 < 0.5 -->
+- Detection tool: <!-- e.g. Zhuque web version (per-segment AIGC values, pass line = all segments below 0.5) -->
+- Submission method: <!-- e.g. local tool auto-submission / author manually pastes on the website -->
+- Pass line: <!-- e.g. all segments < 0.5 -->
 
-## 战役记录
+## Battle Log
 
-<!-- 每章一节；逐轮追加，只改最高分片段，其余内容字符级不动 -->
+<!-- One section per chapter; append round by round, only edit the highest-scoring segment, leave everything else character-for-character unchanged -->
 
-### 第 X 章（日期）
+### Chapter X (date)
 
-| 轮 | 改了什么 | 逐片结果 | 结论 |
+| Round | What Changed | Per-Segment Results | Conclusion |
 |----|---------|---------|------|
-| 1 | （初稿送检） | 片1 0.xx / 片2 0.xx / … | 最高分窗口：片N |
-| 2 | （只修片N：具体改动） | … | … |
+| 1 | (first draft submitted) | Segment 1 0.xx / Segment 2 0.xx / ... | Highest-scoring window: segment N |
+| 2 | (only fix segment N: specific change) | ... | ... |
 
-**锁版**：达标后记录日期与稿件哈希（SHA256），此后一字不磨；快照存 `archives/`。
+**Locked version**: after passing, record the date and the manuscript hash (SHA256); after that, do not polish a single word; store the snapshot in `archives/`.
 
-## 规律沉淀
+## Distilled Patterns
 
-<!-- 每场战役结束把新规律写进来：什么结构热、什么修法有效、什么改法反升。
-     经作者确认的翻车原句同步加入 sandbox/prose-regressions.txt 拦复发。 -->
+<!-- After each battle ends, write new patterns here: which structures run hot, which fixes work, which changes backfire.
+     Verified failure lines confirmed by the author are also added to sandbox/prose-regressions.txt to block recurrence. -->
 
-- （示例格式）某章实测：一问一答连续超过 8 拍的窗口必热；砍拍 + 问答之间插动作后两轮内达标。
+- (Example format) Measured in one chapter: a window with more than 8 straight beats of question-and-answer always runs hot; cutting beats and inserting action between questions passed within two rounds.
